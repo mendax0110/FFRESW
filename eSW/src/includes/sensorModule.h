@@ -1,7 +1,7 @@
 /**
  * @file sensorModule.h
  * @author your name (you@domain.com)
- * @brief 
+ * @brief Header file for managing various sensors.
  * @version 0.1
  * @date 2024-01-26
  * 
@@ -22,11 +22,21 @@ namespace sensorModule
     class sensorModuleInternals
     {
     public:
+        sensorModuleInternals();
+        ~sensorModuleInternals();
+        
+        void begin();
+        float readTemperature();
+        float readPressure();
+        float readSensorData(const String& sensorType);
+        void calibrateSensor();
+        bool checkSensorStatus();
 
     private:
+        uint8_t _sensorAddress;
+        bool _sensorInitialized;
 
     protected:
-
     };
 }
 
