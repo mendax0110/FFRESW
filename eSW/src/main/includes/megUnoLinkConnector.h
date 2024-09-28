@@ -1,41 +1,62 @@
 /**
- * @file MegUnoLinkConnector.h
- * @brief Header file for the MegUnoLinkConnector class.
+ * @file megUnoLinkConnector.h
+ * @author your name (you@domain.com)
+ * @brief 
  * @version 0.1
- * @date 2024-09-27
+ * @date 2024-09-28
  * 
- * This class manages serial communication using the MegunoLink framework, 
- * allowing for command handling and processing of incoming commands.
+ * @copyright Copyright (c) 2024
+ * 
  */
-
 #ifndef MEGUNOLINKCONNECTOR_H
 #define MEGUNOLINKCONNECTOR_H
 
 #include <Arduino.h>
-#include "CommandHandler.h"
+#include <CommandHandler.h>
 
-/// @brief This is the main namespace for the megUnoLinkConnector
+/// @brief Namespace for the MegUnoLink Connector. \namespace megUnoLinkConnector
 namespace megUnoLinkConnector
 {
-    /// @brief Class for managing serial communication with MegunoLink.
-    class megUnoLinkConnectorInternals
+    /// @brief Class for the MegUnoLink Connector. \class MegUnoLinkConnector
+    class MegUnoLinkConnector
     {
     public:
-        megUnoLinkConnectorInternals();
-        ~megUnoLinkConnectorInternals();
+        MegUnoLinkConnector();
+        ~MegUnoLinkConnector();
+        
         void begin(long baudRate);
         void processCommands();
-        void addCommand(const __FlashStringHelper* command, void (*handler)(CommandParameter&));
+
+        template <typename HandlerType>
+        void addCommand(const char* commandName, HandlerType handler);
+
+        template <typename HandlerType>
+        void addCommand(const __FlashStringHelper* commandName, HandlerType handler);
+
         void setDefaultHandler(void (*handler)());
+        void handleUnknownCommand();
+        void sendLog(const String &message);
 
     private:
         CommandHandler<> serialCommandHandler;
-
-        void unknownCommand();
-        
-    protected:
+        bool initialized;
+        bool checkInitialized();
     };
 
-} // namespace megUnoLinkConnector
+    template <typename HandlerType>
+    void MegUnoLinkConnector::addCommand(const __FlashStringHelper* commandName, HandlerType handler)
+    {
+        if (checkInitialized())
+        {
+            serialCommandHandler.AddCommand(commandName, handler);
+            Serial.print(F("Command added: "));
+            Serial.println(reinterpret_cast<const char*>(commandName));
+        }
+        else
+        {
+            sendLog(F("MegUnoLink Connector not initialized, cannot add command."));
+        }
+    }
+}
 
 #endif // MEGUNOLINKCONNECTOR_H

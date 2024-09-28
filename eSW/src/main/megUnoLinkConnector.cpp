@@ -1,43 +1,92 @@
 /**
  * @file megUnoLinkConnector.cpp
- * @author Adrian Goessl
- * @brief Implementation of the megUnoLinkConnector class.
- * @version 0.1
+ * @brief Implementation of the MegUnoLinkConnector class using CommandHandler<> for handling MegunoLink serial communication.
+ * @version 0.2
  * @date 2024-01-26
- * 
- * @copyright Copyright (c) 2024
- * 
  */
+
 #include "includes/megUnoLinkConnector.h"
 
 using namespace megUnoLinkConnector;
 
-megUnoLinkConnectorInternals::megUnoLinkConnectorInternals() {}
-megUnoLinkConnectorInternals::~megUnoLinkConnectorInternals() {}
-
-void megUnoLinkConnectorInternals::begin(long baudRate)
+MegUnoLinkConnector::MegUnoLinkConnector()
+    : initialized(false)
 {
-    Serial.begin(baudRate);
-    Serial.println(F("MegUnoLink Connector Initialized"));
 }
 
-void megUnoLinkConnectorInternals::processCommands()
+MegUnoLinkConnector::~MegUnoLinkConnector() {}
+
+/// @brief Function to initialize the MegUnoLink Connector 
+/// @param baudRate -> This is the baud rate for the serial communication
+void MegUnoLinkConnector::begin(long baudRate)
 {
-    serialCommandHandler.Process();
+    if (!initialized)
+    {
+        Serial.begin(baudRate);
+        Serial.println(F("MegUnoLink Connector Initialized."));
+        initialized = true;
+    }
+    else
+    {
+        Serial.println(F("MegUnoLink Connector already initialized!"));
+    }
 }
 
-void megUnoLinkConnectorInternals::addCommand(const __FlashStringHelper* command, void (*handler)(CommandParameter&))
+/// @brief Function to process the commands received over serial communication
+void MegUnoLinkConnector::processCommands()
 {
-    serialCommandHandler.AddCommand(command, handler);
+    if (checkInitialized())
+    {
+        serialCommandHandler.Process();
+    }
+    else
+    {
+        sendLog(F("MegUnoLink Connector not initialized, skipping command processing."));
+    }
 }
 
-void megUnoLinkConnectorInternals::setDefaultHandler(void (*handler)())
+/// @brief Function to add a command with a handler to the MegUnoLink Connector
+/// @param handler -> This is the handler function for the command
+void MegUnoLinkConnector::setDefaultHandler(void (*handler)())
 {
-    serialCommandHandler.SetDefaultHandler(handler);
+    if (checkInitialized())
+    {
+        serialCommandHandler.SetDefaultHandler(handler);
+        Serial.println(F("Default handler set."));
+    }
+    else
+    {
+        sendLog(F("MegUnoLink Connector not initialized, cannot set default handler."));
+    }
 }
 
-void megUnoLinkConnectorInternals::unknownCommand()
+/// @brief Function to handle unknown commands received over serial communication
+void MegUnoLinkConnector::handleUnknownCommand()
 {
     Serial.println(F("Unknown command received. Please try again."));
 }
 
+/// @brief Function to send a log message over serial communication
+/// @param message -> This is the message to be logged
+void MegUnoLinkConnector::sendLog(const String &message)
+{
+    if (checkInitialized())
+    {
+        Serial.println(message);
+    }
+    else
+    {
+        Serial.println(F("Failed to log: MegUnoLink Connector not initialized."));
+    }
+}
+
+/// @brief Function to check if the MegUnoLink Connector is initialized
+/// @return bool -> This returns true if the connector is initialized, false otherwise
+bool MegUnoLinkConnector::checkInitialized()
+{
+    if (!initialized)
+    {
+        Serial.println(F("MegUnoLink Connector not initialized."));
+    }
+    return initialized;
+}

@@ -1,0 +1,3 @@
+[submodule "Arduino-MemoryFree"]
+	path = Arduino-MemoryFree
+	url = https://github.com/mpflaga/Arduino-MemoryFree.git

@@ -1,43 +1,69 @@
 /**
  * @file sensorModule.h
  * @author your name (you@domain.com)
- * @brief Header file for managing various sensors.
+ * @brief 
  * @version 0.1
- * @date 2024-01-26
+ * @date 2024-09-28
  * 
  * @copyright Copyright (c) 2024
  * 
  */
+
+#ifndef SENSORMODULE_H
+#define SENSORMODULE_H
+
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
 
-#ifndef SENSOR_MODULE_H
-#define SENSOR_MODULE_H
-
-/// @brief This is the namespace for the sensor module \namespace sensorModule
+/// @brief Namespace for the sensor module. \namespace sensorModule
 namespace sensorModule
 {
-    /// @brief This is the class for the sensor module \class sensorModule
-    class sensorModuleInternals
+    /// @brief Enum class for the sensor types. \enum SensorType
+    enum class SensorType
+    {
+        TEMPERATURE,
+        PRESSURE,
+        I2C_SENSOR,
+        SPI_SENSOR,
+        UNKNOWN
+    };
+
+    /// @brief Class for the sensor module internals. \class SensorModuleInternals
+    class SensorModuleInternals
     {
     public:
-        sensorModuleInternals();
-        ~sensorModuleInternals();
-        
+        SensorModuleInternals();
+        ~SensorModuleInternals();
+
         void begin();
-        float readTemperature();
-        float readPressure();
+        float readSensor(SensorType type);
         float readSensorData(const String& sensorType);
-        void calibrateSensor();
-        bool checkSensorStatus();
+        bool calibrateSensor(SensorType type);
+        bool checkSensorStatus(SensorType type);
 
     private:
-        uint8_t _sensorAddress;
-        bool _sensorInitialized;
+        bool _temperatureSensorInitialized;
+        bool _pressureSensorInitialized;
+        bool _i2cSensorInitialized;
+        bool _spiSensorInitialized;
 
-    protected:
+        static const int TEMP_SENSOR_PIN = A0;
+        static const int PRESSURE_SENSOR_PIN = A1;
+        
+        static const uint8_t I2C_SENSOR_ADDRESS = 0x76;
+        static const int SPI_CS_PIN = 10;
+
+        void initializeSensors();
+        float readAnalogSensor(int pin);
+
+        float readTemperature();
+        float readPressure();
+        float readI2CSensor();
+        float readSPISensor();
+
+        void reportError(const char* errorMessage);
     };
 }
 
-#endif // SENSOR_MODULE_H
+#endif // SENSORMODULE_H
