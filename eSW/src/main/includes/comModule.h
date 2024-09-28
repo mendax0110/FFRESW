@@ -22,6 +22,8 @@ namespace comModule
     class comModuleInternals
     {
     public:
+        comModuleInternals();
+        ~comModuleInternals();
 
     private:
 

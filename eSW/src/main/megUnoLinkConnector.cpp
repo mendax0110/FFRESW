@@ -13,6 +13,7 @@
 using namespace megUnoLinkConnector;
 
 megUnoLinkConnectorInternals::megUnoLinkConnectorInternals() {}
+megUnoLinkConnectorInternals::~megUnoLinkConnectorInternals() {}
 
 void megUnoLinkConnectorInternals::begin(long baudRate)
 {

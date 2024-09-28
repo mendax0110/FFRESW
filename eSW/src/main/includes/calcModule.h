@@ -21,7 +21,8 @@ namespace calcModule
     class calcModuleInternals
     {
     public:
-        calcModule();
+        calcModuleInternals();
+        ~calcModuleInternals();
 
         float calculateAverage(float* data, int length);
         float findMaximum(float* data, int length);

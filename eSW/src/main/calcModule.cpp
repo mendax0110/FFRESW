@@ -12,7 +12,8 @@
 
 using namespace calcModule;
 
-calcModuleInternals::calcModule() {}
+calcModuleInternals::calcModuleInternals() {}
+calcModuleInternals::~calcModuleInternals() {}
 
 float calcModuleInternals::calculateAverage(float* data, int length)
 {

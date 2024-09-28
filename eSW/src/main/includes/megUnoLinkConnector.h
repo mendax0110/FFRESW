@@ -22,6 +22,7 @@ namespace megUnoLinkConnector
     {
     public:
         megUnoLinkConnectorInternals();
+        ~megUnoLinkConnectorInternals();
         void begin(long baudRate);
         void processCommands();
         void addCommand(const __FlashStringHelper* command, void (*handler)(CommandParameter&));
@@ -31,6 +32,8 @@ namespace megUnoLinkConnector
         CommandHandler<> serialCommandHandler;
 
         void unknownCommand();
+        
+    protected:
     };
 
 } // namespace megUnoLinkConnector

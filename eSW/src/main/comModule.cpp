@@ -9,3 +9,8 @@
  * 
  */
 #include "includes/comModule.h"
+
+using namespace comModule;
+
+comModuleInternals::comModuleInternals() {}
+comModuleInternals::~comModuleInternals() {}
