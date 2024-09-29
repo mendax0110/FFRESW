@@ -1,13 +1,11 @@
-#include "includes/sensorModule.h"
+#include "sensorModule.h"
 #include <Wire.h>
 #include <SPI.h>
 
 using namespace sensorModule;
 
 SensorModuleInternals::SensorModuleInternals()
-    : _temperatureSensorInitialized(false), 
-      _pressureSensorInitialized(false),
-      _i2cSensorInitialized(false),
+    : _i2cSensorInitialized(false), 
       _spiSensorInitialized(false)
 {
 }
@@ -43,45 +41,33 @@ void SensorModuleInternals::initializeSensors()
     digitalWrite(SPI_CS_PIN, HIGH);
     _spiSensorInitialized = true;
     Serial.println(F("SPI sensor initialized."));
-
-    _temperatureSensorInitialized = true;
-    _pressureSensorInitialized = true;
-
-    Serial.println(F("Temperature and Pressure sensors initialized."));
+    
+    _temperatureSensor.initialize();
+    _pressureSensor.initialize();
 }
 
-/// @brief Function to read the temperature sensor
-/// @return flaot -> This returns the temperature
-float SensorModuleInternals::readTemperature()
+/// @brief Function to read the sensor data based on the sensor type
+/// @param type -> This is the sensor type (enum)
+/// @return float -> This returns the sensor data
+float SensorModuleInternals::readSensor(SensorType type)
 {
-    if (!_temperatureSensorInitialized)
+    switch (type)
     {
-        reportError("Temperature sensor not initialized!");
-        return NAN;
+        case SensorType::TEMPERATURE:
+            return _temperatureSensor.readTemperature();
+        case SensorType::PRESSURE:
+            return _pressureSensor.readPressure();
+        case SensorType::I2C_SENSOR:
+            return readI2CSensor();
+        case SensorType::SPI_SENSOR:
+            return readSPISensor();
+        default:
+            reportError("Unknown sensor type.");
+            return -1.0; // ERROR!!!
     }
-
-    float sensorValue = readAnalogSensor(TEMP_SENSOR_PIN);
-    float voltage = sensorValue * (5.0 / 1023.0);
-    float temperature = (voltage - 0.5) * 100.0;
-    return temperature;
 }
 
-/// @brief Function to read the pressure sensor
-/// @return flaot -> This returns the pressure
-float SensorModuleInternals::readPressure()
-{
-    if (!_pressureSensorInitialized)
-    {
-        reportError("Pressure sensor not initialized!");
-        return NAN;
-    }
-
-    float sensorValue = readAnalogSensor(PRESSURE_SENSOR_PIN);
-    float pressure = sensorValue * (5.0 / 1023.0) * 10.0; 
-    return pressure;
-}
-
-/// @brief Function to read the I2C sensor
+/// @brief Funtion to read the I2C sensor
 /// @return float -> This returns the sensor data
 float SensorModuleInternals::readI2CSensor()
 {
@@ -92,10 +78,10 @@ float SensorModuleInternals::readI2CSensor()
     }
 
     Wire.beginTransmission(I2C_SENSOR_ADDRESS);
-    Wire.write(0xF7); 
+    Wire.write(0xF7);
     Wire.endTransmission();
     
-    Wire.requestFrom((uint8_t)I2C_SENSOR_ADDRESS, (uint8_t)6);  // TODO: correct type usd?
+    Wire.requestFrom((uint8_t)I2C_SENSOR_ADDRESS, (uint8_t)6);
     if (Wire.available() == 6)
     {
         int32_t adc_P = (Wire.read() << 12) | (Wire.read() << 4) | (Wire.read() >> 4);
@@ -109,7 +95,7 @@ float SensorModuleInternals::readI2CSensor()
 }
 
 /// @brief Function to read the SPI sensor
-/// @return float -> This returns the sensor data
+/// @return flaot -> This returns the sensor data
 float SensorModuleInternals::readSPISensor()
 {
     if (!_spiSensorInitialized)
@@ -120,62 +106,9 @@ float SensorModuleInternals::readSPISensor()
     digitalWrite(SPI_CS_PIN, LOW);
     
     uint16_t data = SPI.transfer16(0x00);
-
     digitalWrite(SPI_CS_PIN, HIGH);
 
     return (float)data;
-}
-
-/// @brief Function to read the sensor data based on the sensor type
-/// @param type -> This is the sensor type (enum)
-/// @return float -> This returns the sensor data
-float SensorModuleInternals::readSensor(SensorType type)
-{
-    switch (type) {
-        case SensorType::TEMPERATURE:
-            return readTemperature();
-        case SensorType::PRESSURE:
-            return readPressure();
-        case SensorType::I2C_SENSOR:
-            return readI2CSensor();
-        case SensorType::SPI_SENSOR:
-            return readSPISensor();
-        default:
-            reportError("Unknown sensor type.");
-            return -1.0; // ERROR!!!
-    }
-}
-
-/// @brief Function to calibrate the sensor based on the sensor type
-/// @return float -> This returns the sensor data
-float readTemperature()
-{
-    // TODO: Implement temperature reading
-    return 0.0;
-}
-
-/// @brief Function to read the pressure sensor
-/// @return float -> This returns the pressire
-float readPressure()
-{
-    // TODO: Implement pressure reading
-    return 0.0;
-}
-
-/// @brief Funtion to read the I2C sensor
-/// @return float -> This returns the sensor data
-float readI2CSensor()
-{
-    // TODO: Implement I2C reading
-    return 0.0;
-}
-
-/// @brief Function to read the SPI sensor
-/// @return flaot -> This returns the sensor data
-float readSPISensor()
-{
-    // TODO: Implement SPI reading
-    return 0.0;
 }
 
 /// @brief Function to read the sensor data based on the sensor type
@@ -185,11 +118,11 @@ float SensorModuleInternals::readSensorData(const String& sensorType)
 {
     if (sensorType.equalsIgnoreCase("temperature"))
     {
-        return readTemperature();
+        return _temperatureSensor.readTemperature();
     }
     else if (sensorType.equalsIgnoreCase("pressure"))
     {
-        return readPressure();
+        return _pressureSensor.readPressure();
     }
     else if (sensorType.equalsIgnoreCase("i2c"))
     {
@@ -243,9 +176,9 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
     switch (type)
     {
     case SensorType::TEMPERATURE:
-        return _temperatureSensorInitialized;
+        return _temperatureSensor.isInitialized();
     case SensorType::PRESSURE:
-        return _pressureSensorInitialized;
+        return _pressureSensor.isInitialized();
     case SensorType::I2C_SENSOR:
         return _i2cSensorInitialized;
     case SensorType::SPI_SENSOR:
@@ -254,15 +187,6 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
         reportError("Unknown sensor type for status check.");
         return false;
     }
-}
-
-/// @brief Function to read an analog sensor
-/// @param pin -> This is the analog pin to read from
-/// @return float -> This returns the sensor value
-float SensorModuleInternals::readAnalogSensor(int pin)
-{
-    int rawValue = analogRead(pin);
-    return (float)rawValue;
 }
 
 /// @brief Function to report an error message

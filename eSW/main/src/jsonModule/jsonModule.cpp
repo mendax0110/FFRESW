@@ -7,8 +7,8 @@
  * @copyright Copyright (c) 2024
  */
 
-#include "includes/jsonModule.h"
-#include "includes/comModule.h"
+#include "jsonModule.h"
+#include "../comModule/comModule.h"
 
 using namespace jsonModule;
 
@@ -62,7 +62,7 @@ void jsonModuleInternals::sendJsonSerial()
 void jsonModuleInternals::sendJsonEthernet()
 {
     comModule::comModuleInternals comms;
-    comms.sendEthernetData(getJsonString().c_str());
+    comms.ethernet.sendEthernetData(getJsonString().c_str());
 }
 
 /// @brief Function to clear the JSON object

@@ -15,6 +15,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
+#include "pressure/pressureSensor.h"
+#include "temperature/temperatureSensor.h"
 
 /// @brief Namespace for the sensor module. \namespace sensorModule
 namespace sensorModule
@@ -43,22 +45,16 @@ namespace sensorModule
         bool checkSensorStatus(SensorType type);
 
     private:
-        bool _temperatureSensorInitialized;
-        bool _pressureSensorInitialized;
+        TemperatureSensor _temperatureSensor;
+        PressureSensor _pressureSensor;
+
         bool _i2cSensorInitialized;
         bool _spiSensorInitialized;
 
-        static const int TEMP_SENSOR_PIN = A0;
-        static const int PRESSURE_SENSOR_PIN = A1;
-        
         static const uint8_t I2C_SENSOR_ADDRESS = 0x76;
         static const int SPI_CS_PIN = 10;
 
         void initializeSensors();
-        float readAnalogSensor(int pin);
-
-        float readTemperature();
-        float readPressure();
         float readI2CSensor();
         float readSPISensor();
 
