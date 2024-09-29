@@ -28,5 +28,7 @@ copy_memory_free.bat
 
 **4.** IDE and Compiler Settings
 
+**5.** Arduino Version 1.8.13
+
 ![alt text](docs/pictures/image.png)
 
