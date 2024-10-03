@@ -17,18 +17,22 @@ This project utilizes the [Arduino-MemoryFree](https://github.com/mpflaga/Arduin
 git clone https://github.com/mendax0110/FFRESW
 cd FFRESW
 ```
+**2.** Init submodule:
+````bash
+git submodule update --init --recursive
+````
 
-**2.** Run the copy_memory_free.bat file
+**3.** Run the copy_memory_free.bat file
 ```bash	
 cd utils
 copy_memory_free.bat
 ```
 
-**3.** Open the main.ino file in the Programino IDE.
+**4.** Open the main.ino file in the Programino IDE.
 
-**4.** IDE and Compiler Settings
+**5.** IDE and Compiler Settings
 
-**5.** Arduino Version 1.8.13
+**6.** Arduino Version 1.8.13
 
 ![alt text](docs/pictures/image.png)
 
