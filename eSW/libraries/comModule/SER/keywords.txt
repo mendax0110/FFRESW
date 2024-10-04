@@ -5,11 +5,11 @@
 #######################################
 # Classes
 #######################################
-SerialCommunication    KEYWORD1
+SerialCommunication KEYWORD1
 
 #######################################
 # Functions
 #######################################
-beginSerial            KEYWORD2
-sendSerialData         KEYWORD2
-receiveSerialData      KEYWORD2
+beginSerial KEYWORD2
+sendSerialData  KEYWORD2
+receiveSerialData   KEYWORD2

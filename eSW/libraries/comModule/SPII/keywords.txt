@@ -1,15 +1,15 @@
 #######################################
-# Syntax Highlighting for I2CCommunication
+# Syntax Highlighting for SPICommunication
 #######################################
 
 #######################################
 # Classes
 #######################################
-I2CCommunication       KEYWORD1
+SPICommunication    KEYWORD1
 
 #######################################
 # Functions
 #######################################
-beginI2C               KEYWORD2
-i2cWrite               KEYWORD2
-i2cRead                KEYWORD2
+beginSPI    KEYWORD2
+spiWrite    KEYWORD2
+spiRead KEYWORD2

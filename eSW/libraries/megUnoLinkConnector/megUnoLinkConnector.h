@@ -24,7 +24,7 @@ namespace megUnoLinkConnector
         MegUnoLinkConnector();
         ~MegUnoLinkConnector();
         
-        void begin(long baudRate);
+        void beginMegUno(long baudRate);
         void processCommands();
 
         template <typename HandlerType>

@@ -5,17 +5,17 @@
 #######################################
 # Namespace
 #######################################
-comModule              KEYWORD1
+comModule   KEYWORD1
 
 #######################################
 # Classes
 #######################################
-comModuleInternals     KEYWORD1
+comModuleInternals  KEYWORD1
 
 #######################################
 # Objects
 #######################################
-i2c                   KEYWORD2
-spi                   KEYWORD2
-ethernet              KEYWORD2
-serial                KEYWORD2
+i2c KEYWORD2
+spi KEYWORD2
+ethernet    KEYWORD2
+serial  KEYWORD2

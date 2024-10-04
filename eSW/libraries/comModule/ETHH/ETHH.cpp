@@ -3,17 +3,15 @@
  * @brief Implementation of the Ethernet communication class.
  */
 
-#include "EthernetCommunication.h"
+#include "ETHH.h"
+#include <Ethernet.h>
+#include <Arduino.h>
 
-EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(nullptr) {}
+using namespace comModule;
 
-EthernetCommunication::~EthernetCommunication()
-{
-    if (server)
-    {
-        delete server;
-    }
-}
+EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(80) {} // Initialize server with port 80
+
+EthernetCommunication::~EthernetCommunication() {}
 
 /// @brief Function to initialize the Ethernet communication
 /// @param macAddress -> The MAC address to use for the Ethernet communication
@@ -21,8 +19,7 @@ EthernetCommunication::~EthernetCommunication()
 void EthernetCommunication::beginEthernet(byte* macAddress, IPAddress ip)
 {
     Ethernet.begin(macAddress, ip);
-    server = new EthernetServer(80);
-    server->begin();
+    server.begin();
     ethernetInitialized = true;
 }
 
@@ -32,8 +29,7 @@ void EthernetCommunication::sendEthernetData(const char* data)
 {
     if (!ethernetInitialized) return;
 
-    client = server->available();
-    if (client)
+    if (client.connected())
     {
         client.println(data);
         client.stop();
@@ -47,8 +43,7 @@ void EthernetCommunication::receiveEthernetData(char* buffer, size_t length)
 {
     if (!ethernetInitialized) return;
 
-    client = server->available();
-    if (client)
+    if (client.available())
     {
         size_t bytesRead = client.readBytes(buffer, length);
         buffer[bytesRead] = '\0';
@@ -58,8 +53,10 @@ void EthernetCommunication::receiveEthernetData(char* buffer, size_t length)
 /// @brief Function to handle the Ethernet client
 void EthernetCommunication::handleEthernetClient()
 {
-    if (client)
+    EthernetClient newClient = server.available();
+    if (newClient)
     {
+        client = newClient;
         if (client.available())
         {
             char request[256];

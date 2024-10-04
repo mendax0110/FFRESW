@@ -6,6 +6,7 @@
  */
 
 #include "megUnoLinkConnector.h"
+#include <Arduino.h>
 
 using namespace megUnoLinkConnector;
 
@@ -18,7 +19,7 @@ MegUnoLinkConnector::~MegUnoLinkConnector() {}
 
 /// @brief Function to initialize the MegUnoLink Connector 
 /// @param baudRate -> This is the baud rate for the serial communication
-void MegUnoLinkConnector::begin(long baudRate)
+void MegUnoLinkConnector::beginMegUno(long baudRate)
 {
     if (!initialized)
     {

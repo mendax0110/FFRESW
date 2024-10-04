@@ -1,6 +1,7 @@
 #include "sensorModule.h"
 #include <Wire.h>
 #include <SPI.h>
+#include <Arduino.h>
 
 using namespace sensorModule;
 
@@ -13,7 +14,7 @@ SensorModuleInternals::SensorModuleInternals()
 SensorModuleInternals::~SensorModuleInternals() {}
 
 /// @brief Function to initialize the sensor module 
-void SensorModuleInternals::begin()
+void SensorModuleInternals::beginSensor()
 {
     Serial.println(F("Starting sensor module..."));
     initializeSensors();
@@ -42,8 +43,8 @@ void SensorModuleInternals::initializeSensors()
     _spiSensorInitialized = true;
     Serial.println(F("SPI sensor initialized."));
     
-    _temperatureSensor.initialize();
     _pressureSensor.initialize();
+    _temperatureSensor.initialize();
 }
 
 /// @brief Function to read the sensor data based on the sensor type
@@ -54,9 +55,9 @@ float SensorModuleInternals::readSensor(SensorType type)
     switch (type)
     {
         case SensorType::TEMPERATURE:
-            return _temperatureSensor.readTemperature();
+        	return _temperatureSensor.readTemperature();
         case SensorType::PRESSURE:
-            return _pressureSensor.readPressure();
+        	return _pressureSensor.readPressure();
         case SensorType::I2C_SENSOR:
             return readI2CSensor();
         case SensorType::SPI_SENSOR:

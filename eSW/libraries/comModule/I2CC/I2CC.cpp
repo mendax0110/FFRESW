@@ -3,7 +3,11 @@
  * @brief Implementation of the I2C communication class.
  */
 
-#include "I2CCommunication.h"
+#include "I2CC.h"
+
+#include <Wire.h>
+
+using namespace comModule;
 
 /// @brief Function to initialize the I2C communication
 /// @param address -> The address to use for the I2C communication

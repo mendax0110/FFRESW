@@ -1,17 +1,15 @@
 #######################################
-# Syntax Highlighting for pressureSensor
+# Syntax Highlighting for I2CCommunication
 #######################################
 
 #######################################
 # Classes
 #######################################
-PressureSensor          KEYWORD1
+I2CCommunication    KEYWORD1
 
 #######################################
 # Functions
 #######################################
-initialize              KEYWORD2
-readPressure            KEYWORD2
-isInitialized           KEYWORD2
-readAnalogSensor        KEYWORD2
-reportError             KEYWORD2
+beginI2C    KEYWORD2
+i2cWrite    KEYWORD2
+i2cRead KEYWORD2

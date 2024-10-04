@@ -1,5 +1,3 @@
-#######################################
-# Syntax Highlighting for EthernetCommunication
 #################################################
 # Syntax Highlighting for EthernetCommunication
 #######################################
@@ -7,26 +5,26 @@
 #######################################
 # Classes
 #######################################
-EthernetCommunication  KEYWORD1
+EthernetCommunication   KEYWORD1
 
 #######################################
 # Functions
 #######################################
-beginEthernet          KEYWORD2
-sendEthernetData       KEYWORD2
-receiveEthernetData    KEYWORD2
-handleEthernetClient   KEYWORD2
+beginEthernet   KEYWORD2
+sendEthernetData    KEYWORD2
+receiveEthernetData KEYWORD2
+handleEthernetClient    KEYWORD2
 #############################
 
 #######################################
 # Classes
 #######################################
-EthernetCommunication  KEYWORD1
+EthernetCommunication   KEYWORD1
 
 #######################################
 # Functions
 #######################################
-beginEthernet          KEYWORD2
-sendEthernetData       KEYWORD2
-receiveEthernetData    KEYWORD2
-handleEthernetClient   KEYWORD2
+beginEthernet   KEYWORD2
+sendEthernetData    KEYWORD2
+receiveEthernetData KEYWORD2
+handleEthernetClient    sKEYWORD2

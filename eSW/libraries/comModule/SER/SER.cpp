@@ -3,7 +3,9 @@
  * @brief Implementation of the Serial communication class.
  */
 
-#include "SerialCommunication.h"
+#include "SER.h"
+
+using namespace comModule;
 
 /// @brief Function to initialize the serial communication
 /// @param baudRate -> The baud rate to use for the serial communication

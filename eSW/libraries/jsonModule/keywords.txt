@@ -5,18 +5,18 @@
 #######################################
 # Namespace
 #######################################
-jsonModule             KEYWORD1
+jsonModule  KEYWORD1
 
 #######################################
 # Classes
 #######################################
-jsonModuleInternals    KEYWORD1
+jsonModuleInternals KEYWORD1
 
 #######################################
 # Functions
 #######################################
-createJson             KEYWORD2
-getJsonString          KEYWORD2
-sendJsonSerial         KEYWORD2
-sendJsonEthernet       KEYWORD2
-clearJson              KEYWORD2
+createJson  KEYWORD2
+getJsonString   KEYWORD2
+sendJsonSerial  KEYWORD2
+sendJsonEthernet    KEYWORD2
+clearJson   KEYWORD2

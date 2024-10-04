@@ -15,8 +15,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
-#include "pressure/pressureSensor.h"
-#include "temperature/temperatureSensor.h"
+#include <pressure.h>
+#include <temperature.h>
 
 /// @brief Namespace for the sensor module. \namespace sensorModule
 namespace sensorModule
@@ -32,13 +32,13 @@ namespace sensorModule
     };
 
     /// @brief Class for the sensor module internals. \class SensorModuleInternals
-    class SensorModuleInternals
+    class SensorModuleInternals : public TemperatureSensor
     {
     public:
         SensorModuleInternals();
         ~SensorModuleInternals();
 
-        void begin();
+        void beginSensor();
         float readSensor(SensorType type);
         float readSensorData(const String& sensorType);
         bool calibrateSensor(SensorType type);

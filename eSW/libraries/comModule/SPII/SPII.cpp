@@ -3,7 +3,12 @@
  * @brief Implementation of the SPI communication class.
  */
 
-#include "SPICommunication.h"
+#include "SPII.h"
+#include <SPI.h>
+#include <Wire.h>
+#include <Arduino.h>
+
+using namespace comModule;
 
 /// @brief Initializes the SPI communication
 void SPICommunication::beginSPI()

@@ -5,22 +5,22 @@
 #######################################
 # Namespace
 #######################################
-reportSystem            KEYWORD1
+reportSystem    KEYWORD1
 
 #######################################
 # Classes
 #######################################
-ReportSystem            KEYWORD1
+ReportSystem    KEYWORD1
 
 #######################################
 # Functions
 #######################################
-logError                KEYWORD2
-checkSystemHealth       KEYWORD2
-reportStatus            KEYWORD2
-setThreshold            KEYWORD2
-checkThresholds         KEYWORD2
-getCurrentTime          KEYWORD2
-checkSensors            KEYWORD2
-checkCommunication      KEYWORD2
-checkMemory             KEYWORD2
+logError    KEYWORD2
+checkSystemHealth   KEYWORD2
+reportStatus    KEYWORD2
+setThreshold    KEYWORD2
+checkThresholds KEYWORD2
+getCurrentTime  KEYWORD2
+checkSensors    KEYWORD2
+checkCommunication  KEYWORD2
+checkMemory KEYWORD2

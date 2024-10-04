@@ -1,10 +1,11 @@
 #ifndef COMMODULE_H
 #define COMMODULE_H
 
-#include "I2C/I2CCommunication.h"
-#include "SPI/SPICommunication.h"
-#include "ETH/EthernetCommunication.h"
-#include "SER/SerialCommunication.h"
+#include <Ethernet.h>
+#include "ETHH/ETHH.h"
+#include "I2CC/I2CC.h"
+#include "SER/SER.h"
+#include "SPII/SPII.h"
 
 /// @brief Namespace for the communication module. \namespace comModule
 namespace comModule
@@ -18,8 +19,8 @@ namespace comModule
 
         I2CCommunication i2c;
         SPICommunication spi;
-        EthernetCommunication ethernet;
-        SerialCommunication serial;
+        EthernetCommunication eth;
+        //SerialCommunication serial;
     };
 }
 
