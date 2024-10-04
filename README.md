@@ -28,11 +28,10 @@ cd utils
 copy_memory_free.bat
 ```
 
-**4.** Open the main.ino file in the Programino IDE.
+**4.** Arduino Version 1.8.13
 
-**5.** IDE and Compiler Settings
+**5.** Open the main.ino file in the Programino IDE.
 
-**6.** Arduino Version 1.8.13
-
+**6.** IDE and Compiler Settings
 ![alt text](docs/pictures/image.png)
 
