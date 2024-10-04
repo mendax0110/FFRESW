@@ -40,5 +40,8 @@ copy_memory_free.bat
 (MegunoLink
 ArduinoJson.h)
 
+![image](https://github.com/user-attachments/assets/41cf9fef-ed49-4983-bbc4-dbf8aa67fcc4)
+
+
 
 
