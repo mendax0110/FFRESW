@@ -35,3 +35,10 @@ copy_memory_free.bat
 **6.** IDE and Compiler Settings
 ![alt text](docs/pictures/image.png)
 
+**7.** Install missing Files
+(In the Arduino IDE) Sketch > Include Library > Manage Libraries.
+MegunoLink
+ArduinoJson.h
+
+
+
