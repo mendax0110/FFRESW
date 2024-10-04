@@ -1,0 +1,17 @@
+#######################################
+# Syntax Highlighting for pressureSensor
+#######################################
+
+#######################################
+# Classes
+#######################################
+PressureSensor          KEYWORD1
+
+#######################################
+# Functions
+#######################################
+initialize              KEYWORD2
+readPressure            KEYWORD2
+isInitialized           KEYWORD2
+readAnalogSensor        KEYWORD2
+reportError             KEYWORD2

@@ -60,3 +60,12 @@ dkms.conf
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+
+# Ignore the Release folder
+Release/
+
+# Ignore the .dist folder
+.dist/
+
+# Ignore the .metadata folder
+.metadata/

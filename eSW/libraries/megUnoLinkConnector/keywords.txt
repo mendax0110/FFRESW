@@ -1,0 +1,23 @@
+#######################################
+# Syntax Highlighting for MegUnoLinkConnector
+#######################################
+
+#######################################
+# Namespace
+#######################################
+megUnoLinkConnector     KEYWORD1
+
+#######################################
+# Classes
+#######################################
+MegUnoLinkConnector      KEYWORD1
+
+#######################################
+# Functions
+#######################################
+begin                   KEYWORD2
+processCommands         KEYWORD2
+setDefaultHandler       KEYWORD2
+handleUnknownCommand    KEYWORD2
+sendLog                 KEYWORD2
+checkInitialized        KEYWORD2

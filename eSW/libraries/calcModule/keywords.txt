@@ -1,0 +1,29 @@
+#######################################
+# Syntax Highlighting for calcModule
+#######################################
+
+#######################################
+# Classes
+#######################################
+calcModuleInternals    KEYWORD1
+
+#######################################
+# Functions
+#######################################
+calculateAverage       KEYWORD2
+findMaximum            KEYWORD2
+findMinimum            KEYWORD2
+calculateStandardDeviation KEYWORD2
+findMedian             KEYWORD2
+sortArray              KEYWORD2
+celsiusToFahrenheit    KEYWORD2
+fahrenheitToCelsius    KEYWORD2
+celsiusToKelvin        KEYWORD2
+kelvinToCelsius        KEYWORD2
+pascalToAtm            KEYWORD2
+atmToPascal            KEYWORD2
+pascalToPsi            KEYWORD2
+psiToPascal            KEYWORD2
+calculatePower         KEYWORD2
+calculateCurrent       KEYWORD2
+calculateResistance    KEYWORD2

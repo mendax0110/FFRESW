@@ -1,0 +1,22 @@
+#######################################
+# Syntax Highlighting for jsonModule
+#######################################
+
+#######################################
+# Namespace
+#######################################
+jsonModule             KEYWORD1
+
+#######################################
+# Classes
+#######################################
+jsonModuleInternals    KEYWORD1
+
+#######################################
+# Functions
+#######################################
+createJson             KEYWORD2
+getJsonString          KEYWORD2
+sendJsonSerial         KEYWORD2
+sendJsonEthernet       KEYWORD2
+clearJson              KEYWORD2

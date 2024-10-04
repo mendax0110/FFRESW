@@ -1,0 +1,27 @@
+#######################################
+# Syntax Highlighting for sensorModule
+#######################################
+
+#######################################
+# Classes
+#######################################
+SensorModuleInternals       KEYWORD1
+
+#######################################
+# Functions
+#######################################
+begin                       KEYWORD2
+initializeSensors           KEYWORD2
+readSensor                  KEYWORD2
+readI2CSensor              KEYWORD2
+readSPISensor              KEYWORD2
+readSensorData              KEYWORD2
+calibrateSensor             KEYWORD2
+checkSensorStatus           KEYWORD2
+reportError                 KEYWORD2
+
+#######################################
+# Accessed Sensors
+#######################################
+TemperatureSensor           KEYWORD3
+PressureSensor              KEYWORD3

@@ -1,3 +1,3 @@
-[submodule "external/Arduino-MemoryFree"]
-	path = external/Arduino-MemoryFree
+[submodule "Arduino-MemoryFree"]
+	path = Arduino-MemoryFree
 	url = https://github.com/mpflaga/Arduino-MemoryFree.git

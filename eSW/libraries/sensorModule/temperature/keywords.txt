@@ -1,0 +1,17 @@
+#######################################
+# Syntax Highlighting for temperatureSensor
+#######################################
+
+#######################################
+# Classes
+#######################################
+TemperatureSensor          KEYWORD1
+
+#######################################
+# Functions
+#######################################
+initialize                  KEYWORD2
+readTemperature             KEYWORD2
+isInitialized               KEYWORD2
+readAnalogSensor            KEYWORD2
+reportError                 KEYWORD2
