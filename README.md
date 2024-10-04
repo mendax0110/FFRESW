@@ -40,7 +40,7 @@ copy_memory_free.bat
 (MegunoLink
 ArduinoJson.h)
 
-**8.** Error MemmoryFree --> add this to User
+**8.** Error MemoryFree --> add this to User
 ![image](https://github.com/user-attachments/assets/41cf9fef-ed49-4983-bbc4-dbf8aa67fcc4)
 
 
