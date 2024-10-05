@@ -43,9 +43,9 @@ copy_memory_free.bat
 - https://eclipse.baeyens.it/how_to.shtml
 
 **9.** Start Sloeber
-![alt text](pictures/image.png)
+![alt text](docs/pictures/image.png)
 
 **8.** IDE and Compiler Settings
-![alt text](pictures/image-1.png)
+![alt text](docs/pictures/image-1.png)
 
 
