@@ -19,8 +19,27 @@ EthernetCommunication::~EthernetCommunication() {}
 void EthernetCommunication::beginEthernet(byte* macAddress, IPAddress ip)
 {
     Ethernet.begin(macAddress, ip);
+    if (Ethernet.hardwareStatus() == EthernetNoHardware)
+    {
+        Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware.");
+        ethernetInitialized = false;
+        return;
+    }
+    if (Ethernet.linkStatus() == LinkOFF)
+    {
+      Serial.println("Ethernet cable is not connected.");
+      ethernetInitialized = false;
+      return;
+    }
     server.begin();
     ethernetInitialized = true;
+}
+
+/// @brief Function to check if the Ethernet communication is initialized
+/// @return -> true if the Ethernet communication is initialized, false otherwise
+bool EthernetCommunication::isInitialized()
+{
+	return ethernetInitialized;
 }
 
 /// @brief Fucntion to send data over Ethernet

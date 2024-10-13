@@ -55,47 +55,49 @@ public:
     {
         msleep(1000);
         serialMutex.lock();
-        linkConnector.processCommands();
+        float temperature = sens.readSensor(SensorType::TEMPERATURE);
+        Serial.print(F("Current Temperature: "));
+        Serial.println(temperature);
+
+        // Calculate average from sensor data array
+        float average = calc.calculateAverage(sensorData, sensorDataLength);
+        Serial.print(F("Average Temperature: "));
+        Serial.println(average);
+        serialMutex.unlock();
+
+        serialMutex.lock();
+        float pressure = sens.readSensor(SensorType::PRESSURE);
+        Serial.print(F("Current Pressure: "));
+        Serial.println(pressure);
+
+        // Find maximum value from sensor data array
+        float maxTemp = calc.findMaximum(sensorData, sensorDataLength);
+        Serial.print(F("Maximum Temperature: "));
+        Serial.println(maxTemp);
         serialMutex.unlock();
         return true;
     }
 };
 
+class MegunoTask final : public frt::Task<MegunoTask>
+{
+public:
+	bool run()
+	{
+		msleep(1000);
+		serialMutex.lock();
+		linkConnector.beginMegUno(9600);
+		linkConnector.addCommand(F("commandNameA"), 0);
+		linkConnector.addCommand(F("commandNameB"), 0);
+		linkConnector.setDefaultHandler(handleUnknownCommand);
+		return true;
+	}
+};
+
 // Task instances
 ReportTask reportTask;
 MonitoringTask monitoringTask;
-
-void handleCommandA(CommandParameter &params)
-{
-    serialMutex.lock();
-    Serial.println(F("Command A received!"));
-
-    float temperature = sens.readSensor(SensorType::TEMPERATURE);
-    Serial.print(F("Current Temperature: "));
-    Serial.println(temperature);
-
-    // Calculate average from sensor data array
-    float average = calc.calculateAverage(sensorData, sensorDataLength);
-    Serial.print(F("Average Temperature: "));
-    Serial.println(average);
-    serialMutex.unlock();
-}
-
-void handleCommandB(CommandParameter &params)
-{
-    serialMutex.lock();
-    Serial.println(F("Command B received!"));
-
-    float pressure = sens.readSensor(SensorType::PRESSURE);
-    Serial.print(F("Current Pressure: "));
-    Serial.println(pressure);
-
-    // Find maximum value from sensor data array
-    float maxTemp = calc.findMaximum(sensorData, sensorDataLength);
-    Serial.print(F("Maximum Temperature: "));
-    Serial.println(maxTemp);
-    serialMutex.unlock();
-}
+MegunoTask megunoTask;
 
 void handleUnknownCommand()
 {
@@ -108,23 +110,22 @@ void setup()
 {
     // Set up serial and MegUnoLink
     Serial.begin(9600);
-    linkConnector.beginMegUno(9600);
-    linkConnector.addCommand(F("CommandA"), handleCommandA);
-    linkConnector.addCommand(F("CommandB"), handleCommandB);
-    linkConnector.setDefaultHandler(handleUnknownCommand);
 
     // Initialize sensors and communication modules
     Serial.println(F("Starting sensor module..."));
     sens.beginSensor();
     com.i2c.beginI2C(0x76);
     com.spi.beginSPI();
-    com.i2c.beginI2C(0x76);
-    com.spi.beginSPI();
 
     // Ethernet initialization
-    byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-    IPAddress ip(127, 0, 0, 1);
+    byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDA, 0x02 };
+    IPAddress ip(192, 168, 1, 3);
     com.eth.beginEthernet(mac, ip);
+
+    if (com.eth.isInitialized())
+    {
+    	Serial.println("ethernet is running!");
+    }
 
     pinMode(13, OUTPUT);
     Serial.println(F("Setup complete."));
@@ -132,6 +133,7 @@ void setup()
     // Start tasks for reporting and monitoring
     reportTask.start(2);    // Medium priority
     monitoringTask.start(3);  // High priority
+    //megunoTask.start(3);
 }
 
 void loop()
