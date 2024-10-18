@@ -75,6 +75,10 @@ public:
         Serial.print(F("Maximum Temperature: "));
         Serial.println(maxTemp);
         serialMutex.unlock();
+
+        serialMutex.lock();
+        com.eth.handleEthernetClient();
+        serialMutex.unlock();
         return true;
     }
 };
@@ -94,10 +98,31 @@ public:
 	}
 };
 
+class DomeTask final : public frt::Task<DomeTask>
+{
+public:
+	bool run()
+	{
+		// MY First Task
+		serialMutex.lock();
+		Serial.println(F("nach lock"));
+		digitalWrite(8, HIGH);
+		Serial.println(F("LED HIGH"));
+		msleep(1000);
+		digitalWrite(8,LOW);
+		Serial.println(F("LED LOW"));
+		msleep(1000);
+		Serial.println(F("DOMETASK ENDE"));
+		serialMutex.unlock();
+		return true;
+	}
+};
+
 // Task instances
 ReportTask reportTask;
 MonitoringTask monitoringTask;
 MegunoTask megunoTask;
+DomeTask dometask;
 
 void handleUnknownCommand()
 {
@@ -128,12 +153,14 @@ void setup()
     }
 
     pinMode(13, OUTPUT);
+    pinMode(8, OUTPUT);
     Serial.println(F("Setup complete."));
 
     // Start tasks for reporting and monitoring
     reportTask.start(2);    // Medium priority
     monitoringTask.start(3);  // High priority
     //megunoTask.start(3);
+    //dometask.start(3);
 }
 
 void loop()

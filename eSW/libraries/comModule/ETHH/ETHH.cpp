@@ -9,7 +9,7 @@
 
 using namespace comModule;
 
-EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(80) {} // Initialize server with port 80
+EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(80) {}
 
 EthernetCommunication::~EthernetCommunication() {}
 
@@ -33,6 +33,8 @@ void EthernetCommunication::beginEthernet(byte* macAddress, IPAddress ip)
     }
     server.begin();
     ethernetInitialized = true;
+    Serial.print("Client is at: ");
+    Serial.println(Ethernet.localIP());
 }
 
 /// @brief Function to check if the Ethernet communication is initialized
