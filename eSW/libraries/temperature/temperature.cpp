@@ -31,6 +31,21 @@ float TemperatureSensor::readTemperature()
     return temperature;
 }
 
+/// @brief Function to read the DHT11 sensor
+/// @return temperature using DHT11 sensor
+float TemperatureSensor::readDht11()
+{
+    if (!_temperatureSensorInitialized)
+    {
+        reportError("Temperature sensor not initialized!");
+        return NAN;
+    }
+
+    float temp = DHT.read11(DHT11_PIN);
+    float temperature = DHT.temperature;
+    return temperature;
+}
+
 /// @brief Function to check if the temperature sensor is initialized
 /// @return bool -> True if the temperature sensor is initialized, false otherwise
 bool TemperatureSensor::isInitialized() const

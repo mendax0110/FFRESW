@@ -17,10 +17,6 @@ comModuleInternals com;
 SensorModuleInternals sens;
 ReportSystem report;
 
-// Example sensor data
-float sensorData[] = {25.0, 26.5, 24.8, 27.2, 23.9};
-const int sensorDataLength = sizeof(sensorData) / sizeof(sensorData[0]);
-
 // Buffers for sensor data
 uint8_t i2cBuffer[10];
 uint8_t spiBuffer[10];
@@ -50,17 +46,28 @@ public:
 // Task to monitor queue and system usage
 class MonitoringTask final : public frt::Task<MonitoringTask>
 {
+private:
+	static const int maxReadings = 10;
+	float temperatureReadings[maxReadings];
+	int currentIndex = 0;
+	bool bufferFull = false;
+
 public:
     bool run()
     {
         msleep(1000);
         serialMutex.lock();
-        float temperature = sens.readSensor(SensorType::TEMPERATURE);
+        //float temperature = sens.readSensor(SensorType::TEMPERATURE);
+        float temperature = sens.readSensor(SensorType::DHT11);
         Serial.print(F("Current Temperature: "));
         Serial.println(temperature);
 
+        temperatureReadings[currentIndex] = temperature;
+        currentIndex = (currentIndex + 1) % maxReadings;
+        if (currentIndex == 0) bufferFull = true;
+
         // Calculate average from sensor data array
-        float average = calc.calculateAverage(sensorData, sensorDataLength);
+        float average = calc.calculateAverage(temperatureReadings, bufferFull ? maxReadings : currentIndex);
         Serial.print(F("Average Temperature: "));
         Serial.println(average);
         serialMutex.unlock();
@@ -71,7 +78,7 @@ public:
         Serial.println(pressure);
 
         // Find maximum value from sensor data array
-        float maxTemp = calc.findMaximum(sensorData, sensorDataLength);
+        float maxTemp = calc.findMaximum(temperatureReadings, bufferFull ? maxReadings : currentIndex);
         Serial.print(F("Maximum Temperature: "));
         Serial.println(maxTemp);
         serialMutex.unlock();

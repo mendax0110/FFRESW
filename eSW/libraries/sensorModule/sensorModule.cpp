@@ -56,6 +56,8 @@ float SensorModuleInternals::readSensor(SensorType type)
     {
         case SensorType::TEMPERATURE:
         	return _temperatureSensor.readTemperature();
+        case SensorType::DHT11:
+            return _temperatureSensor.readDht11();
         case SensorType::PRESSURE:
         	return _pressureSensor.readPressure();
         case SensorType::I2C_SENSOR:

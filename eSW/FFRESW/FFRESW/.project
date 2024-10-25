@@ -42,6 +42,11 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/variants/mega</locationURI>
 		</link>
 		<link>
+			<name>libraries/DHTLib</name>
+			<type>2</type>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/DHTLib</location>
+		</link>
+		<link>
 			<name>libraries/EEPROM</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM</locationURI>
@@ -49,17 +54,17 @@
 		<link>
 			<name>libraries/Ethernet</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/Ethernet</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/Ethernet</location>
 		</link>
 		<link>
 			<name>libraries/FreeRTOS</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/FreeRTOS</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/FreeRTOS</location>
 		</link>
 		<link>
 			<name>libraries/MegunoLink</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/MegunoLink</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/MegunoLink</location>
 		</link>
 		<link>
 			<name>libraries/SPI</name>
@@ -69,7 +74,7 @@
 		<link>
 			<name>libraries/Temperature</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/temperature</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/temperature</location>
 		</link>
 		<link>
 			<name>libraries/Wire</name>
@@ -79,42 +84,42 @@
 		<link>
 			<name>libraries/calcModule</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/calcModule</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/calcModule</location>
 		</link>
 		<link>
 			<name>libraries/comModule</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/comModule</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/comModule</location>
 		</link>
 		<link>
 			<name>libraries/frt</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/frt</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/frt</location>
 		</link>
 		<link>
 			<name>libraries/megUnoLinkConnector</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/megUnoLinkConnector</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/megUnoLinkConnector</location>
 		</link>
 		<link>
 			<name>libraries/pgmStrToRAM</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/pgmStrToRAM</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/pgmStrToRAM</location>
 		</link>
 		<link>
 			<name>libraries/pressure</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/pressure</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/pressure</location>
 		</link>
 		<link>
 			<name>libraries/reportSystem</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/reportSystem</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/reportSystem</location>
 		</link>
 		<link>
 			<name>libraries/sensorModule</name>
 			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/sensorModule</location>
+			<location>C:/Users/%USERNAME%/Documents/Arduino/libraries/sensorModule</location>
 		</link>
 	</linkedResources>
 </projectDescription>
