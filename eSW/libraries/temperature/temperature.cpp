@@ -32,7 +32,7 @@ float TemperatureSensor::readTemperature()
 }
 
 /// @brief Function to read the DHT11 sensor
-/// @return temperature using DHT11 sensor
+/// @return temperature using DHT11 sen
 float TemperatureSensor::readDht11()
 {
     if (!_temperatureSensorInitialized)

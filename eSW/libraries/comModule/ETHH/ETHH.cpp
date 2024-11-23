@@ -2,7 +2,6 @@
  * @file EthernetCommunication.cpp
  * @brief Implementation of the Ethernet communication class.
  */
-
 #include "ETHH.h"
 #include <Ethernet.h>
 #include <Arduino.h>
@@ -16,7 +15,7 @@ EthernetCommunication::~EthernetCommunication() {}
 /// @brief Function to initialize the Ethernet communication
 /// @param macAddress -> The MAC address to use for the Ethernet communication
 /// @param ip -> The IP address to use for the Ethernet communication
-void EthernetCommunication::beginEthernet(byte* macAddress, IPAddress ip)
+void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
 {
     Ethernet.begin(macAddress, ip);
     if (Ethernet.hardwareStatus() == EthernetNoHardware)
@@ -50,12 +49,14 @@ void EthernetCommunication::sendEthernetData(const char* data)
 {
     if (!ethernetInitialized) return;
 
-    if (client.connected())
+    EthernetClient activeClient = server.available();
+    if (activeClient.connected())
     {
-        client.println(data);
-        client.stop();
+        activeClient.println(data);
+        activeClient.stop();
     }
 }
+
 
 /// @brief Function to receive data over Ethernet
 /// @param buffer -> The buffer to read the data into
@@ -78,18 +79,24 @@ void EthernetCommunication::handleEthernetClient()
     if (newClient)
     {
         client = newClient;
-        if (client.available())
-        {
-            char request[256];
-            int bytesRead = client.readBytes(request, sizeof(request) - 1);
-            request[bytesRead] = '\0';
 
-            // Send response
-            client.println("HTTP/1.1 200 OK");
-            client.println("Content-Type: text/plain");
-            client.println("Connection: close");
-            client.println();
-            client.println("Response data...");
+        if (client.connected())
+        {
+            char request[256] = {0};
+            int bytesRead = client.readBytesUntil('\n', request, sizeof(request) - 1);
+
+            if (bytesRead > 0)
+            {
+                // Log the request (optional, for debugging)
+                Serial.println(F("HTTP Request:"));
+                Serial.println(request);
+
+                client.println(F("HTTP/1.1 200 OK"));
+                client.println(F("Content-Type: application/json"));
+                client.println(F("Connection: close"));
+
+                Serial.println(F("Response sent to client."));
+            }
         }
         client.stop();
     }

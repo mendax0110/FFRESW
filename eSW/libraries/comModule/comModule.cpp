@@ -3,8 +3,9 @@
  * @brief Implementation of the comModule class that utilizes various communication protocols.
  */
 
-#include "comModule.h"
+#include <Arduino.h>
 #include <Ethernet.h>
+#include "comModule.h"
 #include "ETHH/ETHH.h"
 #include "I2CC/I2CC.h"
 #include "SER/SER.h"

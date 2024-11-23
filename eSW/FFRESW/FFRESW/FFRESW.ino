@@ -4,6 +4,7 @@
 #include <megUnoLinkConnector.h>
 #include <comModule.h>
 #include <reportSystem.h>
+#include <jsonModule.h>
 
 using namespace megUnoLinkConnector;
 using namespace calcModule;
@@ -107,22 +108,42 @@ public:
 
 class DomeTask final : public frt::Task<DomeTask>
 {
+private:
+    jsonModule::jsonModuleInternals json;
+
 public:
-	bool run()
-	{
-		// MY First Task
-		serialMutex.lock();
-		Serial.println(F("nach lock"));
-		digitalWrite(8, HIGH);
-		Serial.println(F("LED HIGH"));
-		msleep(1000);
-		digitalWrite(8,LOW);
-		Serial.println(F("LED LOW"));
-		msleep(1000);
-		Serial.println(F("DOMETASK ENDE"));
-		serialMutex.unlock();
-		return true;
-	}
+    bool run()
+    {
+        serialMutex.lock();
+        // Test Ethernet initialization
+        if (!com.eth.isInitialized())
+        {
+            Serial.println(F("Ethernet not initialized."));
+            serialMutex.unlock();
+            msleep(1000);
+            return true;
+        }
+
+        // Construct JSON
+        json.clearJson();
+        json.createJson("task", "DomeTask");
+        json.createJson("status", "running");
+        json.createJsonFloat("temperature", 25.5);
+        json.createJsonInt("pressure", 1013);
+
+        // Log JSON string
+        String jsonString = json.getJsonString();
+        Serial.println("Prepared JSON:");
+        Serial.println(jsonString);
+
+        // Send JSON over Ethernet
+        com.eth.sendEthernetData(jsonString.c_str());
+        Serial.println(F("Sent JSON data over Ethernet."));
+
+        serialMutex.unlock();
+        //msleep(5000);
+        return true;
+    }
 };
 
 // Task instances
@@ -146,18 +167,20 @@ void setup()
     // Initialize sensors and communication modules
     Serial.println(F("Starting sensor module..."));
     sens.beginSensor();
-    com.i2c.beginI2C(0x76);
+    com.i2c.beginI2C(0x78);
     com.spi.beginSPI();
 
     // Ethernet initialization
     byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDA, 0x02 };
     IPAddress ip(192, 168, 1, 3);
+    //com.eth.beginEthernet(mac, ip);
     com.eth.beginEthernet(mac, ip);
 
     if (com.eth.isInitialized())
     {
     	Serial.println("ethernet is running!");
     }
+    //com.eth.handleEthernetClient();
 
     pinMode(13, OUTPUT);
     pinMode(8, OUTPUT);
@@ -165,9 +188,9 @@ void setup()
 
     // Start tasks for reporting and monitoring
     reportTask.start(2);    // Medium priority
-    monitoringTask.start(3);  // High priority
+    //monitoringTask.start(3);  // High priority
     //megunoTask.start(3);
-    //dometask.start(3);
+    dometask.start(3);
 }
 
 void loop()

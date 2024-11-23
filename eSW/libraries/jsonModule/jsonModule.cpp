@@ -3,16 +3,18 @@
  * @brief Implementation of the jsonModule class.
  * @version 0.1
  * @date 2024-01-26
- * 
+ *
  * @copyright Copyright (c) 2024
  */
 
-#include "jsonModule.h"
+#include <Arduino.h>
+#include <ArduinoJson.h>
 #include "../comModule/comModule.h"
+#include "jsonModule.h"
 
 using namespace jsonModule;
 
-jsonModuleInternals::jsonModuleInternals() 
+jsonModuleInternals::jsonModuleInternals()
 {
     clearJson();
 }
@@ -30,7 +32,7 @@ void jsonModuleInternals::createJson(const char* key, const char* value)
 /// @brief Function to create a JSON object with a key-value pair
 /// @param key -> This is the key of the JSON object (const char*)
 /// @param value -> This is the value of the JSON object (float)
-void jsonModuleInternals::createJson(const char* key, float value)
+void jsonModuleInternals::createJsonFloat(const char* key, float value)
 {
     jsonDoc[key] = value;
 }
@@ -38,7 +40,7 @@ void jsonModuleInternals::createJson(const char* key, float value)
 /// @brief Function to create a JSON object with a key-value pair
 /// @param key -> This is the key of the JSON object (const char*)
 /// @param value -> This is the value of the JSON object (int)
-void jsonModuleInternals::createJson(const char* key, int value)
+void jsonModuleInternals::createJsonInt(const char* key, int value)
 {
     jsonDoc[key] = value;
 }
@@ -62,7 +64,7 @@ void jsonModuleInternals::sendJsonSerial()
 void jsonModuleInternals::sendJsonEthernet()
 {
     comModule::comModuleInternals comms;
-    comms.ethernet.sendEthernetData(getJsonString().c_str());
+    comms.eth.sendEthernetData(getJsonString().c_str());
 }
 
 /// @brief Function to clear the JSON object

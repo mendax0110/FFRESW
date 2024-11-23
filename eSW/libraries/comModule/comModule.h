@@ -1,6 +1,7 @@
 #ifndef COMMODULE_H
 #define COMMODULE_H
 
+#include <Arduino.h>
 #include <Ethernet.h>
 #include "ETHH/ETHH.h"
 #include "I2CC/I2CC.h"

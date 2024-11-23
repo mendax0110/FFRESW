@@ -14,6 +14,7 @@
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
+//#include <String.h>
 
 /// @brief Namespace for the JSON module. \namespace jsonModule
 namespace jsonModule
@@ -26,8 +27,8 @@ namespace jsonModule
         ~jsonModuleInternals();
 
         void createJson(const char* key, const char* value);
-        void createJson(const char* key, float value);
-        void createJson(const char* key, int value);
+        void createJsonFloat(const char* key, float value);
+        void createJsonInt(const char* key, int value);
         
         void sendJsonSerial();
         void sendJsonEthernet();

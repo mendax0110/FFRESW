@@ -20,7 +20,9 @@ namespace comModule
 
 		void beginI2C(uint8_t address);
 		void i2cWrite(uint8_t deviceAddress, uint8_t* data, size_t length);
-		void i2cRead(uint8_t deviceAddress, uint8_t* buffer, size_t length);
+		size_t i2cRead(uint8_t deviceAddress, uint8_t* buffer, size_t length);
+
+		//constexpr uint8_t DEVICEADDRESS = 0x78;
 	};
 }
 

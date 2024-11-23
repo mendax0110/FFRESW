@@ -28,7 +28,7 @@ namespace sensorModule
         PRESSURE,
         I2C_SENSOR,
         SPI_SENSOR,
-        DHT11,
+		DHT11,
         UNKNOWN
     };
 

@@ -20,10 +20,12 @@ namespace comModule
 		EthernetCommunication(); // Constructor declaration
 		~EthernetCommunication();
 
-		void beginEthernet(byte* macAddress, IPAddress ip);
+		void beginEthernet(uint8_t* macAddress, IPAddress ip);
 		void sendEthernetData(const char* data);
 		void receiveEthernetData(char* buffer, size_t length);
 		void handleEthernetClient();
+
+		bool isInitialized();
 
 	private:
 		EthernetServer server; // Change to instance and will be initialized in constructor

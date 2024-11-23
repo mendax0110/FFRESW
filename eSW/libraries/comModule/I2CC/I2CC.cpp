@@ -31,12 +31,14 @@ void I2CCommunication::i2cWrite(uint8_t deviceAddress, uint8_t* data, size_t len
 /// @param deviceAddress -> The address of the device to read from
 /// @param buffer -> The buffer to read the data into
 /// @param length -> The length of the data to read
-void I2CCommunication::i2cRead(uint8_t deviceAddress, uint8_t* buffer, size_t length)
+size_t I2CCommunication::i2cRead(uint8_t deviceAddress, uint8_t* buffer, size_t length)
 {
+    size_t bytesRead = 0;
     Wire.requestFrom(deviceAddress, length);
-    size_t index = 0;
-    while (Wire.available() && index < length)
+    while (Wire.available() && bytesRead < length)
     {
-        buffer[index++] = Wire.read();
+        buffer[bytesRead++] = Wire.read();
     }
+    return bytesRead;
 }
+
