@@ -27,6 +27,8 @@ jsonModuleInternals::~jsonModuleInternals() {}
 void jsonModuleInternals::createJson(const char* key, const char* value)
 {
     jsonDoc[key] = value;
+    Serial.print("Current JSON Size: ");
+    Serial.println(jsonDoc.size());
 }
 
 /// @brief Function to create a JSON object with a key-value pair
@@ -35,6 +37,8 @@ void jsonModuleInternals::createJson(const char* key, const char* value)
 void jsonModuleInternals::createJsonFloat(const char* key, float value)
 {
     jsonDoc[key] = value;
+    Serial.print("Current JSON Size: ");
+    Serial.println(jsonDoc.size());
 }
 
 /// @brief Function to create a JSON object with a key-value pair
@@ -43,6 +47,8 @@ void jsonModuleInternals::createJsonFloat(const char* key, float value)
 void jsonModuleInternals::createJsonInt(const char* key, int value)
 {
     jsonDoc[key] = value;
+    Serial.print("Current JSON Size: ");
+    Serial.println(jsonDoc.size());
 }
 
 /// @brief Function to get the JSON object as a string
@@ -50,7 +56,14 @@ void jsonModuleInternals::createJsonInt(const char* key, int value)
 String jsonModuleInternals::getJsonString() const
 {
     String output;
-    serializeJson(jsonDoc, output);
+    if (jsonDoc.size() == 0)
+    {
+        Serial.println("JSON document is empty.");
+    }
+    else
+    {
+        serializeJson(jsonDoc, output);
+    }
     return output;
 }
 
@@ -71,4 +84,15 @@ void jsonModuleInternals::sendJsonEthernet()
 void jsonModuleInternals::clearJson()
 {
     jsonDoc.clear();
+}
+
+void jsonModuleInternals::printJsonDocMemory()
+{
+    Serial.println(F("[DEBUG] Memory usage of jsonDoc:"));
+    Serial.print(F("  Capacity: "));
+    Serial.println(jsonDoc.capacity());
+    Serial.print(F("  Memory Usage: "));
+    Serial.println(jsonDoc.memoryUsage());
+    Serial.print(F("  Overflowed: "));
+    Serial.println(jsonDoc.overflowed() ? F("Yes") : F("No"));
 }

@@ -35,9 +35,13 @@ namespace jsonModule
 
         String getJsonString() const;
         void clearJson();
+        void printJsonDocMemory();
+
+        size_t jsonBuffer;
 
     private:
-        StaticJsonDocument<256> jsonDoc; // TODO: maybe change size
+        StaticJsonDocument<512> jsonDoc;
+
     };
 }
 

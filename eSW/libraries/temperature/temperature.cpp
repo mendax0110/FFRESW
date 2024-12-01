@@ -46,6 +46,36 @@ float TemperatureSensor::readDht11()
     return temperature;
 }
 
+/// @brief Function to read the MLX90614 sensor
+/// @return temperature using MLX90614 methods
+float TemperatureSensor::readMLX90614(int choice)
+{
+	// init the sensor
+    if (!mlx.begin())
+	{
+	    reportError("MLX90614 konnte nicht gefunden werden. Bitte Sensor überprüfen!");
+    }
+    else
+    {
+    	_temperatureSensorInitialized = true;
+    }
+
+    float generalTemp = 0;
+
+	if(choice == 1)
+	{
+	    // get the ambient temp
+		generalTemp = mlx.readAmbientTempC();
+	}
+
+	if(choice == 2)
+	{
+	    // get the object temp
+		generalTemp = mlx.readObjectTempC();
+    }
+	return generalTemp;
+}
+
 /// @brief Function to check if the temperature sensor is initialized
 /// @return bool -> True if the temperature sensor is initialized, false otherwise
 bool TemperatureSensor::isInitialized() const

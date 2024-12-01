@@ -140,7 +140,6 @@ bool ReportSystem::checkMemory(size_t threshold)
     {
         char buffer[50];
         snprintf(buffer, sizeof(buffer), "Low memory warning! Free memory: %d", (int)freeMemory());
-        //snprintf(buffer, sizeof(buffer), "Low memory warning! Free memory: %u", (unsigned int)freeMemory());
         logError(buffer);
         serialMutex.unlock();
         return false;

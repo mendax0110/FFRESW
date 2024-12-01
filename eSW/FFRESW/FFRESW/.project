@@ -42,6 +42,16 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/variants/mega</locationURI>
 		</link>
 		<link>
+			<name>libraries/Adafruit_BusIO</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/Adafruit_BusIO</location>
+		</link>
+		<link>
+			<name>libraries/Adafruit_MLX90614_Library</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/Adafruit_MLX90614_Library</location>
+		</link>
+		<link>
 			<name>libraries/ArduinoJson</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/ArduinoJson</location>
@@ -80,6 +90,11 @@
 			<name>libraries/Temperature</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/temperature</location>
+		</link>
+		<link>
+			<name>libraries/Vector</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Vector/1.2.2</locationURI>
 		</link>
 		<link>
 			<name>libraries/Wire</name>

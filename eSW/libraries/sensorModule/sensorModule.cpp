@@ -56,14 +56,18 @@ float SensorModuleInternals::readSensor(SensorType type)
     {
         case SensorType::TEMPERATURE:
         	return _temperatureSensor.readTemperature();
-        case SensorType::DHT11:
-        	return _temperatureSensor.readDht11();
         case SensorType::PRESSURE:
         	return _pressureSensor.readPressure();
         case SensorType::I2C_SENSOR:
             return readI2CSensor();
         case SensorType::SPI_SENSOR:
             return readSPISensor();
+        case SensorType::OBJECTTEMPERATURE:
+        	return _temperatureSensor.readMLX90614(2);
+        case SensorType::AMBIENTTEMPERATURE:
+        	return _temperatureSensor.readMLX90614(1);
+        case SensorType::DHT11:
+        	return _temperatureSensor.readDht11();
         default:
             reportError("Unknown sensor type.");
             return -1.0; // ERROR!!!

@@ -1,11 +1,11 @@
 import socket
 import json
+import time
 
 TARGET_IP = "192.168.1.3"
 PORT = 80
 
-
-def main():
+def connect_and_get_data():
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.settimeout(5)  # Set a 5-second timeout
@@ -50,6 +50,14 @@ def main():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def main():
+    while True:
+        connect_and_get_data()
+        print("\nWaiting for 5 seconds before retrying...")
+        time.sleep(2)  # Wait before retrying the connection
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nProgram manually aborted.")

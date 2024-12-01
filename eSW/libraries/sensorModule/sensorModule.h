@@ -18,6 +18,7 @@
 #include <pressure.h>
 #include <temperature.h>
 
+
 /// @brief Namespace for the sensor module. \namespace sensorModule
 namespace sensorModule
 {
@@ -25,6 +26,8 @@ namespace sensorModule
     enum class SensorType
     {
         TEMPERATURE,
+		OBJECTTEMPERATURE,
+		AMBIENTTEMPERATURE,
         PRESSURE,
         I2C_SENSOR,
         SPI_SENSOR,
