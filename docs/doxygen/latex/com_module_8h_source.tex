@@ -1,28 +1,32 @@
 \doxysection{com\+Module.\+h}
-\hypertarget{com_module_8h_source}{}\label{com_module_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/src/includes/comModule.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/src/includes/comModule.h}}
-\mbox{\hyperlink{com_module_8h}{Go to the documentation of this file.}}
+\hypertarget{com_module_8h_source}{}\label{com_module_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/comModule/comModule.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/comModule/comModule.h}}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Ethernet.h>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SPI.h>}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ COMMUNICATIONMODULE\_H}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ COMMUNICATIONMODULE\_H}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecom_module}{comModule}}}
-\DoxyCodeLine{00020\ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_module_1_1com_module_internals}{comModuleInternals}}}
-\DoxyCodeLine{00023\ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COMMODULE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COMMODULE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Ethernet.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ETHH/ETHH.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}I2CC/I2CC.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}SER/SER.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}SPII/SPII.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecom_module}{comModule}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_module_1_1com_module_internals}{comModuleInternals}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1com_module_internals}{comModuleInternals}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1com_module_internals}{\string~comModuleInternals}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_i2_c_communication}{I2CCommunication}}\ i2c;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication}{SPICommunication}}\ spi;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{EthernetCommunication}}\ eth;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SerialCommunication\ serial;}}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ \}}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \};}
-\DoxyCodeLine{00031\ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMMUNICATIONMODULE\_H}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMMODULE\_H}}
 
 \end{DoxyCode}

@@ -1,0 +1,57 @@
+\doxysection{meg\+Uno\+Link\+Connector.\+h}
+\hypertarget{meg_uno_link_connector_8h_source}{}\label{meg_uno_link_connector_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/megUnoLinkConnector/megUnoLinkConnector.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/megUnoLinkConnector/megUnoLinkConnector.h}}
+\mbox{\hyperlink{meg_uno_link_connector_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ MEGUNOLINKCONNECTOR\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ MEGUNOLINKCONNECTOR\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <CommandHandler.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemeg_uno_link_connector}{megUnoLinkConnector}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector}{MegUnoLinkConnector}}}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector}{MegUnoLinkConnector}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector}{\string~MegUnoLinkConnector}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a8f0c9c8cf89b8a086d8fb720cdcb17ec}{beginMegUno}}(\textcolor{keywordtype}{long}\ baudRate);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a3fdbd64cf1a30c00212234724ac43f9c}{processCommands}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ HandlerType>}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addCommand(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ commandName,\ HandlerType\ handler);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ HandlerType>}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ addCommand(\textcolor{keyword}{const}\ \_\_FlashStringHelper*\ commandName,\ HandlerType\ handler);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_aa42b797ff60598cd4abb1a1d3e3dbcbd}{setDefaultHandler}}(\textcolor{keywordtype}{void}\ (*handler)());}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_ae70524cb953407537c2159aeb8627b0d}{handleUnknownCommand}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a4f35f9cd33550889cda71dbb8dc5f402}{sendLog}}(\textcolor{keyword}{const}\ String\ \&message);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ CommandHandler<>\ serialCommandHandler;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkInitialized();}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ HandlerType>}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ MegUnoLinkConnector::addCommand(\textcolor{keyword}{const}\ \_\_FlashStringHelper*\ commandName,\ HandlerType\ handler)}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (checkInitialized())}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ serialCommandHandler.AddCommand(commandName,\ handler);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}Command\ added:\ "{}}));}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(commandName));}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a4f35f9cd33550889cda71dbb8dc5f402}{sendLog}}(F(\textcolor{stringliteral}{"{}MegUnoLink\ Connector\ not\ initialized,\ cannot\ add\ command."{}}));}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MEGUNOLINKCONNECTOR\_H}}
+
+\end{DoxyCode}

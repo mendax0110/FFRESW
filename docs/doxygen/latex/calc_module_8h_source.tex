@@ -1,27 +1,46 @@
 \doxysection{calc\+Module.\+h}
-\hypertarget{calc_module_8h_source}{}\label{calc_module_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/src/includes/calcModule.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/src/includes/calcModule.h}}
+\hypertarget{calc_module_8h_source}{}\label{calc_module_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/calcModule/calcModule.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/calcModule/calcModule.h}}
 \mbox{\hyperlink{calc_module_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <math.h>}}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ CALCMODULE\_H}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ CALCMODULE\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ CALCMODULE\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ CALCMODULE\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecalc_module}{calcModule}}}
 \DoxyCodeLine{00019\ \{}
 \DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcalc_module_1_1calc_module_internals}{calcModuleInternals}}}
 \DoxyCodeLine{00022\ \ \ \ \ \{}
 \DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals}{calcModuleInternals}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals}{\string~calcModuleInternals}}();}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \};}
-\DoxyCodeLine{00030\ \}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CALCMODULE\_H}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a870f6549285008487a2e52bff8afe414}{calculateAverage}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ data,\ \textcolor{keywordtype}{int}\ length)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_ab7e0924ca43e6fdf7b4049c0d9d8a7da}{findMaximum}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ data,\ \textcolor{keywordtype}{int}\ length)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_af7f781b13526e68449ec2ca12d3951b8}{findMinimum}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ data,\ \textcolor{keywordtype}{int}\ length)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a641657e2ef0290cf4bd036b19c312ac5}{calculateStandardDeviation}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ data,\ \textcolor{keywordtype}{int}\ length)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a436932540e70956407f9e14df6986bbd}{findMedian}}(\textcolor{keywordtype}{float}*\ data,\ \textcolor{keywordtype}{int}\ length)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a68c6506262812ea709dfa5d3462837ca}{celsiusToFahrenheit}}(\textcolor{keywordtype}{float}\ celsius)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_ac978e0379e752ad88f4a656bb79dcb90}{fahrenheitToCelsius}}(\textcolor{keywordtype}{float}\ fahrenheit)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_aa2cd523a36e0d6a06d974e16cb432a61}{celsiusToKelvin}}(\textcolor{keywordtype}{float}\ celsius)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a29a3ab32762f94556e65b0c135662d34}{kelvinToCelsius}}(\textcolor{keywordtype}{float}\ kelvin)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a64143d9a9ff2576fddd0cad9b524b103}{pascalToAtm}}(\textcolor{keywordtype}{float}\ pascal)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a06b597686bfdf1bcd2a4a61d06046036}{atmToPascal}}(\textcolor{keywordtype}{float}\ atm)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_aae323147b84bb60a3c50080e39e8acc8}{pascalToPsi}}(\textcolor{keywordtype}{float}\ pascal)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a555fa839177a4f81645cd703a88dc31a}{psiToPascal}}(\textcolor{keywordtype}{float}\ psi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_a486803b9959a02bf2fd5dfcbcf6b1bcb}{calculatePower}}(\textcolor{keywordtype}{float}\ voltage,\ \textcolor{keywordtype}{float}\ current)\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Power\ (P\ =\ V\ *\ I)}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_ab6bd9760214929c2c325bbfddb86d3f5}{calculateCurrent}}(\textcolor{keywordtype}{float}\ voltage,\ \textcolor{keywordtype}{float}\ resistance)\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Current\ (I\ =\ V\ /\ R)}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classcalc_module_1_1calc_module_internals_ae91753b07529b7f66a44ab77eb2b2227}{calculateResistance}}(\textcolor{keywordtype}{float}\ voltage,\ \textcolor{keywordtype}{float}\ current)\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Resistance\ (R\ =\ V\ /\ I)}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ sortArray(\textcolor{keywordtype}{float}*\ data,\ \textcolor{keywordtype}{int}\ length)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CALCMODULE\_H}}
 
 \end{DoxyCode}

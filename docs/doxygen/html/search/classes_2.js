@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sensormodule_0',['sensorModule',['../classsensor_module.html',1,'']]],
-  ['sensormoduleinternals_1',['sensorModuleInternals',['../classsensor_module_1_1sensor_module_internals.html',1,'sensorModule']]]
+  ['i2ccommunication_0',['I2CCommunication',['../classcom_module_1_1_i2_c_communication.html',1,'comModule']]]
 ];

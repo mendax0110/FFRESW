@@ -1,0 +1,79 @@
+\doxysection{com\+Module\+::Serial\+Communication Class Reference}
+\hypertarget{classcom_module_1_1_serial_communication}{}\label{classcom_module_1_1_serial_communication}\index{comModule::SerialCommunication@{comModule::SerialCommunication}}
+
+
+Class to handle Serial communication.  
+
+
+
+
+{\ttfamily \#include $<$SER.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_module_1_1_serial_communication_a8eb8a6012594043049abd837b245c96c}{begin\+Serial}} (long baud\+Rate)
+\begin{DoxyCompactList}\small\item\em Function to initialize the serial communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_serial_communication_a088e158cfbbb6bc3b80ce9a8c440ca9e}{send\+Serial\+Data}} (const char \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Function to send data over serial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_serial_communication_a1453d280f43560fc18f9f0ac1896753d}{receive\+Serial\+Data}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Function to receive data over serial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to handle Serial communication. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_module_1_1_serial_communication_a8eb8a6012594043049abd837b245c96c}\label{classcom_module_1_1_serial_communication_a8eb8a6012594043049abd837b245c96c} 
+\index{comModule::SerialCommunication@{comModule::SerialCommunication}!beginSerial@{beginSerial}}
+\index{beginSerial@{beginSerial}!comModule::SerialCommunication@{comModule::SerialCommunication}}
+\doxysubsubsection{\texorpdfstring{beginSerial()}{beginSerial()}}
+{\footnotesize\ttfamily void Serial\+Communication\+::begin\+Serial (\begin{DoxyParamCaption}\item[{long}]{baud\+Rate }\end{DoxyParamCaption})}
+
+
+
+Function to initialize the serial communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baud\+Rate} & -\/\texorpdfstring{$>$}{>} The baud rate to use for the serial communication \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_serial_communication_a1453d280f43560fc18f9f0ac1896753d}\label{classcom_module_1_1_serial_communication_a1453d280f43560fc18f9f0ac1896753d} 
+\index{comModule::SerialCommunication@{comModule::SerialCommunication}!receiveSerialData@{receiveSerialData}}
+\index{receiveSerialData@{receiveSerialData}!comModule::SerialCommunication@{comModule::SerialCommunication}}
+\doxysubsubsection{\texorpdfstring{receiveSerialData()}{receiveSerialData()}}
+{\footnotesize\ttfamily void Serial\+Communication\+::receive\+Serial\+Data (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Function to receive data over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & -\/\texorpdfstring{$>$}{>} The buffer to read the data into \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} The length of the data to read \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_serial_communication_a088e158cfbbb6bc3b80ce9a8c440ca9e}\label{classcom_module_1_1_serial_communication_a088e158cfbbb6bc3b80ce9a8c440ca9e} 
+\index{comModule::SerialCommunication@{comModule::SerialCommunication}!sendSerialData@{sendSerialData}}
+\index{sendSerialData@{sendSerialData}!comModule::SerialCommunication@{comModule::SerialCommunication}}
+\doxysubsubsection{\texorpdfstring{sendSerialData()}{sendSerialData()}}
+{\footnotesize\ttfamily void Serial\+Communication\+::send\+Serial\+Data (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Function to send data over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} The data to send \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+SER/SER.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+SER/SER.\+cpp\end{DoxyCompactItemize}

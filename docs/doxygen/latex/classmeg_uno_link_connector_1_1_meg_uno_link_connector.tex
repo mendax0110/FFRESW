@@ -1,0 +1,89 @@
+\doxysection{meg\+Uno\+Link\+Connector\+::Meg\+Uno\+Link\+Connector Class Reference}
+\hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector}{}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector}\index{megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}}
+
+
+Class for the Meg\+Uno\+Link Connector.  
+
+
+
+
+{\ttfamily \#include $<$meg\+Uno\+Link\+Connector.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a8f0c9c8cf89b8a086d8fb720cdcb17ec}{begin\+Meg\+Uno}} (long baud\+Rate)
+\begin{DoxyCompactList}\small\item\em Function to initialize the Meg\+Uno\+Link Connector. \end{DoxyCompactList}\item 
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a3fdbd64cf1a30c00212234724ac43f9c}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a3fdbd64cf1a30c00212234724ac43f9c} 
+void {\bfseries process\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Function to process the commands received over serial communication. \end{DoxyCompactList}\item 
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a5789a774661fae2fadfb39d5535edb12}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a5789a774661fae2fadfb39d5535edb12} 
+{\footnotesize template$<$typename Handler\+Type $>$ }\\void {\bfseries add\+Command} (const char \texorpdfstring{$\ast$}{*}command\+Name, Handler\+Type handler)
+\item 
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a285519f03d34ecf50c6a8a59ce781175}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a285519f03d34ecf50c6a8a59ce781175} 
+{\footnotesize template$<$typename Handler\+Type $>$ }\\void {\bfseries add\+Command} (const \+\_\+\+\_\+\+Flash\+String\+Helper \texorpdfstring{$\ast$}{*}command\+Name, Handler\+Type handler)
+\item 
+void \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_aa42b797ff60598cd4abb1a1d3e3dbcbd}{set\+Default\+Handler}} (void(\texorpdfstring{$\ast$}{*}handler)())
+\begin{DoxyCompactList}\small\item\em Function to add a command with a handler to the Meg\+Uno\+Link Connector. \end{DoxyCompactList}\item 
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_ae70524cb953407537c2159aeb8627b0d}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_ae70524cb953407537c2159aeb8627b0d} 
+void {\bfseries handle\+Unknown\+Command} ()
+\begin{DoxyCompactList}\small\item\em Function to handle unknown commands received over serial communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a4f35f9cd33550889cda71dbb8dc5f402}{send\+Log}} (const String \&message)
+\begin{DoxyCompactList}\small\item\em Function to send a log message over serial communication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the Meg\+Uno\+Link Connector. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a8f0c9c8cf89b8a086d8fb720cdcb17ec}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a8f0c9c8cf89b8a086d8fb720cdcb17ec} 
+\index{megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}!beginMegUno@{beginMegUno}}
+\index{beginMegUno@{beginMegUno}!megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}}
+\doxysubsubsection{\texorpdfstring{beginMegUno()}{beginMegUno()}}
+{\footnotesize\ttfamily void Meg\+Uno\+Link\+Connector\+::begin\+Meg\+Uno (\begin{DoxyParamCaption}\item[{long}]{baud\+Rate }\end{DoxyParamCaption})}
+
+
+
+Function to initialize the Meg\+Uno\+Link Connector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baud\+Rate} & -\/\texorpdfstring{$>$}{>} This is the baud rate for the serial communication \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a4f35f9cd33550889cda71dbb8dc5f402}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_a4f35f9cd33550889cda71dbb8dc5f402} 
+\index{megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}!sendLog@{sendLog}}
+\index{sendLog@{sendLog}!megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}}
+\doxysubsubsection{\texorpdfstring{sendLog()}{sendLog()}}
+{\footnotesize\ttfamily void Meg\+Uno\+Link\+Connector\+::send\+Log (\begin{DoxyParamCaption}\item[{const String \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Function to send a log message over serial communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/\texorpdfstring{$>$}{>} This is the message to be logged \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classmeg_uno_link_connector_1_1_meg_uno_link_connector_aa42b797ff60598cd4abb1a1d3e3dbcbd}\label{classmeg_uno_link_connector_1_1_meg_uno_link_connector_aa42b797ff60598cd4abb1a1d3e3dbcbd} 
+\index{megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}!setDefaultHandler@{setDefaultHandler}}
+\index{setDefaultHandler@{setDefaultHandler}!megUnoLinkConnector::MegUnoLinkConnector@{megUnoLinkConnector::MegUnoLinkConnector}}
+\doxysubsubsection{\texorpdfstring{setDefaultHandler()}{setDefaultHandler()}}
+{\footnotesize\ttfamily void Meg\+Uno\+Link\+Connector\+::set\+Default\+Handler (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*})()}]{handler }\end{DoxyParamCaption})}
+
+
+
+Function to add a command with a handler to the Meg\+Uno\+Link Connector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handler} & -\/\texorpdfstring{$>$}{>} This is the handler function for the command \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/meg\+Uno\+Link\+Connector/\mbox{\hyperlink{meg_uno_link_connector_8h}{meg\+Uno\+Link\+Connector.\+h}}\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/meg\+Uno\+Link\+Connector/\mbox{\hyperlink{meg_uno_link_connector_8cpp}{meg\+Uno\+Link\+Connector.\+cpp}}\end{DoxyCompactItemize}

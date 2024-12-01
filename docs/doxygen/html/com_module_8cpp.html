@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FFRESW: C:/Users/Adrian/Documents/git/FFRESW/eSW/src/comModule.cpp File Reference</title>
+<title>FFRESW: C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/comModule/comModule.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5097a6114d25116a7f820b523b629492.html">eSW</a></li><li class="navelem"><a class="el" href="dir_d70c49a27a25289027ff82ee4bd31672.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5097a6114d25116a7f820b523b629492.html">eSW</a></li><li class="navelem"><a class="el" href="dir_0aa5d1f6026e0cf845e96382c7aaa77b.html">libraries</a></li><li class="navelem"><a class="el" href="dir_114270d0e4a6aa654b378921ae3f19d3.html">comModule</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,15 +77,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This is the commModule module. It is responsible for the entire communication with the HAS and USER.  
+<p>Implementation of the <a class="el" href="namespacecom_module.html" title="Namespace for the communication module.">comModule</a> class that utilizes various communication protocols.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="com_module_8h_source.html">../src/includes/comModule.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
+<code>#include &lt;Ethernet.h&gt;</code><br />
+<code>#include &quot;comModule.h&quot;</code><br />
+<code>#include &quot;ETHH/ETHH.h&quot;</code><br />
+<code>#include &quot;I2CC/I2CC.h&quot;</code><br />
+<code>#include &quot;SER/SER.h&quot;</code><br />
+<code>#include &quot;SPII/SPII.h&quot;</code><br />
 </div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the commModule module. It is responsible for the entire communication with the HAS and USER. </p>
-<dl class="section author"><dt>Author</dt><dd>your name (<a href="#" onclick="location.href='mai'+'lto:'+'you'+'@d'+'oma'+'in'+'.co'+'m'; return false;">you@d<span class="obfuscator">.nosp@m.</span>omai<span class="obfuscator">.nosp@m.</span>n.com</a>) </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-01-26</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+<div class="textblock"><p>Implementation of the <a class="el" href="namespacecom_module.html" title="Namespace for the communication module.">comModule</a> class that utilizes various communication protocols. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

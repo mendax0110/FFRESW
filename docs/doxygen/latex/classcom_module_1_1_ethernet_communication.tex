@@ -1,0 +1,99 @@
+\doxysection{com\+Module\+::Ethernet\+Communication Class Reference}
+\hypertarget{classcom_module_1_1_ethernet_communication}{}\label{classcom_module_1_1_ethernet_communication}\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+
+
+Class to handle Ethernet communication.  
+
+
+
+
+{\ttfamily \#include $<$ETHH.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afb82be4038217549f33e23b770d2ddd2}{begin\+Ethernet}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}mac\+Address, IPAddress ip)
+\begin{DoxyCompactList}\small\item\em Function to initialize the Ethernet communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a2df33631f4df0a52a5ed2f6e6944011b}{send\+Ethernet\+Data}} (const char \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Fucntion to send data over Ethernet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acd785405cbfc3d168c1441e809a7cb9a}{receive\+Ethernet\+Data}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Function to receive data over Ethernet. \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a34849676fdb201d44ecb9f42a485615c}\label{classcom_module_1_1_ethernet_communication_a34849676fdb201d44ecb9f42a485615c} 
+void {\bfseries handle\+Ethernet\+Client} ()
+\begin{DoxyCompactList}\small\item\em Function to handle the Ethernet client. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}{is\+Initialized}} ()
+\begin{DoxyCompactList}\small\item\em Function to check if the Ethernet communication is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to handle Ethernet communication. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_module_1_1_ethernet_communication_afb82be4038217549f33e23b770d2ddd2}\label{classcom_module_1_1_ethernet_communication_afb82be4038217549f33e23b770d2ddd2} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!beginEthernet@{beginEthernet}}
+\index{beginEthernet@{beginEthernet}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{beginEthernet()}{beginEthernet()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::begin\+Ethernet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mac\+Address,  }\item[{IPAddress}]{ip }\end{DoxyParamCaption})}
+
+
+
+Function to initialize the Ethernet communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mac\+Address} & -\/\texorpdfstring{$>$}{>} The MAC address to use for the Ethernet communication \\
+\hline
+{\em ip} & -\/\texorpdfstring{$>$}{>} The IP address to use for the Ethernet communication \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}\label{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool Ethernet\+Communication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to check if the Ethernet communication is initialized. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} true if the Ethernet communication is initialized, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classcom_module_1_1_ethernet_communication_acd785405cbfc3d168c1441e809a7cb9a}\label{classcom_module_1_1_ethernet_communication_acd785405cbfc3d168c1441e809a7cb9a} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!receiveEthernetData@{receiveEthernetData}}
+\index{receiveEthernetData@{receiveEthernetData}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{receiveEthernetData()}{receiveEthernetData()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::receive\+Ethernet\+Data (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Function to receive data over Ethernet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & -\/\texorpdfstring{$>$}{>} The buffer to read the data into \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} The length of the data to read \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a2df33631f4df0a52a5ed2f6e6944011b}\label{classcom_module_1_1_ethernet_communication_a2df33631f4df0a52a5ed2f6e6944011b} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!sendEthernetData@{sendEthernetData}}
+\index{sendEthernetData@{sendEthernetData}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{sendEthernetData()}{sendEthernetData()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::send\+Ethernet\+Data (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Fucntion to send data over Ethernet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} The data to send \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+ETHH/ETHH.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+ETHH/ETHH.\+cpp\end{DoxyCompactItemize}

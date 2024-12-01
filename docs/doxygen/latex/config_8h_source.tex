@@ -1,0 +1,46 @@
+\doxysection{config.\+h}
+\hypertarget{config_8h_source}{}\label{config_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/config/config.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/config/config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ config.h}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ FreeROTS\ Kernel\ Configuration}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ CONFIG\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Enable\ Arduino\ C++\ Interface}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ This\ allows\ the\ HeliOS\ kernel\ to\ interact\ with\ the\ Arduino\ API}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CONFIG\_ENABLE\_ARDUINO\_CPP\_INTERFACE}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Enable\ System\ Assertions\ (optional,\ for\ debugging\ purposes)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ CONFIG\_ENABLE\_SYSTEM\_ASSERT}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ CONFIG\_SYSTEM\_ASSERT\_BEHAVIOR(file,\ line)\ \_\_ArduinoAssert\_\_(file,\ line)}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Message\ Queue\ Configuration}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ CONFIG\_MESSAGE\_VALUE\_BYTES\ 0x8u\ \ }\textcolor{comment}{//\ Message\ queue\ message\ value\ size\ in\ bytes}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Task\ Notification\ Configuration}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ CONFIG\_NOTIFICATION\_VALUE\_BYTES\ 0x8u\ \ }\textcolor{comment}{//\ Task\ notification\ value\ size\ in\ bytes}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Task\ Name\ Configuration}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ CONFIG\_TASK\_NAME\_BYTES\ 0x8u\ \ }\textcolor{comment}{//\ Length\ of\ task\ names\ in\ bytes}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Memory\ Region\ Configuration}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ CONFIG\_MEMORY\_REGION\_SIZE\_IN\_BLOCKS\ 0x10u\ \ }\textcolor{comment}{//\ Number\ of\ memory\ blocks\ (16\ blocks)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CONFIG\_MEMORY\_REGION\_BLOCK\_SIZE\ 0x20u\ \ }\textcolor{comment}{//\ Memory\ block\ size\ in\ bytes\ (32\ bytes)}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ Queue\ Configuration}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CONFIG\_QUEUE\_MINIMUM\_LIMIT\ 0x5u\ \ }\textcolor{comment}{//\ Minimum\ queue\ size\ limit\ (5\ items)}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Stream\ Buffer\ Configuration}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ CONFIG\_STREAM\_BUFFER\_BYTES\ 0x20u\ \ }\textcolor{comment}{//\ Stream\ buffer\ length\ (32\ bytes)}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Task\ Watchdog\ Timer}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ CONFIG\_TASK\_WD\_TIMER\_ENABLE\ \ }\textcolor{comment}{//\ Enable\ watchdog\ timer\ for\ tasks}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Device\ Name\ Configuration}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ CONFIG\_DEVICE\_NAME\_BYTES\ 0x8u\ \ }\textcolor{comment}{//\ Device\ name\ length\ (8\ bytes)}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONFIG\_H}}
+
+\end{DoxyCode}

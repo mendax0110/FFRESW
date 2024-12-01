@@ -1,0 +1,102 @@
+\doxysection{report\+System\+::Report\+System Class Reference}
+\hypertarget{classreport_system_1_1_report_system}{}\label{classreport_system_1_1_report_system}\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+
+
+Class for the report system.  
+
+
+
+
+{\ttfamily \#include $<$report\+System.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}{log\+Error}} (const char \texorpdfstring{$\ast$}{*}error\+Message)
+\begin{DoxyCompactList}\small\item\em Function to log an error message with a timestamp. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063}{check\+System\+Health}} (size\+\_\+t memory\+Threshold)
+\begin{DoxyCompactList}\small\item\em Function to check the system health. \end{DoxyCompactList}\item 
+\Hypertarget{classreport_system_1_1_report_system_aab1319dcbb3060ee1148ce42a2e686e2}\label{classreport_system_1_1_report_system_aab1319dcbb3060ee1148ce42a2e686e2} 
+void {\bfseries report\+Status} ()
+\begin{DoxyCompactList}\small\item\em Function to report the status of the pressure and temperature thresholds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}{set\+Threshold}} (float temp\+Threshold, float pressure\+Threshold)
+\begin{DoxyCompactList}\small\item\em Function to set the temperature and pressure thresholds. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b}{check\+Thresholds}} (float current\+Temp, float current\+Pressure)
+\begin{DoxyCompactList}\small\item\em Function to check if the current temperature and pressure exceed the thresholds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the report system. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063}\label{classreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!checkSystemHealth@{checkSystemHealth}}
+\index{checkSystemHealth@{checkSystemHealth}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{checkSystemHealth()}{checkSystemHealth()}}
+{\footnotesize\ttfamily bool Report\+System\+::check\+System\+Health (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{memory\+Threshold }\end{DoxyParamCaption})}
+
+
+
+Function to check the system health. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} This returns true if the system health check passed, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b}\label{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!checkThresholds@{checkThresholds}}
+\index{checkThresholds@{checkThresholds}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{checkThresholds()}{checkThresholds()}}
+{\footnotesize\ttfamily bool Report\+System\+::check\+Thresholds (\begin{DoxyParamCaption}\item[{float}]{current\+Temp,  }\item[{float}]{current\+Pressure }\end{DoxyParamCaption})}
+
+
+
+Function to check if the current temperature and pressure exceed the thresholds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Temp} & -\/\texorpdfstring{$>$}{>} This is the current temperature \\
+\hline
+{\em current\+Pressure} & -\/\texorpdfstring{$>$}{>} This is the current pressure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} This returns true if the thresholds are not exceeded, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}\label{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!logError@{logError}}
+\index{logError@{logError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{logError()}{logError()}}
+{\footnotesize\ttfamily void Report\+System\+::log\+Error (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{error\+Message }\end{DoxyParamCaption})}
+
+
+
+Function to log an error message with a timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\+Message} & -\/\texorpdfstring{$>$}{>} This is the error message to log \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}\label{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!setThreshold@{setThreshold}}
+\index{setThreshold@{setThreshold}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{setThreshold()}{setThreshold()}}
+{\footnotesize\ttfamily void Report\+System\+::set\+Threshold (\begin{DoxyParamCaption}\item[{float}]{temp\+Threshold,  }\item[{float}]{pressure\+Threshold }\end{DoxyParamCaption})}
+
+
+
+Function to set the temperature and pressure thresholds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp\+Threshold} & -\/\texorpdfstring{$>$}{>} This is the temperature threshold \\
+\hline
+{\em pressure\+Threshold} & -\/\texorpdfstring{$>$}{>} This is the pressure threshold \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/report\+System/\mbox{\hyperlink{report_system_8h}{report\+System.\+h}}\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/report\+System/\mbox{\hyperlink{report_system_8cpp}{report\+System.\+cpp}}\end{DoxyCompactItemize}

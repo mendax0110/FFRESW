@@ -1,0 +1,42 @@
+\doxysection{json\+Module.\+h}
+\hypertarget{json_module_8h_source}{}\label{json_module_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/jsonModule/jsonModule.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/jsonModule/jsonModule.h}}
+\mbox{\hyperlink{json_module_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ JSONMODULE\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ JSONMODULE\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <ArduinoJson.h>}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\#include\ <String.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacejson_module}{jsonModule}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classjson_module_1_1json_module_internals}{jsonModuleInternals}}}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjson_module_1_1json_module_internals}{jsonModuleInternals}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjson_module_1_1json_module_internals}{\string~jsonModuleInternals}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_a4d97860b899d95f8c9794bb716437aea}{createJson}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ value);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_a6f72d5651b5a697da59e00c3dc974818}{createJsonFloat}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_aad82854d6a1fdb808023cf5ce6ac99b3}{createJsonInt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_acda473c2b22ac30d1a8a7e2225d429c6}{sendJsonSerial}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_ac21c9fbd58cb804310962a03d9510ece}{sendJsonEthernet}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_a00aca1a170989231df58d47fcaaf3809}{getJsonString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1json_module_internals_a4e77caada2421b48e659a9f21d566b3b}{clearJson}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ printJsonDocMemory();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ jsonBuffer;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ StaticJsonDocument<512>\ jsonDoc;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JSONMODULE\_H}}
+
+\end{DoxyCode}

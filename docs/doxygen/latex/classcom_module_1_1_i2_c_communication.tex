@@ -1,0 +1,85 @@
+\doxysection{com\+Module\+::I2\+CCommunication Class Reference}
+\hypertarget{classcom_module_1_1_i2_c_communication}{}\label{classcom_module_1_1_i2_c_communication}\index{comModule::I2CCommunication@{comModule::I2CCommunication}}
+
+
+Class to handle I2C communication.  
+
+
+
+
+{\ttfamily \#include $<$I2\+CC.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_ae2e5382caa6ca43b2303df5626c5bf92}{begin\+I2C}} (uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Function to initialize the I2C communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_a2a098877516193a07e796915c98e19f4}{i2c\+Write}} (uint8\+\_\+t device\+Address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Function to write data over I2C. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_ad60819a150985131af81631a43b90e99}{i2c\+Read}} (uint8\+\_\+t device\+Address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Function to read data over I2C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to handle I2C communication. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_module_1_1_i2_c_communication_ae2e5382caa6ca43b2303df5626c5bf92}\label{classcom_module_1_1_i2_c_communication_ae2e5382caa6ca43b2303df5626c5bf92} 
+\index{comModule::I2CCommunication@{comModule::I2CCommunication}!beginI2C@{beginI2C}}
+\index{beginI2C@{beginI2C}!comModule::I2CCommunication@{comModule::I2CCommunication}}
+\doxysubsubsection{\texorpdfstring{beginI2C()}{beginI2C()}}
+{\footnotesize\ttfamily void I2\+CCommunication\+::begin\+I2C (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Function to initialize the I2C communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & -\/\texorpdfstring{$>$}{>} The address to use for the I2C communication \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_i2_c_communication_ad60819a150985131af81631a43b90e99}\label{classcom_module_1_1_i2_c_communication_ad60819a150985131af81631a43b90e99} 
+\index{comModule::I2CCommunication@{comModule::I2CCommunication}!i2cRead@{i2cRead}}
+\index{i2cRead@{i2cRead}!comModule::I2CCommunication@{comModule::I2CCommunication}}
+\doxysubsubsection{\texorpdfstring{i2cRead()}{i2cRead()}}
+{\footnotesize\ttfamily size\+\_\+t I2\+CCommunication\+::i2c\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{device\+Address,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Function to read data over I2C. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+Address} & -\/\texorpdfstring{$>$}{>} The address of the device to read from \\
+\hline
+{\em buffer} & -\/\texorpdfstring{$>$}{>} The buffer to read the data into \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} The length of the data to read \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_i2_c_communication_a2a098877516193a07e796915c98e19f4}\label{classcom_module_1_1_i2_c_communication_a2a098877516193a07e796915c98e19f4} 
+\index{comModule::I2CCommunication@{comModule::I2CCommunication}!i2cWrite@{i2cWrite}}
+\index{i2cWrite@{i2cWrite}!comModule::I2CCommunication@{comModule::I2CCommunication}}
+\doxysubsubsection{\texorpdfstring{i2cWrite()}{i2cWrite()}}
+{\footnotesize\ttfamily void I2\+CCommunication\+::i2c\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{device\+Address,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Function to write data over I2C. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+Address} & -\/\texorpdfstring{$>$}{>} The address of the device to write to \\
+\hline
+{\em data} & -\/\texorpdfstring{$>$}{>} The data to write \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} The length of the data \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+I2\+CC/I2\+CC.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+I2\+CC/I2\+CC.\+cpp\end{DoxyCompactItemize}

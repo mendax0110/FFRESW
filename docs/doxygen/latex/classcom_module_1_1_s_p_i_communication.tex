@@ -1,0 +1,67 @@
+\doxysection{com\+Module\+::SPICommunication Class Reference}
+\hypertarget{classcom_module_1_1_s_p_i_communication}{}\label{classcom_module_1_1_s_p_i_communication}\index{comModule::SPICommunication@{comModule::SPICommunication}}
+
+
+Class to handle SPI communication.  
+
+
+
+
+{\ttfamily \#include $<$SPII.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74}\label{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74} 
+void {\bfseries begin\+SPI} ()
+\begin{DoxyCompactList}\small\item\em Initializes the SPI communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a0beeda059a00ad3613e3f985656e6bcd}{spi\+Write}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Function to write data over SPI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a13b3a3bd39b8d203b3af4761ea9a3693}{spi\+Read}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Function to read data over SPI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to handle SPI communication. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_module_1_1_s_p_i_communication_a13b3a3bd39b8d203b3af4761ea9a3693}\label{classcom_module_1_1_s_p_i_communication_a13b3a3bd39b8d203b3af4761ea9a3693} 
+\index{comModule::SPICommunication@{comModule::SPICommunication}!spiRead@{spiRead}}
+\index{spiRead@{spiRead}!comModule::SPICommunication@{comModule::SPICommunication}}
+\doxysubsubsection{\texorpdfstring{spiRead()}{spiRead()}}
+{\footnotesize\ttfamily void SPICommunication\+::spi\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Function to read data over SPI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & -\/\texorpdfstring{$>$}{>} The buffer to read the data into \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} The length of the data to read \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_s_p_i_communication_a0beeda059a00ad3613e3f985656e6bcd}\label{classcom_module_1_1_s_p_i_communication_a0beeda059a00ad3613e3f985656e6bcd} 
+\index{comModule::SPICommunication@{comModule::SPICommunication}!spiWrite@{spiWrite}}
+\index{spiWrite@{spiWrite}!comModule::SPICommunication@{comModule::SPICommunication}}
+\doxysubsubsection{\texorpdfstring{spiWrite()}{spiWrite()}}
+{\footnotesize\ttfamily void SPICommunication\+::spi\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Function to write data over SPI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} The data to write \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} The length of the data \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+SPII/SPII.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/com\+Module/\+SPII/SPII.\+cpp\end{DoxyCompactItemize}

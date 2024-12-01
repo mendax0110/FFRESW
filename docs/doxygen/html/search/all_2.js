@@ -1,7 +1,25 @@
 var searchData=
 [
-  ['sensormodule_0',['sensormodule',['../classsensor_module.html',1,'sensorModule'],['../namespacesensor_module.html',1,'sensorModule']]],
-  ['sensormodule_2ecpp_1',['sensorModule.cpp',['../sensor_module_8cpp.html',1,'']]],
-  ['sensormodule_2eh_2',['sensorModule.h',['../sensor_module_8h.html',1,'']]],
-  ['sensormoduleinternals_3',['sensorModuleInternals',['../classsensor_module_1_1sensor_module_internals.html',1,'sensorModule']]]
+  ['calcmodule_0',['calcModule',['../namespacecalc_module.html',1,'']]],
+  ['calcmodule_2ecpp_1',['calcModule.cpp',['../calc_module_8cpp.html',1,'']]],
+  ['calcmodule_2eh_2',['calcModule.h',['../calc_module_8h.html',1,'']]],
+  ['calcmoduleinternals_3',['calcModuleInternals',['../classcalc_module_1_1calc_module_internals.html',1,'calcModule']]],
+  ['calculateaverage_4',['calculateAverage',['../classcalc_module_1_1calc_module_internals.html#a870f6549285008487a2e52bff8afe414',1,'calcModule::calcModuleInternals']]],
+  ['calculatecurrent_5',['calculateCurrent',['../classcalc_module_1_1calc_module_internals.html#ab6bd9760214929c2c325bbfddb86d3f5',1,'calcModule::calcModuleInternals']]],
+  ['calculatepower_6',['calculatePower',['../classcalc_module_1_1calc_module_internals.html#a486803b9959a02bf2fd5dfcbcf6b1bcb',1,'calcModule::calcModuleInternals']]],
+  ['calculateresistance_7',['calculateResistance',['../classcalc_module_1_1calc_module_internals.html#ae91753b07529b7f66a44ab77eb2b2227',1,'calcModule::calcModuleInternals']]],
+  ['calculatestandarddeviation_8',['calculateStandardDeviation',['../classcalc_module_1_1calc_module_internals.html#a641657e2ef0290cf4bd036b19c312ac5',1,'calcModule::calcModuleInternals']]],
+  ['calibratesensor_9',['calibrateSensor',['../classsensor_module_1_1_sensor_module_internals.html#ae689f29c297c585012e60b58e2ce231b',1,'sensorModule::SensorModuleInternals']]],
+  ['celsiustofahrenheit_10',['celsiusToFahrenheit',['../classcalc_module_1_1calc_module_internals.html#a68c6506262812ea709dfa5d3462837ca',1,'calcModule::calcModuleInternals']]],
+  ['celsiustokelvin_11',['celsiusToKelvin',['../classcalc_module_1_1calc_module_internals.html#aa2cd523a36e0d6a06d974e16cb432a61',1,'calcModule::calcModuleInternals']]],
+  ['checksensorstatus_12',['checkSensorStatus',['../classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35',1,'sensorModule::SensorModuleInternals']]],
+  ['checksystemhealth_13',['checkSystemHealth',['../classreport_system_1_1_report_system.html#aa74f255d5cf5240576d8f2d8ed5a3063',1,'reportSystem::ReportSystem']]],
+  ['checkthresholds_14',['checkThresholds',['../classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b',1,'reportSystem::ReportSystem']]],
+  ['clearjson_15',['clearJson',['../classjson_module_1_1json_module_internals.html#a4e77caada2421b48e659a9f21d566b3b',1,'jsonModule::jsonModuleInternals']]],
+  ['commodule_16',['comModule',['../namespacecom_module.html',1,'']]],
+  ['commodule_2ecpp_17',['comModule.cpp',['../com_module_8cpp.html',1,'']]],
+  ['commoduleinternals_18',['comModuleInternals',['../classcom_module_1_1com_module_internals.html',1,'comModule']]],
+  ['createjson_19',['createJson',['../classjson_module_1_1json_module_internals.html#a4d97860b899d95f8c9794bb716437aea',1,'jsonModule::jsonModuleInternals']]],
+  ['createjsonfloat_20',['createJsonFloat',['../classjson_module_1_1json_module_internals.html#a6f72d5651b5a697da59e00c3dc974818',1,'jsonModule::jsonModuleInternals']]],
+  ['createjsonint_21',['createJsonInt',['../classjson_module_1_1json_module_internals.html#aad82854d6a1fdb808023cf5ce6ac99b3',1,'jsonModule::jsonModuleInternals']]]
 ];

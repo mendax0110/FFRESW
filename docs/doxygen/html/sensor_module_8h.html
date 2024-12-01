@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FFRESW: C:/Users/Adrian/Documents/git/FFRESW/eSW/src/includes/sensorModule.h File Reference</title>
+<title>FFRESW: C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/sensorModule/sensorModule.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,37 +69,58 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5097a6114d25116a7f820b523b629492.html">eSW</a></li><li class="navelem"><a class="el" href="dir_d70c49a27a25289027ff82ee4bd31672.html">src</a></li><li class="navelem"><a class="el" href="dir_5356fe0753058e9a972e507785d82251.html">includes</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5097a6114d25116a7f820b523b629492.html">eSW</a></li><li class="navelem"><a class="el" href="dir_0aa5d1f6026e0cf845e96382c7aaa77b.html">libraries</a></li><li class="navelem"><a class="el" href="dir_2c33f0d558772a54fc549f28ed8f6c2f.html">sensorModule</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">sensorModule.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;Wire.h&gt;</code><br />
 <code>#include &lt;SPI.h&gt;</code><br />
+<code>#include &lt;pressure.h&gt;</code><br />
+<code>#include &lt;temperature.h&gt;</code><br />
 </div>
 <p><a href="sensor_module_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsensor_module_1_1sensor_module_internals.html">sensorModule::sensorModuleInternals</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsensor_module_1_1_sensor_module_internals.html">sensorModule::SensorModuleInternals</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for the sensor module internals.  <a href="classsensor_module_1_1_sensor_module_internals.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacesensor_module" id="r_namespacesensor_module"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensor_module.html">sensorModule</a></td></tr>
-<tr class="memdesc:namespacesensor_module"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the namespace for the sensor module. <br /></td></tr>
+<tr class="memdesc:namespacesensor_module"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace for the sensor module. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:adb7efb20711d66ac689cf4a8d2b8cc8b" id="r_adb7efb20711d66ac689cf4a8d2b8cc8b"><td class="memItemLeft" align="right" valign="top"><a id="adb7efb20711d66ac689cf4a8d2b8cc8b" name="adb7efb20711d66ac689cf4a8d2b8cc8b"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesensor_module.html#adb7efb20711d66ac689cf4a8d2b8cc8b">sensorModule::SensorType</a> { <br />
+&#160;&#160;<b>TEMPERATURE</b>
+, <b>OBJECTTEMPERATURE</b>
+, <b>AMBIENTTEMPERATURE</b>
+, <b>PRESSURE</b>
+, <br />
+&#160;&#160;<b>I2C_SENSOR</b>
+, <b>SPI_SENSOR</b>
+, <b>DHT11</b>
+, <b>UNKNOWN</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:adb7efb20711d66ac689cf4a8d2b8cc8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum class for the sensor types. <br /></td></tr>
+<tr class="separator:adb7efb20711d66ac689cf4a8d2b8cc8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>your name (<a href="#" onclick="location.href='mai'+'lto:'+'you'+'@d'+'oma'+'in'+'.co'+'m'; return false;">you@d<span class="obfuscator">.nosp@m.</span>omai<span class="obfuscator">.nosp@m.</span>n.com</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-01-26</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-09-28</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->

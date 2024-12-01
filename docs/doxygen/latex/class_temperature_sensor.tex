@@ -1,0 +1,95 @@
+\doxysection{Temperature\+Sensor Class Reference}
+\hypertarget{class_temperature_sensor}{}\label{class_temperature_sensor}\index{TemperatureSensor@{TemperatureSensor}}
+
+
+Temperature sensor class.  
+
+
+
+
+{\ttfamily \#include $<$temperature.\+h$>$}
+
+Inheritance diagram for Temperature\+Sensor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_temperature_sensor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07}\label{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07} 
+void {\bfseries initialize} ()
+\begin{DoxyCompactList}\small\item\em Initializes the temperature sensor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{read\+Temperature}} ()
+\begin{DoxyCompactList}\small\item\em Function to read the temperature sensor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}{read\+Dht11}} ()
+\begin{DoxyCompactList}\small\item\em Function to read the DHT11 sensor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{read\+MLX90614}} (int choice)
+\begin{DoxyCompactList}\small\item\em Function to read the MLX90614 sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Function to check if the temperature sensor is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Temperature sensor class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}\label{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44} 
+\index{TemperatureSensor@{TemperatureSensor}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!TemperatureSensor@{TemperatureSensor}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool Temperature\+Sensor\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to check if the temperature sensor is initialized. 
+
+\begin{DoxyReturn}{Returns}
+bool -\/\texorpdfstring{$>$}{>} True if the temperature sensor is initialized, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}\label{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb} 
+\index{TemperatureSensor@{TemperatureSensor}!readDht11@{readDht11}}
+\index{readDht11@{readDht11}!TemperatureSensor@{TemperatureSensor}}
+\doxysubsubsection{\texorpdfstring{readDht11()}{readDht11()}}
+{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+Dht11 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to read the DHT11 sensor. 
+
+\begin{DoxyReturn}{Returns}
+temperature using DHT11 sen 
+\end{DoxyReturn}
+\Hypertarget{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}\label{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231} 
+\index{TemperatureSensor@{TemperatureSensor}!readMLX90614@{readMLX90614}}
+\index{readMLX90614@{readMLX90614}!TemperatureSensor@{TemperatureSensor}}
+\doxysubsubsection{\texorpdfstring{readMLX90614()}{readMLX90614()}}
+{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+MLX90614 (\begin{DoxyParamCaption}\item[{int}]{choice }\end{DoxyParamCaption})}
+
+
+
+Function to read the MLX90614 sensor. 
+
+\begin{DoxyReturn}{Returns}
+temperature using MLX90614 methods 
+\end{DoxyReturn}
+\Hypertarget{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}\label{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3} 
+\index{TemperatureSensor@{TemperatureSensor}!readTemperature@{readTemperature}}
+\index{readTemperature@{readTemperature}!TemperatureSensor@{TemperatureSensor}}
+\doxysubsubsection{\texorpdfstring{readTemperature()}{readTemperature()}}
+{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+Temperature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to read the temperature sensor. 
+
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} The temperature value 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/temperature/temperature.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/temperature/temperature.\+cpp\end{DoxyCompactItemize}

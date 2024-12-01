@@ -1,0 +1,40 @@
+\doxysection{report\+System.\+h}
+\hypertarget{report_system_8h_source}{}\label{report_system_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/reportSystem/reportSystem.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/reportSystem/reportSystem.h}}
+\mbox{\hyperlink{report_system_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ REPORTSYSTEM\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ REPORTSYSTEM\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacereport_system}{reportSystem}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classreport_system_1_1_report_system}{ReportSystem}}}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classreport_system_1_1_report_system}{ReportSystem}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classreport_system_1_1_report_system}{\string~ReportSystem}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}{logError}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063}{checkSystemHealth}}(\textcolor{keywordtype}{size\_t}\ memoryThreshold);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_aab1319dcbb3060ee1148ce42a2e686e2}{reportStatus}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}{setThreshold}}(\textcolor{keywordtype}{float}\ tempThreshold,\ \textcolor{keywordtype}{float}\ pressureThreshold);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b}{checkThresholds}}(\textcolor{keywordtype}{float}\ currentTemp,\ \textcolor{keywordtype}{float}\ currentPressure);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tempThreshold;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pressureThreshold;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ lastHealthCheck;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ healthCheckInterval\ =\ 10000;\ \textcolor{comment}{//\ 10\ seconds}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ String\ getCurrentTime();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkSensors();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkCommunication();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkMemory(\textcolor{keywordtype}{size\_t}\ threshold);}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REPORTSYSTEM\_H}}
+
+\end{DoxyCode}

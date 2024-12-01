@@ -1,0 +1,128 @@
+\doxysection{sensor\+Module\+::Sensor\+Module\+Internals Class Reference}
+\hypertarget{classsensor_module_1_1_sensor_module_internals}{}\label{classsensor_module_1_1_sensor_module_internals}\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+
+
+Class for the sensor module internals.  
+
+
+
+
+{\ttfamily \#include $<$sensor\+Module.\+h$>$}
+
+Inheritance diagram for sensor\+Module\+::Sensor\+Module\+Internals\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsensor_module_1_1_sensor_module_internals}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}\label{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633} 
+void {\bfseries begin\+Sensor} ()
+\begin{DoxyCompactList}\small\item\em Function to initialize the sensor module. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}{read\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Function to read the sensor data based on the sensor type. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_afc3b143aeeafb78875539f684fa14445}{read\+Sensor\+Data}} (const String \&sensor\+Type)
+\begin{DoxyCompactList}\small\item\em Function to read the sensor data based on the sensor type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}{calibrate\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Function to calibrate the sensor based on the sensor type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}{check\+Sensor\+Status}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Function to check the status of the sensor based on the sensor type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_temperature_sensor}{Temperature\+Sensor}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries initialize} ()
+\begin{DoxyCompactList}\small\item\em Initializes the temperature sensor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{read\+Temperature}} ()
+\begin{DoxyCompactList}\small\item\em Function to read the temperature sensor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}{read\+Dht11}} ()
+\begin{DoxyCompactList}\small\item\em Function to read the DHT11 sensor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{read\+MLX90614}} (int choice)
+\begin{DoxyCompactList}\small\item\em Function to read the MLX90614 sensor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Function to check if the temperature sensor is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for the sensor module internals. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}\label{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b} 
+\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!calibrateSensor@{calibrateSensor}}
+\index{calibrateSensor@{calibrateSensor}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+\doxysubsubsection{\texorpdfstring{calibrateSensor()}{calibrateSensor()}}
+{\footnotesize\ttfamily bool Sensor\+Module\+Internals\+::calibrate\+Sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Function to calibrate the sensor based on the sensor type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/\texorpdfstring{$>$}{>} This returns true if the calibration was successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}\label{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35} 
+\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!checkSensorStatus@{checkSensorStatus}}
+\index{checkSensorStatus@{checkSensorStatus}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+\doxysubsubsection{\texorpdfstring{checkSensorStatus()}{checkSensorStatus()}}
+{\footnotesize\ttfamily bool Sensor\+Module\+Internals\+::check\+Sensor\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Function to check the status of the sensor based on the sensor type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/\texorpdfstring{$>$}{>} This returns true if the sensor is initialized, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}\label{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04} 
+\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!readSensor@{readSensor}}
+\index{readSensor@{readSensor}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+\doxysubsubsection{\texorpdfstring{readSensor()}{readSensor()}}
+{\footnotesize\ttfamily float Sensor\+Module\+Internals\+::read\+Sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Function to read the sensor data based on the sensor type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the sensor data 
+\end{DoxyReturn}
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_afc3b143aeeafb78875539f684fa14445}\label{classsensor_module_1_1_sensor_module_internals_afc3b143aeeafb78875539f684fa14445} 
+\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!readSensorData@{readSensorData}}
+\index{readSensorData@{readSensorData}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+\doxysubsubsection{\texorpdfstring{readSensorData()}{readSensorData()}}
+{\footnotesize\ttfamily float Sensor\+Module\+Internals\+::read\+Sensor\+Data (\begin{DoxyParamCaption}\item[{const String \&}]{sensor\+Type }\end{DoxyParamCaption})}
+
+
+
+Function to read the sensor data based on the sensor type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensor\+Type} & -\/\texorpdfstring{$>$}{>} This is the sensor type as a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the sensor data 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/sensor\+Module/\mbox{\hyperlink{sensor_module_8h}{sensor\+Module.\+h}}\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/sensor\+Module/sensor\+Module.\+cpp\end{DoxyCompactItemize}

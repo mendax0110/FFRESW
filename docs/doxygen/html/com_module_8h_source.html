@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FFRESW: C:/Users/Adrian/Documents/git/FFRESW/eSW/src/includes/comModule.h Source File</title>
+<title>FFRESW: C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/comModule/comModule.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,39 +74,46 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5097a6114d25116a7f820b523b629492.html">eSW</a></li><li class="navelem"><a class="el" href="dir_d70c49a27a25289027ff82ee4bd31672.html">src</a></li><li class="navelem"><a class="el" href="dir_5356fe0753058e9a972e507785d82251.html">includes</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5097a6114d25116a7f820b523b629492.html">eSW</a></li><li class="navelem"><a class="el" href="dir_0aa5d1f6026e0cf845e96382c7aaa77b.html">libraries</a></li><li class="navelem"><a class="el" href="dir_114270d0e4a6aa654b378921ae3f19d3.html">comModule</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">comModule.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="com_module_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;Ethernet.h&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;SPI.h&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef COMMUNICATIONMODULE_H</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define COMMUNICATIONMODULE_H</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacecom_module.html">comModule</a></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classcom_module_1_1com_module_internals.html">   22</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classcom_module_1_1com_module_internals.html">comModuleInternals</a></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    };</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COMMODULE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COMMODULE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;Ethernet.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;ETHH/ETHH.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;I2CC/I2CC.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;SER/SER.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;SPII/SPII.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacecom_module.html">comModule</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classcom_module_1_1com_module_internals.html">   15</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classcom_module_1_1com_module_internals.html">comModuleInternals</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_class" href="classcom_module_1_1com_module_internals.html">comModuleInternals</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_class" href="classcom_module_1_1com_module_internals.html">~comModuleInternals</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_class" href="classcom_module_1_1_i2_c_communication.html">I2CCommunication</a> i2c;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_class" href="classcom_module_1_1_s_p_i_communication.html">SPICommunication</a> spi;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="classcom_module_1_1_ethernet_communication.html">EthernetCommunication</a> eth;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="comment">//SerialCommunication serial;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    };</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif </span><span class="comment">// COMMUNICATIONMODULE_H</span></div>
-<div class="ttc" id="aclasscom_module_1_1com_module_internals_html"><div class="ttname"><a href="classcom_module_1_1com_module_internals.html">comModule::comModuleInternals</a></div><div class="ttdoc">This is the main class for the communication module.</div><div class="ttdef"><b>Definition</b> comModule.h:23</div></div>
-<div class="ttc" id="anamespacecom_module_html"><div class="ttname"><a href="namespacecom_module.html">comModule</a></div><div class="ttdoc">This is the main class for the communication module.</div></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// COMMODULE_H</span></div>
+<div class="ttc" id="aclasscom_module_1_1_ethernet_communication_html"><div class="ttname"><a href="classcom_module_1_1_ethernet_communication.html">comModule::EthernetCommunication</a></div><div class="ttdoc">Class to handle Ethernet communication.</div><div class="ttdef"><b>Definition</b> ETHH.h:18</div></div>
+<div class="ttc" id="aclasscom_module_1_1_i2_c_communication_html"><div class="ttname"><a href="classcom_module_1_1_i2_c_communication.html">comModule::I2CCommunication</a></div><div class="ttdoc">Class to handle I2C communication.</div><div class="ttdef"><b>Definition</b> I2CC.h:18</div></div>
+<div class="ttc" id="aclasscom_module_1_1_s_p_i_communication_html"><div class="ttname"><a href="classcom_module_1_1_s_p_i_communication.html">comModule::SPICommunication</a></div><div class="ttdoc">Class to handle SPI communication.</div><div class="ttdef"><b>Definition</b> SPII.h:19</div></div>
+<div class="ttc" id="aclasscom_module_1_1com_module_internals_html"><div class="ttname"><a href="classcom_module_1_1com_module_internals.html">comModule::comModuleInternals</a></div><div class="ttdoc">Class for the communication module internals.</div><div class="ttdef"><b>Definition</b> comModule.h:16</div></div>
+<div class="ttc" id="anamespacecom_module_html"><div class="ttname"><a href="namespacecom_module.html">comModule</a></div><div class="ttdoc">Namespace for the communication module.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
