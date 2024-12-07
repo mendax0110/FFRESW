@@ -6,6 +6,7 @@
 #include <reportSystem.h>
 #include <jsonModule.h>
 
+
 using namespace megUnoLinkConnector;
 using namespace calcModule;
 using namespace sensorModule;
@@ -48,6 +49,56 @@ public:
         yield();
         return true;
     }
+};
+
+class FlyBackTask final : public frt::Task<FlyBackTask>
+{
+private:
+	//Define Pins
+	const int potPin = A0;
+
+public:
+
+	// Function to set the PWM frequency by adjusting ICR1
+	void setPWMFrequency(int frequency)
+	{
+	  // Calculate ICR1 based on desired frequency
+	  ICR1 = 16000000 / frequency;
+	  OCR1A = ICR1 / 2; // Set duty cycle to 50%
+	}
+
+	// Hauptlogik des Tasks
+	bool run()
+	{
+		msleep(1000);
+
+		serialMutex.lock();
+
+		// Lese Potentiometerwert
+		int potValue = analogRead(potPin);
+		Serial.print(F("AnalogValue: "));
+		Serial.println(potValue);
+
+		// Map den Wert von 0–1023 auf 0–399 (entsprechend TOP-Wert)
+		int frequency = map(potValue, 0, 1023, 1000, 25000);
+		Serial.print(F("pwmValue: "));
+		Serial.println(frequency);
+
+
+	    // Calculate the duty cycle in percentage
+	    float dutyCycle = ((float)OCR1A / 799) * 100.0;
+	    Serial.print(F("Duty Cycle: "));
+	    Serial.print(dutyCycle);
+	    Serial.println(F("%"));
+
+	    // Update the Timer1 frequency based on the mapped value
+	    setPWMFrequency(frequency);
+
+
+		serialMutex.unlock();
+		return true; // Task erfolgreich ausgeführt
+		}
+
 };
 
 // Task to monitor queue and system usage
@@ -205,6 +256,7 @@ ReportTask reportTask;
 MonitoringTask monitoringTask;
 MegunoTask megunoTask;
 SensorAndJsonTask sensorAndJsonTask;
+FlyBackTask flybackTask;
 
 void handleUnknownCommand()
 {
@@ -226,18 +278,25 @@ void setup()
     IPAddress ip(192, 168, 1, 3);
     com.eth.beginEthernet(mac, ip);
 
+    //For Fylback Test
+    pinMode(11, OUTPUT);
+
+    // Clear Timer on Compare Match (CTC) mode with Fast PWM
+    TCCR1A = (1 << COM1A1) | (1 << WGM11);
+    TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS10); // No prescaler
+    ICR1 = 16000000 / 1000;  // Default frequency at 1kHz
+    OCR1A = ICR1 / 2;         // 50% duty cycle
+
     if (com.eth.isInitialized())
     {
         Serial.println("Ethernet is running!");
     }
-
-    pinMode(13, OUTPUT);
-    pinMode(8, OUTPUT);
     Serial.println(F("Setup complete."));
 
     // Start tasks
     reportTask.start(1);
     sensorAndJsonTask.start(2);
+    flybackTask.start(3);
 }
 
 void loop()
