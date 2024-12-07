@@ -94,10 +94,9 @@ public:
 	    // Update the Timer1 frequency based on the mapped value
 	    setPWMFrequency(frequency);
 
-
 		serialMutex.unlock();
 		return true; // Task erfolgreich ausgeführt
-		}
+	}
 
 };
 
