@@ -1,11 +1,23 @@
+/**
+ * @file pressure.cpp
+ * @brief Implementation of the pressure class.
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ */
 #include "pressure.h"
 
 PressureSensor::PressureSensor()
     : _pressureSensorInitialized(false)
 {
+
 }
 
-PressureSensor::~PressureSensor() {}
+PressureSensor::~PressureSensor()
+{
+
+}
 
 /// @brief Initializes the pressure sensor
 void PressureSensor::initialize()

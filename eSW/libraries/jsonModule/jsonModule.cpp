@@ -14,46 +14,52 @@
 
 using namespace jsonModule;
 
-jsonModuleInternals::jsonModuleInternals()
+JsonModuleInternals::JsonModuleInternals()
 {
     clearJson();
 }
 
-jsonModuleInternals::~jsonModuleInternals() {}
+JsonModuleInternals::~JsonModuleInternals()
+{
+
+}
 
 /// @brief Function to create a JSON object with a key-value pair
 /// @param key -> This is the key of the JSON object (const char*)
 /// @param value -> This is the value of the JSON object (const char*)
-void jsonModuleInternals::createJson(const char* key, const char* value)
+void JsonModuleInternals::createJson(const char* key, const char* value)
 {
     jsonDoc[key] = value;
-    Serial.print("Current JSON Size: ");
-    Serial.println(jsonDoc.size());
 }
 
 /// @brief Function to create a JSON object with a key-value pair
 /// @param key -> This is the key of the JSON object (const char*)
 /// @param value -> This is the value of the JSON object (float)
-void jsonModuleInternals::createJsonFloat(const char* key, float value)
+void JsonModuleInternals::createJsonFloat(const char* key, float value)
 {
     jsonDoc[key] = value;
-    Serial.print("Current JSON Size: ");
-    Serial.println(jsonDoc.size());
 }
 
 /// @brief Function to create a JSON object with a key-value pair
 /// @param key -> This is the key of the JSON object (const char*)
 /// @param value -> This is the value of the JSON object (int)
-void jsonModuleInternals::createJsonInt(const char* key, int value)
+void JsonModuleInternals::createJsonInt(const char* key, int value)
 {
     jsonDoc[key] = value;
-    Serial.print("Current JSON Size: ");
-    Serial.println(jsonDoc.size());
 }
+
+/// @brief Function to create a JSON object with a key-value pair
+/// @param key -> This is the key of the JSON object (const char*)
+/// @param value -> This is the value of the JSON object (String)
+void JsonModuleInternals::createJsonString(const char* key, String& value)
+{
+	jsonDoc[key] = value;
+}
+
 
 /// @brief Function to get the JSON object as a string
 /// @return String -> This returns the JSON object as a string
-String jsonModuleInternals::getJsonString() const
+String JsonModuleInternals::getJsonString() const
 {
     String output;
     if (jsonDoc.size() == 0)
@@ -68,25 +74,25 @@ String jsonModuleInternals::getJsonString() const
 }
 
 /// @brief Function to send the JSON object over Serial
-void jsonModuleInternals::sendJsonSerial()
+void JsonModuleInternals::sendJsonSerial()
 {
     Serial.println(getJsonString());
 }
 
 /// @brief Function to send the JSON object over Ethernet
-void jsonModuleInternals::sendJsonEthernet()
+void JsonModuleInternals::sendJsonEthernet()
 {
-    comModule::comModuleInternals comms;
+    comModule::ComModuleInternals comms;
     comms.eth.sendEthernetData(getJsonString().c_str());
 }
 
 /// @brief Function to clear the JSON object
-void jsonModuleInternals::clearJson()
+void JsonModuleInternals::clearJson()
 {
     jsonDoc.clear();
 }
 
-void jsonModuleInternals::printJsonDocMemory()
+void JsonModuleInternals::printJsonDocMemory()
 {
     Serial.println(F("[DEBUG] Memory usage of jsonDoc:"));
     Serial.print(F("  Capacity: "));

@@ -13,12 +13,12 @@
 
 using namespace comModule;
 
-comModuleInternals::comModuleInternals()
+ComModuleInternals::ComModuleInternals()
 {
 
 }
 
-comModuleInternals::~comModuleInternals()
+ComModuleInternals::~ComModuleInternals()
 {
 
 }

@@ -1,3 +1,11 @@
+/**
+ * @file temperature.cpp
+ * @brief Implementation of the temperature class.
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ */
 #include <temperature.h>
 
 TemperatureSensor::TemperatureSensor()
@@ -5,7 +13,10 @@ TemperatureSensor::TemperatureSensor()
 {
 }
 
-TemperatureSensor::~TemperatureSensor() {}
+TemperatureSensor::~TemperatureSensor()
+{
+
+}
 
 /// @brief Initializes the temperature sensor
 void TemperatureSensor::initialize()

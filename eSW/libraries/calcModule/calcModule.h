@@ -18,11 +18,11 @@
 namespace calcModule
 {
     /// @brief Class for the calculation module internals. \class calcModuleInternals
-    class calcModuleInternals
+    class CalcModuleInternals
     {
     public:
-        calcModuleInternals();
-        ~calcModuleInternals();
+        CalcModuleInternals();
+        ~CalcModuleInternals();
 
         float calculateAverage(const float* data, int length) const;
         float findMaximum(const float* data, int length) const;

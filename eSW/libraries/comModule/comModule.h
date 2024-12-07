@@ -12,11 +12,11 @@
 namespace comModule
 {
     /// @brief Class for the communication module internals. \class comModuleInternals
-    class comModuleInternals
+    class ComModuleInternals
     {
     public:
-        comModuleInternals();
-        ~comModuleInternals();
+        ComModuleInternals();
+        ~ComModuleInternals();
 
         I2CCommunication i2c;
         SPICommunication spi;

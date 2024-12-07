@@ -21,7 +21,7 @@ using namespace reportSystem;
 extern frt::Mutex serialMutex;
 
 ReportSystem::ReportSystem() 
-    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0) {}
+    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0), _com(nullptr), _sens(nullptr) {}
 
 ReportSystem::~ReportSystem() {}
 
@@ -60,13 +60,16 @@ bool ReportSystem::checkSystemHealth(size_t memoryThreshold)
 }
 
 /// @brief Function to report the status of the pressure and temperature thresholds
-void ReportSystem::reportStatus()
+/// @return -> String with the Information about the status
+String ReportSystem::reportStatus()
 {
-    Serial.print("[STATUS] System is operating normally.");
-    Serial.print(" Current Temp Threshold: ");
-    Serial.print(tempThreshold);
-    Serial.print(" Current Pressure Threshold: ");
-    Serial.println(pressureThreshold);
+    String statusReport = "[STATUS] System is operating normally.";
+    statusReport += " Current Temp Threshold: ";
+    statusReport += tempThreshold;
+    statusReport += " Current Pressure Threshold: ";
+    statusReport += pressureThreshold;
+
+    return statusReport;
 }
 
 /// @brief Function to set the temperature and pressure thresholds
@@ -116,7 +119,12 @@ String ReportSystem::getCurrentTime()
 bool ReportSystem::checkSensors()
 {
     // TODO: use sensor module to check sensor status
-    return true;
+	bool status = _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE);
+	if (status)
+	{
+		return true;
+	}
+	return false;
 }
 
 /// @brief Function to check the communication status
@@ -124,7 +132,12 @@ bool ReportSystem::checkSensors()
 bool ReportSystem::checkCommunication()
 {
     // TODO: use com module to check communication status
-    return true;
+	bool status = _com->eth.isInitialized();
+	if (status)
+	{
+		return true;
+	}
+    return false;
 }
 
 /// @brief Function to check available memory with a configurable threshold

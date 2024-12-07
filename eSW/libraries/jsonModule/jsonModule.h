@@ -20,15 +20,16 @@
 namespace jsonModule
 {
     /// @brief Class for the JSON module internals. \class jsonModuleInternals
-    class jsonModuleInternals
+    class JsonModuleInternals
     {
     public:
-        jsonModuleInternals();
-        ~jsonModuleInternals();
+        JsonModuleInternals();
+        ~JsonModuleInternals();
 
         void createJson(const char* key, const char* value);
         void createJsonFloat(const char* key, float value);
         void createJsonInt(const char* key, int value);
+        void createJsonString(const char* key, String& value);
         
         void sendJsonSerial();
         void sendJsonEthernet();

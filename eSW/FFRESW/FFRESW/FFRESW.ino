@@ -5,7 +5,7 @@
 #include <comModule.h>
 #include <reportSystem.h>
 #include <jsonModule.h>
-
+#include <timeModule.h>
 
 using namespace megUnoLinkConnector;
 using namespace calcModule;
@@ -13,13 +13,16 @@ using namespace sensorModule;
 using namespace reportSystem;
 using namespace comModule;
 using namespace jsonModule;
+using namespace timeModule;
 
 MegUnoLinkConnector linkConnector;
-calcModuleInternals calc;
-comModuleInternals com;
+CalcModuleInternals calc;
+ComModuleInternals com;
 SensorModuleInternals sens;
 ReportSystem report;
-jsonModuleInternals json;
+JsonModuleInternals json;
+TimeModuleInternals  time;
+DateTimeStruct currentTime;
 
 // Buffers for sensor data
 uint8_t i2cBuffer[10];
@@ -32,19 +35,48 @@ frt::Mutex serialMutex;
 frt::Queue<float, 1> temperatureQueue;
 frt::Mutex temperatureQueueMutex;
 
+// helper method to simplify printing
+void printToSerial(const __FlashStringHelper* message, bool newLine = true)
+{
+    serialMutex.lock();
+    if (newLine)
+    {
+        Serial.println(message);
+    }
+    else
+    {
+        Serial.print(message);
+    }
+    serialMutex.unlock();
+}
+
+// helper method to simplify printing
+void printToSerial(const String& message, bool newLine = true)
+{
+    serialMutex.lock();
+    if (newLine)
+    {
+        Serial.println(message);
+    }
+    else
+    {
+        Serial.print(message);
+    }
+    serialMutex.unlock();
+}
+
 // Task to report system health and status periodically
 class ReportTask final : public frt::Task<ReportTask, 200>
 {
 public:
     bool run()
     {
-        serialMutex.lock();
         if (!report.checkSystemHealth(1000))
         {
-            Serial.println(F("Critical issue detected! Take action."));
+        	printToSerial(F("Critical issue detected! Take action."));
         }
-        report.reportStatus();
-        serialMutex.unlock();
+        String status = report.reportStatus();
+        printToSerial(status);
         msleep(2000);
         yield();
         return true;
@@ -115,26 +147,25 @@ public:
         msleep(1000);
         yield();
 
-        serialMutex.lock();
         float temperature = sens.readSensor(SensorType::DHT11);
-        Serial.print(F("Current Temperature: "));
-        Serial.println(temperature);
+        printToSerial(F("Current Temperature: "));
+        printToSerial(String(temperature));
+
         temperatureReadings[currentIndex] = temperature;
         currentIndex = (currentIndex + 1) % maxReadings;
         if (currentIndex == 0) bufferFull = true;
 
         float average = calc.calculateAverage(temperatureReadings, bufferFull ? maxReadings : currentIndex);
-        Serial.print(F("Average Temperature: "));
-        Serial.println(average);
+        printToSerial(F("Average Temperature: "));
+        printToSerial(String(average));
 
         float pressure = sens.readSensor(SensorType::PRESSURE);
-        Serial.print(F("Current Pressure: "));
-        Serial.println(pressure);
+        printToSerial(F("Current Pressure: "));
+        printToSerial(String(pressure));
 
         float maxTemp = calc.findMaximum(temperatureReadings, bufferFull ? maxReadings : currentIndex);
-        Serial.print(F("Maximum Temperature: "));
-        Serial.println(maxTemp);
-        serialMutex.unlock();
+        printToSerial(F("Maximum Temperature: "));
+        printToSerial(String(maxTemp));
 
         serialMutex.lock();
         com.eth.handleEthernetClient();
@@ -145,6 +176,7 @@ public:
     }
 };
 
+// Task for possible usage of megunolink
 class MegunoTask final : public frt::Task<MegunoTask>
 {
 public:
@@ -163,6 +195,8 @@ public:
     }
 };
 
+// Task to try to send data to differnet endpoints like the rasperrypi
+// or wsl instances with python running
 class SensorAndJsonTask final : public frt::Task<SensorAndJsonTask, 2048>
 {
 public:
@@ -171,83 +205,117 @@ public:
         msleep(2000);
 
         // Read temperature sensor (Ambient Temperature)
-        float temperature = sens.readSensor(SensorType::AMBIENTTEMPERATURE);
+        float temperatureAmb = sens.readSensor(SensorType::AMBIENTTEMPERATURE);
+        float temperatureObj = sens.readSensor(SensorType::OBJECTTEMPERATURE);
 
-        serialMutex.lock();
-        Serial.print(F("Ambient Temp (C): "));
-        Serial.println(temperature);
-        serialMutex.unlock();
+        printToSerial(F("Ambient Temp (C): "), false);
+        printToSerial(String(temperatureAmb));
+        printToSerial(F("Object Temp (C): "), false);
+        printToSerial(String(temperatureObj));
 
-        float temperatureF = calc.celsiusToFahrenheit(temperature);
+        float temperatureFamb = calc.celsiusToFahrenheit(temperatureAmb);
+        float temperatureKobj = calc.celsiusToKelvin(temperatureObj);
 
-        serialMutex.lock();
-        Serial.print(F("Ambient Temp (F): "));
-        Serial.println(temperatureF);
-        serialMutex.unlock();
+        printToSerial(F("Ambient Temp (F): "), false);
+        printToSerial(String(temperatureFamb));
+        printToSerial(F("Object Temp (K): "), false);
+        printToSerial(String(temperatureKobj));
 
         // pop if necessary and then push the new value
         temperatureQueueMutex.lock();
-        serialMutex.lock();
-        Serial.print(F("Queue size before push: "));
-        Serial.println(temperatureQueue.getFillLevel());
-        serialMutex.unlock();
 
-        // f the queue is full, pop an item before pushing the new one
+        printToSerial(F("Queue size before push: "), false);
+        printToSerial(String(temperatureQueue.getFillLevel()));
+
+        // If the queue is full, pop an item before pushing the new one
         if (temperatureQueue.getFillLevel() > 0)
         {
             float temp;
             temperatureQueue.pop(temp);
         }
-        temperatureQueue.push(temperature);  //push the new temperature
+        temperatureQueue.push(temperatureAmb); // Push the new temperature
 
-        serialMutex.lock();
-        Serial.print(F("Queue size after push: "));
-        Serial.println(temperatureQueue.getFillLevel());
-        serialMutex.unlock();
+        printToSerial(F("Queue size after push: "), false);
+        printToSerial(String(temperatureQueue.getFillLevel()));
+
         temperatureQueueMutex.unlock();
 
+        //String currentTime = report.getCurrentTime();
+        // Create JSON object
         json.clearJson();
         json.createJson("task", "SensorAndJsonTask");
         json.createJson("status", "running");
-        json.createJsonFloat("temperature", temperature);
+        json.createJsonFloat("temperature", temperatureAmb);
+        json.createJsonInt("year", currentTime.year);
+        json.createJsonInt("month", currentTime.month);
+        json.createJsonInt("day", currentTime.day);
+        json.createJsonInt("hour", currentTime.hour);
+        json.createJsonInt("minute", currentTime.minute);
+        json.createJsonInt("second", currentTime.second);
 
-        serialMutex.lock();
         json.printJsonDocMemory();
-        serialMutex.unlock();
 
-        serialMutex.lock();
-        Serial.println(F("Attempting to generate JSON string..."));
+        printToSerial(F("Attempting to generate JSON string..."));
         String jsonString = json.getJsonString();
 
         if (jsonString.length() > 0)
         {
-            Serial.println(F("Prepared JSON:"));
-            Serial.println(jsonString);
+            printToSerial(F("Prepared JSON:"));
+            printToSerial(jsonString);
         }
         else
         {
-            Serial.println(F("Error: JSON string is empty or failed to generate."));
+            printToSerial(F("Error: JSON string is empty or failed to generate."));
         }
-        serialMutex.unlock();
 
         if (com.eth.isInitialized())
         {
             com.eth.sendEthernetData(json.getJsonString().c_str());
-            serialMutex.lock();
-            Serial.println(F("Sent JSON data over Ethernet."));
-            serialMutex.unlock();
+            printToSerial(F("Sent JSON data over Ethernet."));
         }
         else
         {
-            serialMutex.lock();
-            Serial.println(F("Ethernet not initialized."));
-            serialMutex.unlock();
+            printToSerial(F("Ethernet not initialized."));
         }
 
         com.eth.handleEthernetClient();
 
         yield();
+
         return true;
+    }
+};
+
+// Task to log time using the time from the compiler
+class TimeTask final : public frt::Task<TimeTask, 512>
+{
+public:
+    bool run()
+    {
+    	msleep(1000);
+
+    	while(1)
+    	{
+    		msleep(1000);
+    		time.incrementTime(&currentTime);
+    		printToSerial(F(" "));
+    		printToSerial(F("Current Time:"), false);
+    		printToSerial(String(currentTime.year), false);
+    		printToSerial(F("/"), false);
+    		printToSerial(String(currentTime.month), false);
+    		printToSerial(F("/"), false);
+    		printToSerial(String(currentTime.day), false);
+    		printToSerial(F(" "), false);
+    		printToSerial(String(currentTime.hour), false);
+    		printToSerial(F(":"),false);
+    		printToSerial(String(currentTime.minute),false);
+    		printToSerial(F(":"), false);
+    		printToSerial(String(currentTime.second), false);
+    		printToSerial(F(" "));
+    		yield();
+    	}
+
+    	return true;
     }
 };
 
@@ -255,18 +323,37 @@ ReportTask reportTask;
 MonitoringTask monitoringTask;
 MegunoTask megunoTask;
 SensorAndJsonTask sensorAndJsonTask;
+TimeTask timeTask;
 FlyBackTask flybackTask;
 
 void handleUnknownCommand()
 {
-    serialMutex.lock();
-    Serial.println(F("Unknown command received."));
-    serialMutex.unlock();
+    printToSerial(F("Unknown command received."));
 }
 
 void setup()
 {
     Serial.begin(9600);
+
+    char date[] = __DATE__; // "MMM DD YYYY"
+    char time[] = __TIME__; // "HH:MM:SS"
+    char monthStr[4];
+
+    sscanf(date, "%s %d %d", monthStr, &currentTime.day, &currentTime.year);
+
+    const char *months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+    for (int i = 0; i < 12; i++)
+    {
+        if (strncmp(monthStr, months[i], 3) == 0)
+        {
+            currentTime.month = i + 1;
+            break;
+        }
+    }
+
+    sscanf(time, "%d:%d:%d", &currentTime.hour, &currentTime.minute, &currentTime.second);
 
     Serial.println(F("Starting sensor module..."));
     sens.beginSensor();
@@ -290,11 +377,13 @@ void setup()
     {
         Serial.println("Ethernet is running!");
     }
+
     Serial.println(F("Setup complete."));
 
     // Start tasks
     reportTask.start(1);
     sensorAndJsonTask.start(2);
+    timeTask.start(3);
     flybackTask.start(3);
 }
 
