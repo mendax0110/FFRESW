@@ -44,7 +44,6 @@ namespace sensorModule
 
         void beginSensor();
         float readSensor(SensorType type);
-        float readSensorData(const String& sensorType);
         bool calibrateSensor(SensorType type);
         bool checkSensorStatus(SensorType type);
 

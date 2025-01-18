@@ -119,7 +119,8 @@ String ReportSystem::getCurrentTime()
 bool ReportSystem::checkSensors()
 {
     // TODO: use sensor module to check sensor status
-	bool status = _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE);
+	bool status = _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE) &&
+					_sens->checkSensorStatus(sensorModule::SensorType::PRESSURE);
 	if (status)
 	{
 		return true;

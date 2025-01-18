@@ -12,9 +12,14 @@
 #ifndef JSONMODULE_H
 #define JSONMODULE_H
 
+#ifndef ARDUINO_STL_MEMORY
+#define ARDUINO_STL_MEMORY 0  // Disable STL memory management (new, delete, new_handler)
+#endif
+
 #include <Arduino.h>
 #include <ArduinoJson.h>
-//#include <String.h>
+#include <ArduinoSTL.h>
+#include <map>
 
 /// @brief Namespace for the JSON module. \namespace jsonModule
 namespace jsonModule
@@ -30,11 +35,15 @@ namespace jsonModule
         void createJsonFloat(const char* key, float value);
         void createJsonInt(const char* key, int value);
         void createJsonString(const char* key, String& value);
+        void createJsonStringConst(const char* key, const String& value);
+
         
         void sendJsonSerial();
-        void sendJsonEthernet();
+        void sendJsonEthernet(const char* endpoint);
 
-        String getJsonString() const;
+        String getSerializedJsonString() const;
+        std::map<String, double> mapJsonToDoubles(const String& rawJson);
+
         void clearJson();
         void printJsonDocMemory();
 

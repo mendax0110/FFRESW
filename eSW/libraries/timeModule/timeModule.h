@@ -2,6 +2,7 @@
 #define TIMEMODULE_H
 
 #include <Arduino.h>
+#include <String>
 
 namespace timeModule
 {
@@ -22,6 +23,7 @@ namespace timeModule
     	~TimeModuleInternals();
 
     	void incrementTime(DateTimeStruct *dt);
+    	String formatTimeString(const DateTimeStruct &dt);
 
     };
 }

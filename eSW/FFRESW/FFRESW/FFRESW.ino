@@ -1,13 +1,11 @@
 #include <frt.h>
 #include <calcModule.h>
 #include <sensorModule.h>
-#include <megUnoLinkConnector.h>
 #include <comModule.h>
 #include <reportSystem.h>
 #include <jsonModule.h>
 #include <timeModule.h>
 
-using namespace megUnoLinkConnector;
 using namespace calcModule;
 using namespace sensorModule;
 using namespace reportSystem;
@@ -15,7 +13,6 @@ using namespace comModule;
 using namespace jsonModule;
 using namespace timeModule;
 
-MegUnoLinkConnector linkConnector;
 CalcModuleInternals calc;
 ComModuleInternals com;
 SensorModuleInternals sens;
@@ -176,25 +173,6 @@ public:
     }
 };
 
-// Task for possible usage of megunolink
-class MegunoTask final : public frt::Task<MegunoTask>
-{
-public:
-    bool run()
-    {
-        msleep(1000);
-        serialMutex.lock();
-        linkConnector.beginMegUno(9600);
-        linkConnector.addCommand(F("commandNameA"), 0);
-        linkConnector.addCommand(F("commandNameB"), 0);
-        linkConnector.setDefaultHandler(handleUnknownCommand);
-        serialMutex.unlock();
-
-        yield();
-        return true;
-    }
-};
-
 // Task to try to send data to differnet endpoints like the rasperrypi
 // or wsl instances with python running
 class SensorAndJsonTask final : public frt::Task<SensorAndJsonTask, 2048>
@@ -202,81 +180,17 @@ class SensorAndJsonTask final : public frt::Task<SensorAndJsonTask, 2048>
 public:
     bool run()
     {
-        msleep(2000);
+        msleep(500);
 
-        // Read temperature sensor (Ambient Temperature)
+        // Read sensor data
         float temperatureAmb = sens.readSensor(SensorType::AMBIENTTEMPERATURE);
         float temperatureObj = sens.readSensor(SensorType::OBJECTTEMPERATURE);
 
-        printToSerial(F("Ambient Temp (C): "), false);
-        printToSerial(String(temperatureAmb));
-        printToSerial(F("Object Temp (C): "), false);
-        printToSerial(String(temperatureObj));
-
-        float temperatureFamb = calc.celsiusToFahrenheit(temperatureAmb);
-        float temperatureKobj = calc.celsiusToKelvin(temperatureObj);
-
-        printToSerial(F("Ambient Temp (F): "), false);
-        printToSerial(String(temperatureFamb));
-        printToSerial(F("Object Temp (K): "), false);
-        printToSerial(String(temperatureKobj));
-
-        // pop if necessary and then push the new value
-        temperatureQueueMutex.lock();
-
-        printToSerial(F("Queue size before push: "), false);
-        printToSerial(String(temperatureQueue.getFillLevel()));
-
-        // If the queue is full, pop an item before pushing the new one
-        if (temperatureQueue.getFillLevel() > 0)
-        {
-            float temp;
-            temperatureQueue.pop(temp);
-        }
-        temperatureQueue.push(temperatureAmb); // Push the new temperature
-
-        printToSerial(F("Queue size after push: "), false);
-        printToSerial(String(temperatureQueue.getFillLevel()));
-
-        temperatureQueueMutex.unlock();
-
-        //String currentTime = report.getCurrentTime();
-        // Create JSON object
-        json.clearJson();
-        json.createJson("task", "SensorAndJsonTask");
-        json.createJson("status", "running");
-        json.createJsonFloat("temperature", temperatureAmb);
-        json.createJsonInt("year", currentTime.year);
-        json.createJsonInt("month", currentTime.month);
-        json.createJsonInt("day", currentTime.day);
-        json.createJsonInt("hour", currentTime.hour);
-        json.createJsonInt("minute", currentTime.minute);
-        json.createJsonInt("second", currentTime.second);
-
-        json.printJsonDocMemory();
-
-        printToSerial(F("Attempting to generate JSON string..."));
-        String jsonString = json.getJsonString();
-
-        if (jsonString.length() > 0)
-        {
-            printToSerial(F("Prepared JSON:"));
-            printToSerial(jsonString);
-        }
-        else
-        {
-            printToSerial(F("Error: JSON string is empty or failed to generate."));
-        }
-
-        if (com.eth.isInitialized())
-        {
-            com.eth.sendEthernetData(json.getJsonString().c_str());
-            printToSerial(F("Sent JSON data over Ethernet."));
-        }
-        else
-        {
-            printToSerial(F("Ethernet not initialized."));
-        }
+        // Send sensor data
+        sendSensorData("temperature_sensor_1", temperatureAmb, "Celsius");
+        msleep(2000);
+        sendSensorData("temperature_sensor_2", temperatureObj, "Celsius");
+        msleep(2000);
 
         com.eth.handleEthernetClient();
 
@@ -284,7 +198,53 @@ public:
 
         return true;
     }
+
+private:
+    void sendSensorData(const String& sensorName, float value, const String& unit)
+    {
+        String timestamp = getCurrentTimestamp();
+
+        json.clearJson();
+
+        json.createJsonStringConst("sensor_name", sensorName);
+        json.createJsonFloat("value", value);
+        json.createJsonStringConst("unit", unit);
+        json.createJsonString("timestamp", timestamp);
+
+        // Get the serialized JSON string
+        String jsonString = json.getSerializedJsonString();
+
+        if (jsonString.length() > 0)
+        {
+            printToSerial(F("Prepared JSON:"));
+            printToSerial(jsonString);
+
+            if (com.eth.isInitialized())
+            {
+                // Send the data to the correct sensor endpoint
+                String endpoint = "http://192.168.1.3/" + sensorName;
+                com.eth.sendEthernetData(endpoint.c_str(), jsonString.c_str());
+                printToSerial(F("Sent JSON data over Ethernet."));
+            }
+            else
+            {
+                printToSerial(F("Ethernet not initialized."));
+            }
+        }
+        else
+        {
+            printToSerial(F("Error: JSON string is empty or failed to generate."));
+        }
+    }
+
+    String getCurrentTimestamp()
+    {
+    	time.incrementTime(&currentTime);
+    	String formattedTime = time.formatTimeString(currentTime);
+    	return formattedTime;
+    }
 };
+
 
 // Task to log time using the time from the compiler
 class TimeTask final : public frt::Task<TimeTask, 512>
@@ -319,17 +279,26 @@ public:
     }
 };
 
+class VatTask final : public frt::Task<VatTask, 512>
+{
+public:
+	bool run()
+	{
+		msleep(1000);
+		com.eth.setCompound(ID::ACCESS_MODE, 10, "00");
+		com.eth.getCompound(ID::ACTUAL_POSITION, 1);
+		yield();
+		return true;
+	}
+
+private:
+};
+
 ReportTask reportTask;
 MonitoringTask monitoringTask;
-MegunoTask megunoTask;
 SensorAndJsonTask sensorAndJsonTask;
 TimeTask timeTask;
 FlyBackTask flybackTask;
-
-void handleUnknownCommand()
-{
-    printToSerial(F("Unknown command received."));
-}
 
 void setup()
 {

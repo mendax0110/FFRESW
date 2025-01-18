@@ -56,10 +56,15 @@ void JsonModuleInternals::createJsonString(const char* key, String& value)
 	jsonDoc[key] = value;
 }
 
+void JsonModuleInternals::createJsonStringConst(const char* key, const String& value)
+{
+	jsonDoc[key] = value;
+}
+
 
 /// @brief Function to get the JSON object as a string
 /// @return String -> This returns the JSON object as a string
-String JsonModuleInternals::getJsonString() const
+String JsonModuleInternals::getSerializedJsonString() const
 {
     String output;
     if (jsonDoc.size() == 0)
@@ -73,18 +78,50 @@ String JsonModuleInternals::getJsonString() const
     return output;
 }
 
+/// @brief Function to map the deserialzed jsondoc to the corresponding values
+/// @param const String& -> the rawJson
+/// @return std::map<String, double> -> a map with the values
+std::map<String, double> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
+{
+	std::map<String, double> resultMap;
+	DynamicJsonDocument doc(1024);
+	DeserializationError error = deserializeJson(doc, rawJson);
+
+	if (error)
+	{
+		Serial.print("deserializeJson() failed: ");
+		Serial.print(error.f_str());
+		return resultMap;
+	}
+
+	for (JsonPair p : doc.as<JsonObject>())
+	{
+		resultMap[p.key().c_str()] = p.value().as<double>();
+	}
+
+	return resultMap;
+
+}
+
 /// @brief Function to send the JSON object over Serial
 void JsonModuleInternals::sendJsonSerial()
 {
-    Serial.println(getJsonString());
+    Serial.println(getSerializedJsonString());
 }
 
 /// @brief Function to send the JSON object over Ethernet
-void JsonModuleInternals::sendJsonEthernet()
+/*void JsonModuleInternals::sendJsonEthernet()
 {
     comModule::ComModuleInternals comms;
-    comms.eth.sendEthernetData(getJsonString().c_str());
+    comms.eth.sendEthernetData(getSerializedJsonString().c_str());
+}*/
+/// @brief Function to send the JSON object over Ethernet
+void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
+{
+    comModule::ComModuleInternals comms;
+    comms.eth.sendEthernetData(endpoint, getSerializedJsonString().c_str());
 }
+
 
 /// @brief Function to clear the JSON object
 void JsonModuleInternals::clearJson()

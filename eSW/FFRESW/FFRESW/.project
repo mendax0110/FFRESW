@@ -57,6 +57,11 @@
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/ArduinoJson</location>
 		</link>
 		<link>
+			<name>libraries/ArduinoSTL</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/ArduinoSTL</location>
+		</link>
+		<link>
 			<name>libraries/DHTLib</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/DHTLib</location>
@@ -75,11 +80,6 @@
 			<name>libraries/FreeRTOS</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/FreeRTOS</location>
-		</link>
-		<link>
-			<name>libraries/MegunoLink</name>
-			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/MegunoLink</location>
 		</link>
 		<link>
 			<name>libraries/SPI</name>
@@ -120,11 +120,6 @@
 			<name>libraries/jsonModule</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/jsonModule</location>
-		</link>
-		<link>
-			<name>libraries/megUnoLinkConnector</name>
-			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/megUnoLinkConnector</location>
 		</link>
 		<link>
 			<name>libraries/pgmStrToRAM</name>

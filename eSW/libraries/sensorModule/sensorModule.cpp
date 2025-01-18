@@ -118,34 +118,6 @@ float SensorModuleInternals::readSPISensor()
     return (float)data;
 }
 
-/// @brief Function to read the sensor data based on the sensor type
-/// @param sensorType -> This is the sensor type as a string
-/// @return float -> This returns the sensor data
-float SensorModuleInternals::readSensorData(const String& sensorType)
-{
-    if (sensorType.equalsIgnoreCase("temperature"))
-    {
-        return _temperatureSensor.readTemperature();
-    }
-    else if (sensorType.equalsIgnoreCase("pressure"))
-    {
-        return _pressureSensor.readPressure();
-    }
-    else if (sensorType.equalsIgnoreCase("i2c"))
-    {
-        return readI2CSensor();
-    }
-    else if (sensorType.equalsIgnoreCase("spi"))
-    {
-        return readSPISensor();
-    }
-    else
-    {
-        reportError("Unknown sensor type!");
-        return NAN;
-    }
-}
-
 /// @brief Function to calibrate the sensor based on the sensor type
 /// @param type -> This is the sensor type (enum)
 /// @return bool -> This returns true if the calibration was successful, false otherwise

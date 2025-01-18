@@ -13,24 +13,53 @@
 
 namespace comModule
 {
+	enum class service
+	{
+		SET = 28,
+		GET = 29,
+		SETGET = 30
+	};
+
+	enum class ID : unsigned long
+	{
+		ACCESS_MODE = 0x0F0B0000,
+		CONTROL_MODE = 0x0F020000,
+		ACTUAL_POSITION = 0x10010000,
+		TARGET_POSITION = 0x11020000,
+		TARGET_PRESSURE = 0x07020000,
+		POSITION_STATE = 0x00100000,
+		ACTUAL_PRESSURE = 0x07010000,
+		TARGET_PRESSURE_USED = 0x07030000,
+		WARNING_BITMAP = 0x0F300100
+	};
+
 	/// @brief Class to handle Ethernet communication \class EthernetCommunication
 	class EthernetCommunication
 	{
 	public:
-		EthernetCommunication(); // Constructor declaration
+		EthernetCommunication();
 		~EthernetCommunication();
 
 		void beginEthernet(uint8_t* macAddress, IPAddress ip);
-		void sendEthernetData(const char* data);
+		void sendEthernetData(const char* endpoint, const char* data);
 		void receiveEthernetData(char* buffer, size_t length);
 		void handleEthernetClient();
 
 		bool isInitialized();
 
+		bool getSendDataFlag() const;
+		void setSendDataFlag(bool flag);
+
+
+		void setCompound(ID id, int index, String value);
+		String getCompound(ID id, int index);
+
+
 	private:
-		EthernetServer server; // Change to instance and will be initialized in constructor
-		EthernetClient client; // Change to instance
+		EthernetServer server;
+		EthernetClient client;
 		bool ethernetInitialized;
+		bool sendDataFlag = false;
 	};
 }
 

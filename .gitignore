@@ -69,3 +69,6 @@ Release/
 
 # Ignore the .metadata folder
 .metadata/
+
+# Ignore vat folder
+docs/vAT

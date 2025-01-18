@@ -22,7 +22,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/calcModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/megUnoLinkConnector}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/sensorModule}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/reportSystem}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/comModule}&quot;"/>
@@ -34,7 +33,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Temperature}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/pgmStrToRAM}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/FreeRTOS/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/MegunoLink/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/DHTLib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoJson/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Ethernet/src}&quot;"/>
@@ -43,6 +41,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_MLX90614_Library}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.1365410186" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -51,7 +50,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/calcModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/megUnoLinkConnector}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/sensorModule}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/reportSystem}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/comModule}&quot;"/>
@@ -63,7 +61,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Temperature}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/pgmStrToRAM}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/FreeRTOS/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/MegunoLink/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/DHTLib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoJson/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Ethernet/src}&quot;"/>
@@ -72,6 +69,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_MLX90614_Library}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1339837443" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -80,7 +78,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/calcModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/megUnoLinkConnector}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/sensorModule}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/reportSystem}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/comModule}&quot;"/>
@@ -92,7 +89,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Temperature}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/pgmStrToRAM}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/FreeRTOS/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/MegunoLink/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/DHTLib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoJson/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Ethernet/src}&quot;"/>
@@ -101,6 +97,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_MLX90614_Library}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.1444798713" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
@@ -138,23 +135,6 @@
 					<folderInfo id="io.sloeber.core.sketch.0.libraries/?*/utility/*/*" resourcePath="libraries/?*/utility/*/*">
 						<toolChain id="io.sloeber.core.toolChain6.2111673546" superClass="io.sloeber.core.toolChain6">
 							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/utility/*/*.269731588" name=""/>
-						</toolChain>
-					</folderInfo>
-					<folderInfo id="io.sloeber.core.sketch.0.452115051" name="/" resourcePath="libraries/comModule/SPII">
-						<toolChain id="io.sloeber.core.toolChain.release.1201396937" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release" unusedChildren="">
-							<tool id="io.sloeber.tool.sketch.compiler.cpp.1812258029" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp.1016610666">
-								<inputType id="io.sloeber.compiler.cpp.sketch.input.456773922" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
-							</tool>
-							<tool id="io.sloeber.tool.compiler.c.1842618847" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c.1846499564">
-								<inputType id="io.sloeber.compiler.c.sketch.input.1445469270" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
-							</tool>
-							<tool id="io.sloeber.tool.sketch.compiler.s.2077390723" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s.1331706343">
-								<inputType id="io.sloeber.compiler.S.sketch.input.137962298" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
-							</tool>
-							<tool id="io.sloeber.tool.ar.1641233586" name="Arduino archiver" superClass="io.sloeber.tool.ar.952212948"/>
-							<tool id="io.sloeber.tool.combine.1171303652" name="Arduino combiner" superClass="io.sloeber.tool.combine.581890012"/>
-							<tool id="io.sloeber.tool.objcopy.eep.1790600931" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep.1446084194"/>
-							<tool id="io.sloeber.tool.size.1080724165" name="Arduino tool Print Size" superClass="io.sloeber.tool.size.1970296237"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>

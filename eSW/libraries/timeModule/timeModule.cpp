@@ -58,4 +58,23 @@ void TimeModuleInternals::incrementTime(DateTimeStruct* dt)
     }
 }
 
+String TimeModuleInternals::formatTimeString(const DateTimeStruct& dt)
+{
+	String timeStr = "";
+
+	timeStr += String(dt.year);
+	timeStr += "/";
+	timeStr += (dt.month < 10) ? "0" + String(dt.month) : String(dt.month);
+	timeStr += "/";
+	timeStr += (dt.day < 10) ? "0" + String(dt.day) : String(dt.day);
+	timeStr += " ";
+	timeStr += (dt.hour < 10) ? "0" + String(dt.hour) : String(dt.hour);
+	timeStr += ":";
+	timeStr += (dt.minute < 10) ? "0" + String(dt.minute) : String(dt.minute);
+	timeStr += ":";
+	timeStr += (dt.second < 10) ? "0" + String(dt.second) : String(dt.second);
+
+	return timeStr;
+}
+
 
