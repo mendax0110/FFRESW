@@ -8,8 +8,8 @@ Namespace for the communication module.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classcom_module_1_1com_module_internals}{com\+Module\+Internals}}
-\begin{DoxyCompactList}\small\item\em Class for the communication module internals. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classcom_module_1_1_com_module_internals}{Com\+Module\+Internals}}
+\item 
 class \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{Ethernet\+Communication}}
 \begin{DoxyCompactList}\small\item\em Class to handle Ethernet communication. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classcom_module_1_1_i2_c_communication}{I2\+CCommunication}}
@@ -18,6 +18,30 @@ class \mbox{\hyperlink{classcom_module_1_1_serial_communication}{Serial\+Communi
 \begin{DoxyCompactList}\small\item\em Class to handle Serial communication. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication}{SPICommunication}}
 \begin{DoxyCompactList}\small\item\em Class to handle SPI communication. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacecom_module_ab6d1e37a46d4d4b41597a4d0259189c4}\label{namespacecom_module_ab6d1e37a46d4d4b41597a4d0259189c4} 
+enum class {\bfseries service} \{ {\bfseries SET} = 28
+, {\bfseries GET} = 29
+, {\bfseries SETGET} = 30
+ \}
+\item 
+\Hypertarget{namespacecom_module_aed8e718f7a3774c812fc6869c82cd22a}\label{namespacecom_module_aed8e718f7a3774c812fc6869c82cd22a} 
+enum class {\bfseries ID} \+: unsigned long \{ \newline
+{\bfseries ACCESS\+\_\+\+MODE} = 0x0\+F0\+B0000
+, {\bfseries CONTROL\+\_\+\+MODE} = 0x0\+F020000
+, {\bfseries ACTUAL\+\_\+\+POSITION} = 0x10010000
+, {\bfseries TARGET\+\_\+\+POSITION} = 0x11020000
+, \newline
+{\bfseries TARGET\+\_\+\+PRESSURE} = 0x07020000
+, {\bfseries POSITION\+\_\+\+STATE} = 0x00100000
+, {\bfseries ACTUAL\+\_\+\+PRESSURE} = 0x07010000
+, {\bfseries TARGET\+\_\+\+PRESSURE\+\_\+\+USED} = 0x07030000
+, \newline
+{\bfseries WARNING\+\_\+\+BITMAP} = 0x0\+F300100
+ \}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

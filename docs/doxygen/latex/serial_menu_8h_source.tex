@@ -1,0 +1,33 @@
+\doxysection{serial\+Menu.\+h}
+\hypertarget{serial_menu_8h_source}{}\label{serial_menu_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/serialMenu/serialMenu.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/serialMenu/serialMenu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#define\ SERIAL\_MENU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERIAL\_MENU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_menu_item}{MenuItem}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{char}\ key;}
+\DoxyCodeLine{00012\ \ \ \ \ void\ (*callback)();}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_serial_menu}{SerialMenu}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_serial_menu}{SerialMenu}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ load(\mbox{\hyperlink{struct_menu_item}{MenuItem}}*\ items,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ show();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ run();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_menu_item}{MenuItem}}*\ currentMenu;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ menuSize;}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERIAL\_MENU\_H}}
+
+\end{DoxyCode}

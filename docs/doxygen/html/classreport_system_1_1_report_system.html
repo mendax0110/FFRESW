@@ -93,16 +93,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa74f255d5cf5240576d8f2d8ed5a3063" id="r_aa74f255d5cf5240576d8f2d8ed5a3063"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aa74f255d5cf5240576d8f2d8ed5a3063">checkSystemHealth</a> (size_t memoryThreshold)</td></tr>
 <tr class="memdesc:aa74f255d5cf5240576d8f2d8ed5a3063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check the system health.  <br /></td></tr>
 <tr class="separator:aa74f255d5cf5240576d8f2d8ed5a3063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab1319dcbb3060ee1148ce42a2e686e2" id="r_aab1319dcbb3060ee1148ce42a2e686e2"><td class="memItemLeft" align="right" valign="top"><a id="aab1319dcbb3060ee1148ce42a2e686e2" name="aab1319dcbb3060ee1148ce42a2e686e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reportStatus</b> ()</td></tr>
-<tr class="memdesc:aab1319dcbb3060ee1148ce42a2e686e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to report the status of the pressure and temperature thresholds. <br /></td></tr>
-<tr class="separator:aab1319dcbb3060ee1148ce42a2e686e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54bb251b1cc2445490fee0593507b96f" id="r_a54bb251b1cc2445490fee0593507b96f"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a54bb251b1cc2445490fee0593507b96f">reportStatus</a> ()</td></tr>
+<tr class="memdesc:a54bb251b1cc2445490fee0593507b96f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to report the status of the pressure and temperature thresholds.  <br /></td></tr>
+<tr class="separator:a54bb251b1cc2445490fee0593507b96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c4a7b9ba401b35bc0ba1e6196db7b13" id="r_a5c4a7b9ba401b35bc0ba1e6196db7b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a5c4a7b9ba401b35bc0ba1e6196db7b13">setThreshold</a> (float tempThreshold, float pressureThreshold)</td></tr>
 <tr class="memdesc:a5c4a7b9ba401b35bc0ba1e6196db7b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set the temperature and pressure thresholds.  <br /></td></tr>
 <tr class="separator:a5c4a7b9ba401b35bc0ba1e6196db7b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5eb043bbd1311486c8ab406f01f50b0b" id="r_a5eb043bbd1311486c8ab406f01f50b0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b">checkThresholds</a> (float currentTemp, float currentPressure)</td></tr>
 <tr class="memdesc:a5eb043bbd1311486c8ab406f01f50b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if the current temperature and pressure exceed the thresholds.  <br /></td></tr>
 <tr class="separator:a5eb043bbd1311486c8ab406f01f50b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0927e4bffac62ace369ec74677667d9" id="r_aa0927e4bffac62ace369ec74677667d9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9">getCurrentTime</a> ()</td></tr>
+<tr class="memdesc:aa0927e4bffac62ace369ec74677667d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the current time in milliseconds.  <br /></td></tr>
+<tr class="separator:aa0927e4bffac62ace369ec74677667d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for the report system. </p>
@@ -166,6 +168,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reportStatus</b> ()</
 
 </div>
 </div>
+<a id="aa0927e4bffac62ace369ec74677667d9" name="aa0927e4bffac62ace369ec74677667d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0927e4bffac62ace369ec74677667d9">&#9670;&#160;</a></span>getCurrentTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String ReportSystem::getCurrentTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the current time in milliseconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; This returns the current time in milliseconds as a string </dd></dl>
+
+</div>
+</div>
 <a id="a319a4cfc8ebf83f2c64a36ce78afa780" name="a319a4cfc8ebf83f2c64a36ce78afa780"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a319a4cfc8ebf83f2c64a36ce78afa780">&#9670;&#160;</a></span>logError()</h2>
 
@@ -189,6 +211,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reportStatus</b> ()</
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a54bb251b1cc2445490fee0593507b96f" name="a54bb251b1cc2445490fee0593507b96f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54bb251b1cc2445490fee0593507b96f">&#9670;&#160;</a></span>reportStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String ReportSystem::reportStatus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to report the status of the pressure and temperature thresholds. </p>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; String with the Information about the status </dd></dl>
 
 </div>
 </div>

@@ -1,0 +1,37 @@
+\doxysection{time\+Module.\+h}
+\hypertarget{time_module_8h_source}{}\label{time_module_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/timeModule/timeModule.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/timeModule/timeModule.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TIMEMODULE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TIMEMODULE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <String>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }timeModule}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ year;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ month;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ day;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hour;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ minute;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ second;}
+\DoxyCodeLine{00017\ \ \ \ \ \}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{\string~TimeModuleInternals}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ incrementTime(\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ *dt);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ String\ formatTimeString(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ \&dt);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TIMEMODULE}}
+
+\end{DoxyCode}

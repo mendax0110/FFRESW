@@ -23,8 +23,6 @@ void {\bfseries begin\+Sensor} ()
 \begin{DoxyCompactList}\small\item\em Function to initialize the sensor module. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}{read\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Function to read the sensor data based on the sensor type. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_afc3b143aeeafb78875539f684fa14445}{read\+Sensor\+Data}} (const String \&sensor\+Type)
-\begin{DoxyCompactList}\small\item\em Function to read the sensor data based on the sensor type. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}{calibrate\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Function to calibrate the sensor based on the sensor type. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}{check\+Sensor\+Status}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
@@ -97,24 +95,6 @@ Function to read the sensor data based on the sensor type.
 
 \begin{DoxyParams}{Parameters}
 {\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-float -\/\texorpdfstring{$>$}{>} This returns the sensor data 
-\end{DoxyReturn}
-\Hypertarget{classsensor_module_1_1_sensor_module_internals_afc3b143aeeafb78875539f684fa14445}\label{classsensor_module_1_1_sensor_module_internals_afc3b143aeeafb78875539f684fa14445} 
-\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!readSensorData@{readSensorData}}
-\index{readSensorData@{readSensorData}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
-\doxysubsubsection{\texorpdfstring{readSensorData()}{readSensorData()}}
-{\footnotesize\ttfamily float Sensor\+Module\+Internals\+::read\+Sensor\+Data (\begin{DoxyParamCaption}\item[{const String \&}]{sensor\+Type }\end{DoxyParamCaption})}
-
-
-
-Function to read the sensor data based on the sensor type. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em sensor\+Type} & -\/\texorpdfstring{$>$}{>} This is the sensor type as a string \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

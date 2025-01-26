@@ -1,0 +1,350 @@
+\doxysection{calc\+Module\+::Calc\+Module\+Internals Class Reference}
+\hypertarget{classcalc_module_1_1_calc_module_internals}{}\label{classcalc_module_1_1_calc_module_internals}\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a0b2363d0f60261f8e8f3d60975044275}{calculate\+Average}} (const float \texorpdfstring{$\ast$}{*}data, int length) const
+\begin{DoxyCompactList}\small\item\em Function to calcuate the Average of the given data. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a6f9869ce1a0a694396eb026a4c4ac4b6}{find\+Maximum}} (const float \texorpdfstring{$\ast$}{*}data, int length) const
+\begin{DoxyCompactList}\small\item\em Function to find the Maximum value in the given data. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_ae9c8f93e8ebcdaf702d837874503665a}{find\+Minimum}} (const float \texorpdfstring{$\ast$}{*}data, int length) const
+\begin{DoxyCompactList}\small\item\em Function to find the Minimum value in the given data. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a4f7402f613bfbfeb8fd197b1b72b2946}{calculate\+Standard\+Deviation}} (const float \texorpdfstring{$\ast$}{*}data, int length) const
+\begin{DoxyCompactList}\small\item\em Function to calculate the Standard Deviation of the given data. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_aaf783a8e0b610707742b0749e122b6af}{find\+Median}} (float \texorpdfstring{$\ast$}{*}data, int length) const
+\begin{DoxyCompactList}\small\item\em Function to find the Median of the given data. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a2379cfa7f5aa54950428cf235c7f39eb}{celsius\+To\+Fahrenheit}} (float celsius) const
+\begin{DoxyCompactList}\small\item\em Function to convert Celsius to Fahrenheit. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a08e6c4dc40743d76c48475912b8db31c}{fahrenheit\+To\+Celsius}} (float fahrenheit) const
+\begin{DoxyCompactList}\small\item\em Function to convert Fahrenheit to Celsius. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a4515391b8fe3b715a63729564cd1994f}{celsius\+To\+Kelvin}} (float celsius) const
+\begin{DoxyCompactList}\small\item\em Function to convert Celsius to Kelvin. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a1cece4ffdc89082586bd68997f945be7}{kelvin\+To\+Celsius}} (float kelvin) const
+\begin{DoxyCompactList}\small\item\em Function to convert Kelvin to Celsius. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_add181cf939f443f48bf5239c11f1923b}{pascal\+To\+Atm}} (float pascal) const
+\begin{DoxyCompactList}\small\item\em Function to convert Pascal to Atmosphere. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a3cc637269053c1b7420e314d160bebcd}{atm\+To\+Pascal}} (float atm) const
+\begin{DoxyCompactList}\small\item\em Function to convert Atmosphere to Pascal. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_aab3ab90d446357e511e6dc62e1f867ed}{pascal\+To\+Psi}} (float pascal) const
+\begin{DoxyCompactList}\small\item\em Function to convert Pascal to Psi. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a65809d29bd92b92d65fa9555c5d0bd84}{psi\+To\+Pascal}} (float psi) const
+\begin{DoxyCompactList}\small\item\em Function to convert Psi to Pascal. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_aa5f48a9c93c857ac13fe905af7430fc3}{calculate\+Power}} (float voltage, float current) const
+\begin{DoxyCompactList}\small\item\em Function to calculate the Power. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_ac7e3306b3085e1ded6a83a158bbdf066}{calculate\+Current}} (float voltage, float resistance) const
+\begin{DoxyCompactList}\small\item\em Function to caclulate the Current. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_ac227567c84df19a0f3f67e6ea3729cf4}{calculate\+Resistance}} (float voltage, float current) const
+\begin{DoxyCompactList}\small\item\em Function to caclulate the Resistance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a3cc637269053c1b7420e314d160bebcd}\label{classcalc_module_1_1_calc_module_internals_a3cc637269053c1b7420e314d160bebcd} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!atmToPascal@{atmToPascal}}
+\index{atmToPascal@{atmToPascal}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{atmToPascal()}{atmToPascal()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::atm\+To\+Pascal (\begin{DoxyParamCaption}\item[{float}]{atm }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Atmosphere to Pascal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em atm} & -\/\texorpdfstring{$>$}{>} This is the pressure in Atmosphere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the pressure in Pascal 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a0b2363d0f60261f8e8f3d60975044275}\label{classcalc_module_1_1_calc_module_internals_a0b2363d0f60261f8e8f3d60975044275} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!calculateAverage@{calculateAverage}}
+\index{calculateAverage@{calculateAverage}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{calculateAverage()}{calculateAverage()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::calculate\+Average (\begin{DoxyParamCaption}\item[{const float \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{length }\end{DoxyParamCaption}) const}
+
+
+
+Function to calcuate the Average of the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} This is the data array \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} This is the length of the data array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the average of the data 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_ac7e3306b3085e1ded6a83a158bbdf066}\label{classcalc_module_1_1_calc_module_internals_ac7e3306b3085e1ded6a83a158bbdf066} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!calculateCurrent@{calculateCurrent}}
+\index{calculateCurrent@{calculateCurrent}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{calculateCurrent()}{calculateCurrent()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::calculate\+Current (\begin{DoxyParamCaption}\item[{float}]{voltage,  }\item[{float}]{resistance }\end{DoxyParamCaption}) const}
+
+
+
+Function to caclulate the Current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & -\/\texorpdfstring{$>$}{>} This is the voltage \\
+\hline
+{\em resistance} & -\/\texorpdfstring{$>$}{>} This is the resistance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the current 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_aa5f48a9c93c857ac13fe905af7430fc3}\label{classcalc_module_1_1_calc_module_internals_aa5f48a9c93c857ac13fe905af7430fc3} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!calculatePower@{calculatePower}}
+\index{calculatePower@{calculatePower}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{calculatePower()}{calculatePower()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::calculate\+Power (\begin{DoxyParamCaption}\item[{float}]{voltage,  }\item[{float}]{current }\end{DoxyParamCaption}) const}
+
+
+
+Function to calculate the Power. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & -\/\texorpdfstring{$>$}{>} This is the voltage \\
+\hline
+{\em current} & -\/\texorpdfstring{$>$}{>} This is the current \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the power 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_ac227567c84df19a0f3f67e6ea3729cf4}\label{classcalc_module_1_1_calc_module_internals_ac227567c84df19a0f3f67e6ea3729cf4} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!calculateResistance@{calculateResistance}}
+\index{calculateResistance@{calculateResistance}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{calculateResistance()}{calculateResistance()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::calculate\+Resistance (\begin{DoxyParamCaption}\item[{float}]{voltage,  }\item[{float}]{current }\end{DoxyParamCaption}) const}
+
+
+
+Function to caclulate the Resistance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & -\/\texorpdfstring{$>$}{>} This is the voltage \\
+\hline
+{\em current} & -\/\texorpdfstring{$>$}{>} This is the current \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the resistance 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a4f7402f613bfbfeb8fd197b1b72b2946}\label{classcalc_module_1_1_calc_module_internals_a4f7402f613bfbfeb8fd197b1b72b2946} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!calculateStandardDeviation@{calculateStandardDeviation}}
+\index{calculateStandardDeviation@{calculateStandardDeviation}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{calculateStandardDeviation()}{calculateStandardDeviation()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::calculate\+Standard\+Deviation (\begin{DoxyParamCaption}\item[{const float \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{length }\end{DoxyParamCaption}) const}
+
+
+
+Function to calculate the Standard Deviation of the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} This is the data array \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} This is the length of the data array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the standard deviation of the data 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a2379cfa7f5aa54950428cf235c7f39eb}\label{classcalc_module_1_1_calc_module_internals_a2379cfa7f5aa54950428cf235c7f39eb} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!celsiusToFahrenheit@{celsiusToFahrenheit}}
+\index{celsiusToFahrenheit@{celsiusToFahrenheit}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{celsiusToFahrenheit()}{celsiusToFahrenheit()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::celsius\+To\+Fahrenheit (\begin{DoxyParamCaption}\item[{float}]{celsius }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Celsius to Fahrenheit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em celsius} & -\/\texorpdfstring{$>$}{>} This is the temperature in Celsius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the temperature in Fahrenheit 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a4515391b8fe3b715a63729564cd1994f}\label{classcalc_module_1_1_calc_module_internals_a4515391b8fe3b715a63729564cd1994f} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!celsiusToKelvin@{celsiusToKelvin}}
+\index{celsiusToKelvin@{celsiusToKelvin}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{celsiusToKelvin()}{celsiusToKelvin()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::celsius\+To\+Kelvin (\begin{DoxyParamCaption}\item[{float}]{celsius }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Celsius to Kelvin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em celsius} & -\/\texorpdfstring{$>$}{>} This is the temperature in Celsius \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the temperature in Kelvin 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a08e6c4dc40743d76c48475912b8db31c}\label{classcalc_module_1_1_calc_module_internals_a08e6c4dc40743d76c48475912b8db31c} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!fahrenheitToCelsius@{fahrenheitToCelsius}}
+\index{fahrenheitToCelsius@{fahrenheitToCelsius}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{fahrenheitToCelsius()}{fahrenheitToCelsius()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::fahrenheit\+To\+Celsius (\begin{DoxyParamCaption}\item[{float}]{fahrenheit }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Fahrenheit to Celsius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fahrenheit} & -\/\texorpdfstring{$>$}{>} This is the temperature in Fahrenheit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the temperature in Celsius 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a6f9869ce1a0a694396eb026a4c4ac4b6}\label{classcalc_module_1_1_calc_module_internals_a6f9869ce1a0a694396eb026a4c4ac4b6} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!findMaximum@{findMaximum}}
+\index{findMaximum@{findMaximum}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{findMaximum()}{findMaximum()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::find\+Maximum (\begin{DoxyParamCaption}\item[{const float \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{length }\end{DoxyParamCaption}) const}
+
+
+
+Function to find the Maximum value in the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} This is the data array \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} This is the length of the data array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the maximum value in the data 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_aaf783a8e0b610707742b0749e122b6af}\label{classcalc_module_1_1_calc_module_internals_aaf783a8e0b610707742b0749e122b6af} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!findMedian@{findMedian}}
+\index{findMedian@{findMedian}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{findMedian()}{findMedian()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::find\+Median (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{length }\end{DoxyParamCaption}) const}
+
+
+
+Function to find the Median of the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} This is the data array \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} This is the length of the data array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the median of the data 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_ae9c8f93e8ebcdaf702d837874503665a}\label{classcalc_module_1_1_calc_module_internals_ae9c8f93e8ebcdaf702d837874503665a} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!findMinimum@{findMinimum}}
+\index{findMinimum@{findMinimum}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{findMinimum()}{findMinimum()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::find\+Minimum (\begin{DoxyParamCaption}\item[{const float \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{length }\end{DoxyParamCaption}) const}
+
+
+
+Function to find the Minimum value in the given data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/\texorpdfstring{$>$}{>} This is the data array \\
+\hline
+{\em length} & -\/\texorpdfstring{$>$}{>} This is the length of the data array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flaot -\/\texorpdfstring{$>$}{>} This returns the minimum value in the data 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a1cece4ffdc89082586bd68997f945be7}\label{classcalc_module_1_1_calc_module_internals_a1cece4ffdc89082586bd68997f945be7} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!kelvinToCelsius@{kelvinToCelsius}}
+\index{kelvinToCelsius@{kelvinToCelsius}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{kelvinToCelsius()}{kelvinToCelsius()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::kelvin\+To\+Celsius (\begin{DoxyParamCaption}\item[{float}]{kelvin }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Kelvin to Celsius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kelvin} & -\/\texorpdfstring{$>$}{>} This is the temperature in Kelvin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the temperature in Celsius 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_add181cf939f443f48bf5239c11f1923b}\label{classcalc_module_1_1_calc_module_internals_add181cf939f443f48bf5239c11f1923b} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!pascalToAtm@{pascalToAtm}}
+\index{pascalToAtm@{pascalToAtm}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{pascalToAtm()}{pascalToAtm()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::pascal\+To\+Atm (\begin{DoxyParamCaption}\item[{float}]{pascal }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Pascal to Atmosphere. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pascal} & -\/\texorpdfstring{$>$}{>} This is the pressure in Pascal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the pressure in Atmosphere 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_aab3ab90d446357e511e6dc62e1f867ed}\label{classcalc_module_1_1_calc_module_internals_aab3ab90d446357e511e6dc62e1f867ed} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!pascalToPsi@{pascalToPsi}}
+\index{pascalToPsi@{pascalToPsi}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{pascalToPsi()}{pascalToPsi()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::pascal\+To\+Psi (\begin{DoxyParamCaption}\item[{float}]{pascal }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Pascal to Psi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pascal} & -\/\texorpdfstring{$>$}{>} This is the pressure in Pascal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the pressure in Psi 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_a65809d29bd92b92d65fa9555c5d0bd84}\label{classcalc_module_1_1_calc_module_internals_a65809d29bd92b92d65fa9555c5d0bd84} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!psiToPascal@{psiToPascal}}
+\index{psiToPascal@{psiToPascal}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{psiToPascal()}{psiToPascal()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::psi\+To\+Pascal (\begin{DoxyParamCaption}\item[{float}]{psi }\end{DoxyParamCaption}) const}
+
+
+
+Function to convert Psi to Pascal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em psi} & -\/\texorpdfstring{$>$}{>} This is the pressure in Psi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} This returns the pressure in Pascal 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/calc\+Module/\mbox{\hyperlink{calc_module_8h}{calc\+Module.\+h}}\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/calc\+Module/\mbox{\hyperlink{calc_module_8cpp}{calc\+Module.\+cpp}}\end{DoxyCompactItemize}

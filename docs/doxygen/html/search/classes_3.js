@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonmoduleinternals_0',['jsonModuleInternals',['../classjson_module_1_1json_module_internals.html',1,'jsonModule']]]
+  ['i2ccommunication_0',['I2CCommunication',['../classcom_module_1_1_i2_c_communication.html',1,'comModule']]]
 ];

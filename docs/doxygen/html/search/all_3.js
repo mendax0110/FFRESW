@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ethernetcommunication_0',['EthernetCommunication',['../classcom_module_1_1_ethernet_communication.html',1,'comModule']]]
+  ['datetimestruct_0',['DateTimeStruct',['../structtime_module_1_1_date_time_struct.html',1,'timeModule']]]
 ];

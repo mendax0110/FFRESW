@@ -14,15 +14,30 @@ Class to handle Ethernet communication.
 \item 
 void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afb82be4038217549f33e23b770d2ddd2}{begin\+Ethernet}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}mac\+Address, IPAddress ip)
 \begin{DoxyCompactList}\small\item\em Function to initialize the Ethernet communication. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a2df33631f4df0a52a5ed2f6e6944011b}{send\+Ethernet\+Data}} (const char \texorpdfstring{$\ast$}{*}data)
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538}{send\+Ethernet\+Data}} (const char \texorpdfstring{$\ast$}{*}endpoint, const char \texorpdfstring{$\ast$}{*}data)
 \begin{DoxyCompactList}\small\item\em Fucntion to send data over Ethernet. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acd785405cbfc3d168c1441e809a7cb9a}{receive\+Ethernet\+Data}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
 \begin{DoxyCompactList}\small\item\em Function to receive data over Ethernet. \end{DoxyCompactList}\item 
 \Hypertarget{classcom_module_1_1_ethernet_communication_a34849676fdb201d44ecb9f42a485615c}\label{classcom_module_1_1_ethernet_communication_a34849676fdb201d44ecb9f42a485615c} 
 void {\bfseries handle\+Ethernet\+Client} ()
 \begin{DoxyCompactList}\small\item\em Function to handle the Ethernet client. \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_ab20e63e3e37785530d60eed7c41cfeab}\label{classcom_module_1_1_ethernet_communication_ab20e63e3e37785530d60eed7c41cfeab} 
+String {\bfseries get\+Requested\+Endpoint} ()
+\begin{DoxyCompactList}\small\item\em Function to get the requested endpoint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28}{send\+Json\+Response}} (const String \&json\+Body)
+\begin{DoxyCompactList}\small\item\em Function to send the json response with the measurment data. \end{DoxyCompactList}\item 
+Ethernet\+Client \& \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da}{get\+Client}} ()
+\begin{DoxyCompactList}\small\item\em Get the currently active Ethernet client. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}{is\+Initialized}} ()
-\begin{DoxyCompactList}\small\item\em Function to check if the Ethernet communication is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to check if the Ethernet communication is initialized. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1}{get\+Send\+Data\+Flag}} () const
+\begin{DoxyCompactList}\small\item\em Function to get the current status of the flag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5}{set\+Send\+Data\+Flag}} (bool flag)
+\begin{DoxyCompactList}\small\item\em Function to get the current status of the flag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ac80c0f804308233fa839e1d3914da7ef}{set\+Compound}} (ID id, int index, String value)
+\begin{DoxyCompactList}\small\item\em Function to handle set the compound command for the valve uC Slave. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab2cb5305375ebcf4f6a5ae8884bd5121}{get\+Compound}} (ID id, int index)
+\begin{DoxyCompactList}\small\item\em Function to handle get the compound command for the valve uC Slave. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -46,6 +61,52 @@ Function to initialize the Ethernet communication.
 {\em ip} & -\/\texorpdfstring{$>$}{>} The IP address to use for the Ethernet communication \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da}\label{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getClient@{getClient}}
+\index{getClient@{getClient}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{getClient()}{getClient()}}
+{\footnotesize\ttfamily Ethernet\+Client \& Ethernet\+Communication\+::get\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the currently active Ethernet client. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the active Ethernet client 
+\end{DoxyReturn}
+\Hypertarget{classcom_module_1_1_ethernet_communication_ab2cb5305375ebcf4f6a5ae8884bd5121}\label{classcom_module_1_1_ethernet_communication_ab2cb5305375ebcf4f6a5ae8884bd5121} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getCompound@{getCompound}}
+\index{getCompound@{getCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{getCompound()}{getCompound()}}
+{\footnotesize\ttfamily String Ethernet\+Communication\+::get\+Compound (\begin{DoxyParamCaption}\item[{ID}]{id,  }\item[{int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Function to handle get the compound command for the valve uC Slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & -\/\texorpdfstring{$>$}{>} id of the command \\
+\hline
+{\em index} & -\/\texorpdfstring{$>$}{>} actual index of the command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+response -\/\texorpdfstring{$>$}{>} string with the response of valve uC slave 
+\end{DoxyReturn}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1}\label{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getSendDataFlag@{getSendDataFlag}}
+\index{getSendDataFlag@{getSendDataFlag}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{getSendDataFlag()}{getSendDataFlag()}}
+{\footnotesize\ttfamily bool Ethernet\+Communication\+::get\+Send\+Data\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to get the current status of the flag. 
+
+\begin{DoxyReturn}{Returns}
+send\+Data\+Flag -\/\texorpdfstring{$>$}{>} true if data should be sent, false otherwise 
+\end{DoxyReturn}
 \Hypertarget{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}\label{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!isInitialized@{isInitialized}}
 \index{isInitialized@{isInitialized}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
@@ -76,11 +137,11 @@ Function to receive data over Ethernet.
 {\em length} & -\/\texorpdfstring{$>$}{>} The length of the data to read \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classcom_module_1_1_ethernet_communication_a2df33631f4df0a52a5ed2f6e6944011b}\label{classcom_module_1_1_ethernet_communication_a2df33631f4df0a52a5ed2f6e6944011b} 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538}\label{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!sendEthernetData@{sendEthernetData}}
 \index{sendEthernetData@{sendEthernetData}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
 \doxysubsubsection{\texorpdfstring{sendEthernetData()}{sendEthernetData()}}
-{\footnotesize\ttfamily void Ethernet\+Communication\+::send\+Ethernet\+Data (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::send\+Ethernet\+Data (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{endpoint,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
 
 
 
@@ -88,7 +149,58 @@ Fucntion to send data over Ethernet.
 
 
 \begin{DoxyParams}{Parameters}
+{\em endpoint} & -\/\texorpdfstring{$>$}{>} endpoint to send data to \\
+\hline
 {\em data} & -\/\texorpdfstring{$>$}{>} The data to send \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28}\label{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!sendJsonResponse@{sendJsonResponse}}
+\index{sendJsonResponse@{sendJsonResponse}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{sendJsonResponse()}{sendJsonResponse()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::send\+Json\+Response (\begin{DoxyParamCaption}\item[{const String \&}]{json\+Body }\end{DoxyParamCaption})}
+
+
+
+Function to send the json response with the measurment data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Body} & -\/\texorpdfstring{$>$}{>} jsonstring with the content needed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_ac80c0f804308233fa839e1d3914da7ef}\label{classcom_module_1_1_ethernet_communication_ac80c0f804308233fa839e1d3914da7ef} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setCompound@{setCompound}}
+\index{setCompound@{setCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{setCompound()}{setCompound()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Compound (\begin{DoxyParamCaption}\item[{ID}]{id,  }\item[{int}]{index,  }\item[{String}]{value }\end{DoxyParamCaption})}
+
+
+
+Function to handle set the compound command for the valve uC Slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & -\/\texorpdfstring{$>$}{>} id of the command \\
+\hline
+{\em index} & -\/\texorpdfstring{$>$}{>} actual index of the command \\
+\hline
+{\em value} & -\/\texorpdfstring{$>$}{>} value of the command \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5}\label{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setSendDataFlag@{setSendDataFlag}}
+\index{setSendDataFlag@{setSendDataFlag}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{setSendDataFlag()}{setSendDataFlag()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Send\+Data\+Flag (\begin{DoxyParamCaption}\item[{bool}]{flag }\end{DoxyParamCaption})}
+
+
+
+Function to get the current status of the flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & -\/\texorpdfstring{$>$}{>} set the flag to true if data sent, false otherwise \\
 \hline
 \end{DoxyParams}
 

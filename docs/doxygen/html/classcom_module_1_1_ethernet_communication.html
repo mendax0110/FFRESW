@@ -90,9 +90,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afb82be4038217549f33e23b770d2ddd2" id="r_afb82be4038217549f33e23b770d2ddd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#afb82be4038217549f33e23b770d2ddd2">beginEthernet</a> (uint8_t *macAddress, IPAddress ip)</td></tr>
 <tr class="memdesc:afb82be4038217549f33e23b770d2ddd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the Ethernet communication.  <br /></td></tr>
 <tr class="separator:afb82be4038217549f33e23b770d2ddd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2df33631f4df0a52a5ed2f6e6944011b" id="r_a2df33631f4df0a52a5ed2f6e6944011b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a2df33631f4df0a52a5ed2f6e6944011b">sendEthernetData</a> (const char *data)</td></tr>
-<tr class="memdesc:a2df33631f4df0a52a5ed2f6e6944011b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fucntion to send data over Ethernet.  <br /></td></tr>
-<tr class="separator:a2df33631f4df0a52a5ed2f6e6944011b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d1f0fa97f7dc17f30d94ec82a931538" id="r_a6d1f0fa97f7dc17f30d94ec82a931538"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a6d1f0fa97f7dc17f30d94ec82a931538">sendEthernetData</a> (const char *endpoint, const char *data)</td></tr>
+<tr class="memdesc:a6d1f0fa97f7dc17f30d94ec82a931538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fucntion to send data over Ethernet.  <br /></td></tr>
+<tr class="separator:a6d1f0fa97f7dc17f30d94ec82a931538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd785405cbfc3d168c1441e809a7cb9a" id="r_acd785405cbfc3d168c1441e809a7cb9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#acd785405cbfc3d168c1441e809a7cb9a">receiveEthernetData</a> (char *buffer, size_t length)</td></tr>
 <tr class="memdesc:acd785405cbfc3d168c1441e809a7cb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to receive data over Ethernet.  <br /></td></tr>
 <tr class="separator:acd785405cbfc3d168c1441e809a7cb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,9 +100,31 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEthernetClient</b> ()</td></tr>
 <tr class="memdesc:a34849676fdb201d44ecb9f42a485615c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to handle the Ethernet client. <br /></td></tr>
 <tr class="separator:a34849676fdb201d44ecb9f42a485615c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20e63e3e37785530d60eed7c41cfeab" id="r_ab20e63e3e37785530d60eed7c41cfeab"><td class="memItemLeft" align="right" valign="top"><a id="ab20e63e3e37785530d60eed7c41cfeab" name="ab20e63e3e37785530d60eed7c41cfeab"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>getRequestedEndpoint</b> ()</td></tr>
+<tr class="memdesc:ab20e63e3e37785530d60eed7c41cfeab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the requested endpoint. <br /></td></tr>
+<tr class="separator:ab20e63e3e37785530d60eed7c41cfeab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0864bfc933c0d309dd45c0fc75473a28" id="r_a0864bfc933c0d309dd45c0fc75473a28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a0864bfc933c0d309dd45c0fc75473a28">sendJsonResponse</a> (const String &amp;jsonBody)</td></tr>
+<tr class="memdesc:a0864bfc933c0d309dd45c0fc75473a28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to send the json response with the measurment data.  <br /></td></tr>
+<tr class="separator:a0864bfc933c0d309dd45c0fc75473a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab16fc4b937776e6ca6c8f4091fb3b3da" id="r_ab16fc4b937776e6ca6c8f4091fb3b3da"><td class="memItemLeft" align="right" valign="top">EthernetClient &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ab16fc4b937776e6ca6c8f4091fb3b3da">getClient</a> ()</td></tr>
+<tr class="memdesc:ab16fc4b937776e6ca6c8f4091fb3b3da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently active Ethernet client.  <br /></td></tr>
+<tr class="separator:ab16fc4b937776e6ca6c8f4091fb3b3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8665d09bbbc4328829a885b01df53994" id="r_a8665d09bbbc4328829a885b01df53994"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a8665d09bbbc4328829a885b01df53994">isInitialized</a> ()</td></tr>
 <tr class="memdesc:a8665d09bbbc4328829a885b01df53994"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if the Ethernet communication is initialized.  <br /></td></tr>
 <tr class="separator:a8665d09bbbc4328829a885b01df53994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a425bbda1daf74f15c3b7dbfa0909bac1" id="r_a425bbda1daf74f15c3b7dbfa0909bac1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a425bbda1daf74f15c3b7dbfa0909bac1">getSendDataFlag</a> () const</td></tr>
+<tr class="memdesc:a425bbda1daf74f15c3b7dbfa0909bac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the current status of the flag.  <br /></td></tr>
+<tr class="separator:a425bbda1daf74f15c3b7dbfa0909bac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3fa3e2fa2f8e14904d659ec8a608e5" id="r_acb3fa3e2fa2f8e14904d659ec8a608e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#acb3fa3e2fa2f8e14904d659ec8a608e5">setSendDataFlag</a> (bool flag)</td></tr>
+<tr class="memdesc:acb3fa3e2fa2f8e14904d659ec8a608e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the current status of the flag.  <br /></td></tr>
+<tr class="separator:acb3fa3e2fa2f8e14904d659ec8a608e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac80c0f804308233fa839e1d3914da7ef" id="r_ac80c0f804308233fa839e1d3914da7ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ac80c0f804308233fa839e1d3914da7ef">setCompound</a> (ID id, int index, String value)</td></tr>
+<tr class="memdesc:ac80c0f804308233fa839e1d3914da7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to handle set the compound command for the valve uC Slave.  <br /></td></tr>
+<tr class="separator:ac80c0f804308233fa839e1d3914da7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2cb5305375ebcf4f6a5ae8884bd5121" id="r_ab2cb5305375ebcf4f6a5ae8884bd5121"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ab2cb5305375ebcf4f6a5ae8884bd5121">getCompound</a> (ID id, int index)</td></tr>
+<tr class="memdesc:ab2cb5305375ebcf4f6a5ae8884bd5121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to handle get the compound command for the valve uC Slave.  <br /></td></tr>
+<tr class="separator:ab2cb5305375ebcf4f6a5ae8884bd5121"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to handle Ethernet communication. </p>
@@ -141,6 +163,84 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEthernetClient<
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab16fc4b937776e6ca6c8f4091fb3b3da" name="ab16fc4b937776e6ca6c8f4091fb3b3da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab16fc4b937776e6ca6c8f4091fb3b3da">&#9670;&#160;</a></span>getClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EthernetClient &amp; EthernetCommunication::getClient </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the currently active Ethernet client. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the active Ethernet client </dd></dl>
+
+</div>
+</div>
+<a id="ab2cb5305375ebcf4f6a5ae8884bd5121" name="ab2cb5305375ebcf4f6a5ae8884bd5121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2cb5305375ebcf4f6a5ae8884bd5121">&#9670;&#160;</a></span>getCompound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String EthernetCommunication::getCompound </td>
+          <td>(</td>
+          <td class="paramtype">ID&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to handle get the compound command for the valve uC Slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>-&gt; id of the command </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; actual index of the command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>response -&gt; string with the response of valve uC slave </dd></dl>
+
+</div>
+</div>
+<a id="a425bbda1daf74f15c3b7dbfa0909bac1" name="a425bbda1daf74f15c3b7dbfa0909bac1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a425bbda1daf74f15c3b7dbfa0909bac1">&#9670;&#160;</a></span>getSendDataFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EthernetCommunication::getSendDataFlag </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the current status of the flag. </p>
+<dl class="section return"><dt>Returns</dt><dd>sendDataFlag -&gt; true if data should be sent, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -201,8 +301,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEthernetClient<
 
 </div>
 </div>
-<a id="a2df33631f4df0a52a5ed2f6e6944011b" name="a2df33631f4df0a52a5ed2f6e6944011b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2df33631f4df0a52a5ed2f6e6944011b">&#9670;&#160;</a></span>sendEthernetData()</h2>
+<a id="a6d1f0fa97f7dc17f30d94ec82a931538" name="a6d1f0fa97f7dc17f30d94ec82a931538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d1f0fa97f7dc17f30d94ec82a931538">&#9670;&#160;</a></span>sendEthernetData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,8 +311,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEthernetClient<
           <td class="memname">void EthernetCommunication::sendEthernetData </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramname"><em>endpoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -220,7 +330,104 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEthernetClient<
 <p>Fucntion to send data over Ethernet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">endpoint</td><td>-&gt; endpoint to send data to </td></tr>
     <tr><td class="paramname">data</td><td>-&gt; The data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0864bfc933c0d309dd45c0fc75473a28" name="a0864bfc933c0d309dd45c0fc75473a28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0864bfc933c0d309dd45c0fc75473a28">&#9670;&#160;</a></span>sendJsonResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EthernetCommunication::sendJsonResponse </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;&#160;</td>
+          <td class="paramname"><em>jsonBody</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to send the json response with the measurment data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jsonBody</td><td>-&gt; jsonstring with the content needed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac80c0f804308233fa839e1d3914da7ef" name="ac80c0f804308233fa839e1d3914da7ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac80c0f804308233fa839e1d3914da7ef">&#9670;&#160;</a></span>setCompound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EthernetCommunication::setCompound </td>
+          <td>(</td>
+          <td class="paramtype">ID&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to handle set the compound command for the valve uC Slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>-&gt; id of the command </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; actual index of the command </td></tr>
+    <tr><td class="paramname">value</td><td>-&gt; value of the command </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acb3fa3e2fa2f8e14904d659ec8a608e5" name="acb3fa3e2fa2f8e14904d659ec8a608e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3fa3e2fa2f8e14904d659ec8a608e5">&#9670;&#160;</a></span>setSendDataFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EthernetCommunication::setSendDataFlag </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the current status of the flag. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>-&gt; set the flag to true if data sent, false otherwise </td></tr>
   </table>
   </dd>
 </dl>

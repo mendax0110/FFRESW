@@ -16,13 +16,14 @@ void \mbox{\hyperlink{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a
 \begin{DoxyCompactList}\small\item\em Function to log an error message with a timestamp. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063}{check\+System\+Health}} (size\+\_\+t memory\+Threshold)
 \begin{DoxyCompactList}\small\item\em Function to check the system health. \end{DoxyCompactList}\item 
-\Hypertarget{classreport_system_1_1_report_system_aab1319dcbb3060ee1148ce42a2e686e2}\label{classreport_system_1_1_report_system_aab1319dcbb3060ee1148ce42a2e686e2} 
-void {\bfseries report\+Status} ()
+String \mbox{\hyperlink{classreport_system_1_1_report_system_a54bb251b1cc2445490fee0593507b96f}{report\+Status}} ()
 \begin{DoxyCompactList}\small\item\em Function to report the status of the pressure and temperature thresholds. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}{set\+Threshold}} (float temp\+Threshold, float pressure\+Threshold)
 \begin{DoxyCompactList}\small\item\em Function to set the temperature and pressure thresholds. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b}{check\+Thresholds}} (float current\+Temp, float current\+Pressure)
-\begin{DoxyCompactList}\small\item\em Function to check if the current temperature and pressure exceed the thresholds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to check if the current temperature and pressure exceed the thresholds. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9}{get\+Current\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Function to get the current time in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -62,6 +63,19 @@ Function to check if the current temperature and pressure exceed the thresholds.
 \begin{DoxyReturn}{Returns}
 -\/\texorpdfstring{$>$}{>} This returns true if the thresholds are not exceeded, false otherwise 
 \end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9}\label{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!getCurrentTime@{getCurrentTime}}
+\index{getCurrentTime@{getCurrentTime}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{getCurrentTime()}{getCurrentTime()}}
+{\footnotesize\ttfamily String Report\+System\+::get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to get the current time in milliseconds. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} This returns the current time in milliseconds as a string 
+\end{DoxyReturn}
 \Hypertarget{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}\label{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!logError@{logError}}
 \index{logError@{logError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -77,6 +91,19 @@ Function to log an error message with a timestamp.
 {\em error\+Message} & -\/\texorpdfstring{$>$}{>} This is the error message to log \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classreport_system_1_1_report_system_a54bb251b1cc2445490fee0593507b96f}\label{classreport_system_1_1_report_system_a54bb251b1cc2445490fee0593507b96f} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!reportStatus@{reportStatus}}
+\index{reportStatus@{reportStatus}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{reportStatus()}{reportStatus()}}
+{\footnotesize\ttfamily String Report\+System\+::report\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to report the status of the pressure and temperature thresholds. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} String with the Information about the status 
+\end{DoxyReturn}
 \Hypertarget{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}\label{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!setThreshold@{setThreshold}}
 \index{setThreshold@{setThreshold}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}

@@ -70,7 +70,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">comModule Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -80,8 +81,7 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1com_module_internals.html">comModuleInternals</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for the communication module internals.  <a href="classcom_module_1_1com_module_internals.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_com_module_internals.html">ComModuleInternals</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html">EthernetCommunication</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to handle Ethernet communication.  <a href="classcom_module_1_1_ethernet_communication.html#details">More...</a><br /></td></tr>
@@ -95,6 +95,29 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_s_p_i_communication.html">SPICommunication</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to handle SPI communication.  <a href="classcom_module_1_1_s_p_i_communication.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ab6d1e37a46d4d4b41597a4d0259189c4" id="r_ab6d1e37a46d4d4b41597a4d0259189c4"><td class="memItemLeft" align="right" valign="top"><a id="ab6d1e37a46d4d4b41597a4d0259189c4" name="ab6d1e37a46d4d4b41597a4d0259189c4"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>service</b> { <b>SET</b> = 28
+, <b>GET</b> = 29
+, <b>SETGET</b> = 30
+ }</td></tr>
+<tr class="separator:ab6d1e37a46d4d4b41597a4d0259189c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed8e718f7a3774c812fc6869c82cd22a" id="r_aed8e718f7a3774c812fc6869c82cd22a"><td class="memItemLeft" align="right" valign="top"><a id="aed8e718f7a3774c812fc6869c82cd22a" name="aed8e718f7a3774c812fc6869c82cd22a"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>ID</b> : unsigned long { <br />
+&#160;&#160;<b>ACCESS_MODE</b> = 0x0F0B0000
+, <b>CONTROL_MODE</b> = 0x0F020000
+, <b>ACTUAL_POSITION</b> = 0x10010000
+, <b>TARGET_POSITION</b> = 0x11020000
+, <br />
+&#160;&#160;<b>TARGET_PRESSURE</b> = 0x07020000
+, <b>POSITION_STATE</b> = 0x00100000
+, <b>ACTUAL_PRESSURE</b> = 0x07010000
+, <b>TARGET_PRESSURE_USED</b> = 0x07030000
+, <br />
+&#160;&#160;<b>WARNING_BITMAP</b> = 0x0F300100
+<br />
+ }</td></tr>
+<tr class="separator:aed8e718f7a3774c812fc6869c82cd22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace for the communication module. </p>

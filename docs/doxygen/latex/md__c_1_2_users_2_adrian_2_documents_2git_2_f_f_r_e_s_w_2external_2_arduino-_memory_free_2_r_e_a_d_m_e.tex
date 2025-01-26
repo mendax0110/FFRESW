@@ -1,0 +1,84 @@
+\chapter{Arduino library for Measuring and use less Free RAM}
+\hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e}{}\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e}\index{Arduino library for Measuring and use less Free RAM@{Arduino library for Measuring and use less Free RAM}}
+\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md0}%
+ This Library was written for the Arduino to both measure available RAM and use less RAM
+
+Did you know that the Arduino\textquotesingle{}s built in serial.\+print() of a constant char array
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Serial.Print(\textcolor{stringliteral}{"{}Hello"{}});}
+
+\end{DoxyCode}
+
+
+Actually allocates the "{}\+Hello"{} into a unique space of RAM, not just Flash. Hence every such occurrence of serial print of a constant string uses more and more RAM. Until you are out. And there is only 2K of RAM on the ATmega328. This is likely why you don\textquotesingle{}t see many examples with a lot of debug prints.
+
+That said there is hope, use the "{}\+F()"{} function. Now natively supported in the IDE \texorpdfstring{$>$}{>} 1.\+0.\+0. Same concept applies.
+
+Previously, I have both been suggested and found several work-\/a-\/rounds all similar in forcing the char array to be read directly from memory at print time. This can be done using some not as obvious AVR Libc commands provided with avr/pgmspace.\+h. Where the pgm\+Str\+To\+RAM library provides a simplified library to do such.
+
+Additionally the companion library Memory\+Free is very useful in determining how much RAM is being used or left. Don\textquotesingle{}t wonder or guess. I find it good practice to always dump it during setup to see the global static usage. Just in case.\hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Download the Library \href{https://github.com/mpflaga/Arduino-MemoryFree.git}{\texttt{ https\+://github.\+com/mpflaga/\+Arduino-\/\+Memory\+Free.\+git}}
+\item It will contain the following to be placed into corresponding library directories\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.\(\backslash\)pgmStrToRAM\(\backslash\)MemoryFree.cpp}
+\DoxyCodeLine{.\(\backslash\)pgmStrToRAM\(\backslash\)MemoryFree.h}
+\DoxyCodeLine{.\(\backslash\)pgmStrToRAM\(\backslash\)pgmStrToRAM.cpp}
+\DoxyCodeLine{.\(\backslash\)pgmStrToRAM\(\backslash\)pgmStrToRAM.h}
+\DoxyCodeLine{.\(\backslash\)pgmStrToRAM\(\backslash\)examples\(\backslash\)BareMinimum\(\backslash\)BareMinimum.ino</pre>}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Place the pgm\+Str\+To\+RAM directory folder and contents into your arduino library folder, if the libraries folder does not exist -\/ create it first!
+\item Restart the IDE
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Example Usage}{Example Usage}}\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md2}
+Bare\+Minimum.\+ino is a example of usage that both demonstrates how to print out the current available memory at the time the free\+Memory() is executed along with how to using get\+PSTR("{}hello"{}) to put the "{}hello"{} into Flash without using any static RAM.
+
+include the desired library(s) at the beginning of sketch
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <MemoryFree.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <pgmStrToRAM.h>}}
+
+\end{DoxyCode}
+
+
+then at the desired location
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Serial.println(getPSTR(\textcolor{stringliteral}{"{}Old\ way\ to\ force\ String\ to\ Flash"{}}));}
+\DoxyCodeLine{Serial.println(F(\textcolor{stringliteral}{"{}New\ way\ to\ force\ String\ to\ Flash"{}}));}
+\DoxyCodeLine{Serial.println(F(\textcolor{stringliteral}{"{}Free\ RAM\ =\ "{}}));}
+
+\end{DoxyCode}
+
+
+Please note that the memory is dynamic and always changing. Where Static Global Variables and Members~ create a base minimum of usage that can typically be read at setup(). When functions and routines dive deeper into the stack more memory will be dynamically consumed and released. So there needs to be a margin from completely running out.\hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Back Ground}{Back Ground}}\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md3}
+Based on my tests I see that Serial.\+Print of actual variables e.\+g. Serial.\+Print( (int8\+\_\+t) value, DEC); Does not increase RAM usage for each occurrence. However it would appear that overloaded object member of an char array (e.\+i. const string) creates a unique location in static RAM and definitely does not share it. As one might think or expect.
+
+A more indepth look at avr-\/libc and its features can be found at \href{http://www.nongnu.org/avr-libc/user-manual/pgmspace.html}{\texttt{ http\+://www.\+nongnu.\+org/avr-\/libc/user-\/manual/pgmspace.\+html}}\hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{Alternatives}{Alternatives}}\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md4}
+It is worth noting that there are many other sources of equivalent methods. Although note widely known. One such alternative is "{}\+Sd\+FATlib"{} found at \href{http://code.google.com/p/sdfatlib/}{\texttt{ http\+://code.\+google.\+com/p/sdfatlib/}} library file called Sd\+Fat\+Util.\+h
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <SdFat.h>}\ \ \textcolor{comment}{//\ required}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <SdFatUtil.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{PgmPrint(\textcolor{stringliteral}{"{}Free\ RAM:\ "{}});}
+\DoxyCodeLine{Serial.println(FreeRam());}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{Gratitude}{Gratitude}}\label{md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e_autotoc_md5}
+Special Thanks to Grey\+Gnome, William Greiman and others for providing the example this is based off. 

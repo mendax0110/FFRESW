@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['megunolinkconnector_0',['MegUnoLinkConnector',['../classmeg_uno_link_connector_1_1_meg_uno_link_connector.html',1,'megUnoLinkConnector']]]
+  ['jsonmoduleinternals_0',['jsonmoduleinternals',['../classjson_module_1_1_json_module_internals.html',1,'jsonModule::JsonModuleInternals'],['../classjson_module_internals.html',1,'jsonModuleInternals']]]
 ];

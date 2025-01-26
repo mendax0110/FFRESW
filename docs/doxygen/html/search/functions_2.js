@@ -1,18 +1,20 @@
 var searchData=
 [
-  ['calculateaverage_0',['calculateAverage',['../classcalc_module_1_1calc_module_internals.html#a870f6549285008487a2e52bff8afe414',1,'calcModule::calcModuleInternals']]],
-  ['calculatecurrent_1',['calculateCurrent',['../classcalc_module_1_1calc_module_internals.html#ab6bd9760214929c2c325bbfddb86d3f5',1,'calcModule::calcModuleInternals']]],
-  ['calculatepower_2',['calculatePower',['../classcalc_module_1_1calc_module_internals.html#a486803b9959a02bf2fd5dfcbcf6b1bcb',1,'calcModule::calcModuleInternals']]],
-  ['calculateresistance_3',['calculateResistance',['../classcalc_module_1_1calc_module_internals.html#ae91753b07529b7f66a44ab77eb2b2227',1,'calcModule::calcModuleInternals']]],
-  ['calculatestandarddeviation_4',['calculateStandardDeviation',['../classcalc_module_1_1calc_module_internals.html#a641657e2ef0290cf4bd036b19c312ac5',1,'calcModule::calcModuleInternals']]],
+  ['calculateaverage_0',['calculateAverage',['../classcalc_module_1_1_calc_module_internals.html#a0b2363d0f60261f8e8f3d60975044275',1,'calcModule::CalcModuleInternals']]],
+  ['calculatecurrent_1',['calculateCurrent',['../classcalc_module_1_1_calc_module_internals.html#ac7e3306b3085e1ded6a83a158bbdf066',1,'calcModule::CalcModuleInternals']]],
+  ['calculatepower_2',['calculatePower',['../classcalc_module_1_1_calc_module_internals.html#aa5f48a9c93c857ac13fe905af7430fc3',1,'calcModule::CalcModuleInternals']]],
+  ['calculateresistance_3',['calculateResistance',['../classcalc_module_1_1_calc_module_internals.html#ac227567c84df19a0f3f67e6ea3729cf4',1,'calcModule::CalcModuleInternals']]],
+  ['calculatestandarddeviation_4',['calculateStandardDeviation',['../classcalc_module_1_1_calc_module_internals.html#a4f7402f613bfbfeb8fd197b1b72b2946',1,'calcModule::CalcModuleInternals']]],
   ['calibratesensor_5',['calibrateSensor',['../classsensor_module_1_1_sensor_module_internals.html#ae689f29c297c585012e60b58e2ce231b',1,'sensorModule::SensorModuleInternals']]],
-  ['celsiustofahrenheit_6',['celsiusToFahrenheit',['../classcalc_module_1_1calc_module_internals.html#a68c6506262812ea709dfa5d3462837ca',1,'calcModule::calcModuleInternals']]],
-  ['celsiustokelvin_7',['celsiusToKelvin',['../classcalc_module_1_1calc_module_internals.html#aa2cd523a36e0d6a06d974e16cb432a61',1,'calcModule::calcModuleInternals']]],
+  ['celsiustofahrenheit_6',['celsiusToFahrenheit',['../classcalc_module_1_1_calc_module_internals.html#a2379cfa7f5aa54950428cf235c7f39eb',1,'calcModule::CalcModuleInternals']]],
+  ['celsiustokelvin_7',['celsiusToKelvin',['../classcalc_module_1_1_calc_module_internals.html#a4515391b8fe3b715a63729564cd1994f',1,'calcModule::CalcModuleInternals']]],
   ['checksensorstatus_8',['checkSensorStatus',['../classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35',1,'sensorModule::SensorModuleInternals']]],
   ['checksystemhealth_9',['checkSystemHealth',['../classreport_system_1_1_report_system.html#aa74f255d5cf5240576d8f2d8ed5a3063',1,'reportSystem::ReportSystem']]],
   ['checkthresholds_10',['checkThresholds',['../classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b',1,'reportSystem::ReportSystem']]],
-  ['clearjson_11',['clearJson',['../classjson_module_1_1json_module_internals.html#a4e77caada2421b48e659a9f21d566b3b',1,'jsonModule::jsonModuleInternals']]],
-  ['createjson_12',['createJson',['../classjson_module_1_1json_module_internals.html#a4d97860b899d95f8c9794bb716437aea',1,'jsonModule::jsonModuleInternals']]],
-  ['createjsonfloat_13',['createJsonFloat',['../classjson_module_1_1json_module_internals.html#a6f72d5651b5a697da59e00c3dc974818',1,'jsonModule::jsonModuleInternals']]],
-  ['createjsonint_14',['createJsonInt',['../classjson_module_1_1json_module_internals.html#aad82854d6a1fdb808023cf5ce6ac99b3',1,'jsonModule::jsonModuleInternals']]]
+  ['clearjson_11',['clearJson',['../classjson_module_1_1_json_module_internals.html#ae922a06f5f6c6ee40bc9e7935411872a',1,'jsonModule::JsonModuleInternals']]],
+  ['createjson_12',['createJson',['../classjson_module_1_1_json_module_internals.html#ac90a51afe9450323b2ee16a768fbd172',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonfloat_13',['createJsonFloat',['../classjson_module_1_1_json_module_internals.html#a2fa2c3a5abda4b34a6103acdbf9ef39c',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonint_14',['createJsonInt',['../classjson_module_1_1_json_module_internals.html#a690ddb37bfc4489a038f4f14999147ff',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonstring_15',['createJsonString',['../classjson_module_1_1_json_module_internals.html#aed1fe1748ef1b57708f487e1451fc38c',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonstringconst_16',['createJsonStringConst',['../classjson_module_1_1_json_module_internals.html#a1175671245b303e09b035d2b76d88118',1,'jsonModule::JsonModuleInternals']]]
 ];
