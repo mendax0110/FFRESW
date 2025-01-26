@@ -68,12 +68,17 @@ class ReportTask final : public frt::Task<ReportTask, 200>
 public:
     bool run()
     {
-        if (!report.checkSystemHealth(1000))
+    	String status = report.reportStatus();
+
+        if (!report.checkSystemHealth(3000))
         {
         	printToSerial(F("Critical issue detected! Take action."));
         }
-        String status = report.reportStatus();
-        printToSerial(status);
+        else
+        {
+        	//printToSerial(status);
+        }
+
         msleep(2000);
         yield();
         return true;
@@ -173,8 +178,9 @@ public:
     }
 };
 
-// Task to try to send data to differnet endpoints like the rasperrypi
-// or wsl instances with python running
+// class to get sensor data from uC sensors, pack it into json and put it to the endpoints
+// currently usable with the WSL python script, soon also with HAS
+// TODO: PUT MEAS DATA INTO A QUEUE in order to combat timing issues and network delays
 class SensorAndJsonTask final : public frt::Task<SensorAndJsonTask, 2048>
 {
 public:
@@ -182,17 +188,29 @@ public:
     {
         msleep(500);
 
-        // Read sensor data
-        float temperatureAmb = sens.readSensor(SensorType::AMBIENTTEMPERATURE);
-        float temperatureObj = sens.readSensor(SensorType::OBJECTTEMPERATURE);
+        // Read the requested endpoint
+        String requestedEndpoint = com.eth.getRequestedEndpoint();
 
-        // Send sensor data
-        sendSensorData("temperature_sensor_1", temperatureAmb, "Celsius");
-        msleep(2000);
-        sendSensorData("temperature_sensor_2", temperatureObj, "Celsius");
-        msleep(2000);
+        if (requestedEndpoint.length() > 0)
+        {
+            String jsonBody;
 
-        com.eth.handleEthernetClient();
+            if (requestedEndpoint == "temperature_sensor_1")
+            {
+                float temperatureAmb = sens.readSensor(SensorType::AMBIENTTEMPERATURE);
+                jsonBody = buildJsonResponse("temperature_sensor_1", temperatureAmb, "Celsius");
+            }
+            else if (requestedEndpoint == "temperature_sensor_2")
+            {
+                float temperatureObj = sens.readSensor(SensorType::OBJECTTEMPERATURE);
+                jsonBody = buildJsonResponse("temperature_sensor_2", temperatureObj, "Celsius");
+            }
+
+            if (jsonBody.length() > 0)
+            {
+                com.eth.sendJsonResponse(jsonBody);
+            }
+        }
 
         yield();
 
@@ -200,7 +218,7 @@ public:
     }
 
 private:
-    void sendSensorData(const String& sensorName, float value, const String& unit)
+    String buildJsonResponse(const String& sensorName, float value, const String& unit)
     {
         String timestamp = getCurrentTimestamp();
 
@@ -211,37 +229,13 @@ private:
         json.createJsonStringConst("unit", unit);
         json.createJsonString("timestamp", timestamp);
 
-        // Get the serialized JSON string
-        String jsonString = json.getSerializedJsonString();
-
-        if (jsonString.length() > 0)
-        {
-            printToSerial(F("Prepared JSON:"));
-            printToSerial(jsonString);
-
-            if (com.eth.isInitialized())
-            {
-                // Send the data to the correct sensor endpoint
-                String endpoint = "http://192.168.1.3/" + sensorName;
-                com.eth.sendEthernetData(endpoint.c_str(), jsonString.c_str());
-                printToSerial(F("Sent JSON data over Ethernet."));
-            }
-            else
-            {
-                printToSerial(F("Ethernet not initialized."));
-            }
-        }
-        else
-        {
-            printToSerial(F("Error: JSON string is empty or failed to generate."));
-        }
+        return json.getJsonString();
     }
 
     String getCurrentTimestamp()
     {
-    	time.incrementTime(&currentTime);
-    	String formattedTime = time.formatTimeString(currentTime);
-    	return formattedTime;
+        time.incrementTime(&currentTime);
+        return time.formatTimeString(currentTime);
     }
 };
 
@@ -279,6 +273,7 @@ public:
     }
 };
 
+// Task to talk to and control the VAT uC as a slave, we are able to sen get/set data to handle data flows
 class VatTask final : public frt::Task<VatTask, 512>
 {
 public:
@@ -352,8 +347,8 @@ void setup()
     // Start tasks
     reportTask.start(1);
     sensorAndJsonTask.start(2);
-    timeTask.start(3);
-    flybackTask.start(3);
+    //timeTask.start(3);
+    //flybackTask.start(3);
 }
 
 void loop()

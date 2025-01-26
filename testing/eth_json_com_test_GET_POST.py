@@ -23,7 +23,6 @@ def connect_and_get_data(endpoint):
             request = f"GET {endpoint} HTTP/1.1\r\nHost: {TARGET_IP}\r\nConnection: close\r\n\r\n"
             s.sendall(request.encode('utf-8'))
 
-            # Receive response
             response = b""
             try:
                 while True:
@@ -39,14 +38,19 @@ def connect_and_get_data(endpoint):
             print(f"Raw Response from {endpoint}:")
             print(response_str)
 
-            # Check for valid JSON content
+            # Now check for JSON
             try:
                 json_start = response_str.find("{")
                 if json_start != -1:
-                    json_data = response_str[json_start:]
-                    parsed_json = json.loads(json_data)
+                    json_data = response_str[json_start:]  # Extract JSON body
+                    parsed_json = json.loads(json_data)    # Parse JSON
+
+                    # Display parsed JSON fields
                     print("\nParsed JSON Output:")
-                    print(json.dumps(parsed_json, indent=4))
+                    print(f"Sensor Name: {parsed_json.get('sensor_name', 'N/A')}")
+                    print(f"Value: {parsed_json.get('value', 'N/A')}")
+                    print(f"Unit: {parsed_json.get('unit', 'N/A')}")
+                    print(f"Timestamp: {parsed_json.get('timestamp', 'N/A')}")
                 else:
                     print("No JSON found in the response.")
             except json.JSONDecodeError as e:
@@ -56,6 +60,7 @@ def connect_and_get_data(endpoint):
         print(f"Connection error: {e}")
     except Exception as e:
         print(f"An error occurred: {e}")
+
 
 def main():
     while True:

@@ -41,8 +41,9 @@ namespace jsonModule
         void sendJsonSerial();
         void sendJsonEthernet(const char* endpoint);
 
-        String getSerializedJsonString() const;
-        std::map<String, double> mapJsonToDoubles(const String& rawJson);
+        String getJsonString() const;
+        // https://github.com/mike-matera/ArduinoSTL/issues/84
+        std::map<String, float> mapJsonToDoubles(const String& rawJson);
 
         void clearJson();
         void printJsonDocMemory();

@@ -21,7 +21,7 @@ JsonModuleInternals::JsonModuleInternals()
 
 JsonModuleInternals::~JsonModuleInternals()
 {
-
+	clearJson();
 }
 
 /// @brief Function to create a JSON object with a key-value pair
@@ -56,15 +56,17 @@ void JsonModuleInternals::createJsonString(const char* key, String& value)
 	jsonDoc[key] = value;
 }
 
+/// @brief Function to create a JSON object with a key-value pair
+/// @param key -> This is the key of the JSON object (const char*)
+/// @param value -> This is the value of the JSON object (const String)
 void JsonModuleInternals::createJsonStringConst(const char* key, const String& value)
 {
 	jsonDoc[key] = value;
 }
 
-
 /// @brief Function to get the JSON object as a string
 /// @return String -> This returns the JSON object as a string
-String JsonModuleInternals::getSerializedJsonString() const
+String JsonModuleInternals::getJsonString() const
 {
     String output;
     if (jsonDoc.size() == 0)
@@ -81,9 +83,9 @@ String JsonModuleInternals::getSerializedJsonString() const
 /// @brief Function to map the deserialzed jsondoc to the corresponding values
 /// @param const String& -> the rawJson
 /// @return std::map<String, double> -> a map with the values
-std::map<String, double> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
+std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
 {
-	std::map<String, double> resultMap;
+	std::map<String, float> resultMap;
 	DynamicJsonDocument doc(1024);
 	DeserializationError error = deserializeJson(doc, rawJson);
 
@@ -106,20 +108,15 @@ std::map<String, double> JsonModuleInternals::mapJsonToDoubles(const String& raw
 /// @brief Function to send the JSON object over Serial
 void JsonModuleInternals::sendJsonSerial()
 {
-    Serial.println(getSerializedJsonString());
+    Serial.println(getJsonString());
 }
 
-/// @brief Function to send the JSON object over Ethernet
-/*void JsonModuleInternals::sendJsonEthernet()
-{
-    comModule::ComModuleInternals comms;
-    comms.eth.sendEthernetData(getSerializedJsonString().c_str());
-}*/
+
 /// @brief Function to send the JSON object over Ethernet
 void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
 {
     comModule::ComModuleInternals comms;
-    comms.eth.sendEthernetData(endpoint, getSerializedJsonString().c_str());
+    comms.eth.sendEthernetData(endpoint, getJsonString().c_str());
 }
 
 

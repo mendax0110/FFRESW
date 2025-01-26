@@ -44,6 +44,10 @@ namespace comModule
 		void sendEthernetData(const char* endpoint, const char* data);
 		void receiveEthernetData(char* buffer, size_t length);
 		void handleEthernetClient();
+		String getRequestedEndpoint();
+		void sendJsonResponse(const String& jsonBody);
+
+		EthernetClient& getClient();
 
 		bool isInitialized();
 

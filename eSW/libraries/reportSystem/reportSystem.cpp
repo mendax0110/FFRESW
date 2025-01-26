@@ -10,6 +10,7 @@
  */
 
 #include "reportSystem.h"
+#include "ptrUtils.h"
 #include <Arduino.h>
 #include <time.h>
 #include <EEPROM.h>
@@ -21,9 +22,16 @@ using namespace reportSystem;
 extern frt::Mutex serialMutex;
 
 ReportSystem::ReportSystem() 
-    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0), _com(nullptr), _sens(nullptr) {}
+    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0), _com(nullptr), _sens(nullptr)
+{
 
-ReportSystem::~ReportSystem() {}
+}
+
+ReportSystem::~ReportSystem()
+{
+	tryDeletePtr(_sens)
+	tryDeletePtr(_com)
+}
 
 /// @brief Function to log an error message with a timestamp
 /// @param errorMessage -> This is the error message to log
@@ -119,12 +127,14 @@ String ReportSystem::getCurrentTime()
 bool ReportSystem::checkSensors()
 {
     // TODO: use sensor module to check sensor status
-	bool status = _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE) &&
-					_sens->checkSensorStatus(sensorModule::SensorType::PRESSURE);
-	if (status)
+	bool statusTemp = _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE);
+	//bool statusPress = _sens->checkSensorStatus(sensorModule::SensorType::PRESSURE);
+
+	if (statusTemp /*|| statusPress*/)
 	{
 		return true;
 	}
+	logError("temp or press sensor not init");
 	return false;
 }
 
@@ -138,6 +148,7 @@ bool ReportSystem::checkCommunication()
 	{
 		return true;
 	}
+	logError("eth init failed!");
     return false;
 }
 

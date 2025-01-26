@@ -11,7 +11,10 @@ SensorModuleInternals::SensorModuleInternals()
 {
 }
 
-SensorModuleInternals::~SensorModuleInternals() {}
+SensorModuleInternals::~SensorModuleInternals()
+{
+
+}
 
 /// @brief Function to initialize the sensor module 
 void SensorModuleInternals::beginSensor()

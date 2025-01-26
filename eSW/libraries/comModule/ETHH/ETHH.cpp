@@ -8,9 +8,15 @@
 
 using namespace comModule;
 
-EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(80) {}
+EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(80)
+{
 
-EthernetCommunication::~EthernetCommunication() {}
+}
+
+EthernetCommunication::~EthernetCommunication()
+{
+
+}
 
 /// @brief Function to initialize the Ethernet communication
 /// @param macAddress -> The MAC address to use for the Ethernet communication
@@ -43,6 +49,12 @@ bool EthernetCommunication::isInitialized()
 	return ethernetInitialized;
 }
 
+/// @brief Get the currently active Ethernet client
+/// @return Reference to the active Ethernet client
+EthernetClient& EthernetCommunication::getClient()
+{
+    return client;
+}
 
 /// @brief Function to receive data over Ethernet
 /// @param buffer -> The buffer to read the data into
@@ -55,6 +67,64 @@ void EthernetCommunication::receiveEthernetData(char* buffer, size_t length)
     {
         size_t bytesRead = client.readBytes(buffer, length);
         buffer[bytesRead] = '\0';
+    }
+}
+
+/// @brief Function to get the requested endpoint
+String EthernetCommunication::getRequestedEndpoint()
+{
+    EthernetClient newClient = server.available();
+    String requestedEndpoint = "";
+
+    if (newClient)
+    {
+        client = newClient;
+
+        if (client.connected())
+        {
+            char request[256] = {0};
+            int bytesRead = client.readBytesUntil('\n', request, sizeof(request) - 1);
+
+            if (bytesRead > 0)
+            {
+                String requestStr = String(request);
+                //Serial.println("Received request:");
+                //Serial.println(requestStr);
+
+                int startIdx = requestStr.indexOf("GET /") + 5;
+                int endIdx = requestStr.indexOf(" ", startIdx);
+
+                if (startIdx > 0 && endIdx > startIdx)
+                {
+                    requestedEndpoint = requestStr.substring(startIdx, endIdx);
+                    requestedEndpoint.trim();
+                }
+
+                client.println(F("HTTP/1.1 200 OK"));
+                client.println(F("Content-Type: application/json"));
+                client.println(F("Connection: close"));
+                client.println();
+            }
+        }
+    }
+
+    return requestedEndpoint;
+}
+
+/// @brief Function to send the json response with the measurment data
+/// @param jsonBody -> jsonstring with the content needed
+void EthernetCommunication::sendJsonResponse(const String& jsonBody)
+{
+    EthernetClient activeClient = getClient();
+
+    if (activeClient && activeClient.connected())
+    {
+        activeClient.println(jsonBody.c_str());
+        activeClient.stop();
+    }
+    else
+    {
+        Serial.println("Error: No active client to send JSON response.");
     }
 }
 
@@ -77,7 +147,7 @@ void EthernetCommunication::handleEthernetClient()
                 client.println(F("HTTP/1.1 200 OK"));
                 client.println(F("Content-Type: application/json"));
                 client.println(F("Connection: close"));
-                client.println(); // End of headers
+                client.println();
             }
         }
         client.stop();
