@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['ram_0',['Arduino library for Measuring and use less Free RAM',['../md__c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2external_2_arduino-_memory_free_2_r_e_a_d_m_e.html',1,'']]],
-  ['readdht11_1',['readDht11',['../class_temperature_sensor.html#addcfa56b09f57b6a95fd2a1f095183cb',1,'TemperatureSensor']]],
-  ['readmlx90614_2',['readMLX90614',['../class_temperature_sensor.html#a1451b93992827b96bba8a74ff859b231',1,'TemperatureSensor']]],
-  ['readpressure_3',['readPressure',['../class_pressure_sensor.html#ab0bd12c02afc64805c6cbde843678697',1,'PressureSensor']]],
-  ['readsensor_4',['readSensor',['../classsensor_module_1_1_sensor_module_internals.html#a681ac7bd1854acb7ee314d5862dfda04',1,'sensorModule::SensorModuleInternals']]],
-  ['readtemperature_5',['readTemperature',['../class_temperature_sensor.html#a95c71f6f2640c48eca73a803e3bf57c3',1,'TemperatureSensor']]],
-  ['receiveethernetdata_6',['receiveEthernetData',['../classcom_module_1_1_ethernet_communication.html#acd785405cbfc3d168c1441e809a7cb9a',1,'comModule::EthernetCommunication']]],
-  ['receiveserialdata_7',['receiveSerialData',['../classcom_module_1_1_serial_communication.html#a1453d280f43560fc18f9f0ac1896753d',1,'comModule::SerialCommunication']]],
-  ['reportstatus_8',['reportStatus',['../classreport_system_1_1_report_system.html#a54bb251b1cc2445490fee0593507b96f',1,'reportSystem::ReportSystem']]],
-  ['reportsystem_9',['reportsystem',['../classreport_system_1_1_report_system.html',1,'reportSystem::ReportSystem'],['../namespacereport_system.html',1,'reportSystem']]],
-  ['reportsystem_2ecpp_10',['reportSystem.cpp',['../report_system_8cpp.html',1,'']]],
-  ['reportsystem_2eh_11',['reportSystem.h',['../report_system_8h.html',1,'']]]
+  ['scopedpointer_0',['ScopedPointer',['../class_scoped_pointer.html',1,'']]],
+  ['sendethernetdata_1',['sendEthernetData',['../classcom_module_1_1_ethernet_communication.html#a6d1f0fa97f7dc17f30d94ec82a931538',1,'comModule::EthernetCommunication']]],
+  ['sendjsonethernet_2',['sendJsonEthernet',['../classjson_module_1_1_json_module_internals.html#a8da80a14c28f5b836539efdd543fee28',1,'jsonModule::JsonModuleInternals']]],
+  ['sendjsonresponse_3',['sendJsonResponse',['../classcom_module_1_1_ethernet_communication.html#a0864bfc933c0d309dd45c0fc75473a28',1,'comModule::EthernetCommunication']]],
+  ['sendjsonserial_4',['sendJsonSerial',['../classjson_module_1_1_json_module_internals.html#a243336f24f5de5f88c5a79dd57b6a1d6',1,'jsonModule::JsonModuleInternals']]],
+  ['sendserialdata_5',['sendSerialData',['../classcom_module_1_1_serial_communication.html#a088e158cfbbb6bc3b80ce9a8c440ca9e',1,'comModule::SerialCommunication']]],
+  ['sensormodule_6',['sensorModule',['../namespacesensor_module.html',1,'']]],
+  ['sensormodule_2eh_7',['sensorModule.h',['../sensor_module_8h.html',1,'']]],
+  ['sensormoduleinternals_8',['SensorModuleInternals',['../classsensor_module_1_1_sensor_module_internals.html',1,'sensorModule']]],
+  ['sensortype_9',['SensorType',['../namespacesensor_module.html#adb7efb20711d66ac689cf4a8d2b8cc8b',1,'sensorModule']]],
+  ['serialcommunication_10',['SerialCommunication',['../classcom_module_1_1_serial_communication.html',1,'comModule']]],
+  ['serialmenu_11',['SerialMenu',['../class_serial_menu.html',1,'']]],
+  ['setcompound_12',['setCompound',['../classcom_module_1_1_ethernet_communication.html#ac80c0f804308233fa839e1d3914da7ef',1,'comModule::EthernetCommunication']]],
+  ['setsenddataflag_13',['setSendDataFlag',['../classcom_module_1_1_ethernet_communication.html#acb3fa3e2fa2f8e14904d659ec8a608e5',1,'comModule::EthernetCommunication']]],
+  ['setthreshold_14',['setThreshold',['../classreport_system_1_1_report_system.html#a5c4a7b9ba401b35bc0ba1e6196db7b13',1,'reportSystem::ReportSystem']]],
+  ['spicommunication_15',['SPICommunication',['../classcom_module_1_1_s_p_i_communication.html',1,'comModule']]],
+  ['spiread_16',['spiRead',['../classcom_module_1_1_s_p_i_communication.html#a13b3a3bd39b8d203b3af4761ea9a3693',1,'comModule::SPICommunication']]],
+  ['spiwrite_17',['spiWrite',['../classcom_module_1_1_s_p_i_communication.html#a0beeda059a00ad3613e3f985656e6bcd',1,'comModule::SPICommunication']]]
 ];
