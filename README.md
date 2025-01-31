@@ -29,7 +29,6 @@ copy_memory_free.bat
 **5.** Install these Libraries Sketch > Include Library > Manage Libraries.
 - FreeRTOS
 - frt
-- MegunoLink
 - ArduinoJson
 
 **6.** Error MemoryFree --> add this to User
