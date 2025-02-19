@@ -280,8 +280,18 @@ public:
 	bool run()
 	{
 		msleep(1000);
-		com.eth.setCompound(ID::ACCESS_MODE, 10, "00");
-		com.eth.getCompound(ID::ACTUAL_POSITION, 1);
+		com.eth.setCompound(Compound1::TARGET_POSITION, 0, "1.23");
+		String response = com.eth.getCompound(Compound1::TARGET_POSITION, 0);
+		Vector<float> parsedData = com.eth.getParsedCompound(Compound1::TARGET_POSITION, 0);
+
+		printToSerial("Response from VatTask: " + response);
+
+		com.eth.setCompound(Compound2::ACTUAL_PRESSURE, 1, "2.56");
+		String response2 = com.eth.getCompound(Compound2::ACTUAL_PRESSURE, 1);
+		Vector<float> parsedData2 = com.eth.getParsedCompound(Compound2::ACTUAL_PRESSURE, 1);
+
+		printToSerial("Response from VatTask: " + response2);
+
 		yield();
 		return true;
 	}
@@ -294,6 +304,7 @@ MonitoringTask monitoringTask;
 SensorAndJsonTask sensorAndJsonTask;
 TimeTask timeTask;
 FlyBackTask flybackTask;
+VatTask vatTask;
 
 void setup()
 {
@@ -349,6 +360,7 @@ void setup()
     sensorAndJsonTask.start(2);
     //timeTask.start(3);
     //flybackTask.start(3);
+    //vatTask.start(3);
 }
 
 void loop()

@@ -193,102 +193,154 @@ void EthernetCommunication::setSendDataFlag(bool flag)
 	sendDataFlag = flag;
 }
 
-/// @brief Function to handle set the compound command for the valve uC Slave
-/// @param id -> id of the command
-/// @param index -> actual index of the command
-/// @param value -> value of the command
-void EthernetCommunication::setCompound(ID id, int index, String value)
+
+/// @brief Transforms the given float to IEEE-754 float values.
+/// @param value -> float we want to convert
+/// @return String of the converted float
+String EthernetCommunication::floatToIEEE754(float value)
+{
+	union
+	{
+		float f;
+		uint32_t i;
+	} converter;
+	converter.f = value;
+
+	char buffer[9];
+	snprintf(buffer, sizeof(buffer), "%08X", converter.i);
+	return String(buffer);
+}
+
+/// @brief Parses the response and extracts IEEE-754 float values.
+/// @param response -> Raw response string containing IEEE-754 hex values.
+/// @return Vector<float> containing parsed float values.
+Vector<float> EthernetCommunication::parseResponse(String response)
+{
+	Vector<float> parsedValue;
+	int start = 0;
+
+	while (start <= response.length() - 8)
+	{
+		String hexValue = response.substring(start, start + 8);
+		bool isValidHex = true;
+
+		for (char c : hexValue)
+		{
+			if (!isxdigit(c))
+			{
+				isValidHex = false;
+				break;
+			}
+		}
+
+		if (isValidHex)
+		{
+			// Convert the hex string to a float (IEEE-754 conversion)
+			unsigned long hexInt = strtoul(hexValue.c_str(), NULL, 16);
+			float floatValue = *reinterpret_cast<float*>(&hexInt);
+			parsedValue.push_back(floatValue);
+		}
+
+		start += 8;
+	}
+
+	return parsedValue;
+}
+
+/// @brief Function to set a compound command for the valve uC Slave (Compound1)
+/// @param id Enum ID from Compound1
+/// @param index Index of the command
+/// @param value Value of the command
+void EthernetCommunication::setCompound(Compound1 id, int index, String value)
+{
+    setCompoundInternal("0A0100", static_cast<unsigned long>(id), index, value);
+}
+
+/// @brief Function to set a compound command for the valve uC Slave (Compound2)
+/// @param id Enum ID from Compound2
+/// @param index Index of the command
+/// @param value Value of the command
+void EthernetCommunication::setCompound(Compound2 id, int index, String value)
+{
+    setCompoundInternal("0A0200", static_cast<unsigned long>(id), index, value);
+}
+
+/// @brief Function to set a compound command for the valve uC Slave (Compound3)
+/// @param id Enum ID from Compound3
+/// @param index Index of the command
+/// @param value Value of the command
+void EthernetCommunication::setCompound(Compound3 id, int index, String value)
+{
+    setCompoundInternal("0A0300", static_cast<unsigned long>(id), index, value);
+}
+
+/// @brief Internal function to send the command over Ethernet
+void EthernetCommunication::setCompoundInternal(String compoundType, unsigned long id, int index, String value)
 {
     if (!ethernetInitialized) return;
 
-    String command;
-    switch (id)
+    String command = "p:28" + compoundType + "00";
+    command += String(id, HEX);
+
+    if (value.indexOf('.') != -1) // Corrected condition
     {
-        case ID::ACCESS_MODE:
-            command = "p:28xx0A0200000F0B0000";
-            break;
-        case ID::CONTROL_MODE:
-            command = "p:28xx0A0200010F020000";
-            break;
-        case ID::ACTUAL_POSITION:
-            command = "p:28xx0A02000210010000";
-            break;
-        case ID::POSITION_STATE:
-            command = "p:28xx0A02000310100000";
-            break;
-        case ID::ACTUAL_PRESSURE:
-            command = "p:28xx0A02000407010000";
-            break;
-        case ID::TARGET_PRESSURE_USED:
-            command = "p:28xx0A02000507030000";
-            break;
-        case ID::WARNING_BITMAP:
-            command = "p:28xx0A0200060F300100";
-            break;
-        default:
-            return;
+        value = floatToIEEE754(value.toFloat());
     }
 
-    command += String(";") + String(index) + String(";") + value;
+    command += ";" + String(index) + ";" + value;
 
-    EthernetClient activeClient = server.available();
-    if (activeClient.connected())
+    if (client.connect("192.168.1.10", 503))
     {
-        activeClient.println(command);
-        activeClient.stop();
+        client.println(command);
+        client.stop();
     }
 }
 
-/// @brief Function to handle get the compound command for the valve uC Slave
-/// @param id -> id of the command
-/// @param index -> actual index of the command
-/// @return response -> string with the response of valve uC slave
-String EthernetCommunication::getCompound(ID id, int index = 0)
+/// @brief Function to get a compound command response from the valve uC Slave (Compound1)
+/// @param id Enum ID from Compound1
+/// @param index Index of the command
+/// @return String Response from the valve uC slave
+String EthernetCommunication::getCompound(Compound1 id, int index)
 {
-    if (!ethernetInitialized) return "[ERROR] ethernetshield not init";
+    return getCompoundInternal("0A0100", static_cast<unsigned long>(id), index);
+}
 
-    String command;
-    String response;
+/// @brief Function to get a compound command response from the valve uC Slave (Compound2)
+/// @param id Enum ID from Compound2
+/// @param index Index of the command
+/// @return String Response from the valve uC slave
+String EthernetCommunication::getCompound(Compound2 id, int index)
+{
+    return getCompoundInternal("0A0200", static_cast<unsigned long>(id), index);
+}
 
-    switch (id)
+/// @brief Function to get a compound command response from the valve uC Slave (Compound3)
+/// @param id Enum ID from Compound3
+/// @param index Index of the command
+/// @return String Response from the valve uC slave
+String EthernetCommunication::getCompound(Compound3 id, int index)
+{
+    return getCompoundInternal("0A0300", static_cast<unsigned long>(id), index);
+}
+
+/// @brief Internal function to handle getting a compound response over Ethernet
+String EthernetCommunication::getCompoundInternal(String compoundType, unsigned long id, int index)
+{
+    if (!ethernetInitialized) return "[ERROR] ethernetshield not initialized";
+
+    String command = "p:29" + compoundType + "00";
+    command += String(id, HEX);
+    command += ";" + String(index);
+
+    if (!client.connect("192.168.1.10", 503))
     {
-        case ID::ACCESS_MODE:
-            command = "p:29xx0A0200000F0B0000";
-            break;
-        case ID::CONTROL_MODE:
-            command = "p:29xx0A0200010F020000";
-            break;
-        case ID::ACTUAL_POSITION:
-            command = "p:29xx0A02000210010000";
-            break;
-        case ID::POSITION_STATE:
-            command = "p:29xx0A02000310100000";
-            break;
-        case ID::ACTUAL_PRESSURE:
-            command = "p:29xx0A02000407010000";
-            break;
-        case ID::TARGET_PRESSURE_USED:
-            command = "p:29xx0A02000507030000";
-            break;
-        case ID::WARNING_BITMAP:
-            command = "p:29xx0A0200060F300100";
-            break;
-        default:
-            return "[ERROR] -1 Case not defined";;
-    }
-
-    if (id == ID::ACCESS_MODE || id == ID::CONTROL_MODE || id == ID::ACTUAL_POSITION)
-    {
-        if (id == ID::CONTROL_MODE)
-        {
-            String compoundCommand = "p:29xx0A0200000F020000";
-            compoundCommand += String(";") + String(index);
-            command = compoundCommand;
-        }
+    	Serial.println("[ERROR] Failed to connect to device");
+    	return "";
     }
 
     client.println(command);
 
+    String response;
     unsigned long timeout = millis() + 1000;
     while (millis() < timeout)
     {
@@ -298,6 +350,8 @@ String EthernetCommunication::getCompound(ID id, int index = 0)
             break;
         }
     }
+
+    client.stop();
 
     if (response.length() == 0)
     {
@@ -309,3 +363,42 @@ String EthernetCommunication::getCompound(ID id, int index = 0)
     return response;
 }
 
+/// @brief Function to parse a compound response into a vector (Compound1)
+Vector<float> EthernetCommunication::getParsedCompound(Compound1 id, int index)
+{
+    return parseCompoundResponse(getCompound(id, index));
+}
+
+/// @brief Function to parse a compound response into a vector (Compound2)
+Vector<float> EthernetCommunication::getParsedCompound(Compound2 id, int index)
+{
+    return parseCompoundResponse(getCompound(id, index));
+}
+
+/// @brief Function to parse a compound response into a vector (Compound3)
+Vector<float> EthernetCommunication::getParsedCompound(Compound3 id, int index)
+{
+    return parseCompoundResponse(getCompound(id, index));
+}
+
+/// @brief Internal function to parse a response string into a float vector
+Vector<float> EthernetCommunication::parseCompoundResponse(String response)
+{
+    if (response.length() == 0)
+    {
+        Serial.println("[ERROR] No valid response received.");
+        return Vector<float>();
+    }
+
+    Vector<float> parsedResponse = parseResponse(response);
+
+    Serial.print("Parsed Values: ");
+    for (size_t i = 0; i < parsedResponse.size(); i++)
+    {
+        Serial.print(parsedResponse[i], 6);
+        Serial.print(" ");
+    }
+    Serial.println();
+
+    return parsedResponse;
+}
