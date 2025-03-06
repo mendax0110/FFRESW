@@ -24,28 +24,30 @@ namespace calcModule
         CalcModuleInternals();
         ~CalcModuleInternals();
 
-        float calculateAverage(const float* data, int length) const;
-        float findMaximum(const float* data, int length) const;
-        float findMinimum(const float* data, int length) const;
-        float calculateStandardDeviation(const float* data, int length) const;
-        float findMedian(float* data, int length) const;
+        static float calculateAverage(const float* data, int length);
+        static float findMaximum(const float* data, int length);
+        static float findMinimum(const float* data, int length);
+        static float calculateStandardDeviation(const float* data, int length);
+        static float findMedian(float* data, int length);
 
-        float celsiusToFahrenheit(float celsius) const;
-        float fahrenheitToCelsius(float fahrenheit) const;
-        float celsiusToKelvin(float celsius) const;
-        float kelvinToCelsius(float kelvin) const;
+        static float celsiusToFahrenheit(float celsius);
+        static float fahrenheitToCelsius(float fahrenheit);
+        static float celsiusToKelvin(float celsius);
+        static float kelvinToCelsius(float kelvin);
 
-        float pascalToAtm(float pascal) const;
-        float atmToPascal(float atm) const;
-        float pascalToPsi(float pascal) const;
-        float psiToPascal(float psi) const;
+        static float pascalToAtm(float pascal);
+        static float atmToPascal(float atm);
+        static float pascalToPsi(float pascal);
+        static float psiToPascal(float psi);
 
-        float calculatePower(float voltage, float current) const; // Power (P = V * I)
-        float calculateCurrent(float voltage, float resistance) const; // Current (I = V / R)
-        float calculateResistance(float voltage, float current) const; // Resistance (R = V / I)
+        static float calculatePower(float voltage, float current);
+        static float calculateCurrent(float voltage, float resistance);
+        static float calculateResistance(float voltage, float current);
+
+        static String extractFloat(String response, int id);
 
     private:
-        void sortArray(float* data, int length) const;
+        static void sortArray(float* data, int length);
     };
 }
 

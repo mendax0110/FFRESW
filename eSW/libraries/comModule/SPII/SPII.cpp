@@ -10,10 +10,25 @@
 
 using namespace comModule;
 
+/// @brief Function to check if the SPI communication is initialized
+/// @return -> true if the SPI communication is initialized, false otherwise
+bool SPICommunication::isInitialized()
+{
+	return spiInitialized;
+}
+
 /// @brief Initializes the SPI communication
 void SPICommunication::beginSPI()
 {
     SPI.begin();
+    spiInitialized = true;
+}
+
+/// @brief Ends the SPI communication
+void SPICommunication::endSPI()
+{
+	SPI.end();
+	spiInitialized = false;
 }
 
 /// @brief Function to write data over SPI

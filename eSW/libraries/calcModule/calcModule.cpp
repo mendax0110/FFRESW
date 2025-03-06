@@ -28,7 +28,7 @@ CalcModuleInternals::~CalcModuleInternals()
 /// @param data -> This is the data array
 /// @param length -> This is the length of the data array
 /// @return float -> This returns the average of the data
-float CalcModuleInternals::calculateAverage(const float* data, int length) const
+float CalcModuleInternals::calculateAverage(const float* data, int length)
 {
     if (length <= 0 || data == nullptr) return 0.0;
     float sum = 0.0;
@@ -43,7 +43,7 @@ float CalcModuleInternals::calculateAverage(const float* data, int length) const
 /// @param data -> This is the data array
 /// @param length -> This is the length of the data array
 /// @return float -> This returns the maximum value in the data
-float CalcModuleInternals::findMaximum(const float* data, int length) const
+float CalcModuleInternals::findMaximum(const float* data, int length)
 {
     if (length <= 0 || data == nullptr) return 0.0;
     float max = data[0];
@@ -61,7 +61,7 @@ float CalcModuleInternals::findMaximum(const float* data, int length) const
 /// @param data -> This is the data array
 /// @param length -> This is the length of the data array
 /// @return flaot -> This returns the minimum value in the data
-float CalcModuleInternals::findMinimum(const float* data, int length) const
+float CalcModuleInternals::findMinimum(const float* data, int length)
 {
     if (length <= 0 || data == nullptr) return 0.0;
     float min = data[0];
@@ -79,7 +79,7 @@ float CalcModuleInternals::findMinimum(const float* data, int length) const
 /// @param data -> This is the data array
 /// @param length -> This is the length of the data array
 /// @return float -> This returns the standard deviation of the data
-float CalcModuleInternals::calculateStandardDeviation(const float* data, int length) const
+float CalcModuleInternals::calculateStandardDeviation(const float* data, int length)
 {
     if (length <= 0 || data == nullptr) return 0.0;
     float mean = calculateAverage(data, length);
@@ -96,7 +96,7 @@ float CalcModuleInternals::calculateStandardDeviation(const float* data, int len
 /// @param data -> This is the data array
 /// @param length -> This is the length of the data array
 /// @return float -> This returns the median of the data
-float CalcModuleInternals::findMedian(float* data, int length) const
+float CalcModuleInternals::findMedian(float* data, int length)
 {
     if (length <= 0 || data == nullptr) return 0.0;
     sortArray(data, length);
@@ -113,7 +113,7 @@ float CalcModuleInternals::findMedian(float* data, int length) const
 /// @brief Function to sort the given array in ascending order
 /// @param data -> This is the data array
 /// @param length -> This is the length of the data array
-void CalcModuleInternals::sortArray(float* data, int length) const
+void CalcModuleInternals::sortArray(float* data, int length)
 {
     for (int i = 0; i < length - 1; ++i)
     {
@@ -133,7 +133,7 @@ void CalcModuleInternals::sortArray(float* data, int length) const
 /// @brief Function to convert Celsius to Fahrenheit
 /// @param celsius -> This is the temperature in Celsius
 /// @return float -> This returns the temperature in Fahrenheit
-float CalcModuleInternals::celsiusToFahrenheit(float celsius) const
+float CalcModuleInternals::celsiusToFahrenheit(float celsius)
 {
     return (celsius * 9.0 / 5.0) + 32.0;
 }
@@ -141,7 +141,7 @@ float CalcModuleInternals::celsiusToFahrenheit(float celsius) const
 /// @brief Function to convert Fahrenheit to Celsius
 /// @param fahrenheit -> This is the temperature in Fahrenheit
 /// @return float -> This returns the temperature in Celsius
-float CalcModuleInternals::fahrenheitToCelsius(float fahrenheit) const
+float CalcModuleInternals::fahrenheitToCelsius(float fahrenheit)
 {
     return (fahrenheit - 32.0) * 5.0 / 9.0;
 }
@@ -149,7 +149,7 @@ float CalcModuleInternals::fahrenheitToCelsius(float fahrenheit) const
 /// @brief Function to convert Celsius to Kelvin
 /// @param celsius -> This is the temperature in Celsius
 /// @return float -> This returns the temperature in Kelvin
-float CalcModuleInternals::celsiusToKelvin(float celsius) const
+float CalcModuleInternals::celsiusToKelvin(float celsius)
 {
     return celsius + 273.15;
 }
@@ -157,7 +157,7 @@ float CalcModuleInternals::celsiusToKelvin(float celsius) const
 /// @brief Function to convert Kelvin to Celsius
 /// @param kelvin -> This is the temperature in Kelvin
 /// @return float -> This returns the temperature in Celsius
-float CalcModuleInternals::kelvinToCelsius(float kelvin) const
+float CalcModuleInternals::kelvinToCelsius(float kelvin)
 {
     return kelvin - 273.15;
 }
@@ -165,7 +165,7 @@ float CalcModuleInternals::kelvinToCelsius(float kelvin) const
 /// @brief Function to convert Pascal to Atmosphere
 /// @param pascal -> This is the pressure in Pascal
 /// @return float -> This returns the pressure in Atmosphere
-float CalcModuleInternals::pascalToAtm(float pascal) const
+float CalcModuleInternals::pascalToAtm(float pascal)
 {
     return pascal / 101325.0; // 1 atm = 101325 Pa
 }
@@ -173,7 +173,7 @@ float CalcModuleInternals::pascalToAtm(float pascal) const
 /// @brief Function to convert Atmosphere to Pascal
 /// @param atm -> This is the pressure in Atmosphere
 /// @return float -> This returns the pressure in Pascal
-float CalcModuleInternals::atmToPascal(float atm) const
+float CalcModuleInternals::atmToPascal(float atm)
 {
     return atm * 101325.0;
 }
@@ -181,7 +181,7 @@ float CalcModuleInternals::atmToPascal(float atm) const
 /// @brief Function to convert Pascal to Psi
 /// @param pascal -> This is the pressure in Pascal
 /// @return float -> This returns the pressure in Psi
-float CalcModuleInternals::pascalToPsi(float pascal) const
+float CalcModuleInternals::pascalToPsi(float pascal)
 {
     return pascal * 0.000145038; // 1 Pa = 0.000145038 psi
 }
@@ -189,7 +189,7 @@ float CalcModuleInternals::pascalToPsi(float pascal) const
 /// @brief Function to convert Psi to Pascal
 /// @param psi -> This is the pressure in Psi
 /// @return float -> This returns the pressure in Pascal
-float CalcModuleInternals::psiToPascal(float psi) const
+float CalcModuleInternals::psiToPascal(float psi)
 {
     return psi * 6894.76; // 1 psi = 6894.76 Pa
 }
@@ -198,7 +198,7 @@ float CalcModuleInternals::psiToPascal(float psi) const
 /// @param voltage -> This is the voltage
 /// @param current -> This is the current
 /// @return float -> This returns the power
-float CalcModuleInternals::calculatePower(float voltage, float current) const
+float CalcModuleInternals::calculatePower(float voltage, float current)
 {
     return voltage * current; // Power (P = V * I)
 }
@@ -207,7 +207,7 @@ float CalcModuleInternals::calculatePower(float voltage, float current) const
 /// @param voltage -> This is the voltage
 /// @param resistance -> This is the resistance
 /// @return float -> This returns the current
-float CalcModuleInternals::calculateCurrent(float voltage, float resistance) const
+float CalcModuleInternals::calculateCurrent(float voltage, float resistance)
 {
     if (resistance == 0) return 0.0; // Avoid division by zero
     return voltage / resistance; // Current (I = V / R)
@@ -217,8 +217,46 @@ float CalcModuleInternals::calculateCurrent(float voltage, float resistance) con
 /// @param voltage -> This is the voltage
 /// @param current -> This is the current
 /// @return float -> This returns the resistance
-float CalcModuleInternals::calculateResistance(float voltage, float current) const
+float CalcModuleInternals::calculateResistance(float voltage, float current)
 {
     if (current == 0) return 0.0; // Avoid division by zero
     return voltage / current; // Resistance (R = V / I)
 }
+
+/// @brief Function to extract a float from a getParam String
+/// @param response -> The getParam response String
+/// @param id -> The compound id to identify how the param string looks like
+/// 0 -> Simple GET/SET
+/// 1 -> Compound 1
+/// 1 -> Compound 2
+/// 1 -> Compound 3
+/// @return The extracted float from the response
+String CalcModuleInternals::extractFloat(String response, int id)
+{
+	String extracted;
+
+	if (id == 0)
+	{
+	    int dotIndex = response.lastIndexOf('.');
+	    if (dotIndex == -1 || dotIndex < 3) return "0";
+	    int startIndex = dotIndex - 3;
+	    if (startIndex < 0) startIndex = 0;
+
+	    extracted = response.substring(startIndex, response.length());
+	}
+	else if (id == 1)
+	{
+		// TODO: Implement handling for compound 1
+	}
+	else if (id == 2)
+	{
+		// TODO: Implement handling for compound 2
+	}
+	else if (id == 3)
+	{
+		// TODO: Implement handling for compound 3
+	}
+
+    return extracted;
+}
+

@@ -1,4 +1,4 @@
-#define SERIAL_MENU_H
+#ifndef SERIAL_MENU_H
 #define SERIAL_MENU_H
 
 #include <Arduino.h>
@@ -15,7 +15,7 @@ struct MenuItem
 class SerialMenu
 {
 public:
-    SerialMenu();
+	SerialMenu();
     void load(MenuItem* items, size_t size);
     void show();
     void run();

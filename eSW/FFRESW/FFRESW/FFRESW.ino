@@ -13,7 +13,6 @@ using namespace comModule;
 using namespace jsonModule;
 using namespace timeModule;
 
-CalcModuleInternals calc;
 ComModuleInternals com;
 SensorModuleInternals sens;
 ReportSystem report;
@@ -62,29 +61,42 @@ void printToSerial(const String& message, bool newLine = true)
     serialMutex.unlock();
 }
 
-// Task to report system health and status periodically
+/// @brief Task to report system health and status periodically
 class ReportTask final : public frt::Task<ReportTask, 200>
 {
+private:
+    uint32_t REPORT_INTERVAL_MS = 5000;
+    uint32_t lastReportTime = 0;
+
 public:
     bool run()
     {
-    	String status = report.reportStatus();
+        uint32_t currentTime = millis();
 
-        if (!report.checkSystemHealth(3000))
+        if (currentTime - lastReportTime >= REPORT_INTERVAL_MS)
         {
-        	printToSerial(F("Critical issue detected! Take action."));
-        }
-        else
-        {
-        	//printToSerial(status);
+            lastReportTime = currentTime;
+
+            String status = report.reportStatus(true);
+            if (status.length() > 0)
+            {
+                printToSerial(status);
+            }
+
+            bool healthCheck = report.checkSystemHealth(3000, true, false, false, false, false);
+            if (!healthCheck)
+            {
+                printToSerial(F("[CRITICAL] System health check failed!"));
+            }
         }
 
-        msleep(2000);
         yield();
         return true;
     }
 };
 
+/// @brief Implementation of the FlyBackTask class.
+/// @brief Control and use HV module
 class FlyBackTask final : public frt::Task<FlyBackTask>
 {
 private:
@@ -134,7 +146,8 @@ public:
 
 };
 
-// Task to monitor queue and system usage
+/// @brief Implementation of the MonitoringTask class.
+/// @brief Task to monitor queue and system usage
 class MonitoringTask final : public frt::Task<MonitoringTask>
 {
 private:
@@ -157,7 +170,7 @@ public:
         currentIndex = (currentIndex + 1) % maxReadings;
         if (currentIndex == 0) bufferFull = true;
 
-        float average = calc.calculateAverage(temperatureReadings, bufferFull ? maxReadings : currentIndex);
+        float average = CalcModuleInternals::calculateAverage(temperatureReadings, bufferFull ? maxReadings : currentIndex);
         printToSerial(F("Average Temperature: "));
         printToSerial(String(average));
 
@@ -165,7 +178,7 @@ public:
         printToSerial(F("Current Pressure: "));
         printToSerial(String(pressure));
 
-        float maxTemp = calc.findMaximum(temperatureReadings, bufferFull ? maxReadings : currentIndex);
+        float maxTemp = CalcModuleInternals::findMaximum(temperatureReadings, bufferFull ? maxReadings : currentIndex);
         printToSerial(F("Maximum Temperature: "));
         printToSerial(String(maxTemp));
 
@@ -178,10 +191,8 @@ public:
     }
 };
 
-// class to get sensor data from uC sensors, pack it into json and put it to the endpoints
-// currently usable with the WSL python script, soon also with HAS
-// TODO: PUT MEAS DATA INTO A QUEUE in order to combat timing issues and network delays
-class SensorAndJsonTask final : public frt::Task<SensorAndJsonTask, 2048>
+/// @brief Implementation of the SensorActorEndpoint class.
+class SensorActorEndpointTask final : public frt::Task<SensorActorEndpointTask, 2048>
 {
 public:
     bool run()
@@ -204,6 +215,48 @@ public:
             {
                 float temperatureObj = sens.readSensor(SensorType::OBJECTTEMPERATURE);
                 jsonBody = buildJsonResponse("temperature_sensor_2", temperatureObj, "Celsius");
+            }
+            else if (requestedEndpoint.startsWith("set_control_mode"))
+            {
+            	int separatorIndex = requestedEndpoint.indexOf('/');
+            	if (separatorIndex != -1)
+            	{
+            	    String controlModeVal = requestedEndpoint.substring(separatorIndex + 1);
+            	    com.eth.setParameter(Compound2::CONTROL_MODE, controlModeVal);
+            	    String response = com.eth.getParameter(Compound2::CONTROL_MODE);
+            	    jsonBody = buildJsonResponse("control_mode", response.toFloat(), "mode");
+            	}
+            }
+            else if (requestedEndpoint.startsWith("set_target_position"))
+            {
+            	int separatorIndex = requestedEndpoint.indexOf('/');
+            	if (separatorIndex != -1)
+            	{
+					String positionVal = requestedEndpoint.substring(separatorIndex + 1);
+					com.eth.setParameter(Compound2::TARGET_POSITION, positionVal);
+            	}
+            }
+            else if (requestedEndpoint.startsWith("get_actual_position"))
+            {
+				String response = com.eth.getParameter(Compound2::ACTUAL_POSITION);
+				String rawVal = CalcModuleInternals::extractFloat(response, 1);
+				jsonBody = buildJsonResponse("target_position", rawVal.toFloat(), "position");
+
+            }
+            else if (requestedEndpoint.startsWith("set_target_pressure"))
+            {
+            	int separatorIndex = requestedEndpoint.indexOf('/');
+            	if (separatorIndex != -1)
+            	{
+					String pressureVal = requestedEndpoint.substring(separatorIndex + 1);
+					com.eth.setParameter(Compound2::TARGET_PRESSURE, pressureVal);
+            	}
+            }
+            else if (requestedEndpoint.startsWith("get_actual_position"))
+            {
+            	String response = com.eth.getParameter(Compound2::ACTUAL_PRESSURE);
+            	String rawVal = CalcModuleInternals::extractFloat(response, 1);
+				jsonBody = buildJsonResponse("target_position", rawVal.toFloat(), "pressure");
             }
 
             if (jsonBody.length() > 0)
@@ -239,8 +292,8 @@ private:
     }
 };
 
-
-// Task to log time using the time from the compiler
+/// @brief Implementation of the TimeTask class.
+/// @bried Task to log time using the time from the compiler
 class TimeTask final : public frt::Task<TimeTask, 512>
 {
 public:
@@ -273,38 +326,12 @@ public:
     }
 };
 
-// Task to talk to and control the VAT uC as a slave, we are able to sen get/set data to handle data flows
-class VatTask final : public frt::Task<VatTask, 512>
-{
-public:
-	bool run()
-	{
-		msleep(1000);
-		com.eth.setCompound(Compound1::TARGET_POSITION, 0, "1.23");
-		String response = com.eth.getCompound(Compound1::TARGET_POSITION, 0);
-		Vector<float> parsedData = com.eth.getParsedCompound(Compound1::TARGET_POSITION, 0);
-
-		printToSerial("Response from VatTask: " + response);
-
-		com.eth.setCompound(Compound2::ACTUAL_PRESSURE, 1, "2.56");
-		String response2 = com.eth.getCompound(Compound2::ACTUAL_PRESSURE, 1);
-		Vector<float> parsedData2 = com.eth.getParsedCompound(Compound2::ACTUAL_PRESSURE, 1);
-
-		printToSerial("Response from VatTask: " + response2);
-
-		yield();
-		return true;
-	}
-
-private:
-};
 
 ReportTask reportTask;
 MonitoringTask monitoringTask;
-SensorAndJsonTask sensorAndJsonTask;
+SensorActorEndpointTask sensorActorEndpointTask;
 TimeTask timeTask;
 FlyBackTask flybackTask;
-VatTask vatTask;
 
 void setup()
 {
@@ -339,6 +366,8 @@ void setup()
     IPAddress ip(192, 168, 1, 3);
     com.eth.beginEthernet(mac, ip);
 
+    ReportSystem::initStackGuard();
+
     //For Fylback Test
     pinMode(11, OUTPUT);
 
@@ -348,19 +377,13 @@ void setup()
     ICR1 = 16000000 / 1000;  // Default frequency at 1kHz
     OCR1A = ICR1 / 2;         // 50% duty cycle
 
-    if (com.eth.isInitialized())
-    {
-        Serial.println("Ethernet is running!");
-    }
-
     Serial.println(F("Setup complete."));
 
     // Start tasks
     reportTask.start(1);
-    sensorAndJsonTask.start(2);
+    sensorActorEndpointTask.start(2);
     //timeTask.start(3);
     //flybackTask.start(3);
-    //vatTask.start(3);
 }
 
 void loop()

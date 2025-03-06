@@ -20,8 +20,13 @@ namespace comModule
 	public:
 
 		void beginSPI();
+		void endSPI();
 		void spiWrite(uint8_t* data, size_t length);
 		void spiRead(uint8_t* buffer, size_t length);
+		bool isInitialized();
+
+	private:
+		bool spiInitialized;
 	};
 }
 

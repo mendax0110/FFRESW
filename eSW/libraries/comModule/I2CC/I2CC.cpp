@@ -9,11 +9,26 @@
 
 using namespace comModule;
 
+/// @brief Function to check if the I2C communication is initialized
+/// @return -> true if the SPI communication is initialized, false otherwise
+bool I2CCommunication::isInitialized()
+{
+	return i2cInitialized;
+}
+
 /// @brief Function to initialize the I2C communication
 /// @param address -> The address to use for the I2C communication
 void I2CCommunication::beginI2C(uint8_t address)
 {
     Wire.begin(address);
+    i2cInitialized = true;
+}
+
+/// @brief Function to End the I2C communication
+void I2CCommunication::endI2C()
+{
+	Wire.end();
+	i2cInitialized = false;
 }
 
 /// @brief Function to write data over I2C

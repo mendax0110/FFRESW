@@ -23,7 +23,7 @@ namespace comModule
 		SETGET = 0x30
 	};
 
-	enum class Compound1 : unsigned long
+	enum class Compound1 : uint32_t
 	{
 		CONTROL_MODE = 0x0F020000,
 		TARGET_POSITION = 0x11020000,
@@ -31,19 +31,21 @@ namespace comModule
 		NOT_USED = 0x00000000
 	};
 
-	enum class Compound2 : unsigned long
+	enum class Compound2 : uint32_t
 	{
-		ACCESS_MODE = 0x0F0B0000,
-		CONTROL_MODE = 0x0F020000,
-		ACTUAL_POSITION = 0x10010000,
-		POSITION_STATE = 0x00100000,
-		ACTUAL_PRESSURE = 0x07010000,
-		TARGET_PRESSURE_USED = 0x07030000,
-		WARNING_BITMAP = 0x0F300100,
-		NOT_USED = 0x00000000
+	    ACCESS_MODE = 0x0F0B0000,
+	    CONTROL_MODE = 0x0F020000,
+		TARGET_POSITION = 0x11020000,
+		TARGET_PRESSURE = 0x07020000,
+	    ACTUAL_POSITION = 0x10010000,
+	    POSITION_STATE = 0x00100000,
+	    ACTUAL_PRESSURE = 0x07010000,
+	    TARGET_PRESSURE_USED = 0x07030000,
+	    WARNING_BITMAP = 0x0F300100,
+	    NOT_USED = 0x00000000
 	};
 
-	enum class Compound3 : unsigned long
+	enum class Compound3 : uint32_t
 	{
 		CONTROL_MODE = 0x0F020000,
 		TARGET_POSITION = 0x11020000,
@@ -129,6 +131,10 @@ namespace comModule
 		Vector<float> getParsedCompound(Compound2 id, int index);
 		Vector<float> getParsedCompound(Compound3 id, int index);
 		Vector<float> parseCompoundResponse(String response);
+
+		void setParameter(Compound2 id, String value);
+		String getParameter(Compound2 id);
+		void sendCommand(String command);
 
 	private:
 		EthernetServer server;

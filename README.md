@@ -18,10 +18,10 @@ cd FFRESW
 git submodule update --init --recursive
 ````
 
-**3.** Run the copy_memory_free.bat file
+**3.** Run the copy_ErriezMemoryUsage.bat file
 ```bash	
 cd utils
-copy_memory_free.bat
+copy_ErriezMemoryUsage.bat
 ```
 
 **4.** Arduino Version 1.8.13

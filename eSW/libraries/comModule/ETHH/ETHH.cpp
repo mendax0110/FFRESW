@@ -88,8 +88,6 @@ String EthernetCommunication::getRequestedEndpoint()
             if (bytesRead > 0)
             {
                 String requestStr = String(request);
-                //Serial.println("Received request:");
-                //Serial.println(requestStr);
 
                 int startIdx = requestStr.indexOf("GET /") + 5;
                 int endIdx = requestStr.indexOf(" ", startIdx);
@@ -193,6 +191,109 @@ void EthernetCommunication::setSendDataFlag(bool flag)
 	sendDataFlag = flag;
 }
 
+/// @brief Helper function to send a command to the VAT slave controller
+/// @param command -> The command to send to the VAT slave controller
+void EthernetCommunication::sendCommand(String command)
+{
+	if (!ethernetInitialized) return;
+
+	if (client.connect("192.168.1.10", 503)
+		&& command.length() > 0)
+	{
+		Serial.println("Current command we send" + command);
+		client.println(command);
+		client.stop();
+	}
+}
+
+/// @brief helper function to convert Compound1 enum to string
+/// @param id -> Compound2 enum we want to convert to string
+/// @return -> string representation of the Compound2 enum
+String compound2ToString(Compound2 id)
+{
+    switch (id)
+    {
+    case Compound2::ACCESS_MODE: return "0F0B0000";
+    case Compound2::CONTROL_MODE: return "0F020000";
+    case Compound2::TARGET_POSITION: return "11020000";
+    case Compound2::TARGET_PRESSURE: return "07020000";
+    case Compound2::ACTUAL_POSITION: return "10010000";
+    case Compound2::POSITION_STATE: return "00100000";
+    case Compound2::ACTUAL_PRESSURE: return "07010000";
+    case Compound2::TARGET_PRESSURE_USED: return "07030000";
+    case Compound2::WARNING_BITMAP: return "0F300100";
+    case Compound2::NOT_USED: return "00000000";
+    default: return "00000000"; // Fallback
+    }
+}
+
+/// @brief Setter for a parameter from the VAT slave
+/// @param id -> The ID of the parameter to set
+/// @param value -> The value to set the parameter to
+void EthernetCommunication::setParameter(Compound2 id, String value)
+{
+    if (!ethernetInitialized) return;
+
+    String command = "p:";
+    String serviceStr = String(static_cast<uint8_t>(Service::SET), HEX);
+    if (serviceStr.length() == 1) serviceStr = "0" + serviceStr;
+
+    command += serviceStr;
+    command += compound2ToString(id);
+    command += "00"; // Padding
+    command += value;
+
+    sendCommand(command);
+}
+
+/// @brief Getter for a parameter from the VAT slave.
+/// @param id -> The ID of the parameter to get.
+/// @return will return the value of the parameter as a string, otherwise an empty string or error message.
+String EthernetCommunication::getParameter(Compound2 id)
+{
+    if (!ethernetInitialized) return "";
+
+    String command = "p:";
+    String serviceStr = String(static_cast<uint8_t>(Service::GET), HEX);
+    if (serviceStr.length() == 1) serviceStr = "0" + serviceStr;
+
+    command += serviceStr;
+    command += compound2ToString(id);
+    command += "00";
+
+    if (client.connect("192.168.1.10", 503))
+    {
+        delay(100);
+        client.println(command);
+        client.flush();
+        delay(200);
+
+        String response = "";
+        unsigned long startTime = millis();
+
+        while (millis() - startTime < 1000)
+        {
+            while (client.available())
+            {
+                char c = client.read();
+                response += c;
+            }
+            // xit if we have a response
+            if (response.length() > 0) break;
+        }
+
+        client.stop();
+
+        if (response.length() > 0)
+            return response;
+        else
+            return "[ERROR] No Response from VAT slave!";
+    }
+    else
+    {
+        return "[ERROR] Failed to connect to VAT slave!";
+    }
+}
 
 /// @brief Transforms the given float to IEEE-754 float values.
 /// @param value -> float we want to convert
@@ -334,8 +435,7 @@ String EthernetCommunication::getCompoundInternal(String compoundType, unsigned 
 
     if (!client.connect("192.168.1.10", 503))
     {
-    	Serial.println("[ERROR] Failed to connect to device");
-    	return "";
+    	return "[ERROR] Failed to connect to device";
     }
 
     client.println(command);
@@ -355,11 +455,9 @@ String EthernetCommunication::getCompoundInternal(String compoundType, unsigned 
 
     if (response.length() == 0)
     {
-        Serial.println("No response or timed out");
-        return "";
+        return "[ERROR] No response or timed out";
     }
 
-    Serial.println("Response: " + response);
     return response;
 }
 

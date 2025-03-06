@@ -1,6 +1,6 @@
 @echo off
 REM Define the source and destination paths
-set SOURCE_DIR=..\..\external\Arduino-MemoryFree
+set SOURCE_DIR=..\..\external\ErriezMemoryUsage
 set LIBRARY_DIR=..\libraries
 set DEST_DIR=%USERPROFILE%\Documents\Arduino\libraries\pgmStrToRAM
 

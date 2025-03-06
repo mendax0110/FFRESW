@@ -72,6 +72,11 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM</locationURI>
 		</link>
 		<link>
+			<name>libraries/ErriezMemoryUsage</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/ErriezMemoryUsage</location>
+		</link>
+		<link>
 			<name>libraries/Ethernet</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/Ethernet</location>
@@ -145,6 +150,11 @@
 			<name>libraries/sensorModule</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/sensorModule</location>
+		</link>
+		<link>
+			<name>libraries/serialMenu</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/serialMenu</location>
 		</link>
 		<link>
 			<name>libraries/timeModule</name>
