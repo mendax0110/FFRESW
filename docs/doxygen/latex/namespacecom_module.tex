@@ -21,25 +21,97 @@ class \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication}{SPICommunication
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{namespacecom_module_ab6d1e37a46d4d4b41597a4d0259189c4}\label{namespacecom_module_ab6d1e37a46d4d4b41597a4d0259189c4} 
-enum class {\bfseries service} \{ {\bfseries SET} = 28
-, {\bfseries GET} = 29
-, {\bfseries SETGET} = 30
+\Hypertarget{namespacecom_module_a47cc14bc7309735f36eb1a9240a6a3af}\label{namespacecom_module_a47cc14bc7309735f36eb1a9240a6a3af} 
+enum class {\bfseries Service} \+: uint8\+\_\+t \{ \newline
+{\bfseries SET} = 0x01
+, {\bfseries GET} = 0x0B
+, {\bfseries SET\+\_\+\+COMPOUND} = 0x28
+, {\bfseries GET\+\_\+\+COMPOUND} = 0x29
+, \newline
+{\bfseries SETGET} = 0x30
  \}
 \item 
-\Hypertarget{namespacecom_module_aed8e718f7a3774c812fc6869c82cd22a}\label{namespacecom_module_aed8e718f7a3774c812fc6869c82cd22a} 
-enum class {\bfseries ID} \+: unsigned long \{ \newline
+\Hypertarget{namespacecom_module_a2266c2913bf28192787d63337b745f04}\label{namespacecom_module_a2266c2913bf28192787d63337b745f04} 
+enum class {\bfseries Compound1} \+: uint32\+\_\+t \{ {\bfseries CONTROL\+\_\+\+MODE} = 0x0\+F020000
+, {\bfseries TARGET\+\_\+\+POSITION} = 0x11020000
+, {\bfseries TARGET\+\_\+\+PRESSURE} = 0x07020000
+, {\bfseries NOT\+\_\+\+USED} = 0x00000000
+ \}
+\item 
+\Hypertarget{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}\label{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92} 
+enum class {\bfseries Compound2} \+: uint32\+\_\+t \{ \newline
 {\bfseries ACCESS\+\_\+\+MODE} = 0x0\+F0\+B0000
 , {\bfseries CONTROL\+\_\+\+MODE} = 0x0\+F020000
-, {\bfseries ACTUAL\+\_\+\+POSITION} = 0x10010000
 , {\bfseries TARGET\+\_\+\+POSITION} = 0x11020000
+, {\bfseries TARGET\+\_\+\+PRESSURE} = 0x07020000
 , \newline
-{\bfseries TARGET\+\_\+\+PRESSURE} = 0x07020000
+{\bfseries ACTUAL\+\_\+\+POSITION} = 0x10010000
 , {\bfseries POSITION\+\_\+\+STATE} = 0x00100000
 , {\bfseries ACTUAL\+\_\+\+PRESSURE} = 0x07010000
 , {\bfseries TARGET\+\_\+\+PRESSURE\+\_\+\+USED} = 0x07030000
 , \newline
 {\bfseries WARNING\+\_\+\+BITMAP} = 0x0\+F300100
+, {\bfseries NOT\+\_\+\+USED} = 0x00000000
+ \}
+\item 
+\Hypertarget{namespacecom_module_a272fc8d3be95ae8b9284332131f652d6}\label{namespacecom_module_a272fc8d3be95ae8b9284332131f652d6} 
+enum class {\bfseries Compound3} \+: uint32\+\_\+t \{ \newline
+{\bfseries CONTROL\+\_\+\+MODE} = 0x0\+F020000
+, {\bfseries TARGET\+\_\+\+POSITION} = 0x11020000
+, {\bfseries TARGET\+\_\+\+PRESSURE} = 0x07020000
+, {\bfseries SEPARATION} = 0x00000000
+, \newline
+{\bfseries ACCESS\+\_\+\+MODE} = 0x0\+F0\+B0000
+, {\bfseries ACTUAL\+\_\+\+POSITION} = 0x10010000
+, {\bfseries POSITION\+\_\+\+STATE} = 0x00100000
+, {\bfseries ACTUAL\+\_\+\+PRESSURE} = 0x07010000
+, \newline
+{\bfseries TARGET\+\_\+\+PRESSURE\+\_\+\+USED} = 0x07030000
+, {\bfseries WARNING\+\_\+\+BITMAP} = 0x0\+F300100
+, {\bfseries NOT\+\_\+\+USED} = 0x00000000
+ \}
+\item 
+\Hypertarget{namespacecom_module_a3b450180f02d724d8ecd6c7f06514756}\label{namespacecom_module_a3b450180f02d724d8ecd6c7f06514756} 
+enum class {\bfseries Error\+\_\+\+Codes} \+: uint8\+\_\+t \{ \newline
+{\bfseries NO\+\_\+\+ERROR} = 0x00
+, {\bfseries WRONG\+\_\+\+COMMAND\+\_\+\+LENGTH} = 0x0C
+, {\bfseries VALUE\+\_\+\+TOO\+\_\+\+LOW} = 0x1C
+, {\bfseries VALUE\+\_\+\+TOO\+\_\+\+HIGH} = 0x1D
+, \newline
+{\bfseries RESULTING\+\_\+\+ZERO\+\_\+\+ADJUST\+\_\+\+OFFSET} = 0x20
+, {\bfseries NO\+\_\+\+SENSOR\+\_\+\+ENABLED} = 0x21
+, {\bfseries WRONG\+\_\+\+ACCESS\+\_\+\+MODE} = 0x50
+, {\bfseries TIMEOUT} = 0x51
+, \newline
+{\bfseries NV\+\_\+\+MEMORY\+\_\+\+NOT\+\_\+\+READY} = 0x6D
+, {\bfseries WRONG\+\_\+\+PARAMETER\+\_\+\+ID} = 0x6E
+, {\bfseries PARAMETER\+\_\+\+NOT\+\_\+\+SETTABLE} = 0x70
+, {\bfseries PARAMETER\+\_\+\+NOT\+\_\+\+READABLE} = 0x71
+, \newline
+{\bfseries WRONG\+\_\+\+PARAMETER\+\_\+\+INDEX} = 0x73
+, {\bfseries WRONG\+\_\+\+VALUE\+\_\+\+WITHIN\+\_\+\+RANGE} = 0x76
+, {\bfseries NOT\+\_\+\+ALLOWED\+\_\+\+IN\+\_\+\+THIS\+\_\+\+STATE} = 0x78
+, {\bfseries SETTING\+\_\+\+LOCK} = 0x79
+, \newline
+{\bfseries WRONG\+\_\+\+SERVICE} = 0x7A
+, {\bfseries PARAMETER\+\_\+\+NOT\+\_\+\+ACTIVE} = 0x7B
+, {\bfseries PARAMETER\+\_\+\+SYSTEM\+\_\+\+ERROR} = 0x7C
+, {\bfseries COMMUNICATION\+\_\+\+ERROR} = 0x7D
+, \newline
+{\bfseries UNKNOWN\+\_\+\+SERVICE} = 0x7E
+, {\bfseries UNEXPECTED\+\_\+\+CHARACTER} = 0x7F
+, {\bfseries NO\+\_\+\+ACCESS\+\_\+\+RIGHTS} = 0x80
+, {\bfseries NO\+\_\+\+ADEQUATE\+\_\+\+HARDWARE} = 0x81
+, \newline
+{\bfseries WRONG\+\_\+\+OBJECT\+\_\+\+STATE} = 0x82
+, {\bfseries NO\+\_\+\+SLAVE\+\_\+\+COMMAND} = 0x84
+, {\bfseries COMMAND\+\_\+\+TO\+\_\+\+UNKNOWN\+\_\+\+SLAVE} = 0x85
+, {\bfseries COMMAND\+\_\+\+TO\+\_\+\+MASTER\+\_\+\+ONLY} = 0x87
+, \newline
+{\bfseries ONLY\+\_\+\+G\+\_\+\+COMMAND\+\_\+\+ALLOWED} = 0x88
+, {\bfseries NOT\+\_\+\+SUPPORTED} = 0x89
+, {\bfseries FUNCTION\+\_\+\+DISABLED} = 0x\+A0
+, {\bfseries ALREADY\+\_\+\+DONE} = 0x\+A1
  \}
 \end{DoxyCompactItemize}
 

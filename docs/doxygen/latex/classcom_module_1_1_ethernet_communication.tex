@@ -34,10 +34,42 @@ bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a425bbda1daf74f
 \begin{DoxyCompactList}\small\item\em Function to get the current status of the flag. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5}{set\+Send\+Data\+Flag}} (bool flag)
 \begin{DoxyCompactList}\small\item\em Function to get the current status of the flag. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ac80c0f804308233fa839e1d3914da7ef}{set\+Compound}} (ID id, int index, String value)
-\begin{DoxyCompactList}\small\item\em Function to handle set the compound command for the valve uC Slave. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab2cb5305375ebcf4f6a5ae8884bd5121}{get\+Compound}} (ID id, int index)
-\begin{DoxyCompactList}\small\item\em Function to handle get the compound command for the valve uC Slave. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{set\+Compound}} (Compound1 id, int index, String value)
+\begin{DoxyCompactList}\small\item\em Function to set a compound command for the valve uC Slave (Compound1) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6}{set\+Compound}} (Compound2 id, int index, String value)
+\begin{DoxyCompactList}\small\item\em Function to set a compound command for the valve uC Slave (Compound2) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a}{set\+Compound}} (Compound3 id, int index, String value)
+\begin{DoxyCompactList}\small\item\em Function to set a compound command for the valve uC Slave (Compound3) \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1}\label{classcom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1} 
+void {\bfseries set\+Compound\+Internal} (String compound\+Type, unsigned long id, int index, String value)
+\begin{DoxyCompactList}\small\item\em Internal function to send the command over Ethernet. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{get\+Compound}} (Compound1 id, int index)
+\begin{DoxyCompactList}\small\item\em Function to get a compound command response from the valve uC Slave (Compound1) \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4}{get\+Compound}} (Compound2 id, int index)
+\begin{DoxyCompactList}\small\item\em Function to get a compound command response from the valve uC Slave (Compound2) \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229}{get\+Compound}} (Compound3 id, int index)
+\begin{DoxyCompactList}\small\item\em Function to get a compound command response from the valve uC Slave (Compound3) \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb}\label{classcom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb} 
+String {\bfseries get\+Compound\+Internal} (String compound\+Type, unsigned long id, int index)
+\begin{DoxyCompactList}\small\item\em Internal function to handle getting a compound response over Ethernet. \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}\label{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438} 
+Vector$<$ float $>$ {\bfseries get\+Parsed\+Compound} (Compound1 id, int index)
+\begin{DoxyCompactList}\small\item\em Function to parse a compound response into a vector (Compound1) \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a9b50c13f7bb42d9f30e9260c9f62b77d}\label{classcom_module_1_1_ethernet_communication_a9b50c13f7bb42d9f30e9260c9f62b77d} 
+Vector$<$ float $>$ {\bfseries get\+Parsed\+Compound} (Compound2 id, int index)
+\begin{DoxyCompactList}\small\item\em Function to parse a compound response into a vector (Compound2) \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a128ef19656147acb52513f8cd041d924}\label{classcom_module_1_1_ethernet_communication_a128ef19656147acb52513f8cd041d924} 
+Vector$<$ float $>$ {\bfseries get\+Parsed\+Compound} (Compound3 id, int index)
+\begin{DoxyCompactList}\small\item\em Function to parse a compound response into a vector (Compound3) \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa}\label{classcom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa} 
+Vector$<$ float $>$ {\bfseries parse\+Compound\+Response} (String response)
+\begin{DoxyCompactList}\small\item\em Internal function to parse a response string into a float vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_add5de94592b2b79f068dc1e1d739de83}{set\+Parameter}} (Compound2 id, String value)
+\begin{DoxyCompactList}\small\item\em Setter for a parameter from the VAT slave. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8ea208b24911cfcc75a4a068788f06c0}{get\+Parameter}} (Compound2 id)
+\begin{DoxyCompactList}\small\item\em Getter for a parameter from the VAT slave. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6d043bcf14fd4f0f8f0f8db9d664cfcd}{send\+Command}} (String command)
+\begin{DoxyCompactList}\small\item\em Helper function to send a command to the VAT slave controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -74,33 +106,122 @@ Get the currently active Ethernet client.
 \begin{DoxyReturn}{Returns}
 Reference to the active Ethernet client 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classcom_module_1_1_ethernet_communication_ab2cb5305375ebcf4f6a5ae8884bd5121}\label{classcom_module_1_1_ethernet_communication_ab2cb5305375ebcf4f6a5ae8884bd5121} 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}\label{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getCompound@{getCompound}}
 \index{getCompound@{getCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
-\doxysubsubsection{\texorpdfstring{getCompound()}{getCompound()}}
-{\footnotesize\ttfamily String Ethernet\+Communication\+::get\+Compound (\begin{DoxyParamCaption}\item[{ID}]{id,  }\item[{int}]{index = {\ttfamily 0} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{getCompound()}{getCompound()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily String Ethernet\+Communication\+::get\+Compound (\begin{DoxyParamCaption}\item[{Compound1}]{id,  }\item[{int}]{index }\end{DoxyParamCaption})}
 
 
 
-Function to handle get the compound command for the valve uC Slave. 
+Function to get a compound command response from the valve uC Slave (Compound1) 
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & -\/\texorpdfstring{$>$}{>} id of the command \\
+{\em id} & Enum ID from Compound1 \\
 \hline
-{\em index} & -\/\texorpdfstring{$>$}{>} actual index of the command \\
+{\em index} & Index of the command \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-response -\/\texorpdfstring{$>$}{>} string with the response of valve uC slave 
+String Response from the valve uC slave 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classcom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4}\label{classcom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getCompound@{getCompound}}
+\index{getCompound@{getCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{getCompound()}{getCompound()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily String Ethernet\+Communication\+::get\+Compound (\begin{DoxyParamCaption}\item[{Compound2}]{id,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Function to get a compound command response from the valve uC Slave (Compound2) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Enum ID from Compound2 \\
+\hline
+{\em index} & Index of the command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String Response from the valve uC slave 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classcom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229}\label{classcom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getCompound@{getCompound}}
+\index{getCompound@{getCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{getCompound()}{getCompound()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily String Ethernet\+Communication\+::get\+Compound (\begin{DoxyParamCaption}\item[{Compound3}]{id,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Function to get a compound command response from the valve uC Slave (Compound3) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Enum ID from Compound3 \\
+\hline
+{\em index} & Index of the command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String Response from the valve uC slave 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a8ea208b24911cfcc75a4a068788f06c0}\label{classcom_module_1_1_ethernet_communication_a8ea208b24911cfcc75a4a068788f06c0} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getParameter@{getParameter}}
+\index{getParameter@{getParameter}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{getParameter()}{getParameter()}}
+{\footnotesize\ttfamily String Ethernet\+Communication\+::get\+Parameter (\begin{DoxyParamCaption}\item[{Compound2}]{id }\end{DoxyParamCaption})}
+
+
+
+Getter for a parameter from the VAT slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & -\/\texorpdfstring{$>$}{>} The ID of the parameter to get. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+will return the value of the parameter as a string, otherwise an empty string or error message. 
 \end{DoxyReturn}
 \Hypertarget{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1}\label{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!getSendDataFlag@{getSendDataFlag}}
@@ -145,6 +266,29 @@ Function to receive data over Ethernet.
 {\em length} & -\/\texorpdfstring{$>$}{>} The length of the data to read \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a6d043bcf14fd4f0f8f0f8db9d664cfcd}\label{classcom_module_1_1_ethernet_communication_a6d043bcf14fd4f0f8f0f8db9d664cfcd} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::send\+Command (\begin{DoxyParamCaption}\item[{String}]{command }\end{DoxyParamCaption})}
+
+
+
+Helper function to send a command to the VAT slave controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & -\/\texorpdfstring{$>$}{>} The command to send to the VAT slave controller \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a6d043bcf14fd4f0f8f0f8db9d664cfcd_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538}\label{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!sendEthernetData@{sendEthernetData}}
 \index{sendEthernetData@{sendEthernetData}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
@@ -162,8 +306,7 @@ Fucntion to send data over Ethernet.
 {\em data} & -\/\texorpdfstring{$>$}{>} The data to send \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -185,33 +328,119 @@ Function to send the json response with the measurment data.
 {\em json\+Body} & -\/\texorpdfstring{$>$}{>} jsonstring with the content needed \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classcom_module_1_1_ethernet_communication_ac80c0f804308233fa839e1d3914da7ef}\label{classcom_module_1_1_ethernet_communication_ac80c0f804308233fa839e1d3914da7ef} 
+\Hypertarget{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}\label{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setCompound@{setCompound}}
 \index{setCompound@{setCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
-\doxysubsubsection{\texorpdfstring{setCompound()}{setCompound()}}
-{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Compound (\begin{DoxyParamCaption}\item[{ID}]{id,  }\item[{int}]{index,  }\item[{String}]{value }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{setCompound()}{setCompound()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Compound (\begin{DoxyParamCaption}\item[{Compound1}]{id,  }\item[{int}]{index,  }\item[{String}]{value }\end{DoxyParamCaption})}
 
 
 
-Function to handle set the compound command for the valve uC Slave. 
+Function to set a compound command for the valve uC Slave (Compound1) 
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & -\/\texorpdfstring{$>$}{>} id of the command \\
+{\em id} & Enum ID from Compound1 \\
 \hline
-{\em index} & -\/\texorpdfstring{$>$}{>} actual index of the command \\
+{\em index} & Index of the command \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} value of the command \\
+{\em value} & Value of the command \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classcom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6}\label{classcom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setCompound@{setCompound}}
+\index{setCompound@{setCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{setCompound()}{setCompound()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Compound (\begin{DoxyParamCaption}\item[{Compound2}]{id,  }\item[{int}]{index,  }\item[{String}]{value }\end{DoxyParamCaption})}
+
+
+
+Function to set a compound command for the valve uC Slave (Compound2) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Enum ID from Compound2 \\
+\hline
+{\em index} & Index of the command \\
+\hline
+{\em value} & Value of the command \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classcom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a}\label{classcom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setCompound@{setCompound}}
+\index{setCompound@{setCompound}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{setCompound()}{setCompound()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Compound (\begin{DoxyParamCaption}\item[{Compound3}]{id,  }\item[{int}]{index,  }\item[{String}]{value }\end{DoxyParamCaption})}
+
+
+
+Function to set a compound command for the valve uC Slave (Compound3) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Enum ID from Compound3 \\
+\hline
+{\em index} & Index of the command \\
+\hline
+{\em value} & Value of the command \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classcom_module_1_1_ethernet_communication_add5de94592b2b79f068dc1e1d739de83}\label{classcom_module_1_1_ethernet_communication_add5de94592b2b79f068dc1e1d739de83} 
+\index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}}
+{\footnotesize\ttfamily void Ethernet\+Communication\+::set\+Parameter (\begin{DoxyParamCaption}\item[{Compound2}]{id,  }\item[{String}]{value }\end{DoxyParamCaption})}
+
+
+
+Setter for a parameter from the VAT slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & -\/\texorpdfstring{$>$}{>} The ID of the parameter to set \\
+\hline
+{\em value} & -\/\texorpdfstring{$>$}{>} The value to set the parameter to \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_add5de94592b2b79f068dc1e1d739de83_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5}\label{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!setSendDataFlag@{setSendDataFlag}}
 \index{setSendDataFlag@{setSendDataFlag}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}

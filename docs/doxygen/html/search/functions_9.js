@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mapjsontodoubles_0',['mapJsonToDoubles',['../classjson_module_1_1_json_module_internals.html#ac59dc705dd5108156a763e11ae9633fc',1,'jsonModule::JsonModuleInternals']]]
+  ['kelvintocelsius_0',['kelvinToCelsius',['../classcalc_module_1_1_calc_module_internals.html#aeb3fdaac1ddb7a1b21669d50669f99d3',1,'calcModule::CalcModuleInternals']]]
 ];

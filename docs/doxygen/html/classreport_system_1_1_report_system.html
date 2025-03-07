@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classreport_system_1_1_report_system-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">reportSystem::ReportSystem Class Reference</div></div>
 </div><!--header-->
@@ -90,12 +91,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a319a4cfc8ebf83f2c64a36ce78afa780" id="r_a319a4cfc8ebf83f2c64a36ce78afa780"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780">logError</a> (const char *errorMessage)</td></tr>
 <tr class="memdesc:a319a4cfc8ebf83f2c64a36ce78afa780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to log an error message with a timestamp.  <br /></td></tr>
 <tr class="separator:a319a4cfc8ebf83f2c64a36ce78afa780"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa74f255d5cf5240576d8f2d8ed5a3063" id="r_aa74f255d5cf5240576d8f2d8ed5a3063"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aa74f255d5cf5240576d8f2d8ed5a3063">checkSystemHealth</a> (size_t memoryThreshold)</td></tr>
-<tr class="memdesc:aa74f255d5cf5240576d8f2d8ed5a3063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check the system health.  <br /></td></tr>
-<tr class="separator:aa74f255d5cf5240576d8f2d8ed5a3063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54bb251b1cc2445490fee0593507b96f" id="r_a54bb251b1cc2445490fee0593507b96f"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a54bb251b1cc2445490fee0593507b96f">reportStatus</a> ()</td></tr>
-<tr class="memdesc:a54bb251b1cc2445490fee0593507b96f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to report the status of the pressure and temperature thresholds.  <br /></td></tr>
-<tr class="separator:a54bb251b1cc2445490fee0593507b96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad88c455a60ac3977adfd4c295b494f2" id="r_aad88c455a60ac3977adfd4c295b494f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2">checkSystemHealth</a> (size_t memoryThreshold, bool checkEth, bool checkSpi, bool checkI2c, bool checkTemp, bool checkPress)</td></tr>
+<tr class="memdesc:aad88c455a60ac3977adfd4c295b494f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check the system health.  <br /></td></tr>
+<tr class="separator:aad88c455a60ac3977adfd4c295b494f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50d1100b21aad9391a2bae7aed3ad5b6" id="r_a50d1100b21aad9391a2bae7aed3ad5b6"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a50d1100b21aad9391a2bae7aed3ad5b6">reportStatus</a> (bool active)</td></tr>
+<tr class="memdesc:a50d1100b21aad9391a2bae7aed3ad5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to report the status of the pressure and temperature thresholds.  <br /></td></tr>
+<tr class="separator:a50d1100b21aad9391a2bae7aed3ad5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c4a7b9ba401b35bc0ba1e6196db7b13" id="r_a5c4a7b9ba401b35bc0ba1e6196db7b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a5c4a7b9ba401b35bc0ba1e6196db7b13">setThreshold</a> (float tempThreshold, float pressureThreshold)</td></tr>
 <tr class="memdesc:a5c4a7b9ba401b35bc0ba1e6196db7b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set the temperature and pressure thresholds.  <br /></td></tr>
 <tr class="separator:a5c4a7b9ba401b35bc0ba1e6196db7b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,12 +106,51 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa0927e4bffac62ace369ec74677667d9" id="r_aa0927e4bffac62ace369ec74677667d9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9">getCurrentTime</a> ()</td></tr>
 <tr class="memdesc:aa0927e4bffac62ace369ec74677667d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the current time in milliseconds.  <br /></td></tr>
 <tr class="separator:aa0927e4bffac62ace369ec74677667d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3914ceb5a587a3d572132a76fb5de64" id="r_ac3914ceb5a587a3d572132a76fb5de64"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#ac3914ceb5a587a3d572132a76fb5de64">getMemoryStatus</a> ()</td></tr>
+<tr class="memdesc:ac3914ceb5a587a3d572132a76fb5de64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the current memory status as a formatted string.  <br /></td></tr>
+<tr class="separator:ac3914ceb5a587a3d572132a76fb5de64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac47a217bcaf65859e60c1bee6c338556" id="r_ac47a217bcaf65859e60c1bee6c338556"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#ac47a217bcaf65859e60c1bee6c338556">getStackDump</a> ()</td></tr>
+<tr class="memdesc:ac47a217bcaf65859e60c1bee6c338556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a stack dump showing return addresses.  <br /></td></tr>
+<tr class="separator:ac47a217bcaf65859e60c1bee6c338556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d34d7c8534ff96d109acaef76f4878f" id="r_a6d34d7c8534ff96d109acaef76f4878f"><td class="memItemLeft" align="right" valign="top"><a id="a6d34d7c8534ff96d109acaef76f4878f" name="a6d34d7c8534ff96d109acaef76f4878f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>startBusyTime</b> ()</td></tr>
+<tr class="memdesc:a6d34d7c8534ff96d109acaef76f4878f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the start of a busy period for CPU load tracking. <br /></td></tr>
+<tr class="separator:a6d34d7c8534ff96d109acaef76f4878f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aead25f060ef4c7631dbbb3f207a1094b" id="r_aead25f060ef4c7631dbbb3f207a1094b"><td class="memItemLeft" align="right" valign="top"><a id="aead25f060ef4c7631dbbb3f207a1094b" name="aead25f060ef4c7631dbbb3f207a1094b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>startIdleTime</b> ()</td></tr>
+<tr class="memdesc:aead25f060ef4c7631dbbb3f207a1094b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the start of an idle period for CPU load tracking. <br /></td></tr>
+<tr class="separator:aead25f060ef4c7631dbbb3f207a1094b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd800614c513a9cbcb0da53bee8e2302" id="r_acd800614c513a9cbcb0da53bee8e2302"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#acd800614c513a9cbcb0da53bee8e2302">getCPULoad</a> ()</td></tr>
+<tr class="memdesc:acd800614c513a9cbcb0da53bee8e2302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the CPU load percentage based on busy and idle time.  <br /></td></tr>
+<tr class="separator:acd800614c513a9cbcb0da53bee8e2302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015ef444336756d6b06fb2c2120e1c5f" id="r_a015ef444336756d6b06fb2c2120e1c5f"><td class="memItemLeft" align="right" valign="top"><a id="a015ef444336756d6b06fb2c2120e1c5f" name="a015ef444336756d6b06fb2c2120e1c5f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resetUsage</b> ()</td></tr>
+<tr class="memdesc:a015ef444336756d6b06fb2c2120e1c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the CPU load tracking metrics. <br /></td></tr>
+<tr class="separator:a015ef444336756d6b06fb2c2120e1c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c39b828d9edb65bf2b8b02de5a5ddf" id="r_a76c39b828d9edb65bf2b8b02de5a5ddf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a76c39b828d9edb65bf2b8b02de5a5ddf">saveLastError</a> (const char *error)</td></tr>
+<tr class="memdesc:a76c39b828d9edb65bf2b8b02de5a5ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to save last error to EEPROM.  <br /></td></tr>
+<tr class="separator:a76c39b828d9edb65bf2b8b02de5a5ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec07e83fe5e94772cb044e6c2a5878e8" id="r_aec07e83fe5e94772cb044e6c2a5878e8"><td class="memItemLeft" align="right" valign="top"><a id="aec07e83fe5e94772cb044e6c2a5878e8" name="aec07e83fe5e94772cb044e6c2a5878e8"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>getLastError</b> ()</td></tr>
+<tr class="memdesc:aec07e83fe5e94772cb044e6c2a5878e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get last error from EEPROM HINT: KEEP IN MIND ~100 000 write cycles per cell! <br /></td></tr>
+<tr class="separator:aec07e83fe5e94772cb044e6c2a5878e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a556efb423beb07f507c05458d86b8ab4" id="r_a556efb423beb07f507c05458d86b8ab4"><td class="memItemLeft" align="right" valign="top"><a id="a556efb423beb07f507c05458d86b8ab4" name="a556efb423beb07f507c05458d86b8ab4"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>initStackGuard</b> ()</td></tr>
+<tr class="memdesc:a556efb423beb07f507c05458d86b8ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializer for Stack Guard. <br /></td></tr>
+<tr class="separator:a556efb423beb07f507c05458d86b8ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb82be304bb03585249194aed79e987e" id="r_adb82be304bb03585249194aed79e987e"><td class="memItemLeft" align="right" valign="top"><a id="adb82be304bb03585249194aed79e987e" name="adb82be304bb03585249194aed79e987e"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>detectStackOverflow</b> ()</td></tr>
+<tr class="memdesc:adb82be304bb03585249194aed79e987e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detector for stackoverflow. <br /></td></tr>
+<tr class="separator:adb82be304bb03585249194aed79e987e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for the report system. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa74f255d5cf5240576d8f2d8ed5a3063" name="aa74f255d5cf5240576d8f2d8ed5a3063"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa74f255d5cf5240576d8f2d8ed5a3063">&#9670;&#160;</a></span>checkSystemHealth()</h2>
+<a id="aad88c455a60ac3977adfd4c295b494f2" name="aad88c455a60ac3977adfd4c295b494f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad88c455a60ac3977adfd4c295b494f2">&#9670;&#160;</a></span>checkSystemHealth()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,24 +159,71 @@ Public Member Functions</h2></td></tr>
           <td class="memname">bool ReportSystem::checkSystemHealth </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>memoryThreshold</em></td><td>)</td>
+          <td class="paramname"><em>memoryThreshold</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checkEth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checkSpi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checkI2c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checkTemp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>checkPress</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to check the system health. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">memorySizeThreshold</td><td>-&gt; Set true to check memory Threshold </td></tr>
+    <tr><td class="paramname">checkEth</td><td>-&gt; Set true to check Ethernet </td></tr>
+    <tr><td class="paramname">checkSpi</td><td>-&gt; Set true to check SPI </td></tr>
+    <tr><td class="paramname">checkI2c</td><td>-&gt; Set true to check I2C </td></tr>
+    <tr><td class="paramname">checkTemp</td><td>-&gt; Set true to check Temperature </td></tr>
+    <tr><td class="paramname">checkPress-&gt;</td><td>Set true to check Pressure </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>-&gt; This returns true if the system health check passed, false otherwise </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063_cgraph" alt=""/></div>
-<map name="aclassreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063_cgraph" id="aclassreport_system_1_1_report_system_aa74f255d5cf5240576d8f2d8ed5a3063_cgraph">
-<area shape="rect" title="Function to check the system health." alt="" coords="5,5,197,48"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780" title="Function to log an error message with a timestamp." alt="" coords="245,5,436,48"/>
-<area shape="poly" title=" " alt="" coords="197,24,229,24,229,29,197,29"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Function to get the current time in milliseconds." alt="" coords="484,5,675,48"/>
-<area shape="poly" title=" " alt="" coords="437,24,468,24,468,29,437,29"/>
+<div class="center"><img src="classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph" alt=""/></div>
+<map name="aclassreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph" id="aclassreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph">
+<area shape="rect" title="Function to check the system health." alt="" coords="5,39,197,81"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#adb82be304bb03585249194aed79e987e" title="Detector for stackoverflow." alt="" coords="245,5,436,48"/>
+<area shape="poly" title=" " alt="" coords="197,44,229,40,229,45,198,49"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780" title="Function to log an error message with a timestamp." alt="" coords="245,72,436,115"/>
+<area shape="poly" title=" " alt="" coords="198,71,229,75,229,80,197,76"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Function to get the current time in milliseconds." alt="" coords="484,72,675,115"/>
+<area shape="poly" title=" " alt="" coords="437,91,468,91,468,96,437,96"/>
 </map>
 </div>
 
@@ -192,6 +279,26 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="acd800614c513a9cbcb0da53bee8e2302" name="acd800614c513a9cbcb0da53bee8e2302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd800614c513a9cbcb0da53bee8e2302">&#9670;&#160;</a></span>getCPULoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ReportSystem::getCPULoad </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the CPU load percentage based on busy and idle time. </p>
+<dl class="section return"><dt>Returns</dt><dd>The CPU load as a floating-point percentage (0.0 - 100.0). </dd></dl>
+
+</div>
+</div>
 <a id="aa0927e4bffac62ace369ec74677667d9" name="aa0927e4bffac62ace369ec74677667d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0927e4bffac62ace369ec74677667d9">&#9670;&#160;</a></span>getCurrentTime()</h2>
 
@@ -217,12 +324,62 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Function to get the current time in milliseconds." alt="" coords="484,39,675,81"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780" title="Function to log an error message with a timestamp." alt="" coords="245,39,436,81"/>
 <area shape="poly" title=" " alt="" coords="468,63,437,63,437,57,468,57"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#aa74f255d5cf5240576d8f2d8ed5a3063" title="Function to check the system health." alt="" coords="5,5,197,48"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2" title="Function to check the system health." alt="" coords="5,5,197,48"/>
 <area shape="poly" title=" " alt="" coords="229,47,197,43,198,37,230,42"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b" title="Function to check if the current temperature and pressure exceed the thresholds." alt="" coords="5,72,197,115"/>
 <area shape="poly" title=" " alt="" coords="230,78,198,83,197,77,229,73"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="ac3914ceb5a587a3d572132a76fb5de64" name="ac3914ceb5a587a3d572132a76fb5de64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3914ceb5a587a3d572132a76fb5de64">&#9670;&#160;</a></span>getMemoryStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String ReportSystem::getMemoryStatus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the current memory status as a formatted string. </p>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; A string containing details about SRAM, stack, heap, and free memory </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64_icgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64_icgraph" alt=""/></div>
+<map name="aclassreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64_icgraph" id="aclassreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64_icgraph">
+<area shape="rect" title="Function to get the current memory status as a formatted string." alt="" coords="245,5,436,48"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a50d1100b21aad9391a2bae7aed3ad5b6" title="Function to report the status of the pressure and temperature thresholds." alt="" coords="5,5,197,48"/>
+<area shape="poly" title=" " alt="" coords="229,29,197,29,197,24,229,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac47a217bcaf65859e60c1bee6c338556" name="ac47a217bcaf65859e60c1bee6c338556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac47a217bcaf65859e60c1bee6c338556">&#9670;&#160;</a></span>getStackDump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String ReportSystem::getStackDump </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves a stack dump showing return addresses. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the stack dump. </dd></dl>
 
 </div>
 </div>
@@ -265,7 +422,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph" alt=""/></div>
 <map name="aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph" id="aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph">
 <area shape="rect" title="Function to log an error message with a timestamp." alt="" coords="245,39,436,81"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#aa74f255d5cf5240576d8f2d8ed5a3063" title="Function to check the system health." alt="" coords="5,5,197,48"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2" title="Function to check the system health." alt="" coords="5,5,197,48"/>
 <area shape="poly" title=" " alt="" coords="229,47,197,43,198,37,230,42"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b" title="Function to check if the current temperature and pressure exceed the thresholds." alt="" coords="5,72,197,115"/>
 <area shape="poly" title=" " alt="" coords="230,78,198,83,197,77,229,73"/>
@@ -274,8 +431,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a54bb251b1cc2445490fee0593507b96f" name="a54bb251b1cc2445490fee0593507b96f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54bb251b1cc2445490fee0593507b96f">&#9670;&#160;</a></span>reportStatus()</h2>
+<a id="a50d1100b21aad9391a2bae7aed3ad5b6" name="a50d1100b21aad9391a2bae7aed3ad5b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50d1100b21aad9391a2bae7aed3ad5b6">&#9670;&#160;</a></span>reportStatus()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,14 +440,57 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">String ReportSystem::reportStatus </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>active</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function to report the status of the pressure and temperature thresholds. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">active</td><td>-&gt; Set to true to get the status, false otherwise </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>-&gt; String with the Information about the status </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph" alt=""/></div>
+<map name="aclassreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph" id="aclassreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph">
+<area shape="rect" title="Function to report the status of the pressure and temperature thresholds." alt="" coords="5,5,197,48"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#ac3914ceb5a587a3d572132a76fb5de64" title="Function to get the current memory status as a formatted string." alt="" coords="245,5,436,48"/>
+<area shape="poly" title=" " alt="" coords="197,24,229,24,229,29,197,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a76c39b828d9edb65bf2b8b02de5a5ddf" name="a76c39b828d9edb65bf2b8b02de5a5ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c39b828d9edb65bf2b8b02de5a5ddf">&#9670;&#160;</a></span>saveLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ReportSystem::saveLastError </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to save last error to EEPROM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>-&gt; Error message to save HINT: KEEP IN MIND ~100 000 write cycles per cell! </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

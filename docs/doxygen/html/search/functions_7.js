@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kelvintocelsius_0',['kelvinToCelsius',['../classcalc_module_1_1_calc_module_internals.html#a1cece4ffdc89082586bd68997f945be7',1,'calcModule::CalcModuleInternals']]]
+  ['handleethernetclient_0',['handleEthernetClient',['../classcom_module_1_1_ethernet_communication.html#a34849676fdb201d44ecb9f42a485615c',1,'comModule::EthernetCommunication']]]
 ];

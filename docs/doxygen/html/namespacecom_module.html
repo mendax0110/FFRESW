@@ -98,26 +98,98 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ab6d1e37a46d4d4b41597a4d0259189c4" id="r_ab6d1e37a46d4d4b41597a4d0259189c4"><td class="memItemLeft" align="right" valign="top"><a id="ab6d1e37a46d4d4b41597a4d0259189c4" name="ab6d1e37a46d4d4b41597a4d0259189c4"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>service</b> { <b>SET</b> = 28
-, <b>GET</b> = 29
-, <b>SETGET</b> = 30
+<tr class="memitem:a47cc14bc7309735f36eb1a9240a6a3af" id="r_a47cc14bc7309735f36eb1a9240a6a3af"><td class="memItemLeft" align="right" valign="top"><a id="a47cc14bc7309735f36eb1a9240a6a3af" name="a47cc14bc7309735f36eb1a9240a6a3af"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Service</b> : uint8_t { <br />
+&#160;&#160;<b>SET</b> = 0x01
+, <b>GET</b> = 0x0B
+, <b>SET_COMPOUND</b> = 0x28
+, <b>GET_COMPOUND</b> = 0x29
+, <br />
+&#160;&#160;<b>SETGET</b> = 0x30
+<br />
  }</td></tr>
-<tr class="separator:ab6d1e37a46d4d4b41597a4d0259189c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed8e718f7a3774c812fc6869c82cd22a" id="r_aed8e718f7a3774c812fc6869c82cd22a"><td class="memItemLeft" align="right" valign="top"><a id="aed8e718f7a3774c812fc6869c82cd22a" name="aed8e718f7a3774c812fc6869c82cd22a"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>ID</b> : unsigned long { <br />
+<tr class="separator:a47cc14bc7309735f36eb1a9240a6a3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2266c2913bf28192787d63337b745f04" id="r_a2266c2913bf28192787d63337b745f04"><td class="memItemLeft" align="right" valign="top"><a id="a2266c2913bf28192787d63337b745f04" name="a2266c2913bf28192787d63337b745f04"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Compound1</b> : uint32_t { <b>CONTROL_MODE</b> = 0x0F020000
+, <b>TARGET_POSITION</b> = 0x11020000
+, <b>TARGET_PRESSURE</b> = 0x07020000
+, <b>NOT_USED</b> = 0x00000000
+ }</td></tr>
+<tr class="separator:a2266c2913bf28192787d63337b745f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2db38dd30e53f8589205c5536f6ab92" id="r_ae2db38dd30e53f8589205c5536f6ab92"><td class="memItemLeft" align="right" valign="top"><a id="ae2db38dd30e53f8589205c5536f6ab92" name="ae2db38dd30e53f8589205c5536f6ab92"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Compound2</b> : uint32_t { <br />
 &#160;&#160;<b>ACCESS_MODE</b> = 0x0F0B0000
 , <b>CONTROL_MODE</b> = 0x0F020000
-, <b>ACTUAL_POSITION</b> = 0x10010000
 , <b>TARGET_POSITION</b> = 0x11020000
+, <b>TARGET_PRESSURE</b> = 0x07020000
 , <br />
-&#160;&#160;<b>TARGET_PRESSURE</b> = 0x07020000
+&#160;&#160;<b>ACTUAL_POSITION</b> = 0x10010000
 , <b>POSITION_STATE</b> = 0x00100000
 , <b>ACTUAL_PRESSURE</b> = 0x07010000
 , <b>TARGET_PRESSURE_USED</b> = 0x07030000
 , <br />
 &#160;&#160;<b>WARNING_BITMAP</b> = 0x0F300100
+, <b>NOT_USED</b> = 0x00000000
 <br />
  }</td></tr>
-<tr class="separator:aed8e718f7a3774c812fc6869c82cd22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ae2db38dd30e53f8589205c5536f6ab92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272fc8d3be95ae8b9284332131f652d6" id="r_a272fc8d3be95ae8b9284332131f652d6"><td class="memItemLeft" align="right" valign="top"><a id="a272fc8d3be95ae8b9284332131f652d6" name="a272fc8d3be95ae8b9284332131f652d6"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Compound3</b> : uint32_t { <br />
+&#160;&#160;<b>CONTROL_MODE</b> = 0x0F020000
+, <b>TARGET_POSITION</b> = 0x11020000
+, <b>TARGET_PRESSURE</b> = 0x07020000
+, <b>SEPARATION</b> = 0x00000000
+, <br />
+&#160;&#160;<b>ACCESS_MODE</b> = 0x0F0B0000
+, <b>ACTUAL_POSITION</b> = 0x10010000
+, <b>POSITION_STATE</b> = 0x00100000
+, <b>ACTUAL_PRESSURE</b> = 0x07010000
+, <br />
+&#160;&#160;<b>TARGET_PRESSURE_USED</b> = 0x07030000
+, <b>WARNING_BITMAP</b> = 0x0F300100
+, <b>NOT_USED</b> = 0x00000000
+<br />
+ }</td></tr>
+<tr class="separator:a272fc8d3be95ae8b9284332131f652d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b450180f02d724d8ecd6c7f06514756" id="r_a3b450180f02d724d8ecd6c7f06514756"><td class="memItemLeft" align="right" valign="top"><a id="a3b450180f02d724d8ecd6c7f06514756" name="a3b450180f02d724d8ecd6c7f06514756"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Error_Codes</b> : uint8_t { <br />
+&#160;&#160;<b>NO_ERROR</b> = 0x00
+, <b>WRONG_COMMAND_LENGTH</b> = 0x0C
+, <b>VALUE_TOO_LOW</b> = 0x1C
+, <b>VALUE_TOO_HIGH</b> = 0x1D
+, <br />
+&#160;&#160;<b>RESULTING_ZERO_ADJUST_OFFSET</b> = 0x20
+, <b>NO_SENSOR_ENABLED</b> = 0x21
+, <b>WRONG_ACCESS_MODE</b> = 0x50
+, <b>TIMEOUT</b> = 0x51
+, <br />
+&#160;&#160;<b>NV_MEMORY_NOT_READY</b> = 0x6D
+, <b>WRONG_PARAMETER_ID</b> = 0x6E
+, <b>PARAMETER_NOT_SETTABLE</b> = 0x70
+, <b>PARAMETER_NOT_READABLE</b> = 0x71
+, <br />
+&#160;&#160;<b>WRONG_PARAMETER_INDEX</b> = 0x73
+, <b>WRONG_VALUE_WITHIN_RANGE</b> = 0x76
+, <b>NOT_ALLOWED_IN_THIS_STATE</b> = 0x78
+, <b>SETTING_LOCK</b> = 0x79
+, <br />
+&#160;&#160;<b>WRONG_SERVICE</b> = 0x7A
+, <b>PARAMETER_NOT_ACTIVE</b> = 0x7B
+, <b>PARAMETER_SYSTEM_ERROR</b> = 0x7C
+, <b>COMMUNICATION_ERROR</b> = 0x7D
+, <br />
+&#160;&#160;<b>UNKNOWN_SERVICE</b> = 0x7E
+, <b>UNEXPECTED_CHARACTER</b> = 0x7F
+, <b>NO_ACCESS_RIGHTS</b> = 0x80
+, <b>NO_ADEQUATE_HARDWARE</b> = 0x81
+, <br />
+&#160;&#160;<b>WRONG_OBJECT_STATE</b> = 0x82
+, <b>NO_SLAVE_COMMAND</b> = 0x84
+, <b>COMMAND_TO_UNKNOWN_SLAVE</b> = 0x85
+, <b>COMMAND_TO_MASTER_ONLY</b> = 0x87
+, <br />
+&#160;&#160;<b>ONLY_G_COMMAND_ALLOWED</b> = 0x88
+, <b>NOT_SUPPORTED</b> = 0x89
+, <b>FUNCTION_DISABLED</b> = 0xA0
+, <b>ALREADY_DONE</b> = 0xA1
+<br />
+ }</td></tr>
+<tr class="separator:a3b450180f02d724d8ecd6c7f06514756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace for the communication module. </p>

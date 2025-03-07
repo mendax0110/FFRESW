@@ -14,10 +14,15 @@ Class to handle I2C communication.
 \item 
 void \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_ae2e5382caa6ca43b2303df5626c5bf92}{begin\+I2C}} (uint8\+\_\+t address)
 \begin{DoxyCompactList}\small\item\em Function to initialize the I2C communication. \end{DoxyCompactList}\item 
+\Hypertarget{classcom_module_1_1_i2_c_communication_a191f0fd3dde73c1599e6e3ff37e31590}\label{classcom_module_1_1_i2_c_communication_a191f0fd3dde73c1599e6e3ff37e31590} 
+void {\bfseries end\+I2C} ()
+\begin{DoxyCompactList}\small\item\em Function to End the I2C communication. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_a2a098877516193a07e796915c98e19f4}{i2c\+Write}} (uint8\+\_\+t device\+Address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
 \begin{DoxyCompactList}\small\item\em Function to write data over I2C. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_ad60819a150985131af81631a43b90e99}{i2c\+Read}} (uint8\+\_\+t device\+Address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
-\begin{DoxyCompactList}\small\item\em Function to read data over I2C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to read data over I2C. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcom_module_1_1_i2_c_communication_aa3b99c42cb0d82069ca6e4ab45e89397}{is\+Initialized}} ()
+\begin{DoxyCompactList}\small\item\em Function to check if the I2C communication is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -77,6 +82,19 @@ Function to write data over I2C.
 {\em length} & -\/\texorpdfstring{$>$}{>} The length of the data \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classcom_module_1_1_i2_c_communication_aa3b99c42cb0d82069ca6e4ab45e89397}\label{classcom_module_1_1_i2_c_communication_aa3b99c42cb0d82069ca6e4ab45e89397} 
+\index{comModule::I2CCommunication@{comModule::I2CCommunication}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!comModule::I2CCommunication@{comModule::I2CCommunication}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool I2\+CCommunication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to check if the I2C communication is initialized. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} true if the SPI communication is initialized, false otherwise 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

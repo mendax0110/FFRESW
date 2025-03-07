@@ -90,12 +90,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae2e5382caa6ca43b2303df5626c5bf92" id="r_ae2e5382caa6ca43b2303df5626c5bf92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#ae2e5382caa6ca43b2303df5626c5bf92">beginI2C</a> (uint8_t address)</td></tr>
 <tr class="memdesc:ae2e5382caa6ca43b2303df5626c5bf92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the I2C communication.  <br /></td></tr>
 <tr class="separator:ae2e5382caa6ca43b2303df5626c5bf92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a191f0fd3dde73c1599e6e3ff37e31590" id="r_a191f0fd3dde73c1599e6e3ff37e31590"><td class="memItemLeft" align="right" valign="top"><a id="a191f0fd3dde73c1599e6e3ff37e31590" name="a191f0fd3dde73c1599e6e3ff37e31590"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>endI2C</b> ()</td></tr>
+<tr class="memdesc:a191f0fd3dde73c1599e6e3ff37e31590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to End the I2C communication. <br /></td></tr>
+<tr class="separator:a191f0fd3dde73c1599e6e3ff37e31590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a098877516193a07e796915c98e19f4" id="r_a2a098877516193a07e796915c98e19f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#a2a098877516193a07e796915c98e19f4">i2cWrite</a> (uint8_t deviceAddress, uint8_t *data, size_t length)</td></tr>
 <tr class="memdesc:a2a098877516193a07e796915c98e19f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to write data over I2C.  <br /></td></tr>
 <tr class="separator:a2a098877516193a07e796915c98e19f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad60819a150985131af81631a43b90e99" id="r_ad60819a150985131af81631a43b90e99"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#ad60819a150985131af81631a43b90e99">i2cRead</a> (uint8_t deviceAddress, uint8_t *buffer, size_t length)</td></tr>
 <tr class="memdesc:ad60819a150985131af81631a43b90e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read data over I2C.  <br /></td></tr>
 <tr class="separator:ad60819a150985131af81631a43b90e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3b99c42cb0d82069ca6e4ab45e89397" id="r_aa3b99c42cb0d82069ca6e4ab45e89397"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#aa3b99c42cb0d82069ca6e4ab45e89397">isInitialized</a> ()</td></tr>
+<tr class="memdesc:aa3b99c42cb0d82069ca6e4ab45e89397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if the I2C communication is initialized.  <br /></td></tr>
+<tr class="separator:aa3b99c42cb0d82069ca6e4ab45e89397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to handle I2C communication. </p>
@@ -211,6 +218,26 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa3b99c42cb0d82069ca6e4ab45e89397" name="aa3b99c42cb0d82069ca6e4ab45e89397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3b99c42cb0d82069ca6e4ab45e89397">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool I2CCommunication::isInitialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to check if the I2C communication is initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; true if the SPI communication is initialized, false otherwise </dd></dl>
 
 </div>
 </div>
