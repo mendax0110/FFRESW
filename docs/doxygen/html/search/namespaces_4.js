@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensormodule_0',['sensorModule',['../namespacesensor_module.html',1,'']]]
+  ['timemodule_0',['timeModule',['../namespacetime_module.html',1,'']]]
 ];

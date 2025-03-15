@@ -83,12 +83,11 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5bcaf5eed99551cdf73d0332d719a695" id="r_a5bcaf5eed99551cdf73d0332d719a695"><td class="memItemLeft" align="right" valign="top"><a id="a5bcaf5eed99551cdf73d0332d719a695" name="a5bcaf5eed99551cdf73d0332d719a695"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td></tr>
-<tr class="memdesc:a5bcaf5eed99551cdf73d0332d719a695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the pressure sensor. <br /></td></tr>
+<tr class="memitem:a5bcaf5eed99551cdf73d0332d719a695" id="r_a5bcaf5eed99551cdf73d0332d719a695"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pressure_sensor.html#a5bcaf5eed99551cdf73d0332d719a695">initialize</a> ()</td></tr>
+<tr class="memdesc:a5bcaf5eed99551cdf73d0332d719a695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the pressure sensor.  <br /></td></tr>
 <tr class="separator:a5bcaf5eed99551cdf73d0332d719a695"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0bd12c02afc64805c6cbde843678697" id="r_ab0bd12c02afc64805c6cbde843678697"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pressure_sensor.html#ab0bd12c02afc64805c6cbde843678697">readPressure</a> ()</td></tr>
-<tr class="memdesc:ab0bd12c02afc64805c6cbde843678697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read the pressure sensor.  <br /></td></tr>
+<tr class="memdesc:ab0bd12c02afc64805c6cbde843678697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read the pressure from the sensor.  <br /></td></tr>
 <tr class="separator:ab0bd12c02afc64805c6cbde843678697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90251cd182efdc2ae4797dcdc6e51a34" id="r_a90251cd182efdc2ae4797dcdc6e51a34"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pressure_sensor.html#a90251cd182efdc2ae4797dcdc6e51a34">isInitialized</a> () const</td></tr>
 <tr class="memdesc:a90251cd182efdc2ae4797dcdc6e51a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if the pressure sensor is initialized.  <br /></td></tr>
@@ -97,6 +96,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Pressure sensor class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5bcaf5eed99551cdf73d0332d719a695" name="a5bcaf5eed99551cdf73d0332d719a695"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bcaf5eed99551cdf73d0332d719a695">&#9670;&#160;</a></span>initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PressureSensor::initialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to initialize the pressure sensor. </p>
+<p>Initializes the pressure sensor. </p>
+
+</div>
+</div>
 <a id="a90251cd182efdc2ae4797dcdc6e51a34" name="a90251cd182efdc2ae4797dcdc6e51a34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90251cd182efdc2ae4797dcdc6e51a34">&#9670;&#160;</a></span>isInitialized()</h2>
 
@@ -113,14 +132,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td
 </div><div class="memdoc">
 
 <p>Function to check if the pressure sensor is initialized. </p>
-<dl class="section return"><dt>Returns</dt><dd>bool -&gt; True if the pressure sensor is initialized, false otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true -&gt; if the pressure sensor is initialized </dd>
+<dd>
+false -&gt; if the pressure sensor is not initialized</dd>
+<dd>
+bool -&gt; True if the pressure sensor is initialized, false otherwise </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_pressure_sensor_a90251cd182efdc2ae4797dcdc6e51a34_icgraph.png" border="0" usemap="#aclass_pressure_sensor_a90251cd182efdc2ae4797dcdc6e51a34_icgraph" alt=""/></div>
 <map name="aclass_pressure_sensor_a90251cd182efdc2ae4797dcdc6e51a34_icgraph" id="aclass_pressure_sensor_a90251cd182efdc2ae4797dcdc6e51a34_icgraph">
 <area shape="rect" title="Function to check if the pressure sensor is initialized." alt="" coords="247,13,434,40"/>
-<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35" title="Function to check the status of the sensor based on the sensor type." alt="" coords="5,5,199,48"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35" title="Function to check the status of the sensor." alt="" coords="5,5,199,48"/>
 <area shape="poly" title=" " alt="" coords="231,29,199,29,199,24,231,24"/>
 </map>
 </div>
@@ -142,15 +165,18 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Function to read the pressure sensor. </p>
-<dl class="section return"><dt>Returns</dt><dd>float -&gt; The pressure value </dd></dl>
+<p>Function to read the pressure from the sensor. </p>
+<p>Function to read the pressure sensor.</p>
+<dl class="section return"><dt>Returns</dt><dd>float -&gt; The pressure value.</dd>
+<dd>
+float -&gt; The pressure value </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_pressure_sensor_ab0bd12c02afc64805c6cbde843678697_icgraph.png" border="0" usemap="#aclass_pressure_sensor_ab0bd12c02afc64805c6cbde843678697_icgraph" alt=""/></div>
 <map name="aclass_pressure_sensor_ab0bd12c02afc64805c6cbde843678697_icgraph" id="aclass_pressure_sensor_ab0bd12c02afc64805c6cbde843678697_icgraph">
-<area shape="rect" title="Function to read the pressure sensor." alt="" coords="247,13,446,40"/>
-<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a681ac7bd1854acb7ee314d5862dfda04" title="Function to read the sensor data based on the sensor type." alt="" coords="5,5,199,48"/>
+<area shape="rect" title="Function to read the pressure from the sensor." alt="" coords="247,13,446,40"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a681ac7bd1854acb7ee314d5862dfda04" title="Function to read the sensor." alt="" coords="5,5,199,48"/>
 <area shape="poly" title=" " alt="" coords="231,29,199,29,199,24,231,24"/>
 </map>
 </div>

@@ -10,143 +10,163 @@
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Ethernet.h>}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <Vector.h>}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecom_module}{comModule}}}
-\DoxyCodeLine{00016\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{enum\ class}\ Service\ :\ uint8\_t}
-\DoxyCodeLine{00018\ \ \ \ \ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ SET\ =\ 0x01,}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ GET\ =\ 0x0B,}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ SET\_COMPOUND\ =\ 0x28,}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ GET\_COMPOUND\ =\ 0x29,}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ SETGET\ =\ 0x30}
-\DoxyCodeLine{00024\ \ \ \ \ \};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{enum\ class}\ Compound1\ :\ uint32\_t}
-\DoxyCodeLine{00027\ \ \ \ \ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ CONTROL\_MODE\ =\ 0x0F020000,}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ TARGET\_POSITION\ =\ 0x11020000,}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\ =\ 0x07020000,}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ NOT\_USED\ =\ 0x00000000}
-\DoxyCodeLine{00032\ \ \ \ \ \};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{enum\ class}\ Compound2\ :\ uint32\_t}
-\DoxyCodeLine{00035\ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ ACCESS\_MODE\ =\ 0x0F0B0000,}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ CONTROL\_MODE\ =\ 0x0F020000,}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ TARGET\_POSITION\ =\ 0x11020000,}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\ =\ 0x07020000,}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ ACTUAL\_POSITION\ =\ 0x10010000,}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ POSITION\_STATE\ =\ 0x00100000,}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ ACTUAL\_PRESSURE\ =\ 0x07010000,}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\_USED\ =\ 0x07030000,}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ WARNING\_BITMAP\ =\ 0x0F300100,}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ NOT\_USED\ =\ 0x00000000}
-\DoxyCodeLine{00046\ \ \ \ \ \};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{enum\ class}\ Compound3\ :\ uint32\_t}
-\DoxyCodeLine{00049\ \ \ \ \ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ CONTROL\_MODE\ =\ 0x0F020000,}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ TARGET\_POSITION\ =\ 0x11020000,}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\ =\ 0x07020000,}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ SEPARATION\ =\ 0x00000000,}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ ACCESS\_MODE\ =\ 0x0F0B0000,}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ ACTUAL\_POSITION\ =\ 0x10010000,}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ POSITION\_STATE\ =\ 0x00100000,}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ ACTUAL\_PRESSURE\ =\ 0x07010000,}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\_USED\ =\ 0x07030000,}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ WARNING\_BITMAP\ =\ 0x0F300100,}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ NOT\_USED\ =\ 0x00000000}
-\DoxyCodeLine{00061\ \ \ \ \ \};}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{enum\ class}\ Error\_Codes\ :\ uint8\_t}
-\DoxyCodeLine{00064\ \ \ \ \ \{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ NO\_ERROR\ =\ 0x00,}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ WRONG\_COMMAND\_LENGTH\ =\ 0x0C,}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ VALUE\_TOO\_LOW\ =\ 0x1C,}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ VALUE\_TOO\_HIGH\ =\ 0x1D,}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ RESULTING\_ZERO\_ADJUST\_OFFSET\ =\ 0x20,}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ NO\_SENSOR\_ENABLED\ =\ 0x21,}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ WRONG\_ACCESS\_MODE\ =\ 0x50,}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ TIMEOUT\ =\ 0x51,}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ NV\_MEMORY\_NOT\_READY\ =\ 0x6D,}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ WRONG\_PARAMETER\_ID\ =\ 0x6E,}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ PARAMETER\_NOT\_SETTABLE\ =\ 0x70,}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ PARAMETER\_NOT\_READABLE\ =\ 0x71,}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ WRONG\_PARAMETER\_INDEX\ =\ 0x73,}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ WRONG\_VALUE\_WITHIN\_RANGE\ =\ 0x76,}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ NOT\_ALLOWED\_IN\_THIS\_STATE\ =\ 0x78,}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ SETTING\_LOCK\ =\ 0x79,}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ WRONG\_SERVICE\ =\ 0x7A,}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ PARAMETER\_NOT\_ACTIVE\ =\ 0x7B,}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ PARAMETER\_SYSTEM\_ERROR\ =\ 0x7C,}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ COMMUNICATION\_ERROR\ =\ 0x7D,}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ UNKNOWN\_SERVICE\ =\ 0x7E,}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ UNEXPECTED\_CHARACTER\ =\ 0x7F,}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ NO\_ACCESS\_RIGHTS\ =\ 0x80,}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ NO\_ADEQUATE\_HARDWARE\ =\ 0x81,}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ WRONG\_OBJECT\_STATE\ =\ 0x82,}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ NO\_SLAVE\_COMMAND\ =\ 0x84,}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ COMMAND\_TO\_UNKNOWN\_SLAVE\ =\ 0x85,}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ COMMAND\_TO\_MASTER\_ONLY\ =\ 0x87,}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ ONLY\_G\_COMMAND\_ALLOWED\ =\ 0x88,}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ NOT\_SUPPORTED\ =\ 0x89,}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ FUNCTION\_DISABLED\ =\ 0xA0,}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ ALREADY\_DONE\ =\ 0xA1}
-\DoxyCodeLine{00097\ \ \ \ \ \};}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{EthernetCommunication}}}
-\DoxyCodeLine{00101\ \ \ \ \ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{EthernetCommunication}}();}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{\string~EthernetCommunication}}();}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afb82be4038217549f33e23b770d2ddd2}{beginEthernet}}(uint8\_t*\ macAddress,\ IPAddress\ ip);}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538}{sendEthernetData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ endpoint,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data);}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acd785405cbfc3d168c1441e809a7cb9a}{receiveEthernetData}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a34849676fdb201d44ecb9f42a485615c}{handleEthernetClient}}();}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab20e63e3e37785530d60eed7c41cfeab}{getRequestedEndpoint}}();}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28}{sendJsonResponse}}(\textcolor{keyword}{const}\ String\&\ jsonBody);}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ EthernetClient\&\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da}{getClient}}();}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}{isInitialized}}();}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1}{getSendDataFlag}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5}{setSendDataFlag}}(\textcolor{keywordtype}{bool}\ flag);}
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecom_module}{comModule}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacecom_module_a47cc14bc7309735f36eb1a9240a6a3af}{Service}}\ :\ uint8\_t}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ SET\ =\ 0x01,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ GET\ =\ 0x0B,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ SET\_COMPOUND\ =\ 0x28,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ GET\_COMPOUND\ =\ 0x29,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ SETGET\ =\ 0x30}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacecom_module_a2266c2913bf28192787d63337b745f04}{Compound1}}\ :\ uint32\_t}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ CONTROL\_MODE\ =\ 0x0F020000,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ TARGET\_POSITION\ =\ 0x11020000,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\ =\ 0x07020000,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ NOT\_USED\ =\ 0x00000000}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}{Compound2}}\ :\ uint32\_t}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ ACCESS\_MODE\ =\ 0x0F0B0000,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ CONTROL\_MODE\ =\ 0x0F020000,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ TARGET\_POSITION\ =\ 0x11020000,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\ =\ 0x07020000,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ ACTUAL\_POSITION\ =\ 0x10010000,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ POSITION\_STATE\ =\ 0x00100000,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ ACTUAL\_PRESSURE\ =\ 0x07010000,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\_USED\ =\ 0x07030000,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ WARNING\_BITMAP\ =\ 0x0F300100,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ NOT\_USED\ =\ 0x00000000}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacecom_module_a272fc8d3be95ae8b9284332131f652d6}{Compound3}}\ :\ uint32\_t}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ CONTROL\_MODE\ =\ 0x0F020000,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ TARGET\_POSITION\ =\ 0x11020000,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\ =\ 0x07020000,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ SEPARATION\ =\ 0x00000000,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ ACCESS\_MODE\ =\ 0x0F0B0000,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ ACTUAL\_POSITION\ =\ 0x10010000,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ POSITION\_STATE\ =\ 0x00100000,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ ACTUAL\_PRESSURE\ =\ 0x07010000,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ TARGET\_PRESSURE\_USED\ =\ 0x07030000,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ WARNING\_BITMAP\ =\ 0x0F300100,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ NOT\_USED\ =\ 0x00000000}
+\DoxyCodeLine{00066\ \ \ \ \ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacecom_module_a3b450180f02d724d8ecd6c7f06514756}{Error\_Codes}}\ :\ uint8\_t}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ NO\_ERROR\ =\ 0x00,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ WRONG\_COMMAND\_LENGTH\ =\ 0x0C,}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ VALUE\_TOO\_LOW\ =\ 0x1C,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ VALUE\_TOO\_HIGH\ =\ 0x1D,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ RESULTING\_ZERO\_ADJUST\_OFFSET\ =\ 0x20,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ NO\_SENSOR\_ENABLED\ =\ 0x21,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ WRONG\_ACCESS\_MODE\ =\ 0x50,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ TIMEOUT\ =\ 0x51,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ NV\_MEMORY\_NOT\_READY\ =\ 0x6D,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ WRONG\_PARAMETER\_ID\ =\ 0x6E,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ PARAMETER\_NOT\_SETTABLE\ =\ 0x70,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ PARAMETER\_NOT\_READABLE\ =\ 0x71,}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ WRONG\_PARAMETER\_INDEX\ =\ 0x73,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ WRONG\_VALUE\_WITHIN\_RANGE\ =\ 0x76,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ NOT\_ALLOWED\_IN\_THIS\_STATE\ =\ 0x78,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ SETTING\_LOCK\ =\ 0x79,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ WRONG\_SERVICE\ =\ 0x7A,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ PARAMETER\_NOT\_ACTIVE\ =\ 0x7B,}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ PARAMETER\_SYSTEM\_ERROR\ =\ 0x7C,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ COMMUNICATION\_ERROR\ =\ 0x7D,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ UNKNOWN\_SERVICE\ =\ 0x7E,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ UNEXPECTED\_CHARACTER\ =\ 0x7F,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ NO\_ACCESS\_RIGHTS\ =\ 0x80,}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ NO\_ADEQUATE\_HARDWARE\ =\ 0x81,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ WRONG\_OBJECT\_STATE\ =\ 0x82,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ NO\_SLAVE\_COMMAND\ =\ 0x84,}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ COMMAND\_TO\_UNKNOWN\_SLAVE\ =\ 0x85,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ COMMAND\_TO\_MASTER\_ONLY\ =\ 0x87,}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ ONLY\_G\_COMMAND\_ALLOWED\ =\ 0x88,}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ NOT\_SUPPORTED\ =\ 0x89,}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ FUNCTION\_DISABLED\ =\ 0xA0,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ ALREADY\_DONE\ =\ 0xA1}
+\DoxyCodeLine{00103\ \ \ \ \ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{EthernetCommunication}}}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{EthernetCommunication}}();}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{\string~EthernetCommunication}}();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afb82be4038217549f33e23b770d2ddd2}{beginEthernet}}(uint8\_t*\ macAddress,\ IPAddress\ ip);}
 \DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{setCompound}}(Compound1\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{setCompound}}(Compound2\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{setCompound}}(Compound3\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1}{setCompoundInternal}}(String\ compoundType,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
-\DoxyCodeLine{00124\ }
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{getCompound}}(Compound1\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{getCompound}}(Compound2\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{getCompound}}(Compound3\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb}{getCompoundInternal}}(String\ compoundType,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}{getParsedCompound}}(Compound1\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}{getParsedCompound}}(Compound2\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}{getParsedCompound}}(Compound3\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa}{parseCompoundResponse}}(String\ response);}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_add5de94592b2b79f068dc1e1d739de83}{setParameter}}(Compound2\ \textcolor{keywordtype}{id},\ String\ value);}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8ea208b24911cfcc75a4a068788f06c0}{getParameter}}(Compound2\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6d043bcf14fd4f0f8f0f8db9d664cfcd}{sendCommand}}(String\ command);}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ EthernetServer\ server;}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ EthernetClient\ client;}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ethernetInitialized;}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ sendDataFlag\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ String\ floatToIEEE754(\textcolor{keywordtype}{float}\ value);}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ Vector<float>\ parseResponse(String\ response);}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \ \ \ \ \};}
-\DoxyCodeLine{00149\ \}}
-\DoxyCodeLine{00150\ }
-\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ETHERNET\_COMMUNICATION\_H}}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538}{sendEthernetData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ endpoint,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acd785405cbfc3d168c1441e809a7cb9a}{receiveEthernetData}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a34849676fdb201d44ecb9f42a485615c}{handleEthernetClient}}();}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab20e63e3e37785530d60eed7c41cfeab}{getRequestedEndpoint}}();}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7caf61a6260b6b20a310cf995b37a94d}{getSpecificEndpoint}}(\textcolor{keyword}{const}\ String\&\ jsonBody);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28}{sendJsonResponse}}(\textcolor{keyword}{const}\ String\&\ jsonBody);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ EthernetClient\&\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da}{getClient}}();}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}{isInitialized}}();}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1}{getSendDataFlag}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_acb3fa3e2fa2f8e14904d659ec8a608e5}{setSendDataFlag}}(\textcolor{keywordtype}{bool}\ flag);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{setCompound}}(\mbox{\hyperlink{namespacecom_module_a2266c2913bf28192787d63337b745f04}{Compound1}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{setCompound}}(\mbox{\hyperlink{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}{Compound2}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18}{setCompound}}(\mbox{\hyperlink{namespacecom_module_a272fc8d3be95ae8b9284332131f652d6}{Compound3}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1}{setCompoundInternal}}(String\ compoundType,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index,\ String\ value);}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{getCompound}}(\mbox{\hyperlink{namespacecom_module_a2266c2913bf28192787d63337b745f04}{Compound1}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{getCompound}}(\mbox{\hyperlink{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}{Compound2}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29}{getCompound}}(\mbox{\hyperlink{namespacecom_module_a272fc8d3be95ae8b9284332131f652d6}{Compound3}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb}{getCompoundInternal}}(String\ compoundType,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}{getParsedCompound}}(\mbox{\hyperlink{namespacecom_module_a2266c2913bf28192787d63337b745f04}{Compound1}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}{getParsedCompound}}(\mbox{\hyperlink{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}{Compound2}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438}{getParsedCompound}}(\mbox{\hyperlink{namespacecom_module_a272fc8d3be95ae8b9284332131f652d6}{Compound3}}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ Vector<float>\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa}{parseCompoundResponse}}(String\ response);}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_add5de94592b2b79f068dc1e1d739de83}{setParameter}}(\mbox{\hyperlink{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}{Compound2}}\ \textcolor{keywordtype}{id},\ String\ value);}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8ea208b24911cfcc75a4a068788f06c0}{getParameter}}(\mbox{\hyperlink{namespacecom_module_ae2db38dd30e53f8589205c5536f6ab92}{Compound2}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a6d043bcf14fd4f0f8f0f8db9d664cfcd}{sendCommand}}(String\ command);}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ EthernetServer\ server;}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ EthernetClient\ client;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ethernetInitialized;}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ sendDataFlag\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ String\ floatToIEEE754(\textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ Vector<float>\ parseResponse(String\ response);}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \ \ \};}
+\DoxyCodeLine{00349\ \}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ETHERNET\_COMMUNICATION\_H}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ }
 
 \end{DoxyCode}

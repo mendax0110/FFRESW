@@ -30,35 +30,44 @@ Collaboration diagram for sensor\+Module\+::Sensor\+Module\+Internals\+:\nopageb
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}\label{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633} 
-void {\bfseries begin\+Sensor} ()
-\begin{DoxyCompactList}\small\item\em Function to initialize the sensor module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}{begin\+Sensor}} ()
+\begin{DoxyCompactList}\small\item\em Function to begin the sensor module. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}{read\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
-\begin{DoxyCompactList}\small\item\em Function to read the sensor data based on the sensor type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to read the sensor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}{calibrate\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
-\begin{DoxyCompactList}\small\item\em Function to calibrate the sensor based on the sensor type. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to calibrate the sensor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}{check\+Sensor\+Status}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
-\begin{DoxyCompactList}\small\item\em Function to check the status of the sensor based on the sensor type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to check the status of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_temperature_sensor}{Temperature\+Sensor}}}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries initialize} ()
-\begin{DoxyCompactList}\small\item\em Initializes the temperature sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Function to initialize the temperature sensor. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{read\+Temperature}} ()
-\begin{DoxyCompactList}\small\item\em Function to read the temperature sensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to read the temperature from the sensor. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}{read\+Dht11}} ()
-\begin{DoxyCompactList}\small\item\em Function to read the DHT11 sensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to read from specific sensor DH11. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{read\+MLX90614}} (int choice)
-\begin{DoxyCompactList}\small\item\em Function to read the MLX90614 sensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to read from specific sensor MLX90614. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
-\begin{DoxyCompactList}\small\item\em Function to check if the temperature sensor is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the temperature sensor is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Class for the sensor module internals. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}\label{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b} 
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}\label{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633} 
+\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!beginSensor@{beginSensor}}
+\index{beginSensor@{beginSensor}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+\doxysubsubsection{\texorpdfstring{beginSensor()}{beginSensor()}}
+{\footnotesize\ttfamily void Sensor\+Module\+Internals\+::begin\+Sensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to begin the sensor module. 
+
+Function to initialize the sensor module. \Hypertarget{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}\label{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b} 
 \index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!calibrateSensor@{calibrateSensor}}
 \index{calibrateSensor@{calibrateSensor}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
 \doxysubsubsection{\texorpdfstring{calibrateSensor()}{calibrateSensor()}}
@@ -66,8 +75,20 @@ Class for the sensor module internals.
 
 
 
-Function to calibrate the sensor based on the sensor type. 
+Function to calibrate the sensor. 
 
+Function to calibrate the sensor based on the sensor type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/\texorpdfstring{$>$}{>} The type of the sensor to calibrate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the sensor was calibrated successfully 
+
+false -\/\texorpdfstring{$>$}{>} if the sensor was not calibrated successfully
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
@@ -84,8 +105,20 @@ bool -\/\texorpdfstring{$>$}{>} This returns true if the calibration was success
 
 
 
-Function to check the status of the sensor based on the sensor type. 
+Function to check the status of the sensor. 
 
+Function to check the status of the sensor based on the sensor type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/\texorpdfstring{$>$}{>} The type of the sensor to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the sensor is healthy 
+
+false -\/\texorpdfstring{$>$}{>} if the sensor is not healthy
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
@@ -94,7 +127,8 @@ Function to check the status of the sensor based on the sensor type.
 \begin{DoxyReturn}{Returns}
 bool -\/\texorpdfstring{$>$}{>} This returns true if the sensor is initialized, false otherwise 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -109,8 +143,18 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Function to read the sensor data based on the sensor type. 
+Function to read the sensor. 
 
+Function to read the sensor data based on the sensor type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/\texorpdfstring{$>$}{>} The type of the sensor to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} The value of the sensor.
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em type} & -\/\texorpdfstring{$>$}{>} This is the sensor type (enum) \\
@@ -119,7 +163,8 @@ Function to read the sensor data based on the sensor type.
 \begin{DoxyReturn}{Returns}
 float -\/\texorpdfstring{$>$}{>} This returns the sensor data 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

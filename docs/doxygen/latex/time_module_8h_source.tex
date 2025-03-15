@@ -8,37 +8,44 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <String>}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }timeModule}
-\DoxyCodeLine{00008\ \{}
-\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}}
-\DoxyCodeLine{00010\ \ \ \ \ \{}
-\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ year;}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ month;}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ day;}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hour;}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ minute;}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ second;}
-\DoxyCodeLine{00017\ \ \ \ \ \}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}}
-\DoxyCodeLine{00020\ \ \ \ \ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}();}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{\string~TimeModuleInternals}}();}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b}{incrementTime}}(\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ *dt);}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a0f1b154b75cd9c53c451e180b81dce45}{formatTimeString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ \&dt);}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b}{setTimeFromHas}}(\textcolor{keyword}{const}\ String\&\ timeString);}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb}{setSystemTime}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\&\ dt);}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342}{updateSoftwareClock}}();}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab}{getSystemTime}}();}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ dt;}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ startMillis\ =\ 0;}
-\DoxyCodeLine{00035\ \ \ \ \ \};}
-\DoxyCodeLine{00036\ \}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TIMEMODULE}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetime_module}{timeModule}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ year;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ month;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ day;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hour;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ minute;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ second;}
+\DoxyCodeLine{00019\ \ \ \ \ \}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{\string~TimeModuleInternals}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b}{incrementTime}}(\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ *dt);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a0f1b154b75cd9c53c451e180b81dce45}{formatTimeString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ \&dt);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b}{setTimeFromHas}}(\textcolor{keyword}{const}\ String\&\ timeString);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb}{setSystemTime}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\&\ dt);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342}{updateSoftwareClock}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab}{getSystemTime}}();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{TimeModuleInternals}}*\ \mbox{\hyperlink{classtime_module_1_1_time_module_internals_ad107d2f1a1a0e8a6f82c5b8ab9bb22f8}{getInstance}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{DateTimeStruct}}\ dt;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ startMillis\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \};}
+\DoxyCodeLine{00083\ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TIMEMODULE}}
 
 \end{DoxyCode}

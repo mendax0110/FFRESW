@@ -13,46 +13,40 @@ Class for the report system.
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}{log\+Error}} (const char \texorpdfstring{$\ast$}{*}error\+Message)
-\begin{DoxyCompactList}\small\item\em Function to log an error message with a timestamp. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to log an error message. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2}{check\+System\+Health}} (size\+\_\+t memory\+Threshold, bool check\+Eth, bool check\+Spi, bool check\+I2c, bool check\+Temp, bool check\+Press)
-\begin{DoxyCompactList}\small\item\em Function to check the system health. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to check the system health of the uC. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6}{report\+Status}} (bool active)
-\begin{DoxyCompactList}\small\item\em Function to report the status of the pressure and temperature thresholds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Function to report the status of the system. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}{set\+Threshold}} (float temp\+Threshold, float pressure\+Threshold)
-\begin{DoxyCompactList}\small\item\em Function to set the temperature and pressure thresholds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set Thresholds for the pressure and temperature sensors. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b}{check\+Thresholds}} (float current\+Temp, float current\+Pressure)
-\begin{DoxyCompactList}\small\item\em Function to check if the current temperature and pressure exceed the thresholds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Check the thresholds for the temperature and pressure sensors. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9}{get\+Current\+Time}} ()
-\begin{DoxyCompactList}\small\item\em Function to get the current time in milliseconds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the Current Time of the system. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64}{get\+Memory\+Status}} ()
-\begin{DoxyCompactList}\small\item\em Function to get the current memory status as a formatted string. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the Memory Status of the system. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classreport_system_1_1_report_system_ac47a217bcaf65859e60c1bee6c338556}{get\+Stack\+Dump}} ()
-\begin{DoxyCompactList}\small\item\em Retrieves a stack dump showing return addresses. \end{DoxyCompactList}\item 
-\Hypertarget{classreport_system_1_1_report_system_a6d34d7c8534ff96d109acaef76f4878f}\label{classreport_system_1_1_report_system_a6d34d7c8534ff96d109acaef76f4878f} 
-void {\bfseries start\+Busy\+Time} ()
-\begin{DoxyCompactList}\small\item\em Marks the start of a busy period for CPU load tracking. \end{DoxyCompactList}\item 
-\Hypertarget{classreport_system_1_1_report_system_aead25f060ef4c7631dbbb3f207a1094b}\label{classreport_system_1_1_report_system_aead25f060ef4c7631dbbb3f207a1094b} 
-void {\bfseries start\+Idle\+Time} ()
-\begin{DoxyCompactList}\small\item\em Marks the start of an idle period for CPU load tracking. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the Stack Dump of the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreport_system_1_1_report_system_a6d34d7c8534ff96d109acaef76f4878f}{start\+Busy\+Time}} ()
+\begin{DoxyCompactList}\small\item\em For Stack Guarding. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreport_system_1_1_report_system_aead25f060ef4c7631dbbb3f207a1094b}{start\+Idle\+Time}} ()
+\begin{DoxyCompactList}\small\item\em For Stack Guarding. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classreport_system_1_1_report_system_acd800614c513a9cbcb0da53bee8e2302}{get\+CPULoad}} ()
-\begin{DoxyCompactList}\small\item\em Calculates the CPU load percentage based on busy and idle time. \end{DoxyCompactList}\item 
-\Hypertarget{classreport_system_1_1_report_system_a015ef444336756d6b06fb2c2120e1c5f}\label{classreport_system_1_1_report_system_a015ef444336756d6b06fb2c2120e1c5f} 
-void {\bfseries reset\+Usage} ()
-\begin{DoxyCompactList}\small\item\em Resets the CPU load tracking metrics. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Getter for the CPU Load. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classreport_system_1_1_report_system_a015ef444336756d6b06fb2c2120e1c5f}{reset\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em Start the CPU Load Calculation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}{save\+Last\+Error}} (const char \texorpdfstring{$\ast$}{*}error)
-\begin{DoxyCompactList}\small\item\em Function to save last error to EEPROM. \end{DoxyCompactList}\item 
-\Hypertarget{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}\label{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8} 
-String {\bfseries get\+Last\+Error} ()
-\begin{DoxyCompactList}\small\item\em Function to get last error from EEPROM HINT\+: KEEP IN MIND \texorpdfstring{$\sim$}{\string~}100 000 write cycles per cell! \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Saves last error message to EEPROM. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}{get\+Last\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classreport_system_1_1_report_system_a556efb423beb07f507c05458d86b8ab4}\label{classreport_system_1_1_report_system_a556efb423beb07f507c05458d86b8ab4} 
-static void {\bfseries init\+Stack\+Guard} ()
-\begin{DoxyCompactList}\small\item\em Initializer for Stack Guard. \end{DoxyCompactList}\item 
-\Hypertarget{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e}\label{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e} 
-static bool {\bfseries detect\+Stack\+Overflow} ()
-\begin{DoxyCompactList}\small\item\em Detector for stackoverflow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{classreport_system_1_1_report_system_a556efb423beb07f507c05458d86b8ab4}{init\+Stack\+Guard}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the Stack Guard. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e}{detect\+Stack\+Overflow}} ()
+\begin{DoxyCompactList}\small\item\em Detect Stack Overflow. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -67,8 +61,30 @@ Class for the report system.
 
 
 
-Function to check the system health. 
+Function to check the system health of the uC. 
 
+Function to check the system health.
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+Threshold} & -\/\texorpdfstring{$>$}{>} The memory threshold to check \\
+\hline
+{\em check\+Eth} & -\/\texorpdfstring{$>$}{>} Check the Ethernet connection \\
+\hline
+{\em check\+Spi} & -\/\texorpdfstring{$>$}{>} Check the SPI connection \\
+\hline
+{\em check\+I2c} & -\/\texorpdfstring{$>$}{>} Check the I2C connection \\
+\hline
+{\em check\+Temp} & -\/\texorpdfstring{$>$}{>} Check the temperature sensor \\
+\hline
+{\em check\+Press} & -\/\texorpdfstring{$>$}{>} Check the pressure sensor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the system is healthy 
+
+false -\/\texorpdfstring{$>$}{>} if the system is not healthy
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em memory\+Size\+Threshold} & -\/\texorpdfstring{$>$}{>} Set true to check memory Threshold \\
@@ -103,8 +119,22 @@ Here is the call graph for this function\+:
 
 
 
-Function to check if the current temperature and pressure exceed the thresholds. 
+Check the thresholds for the temperature and pressure sensors. 
 
+Function to check if the current temperature and pressure exceed the thresholds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Temp} & -\/\texorpdfstring{$>$}{>} The current temperature \\
+\hline
+{\em current\+Pressure} & -\/\texorpdfstring{$>$}{>} The current pressure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the thresholds are met 
+
+false -\/\texorpdfstring{$>$}{>} if the thresholds are not met
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em current\+Temp} & -\/\texorpdfstring{$>$}{>} This is the current temperature \\
@@ -115,11 +145,37 @@ Function to check if the current temperature and pressure exceed the thresholds.
 \begin{DoxyReturn}{Returns}
 -\/\texorpdfstring{$>$}{>} This returns true if the thresholds are not exceeded, false otherwise 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e}\label{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!detectStackOverflow@{detectStackOverflow}}
+\index{detectStackOverflow@{detectStackOverflow}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{detectStackOverflow()}{detectStackOverflow()}}
+{\footnotesize\ttfamily bool Report\+System\+::detect\+Stack\+Overflow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Detect Stack Overflow. 
+
+Detector for stackoverflow.
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the stack has overflowed 
+
+false -\/\texorpdfstring{$>$}{>} if the stack has not overflowed 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classreport_system_1_1_report_system_acd800614c513a9cbcb0da53bee8e2302}\label{classreport_system_1_1_report_system_acd800614c513a9cbcb0da53bee8e2302} 
@@ -130,9 +186,13 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Calculates the CPU load percentage based on busy and idle time. 
+Getter for the CPU Load. 
+
+Calculates the CPU load percentage based on busy and idle time.
 
 \begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} The CPU Load
+
 The CPU load as a floating-\/point percentage (0.\+0 -\/ 100.\+0). 
 \end{DoxyReturn}
 \Hypertarget{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9}\label{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9} 
@@ -143,9 +203,13 @@ The CPU load as a floating-\/point percentage (0.\+0 -\/ 100.\+0).
 
 
 
-Function to get the current time in milliseconds. 
+Get the Current Time of the system. 
+
+Function to get the current time in milliseconds.
 
 \begin{DoxyReturn}{Returns}
+String -\/\texorpdfstring{$>$}{>} The current time
+
 -\/\texorpdfstring{$>$}{>} This returns the current time in milliseconds as a string 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
@@ -156,6 +220,21 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}\label{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!getLastError@{getLastError}}
+\index{getLastError@{getLastError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{getLastError()}{getLastError()}}
+{\footnotesize\ttfamily String Report\+System\+::get\+Last\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Last Error message from EEPROM. 
+
+Function to get last error from EEPROM HINT\+: KEEP IN MIND \texorpdfstring{$\sim$}{\string~}100 000 write cycles per cell!
+
+\begin{DoxyReturn}{Returns}
+String -\/\texorpdfstring{$>$}{>} The last error message 
+\end{DoxyReturn}
 \Hypertarget{classreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64}\label{classreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!getMemoryStatus@{getMemoryStatus}}
 \index{getMemoryStatus@{getMemoryStatus}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -164,9 +243,13 @@ Here is the caller graph for this function\+:
 
 
 
-Function to get the current memory status as a formatted string. 
+Get the Memory Status of the system. 
+
+Function to get the current memory status as a formatted string.
 
 \begin{DoxyReturn}{Returns}
+String -\/\texorpdfstring{$>$}{>} The memory status
+
 -\/\texorpdfstring{$>$}{>} A string containing details about SRAM, stack, heap, and free memory 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
@@ -185,12 +268,26 @@ Here is the caller graph for this function\+:
 
 
 
-Retrieves a stack dump showing return addresses. 
+Get the Stack Dump of the system. 
+
+Retrieves a stack dump showing return addresses.
 
 \begin{DoxyReturn}{Returns}
+String -\/\texorpdfstring{$>$}{>} The stack dump
+
 A string containing the stack dump. 
 \end{DoxyReturn}
-\Hypertarget{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}\label{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780} 
+\Hypertarget{classreport_system_1_1_report_system_a556efb423beb07f507c05458d86b8ab4}\label{classreport_system_1_1_report_system_a556efb423beb07f507c05458d86b8ab4} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!initStackGuard@{initStackGuard}}
+\index{initStackGuard@{initStackGuard}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{initStackGuard()}{initStackGuard()}}
+{\footnotesize\ttfamily void Report\+System\+::init\+Stack\+Guard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initialize the Stack Guard. 
+
+Initializer for Stack Guard. \Hypertarget{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}\label{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!logError@{logError}}
 \index{logError@{logError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
 \doxysubsubsection{\texorpdfstring{logError()}{logError()}}
@@ -198,14 +295,19 @@ A string containing the stack dump.
 
 
 
-Function to log an error message with a timestamp. 
+Function to log an error message. 
+
+Function to log an error message with a timestamp.
 
 
 \begin{DoxyParams}{Parameters}
+{\em error\+Message} & -\/\texorpdfstring{$>$}{>} The error message to log\\
+\hline
 {\em error\+Message} & -\/\texorpdfstring{$>$}{>} This is the error message to log \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -228,8 +330,18 @@ Here is the caller graph for this function\+:
 
 
 
-Function to report the status of the pressure and temperature thresholds. 
+Function to report the status of the system. 
 
+Function to report the status of the pressure and temperature thresholds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em active} & -\/\texorpdfstring{$>$}{>} The status of the system \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String -\/\texorpdfstring{$>$}{>} The status of the system
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em active} & -\/\texorpdfstring{$>$}{>} Set to true to get the status, false otherwise \\
@@ -246,7 +358,17 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}\label{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf} 
+\Hypertarget{classreport_system_1_1_report_system_a015ef444336756d6b06fb2c2120e1c5f}\label{classreport_system_1_1_report_system_a015ef444336756d6b06fb2c2120e1c5f} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!resetUsage@{resetUsage}}
+\index{resetUsage@{resetUsage}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{resetUsage()}{resetUsage()}}
+{\footnotesize\ttfamily void Report\+System\+::reset\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start the CPU Load Calculation. 
+
+Resets the CPU load tracking metrics. \Hypertarget{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}\label{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!saveLastError@{saveLastError}}
 \index{saveLastError@{saveLastError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
 \doxysubsubsection{\texorpdfstring{saveLastError()}{saveLastError()}}
@@ -254,10 +376,14 @@ Here is the call graph for this function\+:
 
 
 
-Function to save last error to EEPROM. 
+Saves last error message to EEPROM. 
+
+Function to save last error to EEPROM.
 
 
 \begin{DoxyParams}{Parameters}
+{\em error} & -\/\texorpdfstring{$>$}{>} The error message to save\\
+\hline
 {\em error} & -\/\texorpdfstring{$>$}{>} Error message to save HINT\+: KEEP IN MIND \texorpdfstring{$\sim$}{\string~}100 000 write cycles per cell! \\
 \hline
 \end{DoxyParams}
@@ -269,16 +395,42 @@ Function to save last error to EEPROM.
 
 
 
-Function to set the temperature and pressure thresholds. 
+Set Thresholds for the pressure and temperature sensors. 
+
+Function to set the temperature and pressure thresholds.
 
 
 \begin{DoxyParams}{Parameters}
+{\em temp\+Threshold} & -\/\texorpdfstring{$>$}{>} The temperature threshold \\
+\hline
+{\em pressure\+Threshold} & -\/\texorpdfstring{$>$}{>} The pressure threshold\\
+\hline
 {\em temp\+Threshold} & -\/\texorpdfstring{$>$}{>} This is the temperature threshold \\
 \hline
 {\em pressure\+Threshold} & -\/\texorpdfstring{$>$}{>} This is the pressure threshold \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classreport_system_1_1_report_system_a6d34d7c8534ff96d109acaef76f4878f}\label{classreport_system_1_1_report_system_a6d34d7c8534ff96d109acaef76f4878f} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!startBusyTime@{startBusyTime}}
+\index{startBusyTime@{startBusyTime}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{startBusyTime()}{startBusyTime()}}
+{\footnotesize\ttfamily void Report\+System\+::start\+Busy\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+For Stack Guarding. 
+
+Marks the start of a busy period for CPU load tracking. \Hypertarget{classreport_system_1_1_report_system_aead25f060ef4c7631dbbb3f207a1094b}\label{classreport_system_1_1_report_system_aead25f060ef4c7631dbbb3f207a1094b} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!startIdleTime@{startIdleTime}}
+\index{startIdleTime@{startIdleTime}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{startIdleTime()}{startIdleTime()}}
+{\footnotesize\ttfamily void Report\+System\+::start\+Idle\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+For Stack Guarding. 
+
+Marks the start of an idle period for CPU load tracking. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

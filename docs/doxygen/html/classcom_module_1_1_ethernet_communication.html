@@ -91,7 +91,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afb82be4038217549f33e23b770d2ddd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the Ethernet communication.  <br /></td></tr>
 <tr class="separator:afb82be4038217549f33e23b770d2ddd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d1f0fa97f7dc17f30d94ec82a931538" id="r_a6d1f0fa97f7dc17f30d94ec82a931538"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a6d1f0fa97f7dc17f30d94ec82a931538">sendEthernetData</a> (const char *endpoint, const char *data)</td></tr>
-<tr class="memdesc:a6d1f0fa97f7dc17f30d94ec82a931538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fucntion to send data over Ethernet.  <br /></td></tr>
+<tr class="memdesc:a6d1f0fa97f7dc17f30d94ec82a931538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to send data over Ethernet.  <br /></td></tr>
 <tr class="separator:a6d1f0fa97f7dc17f30d94ec82a931538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd785405cbfc3d168c1441e809a7cb9a" id="r_acd785405cbfc3d168c1441e809a7cb9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#acd785405cbfc3d168c1441e809a7cb9a">receiveEthernetData</a> (char *buffer, size_t length)</td></tr>
 <tr class="memdesc:acd785405cbfc3d168c1441e809a7cb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to receive data over Ethernet.  <br /></td></tr>
@@ -100,10 +100,12 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEthernetClient</b> ()</td></tr>
 <tr class="memdesc:a34849676fdb201d44ecb9f42a485615c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to handle the Ethernet client. <br /></td></tr>
 <tr class="separator:a34849676fdb201d44ecb9f42a485615c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab20e63e3e37785530d60eed7c41cfeab" id="r_ab20e63e3e37785530d60eed7c41cfeab"><td class="memItemLeft" align="right" valign="top"><a id="ab20e63e3e37785530d60eed7c41cfeab" name="ab20e63e3e37785530d60eed7c41cfeab"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>getRequestedEndpoint</b> ()</td></tr>
-<tr class="memdesc:ab20e63e3e37785530d60eed7c41cfeab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the requested endpoint. <br /></td></tr>
+<tr class="memitem:ab20e63e3e37785530d60eed7c41cfeab" id="r_ab20e63e3e37785530d60eed7c41cfeab"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ab20e63e3e37785530d60eed7c41cfeab">getRequestedEndpoint</a> ()</td></tr>
+<tr class="memdesc:ab20e63e3e37785530d60eed7c41cfeab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the requested endpoint.  <br /></td></tr>
 <tr class="separator:ab20e63e3e37785530d60eed7c41cfeab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7caf61a6260b6b20a310cf995b37a94d" id="r_a7caf61a6260b6b20a310cf995b37a94d"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a7caf61a6260b6b20a310cf995b37a94d">getSpecificEndpoint</a> (const String &amp;jsonBody)</td></tr>
+<tr class="memdesc:a7caf61a6260b6b20a310cf995b37a94d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the specific endpoint.  <br /></td></tr>
+<tr class="separator:a7caf61a6260b6b20a310cf995b37a94d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0864bfc933c0d309dd45c0fc75473a28" id="r_a0864bfc933c0d309dd45c0fc75473a28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a0864bfc933c0d309dd45c0fc75473a28">sendJsonResponse</a> (const String &amp;jsonBody)</td></tr>
 <tr class="memdesc:a0864bfc933c0d309dd45c0fc75473a28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to send the json response with the measurment data.  <br /></td></tr>
 <tr class="separator:a0864bfc933c0d309dd45c0fc75473a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,52 +121,46 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>getRequestedEndpoin
 <tr class="memitem:acb3fa3e2fa2f8e14904d659ec8a608e5" id="r_acb3fa3e2fa2f8e14904d659ec8a608e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#acb3fa3e2fa2f8e14904d659ec8a608e5">setSendDataFlag</a> (bool flag)</td></tr>
 <tr class="memdesc:acb3fa3e2fa2f8e14904d659ec8a608e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the current status of the flag.  <br /></td></tr>
 <tr class="separator:acb3fa3e2fa2f8e14904d659ec8a608e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4735b20a838d57eb8ef75c43ca6a6e18" id="r_a4735b20a838d57eb8ef75c43ca6a6e18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a4735b20a838d57eb8ef75c43ca6a6e18">setCompound</a> (Compound1 id, int index, String value)</td></tr>
+<tr class="memitem:a4735b20a838d57eb8ef75c43ca6a6e18" id="r_a4735b20a838d57eb8ef75c43ca6a6e18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a4735b20a838d57eb8ef75c43ca6a6e18">setCompound</a> (<a class="el" href="namespacecom_module.html#a2266c2913bf28192787d63337b745f04">Compound1</a> id, int index, String value)</td></tr>
 <tr class="memdesc:a4735b20a838d57eb8ef75c43ca6a6e18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set a compound command for the valve uC Slave (Compound1)  <br /></td></tr>
 <tr class="separator:a4735b20a838d57eb8ef75c43ca6a6e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab53c835197087a9dc8e3731dfa8252c6" id="r_ab53c835197087a9dc8e3731dfa8252c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ab53c835197087a9dc8e3731dfa8252c6">setCompound</a> (Compound2 id, int index, String value)</td></tr>
+<tr class="memitem:ab53c835197087a9dc8e3731dfa8252c6" id="r_ab53c835197087a9dc8e3731dfa8252c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ab53c835197087a9dc8e3731dfa8252c6">setCompound</a> (<a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a> id, int index, String value)</td></tr>
 <tr class="memdesc:ab53c835197087a9dc8e3731dfa8252c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set a compound command for the valve uC Slave (Compound2)  <br /></td></tr>
 <tr class="separator:ab53c835197087a9dc8e3731dfa8252c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c08ed79662d51277f0da9ff7517bc5a" id="r_a6c08ed79662d51277f0da9ff7517bc5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a6c08ed79662d51277f0da9ff7517bc5a">setCompound</a> (Compound3 id, int index, String value)</td></tr>
+<tr class="memitem:a6c08ed79662d51277f0da9ff7517bc5a" id="r_a6c08ed79662d51277f0da9ff7517bc5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a6c08ed79662d51277f0da9ff7517bc5a">setCompound</a> (<a class="el" href="namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6">Compound3</a> id, int index, String value)</td></tr>
 <tr class="memdesc:a6c08ed79662d51277f0da9ff7517bc5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set a compound command for the valve uC Slave (Compound3)  <br /></td></tr>
 <tr class="separator:a6c08ed79662d51277f0da9ff7517bc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcd41d06ebd3a9fbd26378c8f17147e1" id="r_afcd41d06ebd3a9fbd26378c8f17147e1"><td class="memItemLeft" align="right" valign="top"><a id="afcd41d06ebd3a9fbd26378c8f17147e1" name="afcd41d06ebd3a9fbd26378c8f17147e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCompoundInternal</b> (String compoundType, unsigned long id, int index, String value)</td></tr>
-<tr class="memdesc:afcd41d06ebd3a9fbd26378c8f17147e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to send the command over Ethernet. <br /></td></tr>
+<tr class="memitem:afcd41d06ebd3a9fbd26378c8f17147e1" id="r_afcd41d06ebd3a9fbd26378c8f17147e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1">setCompoundInternal</a> (String compoundType, unsigned long id, int index, String value)</td></tr>
+<tr class="memdesc:afcd41d06ebd3a9fbd26378c8f17147e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set the Interal compound command for the valve uC Slave.  <br /></td></tr>
 <tr class="separator:afcd41d06ebd3a9fbd26378c8f17147e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7675bdbcb0058cc26c21e2de81835a29" id="r_a7675bdbcb0058cc26c21e2de81835a29"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29">getCompound</a> (Compound1 id, int index)</td></tr>
-<tr class="memdesc:a7675bdbcb0058cc26c21e2de81835a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a compound command response from the valve uC Slave (Compound1)  <br /></td></tr>
+<tr class="memitem:a7675bdbcb0058cc26c21e2de81835a29" id="r_a7675bdbcb0058cc26c21e2de81835a29"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29">getCompound</a> (<a class="el" href="namespacecom_module.html#a2266c2913bf28192787d63337b745f04">Compound1</a> id, int index)</td></tr>
+<tr class="memdesc:a7675bdbcb0058cc26c21e2de81835a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for a compound command response from the valve uC Slave (Compound1)  <br /></td></tr>
 <tr class="separator:a7675bdbcb0058cc26c21e2de81835a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0fa6f482516963272f748d4dc59b2f4" id="r_ae0fa6f482516963272f748d4dc59b2f4"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ae0fa6f482516963272f748d4dc59b2f4">getCompound</a> (Compound2 id, int index)</td></tr>
-<tr class="memdesc:ae0fa6f482516963272f748d4dc59b2f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a compound command response from the valve uC Slave (Compound2)  <br /></td></tr>
+<tr class="memitem:ae0fa6f482516963272f748d4dc59b2f4" id="r_ae0fa6f482516963272f748d4dc59b2f4"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#ae0fa6f482516963272f748d4dc59b2f4">getCompound</a> (<a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a> id, int index)</td></tr>
+<tr class="memdesc:ae0fa6f482516963272f748d4dc59b2f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for a compound command response from the valve uC Slave (Compound2)  <br /></td></tr>
 <tr class="separator:ae0fa6f482516963272f748d4dc59b2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd52159a5a0d0d71f5161b2d418be229" id="r_acd52159a5a0d0d71f5161b2d418be229"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#acd52159a5a0d0d71f5161b2d418be229">getCompound</a> (Compound3 id, int index)</td></tr>
-<tr class="memdesc:acd52159a5a0d0d71f5161b2d418be229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a compound command response from the valve uC Slave (Compound3)  <br /></td></tr>
+<tr class="memitem:acd52159a5a0d0d71f5161b2d418be229" id="r_acd52159a5a0d0d71f5161b2d418be229"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#acd52159a5a0d0d71f5161b2d418be229">getCompound</a> (<a class="el" href="namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6">Compound3</a> id, int index)</td></tr>
+<tr class="memdesc:acd52159a5a0d0d71f5161b2d418be229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for a compound command response from the valve uC Slave (Compound3)  <br /></td></tr>
 <tr class="separator:acd52159a5a0d0d71f5161b2d418be229"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2176b0d8be1b2ccebe25df0ff515b2fb" id="r_a2176b0d8be1b2ccebe25df0ff515b2fb"><td class="memItemLeft" align="right" valign="top"><a id="a2176b0d8be1b2ccebe25df0ff515b2fb" name="a2176b0d8be1b2ccebe25df0ff515b2fb"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>getCompoundInternal</b> (String compoundType, unsigned long id, int index)</td></tr>
-<tr class="memdesc:a2176b0d8be1b2ccebe25df0ff515b2fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to handle getting a compound response over Ethernet. <br /></td></tr>
+<tr class="memitem:a2176b0d8be1b2ccebe25df0ff515b2fb" id="r_a2176b0d8be1b2ccebe25df0ff515b2fb"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb">getCompoundInternal</a> (String compoundType, unsigned long id, int index)</td></tr>
+<tr class="memdesc:a2176b0d8be1b2ccebe25df0ff515b2fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the internal compound command response from the valve uC Slave.  <br /></td></tr>
 <tr class="separator:a2176b0d8be1b2ccebe25df0ff515b2fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc704bfb5deaefae594ace55e7c72438" id="r_afc704bfb5deaefae594ace55e7c72438"><td class="memItemLeft" align="right" valign="top"><a id="afc704bfb5deaefae594ace55e7c72438" name="afc704bfb5deaefae594ace55e7c72438"></a>
-Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getParsedCompound</b> (Compound1 id, int index)</td></tr>
-<tr class="memdesc:afc704bfb5deaefae594ace55e7c72438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to parse a compound response into a vector (Compound1) <br /></td></tr>
+<tr class="memitem:afc704bfb5deaefae594ace55e7c72438" id="r_afc704bfb5deaefae594ace55e7c72438"><td class="memItemLeft" align="right" valign="top">Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#afc704bfb5deaefae594ace55e7c72438">getParsedCompound</a> (<a class="el" href="namespacecom_module.html#a2266c2913bf28192787d63337b745f04">Compound1</a> id, int index)</td></tr>
+<tr class="memdesc:afc704bfb5deaefae594ace55e7c72438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a compound command response from the valve uC Slave (Compound1)  <br /></td></tr>
 <tr class="separator:afc704bfb5deaefae594ace55e7c72438"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b50c13f7bb42d9f30e9260c9f62b77d" id="r_a9b50c13f7bb42d9f30e9260c9f62b77d"><td class="memItemLeft" align="right" valign="top"><a id="a9b50c13f7bb42d9f30e9260c9f62b77d" name="a9b50c13f7bb42d9f30e9260c9f62b77d"></a>
-Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getParsedCompound</b> (Compound2 id, int index)</td></tr>
-<tr class="memdesc:a9b50c13f7bb42d9f30e9260c9f62b77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to parse a compound response into a vector (Compound2) <br /></td></tr>
+<tr class="memitem:a9b50c13f7bb42d9f30e9260c9f62b77d" id="r_a9b50c13f7bb42d9f30e9260c9f62b77d"><td class="memItemLeft" align="right" valign="top">Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a9b50c13f7bb42d9f30e9260c9f62b77d">getParsedCompound</a> (<a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a> id, int index)</td></tr>
+<tr class="memdesc:a9b50c13f7bb42d9f30e9260c9f62b77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a compound command response from the valve uC Slave (Compound2)  <br /></td></tr>
 <tr class="separator:a9b50c13f7bb42d9f30e9260c9f62b77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a128ef19656147acb52513f8cd041d924" id="r_a128ef19656147acb52513f8cd041d924"><td class="memItemLeft" align="right" valign="top"><a id="a128ef19656147acb52513f8cd041d924" name="a128ef19656147acb52513f8cd041d924"></a>
-Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getParsedCompound</b> (Compound3 id, int index)</td></tr>
-<tr class="memdesc:a128ef19656147acb52513f8cd041d924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to parse a compound response into a vector (Compound3) <br /></td></tr>
+<tr class="memitem:a128ef19656147acb52513f8cd041d924" id="r_a128ef19656147acb52513f8cd041d924"><td class="memItemLeft" align="right" valign="top">Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a128ef19656147acb52513f8cd041d924">getParsedCompound</a> (<a class="el" href="namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6">Compound3</a> id, int index)</td></tr>
+<tr class="memdesc:a128ef19656147acb52513f8cd041d924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get a compound command response from the valve uC Slave (Compound3)  <br /></td></tr>
 <tr class="separator:a128ef19656147acb52513f8cd041d924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fbf52e1cb2181d6c41203e7b29f06aa" id="r_a3fbf52e1cb2181d6c41203e7b29f06aa"><td class="memItemLeft" align="right" valign="top"><a id="a3fbf52e1cb2181d6c41203e7b29f06aa" name="a3fbf52e1cb2181d6c41203e7b29f06aa"></a>
-Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parseCompoundResponse</b> (String response)</td></tr>
-<tr class="memdesc:a3fbf52e1cb2181d6c41203e7b29f06aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to parse a response string into a float vector. <br /></td></tr>
+<tr class="memitem:a3fbf52e1cb2181d6c41203e7b29f06aa" id="r_a3fbf52e1cb2181d6c41203e7b29f06aa"><td class="memItemLeft" align="right" valign="top">Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a3fbf52e1cb2181d6c41203e7b29f06aa">parseCompoundResponse</a> (String response)</td></tr>
+<tr class="memdesc:a3fbf52e1cb2181d6c41203e7b29f06aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to parse a compound response into a vector (Compound1)  <br /></td></tr>
 <tr class="separator:a3fbf52e1cb2181d6c41203e7b29f06aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add5de94592b2b79f068dc1e1d739de83" id="r_add5de94592b2b79f068dc1e1d739de83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#add5de94592b2b79f068dc1e1d739de83">setParameter</a> (Compound2 id, String value)</td></tr>
+<tr class="memitem:add5de94592b2b79f068dc1e1d739de83" id="r_add5de94592b2b79f068dc1e1d739de83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#add5de94592b2b79f068dc1e1d739de83">setParameter</a> (<a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a> id, String value)</td></tr>
 <tr class="memdesc:add5de94592b2b79f068dc1e1d739de83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for a parameter from the VAT slave.  <br /></td></tr>
 <tr class="separator:add5de94592b2b79f068dc1e1d739de83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ea208b24911cfcc75a4a068788f06c0" id="r_a8ea208b24911cfcc75a4a068788f06c0"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a8ea208b24911cfcc75a4a068788f06c0">getParameter</a> (Compound2 id)</td></tr>
+<tr class="memitem:a8ea208b24911cfcc75a4a068788f06c0" id="r_a8ea208b24911cfcc75a4a068788f06c0"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a8ea208b24911cfcc75a4a068788f06c0">getParameter</a> (<a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a> id)</td></tr>
 <tr class="memdesc:a8ea208b24911cfcc75a4a068788f06c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for a parameter from the VAT slave.  <br /></td></tr>
 <tr class="separator:a8ea208b24911cfcc75a4a068788f06c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d043bcf14fd4f0f8f0f8db9d664cfcd" id="r_a6d043bcf14fd4f0f8f0f8db9d664cfcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_ethernet_communication.html#a6d043bcf14fd4f0f8f0f8db9d664cfcd">sendCommand</a> (String command)</td></tr>
@@ -227,7 +223,7 @@ Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pars
 </div><div class="memdoc">
 
 <p>Get the currently active Ethernet client. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the active Ethernet client </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>EthernetClient&amp; , Reference to the active Ethernet client </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -250,7 +246,257 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">String EthernetCommunication::getCompound </td>
           <td>(</td>
-          <td class="paramtype">Compound1&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#a2266c2913bf28192787d63337b745f04">Compound1</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for a compound command response from the valve uC Slave (Compound1) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound1 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; Response from the valve uC slave </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph" id="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph">
+<area shape="rect" title="Getter for a compound command response from the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="290,5,526,48"/>
+<area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph" id="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph">
+<area shape="rect" title="Getter for a compound command response from the valve uC Slave (Compound1)" alt="" coords="290,72,526,115"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afc704bfb5deaefae594ace55e7c72438" title="Function to get a compound command response from the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
+<area shape="poly" title=" " alt="" coords="299,71,217,51,218,46,300,65"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a9b50c13f7bb42d9f30e9260c9f62b77d" title="Function to get a compound command response from the valve uC Slave (Compound2)" alt="" coords="5,72,242,115"/>
+<area shape="poly" title=" " alt="" coords="274,96,242,96,242,91,274,91"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a128ef19656147acb52513f8cd041d924" title="Function to get a compound command response from the valve uC Slave (Compound3)" alt="" coords="5,139,242,181"/>
+<area shape="poly" title=" " alt="" coords="300,121,218,141,217,135,299,116"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0fa6f482516963272f748d4dc59b2f4" name="ae0fa6f482516963272f748d4dc59b2f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0fa6f482516963272f748d4dc59b2f4">&#9670;&#160;</a></span>getCompound() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String EthernetCommunication::getCompound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for a compound command response from the valve uC Slave (Compound2) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound2 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; Response from the valve uC slave </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph" id="aclasscom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph">
+<area shape="rect" title="Getter for a compound command response from the valve uC Slave (Compound2)" alt="" coords="5,5,242,48"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="290,5,526,48"/>
+<area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acd52159a5a0d0d71f5161b2d418be229" name="acd52159a5a0d0d71f5161b2d418be229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd52159a5a0d0d71f5161b2d418be229">&#9670;&#160;</a></span>getCompound() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String EthernetCommunication::getCompound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6">Compound3</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for a compound command response from the valve uC Slave (Compound3) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound3 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; Response from the valve uC slave </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph" id="aclasscom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph">
+<area shape="rect" title="Getter for a compound command response from the valve uC Slave (Compound3)" alt="" coords="5,5,242,48"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="290,5,526,48"/>
+<area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2176b0d8be1b2ccebe25df0ff515b2fb" name="a2176b0d8be1b2ccebe25df0ff515b2fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2176b0d8be1b2ccebe25df0ff515b2fb">&#9670;&#160;</a></span>getCompoundInternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String EthernetCommunication::getCompoundInternal </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>compoundType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for the internal compound command response from the valve uC Slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compoundType</td><td>-&gt; The type of the compound </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; The ID of the compound </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; The index of the compound </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; Response from the valve uC slave </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb_icgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb_icgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb_icgraph" id="aclasscom_module_1_1_ethernet_communication_a2176b0d8be1b2ccebe25df0ff515b2fb_icgraph">
+<area shape="rect" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="574,139,810,181"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29" title="Getter for a compound command response from the valve uC Slave (Compound1)" alt="" coords="290,72,526,115"/>
+<area shape="poly" title=" " alt="" coords="583,137,501,118,502,113,584,132"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#ae0fa6f482516963272f748d4dc59b2f4" title="Getter for a compound command response from the valve uC Slave (Compound2)" alt="" coords="290,139,526,181"/>
+<area shape="poly" title=" " alt="" coords="558,163,526,163,526,157,558,157"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#acd52159a5a0d0d71f5161b2d418be229" title="Getter for a compound command response from the valve uC Slave (Compound3)" alt="" coords="290,205,526,248"/>
+<area shape="poly" title=" " alt="" coords="584,188,502,207,501,202,583,183"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afc704bfb5deaefae594ace55e7c72438" title="Function to get a compound command response from the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
+<area shape="poly" title=" " alt="" coords="299,71,217,51,218,46,300,65"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a9b50c13f7bb42d9f30e9260c9f62b77d" title="Function to get a compound command response from the valve uC Slave (Compound2)" alt="" coords="5,72,242,115"/>
+<area shape="poly" title=" " alt="" coords="274,96,242,96,242,91,274,91"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a128ef19656147acb52513f8cd041d924" title="Function to get a compound command response from the valve uC Slave (Compound3)" alt="" coords="5,139,242,181"/>
+<area shape="poly" title=" " alt="" coords="300,121,218,141,217,135,299,116"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ea208b24911cfcc75a4a068788f06c0" name="a8ea208b24911cfcc75a4a068788f06c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea208b24911cfcc75a4a068788f06c0">&#9670;&#160;</a></span>getParameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String EthernetCommunication::getParameter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a>&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for a parameter from the VAT slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>-&gt; The ID of the parameter to get </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; String will return the value of the parameter as a string, otherwise an empty string or error message. </dd></dl>
+
+</div>
+</div>
+<a id="afc704bfb5deaefae594ace55e7c72438" name="afc704bfb5deaefae594ace55e7c72438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc704bfb5deaefae594ace55e7c72438">&#9670;&#160;</a></span>getParsedCompound() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt; float &gt; EthernetCommunication::getParsedCompound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#a2266c2913bf28192787d63337b745f04">Compound1</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -270,49 +516,39 @@ Here is the caller graph for this function:</div>
 <p>Function to get a compound command response from the valve uC Slave (Compound1) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Enum ID from Compound1 </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the command </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound1 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>String Response from the valve uC slave </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector&lt;float&gt; -&gt; Response from the valve uC slave </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph" alt=""/></div>
-<map name="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph" id="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph">
-<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Internal function to handle getting a compound response over Ethernet." alt="" coords="290,5,526,48"/>
-<area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph" alt=""/></div>
-<map name="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph" id="aclasscom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_icgraph">
-<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound1)" alt="" coords="290,72,526,115"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afc704bfb5deaefae594ace55e7c72438" title="Function to parse a compound response into a vector (Compound1)" alt="" coords="5,5,242,48"/>
-<area shape="poly" title=" " alt="" coords="299,71,217,51,218,46,300,65"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a9b50c13f7bb42d9f30e9260c9f62b77d" title="Function to parse a compound response into a vector (Compound2)" alt="" coords="5,72,242,115"/>
-<area shape="poly" title=" " alt="" coords="274,96,242,96,242,91,274,91"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a128ef19656147acb52513f8cd041d924" title="Function to parse a compound response into a vector (Compound3)" alt="" coords="5,139,242,181"/>
-<area shape="poly" title=" " alt="" coords="300,121,218,141,217,135,299,116"/>
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438_cgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438_cgraph" id="aclasscom_module_1_1_ethernet_communication_afc704bfb5deaefae594ace55e7c72438_cgraph">
+<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound1)" alt="" coords="5,39,242,81"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29" title="Getter for a compound command response from the valve uC Slave (Compound1)" alt="" coords="290,5,526,48"/>
+<area shape="poly" title=" " alt="" coords="242,43,274,40,275,45,243,49"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a3fbf52e1cb2181d6c41203e7b29f06aa" title="Function to parse a compound response into a vector (Compound1)" alt="" coords="290,72,526,115"/>
+<area shape="poly" title=" " alt="" coords="243,71,275,75,274,80,242,77"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="574,5,810,48"/>
+<area shape="poly" title=" " alt="" coords="527,24,559,24,559,29,527,29"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ae0fa6f482516963272f748d4dc59b2f4" name="ae0fa6f482516963272f748d4dc59b2f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0fa6f482516963272f748d4dc59b2f4">&#9670;&#160;</a></span>getCompound() <span class="overload">[2/3]</span></h2>
+<a id="a9b50c13f7bb42d9f30e9260c9f62b77d" name="a9b50c13f7bb42d9f30e9260c9f62b77d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b50c13f7bb42d9f30e9260c9f62b77d">&#9670;&#160;</a></span>getParsedCompound() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">String EthernetCommunication::getCompound </td>
+          <td class="memname">Vector&lt; float &gt; EthernetCommunication::getParsedCompound </td>
           <td>(</td>
-          <td class="paramtype">Compound2&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -332,35 +568,39 @@ Here is the caller graph for this function:</div>
 <p>Function to get a compound command response from the valve uC Slave (Compound2) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Enum ID from Compound2 </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the command </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound1 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>String Response from the valve uC slave </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector&lt;float&gt; -&gt; Response from the valve uC slave </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classcom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph" alt=""/></div>
-<map name="aclasscom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph" id="aclasscom_module_1_1_ethernet_communication_ae0fa6f482516963272f748d4dc59b2f4_cgraph">
-<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound2)" alt="" coords="5,5,242,48"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Internal function to handle getting a compound response over Ethernet." alt="" coords="290,5,526,48"/>
-<area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_a9b50c13f7bb42d9f30e9260c9f62b77d_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a9b50c13f7bb42d9f30e9260c9f62b77d_cgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_a9b50c13f7bb42d9f30e9260c9f62b77d_cgraph" id="aclasscom_module_1_1_ethernet_communication_a9b50c13f7bb42d9f30e9260c9f62b77d_cgraph">
+<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound2)" alt="" coords="5,39,242,81"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29" title="Getter for a compound command response from the valve uC Slave (Compound1)" alt="" coords="290,5,526,48"/>
+<area shape="poly" title=" " alt="" coords="242,43,274,40,275,45,243,49"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a3fbf52e1cb2181d6c41203e7b29f06aa" title="Function to parse a compound response into a vector (Compound1)" alt="" coords="290,72,526,115"/>
+<area shape="poly" title=" " alt="" coords="243,71,275,75,274,80,242,77"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="574,5,810,48"/>
+<area shape="poly" title=" " alt="" coords="527,24,559,24,559,29,527,29"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="acd52159a5a0d0d71f5161b2d418be229" name="acd52159a5a0d0d71f5161b2d418be229"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd52159a5a0d0d71f5161b2d418be229">&#9670;&#160;</a></span>getCompound() <span class="overload">[3/3]</span></h2>
+<a id="a128ef19656147acb52513f8cd041d924" name="a128ef19656147acb52513f8cd041d924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128ef19656147acb52513f8cd041d924">&#9670;&#160;</a></span>getParsedCompound() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">String EthernetCommunication::getCompound </td>
+          <td class="memname">Vector&lt; float &gt; EthernetCommunication::getParsedCompound </td>
           <td>(</td>
-          <td class="paramtype">Compound3&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6">Compound3</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -380,49 +620,46 @@ Here is the call graph for this function:</div>
 <p>Function to get a compound command response from the valve uC Slave (Compound3) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Enum ID from Compound3 </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the command </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound1 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>String Response from the valve uC slave </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector&lt;float&gt; -&gt; Response from the valve uC slave </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classcom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph" alt=""/></div>
-<map name="aclasscom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph" id="aclasscom_module_1_1_ethernet_communication_acd52159a5a0d0d71f5161b2d418be229_cgraph">
-<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound3)" alt="" coords="5,5,242,48"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Internal function to handle getting a compound response over Ethernet." alt="" coords="290,5,526,48"/>
-<area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_a128ef19656147acb52513f8cd041d924_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a128ef19656147acb52513f8cd041d924_cgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_a128ef19656147acb52513f8cd041d924_cgraph" id="aclasscom_module_1_1_ethernet_communication_a128ef19656147acb52513f8cd041d924_cgraph">
+<area shape="rect" title="Function to get a compound command response from the valve uC Slave (Compound3)" alt="" coords="5,39,242,81"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29" title="Getter for a compound command response from the valve uC Slave (Compound1)" alt="" coords="290,5,526,48"/>
+<area shape="poly" title=" " alt="" coords="242,43,274,40,275,45,243,49"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a3fbf52e1cb2181d6c41203e7b29f06aa" title="Function to parse a compound response into a vector (Compound1)" alt="" coords="290,72,526,115"/>
+<area shape="poly" title=" " alt="" coords="243,71,275,75,274,80,242,77"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb" title="Getter for the internal compound command response from the valve uC Slave." alt="" coords="574,5,810,48"/>
+<area shape="poly" title=" " alt="" coords="527,24,559,24,559,29,527,29"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a8ea208b24911cfcc75a4a068788f06c0" name="a8ea208b24911cfcc75a4a068788f06c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ea208b24911cfcc75a4a068788f06c0">&#9670;&#160;</a></span>getParameter()</h2>
+<a id="ab20e63e3e37785530d60eed7c41cfeab" name="ab20e63e3e37785530d60eed7c41cfeab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20e63e3e37785530d60eed7c41cfeab">&#9670;&#160;</a></span>getRequestedEndpoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">String EthernetCommunication::getParameter </td>
+          <td class="memname">String EthernetCommunication::getRequestedEndpoint </td>
           <td>(</td>
-          <td class="paramtype">Compound2&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Getter for a parameter from the VAT slave. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>-&gt; The ID of the parameter to get. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>will return the value of the parameter as a string, otherwise an empty string or error message. </dd></dl>
+<p>Function to get the requested endpoint. </p>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The requested endpoint </dd></dl>
 
 </div>
 </div>
@@ -442,7 +679,36 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function to get the current status of the flag. </p>
-<dl class="section return"><dt>Returns</dt><dd>sendDataFlag -&gt; true if data should be sent, false otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true -&gt; if data should be sent </dd>
+<dd>
+false -&gt; if data should not be sent </dd></dl>
+
+</div>
+</div>
+<a id="a7caf61a6260b6b20a310cf995b37a94d" name="a7caf61a6260b6b20a310cf995b37a94d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7caf61a6260b6b20a310cf995b37a94d">&#9670;&#160;</a></span>getSpecificEndpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String EthernetCommunication::getSpecificEndpoint </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;&#160;</td>
+          <td class="paramname"><em>jsonBody</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the specific endpoint. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jsonBody</td><td>-&gt; The json body to get the endpoint from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The specific endpoint </dd></dl>
 
 </div>
 </div>
@@ -462,7 +728,50 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function to check if the Ethernet communication is initialized. </p>
-<dl class="section return"><dt>Returns</dt><dd>-&gt; true if the Ethernet communication is initialized, false otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true -&gt; if the Ethernet communication is initialized </dd>
+<dd>
+false -&gt; if the Ethernet communication is not initialized </dd></dl>
+
+</div>
+</div>
+<a id="a3fbf52e1cb2181d6c41203e7b29f06aa" name="a3fbf52e1cb2181d6c41203e7b29f06aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fbf52e1cb2181d6c41203e7b29f06aa">&#9670;&#160;</a></span>parseCompoundResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt; float &gt; EthernetCommunication::parseCompoundResponse </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>response</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to parse a compound response into a vector (Compound1) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">response</td><td>-&gt; Raw response string containing IEEE-754 hex values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector&lt;float&gt; -&gt; containing parsed float values. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa_icgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa_icgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa_icgraph" id="aclasscom_module_1_1_ethernet_communication_a3fbf52e1cb2181d6c41203e7b29f06aa_icgraph">
+<area shape="rect" title="Function to parse a compound response into a vector (Compound1)" alt="" coords="290,72,526,115"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afc704bfb5deaefae594ace55e7c72438" title="Function to get a compound command response from the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
+<area shape="poly" title=" " alt="" coords="299,71,217,51,218,46,300,65"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a9b50c13f7bb42d9f30e9260c9f62b77d" title="Function to get a compound command response from the valve uC Slave (Compound2)" alt="" coords="5,72,242,115"/>
+<area shape="poly" title=" " alt="" coords="274,96,242,96,242,91,274,91"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a128ef19656147acb52513f8cd041d924" title="Function to get a compound command response from the valve uC Slave (Compound3)" alt="" coords="5,139,242,181"/>
+<area shape="poly" title=" " alt="" coords="300,121,218,141,217,135,299,116"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -565,7 +874,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Fucntion to send data over Ethernet. </p>
+<p>Function to send data over Ethernet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">endpoint</td><td>-&gt; endpoint to send data to </td></tr>
@@ -578,8 +887,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538_icgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538_icgraph" alt=""/></div>
 <map name="aclasscom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538_icgraph" id="aclasscom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538_icgraph">
-<area shape="rect" title="Fucntion to send data over Ethernet." alt="" coords="269,5,505,48"/>
-<area shape="rect" href="classjson_module_1_1_json_module_internals.html#a8da80a14c28f5b836539efdd543fee28" title="Function to send the JSON object over Ethernet." alt="" coords="5,5,221,48"/>
+<area shape="rect" title="Function to send data over Ethernet." alt="" coords="269,5,505,48"/>
+<area shape="rect" href="classjson_module_1_1_json_module_internals.html#a8da80a14c28f5b836539efdd543fee28" title="Function to send the Json object over the Ethernet connection." alt="" coords="5,5,221,48"/>
 <area shape="poly" title=" " alt="" coords="253,29,221,29,221,24,253,24"/>
 </map>
 </div>
@@ -631,7 +940,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void EthernetCommunication::setCompound </td>
           <td>(</td>
-          <td class="paramtype">Compound1&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#a2266c2913bf28192787d63337b745f04">Compound1</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -657,9 +966,9 @@ Here is the call graph for this function:</div>
 <p>Function to set a compound command for the valve uC Slave (Compound1) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Enum ID from Compound1 </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the command </td></tr>
-    <tr><td class="paramname">value</td><td>Value of the command </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound1 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
+    <tr><td class="paramname">value</td><td>-&gt; Value of the command </td></tr>
   </table>
   </dd>
 </dl>
@@ -669,7 +978,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classcom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18_cgraph" alt=""/></div>
 <map name="aclasscom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18_cgraph" id="aclasscom_module_1_1_ethernet_communication_a4735b20a838d57eb8ef75c43ca6a6e18_cgraph">
 <area shape="rect" title="Function to set a compound command for the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1" title="Internal function to send the command over Ethernet." alt="" coords="290,5,526,48"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1" title="Function to set the Interal compound command for the valve uC Slave." alt="" coords="290,5,526,48"/>
 <area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
 </map>
 </div>
@@ -685,7 +994,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void EthernetCommunication::setCompound </td>
           <td>(</td>
-          <td class="paramtype">Compound2&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -711,9 +1020,9 @@ Here is the call graph for this function:</div>
 <p>Function to set a compound command for the valve uC Slave (Compound2) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Enum ID from Compound2 </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the command </td></tr>
-    <tr><td class="paramname">value</td><td>Value of the command </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound2 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
+    <tr><td class="paramname">value</td><td>-&gt; Value of the command </td></tr>
   </table>
   </dd>
 </dl>
@@ -723,7 +1032,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classcom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6_cgraph" alt=""/></div>
 <map name="aclasscom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6_cgraph" id="aclasscom_module_1_1_ethernet_communication_ab53c835197087a9dc8e3731dfa8252c6_cgraph">
 <area shape="rect" title="Function to set a compound command for the valve uC Slave (Compound2)" alt="" coords="5,5,242,48"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1" title="Internal function to send the command over Ethernet." alt="" coords="290,5,526,48"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1" title="Function to set the Interal compound command for the valve uC Slave." alt="" coords="290,5,526,48"/>
 <area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
 </map>
 </div>
@@ -739,7 +1048,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void EthernetCommunication::setCompound </td>
           <td>(</td>
-          <td class="paramtype">Compound3&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6">Compound3</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -765,9 +1074,9 @@ Here is the call graph for this function:</div>
 <p>Function to set a compound command for the valve uC Slave (Compound3) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Enum ID from Compound3 </td></tr>
-    <tr><td class="paramname">index</td><td>Index of the command </td></tr>
-    <tr><td class="paramname">value</td><td>Value of the command </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; Enum ID from Compound3 </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; Index of the command </td></tr>
+    <tr><td class="paramname">value</td><td>-&gt; Value of the command </td></tr>
   </table>
   </dd>
 </dl>
@@ -777,8 +1086,73 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classcom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a_cgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a_cgraph" alt=""/></div>
 <map name="aclasscom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a_cgraph" id="aclasscom_module_1_1_ethernet_communication_a6c08ed79662d51277f0da9ff7517bc5a_cgraph">
 <area shape="rect" title="Function to set a compound command for the valve uC Slave (Compound3)" alt="" coords="5,5,242,48"/>
-<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1" title="Internal function to send the command over Ethernet." alt="" coords="290,5,526,48"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1" title="Function to set the Interal compound command for the valve uC Slave." alt="" coords="290,5,526,48"/>
 <area shape="poly" title=" " alt="" coords="242,24,274,24,274,29,242,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afcd41d06ebd3a9fbd26378c8f17147e1" name="afcd41d06ebd3a9fbd26378c8f17147e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcd41d06ebd3a9fbd26378c8f17147e1">&#9670;&#160;</a></span>setCompoundInternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EthernetCommunication::setCompoundInternal </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>compoundType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to set the Interal compound command for the valve uC Slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compoundType</td><td>-&gt; The type of the compound </td></tr>
+    <tr><td class="paramname">id</td><td>-&gt; The ID of the compound </td></tr>
+    <tr><td class="paramname">index</td><td>-&gt; The index of the compound </td></tr>
+    <tr><td class="paramname">value</td><td>-&gt; The value of the compound </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1_icgraph.png" border="0" usemap="#aclasscom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1_icgraph" alt=""/></div>
+<map name="aclasscom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1_icgraph" id="aclasscom_module_1_1_ethernet_communication_afcd41d06ebd3a9fbd26378c8f17147e1_icgraph">
+<area shape="rect" title="Function to set the Interal compound command for the valve uC Slave." alt="" coords="290,72,526,115"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a4735b20a838d57eb8ef75c43ca6a6e18" title="Function to set a compound command for the valve uC Slave (Compound1)" alt="" coords="5,5,242,48"/>
+<area shape="poly" title=" " alt="" coords="299,71,217,51,218,46,300,65"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#ab53c835197087a9dc8e3731dfa8252c6" title="Function to set a compound command for the valve uC Slave (Compound2)" alt="" coords="5,72,242,115"/>
+<area shape="poly" title=" " alt="" coords="274,96,242,96,242,91,274,91"/>
+<area shape="rect" href="classcom_module_1_1_ethernet_communication.html#a6c08ed79662d51277f0da9ff7517bc5a" title="Function to set a compound command for the valve uC Slave (Compound3)" alt="" coords="5,139,242,181"/>
+<area shape="poly" title=" " alt="" coords="300,121,218,141,217,135,299,116"/>
 </map>
 </div>
 
@@ -793,7 +1167,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void EthernetCommunication::setParameter </td>
           <td>(</td>
-          <td class="paramtype">Compound2&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92">Compound2</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>

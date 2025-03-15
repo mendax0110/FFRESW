@@ -23,31 +23,37 @@
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjson_module_1_1_json_module_internals}{JsonModuleInternals}}();}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classjson_module_1_1_json_module_internals}{\string~JsonModuleInternals}}();}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172}{createJson}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ value);}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c}{createJsonFloat}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{float}\ value);}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff}{createJsonInt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{int}\ value);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c}{createJsonString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ String\&\ value);}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118}{createJsonStringConst}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keyword}{const}\ String\&\ value);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}{sendJsonSerial}}();}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a8da80a14c28f5b836539efdd543fee28}{sendJsonEthernet}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ endpoint);}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}{getJsonString}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ https://github.com/mike-\/matera/ArduinoSTL/issues/84}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::map<String,\ float>\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc}{mapJsonToDoubles}}(\textcolor{keyword}{const}\ String\&\ rawJson);}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a}{clearJson}}();}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ printJsonDocMemory();}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ jsonBuffer;}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ StaticJsonDocument<512>\ jsonDoc;}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \};}
-\DoxyCodeLine{00057\ \}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JSONMODULE\_H}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172}{createJson}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ value);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c}{createJsonFloat}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff}{createJsonInt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c}{createJsonString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ String\&\ value);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118}{createJsonStringConst}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ key,\ \textcolor{keyword}{const}\ String\&\ value);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}{sendJsonSerial}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a8da80a14c28f5b836539efdd543fee28}{sendJsonEthernet}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ endpoint);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}{getJsonString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ std::map<String,\ float>\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc}{mapJsonToDoubles}}(\textcolor{keyword}{const}\ String\&\ rawJson);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a}{clearJson}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a3453826931fdba4cbbcd5f31b637207f}{printJsonDocMemory}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ jsonBuffer;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ StaticJsonDocument<512>\ jsonDoc;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \};}
+\DoxyCodeLine{00123\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JSONMODULE\_H}}
 
 \end{DoxyCode}

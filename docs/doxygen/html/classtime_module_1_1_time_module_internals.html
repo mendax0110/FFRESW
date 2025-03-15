@@ -69,45 +69,61 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>timeModule</b></li><li class="navelem"><a class="el" href="classtime_module_1_1_time_module_internals.html">TimeModuleInternals</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacetime_module.html">timeModule</a></li><li class="navelem"><a class="el" href="classtime_module_1_1_time_module_internals.html">TimeModuleInternals</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classtime_module_1_1_time_module_internals-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">timeModule::TimeModuleInternals Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class to handle Systemtime.  
+ <a href="classtime_module_1_1_time_module_internals.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="time_module_8h_source.html">timeModule.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa2d2b8b16b1c6a2348d8cec3001e190b" id="r_aa2d2b8b16b1c6a2348d8cec3001e190b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b">incrementTime</a> (<a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> *dt)</td></tr>
-<tr class="memdesc:aa2d2b8b16b1c6a2348d8cec3001e190b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the given <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> object by one second.  <br /></td></tr>
-<tr class="separator:aa2d2b8b16b1c6a2348d8cec3001e190b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f1b154b75cd9c53c451e180b81dce45" id="r_a0f1b154b75cd9c53c451e180b81dce45"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45">formatTimeString</a> (const <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> &amp;dt)</td></tr>
-<tr class="memdesc:a0f1b154b75cd9c53c451e180b81dce45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats a <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> into a readable string format.  <br /></td></tr>
-<tr class="separator:a0f1b154b75cd9c53c451e180b81dce45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf7431f74a86f4ce24d3bb21eca6b88b" id="r_adf7431f74a86f4ce24d3bb21eca6b88b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#adf7431f74a86f4ce24d3bb21eca6b88b">setTimeFromHas</a> (const String &amp;timeString)</td></tr>
-<tr class="memdesc:adf7431f74a86f4ce24d3bb21eca6b88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a time string and sets the system time if valid.  <br /></td></tr>
+<tr class="memdesc:adf7431f74a86f4ce24d3bb21eca6b88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Time From Has object to the system time.  <br /></td></tr>
 <tr class="separator:adf7431f74a86f4ce24d3bb21eca6b88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a278c475e00a83bfd095678949e4b77fb" id="r_a278c475e00a83bfd095678949e4b77fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#a278c475e00a83bfd095678949e4b77fb">setSystemTime</a> (const <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> &amp;dt)</td></tr>
-<tr class="memdesc:a278c475e00a83bfd095678949e4b77fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the system time to the provided <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a>.  <br /></td></tr>
+<tr class="memdesc:a278c475e00a83bfd095678949e4b77fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the System Time object of the system.  <br /></td></tr>
 <tr class="separator:a278c475e00a83bfd095678949e4b77fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fc05f99c2d7f1daf5c1007c33ad8342" id="r_a6fc05f99c2d7f1daf5c1007c33ad8342"><td class="memItemLeft" align="right" valign="top"><a id="a6fc05f99c2d7f1daf5c1007c33ad8342" name="a6fc05f99c2d7f1daf5c1007c33ad8342"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateSoftwareClock</b> ()</td></tr>
-<tr class="memdesc:a6fc05f99c2d7f1daf5c1007c33ad8342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the software clock by accounting for elapsed time. <br /></td></tr>
+<tr class="memitem:a6fc05f99c2d7f1daf5c1007c33ad8342" id="r_a6fc05f99c2d7f1daf5c1007c33ad8342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342">updateSoftwareClock</a> ()</td></tr>
+<tr class="memdesc:a6fc05f99c2d7f1daf5c1007c33ad8342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the software clock.  <br /></td></tr>
 <tr class="separator:a6fc05f99c2d7f1daf5c1007c33ad8342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23f711502c1d9ab19789f3e4f7030fab" id="r_a23f711502c1d9ab19789f3e4f7030fab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab">getSystemTime</a> ()</td></tr>
-<tr class="memdesc:a23f711502c1d9ab19789f3e4f7030fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current system time.  <br /></td></tr>
+<tr class="memdesc:a23f711502c1d9ab19789f3e4f7030fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the System Time object.  <br /></td></tr>
 <tr class="separator:a23f711502c1d9ab19789f3e4f7030fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aa2d2b8b16b1c6a2348d8cec3001e190b" id="r_aa2d2b8b16b1c6a2348d8cec3001e190b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b">incrementTime</a> (<a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> *dt)</td></tr>
+<tr class="memdesc:aa2d2b8b16b1c6a2348d8cec3001e190b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to increment the time of the system.  <br /></td></tr>
+<tr class="separator:aa2d2b8b16b1c6a2348d8cec3001e190b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f1b154b75cd9c53c451e180b81dce45" id="r_a0f1b154b75cd9c53c451e180b81dce45"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45">formatTimeString</a> (const <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> &amp;dt)</td></tr>
+<tr class="memdesc:a0f1b154b75cd9c53c451e180b81dce45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to format the time to a string.  <br /></td></tr>
+<tr class="separator:a0f1b154b75cd9c53c451e180b81dce45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad107d2f1a1a0e8a6f82c5b8ab9bb22f8" id="r_ad107d2f1a1a0e8a6f82c5b8ab9bb22f8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classtime_module_1_1_time_module_internals.html">TimeModuleInternals</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtime_module_1_1_time_module_internals.html#ad107d2f1a1a0e8a6f82c5b8ab9bb22f8">getInstance</a> ()</td></tr>
+<tr class="memdesc:ad107d2f1a1a0e8a6f82c5b8ab9bb22f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Instance object, Singleton pattern.  <br /></td></tr>
+<tr class="separator:ad107d2f1a1a0e8a6f82c5b8ab9bb22f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class to handle Systemtime. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0f1b154b75cd9c53c451e180b81dce45" name="a0f1b154b75cd9c53c451e180b81dce45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f1b154b75cd9c53c451e180b81dce45">&#9670;&#160;</a></span>formatTimeString()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">String TimeModuleInternals::formatTimeString </td>
@@ -117,16 +133,57 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateSoftwareClock</
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Formats a <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> into a readable string format. </p>
+<p>Function to format the time to a string. </p>
+<p>Formats a <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> into a readable string format.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>The <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> object containing the date and time. </td></tr>
+    <tr><td class="paramname">dt</td><td>-&gt; <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> to format </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The formatted time.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>The <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> object containing the date and time. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A formatted string representation of the date and time. </dd></dl>
+
+</div>
+</div>
+<a id="ad107d2f1a1a0e8a6f82c5b8ab9bb22f8" name="ad107d2f1a1a0e8a6f82c5b8ab9bb22f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad107d2f1a1a0e8a6f82c5b8ab9bb22f8">&#9670;&#160;</a></span>getInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classtime_module_1_1_time_module_internals.html">TimeModuleInternals</a> * timeModule::TimeModuleInternals::getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the Instance object, Singleton pattern. </p>
+<dl class="section return"><dt>Returns</dt><dd>TimeModuleInternals* -&gt; The instance of the <a class="el" href="classtime_module_1_1_time_module_internals.html" title="Class to handle Systemtime.">TimeModuleInternals</a>. </dd></dl>
 
 </div>
 </div>
@@ -145,17 +202,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateSoftwareClock</
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the current system time. </p>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> containing the updated system Time. </dd></dl>
+<p>Get the System Time object. </p>
+<p>Retrieves the current system time.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> -&gt; The system time.</dd>
+<dd>
+A <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> containing the updated system Time. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab_cgraph.png" border="0" usemap="#aclasstime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab_cgraph" alt=""/></div>
 <map name="aclasstime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab_cgraph" id="aclasstime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab_cgraph">
-<area shape="rect" title="Retrieves the current system time." alt="" coords="5,5,223,48"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock by accounting for elapsed time." alt="" coords="271,5,488,48"/>
+<area shape="rect" title="Get the System Time object." alt="" coords="5,5,223,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="271,5,488,48"/>
 <area shape="poly" title=" " alt="" coords="223,24,255,24,255,29,223,29"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Increments the given DateTimeStruct object by one second." alt="" coords="536,5,753,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="536,5,753,48"/>
 <area shape="poly" title=" " alt="" coords="489,24,520,24,520,29,489,29"/>
 </map>
 </div>
@@ -167,6 +227,9 @@ Here is the call graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void TimeModuleInternals::incrementTime </td>
@@ -176,12 +239,19 @@ Here is the call graph for this function:</div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Increments the given <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> object by one second. </p>
+<p>Function to increment the time of the system. </p>
+<p>Increments the given <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> object by one second.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>Pointer to the <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> object to be updated. </td></tr>
+    <tr><td class="paramname">dt</td><td>-&gt; <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> to increment time</td></tr>
+    <tr><td class="paramname">dt</td><td>Pointer to the <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> object to be updated. </td></tr>
   </table>
   </dd>
 </dl>
@@ -190,10 +260,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b_icgraph.png" border="0" usemap="#aclasstime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b_icgraph" alt=""/></div>
 <map name="aclasstime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b_icgraph" id="aclasstime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b_icgraph">
-<area shape="rect" title="Increments the given DateTimeStruct object by one second." alt="" coords="536,5,753,48"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock by accounting for elapsed time." alt="" coords="271,5,488,48"/>
+<area shape="rect" title="Function to increment the time of the system." alt="" coords="536,5,753,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="271,5,488,48"/>
 <area shape="poly" title=" " alt="" coords="520,29,489,29,489,24,520,24"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Retrieves the current system time." alt="" coords="5,5,223,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="5,5,223,48"/>
 <area shape="poly" title=" " alt="" coords="255,29,223,29,223,24,255,24"/>
 </map>
 </div>
@@ -216,10 +286,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the system time to the provided <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a>. </p>
+<p>Set the System Time object of the system. </p>
+<p>Sets the system time to the provided <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newDt</td><td>The new <a class="el" href="structtime_module_1_1_date_time_struct.html">DateTimeStruct</a> to set as the system time. </td></tr>
+    <tr><td class="paramname">dt</td><td>-&gt; <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> to set the system time to.</td></tr>
+    <tr><td class="paramname">newDt</td><td>The new <a class="el" href="structtime_module_1_1_date_time_struct.html" title="Struct to hold the date and time.">DateTimeStruct</a> to set as the system time. </td></tr>
   </table>
   </dd>
 </dl>
@@ -228,8 +300,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb_icgraph.png" border="0" usemap="#aclasstime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb_icgraph" alt=""/></div>
 <map name="aclasstime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb_icgraph" id="aclasstime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb_icgraph">
-<area shape="rect" title="Sets the system time to the provided DateTimeStruct." alt="" coords="271,5,488,48"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#adf7431f74a86f4ce24d3bb21eca6b88b" title="Parses a time string and sets the system time if valid." alt="" coords="5,5,223,48"/>
+<area shape="rect" title="Set the System Time object of the system." alt="" coords="271,5,488,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#adf7431f74a86f4ce24d3bb21eca6b88b" title="Set the Time From Has object to the system time." alt="" coords="5,5,223,48"/>
 <area shape="poly" title=" " alt="" coords="255,29,223,29,223,24,255,24"/>
 </map>
 </div>
@@ -252,7 +324,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Parses a time string and sets the system time if valid. </p>
+<p>Set the Time From Has object to the system time. </p>
+<p>Parses a time string and sets the system time if valid.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeString</td><td>-&gt; The time string to set the system time to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true -&gt; if the time was set successfully </dd>
+<dd>
+false -&gt; if the time was not set successfully</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timeString</td><td>The input time string in the format "YYYY/MM/DD HH:MM:SS". </td></tr>
@@ -265,9 +347,49 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b_cgraph.png" border="0" usemap="#aclasstime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b_cgraph" alt=""/></div>
 <map name="aclasstime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b_cgraph" id="aclasstime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b_cgraph">
-<area shape="rect" title="Parses a time string and sets the system time if valid." alt="" coords="5,5,223,48"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a278c475e00a83bfd095678949e4b77fb" title="Sets the system time to the provided DateTimeStruct." alt="" coords="271,5,488,48"/>
+<area shape="rect" title="Set the Time From Has object to the system time." alt="" coords="5,5,223,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a278c475e00a83bfd095678949e4b77fb" title="Set the System Time object of the system." alt="" coords="271,5,488,48"/>
 <area shape="poly" title=" " alt="" coords="223,24,255,24,255,29,223,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6fc05f99c2d7f1daf5c1007c33ad8342" name="a6fc05f99c2d7f1daf5c1007c33ad8342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc05f99c2d7f1daf5c1007c33ad8342">&#9670;&#160;</a></span>updateSoftwareClock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TimeModuleInternals::updateSoftwareClock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the software clock. </p>
+<p>Updates the software clock by accounting for elapsed time. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_cgraph.png" border="0" usemap="#aclasstime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_cgraph" alt=""/></div>
+<map name="aclasstime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_cgraph" id="aclasstime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_cgraph">
+<area shape="rect" title="Updates the software clock." alt="" coords="5,5,223,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="271,5,488,48"/>
+<area shape="poly" title=" " alt="" coords="223,24,255,24,255,29,223,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_icgraph.png" border="0" usemap="#aclasstime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_icgraph" alt=""/></div>
+<map name="aclasstime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_icgraph" id="aclasstime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_icgraph">
+<area shape="rect" title="Updates the software clock." alt="" coords="271,5,488,48"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="5,5,223,48"/>
+<area shape="poly" title=" " alt="" coords="255,29,223,29,223,24,255,24"/>
 </map>
 </div>
 

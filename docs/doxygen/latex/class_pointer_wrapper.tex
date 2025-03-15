@@ -2,6 +2,11 @@
 \hypertarget{class_pointer_wrapper}{}\label{class_pointer_wrapper}\index{PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}}
 
 
+Tempalte class for wrapping a pointer.  
+
+
+
+
 {\ttfamily \#include $<$ptr\+Utils.\+h$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -10,27 +15,104 @@
 \Hypertarget{class_pointer_wrapper_a4fa33c096ee2ed5e8ada93fe2f5d3378}\label{class_pointer_wrapper_a4fa33c096ee2ed5e8ada93fe2f5d3378} 
 {\bfseries Pointer\+Wrapper} (T \texorpdfstring{$\ast$}{*}p=nullptr)
 \item 
-\Hypertarget{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f}\label{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f} 
-T \texorpdfstring{$\ast$}{*} {\bfseries get} () const
-\item 
-\Hypertarget{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160}\label{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160} 
-T \texorpdfstring{$\ast$}{*} {\bfseries release} ()
-\item 
-\Hypertarget{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0}\label{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0} 
-void {\bfseries reset} (T \texorpdfstring{$\ast$}{*}p=nullptr)
-\item 
-\Hypertarget{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4}\label{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4} 
-T \& {\bfseries operator\texorpdfstring{$\ast$}{*}} ()
-\item 
-\Hypertarget{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd}\label{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd} 
-T \texorpdfstring{$\ast$}{*} {\bfseries operator-\/$>$} ()
-\end{DoxyCompactItemize}
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f}{get}} () const
+\begin{DoxyCompactList}\small\item\em Function to get the pointer. \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160}{release}} ()
+\begin{DoxyCompactList}\small\item\em Function to release the pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0}{reset}} (T \texorpdfstring{$\ast$}{*}p=nullptr)
+\begin{DoxyCompactList}\small\item\em Function to reset the pointer. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4}{operator\texorpdfstring{$\ast$}{*}}} ()
+\begin{DoxyCompactList}\small\item\em Operator to dereference the pointer. \end{DoxyCompactList}\item 
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd}{operator-\/$>$}} ()
+\begin{DoxyCompactList}\small\item\em Operator to access the pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename T$>$\newline
 class Pointer\+Wrapper$<$ T $>$}
-Pointer wrapper class for RAII-\/style management. 
+Tempalte class for wrapping a pointer. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f}\label{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f} 
+\index{PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}!get@{get}}
+\index{get@{get}!PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper}}$<$ T $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to get the pointer. 
+
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} -\/\texorpdfstring{$>$}{>} The pointer. 
+\end{DoxyReturn}
+\Hypertarget{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4}\label{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4} 
+\index{PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper}}$<$ T $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operator to dereference the pointer. 
+
+\begin{DoxyReturn}{Returns}
+T\& -\/\texorpdfstring{$>$}{>} The dereferenced pointer. 
+\end{DoxyReturn}
+\Hypertarget{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd}\label{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd} 
+\index{PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper}}$<$ T $>$\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operator to access the pointer. 
+
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} -\/\texorpdfstring{$>$}{>} The pointer. 
+\end{DoxyReturn}
+\Hypertarget{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160}\label{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160} 
+\index{PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}!release@{release}}
+\index{release@{release}!PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper}}$<$ T $>$\+::release (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to release the pointer. 
+
+\begin{DoxyReturn}{Returns}
+T\texorpdfstring{$\ast$}{*} -\/\texorpdfstring{$>$}{>} The released pointer. 
+\end{DoxyReturn}
+\Hypertarget{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0}\label{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0} 
+\index{PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}!reset@{reset}}
+\index{reset@{reset}!PointerWrapper$<$ T $>$@{PointerWrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper}}$<$ T $>$\+::reset (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{p = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to reset the pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/\texorpdfstring{$>$}{>} The pointer to reset to. \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

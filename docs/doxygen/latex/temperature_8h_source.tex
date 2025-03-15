@@ -16,32 +16,37 @@
 \DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}();}
 \DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{\string~TemperatureSensor}}();}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07}{initialize}}();}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{readTemperature}}();}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}{readDht11}}();}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{readMLX90614}}(\textcolor{keywordtype}{int}\ choice);}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{isInitialized}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_temperatureSensorInitialized;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\ =\ A0;}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\_DIG\ =\ 4;}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ DHT11\_PIN\ =\ 7;}
-\DoxyCodeLine{00028\ \ \ \ \ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MLX90614\ =\ 0x5A;}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ AMBIENT\_TEMP\ =\ 0x06;}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ OBJECT\_TEMP\ =\ 0x07;}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ Adafruit\_MLX90614\ mlx\ =\ Adafruit\_MLX90614();}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{float}\ readAnalogSensor(\textcolor{keywordtype}{int}\ pin);}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ readDigitalSensor(\textcolor{keywordtype}{int}\ pin);}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ reportError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ dht\ DHT;}
-\DoxyCodeLine{00040\ \};}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TEMPERATURESENSOR\_H}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07}{initialize}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{readTemperature}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}{readDht11}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{readMLX90614}}(\textcolor{keywordtype}{int}\ choice);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_temperatureSensorInitialized;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\ =\ A0;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\_DIG\ =\ 4;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ DHT11\_PIN\ =\ 7;}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MLX90614\ =\ 0x5A;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ AMBIENT\_TEMP\ =\ 0x06;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ OBJECT\_TEMP\ =\ 0x07;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ Adafruit\_MLX90614\ mlx\ =\ Adafruit\_MLX90614();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ readAnalogSensor(\textcolor{keywordtype}{int}\ pin);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{float}\ readDigitalSensor(\textcolor{keywordtype}{int}\ pin);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ reportError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ dht\ DHT;}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TEMPERATURESENSOR\_H}}
 
 \end{DoxyCode}

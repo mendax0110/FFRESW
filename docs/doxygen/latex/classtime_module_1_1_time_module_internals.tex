@@ -1,34 +1,60 @@
 \doxysection{time\+Module\+::Time\+Module\+Internals Class Reference}
 \hypertarget{classtime_module_1_1_time_module_internals}{}\label{classtime_module_1_1_time_module_internals}\index{timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}}
+
+
+Class to handle Systemtime.  
+
+
+
+
+{\ttfamily \#include $<$time\+Module.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classtime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b}{increment\+Time}} (\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \texorpdfstring{$\ast$}{*}dt)
-\begin{DoxyCompactList}\small\item\em Increments the given \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} object by one second. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a0f1b154b75cd9c53c451e180b81dce45}{format\+Time\+String}} (const \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \&dt)
-\begin{DoxyCompactList}\small\item\em Formats a \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} into a readable string format. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classtime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b}{set\+Time\+From\+Has}} (const String \&time\+String)
-\begin{DoxyCompactList}\small\item\em Parses a time string and sets the system time if valid. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set the Time From Has object to the system time. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a278c475e00a83bfd095678949e4b77fb}{set\+System\+Time}} (const \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \&dt)
-\begin{DoxyCompactList}\small\item\em Sets the system time to the provided \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}. \end{DoxyCompactList}\item 
-\Hypertarget{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342}\label{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342} 
-void {\bfseries update\+Software\+Clock} ()
-\begin{DoxyCompactList}\small\item\em Updates the software clock by accounting for elapsed time. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set the System Time object of the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342}{update\+Software\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Updates the software clock. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab}{get\+System\+Time}} ()
-\begin{DoxyCompactList}\small\item\em Retrieves the current system time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the System Time object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classtime_module_1_1_time_module_internals_aa2d2b8b16b1c6a2348d8cec3001e190b}{increment\+Time}} (\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \texorpdfstring{$\ast$}{*}dt)
+\begin{DoxyCompactList}\small\item\em Function to increment the time of the system. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classtime_module_1_1_time_module_internals_a0f1b154b75cd9c53c451e180b81dce45}{format\+Time\+String}} (const \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \&dt)
+\begin{DoxyCompactList}\small\item\em Function to format the time to a string. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{Time\+Module\+Internals}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtime_module_1_1_time_module_internals_ad107d2f1a1a0e8a6f82c5b8ab9bb22f8}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get the Instance object, Singleton pattern. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Class to handle Systemtime. 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtime_module_1_1_time_module_internals_a0f1b154b75cd9c53c451e180b81dce45}\label{classtime_module_1_1_time_module_internals_a0f1b154b75cd9c53c451e180b81dce45} 
 \index{timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}!formatTimeString@{formatTimeString}}
 \index{formatTimeString@{formatTimeString}!timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}}
 \doxysubsubsection{\texorpdfstring{formatTimeString()}{formatTimeString()}}
-{\footnotesize\ttfamily String Time\+Module\+Internals\+::format\+Time\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \&}]{dt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily String Time\+Module\+Internals\+::format\+Time\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \&}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Formats a \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} into a readable string format. 
+Function to format the time to a string. 
 
+Formats a \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} into a readable string format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & -\/\texorpdfstring{$>$}{>} \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} to format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String -\/\texorpdfstring{$>$}{>} The formatted time.
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em dt} & The \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} object containing the date and time. \\
@@ -36,6 +62,19 @@ Formats a \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} 
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A formatted string representation of the date and time. 
+\end{DoxyReturn}
+\Hypertarget{classtime_module_1_1_time_module_internals_ad107d2f1a1a0e8a6f82c5b8ab9bb22f8}\label{classtime_module_1_1_time_module_internals_ad107d2f1a1a0e8a6f82c5b8ab9bb22f8} 
+\index{timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{Time\+Module\+Internals}} \texorpdfstring{$\ast$}{*} time\+Module\+::\+Time\+Module\+Internals\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Instance object, Singleton pattern. 
+
+\begin{DoxyReturn}{Returns}
+Time\+Module\+Internals\texorpdfstring{$\ast$}{*} -\/\texorpdfstring{$>$}{>} The instance of the \doxylink{classtime_module_1_1_time_module_internals}{Time\+Module\+Internals}. 
 \end{DoxyReturn}
 \Hypertarget{classtime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab}\label{classtime_module_1_1_time_module_internals_a23f711502c1d9ab19789f3e4f7030fab} 
 \index{timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}!getSystemTime@{getSystemTime}}
@@ -45,9 +84,13 @@ A formatted string representation of the date and time.
 
 
 
-Retrieves the current system time. 
+Get the System Time object. 
+
+Retrieves the current system time.
 
 \begin{DoxyReturn}{Returns}
+\doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} -\/\texorpdfstring{$>$}{>} The system time.
+
 A \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} containing the updated system Time. 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
@@ -62,14 +105,18 @@ Here is the call graph for this function\+:
 \index{timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}!incrementTime@{incrementTime}}
 \index{incrementTime@{incrementTime}!timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}}
 \doxysubsubsection{\texorpdfstring{incrementTime()}{incrementTime()}}
-{\footnotesize\ttfamily void Time\+Module\+Internals\+::increment\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \texorpdfstring{$\ast$}{*}}]{dt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Time\+Module\+Internals\+::increment\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}} \texorpdfstring{$\ast$}{*}}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Increments the given \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} object by one second. 
+Function to increment the time of the system. 
+
+Increments the given \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} object by one second.
 
 
 \begin{DoxyParams}{Parameters}
+{\em dt} & -\/\texorpdfstring{$>$}{>} \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} to increment time\\
+\hline
 {\em dt} & Pointer to the \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} object to be updated. \\
 \hline
 \end{DoxyParams}
@@ -89,10 +136,14 @@ Here is the caller graph for this function\+:
 
 
 
-Sets the system time to the provided \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}. 
+Set the System Time object of the system. 
+
+Sets the system time to the provided \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct}.
 
 
 \begin{DoxyParams}{Parameters}
+{\em dt} & -\/\texorpdfstring{$>$}{>} \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} to set the system time to.\\
+\hline
 {\em new\+Dt} & The new \doxylink{structtime_module_1_1_date_time_struct}{Date\+Time\+Struct} to set as the system time. \\
 \hline
 \end{DoxyParams}
@@ -112,8 +163,20 @@ Here is the caller graph for this function\+:
 
 
 
-Parses a time string and sets the system time if valid. 
+Set the Time From Has object to the system time. 
 
+Parses a time string and sets the system time if valid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+String} & -\/\texorpdfstring{$>$}{>} The time string to set the system time to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the time was set successfully 
+
+false -\/\texorpdfstring{$>$}{>} if the time was not set successfully
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
 {\em time\+String} & The input time string in the format "{}\+YYYY/\+MM/\+DD HH\+:\+MM\+:\+SS"{}. \\
@@ -128,6 +191,32 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classtime_module_1_1_time_module_internals_adf7431f74a86f4ce24d3bb21eca6b88b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342}\label{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342} 
+\index{timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}!updateSoftwareClock@{updateSoftwareClock}}
+\index{updateSoftwareClock@{updateSoftwareClock}!timeModule::TimeModuleInternals@{timeModule::TimeModuleInternals}}
+\doxysubsubsection{\texorpdfstring{updateSoftwareClock()}{updateSoftwareClock()}}
+{\footnotesize\ttfamily void Time\+Module\+Internals\+::update\+Software\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the software clock. 
+
+Updates the software clock by accounting for elapsed time. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtime_module_1_1_time_module_internals_a6fc05f99c2d7f1daf5c1007c33ad8342_icgraph}
 \end{center}
 \end{figure}
 
