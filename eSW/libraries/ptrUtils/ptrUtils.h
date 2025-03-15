@@ -3,7 +3,12 @@
 
 #include <Arduino.h>
 
-// Delete a pointer and set it to nullptr
+/**
+ * @brief Template function to safely delete a pointer and set it to nullptr.
+ *
+ * @tparam T -> The type of the pointer.
+ * @param ptr -> The pointer to delete.
+ */
 template <typename T>
 static inline void SafeDelete(T*& ptr)
 {
@@ -14,7 +19,12 @@ static inline void SafeDelete(T*& ptr)
     }
 }
 
-// Delete an array pointer and set it to nullptr
+/**
+ * @brief Function to safely delete an array and set it to nullptr.
+ *
+ * @tparam T -> The type of the array.
+ * @param ptr -> The array to delete.
+ */
 template <typename T>
 static inline void SafeDeleteArray(T*& ptr)
 {
@@ -26,9 +36,13 @@ static inline void SafeDeleteArray(T*& ptr)
 }
 
 /**
- * Verify that a value matches an expected value. If not, trigger a failure.
+ * @brief Template to verify a pointer is not nullptr.
+ *
+ * @tparam T -> The type of the pointer.
+ * @param value -> The pointer to verify.
+ * @param expected -> The expected value of the pointer.
+ * @param errorMsg -> The error message to print if the verification fails.
  */
-// General template for non-pointer types
 template <typename T>
 static inline void Verify(const T& value, const T& expected, const char* errorMsg = nullptr)
 {
@@ -50,7 +64,14 @@ static inline void Verify(const T& value, const T& expected, const char* errorMs
     }
 }
 
-// Specialization for pointers (Pointer vs Pointer)
+/**
+ * @brief Template Specialization for pointers (Pointer vs Pointer)
+ *
+ * @tparam T -> The type of the pointer.
+ * @param value -> The pointer to verify.
+ * @param expected -> The expected value of the pointer.
+ * @param errorMsg -> The error message to print if the verification fails.
+ */
 template <typename T>
 static inline void Verify(T* value, T* expected, const char* errorMsg = nullptr)
 {
@@ -72,7 +93,13 @@ static inline void Verify(T* value, T* expected, const char* errorMsg = nullptr)
     }
 }
 
-// Specialization for nullptr (Pointer vs nullptr)
+/**
+ * @brief Template Specialization for pointers (Pointer vs nullptr)
+ *
+ * @tparam T -> The type of the pointer.
+ * @param value -> The pointer to verify.
+ * @param errorMsg -> The error message to print if the verification fails.
+ */
 template <typename T>
 static inline void Verify(T* value, const char* errorMsg = nullptr)
 {
@@ -94,13 +121,15 @@ static inline void Verify(T* value, const char* errorMsg = nullptr)
 
 
 /**
- * Macro to delete a pointer and verify it's nullptr.
+ * @brief Macro to safely delete a pointer and verify it is nullptr.
+ *
  */
 #define tryDeletePtr(ptr) 										\
     SafeDelete(ptr);        									\
     //Verify(ptr, nullptr, "Pointer not null after deletion!"); 	\
 
 
+/// @brief Utility class for pointer operations. \class PtrUtils
 class PtrUtils
 {
 public:
@@ -130,7 +159,11 @@ public:
 };
 
 /**
- * Clear an array by setting all elements to their default value.
+ * @brief Template to Clear an array of pointers.
+ *
+ * @tparam T -> The type of the pointer.
+ * @param array -> The array of pointers.
+ * @param size -> The size of the array.
  */
 template <typename T>
 static inline void ClearArray(T* array, size_t size)
@@ -142,7 +175,11 @@ static inline void ClearArray(T* array, size_t size)
 }
 
 /**
- * Print pointer information for debugging.
+ * @brief Template to print info about a pointer.
+ *
+ * @tparam T -> The type of the pointer.
+ * @param ptr -> The pointer to print info about.
+ * @param ptrName -> The name of the pointer.
  */
 template <typename T>
 static inline void PrintPtrInfo(T* ptr, const char* ptrName = "Pointer")
@@ -161,7 +198,9 @@ static inline void PrintPtrInfo(T* ptr, const char* ptrName = "Pointer")
 }
 
 /**
- * Scoped pointer class to manage single pointers in RAII fashion.
+ * @brief Template class for a Scoped Pointer. \class ScopedPointer
+ *
+ * @tparam T -> The type of the pointer.
  */
 template <typename T>
 class ScopedPointer
@@ -173,7 +212,18 @@ public:
     explicit ScopedPointer(T* p = nullptr) : ptr(p) {}
     ~ScopedPointer() { SafeDelete(ptr); }
 
+    /**
+     * @brief Function to get the pointer.
+     *
+     * @return T* -> The pointer.
+     */
     T* get() const { return ptr; }
+
+    /**
+     * @brief Function to release the pointer.
+     *
+     * @return T* -> The released pointer.
+     */
     T* release()
     {
         T* temp = ptr;
@@ -181,18 +231,36 @@ public:
         return temp;
     }
 
+    /**
+     * @brief Function to reset the pointer.
+     *
+     * @param p -> The pointer to reset to.
+     */
     void reset(T* p = nullptr)
     {
         SafeDelete(ptr);
         ptr = p;
     }
 
+    /**
+     * @brief Operator to dereference the pointer.
+     *
+     * @return T& -> The dereferenced pointer.
+     */
     T& operator*() const { return *ptr; }
+
+    /**
+     * @brief Operator to access the pointer.
+     *
+     * @return T* -> The pointer.
+     */
     T* operator->() const { return ptr; }
 };
 
 /**
- * Pointer wrapper class for RAII-style management.
+ * @brief Tempalte class for wrapping a pointer. \class PointerWrapper
+ *
+ * @tparam T
  */
 template <typename T>
 class PointerWrapper
@@ -204,7 +272,18 @@ public:
     explicit PointerWrapper(T* p = nullptr) : ptr(p) {}
     ~PointerWrapper() { SafeDelete(ptr); }
 
+    /**
+     * @brief Function to get the pointer.
+     *
+     * @return T* -> The pointer.
+     */
     T* get() const { return ptr; }
+
+    /**
+     * @brief Function to release the pointer.
+     *
+     * @return T* -> The released pointer.
+     */
     T* release()
     {
         T* temp = ptr;
@@ -212,13 +291,29 @@ public:
         return temp;
     }
 
+    /**
+     * @brief Function to reset the pointer.
+     *
+     * @param p -> The pointer to reset to.
+     */
     void reset(T* p = nullptr)
     {
         SafeDelete(ptr);
         ptr = p;
     }
 
+    /**
+     * @brief Operator to dereference the pointer.
+     *
+     * @return T& -> The dereferenced pointer.
+     */
     T& operator*() { return *ptr; }
+
+    /**
+     * @brief Operator to access the pointer.
+     *
+     * @return T* -> The pointer.
+     */
     T* operator->() { return ptr; }
 };
 

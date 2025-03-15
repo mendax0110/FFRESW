@@ -18,9 +18,6 @@ EthernetCommunication::~EthernetCommunication()
 
 }
 
-/// @brief Function to initialize the Ethernet communication
-/// @param macAddress -> The MAC address to use for the Ethernet communication
-/// @param ip -> The IP address to use for the Ethernet communication
 void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
 {
     Ethernet.begin(macAddress, ip);
@@ -42,23 +39,16 @@ void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
     Serial.println(Ethernet.localIP());
 }
 
-/// @brief Function to check if the Ethernet communication is initialized
-/// @return -> true if the Ethernet communication is initialized, false otherwise
 bool EthernetCommunication::isInitialized()
 {
 	return ethernetInitialized;
 }
 
-/// @brief Get the currently active Ethernet client
-/// @return Reference to the active Ethernet client
 EthernetClient& EthernetCommunication::getClient()
 {
     return client;
 }
 
-/// @brief Function to receive data over Ethernet
-/// @param buffer -> The buffer to read the data into
-/// @param length -> The length of the data to read
 void EthernetCommunication::receiveEthernetData(char* buffer, size_t length)
 {
     if (!ethernetInitialized) return;
@@ -70,7 +60,6 @@ void EthernetCommunication::receiveEthernetData(char* buffer, size_t length)
     }
 }
 
-/// @brief Function to get the requested endpoint
 String EthernetCommunication::getRequestedEndpoint()
 {
     EthernetClient newClient = server.available();
@@ -109,8 +98,56 @@ String EthernetCommunication::getRequestedEndpoint()
     return requestedEndpoint;
 }
 
-/// @brief Function to send the json response with the measurment data
-/// @param jsonBody -> jsonstring with the content needed
+// TODO: CHECK THIS METHOD, CHECK THE ENDPOINT!!
+String EthernetCommunication::getSpecificEndpoint(const String& endpoint)
+{
+    if (!ethernetInitialized) return "";
+
+    String response = "";
+    bool redirected = false;
+    String newLocation = "";
+
+    if (client.connect("192.168.1.1", 5000)) // Verbindung zu HAS
+    {
+        delay(100);
+        client.print("GET /" + endpoint + " HTTP/1.1\r\n");
+        client.print("Host: 192.168.1.1:5000\r\n");
+        client.print("Connection: close\r\n\r\n");
+        delay(100);
+
+        unsigned long timeout = millis();
+        while (client.available() == 0)
+        {
+            if (millis() - timeout > 5000)
+            {
+                client.stop();
+                return "[ERROR] Timeout";
+            }
+        }
+
+        while (client.available())
+        {
+            char c = client.read();
+            response += c;
+        }
+
+        client.stop();
+    }
+    else
+    {
+        return "[ERROR] Connection Failed";
+    }
+
+    // Extrahiere die eigentliche JSON-Antwort (nach den HTTP-Headern)
+    int headerEnd = response.indexOf("\r\n\r\n");
+    if (headerEnd != -1)
+    {
+        response = response.substring(headerEnd + 4);
+    }
+
+    return response;
+}
+
 void EthernetCommunication::sendJsonResponse(const String& jsonBody)
 {
     EthernetClient activeClient = getClient();
@@ -122,11 +159,10 @@ void EthernetCommunication::sendJsonResponse(const String& jsonBody)
     }
     else
     {
-        Serial.println("Error: No active client to send JSON response.");
+        Serial.println("[ERROR] No active client to send JSON response.");
     }
 }
 
-/// @brief Function to handle the Ethernet client
 void EthernetCommunication::handleEthernetClient()
 {
     EthernetClient newClient = server.available();
@@ -152,9 +188,6 @@ void EthernetCommunication::handleEthernetClient()
     }
 }
 
-/// @brief Fucntion to send data over Ethernet
-/// @param endpoint -> endpoint to send data to
-/// @param data -> The data to send
 void EthernetCommunication::sendEthernetData(const char* endpoint, const char* data)
 {
     if (!ethernetInitialized) return;
@@ -177,32 +210,28 @@ void EthernetCommunication::sendEthernetData(const char* endpoint, const char* d
     }
 }
 
-/// @brief Function to get the current status of the flag
-/// @return sendDataFlag -> true if data should be sent, false otherwise
 bool EthernetCommunication::getSendDataFlag() const
 {
 	return sendDataFlag;
 }
 
-/// @brief Function to get the current status of the flag
-/// @param flag -> set the flag to true if data sent, false otherwise
 void EthernetCommunication::setSendDataFlag(bool flag)
 {
 	sendDataFlag = flag;
 }
 
-/// @brief Helper function to send a command to the VAT slave controller
-/// @param command -> The command to send to the VAT slave controller
 void EthernetCommunication::sendCommand(String command)
 {
 	if (!ethernetInitialized) return;
 
-	if (client.connect("192.168.1.10", 503)
+	EthernetClient vatClient;
+
+	if (vatClient.connect("192.168.1.10", 503)
 		&& command.length() > 0)
 	{
 		Serial.println("Current command we send" + command);
-		client.println(command);
-		client.stop();
+		vatClient.println(command);
+		vatClient.stop();
 	}
 }
 
@@ -227,9 +256,6 @@ String compound2ToString(Compound2 id)
     }
 }
 
-/// @brief Setter for a parameter from the VAT slave
-/// @param id -> The ID of the parameter to set
-/// @param value -> The value to set the parameter to
 void EthernetCommunication::setParameter(Compound2 id, String value)
 {
     if (!ethernetInitialized) return;
@@ -246,9 +272,6 @@ void EthernetCommunication::setParameter(Compound2 id, String value)
     sendCommand(command);
 }
 
-/// @brief Getter for a parameter from the VAT slave.
-/// @param id -> The ID of the parameter to get.
-/// @return will return the value of the parameter as a string, otherwise an empty string or error message.
 String EthernetCommunication::getParameter(Compound2 id)
 {
     if (!ethernetInitialized) return "";
@@ -261,11 +284,13 @@ String EthernetCommunication::getParameter(Compound2 id)
     command += compound2ToString(id);
     command += "00";
 
-    if (client.connect("192.168.1.10", 503))
+    EthernetClient vatClient;
+
+    if (vatClient.connect("192.168.1.10", 503))
     {
         delay(100);
-        client.println(command);
-        client.flush();
+        vatClient.println(command);
+        vatClient.flush();
         delay(200);
 
         String response = "";
@@ -273,16 +298,16 @@ String EthernetCommunication::getParameter(Compound2 id)
 
         while (millis() - startTime < 1000)
         {
-            while (client.available())
+            while (vatClient.available())
             {
-                char c = client.read();
+                char c = vatClient.read();
                 response += c;
             }
             // xit if we have a response
             if (response.length() > 0) break;
         }
 
-        client.stop();
+        vatClient.stop();
 
         if (response.length() > 0)
             return response;
@@ -295,9 +320,6 @@ String EthernetCommunication::getParameter(Compound2 id)
     }
 }
 
-/// @brief Transforms the given float to IEEE-754 float values.
-/// @param value -> float we want to convert
-/// @return String of the converted float
 String EthernetCommunication::floatToIEEE754(float value)
 {
 	union
@@ -312,9 +334,6 @@ String EthernetCommunication::floatToIEEE754(float value)
 	return String(buffer);
 }
 
-/// @brief Parses the response and extracts IEEE-754 float values.
-/// @param response -> Raw response string containing IEEE-754 hex values.
-/// @return Vector<float> containing parsed float values.
 Vector<float> EthernetCommunication::parseResponse(String response)
 {
 	Vector<float> parsedValue;
@@ -348,34 +367,21 @@ Vector<float> EthernetCommunication::parseResponse(String response)
 	return parsedValue;
 }
 
-/// @brief Function to set a compound command for the valve uC Slave (Compound1)
-/// @param id Enum ID from Compound1
-/// @param index Index of the command
-/// @param value Value of the command
 void EthernetCommunication::setCompound(Compound1 id, int index, String value)
 {
     setCompoundInternal("0A0100", static_cast<unsigned long>(id), index, value);
 }
 
-/// @brief Function to set a compound command for the valve uC Slave (Compound2)
-/// @param id Enum ID from Compound2
-/// @param index Index of the command
-/// @param value Value of the command
 void EthernetCommunication::setCompound(Compound2 id, int index, String value)
 {
     setCompoundInternal("0A0200", static_cast<unsigned long>(id), index, value);
 }
 
-/// @brief Function to set a compound command for the valve uC Slave (Compound3)
-/// @param id Enum ID from Compound3
-/// @param index Index of the command
-/// @param value Value of the command
 void EthernetCommunication::setCompound(Compound3 id, int index, String value)
 {
     setCompoundInternal("0A0300", static_cast<unsigned long>(id), index, value);
 }
 
-/// @brief Internal function to send the command over Ethernet
 void EthernetCommunication::setCompoundInternal(String compoundType, unsigned long id, int index, String value)
 {
     if (!ethernetInitialized) return;
@@ -397,34 +403,21 @@ void EthernetCommunication::setCompoundInternal(String compoundType, unsigned lo
     }
 }
 
-/// @brief Function to get a compound command response from the valve uC Slave (Compound1)
-/// @param id Enum ID from Compound1
-/// @param index Index of the command
-/// @return String Response from the valve uC slave
 String EthernetCommunication::getCompound(Compound1 id, int index)
 {
     return getCompoundInternal("0A0100", static_cast<unsigned long>(id), index);
 }
 
-/// @brief Function to get a compound command response from the valve uC Slave (Compound2)
-/// @param id Enum ID from Compound2
-/// @param index Index of the command
-/// @return String Response from the valve uC slave
 String EthernetCommunication::getCompound(Compound2 id, int index)
 {
     return getCompoundInternal("0A0200", static_cast<unsigned long>(id), index);
 }
 
-/// @brief Function to get a compound command response from the valve uC Slave (Compound3)
-/// @param id Enum ID from Compound3
-/// @param index Index of the command
-/// @return String Response from the valve uC slave
 String EthernetCommunication::getCompound(Compound3 id, int index)
 {
     return getCompoundInternal("0A0300", static_cast<unsigned long>(id), index);
 }
 
-/// @brief Internal function to handle getting a compound response over Ethernet
 String EthernetCommunication::getCompoundInternal(String compoundType, unsigned long id, int index)
 {
     if (!ethernetInitialized) return "[ERROR] ethernetshield not initialized";
@@ -461,25 +454,21 @@ String EthernetCommunication::getCompoundInternal(String compoundType, unsigned 
     return response;
 }
 
-/// @brief Function to parse a compound response into a vector (Compound1)
 Vector<float> EthernetCommunication::getParsedCompound(Compound1 id, int index)
 {
     return parseCompoundResponse(getCompound(id, index));
 }
 
-/// @brief Function to parse a compound response into a vector (Compound2)
 Vector<float> EthernetCommunication::getParsedCompound(Compound2 id, int index)
 {
     return parseCompoundResponse(getCompound(id, index));
 }
 
-/// @brief Function to parse a compound response into a vector (Compound3)
 Vector<float> EthernetCommunication::getParsedCompound(Compound3 id, int index)
 {
     return parseCompoundResponse(getCompound(id, index));
 }
 
-/// @brief Internal function to parse a response string into a float vector
 Vector<float> EthernetCommunication::parseCompoundResponse(String response)
 {
     if (response.length() == 0)

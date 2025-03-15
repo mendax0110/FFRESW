@@ -18,8 +18,22 @@ namespace comModule
         ComModuleInternals();
         ~ComModuleInternals();
 
+        /**
+         * @brief I2C communication object.
+         *
+         */
         I2CCommunication i2c;
+
+        /**
+         * @brief SPI communication object.
+         *
+         */
         SPICommunication spi;
+
+        /**
+         * @brief Ethernet communication object.
+         *
+         */
         EthernetCommunication eth;
         //SerialCommunication serial;
     };

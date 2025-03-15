@@ -12,8 +12,10 @@
 #include <Ethernet.h>
 #include <Vector.h>
 
+/// @brief Namespace for the communication module \namespace comModule
 namespace comModule
 {
+	/// @brief Enum class for the service types \enum Service
 	enum class Service : uint8_t
 	{
 		SET = 0x01,
@@ -23,6 +25,7 @@ namespace comModule
 		SETGET = 0x30
 	};
 
+	/// @brief Enum class for the compound 1 types \enum Compound1
 	enum class Compound1 : uint32_t
 	{
 		CONTROL_MODE = 0x0F020000,
@@ -31,6 +34,7 @@ namespace comModule
 		NOT_USED = 0x00000000
 	};
 
+	/// @brief Enum class for the compound 2 types \enum Compound2
 	enum class Compound2 : uint32_t
 	{
 	    ACCESS_MODE = 0x0F0B0000,
@@ -45,6 +49,7 @@ namespace comModule
 	    NOT_USED = 0x00000000
 	};
 
+	/// @brief Enum class for the compound 3 types \enum Compound3
 	enum class Compound3 : uint32_t
 	{
 		CONTROL_MODE = 0x0F020000,
@@ -60,6 +65,7 @@ namespace comModule
 		NOT_USED = 0x00000000
 	};
 
+	/// @brief Enum class for the error codes \enum Error_Codes
 	enum class Error_Codes : uint8_t
 	{
 		NO_ERROR = 0x00,
@@ -103,37 +109,218 @@ namespace comModule
 		EthernetCommunication();
 		~EthernetCommunication();
 
+		/**
+		 * @brief Function to initialize the Ethernet communication
+		 *
+		 * @param macAddress -> The MAC address to use for the Ethernet communication
+		 * @param ip -> The IP address to use for the Ethernet communication
+		 */
 		void beginEthernet(uint8_t* macAddress, IPAddress ip);
+
+		/**
+		 * @brief Function to send data over Ethernet
+		 *
+		 * @param endpoint -> endpoint to send data to
+		 * @param data -> The data to send
+		 */
 		void sendEthernetData(const char* endpoint, const char* data);
+
+		/**
+		 * @brief Function to receive data over Ethernet
+		 *
+		 * @param buffer -> The buffer to read the data into
+		 * @param length -> The length of the data to read
+		 */
 		void receiveEthernetData(char* buffer, size_t length);
+
+		/**
+		 * @brief Function to handle the Ethernet client
+		 *
+		 */
 		void handleEthernetClient();
+
+		/**
+		 * @brief Function to get the requested endpoint
+		 *
+		 * @return String -> The requested endpoint
+		 */
 		String getRequestedEndpoint();
+
+		/**
+		 * @brief Function to get the specific endpoint
+		 *
+		 * @param jsonBody -> The json body to get the endpoint from
+		 * @return String -> The specific endpoint
+		 */
+		String getSpecificEndpoint(const String& jsonBody);
+
+		/**
+		 * @brief Function to send the json response with the measurment data
+		 *
+		 * @param jsonBody -> jsonstring with the content needed
+		 */
 		void sendJsonResponse(const String& jsonBody);
 
+		/**
+		 * @brief Get the currently active Ethernet client
+		 *
+		 * @return EthernetClient& , Reference to the active Ethernet client
+		 */
 		EthernetClient& getClient();
 
+		/**
+		 * @brief Function to check if the Ethernet communication is initialized
+		 *
+		 * @return true -> if the Ethernet communication is initialized
+		 * @return false -> if the Ethernet communication is not initialized
+		 */
 		bool isInitialized();
 
+		/**
+		 * @brief Function to get the current status of the flag
+		 *
+		 * @return true -> if data should be sent
+		 * @return false -> if data should not be sent
+		 */
 		bool getSendDataFlag() const;
+
+		/**
+		 * @brief Function to get the current status of the flag
+		 *
+		 * @param flag -> set the flag to true if data sent, false otherwise
+		 */
 		void setSendDataFlag(bool flag);
 
+		/**
+		 * @brief Function to set a compound command for the valve uC Slave (Compound1)
+		 *
+		 * @param id -> Enum ID from Compound1
+		 * @param index -> Index of the command
+		 * @param value -> Value of the command
+		 */
 		void setCompound(Compound1 id, int index, String value);
+
+		/**
+		 * @brief Function to set a compound command for the valve uC Slave (Compound2)
+		 *
+		 * @param id -> Enum ID from Compound2
+		 * @param index -> Index of the command
+		 * @param value -> Value of the command
+		 */
 		void setCompound(Compound2 id, int index, String value);
+
+		/**
+		 * @brief Function to set a compound command for the valve uC Slave (Compound3)
+		 *
+		 * @param id -> Enum ID from Compound3
+		 * @param index -> Index of the command
+		 * @param value -> Value of the command
+		 */
 		void setCompound(Compound3 id, int index, String value);
+
+		/**
+		 * @brief Function to set the Interal compound command for the valve uC Slave
+		 *
+		 * @param compoundType -> The type of the compound
+		 * @param id -> The ID of the compound
+		 * @param index -> The index of the compound
+		 * @param value -> The value of the compound
+		 */
 		void setCompoundInternal(String compoundType, unsigned long id, int index, String value);
 
+		/**
+		 * @brief Getter for a compound command response from the valve uC Slave (Compound1)
+		 *
+		 * @param id -> Enum ID from Compound1
+		 * @param index -> Index of the command
+		 * @return String -> Response from the valve uC slave
+		 */
 		String getCompound(Compound1 id, int index);
+
+		/**
+		 * @brief Getter for a compound command response from the valve uC Slave (Compound2)
+		 *
+		 * @param id -> Enum ID from Compound2
+		 * @param index -> Index of the command
+		 * @return String -> Response from the valve uC slave
+		 */
 		String getCompound(Compound2 id, int index);
+
+		/**
+		 * @brief Getter for a compound command response from the valve uC Slave (Compound3)
+		 *
+		 * @param id -> Enum ID from Compound3
+		 * @param index -> Index of the command
+		 * @return String -> Response from the valve uC slave
+		 */
 		String getCompound(Compound3 id, int index);
+
+		/**
+		 * @brief Getter for the internal compound command response from the valve uC Slave
+		 *
+		 * @param compoundType -> The type of the compound
+		 * @param id -> The ID of the compound
+		 * @param index -> The index of the compound
+		 * @return String -> Response from the valve uC slave
+		 */
 		String getCompoundInternal(String compoundType, unsigned long id, int index);
 
+		/**
+		 * @brief Function to get a compound command response from the valve uC Slave (Compound1)
+		 *
+		 * @param id -> Enum ID from Compound1
+		 * @param index -> Index of the command
+		 * @return Vector<float> -> Response from the valve uC slave
+		 */
 		Vector<float> getParsedCompound(Compound1 id, int index);
+
+		/**
+		 * @brief Function to get a compound command response from the valve uC Slave (Compound2)
+		 *
+		 * @param id -> Enum ID from Compound1
+		 * @param index -> Index of the command
+		 * @return Vector<float> -> Response from the valve uC slave
+		 */
 		Vector<float> getParsedCompound(Compound2 id, int index);
+
+		/**
+		 * @brief Function to get a compound command response from the valve uC Slave (Compound3)
+		 *
+		 * @param id -> Enum ID from Compound1
+		 * @param index -> Index of the command
+		 * @return Vector<float> -> Response from the valve uC slave
+		 */
 		Vector<float> getParsedCompound(Compound3 id, int index);
+
+		/**
+		 * @brief Function to parse a compound response into a vector (Compound1)
+		 *
+		 * @param response -> Raw response string containing IEEE-754 hex values.
+		 * @return Vector<float> -> containing parsed float values.
+		 */
 		Vector<float> parseCompoundResponse(String response);
 
+		/**
+		 * @brief Setter for a parameter from the VAT slave
+		 *
+		 * @param id -> The ID of the parameter to set
+		 * @param value -> The value to set the parameter to
+		 */
 		void setParameter(Compound2 id, String value);
+
+		/**
+		 * @brief Getter for a parameter from the VAT slave.
+		 *
+		 * @param id -> The ID of the parameter to get
+		 * @return -> String will return the value of the parameter as a string, otherwise an empty string or error message.
+		 */
 		String getParameter(Compound2 id);
+
+		/**
+		 * @brief Helper function to send a command to the VAT slave controller
+		 *
+		 * @param command -> The command to send to the VAT slave controller
+		 */
 		void sendCommand(String command);
 
 	private:
@@ -142,7 +329,20 @@ namespace comModule
 		bool ethernetInitialized;
 		bool sendDataFlag = false;
 
+		/**
+		 * @brief Transforms the given float to IEEE-754 float values.
+		 *
+		 * @param value -> float we want to convert
+		 * @return String -> IEEE-754 float value as a string
+		 */
 		String floatToIEEE754(float value);
+
+		/**
+		 * @brief Parses the response and extracts IEEE-754 float values.
+		 *
+		 * @param response -> Raw response string containing IEEE-754 hex values.
+		 * @return Vector<float> containing parsed float values.
+		 */
 		Vector<float> parseResponse(String response);
 
 	};

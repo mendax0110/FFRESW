@@ -16,43 +16,39 @@ SensorModuleInternals::~SensorModuleInternals()
 
 }
 
-/// @brief Function to initialize the sensor module 
 void SensorModuleInternals::beginSensor()
 {
-    Serial.println(F("Starting sensor module..."));
+    Serial.println(F("[INFO] Starting sensor module..."));
     initializeSensors();
 }
 
-/// @brief Function to initialize the sensors
 void SensorModuleInternals::initializeSensors()
 {
     Wire.begin();
-    Serial.println(F("I2C bus initialized."));
+    Serial.println(F("[INFO] I2C bus initialized."));
 
     Wire.beginTransmission(I2C_SENSOR_ADDRESS);
     if (Wire.endTransmission() == 0)
     {
         _i2cSensorInitialized = true;
-        Serial.println(F("I2C sensor initialized."));
+        Serial.println(F("[INFO] I2C sensor initialized."));
     }
     else
     {
-        reportError("Failed to initialize I2C sensor.");
+    	_i2cSensorInitialized = false;
+        reportError("[ERROR] Failed to initialize I2C sensor.");
     }
 
     SPI.begin();
     pinMode(SPI_CS_PIN, OUTPUT);
     digitalWrite(SPI_CS_PIN, HIGH);
     _spiSensorInitialized = true;
-    Serial.println(F("SPI sensor initialized."));
+    Serial.println(F("[INFO] SPI sensor initialized."));
     
     _pressureSensor.initialize();
     _temperatureSensor.initialize();
 }
 
-/// @brief Function to read the sensor data based on the sensor type
-/// @param type -> This is the sensor type (enum)
-/// @return float -> This returns the sensor data
 float SensorModuleInternals::readSensor(SensorType type)
 {
     switch (type)
@@ -72,18 +68,16 @@ float SensorModuleInternals::readSensor(SensorType type)
         case SensorType::DHT11:
         	return _temperatureSensor.readDht11();
         default:
-            reportError("Unknown sensor type.");
+            reportError("[ERROR] Unknown sensor type.");
             return -1.0; // ERROR!!!
     }
 }
 
-/// @brief Funtion to read the I2C sensor
-/// @return float -> This returns the sensor data
 float SensorModuleInternals::readI2CSensor()
 {
     if (!_i2cSensorInitialized)
     {
-        reportError("I2C sensor not initialized!");
+        reportError("[ERROR] I2C sensor not initialized!");
         return NAN;
     }
 
@@ -99,18 +93,16 @@ float SensorModuleInternals::readI2CSensor()
     }
     else
     {
-        reportError("Failed to read I2C sensor data!");
+        reportError("[ERROR] Failed to read I2C sensor data!");
         return NAN;
     }
 }
 
-/// @brief Function to read the SPI sensor
-/// @return flaot -> This returns the sensor data
 float SensorModuleInternals::readSPISensor()
 {
     if (!_spiSensorInitialized)
     {
-        reportError("SPI sensor not initialized!");
+        reportError("[ERROR] SPI sensor not initialized!");
         return NAN;
     }
     digitalWrite(SPI_CS_PIN, LOW);
@@ -121,38 +113,32 @@ float SensorModuleInternals::readSPISensor()
     return (float)data;
 }
 
-/// @brief Function to calibrate the sensor based on the sensor type
-/// @param type -> This is the sensor type (enum)
-/// @return bool -> This returns true if the calibration was successful, false otherwise
 bool SensorModuleInternals::calibrateSensor(SensorType type)
 {
     switch (type)
     {
     case SensorType::TEMPERATURE:
-        Serial.println(F("Calibrating temperature sensor..."));
+        Serial.println(F("[INFO] Calibrating temperature sensor..."));
         // TODO: add actual calibration here
         return true;
     case SensorType::PRESSURE:
-        Serial.println(F("Calibrating pressure sensor..."));
+        Serial.println(F("[INFO] Calibrating pressure sensor..."));
         // TODO: add actual calibration here
         return true;
     case SensorType::I2C_SENSOR:
-        Serial.println(F("Calibrating I2C sensor..."));
+        Serial.println(F("[INFO] Calibrating I2C sensor..."));
         // TODO: add actual calibration here
         return true;
     case SensorType::SPI_SENSOR:
-        Serial.println(F("Calibrating SPI sensor..."));
+        Serial.println(F("[INFO] Calibrating SPI sensor..."));
         // TODO: add actual calibration here
         return true;
     default:
-        reportError("Unknown sensor type for calibration.");
+        reportError("[ERROR] Unknown sensor type for calibration.");
         return false;
     }
 }
 
-/// @brief Function to check the status of the sensor based on the sensor type
-/// @param type -> This is the sensor type (enum)
-/// @return bool -> This returns true if the sensor is initialized, false otherwise
 bool SensorModuleInternals::checkSensorStatus(SensorType type)
 {
     switch (type)
@@ -171,10 +157,8 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
     }
 }
 
-/// @brief Function to report an error message
-/// @param errorMessage -> This is the error message to report
 void SensorModuleInternals::reportError(const char* errorMessage)
 {
-    Serial.print(F("Error: "));
+    Serial.print(F("[ERROR] "));
     Serial.println(errorMessage);
 }

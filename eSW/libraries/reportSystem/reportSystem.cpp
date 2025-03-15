@@ -18,12 +18,14 @@
 #include <frt.h>
 
 using namespace reportSystem;
+using namespace timeModule;
 
 extern frt::Mutex serialMutex;
 volatile uint16_t stackCheck __attribute__((section(".noinit")));
 
 ReportSystem::ReportSystem() 
-    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0), _com(nullptr), _sens(nullptr)
+    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0),
+	  _com(nullptr), _sens(nullptr), _time(TimeModuleInternals::getInstance())
 {
 
 }
@@ -32,11 +34,10 @@ ReportSystem::~ReportSystem()
 {
 	tryDeletePtr(_sens)
 	tryDeletePtr(_com)
+	tryDeletePtr(_time)
 }
 
-/// @brief Function to log an error message with a timestamp
-/// @param errorMessage -> This is the error message to log
-void ReportSystem::logError(const char* errorMessage)
+void ReportSystem::reportError(const char* errorMessage)
 {
     serialMutex.lock();
     Serial.print("[ERROR] ");
@@ -46,14 +47,6 @@ void ReportSystem::logError(const char* errorMessage)
     serialMutex.unlock();
 }
 
-/// @brief Function to check the system health
-/// @param memorySizeThreshold -> Set true to check memory Threshold
-/// @param checkEth -> Set true to check Ethernet
-/// @param checkSpi -> Set true to check SPI
-/// @param checkI2c -> Set true to check I2C
-/// @param checkTemp -> Set true to check Temperature
-/// @param checkPress-> Set true to check Pressure
-/// @return -> This returns true if the system health check passed, false otherwise
 bool ReportSystem::checkSystemHealth(size_t memoryThreshold, bool checkEth,
 									bool checkSpi, bool checkI2c,
 									bool checkTemp, bool checkPress)
@@ -62,101 +55,91 @@ bool ReportSystem::checkSystemHealth(size_t memoryThreshold, bool checkEth,
     {
         lastHealthCheck = millis();
         bool healthCheckPassed = true;
-        String errorMsg = "System health check failed: ";
+        String errorMsg = "[" + getCurrentTime() + "] System health check failed: ";
+
+        String errors = "";
 
         if (!checkSensors(checkTemp, checkPress))
         {
             healthCheckPassed = false;
-            errorMsg += "[Sensors Failed] ";
+            errors += "[Sensors Failed] ";
         }
 
         if (!checkCommunication(checkEth, checkSpi, checkI2c))
         {
             healthCheckPassed = false;
-            errorMsg += "[Communication Failed] ";
+            errors += "[Communication Failed] ";
         }
 
         if (!checkMemory(memoryThreshold))
         {
             healthCheckPassed = false;
-            errorMsg += "[Memory Low] ";
+            errors += "[Memory Low] ";
         }
 
         if (detectStackOverflow())
         {
-        	healthCheckPassed = false;
-        	errorMsg += "[Stackoverflow] ";
+            healthCheckPassed = false;
+            errors += "[Stack Overflow] ";
         }
 
         if (!healthCheckPassed)
         {
-            logError(errorMsg.c_str());
+        	reportError((errorMsg + errors).c_str());
         }
     }
 
     return true;
 }
 
-/// @brief Function to report the status of the pressure and temperature thresholds
-/// @param active -> Set to true to get the status, false otherwise
-/// @return -> String with the Information about the status
 String ReportSystem::reportStatus(bool active)
 {
     if (!active)
     {
-    	return "[INFO] Status Report is deactivated!";
+        return "[INFO] Status Report is deactivated!";
     }
 
-    String statusReport = "[STATUS] System is operating normally.\n";
-    statusReport += "Current Temp Threshold: " + String(tempThreshold) + "\n";
+    String currentTime = "[" + getCurrentTime() + "] ";
+    String statusReport = currentTime + "[STATUS] System is operating normally.\n";
+
+    statusReport += "Current Temperature Threshold: " + String(tempThreshold) + "\n";
     statusReport += "Current Pressure Threshold: " + String(pressureThreshold) + "\n";
     statusReport += getMemoryStatus();
 
     return statusReport;
 }
 
-/// @brief Function to set the temperature and pressure thresholds
-/// @param tempThreshold -> This is the temperature threshold
-/// @param pressureThreshold -> This is the pressure threshold
 void ReportSystem::setThreshold(float tempThreshold, float pressureThreshold)
 {
     this->tempThreshold = tempThreshold;
     this->pressureThreshold = pressureThreshold;
 }
 
-/// @brief Function to check if the current temperature and pressure exceed the thresholds
-/// @param currentTemp -> This is the current temperature
-/// @param currentPressure -> This is the current pressure
-/// @return -> This returns true if the thresholds are not exceeded, false otherwise
 bool ReportSystem::checkThresholds(float currentTemp, float currentPressure)
 {
     bool result = true;
     if (currentTemp > tempThreshold)
     {
-    	logError(("Temperature threshold exceeded! Current Temperature: " + String(currentTemp)).c_str());
+    	reportError(("Temperature threshold exceeded! Current Temperature: " + String(currentTemp)).c_str());
         result = false;
     }
 
     if (currentPressure > pressureThreshold)
     {
-        logError(("Pressure threshold exceeded! Current Pressure:" + String(currentPressure)).c_str());
+    	reportError(("Pressure threshold exceeded! Current Pressure:" + String(currentPressure)).c_str());
         result = false;
     }
 
     return result;
 }
 
-/// @brief Function to get the current time in milliseconds
-/// @return -> This returns the current time in milliseconds as a string
 String ReportSystem::getCurrentTime()
 {
-    return String(millis()) + " ms";
+	if (_time == nullptr)
+		return "Error _time is nullptr";
+    return TimeModuleInternals::formatTimeString(_time->getSystemTime());
 }
 
-/// @brief Function to check the status of the sensors
-/// @param chekTemp -> Set true to check temperature
-/// @param checkPress -> Set true to check pressure
-/// @return -> This returns true if the sensors are operational, false otherwise
 bool ReportSystem::checkSensors(bool checkTemp, bool checkPress)
 {
     // TODO: use sensor module to check sensor status
@@ -172,15 +155,10 @@ bool ReportSystem::checkSensors(bool checkTemp, bool checkPress)
 	if (!tempStat) errorMsg += "[Check Temp Sensor failed] ";
 	if (!pressStat) errorMsg += "[Check Press Sensor failed] ";
 
-	logError(errorMsg.c_str());
+	reportError(errorMsg.c_str());
 	return false;
 }
 
-/// @brief Function to check the communication status
-/// @param checkEth -> Set true to check Ethernet
-/// @param checkSpi -> Set true to check SPI
-/// @param checkI2c -> Set true to check I2C
-/// @return -> Returns true if the selected communication checks pass, false otherwise
 bool ReportSystem::checkCommunication(bool checkEth, bool checkSpi, bool checkI2c)
 {
     bool ethStat = checkEth ? _com->eth.isInitialized() : true;
@@ -197,25 +175,21 @@ bool ReportSystem::checkCommunication(bool checkEth, bool checkSpi, bool checkI2
     if (checkSpi && !spiStat) errorMsg += "[SPI Not Initialized] ";
     if (checkI2c && !i2cStat) errorMsg += "[I2C Not Initialized] ";
 
-    logError(errorMsg.c_str());
+    reportError(errorMsg.c_str());
     return false;
 }
 
-/// @brief Function to check available memory with a configurable threshold
-/// @param threshold -> Memory threshold to check against
 bool ReportSystem::checkMemory(unsigned int threshold)
 {
     if (getFreeMemSize() < threshold)
     {
-        logError("Low memory warning! Free memory: " + getFreeMemSize());
+    	reportError("Low memory warning! Free memory: " + getFreeMemSize());
         return false;
     }
     
     return true;
 }
 
-/// @brief Function to get the current memory status as a formatted string
-/// @return -> A string containing details about SRAM, stack, heap, and free memory
 String ReportSystem::getMemoryStatus()
 {
     String memoryReport;
@@ -230,8 +204,6 @@ String ReportSystem::getMemoryStatus()
     return memoryReport;
 }
 
-/// @brief Retrieves a stack dump showing return addresses.
-/// @return A string containing the stack dump.
 String ReportSystem::getStackDump()
 {
     uint8_t* sp = (uint8_t*)(SP);
@@ -247,7 +219,6 @@ String ReportSystem::getStackDump()
     return stackDump;
 }
 
-/// @brief Marks the start of a busy period for CPU load tracking.
 void ReportSystem::startBusyTime()
 {
     unsigned long currentMicros = micros();
@@ -261,7 +232,6 @@ void ReportSystem::startBusyTime()
     lastTimestamp = currentMicros;
 }
 
-/// @brief Marks the start of an idle period for CPU load tracking.
 void ReportSystem::startIdleTime()
 {
     unsigned long currentMicros = micros();
@@ -275,15 +245,12 @@ void ReportSystem::startIdleTime()
     lastTimestamp = currentMicros;
 }
 
-/// @brief Calculates the CPU load percentage based on busy and idle time.
-/// @return The CPU load as a floating-point percentage (0.0 - 100.0).
 float ReportSystem::getCPULoad()
 {
     unsigned long totalTime = busyTime + idleTime;
     return (totalTime == 0) ? 0 : (busyTime * 100.0 / totalTime);
 }
 
-/// @brief Resets the CPU load tracking metrics.
 void ReportSystem::resetUsage()
 {
     busyTime = 0;
@@ -291,28 +258,21 @@ void ReportSystem::resetUsage()
     lastTimestamp = micros();
 }
 
-/// @brief Initializer for Stack Guard
 void ReportSystem::initStackGuard()
 {
 	stackCheck = STACK_GUARD;
 }
 
-/// @brief Detector for stackoverflow
 bool ReportSystem::detectStackOverflow()
 {
 	return stackCheck != STACK_GUARD;
 }
 
-/// @brief Function to save last error to EEPROM
-/// @param error -> Error message to save
-/// HINT: KEEP IN MIND ~100 000 write cycles per cell!
 void ReportSystem::saveLastError(const char* error)
 {
 	EEPROM.put(EEPROM_ERROR_ADDR, error);
 }
 
-/// @brief Function to get last error from EEPROM
-/// HINT: KEEP IN MIND ~100 000 write cycles per cell!
 String ReportSystem::getLastError()
 {
 	char error[50];

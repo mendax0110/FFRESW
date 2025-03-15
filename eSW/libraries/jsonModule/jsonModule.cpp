@@ -24,54 +24,37 @@ JsonModuleInternals::~JsonModuleInternals()
 	clearJson();
 }
 
-/// @brief Function to create a JSON object with a key-value pair
-/// @param key -> This is the key of the JSON object (const char*)
-/// @param value -> This is the value of the JSON object (const char*)
 void JsonModuleInternals::createJson(const char* key, const char* value)
 {
     jsonDoc[key] = value;
 }
 
-/// @brief Function to create a JSON object with a key-value pair
-/// @param key -> This is the key of the JSON object (const char*)
-/// @param value -> This is the value of the JSON object (float)
 void JsonModuleInternals::createJsonFloat(const char* key, float value)
 {
     jsonDoc[key] = value;
 }
 
-/// @brief Function to create a JSON object with a key-value pair
-/// @param key -> This is the key of the JSON object (const char*)
-/// @param value -> This is the value of the JSON object (int)
 void JsonModuleInternals::createJsonInt(const char* key, int value)
 {
     jsonDoc[key] = value;
 }
 
-/// @brief Function to create a JSON object with a key-value pair
-/// @param key -> This is the key of the JSON object (const char*)
-/// @param value -> This is the value of the JSON object (String)
 void JsonModuleInternals::createJsonString(const char* key, String& value)
 {
 	jsonDoc[key] = value;
 }
 
-/// @brief Function to create a JSON object with a key-value pair
-/// @param key -> This is the key of the JSON object (const char*)
-/// @param value -> This is the value of the JSON object (const String)
 void JsonModuleInternals::createJsonStringConst(const char* key, const String& value)
 {
 	jsonDoc[key] = value;
 }
 
-/// @brief Function to get the JSON object as a string
-/// @return String -> This returns the JSON object as a string
 String JsonModuleInternals::getJsonString() const
 {
     String output;
     if (jsonDoc.size() == 0)
     {
-        Serial.println("JSON document is empty.");
+        Serial.println("[ERROR] JSON document is empty.");
     }
     else
     {
@@ -80,9 +63,6 @@ String JsonModuleInternals::getJsonString() const
     return output;
 }
 
-/// @brief Function to map the deserialzed jsondoc to the corresponding values
-/// @param const String& -> the rawJson
-/// @return std::map<String, double> -> a map with the values
 std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
 {
 	std::map<String, float> resultMap;
@@ -91,7 +71,7 @@ std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJ
 
 	if (error)
 	{
-		Serial.print("deserializeJson() failed: ");
+		Serial.print("[ERROR] deserializeJson() failed: ");
 		Serial.print(error.f_str());
 		return resultMap;
 	}
@@ -105,14 +85,11 @@ std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJ
 
 }
 
-/// @brief Function to send the JSON object over Serial
 void JsonModuleInternals::sendJsonSerial()
 {
     Serial.println(getJsonString());
 }
 
-
-/// @brief Function to send the JSON object over Ethernet
 void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
 {
     comModule::ComModuleInternals comms;
@@ -120,7 +97,6 @@ void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
 }
 
 
-/// @brief Function to clear the JSON object
 void JsonModuleInternals::clearJson()
 {
     jsonDoc.clear();

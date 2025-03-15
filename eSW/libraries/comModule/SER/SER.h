@@ -5,22 +5,57 @@
  * @date 2024-09-28
  */
 
-#ifndef SERIAL_COMMUNICATION_H
-#define SERIAL_COMMUNICATION_H
+ #ifndef SERIAL_COMMUNICATION_H
+ #define SERIAL_COMMUNICATION_H
 
-#include <Arduino.h>
+ #include <Arduino.h>
 
-namespace comModule
-{
-	/// @brief Class to handle Serial communication \class SerialCommunication
-	class SerialCommunication
-	{
-	public:
+ namespace comModule
+ {
+	 /// @brief Class to handle Serial communication \class SerialCommunication
+	 class SerialCommunication
+	 {
+	 public:
 
-		void beginSerial(long baudRate);
-		void sendSerialData(const char* data);
-		void receiveSerialData(char* buffer, size_t length);
-	};
-}
+		 /**
+		  * @brief Function to start the serial communication
+		  *
+		  * @param baudRate -> The baud rate to use for the serial communication
+		  */
+		 void beginSerial(long baudRate);
 
-#endif // SERIAL_COMMUNICATION_H
+		 /**
+		  * @brief Function to end the serial communication
+		  *
+		  */
+		 void endSerial();
+
+		 /**
+		  * @brief Function to end the serial communication
+		  *
+		  * @param data -> The data to send
+		  */
+		 void sendSerialData(const char* data);
+
+		 /**
+		  * @brief Function to receive data over serial
+		  *
+		  * @param buffer -> The buffer to read the data into
+		  * @param length -> The length of the data to read
+		  */
+		 void receiveSerialData(char* buffer, size_t length);
+
+		 /**
+		  * @brief Function to check if the serial communication is initialized
+		  *
+		  * @return true -> if the serial communication is initialized
+		  * @return false -> if the serial communication is not initialized
+		  */
+		 bool isInitialized();
+
+	 private:
+		 bool serInitialized;
+	 };
+ }
+
+ #endif // SERIAL_COMMUNICATION_H

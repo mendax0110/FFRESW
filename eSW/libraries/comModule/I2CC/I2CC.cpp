@@ -9,32 +9,23 @@
 
 using namespace comModule;
 
-/// @brief Function to check if the I2C communication is initialized
-/// @return -> true if the SPI communication is initialized, false otherwise
 bool I2CCommunication::isInitialized()
 {
 	return i2cInitialized;
 }
 
-/// @brief Function to initialize the I2C communication
-/// @param address -> The address to use for the I2C communication
 void I2CCommunication::beginI2C(uint8_t address)
 {
     Wire.begin(address);
     i2cInitialized = true;
 }
 
-/// @brief Function to End the I2C communication
 void I2CCommunication::endI2C()
 {
 	Wire.end();
 	i2cInitialized = false;
 }
 
-/// @brief Function to write data over I2C
-/// @param deviceAddress -> The address of the device to write to
-/// @param data -> The data to write
-/// @param length -> The length of the data
 void I2CCommunication::i2cWrite(uint8_t deviceAddress, uint8_t* data, size_t length)
 {
     Wire.beginTransmission(deviceAddress);
@@ -42,10 +33,6 @@ void I2CCommunication::i2cWrite(uint8_t deviceAddress, uint8_t* data, size_t len
     Wire.endTransmission();
 }
 
-/// @brief Function to read data over I2C
-/// @param deviceAddress -> The address of the device to read from
-/// @param buffer -> The buffer to read the data into
-/// @param length -> The length of the data to read
 size_t I2CCommunication::i2cRead(uint8_t deviceAddress, uint8_t* buffer, size_t length)
 {
     size_t bytesRead = 0;

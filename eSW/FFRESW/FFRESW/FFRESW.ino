@@ -17,7 +17,7 @@ ComModuleInternals com;
 SensorModuleInternals sens;
 ReportSystem report;
 JsonModuleInternals json;
-TimeModuleInternals  time;
+TimeModuleInternals* _timeMod = TimeModuleInternals::getInstance();
 DateTimeStruct currentTime;
 
 // Buffers for sensor data
@@ -59,6 +59,21 @@ void printToSerial(const String& message, bool newLine = true)
         Serial.print(message);
     }
     serialMutex.unlock();
+}
+
+// helper method to update time
+void updateTime()
+{
+    static unsigned long lastUpdateTime = 0;
+    const unsigned long updateInterval = 60000; // 60 sec
+
+    if (millis() - lastUpdateTime >= updateInterval)
+    {
+        lastUpdateTime = millis(); // Update timestamp
+
+        String startTime = com.eth.getSpecificEndpoint("time/");
+        _timeMod->setTimeFromHas(startTime);
+    }
 }
 
 /// @brief Task to report system health and status periodically
@@ -234,13 +249,15 @@ public:
             	{
 					String positionVal = requestedEndpoint.substring(separatorIndex + 1);
 					com.eth.setParameter(Compound2::TARGET_POSITION, positionVal);
+					String rawVal = CalcModuleInternals::extractFloat(positionVal, 1);
+					jsonBody = buildJsonResponse("set_target_position", rawVal.toFloat(), "position");
             	}
             }
             else if (requestedEndpoint.startsWith("get_actual_position"))
             {
 				String response = com.eth.getParameter(Compound2::ACTUAL_POSITION);
 				String rawVal = CalcModuleInternals::extractFloat(response, 1);
-				jsonBody = buildJsonResponse("target_position", rawVal.toFloat(), "position");
+				jsonBody = buildJsonResponse("get_actual_position", rawVal.toFloat(), "position");
 
             }
             else if (requestedEndpoint.startsWith("set_target_pressure"))
@@ -250,13 +267,15 @@ public:
             	{
 					String pressureVal = requestedEndpoint.substring(separatorIndex + 1);
 					com.eth.setParameter(Compound2::TARGET_PRESSURE, pressureVal);
+					String rawVal = CalcModuleInternals::extractFloat(pressureVal, 1);
+					jsonBody = buildJsonResponse("set_target_pressure", rawVal.toFloat(), "pressure");
             	}
             }
-            else if (requestedEndpoint.startsWith("get_actual_position"))
+            else if (requestedEndpoint.startsWith("get_actual_pressure"))
             {
             	String response = com.eth.getParameter(Compound2::ACTUAL_PRESSURE);
             	String rawVal = CalcModuleInternals::extractFloat(response, 1);
-				jsonBody = buildJsonResponse("target_position", rawVal.toFloat(), "pressure");
+				jsonBody = buildJsonResponse("get_actual_pressure", rawVal.toFloat(), "pressure");
             }
 
             if (jsonBody.length() > 0)
@@ -282,82 +301,31 @@ private:
         json.createJsonStringConst("unit", unit);
         json.createJsonString("timestamp", timestamp);
 
+        String jsonString = json.getJsonString();
+        printToSerial("Generated JSON: " + jsonString);
+
         return json.getJsonString();
     }
 
     String getCurrentTimestamp()
     {
-        time.incrementTime(&currentTime);
-        return time.formatTimeString(currentTime);
+    	updateTime();
+        return TimeModuleInternals::formatTimeString(_timeMod->getSystemTime());
     }
 };
-
-/// @brief Implementation of the TimeTask class.
-/// @bried Task to log time using the time from the compiler
-class TimeTask final : public frt::Task<TimeTask, 512>
-{
-public:
-    bool run()
-    {
-    	msleep(1000);
-
-    	while(1)
-    	{
-    		msleep(1000);
-    		time.incrementTime(&currentTime);
-    		printToSerial(F(" "));
-    		printToSerial(F("Current Time:"), false);
-    		printToSerial(String(currentTime.year), false);
-    		printToSerial(F("/"), false);
-    		printToSerial(String(currentTime.month), false);
-    		printToSerial(F("/"), false);
-    		printToSerial(String(currentTime.day), false);
-    		printToSerial(F(" "), false);
-    		printToSerial(String(currentTime.hour), false);
-    		printToSerial(F(":"),false);
-    		printToSerial(String(currentTime.minute),false);
-    		printToSerial(F(":"), false);
-    		printToSerial(String(currentTime.second), false);
-    		printToSerial(F(" "));
-    		yield();
-    	}
-
-    	return true;
-    }
-};
-
 
 ReportTask reportTask;
 MonitoringTask monitoringTask;
 SensorActorEndpointTask sensorActorEndpointTask;
-TimeTask timeTask;
 FlyBackTask flybackTask;
 
 void setup()
 {
     Serial.begin(9600);
 
-    char date[] = __DATE__; // "MMM DD YYYY"
-    char time[] = __TIME__; // "HH:MM:SS"
-    char monthStr[4];
+    printToSerial("[INFO] Starting up...");
 
-    sscanf(date, "%s %d %d", monthStr, &currentTime.day, &currentTime.year);
-
-    const char *months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-    for (int i = 0; i < 12; i++)
-    {
-        if (strncmp(monthStr, months[i], 3) == 0)
-        {
-            currentTime.month = i + 1;
-            break;
-        }
-    }
-
-    sscanf(time, "%d:%d:%d", &currentTime.hour, &currentTime.minute, &currentTime.second);
-
-    Serial.println(F("Starting sensor module..."));
+    // init all comModules
     sens.beginSensor();
     com.i2c.beginI2C(0x78);
     com.spi.beginSPI();
@@ -366,7 +334,12 @@ void setup()
     IPAddress ip(192, 168, 1, 3);
     com.eth.beginEthernet(mac, ip);
 
+    // activate the stackguard
     ReportSystem::initStackGuard();
+
+    // Get latest time from HAS
+    String startTime = com.eth.getSpecificEndpoint("time/");
+    _timeMod->setTimeFromHas(startTime);
 
     //For Fylback Test
     pinMode(11, OUTPUT);
@@ -377,12 +350,11 @@ void setup()
     ICR1 = 16000000 / 1000;  // Default frequency at 1kHz
     OCR1A = ICR1 / 2;         // 50% duty cycle
 
-    Serial.println(F("Setup complete."));
+    printToSerial("[INFO] Setup complete.");
 
     // Start tasks
     reportTask.start(1);
     sensorActorEndpointTask.start(2);
-    //timeTask.start(3);
     //flybackTask.start(3);
 }
 

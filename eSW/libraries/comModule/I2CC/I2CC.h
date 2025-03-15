@@ -18,13 +18,46 @@ namespace comModule
 	{
 	public:
 
+		/**
+		 * @brief Function to initialize the I2C communication
+		 *
+		 * @param address -> The address of the I2C device
+		 */
 		void beginI2C(uint8_t address);
+
+		/**
+		 * @brief Function to end the I2C communication
+		 *
+		 */
 		void endI2C();
+
+		/**
+		 * @brief Function to write data to the I2C device
+		 *
+		 * @param deviceAddress -> The address of the I2C device
+		 * @param data -> The data to write
+		 * @param length -> The length of the data
+		 */
 		void i2cWrite(uint8_t deviceAddress, uint8_t* data, size_t length);
+
+		/**
+		 * @brief Function to read data from the I2C device
+		 *
+		 * @param deviceAddress -> The address of the I2C device
+		 * @param buffer -> The buffer to read the data into
+		 * @param length -> The length of the data to read
+		 * @return size_t -> The number of bytes read
+		 */
 		size_t i2cRead(uint8_t deviceAddress, uint8_t* buffer, size_t length);
+
+		/**
+		 * @brief Function to check if the I2C communication is initialized
+		 *
+		 * @return true -> if the I2C communication is initialized
+		 * @return false -> if the I2C communication is not initialized
+		 */
 		bool isInitialized();
 
-		//constexpr uint8_t DEVICEADDRESS = 0x78;
 	private:
 		bool i2cInitialized;
 	};

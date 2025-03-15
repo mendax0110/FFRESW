@@ -5,16 +5,12 @@ SerialMenu::SerialMenu() : currentMenu(nullptr), menuSize(0)
 
 }
 
-/// @brief Function to load the menu items
-/// @param items -> The items in the menu
-/// @param size -> The size of the items
 void SerialMenu::load(MenuItem* items, size_t size)
 {
     currentMenu = items;
     menuSize = size;
 }
 
-/// @brief Function to show the serial menu
 void SerialMenu::show()
 {
     if (currentMenu == nullptr) return;
@@ -28,7 +24,6 @@ void SerialMenu::show()
     Serial.print("Select an option: ");
 }
 
-/// @brief Function to run the chosen choices from the menu
 void SerialMenu::run()
 {
     if (currentMenu == nullptr || !Serial.available()) return;
