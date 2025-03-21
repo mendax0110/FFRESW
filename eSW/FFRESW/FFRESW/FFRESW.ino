@@ -5,6 +5,7 @@
 #include <comModule.h>
 #include <reportSystem.h>
 #include <jsonModule.h>
+#include <flyback.h>
 
 
 using namespace megUnoLinkConnector;
@@ -13,6 +14,7 @@ using namespace sensorModule;
 using namespace reportSystem;
 using namespace comModule;
 using namespace jsonModule;
+using namespace flybackModule;
 
 MegUnoLinkConnector linkConnector;
 calcModuleInternals calc;
@@ -20,6 +22,7 @@ comModuleInternals com;
 SensorModuleInternals sens;
 ReportSystem report;
 jsonModuleInternals json;
+Flyback flyback;
 
 // Buffers for sensor data
 uint8_t i2cBuffer[10];
@@ -53,49 +56,60 @@ public:
 
 class FlyBackTask final : public frt::Task<FlyBackTask>
 {
-private:
-	//Define Pins
-	const int potPin = A0;
 
 public:
 
-	// Function to set the PWM frequency by adjusting ICR1
-	void setPWMFrequency(int frequency)
-	{
-	  // Calculate ICR1 based on desired frequency
-	  ICR1 = 16000000 / frequency;
-	  OCR1A = ICR1 / 2; // Set duty cycle to 50%
-	}
 
 	// Hauptlogik des Tasks
 	bool run()
 	{
-		msleep(1000);
+		if(flyback.isInitialized())
+		{
+			flyback.run();
 
-		serialMutex.lock();
+			// Status des Schalters abrufen
+			String switchStatus = flyback.getSwitchState();
 
-		// Lese Potentiometerwert
-		int potValue = analogRead(potPin);
-		Serial.print(F("AnalogValue: "));
-		Serial.println(potValue);
+			serialMutex.lock();
+			Serial.print(F("Main Switch Position: "));
+			Serial.println(switchStatus);
+			serialMutex.unlock();
 
-		// Map den Wert von 0–1023 auf 0–399 (entsprechend TOP-Wert)
-		int frequency = map(potValue, 0, 1023, 1000, 25000);
-		Serial.print(F("pwmValue: "));
-		Serial.println(frequency);
+			// Werte für die Ausgabe speichern
+			Measurement result = flyback.measure();
+
+			// Ausgabe der Messwerte
+			serialMutex.lock();
+
+			Serial.print(F("Spannung: "));
+			Serial.print(result.voltage);
+			Serial.println(F("V"));
+
+			Serial.print(F("Strom: "));
+			Serial.print(result.current);
+			Serial.println(F("uA"));
+
+			Serial.print(F("Leisung: "));
+			Serial.print(result.power);
+			Serial.println(F("uW"));
+
+			Serial.print(F("DigtalWert: "));
+			Serial.print(result.current);
+			Serial.println(F(" "));
+
+			Serial.print(F("Frequency: "));
+			Serial.print(result.frequency);
+			Serial.println(F("HZ"));
+
+			serialMutex.unlock();
 
 
-	    // Calculate the duty cycle in percentage
-	    float dutyCycle = ((float)OCR1A / 799) * 100.0;
-	    Serial.print(F("Duty Cycle: "));
-	    Serial.print(dutyCycle);
-	    Serial.println(F("%"));
+			//Verzögerung, um den Task nicht zu überlasten
+			msleep(1000);
 
-	    // Update the Timer1 frequency based on the mapped value
-	    setPWMFrequency(frequency);
+		}
+		return true;
 
-		serialMutex.unlock();
-		return true; // Task erfolgreich ausgeführt
 	}
 
 };
@@ -277,14 +291,8 @@ void setup()
     IPAddress ip(192, 168, 1, 3);
     com.eth.beginEthernet(mac, ip);
 
-    //For Fylback Test
-    pinMode(11, OUTPUT);
-
-    // Clear Timer on Compare Match (CTC) mode with Fast PWM
-    TCCR1A = (1 << COM1A1) | (1 << WGM11);
-    TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS10); // No prescaler
-    ICR1 = 16000000 / 1000;  // Default frequency at 1kHz
-    OCR1A = ICR1 / 2;         // 50% duty cycle
+    //Flyback
+    flyback.initialize();
 
     if (com.eth.isInitialized())
     {

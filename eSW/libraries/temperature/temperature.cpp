@@ -1,8 +1,9 @@
 #include <temperature.h>
 
+
 TemperatureSensor::TemperatureSensor()
-    : _temperatureSensorInitialized(false)
 {
+    _temperatureSensorInitialized = false;
 }
 
 TemperatureSensor::~TemperatureSensor() {}
@@ -11,7 +12,7 @@ TemperatureSensor::~TemperatureSensor() {}
 void TemperatureSensor::initialize()
 {
     _temperatureSensorInitialized = true;
-    Serial.println(F("Temperature sensor initialized."));
+    reportError("Temperature sensor initialized.");
 }
 
 /// @brief Function to read the temperature sensor
@@ -41,8 +42,9 @@ float TemperatureSensor::readDht11()
         return NAN;
     }
 
-    float temp = DHT.read11(DHT11_PIN);
-    float temperature = DHT.temperature;
+    //float temp = DHT.read11(DHT11_PIN);
+    //float temperature = DHT.temperature;
+    float temperature;
     return temperature;
 }
 
