@@ -51,10 +51,10 @@
 		  * @return true -> if the serial communication is initialized
 		  * @return false -> if the serial communication is not initialized
 		  */
-		 bool isInitialized();
+		 bool isInitialized() const;
 
 	 private:
-		 bool serInitialized;
+		 bool serInitialized = false;
 	 };
  }
 

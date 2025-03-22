@@ -184,6 +184,14 @@ namespace calcModule
          * @param length -> The length of the data array.
          */
         static void sortArray(float* data, int length);
+
+        /**
+         * @brief Function to round a given value with given precision
+         *
+         * @param value -> the value we want to round
+         * @param precision -> how many numbers after the decimal point
+         */
+        static float roundToPrecision(float value, int precision);
     };
 }
 

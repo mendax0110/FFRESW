@@ -4,12 +4,21 @@
  */
 
 #include "I2CC.h"
-
 #include <Wire.h>
 
 using namespace comModule;
 
-bool I2CCommunication::isInitialized()
+I2CCommunication::I2CCommunication()
+{
+
+}
+
+I2CCommunication::~I2CCommunication()
+{
+	endI2C();
+}
+
+bool I2CCommunication::isInitialized() const
 {
 	return i2cInitialized;
 }

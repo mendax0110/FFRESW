@@ -117,6 +117,11 @@
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/comModule</location>
 		</link>
 		<link>
+			<name>libraries/flyback</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/flyback</location>
+		</link>
+		<link>
 			<name>libraries/frt</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/frt</location>

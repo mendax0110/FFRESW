@@ -36,7 +36,7 @@ void SensorModuleInternals::initializeSensors()
     else
     {
     	_i2cSensorInitialized = false;
-        reportError("[ERROR] Failed to initialize I2C sensor.");
+        reportError("Failed to initialize I2C sensor.");
     }
 
     SPI.begin();
@@ -47,6 +47,61 @@ void SensorModuleInternals::initializeSensors()
     
     _pressureSensor.initialize();
     _temperatureSensor.initialize();
+
+	/*Serial.println(F("[INFO] Checking I2C bus ..."));
+
+	com.getI2C().beginI2C(0x07);
+
+	if (com.getI2C().isInitialized())
+	{
+		reportError("[ERROR] I2C bus is not initialized!");
+		return;
+	}
+
+	uint8_t testByte = 0;
+
+	if (com.getI2C().i2cRead(I2C_SENSOR_ADDRESS, &testByte, 1) > 0)
+	{
+		_i2cSensorInitialized = true;
+		Serial.println(F("[INFO] I2C sensor initialized."));
+	}
+	else
+	{
+		_i2cSensorInitialized = false;
+		reportError("[ERROR] Failed to communicate with I2C sensor!");
+	}
+
+	Serial.println(F("[INFO] Checking SPI bus ..."));
+
+	com.getSPI().beginSPI();
+
+	pinMode(SPI_CS_PIN, OUTPUT);
+	digitalWrite(SPI_CS_PIN, LOW);
+
+	uint8_t handshakeCmd = 0x01;
+	uint8_t handshakeResponse = 0;
+	#define EXPECTED_HANDSHAKE_RESPONSE 0x01
+
+	com.getSPI().spiWrite(&handshakeCmd, 1);
+	com.getSPI().spiWrite(&handshakeResponse, 1);
+
+	digitalWrite(SPI_CS_PIN, HIGH);
+
+	if (handshakeResponse == EXPECTED_HANDSHAKE_RESPONSE)
+	{
+        _spiSensorInitialized = true;
+        Serial.println(F("[INFO] SPI sensor initialized."));
+	}
+	else
+	{
+		_spiSensorInitialized = false;
+	    reportError("[ERROR] SPI handshake failed.");
+	}
+
+	_spiSensorInitialized = true;
+
+	_pressureSensor.isInitialized();
+	_temperatureSensor.isInitialized();*/
 }
 
 float SensorModuleInternals::readSensor(SensorType type)
@@ -68,7 +123,7 @@ float SensorModuleInternals::readSensor(SensorType type)
         case SensorType::DHT11:
         	return _temperatureSensor.readDht11();
         default:
-            reportError("[ERROR] Unknown sensor type.");
+            reportError("Unknown sensor type.");
             return -1.0; // ERROR!!!
     }
 }
@@ -77,7 +132,7 @@ float SensorModuleInternals::readI2CSensor()
 {
     if (!_i2cSensorInitialized)
     {
-        reportError("[ERROR] I2C sensor not initialized!");
+        reportError("I2C sensor not initialized!");
         return NAN;
     }
 
@@ -93,7 +148,7 @@ float SensorModuleInternals::readI2CSensor()
     }
     else
     {
-        reportError("[ERROR] Failed to read I2C sensor data!");
+        reportError("Failed to read I2C sensor data!");
         return NAN;
     }
 }
@@ -102,7 +157,7 @@ float SensorModuleInternals::readSPISensor()
 {
     if (!_spiSensorInitialized)
     {
-        reportError("[ERROR] SPI sensor not initialized!");
+        reportError("SPI sensor not initialized!");
         return NAN;
     }
     digitalWrite(SPI_CS_PIN, LOW);
@@ -134,7 +189,7 @@ bool SensorModuleInternals::calibrateSensor(SensorType type)
         // TODO: add actual calibration here
         return true;
     default:
-        reportError("[ERROR] Unknown sensor type for calibration.");
+        reportError("Unknown sensor type for calibration.");
         return false;
     }
 }
@@ -159,6 +214,5 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
 
 void SensorModuleInternals::reportError(const char* errorMessage)
 {
-    Serial.print(F("[ERROR] "));
-    Serial.println(errorMessage);
+    Serial.println("[ERROR] " + String(errorMessage));
 }

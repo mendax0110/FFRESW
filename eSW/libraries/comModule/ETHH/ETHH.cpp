@@ -8,7 +8,7 @@
 
 using namespace comModule;
 
-EthernetCommunication::EthernetCommunication() : ethernetInitialized(false), server(80)
+EthernetCommunication::EthernetCommunication() : ethernetInitialized(true), server(80)
 {
 
 }
@@ -20,26 +20,37 @@ EthernetCommunication::~EthernetCommunication()
 
 void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
 {
+    Serial.println("[DEBUG] Starting Ethernet initialization...");
+
     Ethernet.begin(macAddress, ip);
+
+    Serial.print("[DEBUG] Hardware status: ");
+    Serial.println(Ethernet.hardwareStatus());
+
+    Serial.print("[DEBUG] Link status: ");
+    Serial.println(Ethernet.linkStatus());
+
     if (Ethernet.hardwareStatus() == EthernetNoHardware)
     {
-        Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware.");
+        Serial.println("[ERROR] Ethernet shield was not found.");
         ethernetInitialized = false;
         return;
     }
+
     if (Ethernet.linkStatus() == LinkOFF)
     {
-      Serial.println("Ethernet cable is not connected.");
-      ethernetInitialized = false;
-      return;
+        Serial.println("[ERROR] Ethernet cable is not connected.");
+        ethernetInitialized = false;
+        return;
     }
+
     server.begin();
     ethernetInitialized = true;
-    Serial.print("Client is at: ");
-    Serial.println(Ethernet.localIP());
+
+    Serial.println("[DEBUG] Ethernet Initialized successfully.");
 }
 
-bool EthernetCommunication::isInitialized()
+bool EthernetCommunication::isInitialized() const
 {
 	return ethernetInitialized;
 }
@@ -156,10 +167,6 @@ void EthernetCommunication::sendJsonResponse(const String& jsonBody)
     {
         activeClient.println(jsonBody.c_str());
         activeClient.stop();
-    }
-    else
-    {
-        Serial.println("[ERROR] No active client to send JSON response.");
     }
 }
 

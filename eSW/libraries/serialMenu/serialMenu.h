@@ -2,6 +2,7 @@
 #define SERIAL_MENU_H
 
 #include <Arduino.h>
+#include <frt.h>
 
 
 /// @brief Serial menu structure.
@@ -38,9 +39,14 @@ public:
      */
     void run();
 
+    static void printToSerial(const __FlashStringHelper* message, bool newLine = true);
+
+    static void printToSerial(const String& message, bool newLine = true);
+
 private:
     MenuItem* currentMenu;
     size_t menuSize;
+
 };
 
 #endif // SERIAL_MENU_H

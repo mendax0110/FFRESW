@@ -10,7 +10,17 @@
 
 using namespace comModule;
 
-bool SPICommunication::isInitialized()
+SPICommunication::SPICommunication()
+{
+
+}
+
+SPICommunication::~SPICommunication()
+{
+	endSPI();
+}
+
+bool SPICommunication::isInitialized() const
 {
 	return spiInitialized;
 }

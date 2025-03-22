@@ -32,7 +32,8 @@ float CalcModuleInternals::calculateAverage(const float* data, int length)
     {
         sum += data[i];
     }
-    return sum / length;
+    float result = sum / length;
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::findMaximum(const float* data, int length)
@@ -46,7 +47,7 @@ float CalcModuleInternals::findMaximum(const float* data, int length)
             max = data[i];
         }
     }
-    return max;
+    return roundToPrecision(max, 5);
 }
 
 float CalcModuleInternals::findMinimum(const float* data, int length)
@@ -60,7 +61,7 @@ float CalcModuleInternals::findMinimum(const float* data, int length)
             min = data[i];
         }
     }
-    return min;
+    return roundToPrecision(min, 5);
 }
 
 float CalcModuleInternals::calculateStandardDeviation(const float* data, int length)
@@ -73,20 +74,23 @@ float CalcModuleInternals::calculateStandardDeviation(const float* data, int len
         variance += (data[i] - mean) * (data[i] - mean);
     }
     variance /= length;
-    return sqrtf(variance);
+    return roundToPrecision(sqrtf(variance), 5);
 }
 
 float CalcModuleInternals::findMedian(float* data, int length)
 {
     if (length <= 0 || data == nullptr) return 0.0;
     sortArray(data, length);
+    float result;
     if (length % 2 == 0)
     {
-        return (data[length / 2 - 1] + data[length / 2]) / 2.0;
+        result = (data[length / 2 - 1] + data[length / 2]) / 2.0;
+        return roundToPrecision(result, 5);
     }
     else
     {
-        return data[length / 2];
+        result = data[length / 2];
+        return roundToPrecision(result, 5);
     }
 }
 
@@ -109,59 +113,70 @@ void CalcModuleInternals::sortArray(float* data, int length)
 
 float CalcModuleInternals::celsiusToFahrenheit(float celsius)
 {
-    return (celsius * 9.0 / 5.0) + 32.0;
+	float result = (celsius * 9.0 / 5.0) + 32.0;
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::fahrenheitToCelsius(float fahrenheit)
 {
-    return (fahrenheit - 32.0) * 5.0 / 9.0;
+	float result = (fahrenheit - 32.0) * 5.0 / 9.0;
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::celsiusToKelvin(float celsius)
 {
-    return celsius + 273.15;
+	float result = celsius + 273.15;
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::kelvinToCelsius(float kelvin)
 {
-    return kelvin - 273.15;
+	float result = kelvin - 273.15;
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::pascalToAtm(float pascal)
 {
-    return pascal / 101325.0; // 1 atm = 101325 Pa
+    float result =  pascal / 101325.0; // 1 atm = 101325 Pa
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::atmToPascal(float atm)
 {
-    return atm * 101325.0;
+    float result = atm * 101325.0;
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::pascalToPsi(float pascal)
 {
-    return pascal * 0.000145038; // 1 Pa = 0.000145038 psi
+	float result = pascal * 0.000145038; // 1 Pa = 0.000145038 psi
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::psiToPascal(float psi)
 {
-    return psi * 6894.76; // 1 psi = 6894.76 Pa
+	float result = psi * 6894.76; // 1 psi = 6894.76 Pa
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::calculatePower(float voltage, float current)
 {
-    return voltage * current; // Power (P = V * I)
+	float result =voltage * current; // Power (P = V * I)
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::calculateCurrent(float voltage, float resistance)
 {
     if (resistance == 0) return 0.0; // Avoid division by zero
-    return voltage / resistance; // Current (I = V / R)
+    float result = voltage / resistance; // Current (I = V / R)
+    return roundToPrecision(result, 5);
 }
 
 float CalcModuleInternals::calculateResistance(float voltage, float current)
 {
     if (current == 0) return 0.0; // Avoid division by zero
-    return voltage / current; // Resistance (R = V / I)
+    float result = voltage / current; // Resistance (R = V / I)
+    return roundToPrecision(result, 5);
 }
 
 String CalcModuleInternals::extractFloat(String response, int id)
@@ -191,5 +206,11 @@ String CalcModuleInternals::extractFloat(String response, int id)
 	}
 
     return extracted;
+}
+
+float CalcModuleInternals::roundToPrecision(float value, int precision)
+{
+	float factor = pow(10, precision);
+	return round(value * factor) / factor;
 }
 

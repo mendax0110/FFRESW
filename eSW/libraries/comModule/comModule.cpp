@@ -15,11 +15,31 @@ using namespace comModule;
 
 ComModuleInternals::ComModuleInternals()
 {
-
+    // Constructor does nothing until begin functions are called
 }
 
 ComModuleInternals::~ComModuleInternals()
 {
+    // Destructor (if needed for cleanup)
+}
 
+EthernetCommunication& ComModuleInternals::getEthernet()
+{
+    return eth;
+}
+
+I2CCommunication& ComModuleInternals::getI2C()
+{
+    return i2c;
+}
+
+SPICommunication& ComModuleInternals::getSPI()
+{
+    return spi;
+}
+
+SerialCommunication& ComModuleInternals::getSerial()
+{
+     return ser;
 }
 

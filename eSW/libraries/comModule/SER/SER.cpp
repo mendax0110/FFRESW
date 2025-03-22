@@ -34,7 +34,7 @@ void SerialCommunication::receiveSerialData(char* buffer, size_t length)
     buffer[index] = '\0'; // Null-terminate the string
 }
 
-bool SerialCommunication::isInitialized()
+bool SerialCommunication::isInitialized() const
 {
 	return serInitialized;
 }

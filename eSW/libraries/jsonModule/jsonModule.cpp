@@ -10,13 +10,14 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include "../comModule/comModule.h"
-#include "jsonModule.h"
+#include <jsonModule.h>
+#include <serialMenu.h>
 
 using namespace jsonModule;
 
-JsonModuleInternals::JsonModuleInternals()
+JsonModuleInternals::JsonModuleInternals() : jsonBuffer(512)
 {
-    clearJson();
+
 }
 
 JsonModuleInternals::~JsonModuleInternals()
@@ -54,7 +55,7 @@ String JsonModuleInternals::getJsonString() const
     String output;
     if (jsonDoc.size() == 0)
     {
-        Serial.println("[ERROR] JSON document is empty.");
+       SerialMenu::printToSerial("[ERROR] JSON document is empty.");
     }
     else
     {
@@ -71,8 +72,7 @@ std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJ
 
 	if (error)
 	{
-		Serial.print("[ERROR] deserializeJson() failed: ");
-		Serial.print(error.f_str());
+		SerialMenu::printToSerial("[ERROR] deserializeJson() failed: " + String(error.f_str()));
 		return resultMap;
 	}
 
@@ -82,33 +82,35 @@ std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJ
 	}
 
 	return resultMap;
-
 }
 
 void JsonModuleInternals::sendJsonSerial()
 {
-    Serial.println(getJsonString());
+    //Serial.println(getJsonString());
+    SerialMenu::printToSerial(getJsonString());
 }
 
-void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
+/*void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
 {
     comModule::ComModuleInternals comms;
-    comms.eth.sendEthernetData(endpoint, getJsonString().c_str());
-}
-
+    comms.getEthernet().sendEthernetData(endpoint, getJsonString().c_str());
+}*/
 
 void JsonModuleInternals::clearJson()
 {
+	printJsonDocMemory();
     jsonDoc.clear();
 }
 
 void JsonModuleInternals::printJsonDocMemory()
 {
-    Serial.println(F("[DEBUG] Memory usage of jsonDoc:"));
-    Serial.print(F("  Capacity: "));
-    Serial.println(jsonDoc.capacity());
-    Serial.print(F("  Memory Usage: "));
-    Serial.println(jsonDoc.memoryUsage());
-    Serial.print(F("  Overflowed: "));
-    Serial.println(jsonDoc.overflowed() ? F("Yes") : F("No"));
+	String jsonDocMem;
+	jsonDocMem += "[DEBUG] Memory usage of jsonDoc:";
+	jsonDocMem += " Capacity: ";
+	jsonDocMem += jsonDoc.capacity();
+	jsonDocMem += " Memory Usage: ";
+	jsonDocMem += jsonDoc.memoryUsage();
+	jsonDocMem += " Overflowed: ";
+	jsonDocMem += jsonDoc.overflowed() ? F("Yes") : F("No");
+	SerialMenu::printToSerial(jsonDocMem);
 }

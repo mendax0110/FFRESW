@@ -19,23 +19,38 @@ namespace comModule
         ~ComModuleInternals();
 
         /**
-         * @brief I2C communication object.
+         * @brief Get the Ethernet object
          *
+         * @return EthernetCommunication&
          */
-        I2CCommunication i2c;
+        EthernetCommunication& getEthernet();
 
         /**
-         * @brief SPI communication object.
+         * @brief Get the I2C object
          *
+         * @return I2CCommunication&
          */
-        SPICommunication spi;
+        I2CCommunication& getI2C();
 
         /**
-         * @brief Ethernet communication object.
+         * @brief Get the SPI object
          *
+         * @return SPICommunication&
          */
+        SPICommunication& getSPI();
+
+        /**
+         * @brief Get the Serial object
+         *
+         * @return SerialCommunication&
+         */
+        SerialCommunication& getSerial();
+
+    private:
         EthernetCommunication eth;
-        //SerialCommunication serial;
+        I2CCommunication i2c;
+        SPICommunication spi;
+        SerialCommunication ser;
     };
 }
 

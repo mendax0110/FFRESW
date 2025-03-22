@@ -18,6 +18,8 @@
 #include <pressure.h>
 #include <temperature.h>
 
+#include <comModule.h>
+
 
 /// @brief Namespace for the sensor module. \namespace sensorModule
 namespace sensorModule

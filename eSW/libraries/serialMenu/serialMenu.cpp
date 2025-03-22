@@ -39,3 +39,37 @@ void SerialMenu::run()
         }
     }
 }
+
+// helper method to simplify printing
+void SerialMenu::printToSerial(const __FlashStringHelper* message, bool newLine = true)
+{
+	frt::Mutex serialMutex;
+
+    serialMutex.lock();
+    if (newLine)
+    {
+        Serial.println(message);
+    }
+    else
+    {
+        Serial.print(message);
+    }
+    serialMutex.unlock();
+}
+
+// helper method to simplify printing
+void SerialMenu::printToSerial(const String& message, bool newLine = true)
+{
+	frt::Mutex serialMutex;
+
+    serialMutex.lock();
+    if (newLine)
+    {
+        Serial.println(message);
+    }
+    else
+    {
+        Serial.print(message);
+    }
+    serialMutex.unlock();
+}

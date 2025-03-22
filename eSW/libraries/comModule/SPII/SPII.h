@@ -19,6 +19,8 @@ namespace comModule
 	class SPICommunication
 	{
 	public:
+		SPICommunication();
+		~SPICommunication();
 
 		/**
 		 * @brief Function to initialize the SPI communication
@@ -54,10 +56,10 @@ namespace comModule
 		 * @return true -> if the SPI communication is initialized
 		 * @return false -> if the SPI communication is not initialized
 		 */
-		bool isInitialized();
+		bool isInitialized() const;
 
 	private:
-		bool spiInitialized;
+		bool spiInitialized = false;
 	};
 }
 

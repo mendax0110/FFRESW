@@ -17,6 +17,8 @@ namespace comModule
 	class I2CCommunication
 	{
 	public:
+		I2CCommunication();
+		~I2CCommunication();
 
 		/**
 		 * @brief Function to initialize the I2C communication
@@ -56,10 +58,10 @@ namespace comModule
 		 * @return true -> if the I2C communication is initialized
 		 * @return false -> if the I2C communication is not initialized
 		 */
-		bool isInitialized();
+		bool isInitialized() const;
 
 	private:
-		bool i2cInitialized;
+		bool i2cInitialized = false;
 	};
 }
 

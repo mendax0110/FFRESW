@@ -174,7 +174,7 @@ namespace comModule
 		 * @return true -> if the Ethernet communication is initialized
 		 * @return false -> if the Ethernet communication is not initialized
 		 */
-		bool isInitialized();
+		bool isInitialized() const;
 
 		/**
 		 * @brief Function to get the current status of the flag
@@ -326,7 +326,7 @@ namespace comModule
 	private:
 		EthernetServer server;
 		EthernetClient client;
-		bool ethernetInitialized;
+		bool ethernetInitialized = false;
 		bool sendDataFlag = false;
 
 		/**

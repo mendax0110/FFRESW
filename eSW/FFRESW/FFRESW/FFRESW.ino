@@ -5,6 +5,8 @@
 #include <reportSystem.h>
 #include <jsonModule.h>
 #include <timeModule.h>
+#include <serialMenu.h>
+#include <flyback.h>
 
 using namespace calcModule;
 using namespace sensorModule;
@@ -12,6 +14,7 @@ using namespace reportSystem;
 using namespace comModule;
 using namespace jsonModule;
 using namespace timeModule;
+using namespace flybackModule;
 
 ComModuleInternals com;
 SensorModuleInternals sens;
@@ -19,47 +22,16 @@ ReportSystem report;
 JsonModuleInternals json;
 TimeModuleInternals* _timeMod = TimeModuleInternals::getInstance();
 DateTimeStruct currentTime;
+Flyback flyback;
 
 // Buffers for sensor data
 uint8_t i2cBuffer[10];
 uint8_t spiBuffer[10];
 char ethernetBuffer[256];
 
-// Mutex to protect serial output
-frt::Mutex serialMutex;
-
 frt::Queue<float, 1> temperatureQueue;
 frt::Mutex temperatureQueueMutex;
 
-// helper method to simplify printing
-void printToSerial(const __FlashStringHelper* message, bool newLine = true)
-{
-    serialMutex.lock();
-    if (newLine)
-    {
-        Serial.println(message);
-    }
-    else
-    {
-        Serial.print(message);
-    }
-    serialMutex.unlock();
-}
-
-// helper method to simplify printing
-void printToSerial(const String& message, bool newLine = true)
-{
-    serialMutex.lock();
-    if (newLine)
-    {
-        Serial.println(message);
-    }
-    else
-    {
-        Serial.print(message);
-    }
-    serialMutex.unlock();
-}
 
 // helper method to update time
 void updateTime()
@@ -71,7 +43,7 @@ void updateTime()
     {
         lastUpdateTime = millis(); // Update timestamp
 
-        String startTime = com.eth.getSpecificEndpoint("time/");
+        String startTime = com.getEthernet().getSpecificEndpoint("time/");
         _timeMod->setTimeFromHas(startTime);
     }
 }
@@ -95,13 +67,13 @@ public:
             String status = report.reportStatus(true);
             if (status.length() > 0)
             {
-                printToSerial(status);
+            	SerialMenu::printToSerial(status);
             }
 
-            bool healthCheck = report.checkSystemHealth(3000, true, false, false, false, false);
+            bool healthCheck = report.checkSystemHealth(3000, true, true, true, false, false);
             if (!healthCheck)
             {
-                printToSerial(F("[CRITICAL] System health check failed!"));
+            	SerialMenu::printToSerial(F("[CRITICAL] System health check failed!"));
             }
         }
 
@@ -114,51 +86,20 @@ public:
 /// @brief Control and use HV module
 class FlyBackTask final : public frt::Task<FlyBackTask>
 {
-private:
-	//Define Pins
-	const int potPin = A0;
 
 public:
-
-	// Function to set the PWM frequency by adjusting ICR1
-	void setPWMFrequency(int frequency)
-	{
-	  // Calculate ICR1 based on desired frequency
-	  ICR1 = 16000000 / frequency;
-	  OCR1A = ICR1 / 2; // Set duty cycle to 50%
-	}
-
 	// Hauptlogik des Tasks
 	bool run()
 	{
-		msleep(1000);
+		if(flyback.isInitialized())
+		{
+			flyback.run();
 
-		serialMutex.lock();
-
-		// Lese Potentiometerwert
-		int potValue = analogRead(potPin);
-		Serial.print(F("AnalogValue: "));
-		Serial.println(potValue);
-
-		// Map den Wert von 0–1023 auf 0–399 (entsprechend TOP-Wert)
-		int frequency = map(potValue, 0, 1023, 1000, 25000);
-		Serial.print(F("pwmValue: "));
-		Serial.println(frequency);
-
-
-	    // Calculate the duty cycle in percentage
-	    float dutyCycle = ((float)OCR1A / 799) * 100.0;
-	    Serial.print(F("Duty Cycle: "));
-	    Serial.print(dutyCycle);
-	    Serial.println(F("%"));
-
-	    // Update the Timer1 frequency based on the mapped value
-	    setPWMFrequency(frequency);
-
-		serialMutex.unlock();
-		return true; // Task erfolgreich ausgeführt
+			//Verzögerung, um den Task nicht zu überlasten
+			msleep(1000);
+		}
+		return true;
 	}
-
 };
 
 /// @brief Implementation of the MonitoringTask class.
@@ -166,40 +107,13 @@ public:
 class MonitoringTask final : public frt::Task<MonitoringTask>
 {
 private:
-    static const int maxReadings = 10;
-    float temperatureReadings[maxReadings];
-    int currentIndex = 0;
-    bool bufferFull = false;
 
 public:
     bool run()
     {
         msleep(1000);
         yield();
-
-        float temperature = sens.readSensor(SensorType::DHT11);
-        printToSerial(F("Current Temperature: "));
-        printToSerial(String(temperature));
-
-        temperatureReadings[currentIndex] = temperature;
-        currentIndex = (currentIndex + 1) % maxReadings;
-        if (currentIndex == 0) bufferFull = true;
-
-        float average = CalcModuleInternals::calculateAverage(temperatureReadings, bufferFull ? maxReadings : currentIndex);
-        printToSerial(F("Average Temperature: "));
-        printToSerial(String(average));
-
-        float pressure = sens.readSensor(SensorType::PRESSURE);
-        printToSerial(F("Current Pressure: "));
-        printToSerial(String(pressure));
-
-        float maxTemp = CalcModuleInternals::findMaximum(temperatureReadings, bufferFull ? maxReadings : currentIndex);
-        printToSerial(F("Maximum Temperature: "));
-        printToSerial(String(maxTemp));
-
-        serialMutex.lock();
-        com.eth.handleEthernetClient();
-        serialMutex.unlock();
+        //TODO Add LCD Diplay Stuff here!!
 
         yield();
         return true;
@@ -210,84 +124,108 @@ public:
 class SensorActorEndpointTask final : public frt::Task<SensorActorEndpointTask, 2048>
 {
 public:
-    bool run()
-    {
-        msleep(500);
+	bool run()
+	{
+	    msleep(500);
 
-        // Read the requested endpoint
-        String requestedEndpoint = com.eth.getRequestedEndpoint();
+	    // Read the requested endpoint
+	    String requestedEndpoint = com.getEthernet().getRequestedEndpoint();
+	    if (requestedEndpoint.length() == 0) return true;
 
-        if (requestedEndpoint.length() > 0)
-        {
-            String jsonBody;
+	    String jsonBody;
 
-            if (requestedEndpoint == "temperature_sensor_1")
-            {
-                float temperatureAmb = sens.readSensor(SensorType::AMBIENTTEMPERATURE);
-                jsonBody = buildJsonResponse("temperature_sensor_1", temperatureAmb, "Celsius");
-            }
-            else if (requestedEndpoint == "temperature_sensor_2")
-            {
-                float temperatureObj = sens.readSensor(SensorType::OBJECTTEMPERATURE);
-                jsonBody = buildJsonResponse("temperature_sensor_2", temperatureObj, "Celsius");
-            }
-            else if (requestedEndpoint.startsWith("set_control_mode"))
-            {
-            	int separatorIndex = requestedEndpoint.indexOf('/');
-            	if (separatorIndex != -1)
-            	{
-            	    String controlModeVal = requestedEndpoint.substring(separatorIndex + 1);
-            	    com.eth.setParameter(Compound2::CONTROL_MODE, controlModeVal);
-            	    String response = com.eth.getParameter(Compound2::CONTROL_MODE);
-            	    jsonBody = buildJsonResponse("control_mode", response.toFloat(), "mode");
-            	}
-            }
-            else if (requestedEndpoint.startsWith("set_target_position"))
-            {
-            	int separatorIndex = requestedEndpoint.indexOf('/');
-            	if (separatorIndex != -1)
-            	{
-					String positionVal = requestedEndpoint.substring(separatorIndex + 1);
-					com.eth.setParameter(Compound2::TARGET_POSITION, positionVal);
-					String rawVal = CalcModuleInternals::extractFloat(positionVal, 1);
-					jsonBody = buildJsonResponse("set_target_position", rawVal.toFloat(), "position");
-            	}
-            }
-            else if (requestedEndpoint.startsWith("get_actual_position"))
-            {
-				String response = com.eth.getParameter(Compound2::ACTUAL_POSITION);
-				String rawVal = CalcModuleInternals::extractFloat(response, 1);
-				jsonBody = buildJsonResponse("get_actual_position", rawVal.toFloat(), "position");
+	    // Direct lookup table for simple temperature sensors
+	    static const std::map<String, SensorType> sensorMap = {
+	        {"temperature_sensor_1", SensorType::AMBIENTTEMPERATURE},
+	        {"temperature_sensor_2", SensorType::OBJECTTEMPERATURE}
+	    };
 
-            }
-            else if (requestedEndpoint.startsWith("set_target_pressure"))
-            {
-            	int separatorIndex = requestedEndpoint.indexOf('/');
-            	if (separatorIndex != -1)
-            	{
-					String pressureVal = requestedEndpoint.substring(separatorIndex + 1);
-					com.eth.setParameter(Compound2::TARGET_PRESSURE, pressureVal);
-					String rawVal = CalcModuleInternals::extractFloat(pressureVal, 1);
-					jsonBody = buildJsonResponse("set_target_pressure", rawVal.toFloat(), "pressure");
-            	}
-            }
-            else if (requestedEndpoint.startsWith("get_actual_pressure"))
-            {
-            	String response = com.eth.getParameter(Compound2::ACTUAL_PRESSURE);
-            	String rawVal = CalcModuleInternals::extractFloat(response, 1);
-				jsonBody = buildJsonResponse("get_actual_pressure", rawVal.toFloat(), "pressure");
-            }
+	    if (requestedEndpoint.startsWith("get_flyback_"))
+	    {
+	        String command = requestedEndpoint.substring(12);
 
-            if (jsonBody.length() > 0)
-            {
-                com.eth.sendJsonResponse(jsonBody);
-            }
-        }
+	        if (command == "voltage")
+	        {
+	        	Measurement result = flyback.measure();
+	        	SerialMenu::printToSerial("Voltage: " + String(result.voltage) + " V");
+	            jsonBody = buildJsonResponse("voltage", result.voltage, "V");
+	        }
+	        else if (command == "current")
+	        {
+	        	Measurement result = flyback.measure();
+	        	SerialMenu::printToSerial("Current: " + String(result.current) + " uA");
+	            jsonBody = buildJsonResponse("current", result.current, "uA");
+	        }
+	        else if (command == "power")
+	        {
+	            Measurement result = flyback.measure();
+	            SerialMenu::printToSerial("Power: " + String(result.power) + " uW");
+	            jsonBody = buildJsonResponse("power", result.power, "uW");
+	        }
+	        else if (command == "digital_value")
+	        {
+	            Measurement result = flyback.measure();
+	            SerialMenu::printToSerial("DigitalValue: " + String(result.digitalValue) + " ");
+	            jsonBody = buildJsonResponse("digital_value", result.digitalValue, "");
+	        }
+	        else if (command == "frequency")
+	        {
+	        	Measurement result = flyback.measure();
+	        	SerialMenu::printToSerial("Frequency: " + String(result.frequency) + "Hz");
+	            jsonBody = buildJsonResponse("frequency", result.frequency, "Hz");
+	        }
+	        else if (command == "switch_state")
+	        {
+	        	int swStat = static_cast<int>(flyback.getSwitchState());
+	        	SerialMenu::printToSerial("Current SwitchState is:" + swStat);
+	        	jsonBody = buildJsonResponse("switch_state", swStat, "state");
+	        }
+	    }
+	    else if (requestedEndpoint.startsWith("set_flyback_"))
+	    {
+	        String command = requestedEndpoint.substring(12);
+	        int separatorIndex = command.indexOf('/');
 
-        yield();
+	        if (separatorIndex == -1)
+	        {
+	            return true;
+	        }
 
-        return true;
-    }
+	        String valueStr = command.substring(separatorIndex + 1);
+	        command = command.substring(0, separatorIndex);
+
+	        if (command == "frequency")
+	        {
+	            int frequency = valueStr.toInt();
+	            flyback.setExternFrequency(frequency);
+	            jsonBody = buildJsonResponse("flyback_frequency", frequency, "Hz");
+	        }
+	    }
+
+
+	    auto sensorIt = sensorMap.find(requestedEndpoint);
+	    if (sensorIt != sensorMap.end())
+	    {
+	        float value = sens.readSensor(sensorIt->second);
+	        jsonBody = buildJsonResponse(requestedEndpoint, value, "Celsius");
+	    }
+	    else if (requestedEndpoint.startsWith("set_"))
+	    {
+	        processSetRequest(requestedEndpoint, jsonBody);
+	    }
+	    else if (requestedEndpoint.startsWith("get_"))
+	    {
+	        processGetRequest(requestedEndpoint, jsonBody);
+	    }
+
+	    if (jsonBody.length() > 0)
+	    {
+	        com.getEthernet().sendJsonResponse(jsonBody);
+	    }
+
+	    yield();
+	    return true;
+	}
 
 private:
     String buildJsonResponse(const String& sensorName, float value, const String& unit)
@@ -302,7 +240,7 @@ private:
         json.createJsonString("timestamp", timestamp);
 
         String jsonString = json.getJsonString();
-        printToSerial("Generated JSON: " + jsonString);
+        SerialMenu::printToSerial("Generated JSON: " + jsonString);
 
         return json.getJsonString();
     }
@@ -311,6 +249,59 @@ private:
     {
     	updateTime();
         return TimeModuleInternals::formatTimeString(_timeMod->getSystemTime());
+    }
+
+    void processSetRequest(const String& requestedEndpoint, String& jsonBody)
+    {
+        int separatorIndex = requestedEndpoint.indexOf('/');
+        if (separatorIndex == -1) return; // Invalid request format
+
+        String valueStr = requestedEndpoint.substring(separatorIndex + 1);
+        String command = requestedEndpoint.substring(4, separatorIndex); // Extracts parameter name
+
+        static const std::map<String, Compound2> setParams = {
+            {"control_mode", Compound2::CONTROL_MODE},
+            {"target_position", Compound2::TARGET_POSITION},
+            {"target_pressure", Compound2::TARGET_PRESSURE}
+        };
+
+        auto it = setParams.find(command);
+        if (it != setParams.end())
+        {
+            com.getEthernet().setParameter(it->second, valueStr);
+
+            if (command == "control_mode")  // Read back for verification
+            {
+                String response = com.getEthernet().getParameter(it->second);
+                jsonBody = buildJsonResponse("control_mode", response.toFloat(), "mode");
+                SerialMenu::printToSerial(jsonBody);
+            }
+            else
+            {
+                String rawVal = CalcModuleInternals::extractFloat(valueStr, 1);
+                jsonBody = buildJsonResponse(requestedEndpoint, rawVal.toFloat(), command.endsWith("position") ? "position" : "pressure");
+                SerialMenu::printToSerial(jsonBody);
+            }
+        }
+    }
+
+    void processGetRequest(const String& requestedEndpoint, String& jsonBody)
+    {
+        String command = requestedEndpoint.substring(4); // Extracts parameter name
+
+        static const std::map<String, Compound2> getParams = {
+            {"actual_position", Compound2::ACTUAL_POSITION},
+            {"actual_pressure", Compound2::ACTUAL_PRESSURE}
+        };
+
+        auto it = getParams.find(command);
+        if (it != getParams.end())
+        {
+            String response = com.getEthernet().getParameter(it->second);
+            String rawVal = CalcModuleInternals::extractFloat(response, 1);
+            jsonBody = buildJsonResponse(requestedEndpoint, rawVal.toFloat(), command.endsWith("position") ? "position" : "pressure");
+            SerialMenu::printToSerial(jsonBody);
+        }
     }
 };
 
@@ -321,46 +312,43 @@ FlyBackTask flybackTask;
 
 void setup()
 {
-    Serial.begin(9600);
+    //Serial.begin(9600);
+    com.getSerial().beginSerial(9600);
 
-    printToSerial("[INFO] Starting up...");
+    SerialMenu::printToSerial("[INFO] Starting up...");
 
     // init all comModules
     sens.beginSensor();
-    com.i2c.beginI2C(0x78);
-    com.spi.beginSPI();
+    flyback.initialize();
 
     byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDA, 0x02 };
     IPAddress ip(192, 168, 1, 3);
-    com.eth.beginEthernet(mac, ip);
+    com.getEthernet().beginEthernet(mac, ip);
+
+    com.getI2C().beginI2C(0x76);
+    com.getSPI().beginSPI();
 
     // activate the stackguard
     ReportSystem::initStackGuard();
 
     // Get latest time from HAS
-    String startTime = com.eth.getSpecificEndpoint("time/");
+    String startTime = com.getEthernet().getSpecificEndpoint("time/");
     _timeMod->setTimeFromHas(startTime);
 
-    //For Fylback Test
-    pinMode(11, OUTPUT);
 
-    // Clear Timer on Compare Match (CTC) mode with Fast PWM
-    TCCR1A = (1 << COM1A1) | (1 << WGM11);
-    TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS10); // No prescaler
-    ICR1 = 16000000 / 1000;  // Default frequency at 1kHz
-    OCR1A = ICR1 / 2;         // 50% duty cycle
-
-    printToSerial("[INFO] Setup complete.");
+    SerialMenu::printToSerial("[INFO] Setup complete.");
 
     // Start tasks
     reportTask.start(1);
     sensorActorEndpointTask.start(2);
-    //flybackTask.start(3);
+    flybackTask.start(3);
 }
 
 void loop()
 {
     // No need for loop; tasks handle the work
 }
+
+// TODO CHECK IF REDESIGN OF COMMODULE IS WORKING OR NOT!!!!
 
 
