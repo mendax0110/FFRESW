@@ -162,17 +162,29 @@ public:
 	            SerialMenu::printToSerial("Power: " + String(result.power) + " uW");
 	            jsonBody = buildJsonResponse("power", result.power, "uW");
 	        }
-	        else if (command == "digital_value")
+	        else if (command == "digital_freq_value")
 	        {
 	            Measurement result = flyback.measure();
-	            SerialMenu::printToSerial("DigitalValue: " + String(result.digitalValue) + " ");
-	            jsonBody = buildJsonResponse("digital_value", result.digitalValue, "");
+	            SerialMenu::printToSerial("DigitalFreqValue: " + String(result.digitalFreqValue) + " ");
+	            jsonBody = buildJsonResponse("digital_freq_value", result.digitalFreqValue, "");
 	        }
 	        else if (command == "frequency")
 	        {
 	        	Measurement result = flyback.measure();
 	        	SerialMenu::printToSerial("Frequency: " + String(result.frequency) + "Hz");
 	            jsonBody = buildJsonResponse("frequency", result.frequency, "Hz");
+	        }
+	        else if (command == "digital_duty_value")
+	    	{
+	        	Measurement result = flyback.measure();
+	        	SerialMenu::printToSerial("DigitalDutyValue: " + String(result.digitalDutyValue) + " ");
+	        	jsonBody = buildJsonResponse("digital_duty_value", result.digitalDutyValue, "");
+	    	}
+	        else if (command == "dutyCycle")
+	        {
+	        	Measurement result = flyback.measure();
+	        	SerialMenu::printToSerial("DutyCycle: " + String(result.dutyCycle) + "%");
+	        	jsonBody = buildJsonResponse("dutyCycle", result.dutyCycle, "%");
 	        }
 	        else if (command == "switch_state")
 	        {
@@ -196,10 +208,17 @@ public:
 
 	        if (command == "frequency")
 	        {
-	            int frequency = valueStr.toInt();
+	            uint32_t frequency = valueStr.toInt();
 	            flyback.setExternFrequency(frequency);
 	            jsonBody = buildJsonResponse("flyback_frequency", frequency, "Hz");
 	        }
+	        else if (command == "dutyCycle")
+	        {
+	        	int dutyCycle = valueStr.toInt();
+	        	flyback.setExternDutyCycle(dutyCycle);
+	        	jsonBody = buildJsonResponse("dutyCycle", dutyCycle, "%");
+	        }
+
 	    }
 
 

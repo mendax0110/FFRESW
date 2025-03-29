@@ -13,6 +13,7 @@
 /// @brief Namespace for the Flyback module \namespace flybackModule
 namespace flybackModule
 {
+	/// @brief enum for different SwitchStates of HVModule \enum SwitchStates
 	enum class SwitchStates : int
 	{
 		HV_Module_OFF,
@@ -20,15 +21,18 @@ namespace flybackModule
 		HV_Module_REMOTE,
 		HV_Module_INVALID
 	};
+
 	/// @brief Structure to store the measured values of the system \struct Measurement
-	/// This structure holds the voltage, current, and power values measured from the system.
+	/// This structure holds the voltage, current, power, frequency and dutycycle values measured from the system.
 	typedef struct Measurement
 	{
-		float voltage;	//measured Voltage
-		float current;	//measured Current
-		float power;	//measured power
-		int digitalValue; //measured DigitalValue for Frequency 0--1023
-		int frequency;	//current PWM - Frequency
+		float voltage;
+		float current;
+		float power;
+		int digitalFreqValue;
+		int digitalDutyValue;
+		int dutyCycle;
+		uint32_t frequency;
 	} meas;
 
 	/// @brief Flyback class to manage the Flyback system \class Flyback
@@ -95,42 +99,53 @@ namespace flybackModule
 		 * @param frequency -> the frequency to change
 		 *
 		 */
-		void setExternFrequency(int frequency);
+		void setExternFrequency(uint32_t frequency);
 
 		/**
 		 * @brief Getter Function to get the Frequency
 		 *
 		 */
-		int getExternFrequency();
+		uint32_t getExternFrequency();
+
+		/**
+		 * @brief Function to get the desired DutyCycle from HAS
+		 * @param dutyCycle -> the dutyCycle to change
+		 *
+		 */
+		void setExternDutyCycle(int dutyCycle);
+
+		/**
+		 * @brief Getter Function to get the DutyCycle
+		 * 			 *
+		 */
+		int getExternDutyCycle();
 
 
 	private:
 		Measurement meas;
 
 		//Define Pins -->Signaltable
-		static const int Main_Switch_OFF = 27;		//Schalterposition OFF 27
-		static const int Main_Switch_MANUAL = 28;		//Schalterposition Handsteuerung 28
-		static const int Main_Switch_REMOTE = 29;	//Schalterposition Remote 29
-		static const int Measure_ADC = A0;			//ADC Pin für die Messung
+		static const int Main_Switch_OFF = 27;
+		static const int Main_Switch_MANUAL = 28;
+		static const int Main_Switch_REMOTE = 29;
+		static const int Measure_ADC = A0;			//ADC PIN for Voltage Measurement
 		static const int PWM_OUT = 11;
 
-		//Variabeln für die Berechnung der Spannung
-		const float R1 = 100000000; 				//Widerstand R1 (100 MΩ)
-		const float R2 = 10000;						//Widerstand R2 (10 kΩ)
-		const float ADC_Max_Value = 1023.0;			//Maximale ADC-Wert (10Bit)
-		const float Vcc = 5.0;						//Referenzspannung des ATMega2560
+		//Variables for calculating HV
+		const float R1 = 100000000;
+		const float R2 = 10000;
+		const float ADC_Max_Value = 1023.0;
+		const float Vcc = 5.0;
 
 		//Define Pins --> Signaltable
-		static const int HV_Module_ON = 37;			//Button to turn HV-Module ON 37
-		static const int HV_Module_OFF = 36;		//Button to turn HV-Module OFF 36
-		static const int HV_Module_Working = 35;	//Indicator LED 35
-		static const int HV_Controller = A1;		//Potentiometer for Regulation
-
-		int externFrequency = 0;
+		static const int HV_Module_ON = 37;
+		static const int HV_Module_OFF = 36;
+		static const int HV_Module_Working = 35;
+		static const int PWM_Frequency = A1;
+		static const int PWM_DutyCycle = A2;
 
 		bool _flybackInitialized;
 		bool _timerInitialized;
-
 
         /**
          * @brief Function to configure the timer settings
@@ -138,16 +153,13 @@ namespace flybackModule
          */
 		void timerConfig();
 
-
-		// Sensibility
-		int steps = 20; // Divide into 20 discrete steps
-
         /**
-         * @brief Function to change the PWM frequency
+         * @brief Function to change the PWM frequency and dutyCycle
          * 
          * @param frequency -> The new PWM frequency
+         * @param dutyCycle -> The new PWM dutyCycle
          */
-		void setPWMFrequency(int frequency);
+		void setPWMFrequency(uint32_t frequency, int dutyCycle);
 
         /**
          * @brief Prints an error message via the serial connection
