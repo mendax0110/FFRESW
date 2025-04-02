@@ -12,15 +12,17 @@ Class to handle SPI communication.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74}{begin\+SPI}} ()
+\Hypertarget{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74}\label{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74} 
+void {\bfseries begin\+SPI} ()
 \begin{DoxyCompactList}\small\item\em Function to initialize the SPI communication. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a89043628e87fdcc68ff76aa871e31019}{end\+SPI}} ()
+\Hypertarget{classcom_module_1_1_s_p_i_communication_a89043628e87fdcc68ff76aa871e31019}\label{classcom_module_1_1_s_p_i_communication_a89043628e87fdcc68ff76aa871e31019} 
+void {\bfseries end\+SPI} ()
 \begin{DoxyCompactList}\small\item\em Function to end the SPI communication. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a0beeda059a00ad3613e3f985656e6bcd}{spi\+Write}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
 \begin{DoxyCompactList}\small\item\em Function to write data over SPI. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a13b3a3bd39b8d203b3af4761ea9a3693}{spi\+Read}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
 \begin{DoxyCompactList}\small\item\em Function to read data over SPI. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a143aa33f77f0e23adb2c4a97adb19875}{is\+Initialized}} ()
+bool \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a1a15b73771f046f3e6aa5c04b0a5817b}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Function to check if the SPI communication is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -28,31 +30,11 @@ bool \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication_a143aa33f77f0e23ad
 Class to handle SPI communication. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74}\label{classcom_module_1_1_s_p_i_communication_a7bf426b80912b8ab85936f501bfc9a74} 
-\index{comModule::SPICommunication@{comModule::SPICommunication}!beginSPI@{beginSPI}}
-\index{beginSPI@{beginSPI}!comModule::SPICommunication@{comModule::SPICommunication}}
-\doxysubsubsection{\texorpdfstring{beginSPI()}{beginSPI()}}
-{\footnotesize\ttfamily void SPICommunication\+::begin\+SPI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Function to initialize the SPI communication. 
-
-Initializes the SPI communication. \Hypertarget{classcom_module_1_1_s_p_i_communication_a89043628e87fdcc68ff76aa871e31019}\label{classcom_module_1_1_s_p_i_communication_a89043628e87fdcc68ff76aa871e31019} 
-\index{comModule::SPICommunication@{comModule::SPICommunication}!endSPI@{endSPI}}
-\index{endSPI@{endSPI}!comModule::SPICommunication@{comModule::SPICommunication}}
-\doxysubsubsection{\texorpdfstring{endSPI()}{endSPI()}}
-{\footnotesize\ttfamily void SPICommunication\+::end\+SPI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Function to end the SPI communication. 
-
-Ends the SPI communication. \Hypertarget{classcom_module_1_1_s_p_i_communication_a143aa33f77f0e23adb2c4a97adb19875}\label{classcom_module_1_1_s_p_i_communication_a143aa33f77f0e23adb2c4a97adb19875} 
+\Hypertarget{classcom_module_1_1_s_p_i_communication_a1a15b73771f046f3e6aa5c04b0a5817b}\label{classcom_module_1_1_s_p_i_communication_a1a15b73771f046f3e6aa5c04b0a5817b} 
 \index{comModule::SPICommunication@{comModule::SPICommunication}!isInitialized@{isInitialized}}
 \index{isInitialized@{isInitialized}!comModule::SPICommunication@{comModule::SPICommunication}}
 \doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
-{\footnotesize\ttfamily bool SPICommunication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool SPICommunication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -61,9 +43,7 @@ Function to check if the SPI communication is initialized.
 \begin{DoxyReturn}{Returns}
 true -\/\texorpdfstring{$>$}{>} if the SPI communication is initialized 
 
-false -\/\texorpdfstring{$>$}{>} if the SPI communication is not initialized
-
--\/\texorpdfstring{$>$}{>} true if the SPI communication is initialized, false otherwise 
+false -\/\texorpdfstring{$>$}{>} if the SPI communication is not initialized 
 \end{DoxyReturn}
 \Hypertarget{classcom_module_1_1_s_p_i_communication_a13b3a3bd39b8d203b3af4761ea9a3693}\label{classcom_module_1_1_s_p_i_communication_a13b3a3bd39b8d203b3af4761ea9a3693} 
 \index{comModule::SPICommunication@{comModule::SPICommunication}!spiRead@{spiRead}}

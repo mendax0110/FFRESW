@@ -1,0 +1,177 @@
+\doxysection{flyback\+Module\+::Flyback Class Reference}
+\hypertarget{classflyback_module_1_1_flyback}{}\label{classflyback_module_1_1_flyback}\index{flybackModule::Flyback@{flybackModule::Flyback}}
+
+
+\doxylink{classflyback_module_1_1_flyback}{Flyback} class to manage the \doxylink{classflyback_module_1_1_flyback}{Flyback} system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes.  
+
+
+
+
+{\ttfamily \#include $<$flyback.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classflyback_module_1_1_flyback_a94ed02d392d9f6f01c6c672acd2deb45}\label{classflyback_module_1_1_flyback_a94ed02d392d9f6f01c6c672acd2deb45} 
+void {\bfseries initialize} ()
+\begin{DoxyCompactList}\small\item\em Initialize the \doxylink{classflyback_module_1_1_flyback}{Flyback} system. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9}{is\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Get the state of the \doxylink{classflyback_module_1_1_flyback}{Flyback} system. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18}{get\+Timer\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the state of the timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90}{set\+Timer\+State}} (bool state)
+\begin{DoxyCompactList}\small\item\em Sets the state of the timer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{Switch\+States}} \mbox{\hyperlink{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499}{get\+Switch\+State}} ()
+\begin{DoxyCompactList}\small\item\em Get the state of the Main-\/\+Switch. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structflyback_module_1_1_measurement}{Measurement}} \mbox{\hyperlink{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743}{measure}} ()
+\begin{DoxyCompactList}\small\item\em Measures the voltage, current, power, digital\+Value and frequency of the system. \end{DoxyCompactList}\item 
+\Hypertarget{classflyback_module_1_1_flyback_a61248b00d6edb348459a5d4ca1ff3e26}\label{classflyback_module_1_1_flyback_a61248b00d6edb348459a5d4ca1ff3e26} 
+void {\bfseries run} ()
+\begin{DoxyCompactList}\small\item\em Executes logic depending on which Main-\/\+Switch state is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_a409ca45f04b138212a30c54275e7b607}{set\+Extern\+Frequency}} (uint32\+\_\+t frequency)
+\begin{DoxyCompactList}\small\item\em Function to get the desired Frequency from HAS. \end{DoxyCompactList}\item 
+\Hypertarget{classflyback_module_1_1_flyback_a1f990be68123c1a9e571e58c53952a4a}\label{classflyback_module_1_1_flyback_a1f990be68123c1a9e571e58c53952a4a} 
+uint32\+\_\+t {\bfseries get\+Extern\+Frequency} ()
+\begin{DoxyCompactList}\small\item\em Getter Function to get the Frequency. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741}{set\+Extern\+Duty\+Cycle}} (int duty\+Cycle)
+\begin{DoxyCompactList}\small\item\em Function to get the desired Duty\+Cycle from HAS. \end{DoxyCompactList}\item 
+\Hypertarget{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad}\label{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad} 
+int {\bfseries get\+Extern\+Duty\+Cycle} ()
+\begin{DoxyCompactList}\small\item\em Getter Function to get the Duty\+Cycle \texorpdfstring{$\ast$}{*}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classflyback_module_1_1_flyback}{Flyback} class to manage the \doxylink{classflyback_module_1_1_flyback}{Flyback} system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499}\label{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getSwitchState@{getSwitchState}}
+\index{getSwitchState@{getSwitchState}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getSwitchState()}{getSwitchState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{Switch\+States}} Flyback\+::get\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the state of the Main-\/\+Switch. 
+
+\begin{DoxyReturn}{Returns}
+Enum -\/\texorpdfstring{$>$}{>} The current state of the Main-\/\+Switch (e.\+g., "{}\+HV\+\_\+\+Module OFF"{}, "{}\+HV\+\_\+\+Module MANUAL"{}, "{}\+HV\+\_\+\+Module REMOTE"{}, "{}\+Invalid Switch Position"{}) 
+\end{DoxyReturn}
+\Hypertarget{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18}\label{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getTimerState@{getTimerState}}
+\index{getTimerState@{getTimerState}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getTimerState()}{getTimerState()}}
+{\footnotesize\ttfamily bool Flyback\+::get\+Timer\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the state of the timer. 
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the timer is initialized 
+
+false -\/\texorpdfstring{$>$}{>} if the timer is not initialized 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9}\label{classflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool Flyback\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the state of the \doxylink{classflyback_module_1_1_flyback}{Flyback} system. 
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} \doxylink{classflyback_module_1_1_flyback}{Flyback} is initialized 
+
+false -\/\texorpdfstring{$>$}{>} \doxylink{classflyback_module_1_1_flyback}{Flyback} is not initialized 
+\end{DoxyReturn}
+\Hypertarget{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743}\label{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!measure@{measure}}
+\index{measure@{measure}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{measure()}{measure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structflyback_module_1_1_measurement}{Measurement}} Flyback\+::measure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measures the voltage, current, power, digital\+Value and frequency of the system. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structflyback_module_1_1_measurement}{Measurement} -\/\texorpdfstring{$>$}{>} A \doxylink{structflyback_module_1_1_measurement}{Measurement} object containing voltage, current, and power 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741}\label{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!setExternDutyCycle@{setExternDutyCycle}}
+\index{setExternDutyCycle@{setExternDutyCycle}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{setExternDutyCycle()}{setExternDutyCycle()}}
+{\footnotesize\ttfamily void Flyback\+::set\+Extern\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{int}]{duty\+Cycle }\end{DoxyParamCaption})}
+
+
+
+Function to get the desired Duty\+Cycle from HAS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duty\+Cycle} & -\/\texorpdfstring{$>$}{>} the duty\+Cycle to change \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classflyback_module_1_1_flyback_a409ca45f04b138212a30c54275e7b607}\label{classflyback_module_1_1_flyback_a409ca45f04b138212a30c54275e7b607} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!setExternFrequency@{setExternFrequency}}
+\index{setExternFrequency@{setExternFrequency}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{setExternFrequency()}{setExternFrequency()}}
+{\footnotesize\ttfamily void Flyback\+::set\+Extern\+Frequency (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{frequency }\end{DoxyParamCaption})}
+
+
+
+Function to get the desired Frequency from HAS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & -\/\texorpdfstring{$>$}{>} the frequency to change \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90}\label{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!setTimerState@{setTimerState}}
+\index{setTimerState@{setTimerState}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{setTimerState()}{setTimerState()}}
+{\footnotesize\ttfamily void Flyback\+::set\+Timer\+State (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the state of the timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & -\/\texorpdfstring{$>$}{>} If true, the timer will be enabled, otherwise disabled \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/flyback/flyback.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/flyback/flyback.\+cpp\end{DoxyCompactItemize}

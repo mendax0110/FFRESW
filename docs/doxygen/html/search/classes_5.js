@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menuitem_0',['MenuItem',['../struct_menu_item.html',1,'']]]
+  ['jsonmoduleinternals_0',['jsonmoduleinternals',['../classjson_module_1_1_json_module_internals.html',1,'jsonModule::JsonModuleInternals'],['../classjson_module_internals.html',1,'jsonModuleInternals']]]
 ];

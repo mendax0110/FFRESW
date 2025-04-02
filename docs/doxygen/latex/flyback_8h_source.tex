@@ -1,0 +1,103 @@
+\doxysection{flyback.\+h}
+\hypertarget{flyback_8h_source}{}\label{flyback_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/flyback/flyback.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/flyback/flyback.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ flyback.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 07.12.2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ domin}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ FLYBACK\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ FLYBACK\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <Wire.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceflyback_module}{flybackModule}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{SwitchStates}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ HV\_Module\_OFF,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ HV\_Module\_MANUAL,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ HV\_Module\_REMOTE,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ HV\_Module\_INVALID}
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structflyback_module_1_1_measurement}{Measurement}}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ voltage;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ current;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ power;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ digitalFreqValue;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ digitalDutyValue;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dutyCycle;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ uint32\_t\ frequency;}
+\DoxyCodeLine{00036\ \ \ \ \ \}\ \mbox{\hyperlink{structflyback_module_1_1_measurement}{meas}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classflyback_module_1_1_flyback}{Flyback}}}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classflyback_module_1_1_flyback}{Flyback}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classflyback_module_1_1_flyback}{\string~Flyback}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a94ed02d392d9f6f01c6c672acd2deb45}{initialize}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18}{getTimerState}}();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90}{setTimerState}}(\textcolor{keywordtype}{bool}\ state);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{SwitchStates}}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499}{getSwitchState}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structflyback_module_1_1_measurement}{Measurement}}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743}{measure}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a61248b00d6edb348459a5d4ca1ff3e26}{run}}();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a409ca45f04b138212a30c54275e7b607}{setExternFrequency}}(uint32\_t\ frequency);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classflyback_module_1_1_flyback_a1f990be68123c1a9e571e58c53952a4a}{getExternFrequency}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741}{setExternDutyCycle}}(\textcolor{keywordtype}{int}\ dutyCycle);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad}{getExternDutyCycle}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structflyback_module_1_1_measurement}{Measurement}}\ \mbox{\hyperlink{structflyback_module_1_1_measurement}{meas}};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Define\ Pins\ -\/-\/>Signaltable}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_OFF\ =\ 27;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_MANUAL\ =\ 28;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_REMOTE\ =\ 29;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Measure\_ADC\ =\ A0;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ADC\ PIN\ for\ Voltage\ Measurement}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PWM\_OUT\ =\ 11;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Variables\ for\ calculating\ HV}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ R1\ =\ 100000000;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ R2\ =\ 10000;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ ADC\_Max\_Value\ =\ 1023.0;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ Vcc\ =\ 5.0;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Define\ Pins\ -\/-\/>\ Signaltable}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ HV\_Module\_ON\ =\ 37;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ HV\_Module\_OFF\ =\ 36;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ HV\_Module\_Working\ =\ 35;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PWM\_Frequency\ =\ A1;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PWM\_DutyCycle\ =\ A2;}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_flybackInitialized;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_timerInitialized;}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ timerConfig();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPWMFrequency(uint32\_t\ frequency,\ \textcolor{keywordtype}{int}\ dutyCycle);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reportError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
+\DoxyCodeLine{00170\ \ \ \ \ \};}
+\DoxyCodeLine{00171\ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//FLYBACK\_H}}
+
+\end{DoxyCode}

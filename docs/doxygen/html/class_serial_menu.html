@@ -71,6 +71,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_serial_menu-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SerialMenu Class Reference</div></div>
 </div><!--header-->
@@ -86,12 +87,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5d4a82bc3f561b4c2aa9ddd94e8c2c1d" id="r_a5d4a82bc3f561b4c2aa9ddd94e8c2c1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_menu.html#a5d4a82bc3f561b4c2aa9ddd94e8c2c1d">load</a> (<a class="el" href="struct_menu_item.html">MenuItem</a> *items, size_t size)</td></tr>
 <tr class="memdesc:a5d4a82bc3f561b4c2aa9ddd94e8c2c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to load the menu items.  <br /></td></tr>
 <tr class="separator:a5d4a82bc3f561b4c2aa9ddd94e8c2c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad77b0f0ee0de8ad633644ffc2370c4a3" id="r_ad77b0f0ee0de8ad633644ffc2370c4a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_menu.html#ad77b0f0ee0de8ad633644ffc2370c4a3">show</a> ()</td></tr>
-<tr class="memdesc:ad77b0f0ee0de8ad633644ffc2370c4a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to show the menu.  <br /></td></tr>
+<tr class="memitem:ad77b0f0ee0de8ad633644ffc2370c4a3" id="r_ad77b0f0ee0de8ad633644ffc2370c4a3"><td class="memItemLeft" align="right" valign="top"><a id="ad77b0f0ee0de8ad633644ffc2370c4a3" name="ad77b0f0ee0de8ad633644ffc2370c4a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> ()</td></tr>
+<tr class="memdesc:ad77b0f0ee0de8ad633644ffc2370c4a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to show the menu. <br /></td></tr>
 <tr class="separator:ad77b0f0ee0de8ad633644ffc2370c4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cc4674c4f88cc0b3b0840e9e33bd66e" id="r_a5cc4674c4f88cc0b3b0840e9e33bd66e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_menu.html#a5cc4674c4f88cc0b3b0840e9e33bd66e">run</a> ()</td></tr>
-<tr class="memdesc:a5cc4674c4f88cc0b3b0840e9e33bd66e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to run the menu.  <br /></td></tr>
+<tr class="memitem:a5cc4674c4f88cc0b3b0840e9e33bd66e" id="r_a5cc4674c4f88cc0b3b0840e9e33bd66e"><td class="memItemLeft" align="right" valign="top"><a id="a5cc4674c4f88cc0b3b0840e9e33bd66e" name="a5cc4674c4f88cc0b3b0840e9e33bd66e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memdesc:a5cc4674c4f88cc0b3b0840e9e33bd66e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to run the menu. <br /></td></tr>
 <tr class="separator:a5cc4674c4f88cc0b3b0840e9e33bd66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a6043fb6206e4cecc6858efede40e565e" id="r_a6043fb6206e4cecc6858efede40e565e"><td class="memItemLeft" align="right" valign="top"><a id="a6043fb6206e4cecc6858efede40e565e" name="a6043fb6206e4cecc6858efede40e565e"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>printToSerial</b> (const __FlashStringHelper *message, bool newLine=true)</td></tr>
+<tr class="separator:a6043fb6206e4cecc6858efede40e565e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac881b6d0f7935cb8eaa76ff71660ba29" id="r_ac881b6d0f7935cb8eaa76ff71660ba29"><td class="memItemLeft" align="right" valign="top"><a id="ac881b6d0f7935cb8eaa76ff71660ba29" name="ac881b6d0f7935cb8eaa76ff71660ba29"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>printToSerial</b> (const String &amp;message, bool newLine=true)</td></tr>
+<tr class="separator:ac881b6d0f7935cb8eaa76ff71660ba29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for the serial menu. </p>
@@ -126,52 +138,10 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">items</td><td>-&gt; The menu items. </td></tr>
-    <tr><td class="paramname">size</td><td>-&gt; The size of the menu items.</td></tr>
-    <tr><td class="paramname">items</td><td>-&gt; The items in the menu </td></tr>
-    <tr><td class="paramname">size</td><td>-&gt; The size of the items </td></tr>
+    <tr><td class="paramname">size</td><td>-&gt; The size of the menu items. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a5cc4674c4f88cc0b3b0840e9e33bd66e" name="a5cc4674c4f88cc0b3b0840e9e33bd66e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cc4674c4f88cc0b3b0840e9e33bd66e">&#9670;&#160;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SerialMenu::run </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function to run the menu. </p>
-<p>Function to run the chosen choices from the menu. </p>
-
-</div>
-</div>
-<a id="ad77b0f0ee0de8ad633644ffc2370c4a3" name="ad77b0f0ee0de8ad633644ffc2370c4a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad77b0f0ee0de8ad633644ffc2370c4a3">&#9670;&#160;</a></span>show()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SerialMenu::show </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function to show the menu. </p>
-<p>Function to show the serial menu. </p>
 
 </div>
 </div>

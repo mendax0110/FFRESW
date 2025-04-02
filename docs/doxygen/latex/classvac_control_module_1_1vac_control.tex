@@ -1,0 +1,89 @@
+\doxysection{vac\+Control\+Module\+::vac\+Control Class Reference}
+\hypertarget{classvac_control_module_1_1vac_control}{}\label{classvac_control_module_1_1vac_control}\index{vacControlModule::vacControl@{vacControlModule::vacControl}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvac_control_module_1_1vac_control_aa6e22e6a8d2c4f0502dd1ee6bd69620e}\label{classvac_control_module_1_1vac_control_aa6e22e6a8d2c4f0502dd1ee6bd69620e} 
+void {\bfseries initialize} ()
+\begin{DoxyCompactList}\small\item\em Initialize the Vac\+Control System. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvac_control_module_1_1vac_control_a0f62037aeb5e7d13bf0eb0e7f799b96f}{is\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Get the state of the Vac\+Control system. \end{DoxyCompactList}\item 
+Switch\+States \mbox{\hyperlink{classvac_control_module_1_1vac_control_a5205bafdde9f61ce442c8594f9d0b4fd}{get\+Switch\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the state of the timer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvac_control_module_1_1_measurement}{Measurement}} \mbox{\hyperlink{classvac_control_module_1_1vac_control_ac404db77a823d4d5b0158489cd8b3ae0}{measure}} ()
+\begin{DoxyCompactList}\small\item\em Measures the voltage, current, power, digital\+Value and frequency of the system. \end{DoxyCompactList}\item 
+\Hypertarget{classvac_control_module_1_1vac_control_a55b02fa47f254719b3d050419dc2156a}\label{classvac_control_module_1_1vac_control_a55b02fa47f254719b3d050419dc2156a} 
+void {\bfseries run} ()
+\begin{DoxyCompactList}\small\item\em Executes logic depending on which Main-\/\+Switch state is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1vac_control_a83f074cda2bda0ba196d119c24f64635}{set\+Extern\+Pressure}} (int pressure)
+\begin{DoxyCompactList}\small\item\em Function to get the desired Frequency from HAS. \end{DoxyCompactList}\item 
+\Hypertarget{classvac_control_module_1_1vac_control_aa6cc7f2627564953b1a37307af9092a9}\label{classvac_control_module_1_1vac_control_aa6cc7f2627564953b1a37307af9092a9} 
+int {\bfseries get\+Extern\+Pressure} ()
+\begin{DoxyCompactList}\small\item\em Getter Function to get the Frequency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvac_control_module_1_1vac_control_a5205bafdde9f61ce442c8594f9d0b4fd}\label{classvac_control_module_1_1vac_control_a5205bafdde9f61ce442c8594f9d0b4fd} 
+\index{vacControlModule::vacControl@{vacControlModule::vacControl}!getSwitchState@{getSwitchState}}
+\index{getSwitchState@{getSwitchState}!vacControlModule::vacControl@{vacControlModule::vacControl}}
+\doxysubsubsection{\texorpdfstring{getSwitchState()}{getSwitchState()}}
+{\footnotesize\ttfamily Switch\+States vac\+Control\+::get\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the state of the timer. 
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the timer is initialized 
+
+false -\/\texorpdfstring{$>$}{>} if the timer is not initialized 
+\end{DoxyReturn}
+\Hypertarget{classvac_control_module_1_1vac_control_a0f62037aeb5e7d13bf0eb0e7f799b96f}\label{classvac_control_module_1_1vac_control_a0f62037aeb5e7d13bf0eb0e7f799b96f} 
+\index{vacControlModule::vacControl@{vacControlModule::vacControl}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!vacControlModule::vacControl@{vacControlModule::vacControl}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool vac\+Control\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the state of the Vac\+Control system. 
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} Vac\+Control is initialized 
+
+false -\/\texorpdfstring{$>$}{>} Vac\+Control is not initialized 
+\end{DoxyReturn}
+\Hypertarget{classvac_control_module_1_1vac_control_ac404db77a823d4d5b0158489cd8b3ae0}\label{classvac_control_module_1_1vac_control_ac404db77a823d4d5b0158489cd8b3ae0} 
+\index{vacControlModule::vacControl@{vacControlModule::vacControl}!measure@{measure}}
+\index{measure@{measure}!vacControlModule::vacControl@{vacControlModule::vacControl}}
+\doxysubsubsection{\texorpdfstring{measure()}{measure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvac_control_module_1_1_measurement}{Measurement}} vac\+Control\+::measure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measures the voltage, current, power, digital\+Value and frequency of the system. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structvac_control_module_1_1_measurement}{Measurement} -\/\texorpdfstring{$>$}{>} A \doxylink{structvac_control_module_1_1_measurement}{Measurement} object containing voltage, current, and power 
+\end{DoxyReturn}
+\Hypertarget{classvac_control_module_1_1vac_control_a83f074cda2bda0ba196d119c24f64635}\label{classvac_control_module_1_1vac_control_a83f074cda2bda0ba196d119c24f64635} 
+\index{vacControlModule::vacControl@{vacControlModule::vacControl}!setExternPressure@{setExternPressure}}
+\index{setExternPressure@{setExternPressure}!vacControlModule::vacControl@{vacControlModule::vacControl}}
+\doxysubsubsection{\texorpdfstring{setExternPressure()}{setExternPressure()}}
+{\footnotesize\ttfamily void vac\+Control\+Module\+::vac\+Control\+::set\+Extern\+Pressure (\begin{DoxyParamCaption}\item[{int}]{pressure }\end{DoxyParamCaption})}
+
+
+
+Function to get the desired Frequency from HAS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & -\/\texorpdfstring{$>$}{>} the frequency to change \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/vac\+Control/vac\+Control.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/vac\+Control/vac\+Control.\+cpp\end{DoxyCompactItemize}

@@ -82,48 +82,54 @@ $(function() {
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;ArduinoJson.h&gt;</code><br />
 <code>#include &quot;../comModule/comModule.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="json_module_8h_source.html">jsonModule.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="json_module_8h_source.html">jsonModule.h</a>&gt;</code><br />
+<code>#include &lt;serialMenu.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for jsonModule.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="json_module_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2e_s_w_2libraries_2json_module_2json_module_8cpp" alt=""/></div>
 <map name="a_c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2e_s_w_2libraries_2json_module_2json_module_8cpp" id="a_c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2e_s_w_2libraries_2json_module_2json_module_8cpp">
-<area shape="rect" title="Implementation of the jsonModule class." alt="" coords="620,5,806,64"/>
-<area shape="rect" title=" " alt="" coords="371,261,447,288"/>
-<area shape="poly" title=" " alt="" coords="808,57,885,84,922,101,954,120,979,140,993,164,994,189,979,215,952,229,902,240,758,258,595,269,463,274,462,269,595,263,757,252,901,235,950,224,975,211,989,187,988,165,975,144,951,124,919,106,883,89,806,62"/>
-<area shape="rect" title=" " alt="" coords="616,187,720,213"/>
-<area shape="poly" title=" " alt="" coords="708,65,678,173,673,171,703,64"/>
-<area shape="rect" href="com_module_8h_source.html" title=" " alt="" coords="234,112,416,139"/>
-<area shape="poly" title=" " alt="" coords="620,60,396,111,395,105,619,55"/>
-<area shape="rect" href="json_module_8h.html" title=" " alt="" coords="708,112,806,139"/>
-<area shape="poly" title=" " alt="" coords="730,63,747,97,742,99,725,66"/>
-<area shape="poly" title=" " alt="" coords="329,139,337,173,353,212,384,249,380,252,348,215,332,175,324,140"/>
-<area shape="rect" title=" " alt="" coords="104,261,186,288"/>
-<area shape="poly" title=" " alt="" coords="251,142,206,160,186,172,169,188,154,216,148,246,143,245,149,214,164,185,183,168,204,155,249,137"/>
-<area shape="rect" href="_e_t_h_h_8h_source.html" title=" " alt="" coords="178,187,288,213"/>
-<area shape="poly" title=" " alt="" coords="311,141,262,179,259,175,307,137"/>
-<area shape="rect" href="_i2_c_c_8h_source.html" title=" " alt="" coords="5,187,104,213"/>
-<area shape="poly" title=" " alt="" coords="279,142,117,185,116,180,277,137"/>
-<area shape="rect" href="_s_e_r_8h_source.html" title=" " alt="" coords="363,187,455,213"/>
-<area shape="poly" title=" " alt="" coords="342,137,385,174,381,178,338,141"/>
-<area shape="rect" href="_s_p_i_i_8h_source.html" title=" " alt="" coords="480,187,568,213"/>
-<area shape="poly" title=" " alt="" coords="361,137,476,178,474,183,359,142"/>
-<area shape="poly" title=" " alt="" coords="265,211,365,252,363,257,263,216"/>
-<area shape="poly" title=" " alt="" coords="220,216,174,253,170,249,216,212"/>
-<area shape="rect" title=" " alt="" coords="210,261,280,288"/>
-<area shape="poly" title=" " alt="" coords="238,213,243,246,238,247,233,214"/>
-<area shape="poly" title=" " alt="" coords="105,209,356,260,355,265,104,214"/>
-<area shape="rect" title=" " alt="" coords="21,261,80,288"/>
-<area shape="poly" title=" " alt="" coords="56,214,55,246,49,246,51,214"/>
-<area shape="poly" title=" " alt="" coords="412,214,412,246,406,246,406,214"/>
-<area shape="poly" title=" " alt="" coords="505,216,444,255,441,250,502,212"/>
-<area shape="poly" title=" " alt="" coords="569,183,587,188,595,200,592,208,585,213,582,209,587,205,589,200,584,192,568,189"/>
-<area shape="poly" title=" " alt="" coords="760,139,755,177,747,197,734,215,714,228,686,239,614,255,534,266,463,273,462,267,533,261,613,250,684,234,711,223,730,211,742,195,750,175,755,138"/>
-<area shape="poly" title=" " alt="" coords="743,141,697,179,693,175,740,137"/>
-<area shape="rect" title=" " alt="" coords="864,187,965,213"/>
-<area shape="poly" title=" " alt="" coords="786,137,874,177,872,182,783,142"/>
-<area shape="rect" title=" " alt="" coords="794,187,840,213"/>
-<area shape="poly" title=" " alt="" coords="770,138,799,173,795,177,766,141"/>
+<area shape="rect" title="Implementation of the jsonModule class." alt="" coords="849,5,1035,64"/>
+<area shape="rect" title=" " alt="" coords="514,261,591,288"/>
+<area shape="poly" title=" " alt="" coords="1023,62,1060,83,1093,110,1117,136,1135,161,1140,174,1141,188,1137,201,1128,215,1100,229,1050,241,905,258,740,269,607,274,606,269,740,263,904,252,1049,235,1098,224,1124,211,1133,199,1136,187,1135,175,1131,164,1113,139,1090,114,1057,87,1020,67"/>
+<area shape="rect" title=" " alt="" coords="890,187,994,213"/>
+<area shape="poly" title=" " alt="" coords="945,64,945,171,939,171,939,64"/>
+<area shape="rect" href="com_module_8h_source.html" title=" " alt="" coords="295,112,477,139"/>
+<area shape="poly" title=" " alt="" coords="849,53,481,112,480,106,848,48"/>
+<area shape="rect" href="json_module_8h.html" title=" " alt="" coords="793,112,891,139"/>
+<area shape="poly" title=" " alt="" coords="912,66,869,104,866,100,908,62"/>
+<area shape="rect" href="serial_menu_8h_source.html" title=" " alt="" coords="984,112,1079,139"/>
+<area shape="poly" title=" " alt="" coords="973,62,1010,99,1006,103,969,66"/>
+<area shape="poly" title=" " alt="" coords="478,129,507,136,536,147,562,163,583,185,589,201,588,218,574,250,569,248,583,217,584,202,578,188,558,168,533,152,506,141,477,134"/>
+<area shape="rect" title=" " alt="" coords="5,261,87,288"/>
+<area shape="poly" title=" " alt="" coords="295,136,165,155,109,170,88,179,73,189,63,201,56,216,49,247,44,246,51,214,59,198,70,185,86,174,107,165,164,150,294,131"/>
+<area shape="rect" href="_e_t_h_h_8h_source.html" title=" " alt="" coords="83,187,193,213"/>
+<area shape="poly" title=" " alt="" coords="344,142,197,184,195,179,342,137"/>
+<area shape="rect" href="_i2_c_c_8h_source.html" title=" " alt="" coords="217,187,315,213"/>
+<area shape="poly" title=" " alt="" coords="366,141,301,181,299,176,364,137"/>
+<area shape="rect" href="_s_e_r_8h_source.html" title=" " alt="" coords="340,187,432,213"/>
+<area shape="poly" title=" " alt="" coords="389,139,389,171,383,171,383,139"/>
+<area shape="rect" href="_s_p_i_i_8h_source.html" title=" " alt="" coords="456,187,545,213"/>
+<area shape="poly" title=" " alt="" coords="407,137,469,176,466,180,405,141"/>
+<area shape="poly" title=" " alt="" coords="194,209,205,211,500,262,499,267,204,216,193,214"/>
+<area shape="poly" title=" " alt="" coords="124,216,75,254,72,250,120,212"/>
+<area shape="rect" title=" " alt="" coords="111,261,181,288"/>
+<area shape="poly" title=" " alt="" coords="142,214,146,245,140,246,137,214"/>
+<area shape="poly" title=" " alt="" coords="316,211,500,257,499,263,315,216"/>
+<area shape="rect" title=" " alt="" coords="236,261,296,288"/>
+<area shape="poly" title=" " alt="" coords="269,214,269,246,263,246,263,214"/>
+<area shape="poly" title=" " alt="" coords="416,211,511,252,509,257,414,216"/>
+<area shape="poly" title=" " alt="" coords="512,212,537,247,533,250,508,215"/>
+<area shape="poly" title=" " alt="" coords="546,183,564,188,571,200,569,208,561,213,558,209,564,205,566,200,561,192,545,189"/>
+<area shape="poly" title=" " alt="" coords="801,142,744,162,683,189,628,221,582,254,579,250,626,217,681,184,742,157,800,137"/>
+<area shape="poly" title=" " alt="" coords="861,137,914,175,911,179,858,141"/>
+<area shape="rect" title=" " alt="" coords="694,187,795,213"/>
+<area shape="poly" title=" " alt="" coords="827,141,775,180,772,175,823,137"/>
+<area shape="rect" title=" " alt="" coords="819,187,865,213"/>
+<area shape="poly" title=" " alt="" coords="845,139,845,171,839,171,839,139"/>
+<area shape="poly" title=" " alt="" coords="1034,139,1030,177,1022,198,1008,215,977,233,934,247,824,265,706,273,606,276,606,271,705,268,824,259,933,241,975,228,1004,211,1017,195,1024,176,1029,139"/>
+<area shape="rect" title=" " alt="" coords="1069,187,1114,213"/>
+<area shape="poly" title=" " alt="" coords="1044,138,1074,173,1069,177,1040,141"/>
 </map>
 </div>
 </div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

@@ -88,9 +88,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a319a4cfc8ebf83f2c64a36ce78afa780" id="r_a319a4cfc8ebf83f2c64a36ce78afa780"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780">logError</a> (const char *errorMessage)</td></tr>
-<tr class="memdesc:a319a4cfc8ebf83f2c64a36ce78afa780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to log an error message.  <br /></td></tr>
-<tr class="separator:a319a4cfc8ebf83f2c64a36ce78afa780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7af8593b35e8fc227dca314571f6bb4" id="r_ab7af8593b35e8fc227dca314571f6bb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#ab7af8593b35e8fc227dca314571f6bb4">reportError</a> (const char *errorMessage)</td></tr>
+<tr class="memdesc:ab7af8593b35e8fc227dca314571f6bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to log an error message.  <br /></td></tr>
+<tr class="separator:ab7af8593b35e8fc227dca314571f6bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad88c455a60ac3977adfd4c295b494f2" id="r_aad88c455a60ac3977adfd4c295b494f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2">checkSystemHealth</a> (size_t memoryThreshold, bool checkEth, bool checkSpi, bool checkI2c, bool checkTemp, bool checkPress)</td></tr>
 <tr class="memdesc:aad88c455a60ac3977adfd4c295b494f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check the system health of the uC.  <br /></td></tr>
 <tr class="separator:aad88c455a60ac3977adfd4c295b494f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,17 +112,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac47a217bcaf65859e60c1bee6c338556" id="r_ac47a217bcaf65859e60c1bee6c338556"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#ac47a217bcaf65859e60c1bee6c338556">getStackDump</a> ()</td></tr>
 <tr class="memdesc:ac47a217bcaf65859e60c1bee6c338556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Stack Dump of the system.  <br /></td></tr>
 <tr class="separator:ac47a217bcaf65859e60c1bee6c338556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d34d7c8534ff96d109acaef76f4878f" id="r_a6d34d7c8534ff96d109acaef76f4878f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a6d34d7c8534ff96d109acaef76f4878f">startBusyTime</a> ()</td></tr>
-<tr class="memdesc:a6d34d7c8534ff96d109acaef76f4878f"><td class="mdescLeft">&#160;</td><td class="mdescRight">For Stack Guarding.  <br /></td></tr>
+<tr class="memitem:a6d34d7c8534ff96d109acaef76f4878f" id="r_a6d34d7c8534ff96d109acaef76f4878f"><td class="memItemLeft" align="right" valign="top"><a id="a6d34d7c8534ff96d109acaef76f4878f" name="a6d34d7c8534ff96d109acaef76f4878f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>startBusyTime</b> ()</td></tr>
+<tr class="memdesc:a6d34d7c8534ff96d109acaef76f4878f"><td class="mdescLeft">&#160;</td><td class="mdescRight">For Stack Guarding. <br /></td></tr>
 <tr class="separator:a6d34d7c8534ff96d109acaef76f4878f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aead25f060ef4c7631dbbb3f207a1094b" id="r_aead25f060ef4c7631dbbb3f207a1094b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#aead25f060ef4c7631dbbb3f207a1094b">startIdleTime</a> ()</td></tr>
-<tr class="memdesc:aead25f060ef4c7631dbbb3f207a1094b"><td class="mdescLeft">&#160;</td><td class="mdescRight">For Stack Guarding.  <br /></td></tr>
+<tr class="memitem:aead25f060ef4c7631dbbb3f207a1094b" id="r_aead25f060ef4c7631dbbb3f207a1094b"><td class="memItemLeft" align="right" valign="top"><a id="aead25f060ef4c7631dbbb3f207a1094b" name="aead25f060ef4c7631dbbb3f207a1094b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>startIdleTime</b> ()</td></tr>
+<tr class="memdesc:aead25f060ef4c7631dbbb3f207a1094b"><td class="mdescLeft">&#160;</td><td class="mdescRight">For Stack Guarding. <br /></td></tr>
 <tr class="separator:aead25f060ef4c7631dbbb3f207a1094b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd800614c513a9cbcb0da53bee8e2302" id="r_acd800614c513a9cbcb0da53bee8e2302"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#acd800614c513a9cbcb0da53bee8e2302">getCPULoad</a> ()</td></tr>
 <tr class="memdesc:acd800614c513a9cbcb0da53bee8e2302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the CPU Load.  <br /></td></tr>
 <tr class="separator:acd800614c513a9cbcb0da53bee8e2302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a015ef444336756d6b06fb2c2120e1c5f" id="r_a015ef444336756d6b06fb2c2120e1c5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a015ef444336756d6b06fb2c2120e1c5f">resetUsage</a> ()</td></tr>
-<tr class="memdesc:a015ef444336756d6b06fb2c2120e1c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the CPU Load Calculation.  <br /></td></tr>
+<tr class="memitem:a015ef444336756d6b06fb2c2120e1c5f" id="r_a015ef444336756d6b06fb2c2120e1c5f"><td class="memItemLeft" align="right" valign="top"><a id="a015ef444336756d6b06fb2c2120e1c5f" name="a015ef444336756d6b06fb2c2120e1c5f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>resetUsage</b> ()</td></tr>
+<tr class="memdesc:a015ef444336756d6b06fb2c2120e1c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the CPU Load Calculation. <br /></td></tr>
 <tr class="separator:a015ef444336756d6b06fb2c2120e1c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c39b828d9edb65bf2b8b02de5a5ddf" id="r_a76c39b828d9edb65bf2b8b02de5a5ddf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a76c39b828d9edb65bf2b8b02de5a5ddf">saveLastError</a> (const char *error)</td></tr>
 <tr class="memdesc:a76c39b828d9edb65bf2b8b02de5a5ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves last error message to EEPROM.  <br /></td></tr>
@@ -133,8 +136,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a556efb423beb07f507c05458d86b8ab4" id="r_a556efb423beb07f507c05458d86b8ab4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#a556efb423beb07f507c05458d86b8ab4">initStackGuard</a> ()</td></tr>
-<tr class="memdesc:a556efb423beb07f507c05458d86b8ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Stack Guard.  <br /></td></tr>
+<tr class="memitem:a556efb423beb07f507c05458d86b8ab4" id="r_a556efb423beb07f507c05458d86b8ab4"><td class="memItemLeft" align="right" valign="top"><a id="a556efb423beb07f507c05458d86b8ab4" name="a556efb423beb07f507c05458d86b8ab4"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>initStackGuard</b> ()</td></tr>
+<tr class="memdesc:a556efb423beb07f507c05458d86b8ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Stack Guard. <br /></td></tr>
 <tr class="separator:a556efb423beb07f507c05458d86b8ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb82be304bb03585249194aed79e987e" id="r_adb82be304bb03585249194aed79e987e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classreport_system_1_1_report_system.html#adb82be304bb03585249194aed79e987e">detectStackOverflow</a> ()</td></tr>
 <tr class="memdesc:adb82be304bb03585249194aed79e987e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect Stack Overflow.  <br /></td></tr>
@@ -194,7 +198,6 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to check the system health of the uC. </p>
-<p>Function to check the system health.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">memoryThreshold</td><td>-&gt; The memory threshold to check </td></tr>
@@ -208,31 +211,28 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true -&gt; if the system is healthy </dd>
 <dd>
-false -&gt; if the system is not healthy</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">memorySizeThreshold</td><td>-&gt; Set true to check memory Threshold </td></tr>
-    <tr><td class="paramname">checkEth</td><td>-&gt; Set true to check Ethernet </td></tr>
-    <tr><td class="paramname">checkSpi</td><td>-&gt; Set true to check SPI </td></tr>
-    <tr><td class="paramname">checkI2c</td><td>-&gt; Set true to check I2C </td></tr>
-    <tr><td class="paramname">checkTemp</td><td>-&gt; Set true to check Temperature </td></tr>
-    <tr><td class="paramname">checkPress-&gt;</td><td>Set true to check Pressure </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>-&gt; This returns true if the system health check passed, false otherwise </dd></dl>
+false -&gt; if the system is not healthy </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph" alt=""/></div>
 <map name="aclassreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph" id="aclassreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2_cgraph">
-<area shape="rect" title="Function to check the system health of the uC." alt="" coords="5,39,197,81"/>
+<area shape="rect" title="Function to check the system health of the uC." alt="" coords="5,64,197,107"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#adb82be304bb03585249194aed79e987e" title="Detect Stack Overflow." alt="" coords="245,5,436,48"/>
-<area shape="poly" title=" " alt="" coords="197,44,229,40,229,45,198,49"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780" title="Function to log an error message." alt="" coords="245,72,436,115"/>
-<area shape="poly" title=" " alt="" coords="198,71,229,75,229,80,197,76"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="484,72,675,115"/>
-<area shape="poly" title=" " alt="" coords="437,91,468,91,468,96,437,96"/>
+<area shape="poly" title=" " alt="" coords="190,61,235,50,236,55,191,66"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="484,93,675,136"/>
+<area shape="poly" title=" " alt="" coords="197,89,469,105,468,111,197,94"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#ab7af8593b35e8fc227dca314571f6bb4" title="Function to log an error message." alt="" coords="245,123,436,165"/>
+<area shape="poly" title=" " alt="" coords="191,105,236,116,235,121,190,110"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="723,60,941,103"/>
+<area shape="poly" title=" " alt="" coords="675,99,707,95,708,100,676,105"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="723,127,941,169"/>
+<area shape="poly" title=" " alt="" coords="676,125,708,129,707,134,675,130"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="989,127,1206,169"/>
+<area shape="poly" title=" " alt="" coords="941,145,973,145,973,151,941,151"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1254,127,1471,169"/>
+<area shape="poly" title=" " alt="" coords="1207,145,1238,145,1238,151,1207,151"/>
+<area shape="poly" title=" " alt="" coords="436,130,468,126,469,131,437,135"/>
 </map>
 </div>
 
@@ -265,7 +265,6 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Check the thresholds for the temperature and pressure sensors. </p>
-<p>Function to check if the current temperature and pressure exceed the thresholds.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">currentTemp</td><td>-&gt; The current temperature </td></tr>
@@ -275,25 +274,25 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true -&gt; if the thresholds are met </dd>
 <dd>
-false -&gt; if the thresholds are not met</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">currentTemp</td><td>-&gt; This is the current temperature </td></tr>
-    <tr><td class="paramname">currentPressure</td><td>-&gt; This is the current pressure </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>-&gt; This returns true if the thresholds are not exceeded, false otherwise </dd></dl>
+false -&gt; if the thresholds are not met </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b_cgraph" alt=""/></div>
 <map name="aclassreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b_cgraph" id="aclassreport_system_1_1_report_system_a5eb043bbd1311486c8ab406f01f50b0b_cgraph">
-<area shape="rect" title="Check the thresholds for the temperature and pressure sensors." alt="" coords="5,5,197,48"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780" title="Function to log an error message." alt="" coords="245,5,436,48"/>
-<area shape="poly" title=" " alt="" coords="197,24,229,24,229,29,197,29"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="484,5,675,48"/>
-<area shape="poly" title=" " alt="" coords="437,24,468,24,468,29,437,29"/>
+<area shape="rect" title="Check the thresholds for the temperature and pressure sensors." alt="" coords="5,39,197,81"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#ab7af8593b35e8fc227dca314571f6bb4" title="Function to log an error message." alt="" coords="245,39,436,81"/>
+<area shape="poly" title=" " alt="" coords="197,57,229,57,229,63,197,63"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="484,39,675,81"/>
+<area shape="poly" title=" " alt="" coords="437,57,468,57,468,63,437,63"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="723,5,941,48"/>
+<area shape="poly" title=" " alt="" coords="675,45,707,40,708,46,676,50"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="723,72,941,115"/>
+<area shape="poly" title=" " alt="" coords="676,70,708,74,707,80,675,75"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="989,72,1206,115"/>
+<area shape="poly" title=" " alt="" coords="941,91,973,91,973,96,941,96"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1254,72,1471,115"/>
+<area shape="poly" title=" " alt="" coords="1207,91,1238,91,1238,96,1207,96"/>
 </map>
 </div>
 
@@ -323,7 +322,6 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Detect Stack Overflow. </p>
-<p>Detector for stackoverflow.</p>
 <dl class="section return"><dt>Returns</dt><dd>true -&gt; if the stack has overflowed </dd>
 <dd>
 false -&gt; if the stack has not overflowed </dd></dl>
@@ -356,10 +354,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Getter for the CPU Load. </p>
-<p>Calculates the CPU load percentage based on busy and idle time.</p>
-<dl class="section return"><dt>Returns</dt><dd>float -&gt; The CPU Load</dd>
-<dd>
-The CPU load as a floating-point percentage (0.0 - 100.0). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>float -&gt; The CPU Load </dd></dl>
 
 </div>
 </div>
@@ -379,22 +374,38 @@ The CPU load as a floating-point percentage (0.0 - 100.0). </dd></dl>
 </div><div class="memdoc">
 
 <p>Get the Current Time of the system. </p>
-<p>Function to get the current time in milliseconds.</p>
-<dl class="section return"><dt>Returns</dt><dd>String -&gt; The current time</dd>
-<dd>
--&gt; This returns the current time in milliseconds as a string </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The current time </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_cgraph" alt=""/></div>
+<map name="aclassreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_cgraph" id="aclassreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_cgraph">
+<area shape="rect" title="Get the Current Time of the system." alt="" coords="5,39,197,81"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="245,5,462,48"/>
+<area shape="poly" title=" " alt="" coords="197,45,229,40,230,46,197,50"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="245,72,462,115"/>
+<area shape="poly" title=" " alt="" coords="197,70,230,74,229,80,197,75"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="510,72,727,115"/>
+<area shape="poly" title=" " alt="" coords="463,91,494,91,494,96,463,96"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="775,72,993,115"/>
+<area shape="poly" title=" " alt="" coords="728,91,759,91,759,96,728,96"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_icgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_icgraph" alt=""/></div>
 <map name="aclassreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_icgraph" id="aclassreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_icgraph">
-<area shape="rect" title="Get the Current Time of the system." alt="" coords="484,39,675,81"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#a319a4cfc8ebf83f2c64a36ce78afa780" title="Function to log an error message." alt="" coords="245,39,436,81"/>
-<area shape="poly" title=" " alt="" coords="468,63,437,63,437,57,468,57"/>
+<area shape="rect" title="Get the Current Time of the system." alt="" coords="484,64,675,107"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2" title="Function to check the system health of the uC." alt="" coords="5,5,197,48"/>
-<area shape="poly" title=" " alt="" coords="229,47,197,43,198,37,230,42"/>
+<area shape="poly" title=" " alt="" coords="479,63,436,55,311,40,197,33,197,27,312,35,436,49,480,57"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#ab7af8593b35e8fc227dca314571f6bb4" title="Function to log an error message." alt="" coords="245,64,436,107"/>
+<area shape="poly" title=" " alt="" coords="468,88,437,88,437,83,468,83"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a50d1100b21aad9391a2bae7aed3ad5b6" title="Function to report the status of the system." alt="" coords="245,131,436,173"/>
+<area shape="poly" title=" " alt="" coords="487,114,420,133,419,127,486,109"/>
+<area shape="poly" title=" " alt="" coords="235,62,190,51,192,46,236,57"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b" title="Check the thresholds for the temperature and pressure sensors." alt="" coords="5,72,197,115"/>
-<area shape="poly" title=" " alt="" coords="230,78,198,83,197,77,229,73"/>
+<area shape="poly" title=" " alt="" coords="229,92,197,93,197,87,229,86"/>
 </map>
 </div>
 
@@ -416,7 +427,6 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Get the Last Error message from EEPROM. </p>
-<p>Function to get last error from EEPROM HINT: KEEP IN MIND ~100 000 write cycles per cell!</p>
 <dl class="section return"><dt>Returns</dt><dd>String -&gt; The last error message </dd></dl>
 
 </div>
@@ -437,10 +447,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Get the Memory Status of the system. </p>
-<p>Function to get the current memory status as a formatted string.</p>
-<dl class="section return"><dt>Returns</dt><dd>String -&gt; The memory status</dd>
-<dd>
--&gt; A string containing details about SRAM, stack, heap, and free memory </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The memory status </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -470,49 +477,18 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Get the Stack Dump of the system. </p>
-<p>Retrieves a stack dump showing return addresses.</p>
-<dl class="section return"><dt>Returns</dt><dd>String -&gt; The stack dump</dd>
-<dd>
-A string containing the stack dump. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The stack dump </dd></dl>
 
 </div>
 </div>
-<a id="a556efb423beb07f507c05458d86b8ab4" name="a556efb423beb07f507c05458d86b8ab4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a556efb423beb07f507c05458d86b8ab4">&#9670;&#160;</a></span>initStackGuard()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ReportSystem::initStackGuard </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initialize the Stack Guard. </p>
-<p>Initializer for Stack Guard. </p>
-
-</div>
-</div>
-<a id="a319a4cfc8ebf83f2c64a36ce78afa780" name="a319a4cfc8ebf83f2c64a36ce78afa780"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a319a4cfc8ebf83f2c64a36ce78afa780">&#9670;&#160;</a></span>logError()</h2>
+<a id="ab7af8593b35e8fc227dca314571f6bb4" name="ab7af8593b35e8fc227dca314571f6bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7af8593b35e8fc227dca314571f6bb4">&#9670;&#160;</a></span>reportError()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ReportSystem::logError </td>
+          <td class="memname">void ReportSystem::reportError </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>errorMessage</em></td><td>)</td>
@@ -522,29 +498,35 @@ A string containing the stack dump. </dd></dl>
 </div><div class="memdoc">
 
 <p>Function to log an error message. </p>
-<p>Function to log an error message with a timestamp.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">errorMessage</td><td>-&gt; The error message to log</td></tr>
-    <tr><td class="paramname">errorMessage</td><td>-&gt; This is the error message to log </td></tr>
+    <tr><td class="paramname">errorMessage</td><td>-&gt; The error message to log </td></tr>
   </table>
   </dd>
 </dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_cgraph" alt=""/></div>
-<map name="aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_cgraph" id="aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_cgraph">
-<area shape="rect" title="Function to log an error message." alt="" coords="5,5,197,48"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="245,5,436,48"/>
-<area shape="poly" title=" " alt="" coords="197,24,229,24,229,29,197,29"/>
+<div class="center"><img src="classreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_cgraph" alt=""/></div>
+<map name="aclassreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_cgraph" id="aclassreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_cgraph">
+<area shape="rect" title="Function to log an error message." alt="" coords="5,39,197,81"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="245,39,436,81"/>
+<area shape="poly" title=" " alt="" coords="197,57,229,57,229,63,197,63"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="484,5,701,48"/>
+<area shape="poly" title=" " alt="" coords="436,45,468,40,469,46,437,50"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="484,72,701,115"/>
+<area shape="poly" title=" " alt="" coords="437,70,469,74,468,80,436,75"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="749,72,967,115"/>
+<area shape="poly" title=" " alt="" coords="702,91,733,91,733,96,702,96"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1015,72,1232,115"/>
+<area shape="poly" title=" " alt="" coords="967,91,999,91,999,96,967,96"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph" alt=""/></div>
-<map name="aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph" id="aclassreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780_icgraph">
+<div class="center"><img src="classreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_icgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_icgraph" alt=""/></div>
+<map name="aclassreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_icgraph" id="aclassreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_icgraph">
 <area shape="rect" title="Function to log an error message." alt="" coords="245,39,436,81"/>
 <area shape="rect" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2" title="Function to check the system health of the uC." alt="" coords="5,5,197,48"/>
 <area shape="poly" title=" " alt="" coords="229,47,197,43,198,37,230,42"/>
@@ -572,51 +554,33 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function to report the status of the system. </p>
-<p>Function to report the status of the pressure and temperature thresholds.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">active</td><td>-&gt; The status of the system </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>String -&gt; The status of the system</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">active</td><td>-&gt; Set to true to get the status, false otherwise </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>-&gt; String with the Information about the status </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>String -&gt; The status of the system </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph.png" border="0" usemap="#aclassreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph" alt=""/></div>
 <map name="aclassreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph" id="aclassreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph">
-<area shape="rect" title="Function to report the status of the system." alt="" coords="5,5,197,48"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#ac3914ceb5a587a3d572132a76fb5de64" title="Get the Memory Status of the system." alt="" coords="245,5,436,48"/>
-<area shape="poly" title=" " alt="" coords="197,24,229,24,229,29,197,29"/>
+<area shape="rect" title="Function to report the status of the system." alt="" coords="5,72,197,115"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9" title="Get the Current Time of the system." alt="" coords="245,39,436,81"/>
+<area shape="poly" title=" " alt="" coords="197,77,229,73,229,78,198,83"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#ac3914ceb5a587a3d572132a76fb5de64" title="Get the Memory Status of the system." alt="" coords="245,105,436,148"/>
+<area shape="poly" title=" " alt="" coords="198,104,229,109,229,114,197,109"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="484,5,701,48"/>
+<area shape="poly" title=" " alt="" coords="436,45,468,40,469,46,437,50"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="484,72,701,115"/>
+<area shape="poly" title=" " alt="" coords="437,70,469,74,468,80,436,75"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="749,72,967,115"/>
+<area shape="poly" title=" " alt="" coords="702,91,733,91,733,96,702,96"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1015,72,1232,115"/>
+<area shape="poly" title=" " alt="" coords="967,91,999,91,999,96,967,96"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a015ef444336756d6b06fb2c2120e1c5f" name="a015ef444336756d6b06fb2c2120e1c5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a015ef444336756d6b06fb2c2120e1c5f">&#9670;&#160;</a></span>resetUsage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ReportSystem::resetUsage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Start the CPU Load Calculation. </p>
-<p>Resets the CPU load tracking metrics. </p>
 
 </div>
 </div>
@@ -637,11 +601,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Saves last error message to EEPROM. </p>
-<p>Function to save last error to EEPROM.</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>HINT: KEEP IN MIND ~100 000 write cycles per cell! </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">error</td><td>-&gt; The error message to save</td></tr>
-    <tr><td class="paramname">error</td><td>-&gt; Error message to save HINT: KEEP IN MIND ~100 000 write cycles per cell! </td></tr>
+    <tr><td class="paramname">error</td><td>-&gt; The error message to save </td></tr>
   </table>
   </dd>
 </dl>
@@ -675,56 +637,13 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Set Thresholds for the pressure and temperature sensors. </p>
-<p>Function to set the temperature and pressure thresholds.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tempThreshold</td><td>-&gt; The temperature threshold </td></tr>
-    <tr><td class="paramname">pressureThreshold</td><td>-&gt; The pressure threshold</td></tr>
-    <tr><td class="paramname">tempThreshold</td><td>-&gt; This is the temperature threshold </td></tr>
-    <tr><td class="paramname">pressureThreshold</td><td>-&gt; This is the pressure threshold </td></tr>
+    <tr><td class="paramname">pressureThreshold</td><td>-&gt; The pressure threshold </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a6d34d7c8534ff96d109acaef76f4878f" name="a6d34d7c8534ff96d109acaef76f4878f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d34d7c8534ff96d109acaef76f4878f">&#9670;&#160;</a></span>startBusyTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ReportSystem::startBusyTime </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>For Stack Guarding. </p>
-<p>Marks the start of a busy period for CPU load tracking. </p>
-
-</div>
-</div>
-<a id="aead25f060ef4c7631dbbb3f207a1094b" name="aead25f060ef4c7631dbbb3f207a1094b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aead25f060ef4c7631dbbb3f207a1094b">&#9670;&#160;</a></span>startIdleTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ReportSystem::startIdleTime </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>For Stack Guarding. </p>
-<p>Marks the start of an idle period for CPU load tracking. </p>
 
 </div>
 </div>

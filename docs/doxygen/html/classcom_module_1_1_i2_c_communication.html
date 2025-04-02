@@ -90,8 +90,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae2e5382caa6ca43b2303df5626c5bf92" id="r_ae2e5382caa6ca43b2303df5626c5bf92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#ae2e5382caa6ca43b2303df5626c5bf92">beginI2C</a> (uint8_t address)</td></tr>
 <tr class="memdesc:ae2e5382caa6ca43b2303df5626c5bf92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the I2C communication.  <br /></td></tr>
 <tr class="separator:ae2e5382caa6ca43b2303df5626c5bf92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a191f0fd3dde73c1599e6e3ff37e31590" id="r_a191f0fd3dde73c1599e6e3ff37e31590"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#a191f0fd3dde73c1599e6e3ff37e31590">endI2C</a> ()</td></tr>
-<tr class="memdesc:a191f0fd3dde73c1599e6e3ff37e31590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to end the I2C communication.  <br /></td></tr>
+<tr class="memitem:a191f0fd3dde73c1599e6e3ff37e31590" id="r_a191f0fd3dde73c1599e6e3ff37e31590"><td class="memItemLeft" align="right" valign="top"><a id="a191f0fd3dde73c1599e6e3ff37e31590" name="a191f0fd3dde73c1599e6e3ff37e31590"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>endI2C</b> ()</td></tr>
+<tr class="memdesc:a191f0fd3dde73c1599e6e3ff37e31590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to end the I2C communication. <br /></td></tr>
 <tr class="separator:a191f0fd3dde73c1599e6e3ff37e31590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a098877516193a07e796915c98e19f4" id="r_a2a098877516193a07e796915c98e19f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#a2a098877516193a07e796915c98e19f4">i2cWrite</a> (uint8_t deviceAddress, uint8_t *data, size_t length)</td></tr>
 <tr class="memdesc:a2a098877516193a07e796915c98e19f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to write data to the I2C device.  <br /></td></tr>
@@ -99,9 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad60819a150985131af81631a43b90e99" id="r_ad60819a150985131af81631a43b90e99"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#ad60819a150985131af81631a43b90e99">i2cRead</a> (uint8_t deviceAddress, uint8_t *buffer, size_t length)</td></tr>
 <tr class="memdesc:ad60819a150985131af81631a43b90e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read data from the I2C device.  <br /></td></tr>
 <tr class="separator:ad60819a150985131af81631a43b90e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3b99c42cb0d82069ca6e4ab45e89397" id="r_aa3b99c42cb0d82069ca6e4ab45e89397"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#aa3b99c42cb0d82069ca6e4ab45e89397">isInitialized</a> ()</td></tr>
-<tr class="memdesc:aa3b99c42cb0d82069ca6e4ab45e89397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if the I2C communication is initialized.  <br /></td></tr>
-<tr class="separator:aa3b99c42cb0d82069ca6e4ab45e89397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad92a3962504d61f99e600bcd97aff408" id="r_ad92a3962504d61f99e600bcd97aff408"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_module_1_1_i2_c_communication.html#ad92a3962504d61f99e600bcd97aff408">isInitialized</a> () const</td></tr>
+<tr class="memdesc:ad92a3962504d61f99e600bcd97aff408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check if the I2C communication is initialized.  <br /></td></tr>
+<tr class="separator:ad92a3962504d61f99e600bcd97aff408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to handle I2C communication. </p>
@@ -125,31 +126,10 @@ Public Member Functions</h2></td></tr>
 <p>Function to initialize the I2C communication. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">address</td><td>-&gt; The address of the I2C device</td></tr>
-    <tr><td class="paramname">address</td><td>-&gt; The address to use for the I2C communication </td></tr>
+    <tr><td class="paramname">address</td><td>-&gt; The address of the I2C device </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a191f0fd3dde73c1599e6e3ff37e31590" name="a191f0fd3dde73c1599e6e3ff37e31590"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a191f0fd3dde73c1599e6e3ff37e31590">&#9670;&#160;</a></span>endI2C()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void I2CCommunication::endI2C </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function to end the I2C communication. </p>
-<p>Function to End the I2C communication. </p>
 
 </div>
 </div>
@@ -186,7 +166,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to read data from the I2C device. </p>
-<p>Function to read data over I2C.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceAddress</td><td>-&gt; The address of the I2C device </td></tr>
@@ -195,15 +174,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>size_t -&gt; The number of bytes read</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">deviceAddress</td><td>-&gt; The address of the device to read from </td></tr>
-    <tr><td class="paramname">buffer</td><td>-&gt; The buffer to read the data into </td></tr>
-    <tr><td class="paramname">length</td><td>-&gt; The length of the data to read </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>size_t -&gt; The number of bytes read </dd></dl>
 
 </div>
 </div>
@@ -240,13 +211,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to write data to the I2C device. </p>
-<p>Function to write data over I2C.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceAddress</td><td>-&gt; The address of the I2C device </td></tr>
-    <tr><td class="paramname">data</td><td>-&gt; The data to write </td></tr>
-    <tr><td class="paramname">length</td><td>-&gt; The length of the data</td></tr>
-    <tr><td class="paramname">deviceAddress</td><td>-&gt; The address of the device to write to </td></tr>
     <tr><td class="paramname">data</td><td>-&gt; The data to write </td></tr>
     <tr><td class="paramname">length</td><td>-&gt; The length of the data </td></tr>
   </table>
@@ -255,8 +222,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa3b99c42cb0d82069ca6e4ab45e89397" name="aa3b99c42cb0d82069ca6e4ab45e89397"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3b99c42cb0d82069ca6e4ab45e89397">&#9670;&#160;</a></span>isInitialized()</h2>
+<a id="ad92a3962504d61f99e600bcd97aff408" name="ad92a3962504d61f99e600bcd97aff408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad92a3962504d61f99e600bcd97aff408">&#9670;&#160;</a></span>isInitialized()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +232,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">bool I2CCommunication::isInitialized </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -273,9 +240,7 @@ Public Member Functions</h2></td></tr>
 <p>Function to check if the I2C communication is initialized. </p>
 <dl class="section return"><dt>Returns</dt><dd>true -&gt; if the I2C communication is initialized </dd>
 <dd>
-false -&gt; if the I2C communication is not initialized</dd>
-<dd>
--&gt; true if the SPI communication is initialized, false otherwise </dd></dl>
+false -&gt; if the I2C communication is not initialized </dd></dl>
 
 </div>
 </div>

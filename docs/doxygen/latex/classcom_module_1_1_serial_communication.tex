@@ -14,14 +14,14 @@ Class to handle Serial communication.
 \item 
 void \mbox{\hyperlink{classcom_module_1_1_serial_communication_a8eb8a6012594043049abd837b245c96c}{begin\+Serial}} (long baud\+Rate)
 \begin{DoxyCompactList}\small\item\em Function to start the serial communication. \end{DoxyCompactList}\item 
-\Hypertarget{classcom_module_1_1_serial_communication_a2a3519a96a5259919b983aac733834e3}\label{classcom_module_1_1_serial_communication_a2a3519a96a5259919b983aac733834e3} 
+\Hypertarget{classcom_module_1_1_serial_communication_a76e373e8850ce0a1724f086b0cdb6c50}\label{classcom_module_1_1_serial_communication_a76e373e8850ce0a1724f086b0cdb6c50} 
 void {\bfseries end\+Serial} ()
 \begin{DoxyCompactList}\small\item\em Function to end the serial communication. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_serial_communication_a088e158cfbbb6bc3b80ce9a8c440ca9e}{send\+Serial\+Data}} (const char \texorpdfstring{$\ast$}{*}data)
 \begin{DoxyCompactList}\small\item\em Function to end the serial communication. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcom_module_1_1_serial_communication_a1453d280f43560fc18f9f0ac1896753d}{receive\+Serial\+Data}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
 \begin{DoxyCompactList}\small\item\em Function to receive data over serial. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classcom_module_1_1_serial_communication_a1e7c34a2a291f8ba3fdaf3b180f904ad}{is\+Initialized}} ()
+bool \mbox{\hyperlink{classcom_module_1_1_serial_communication_a0ba8f9b62ac055b9d64d8bcbd6a54f76}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Function to check if the serial communication is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -39,18 +39,16 @@ Class to handle Serial communication.
 
 Function to start the serial communication. 
 
-Function to initialize the serial communication.
-
 
 \begin{DoxyParams}{Parameters}
 {\em baud\+Rate} & -\/\texorpdfstring{$>$}{>} The baud rate to use for the serial communication \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classcom_module_1_1_serial_communication_a1e7c34a2a291f8ba3fdaf3b180f904ad}\label{classcom_module_1_1_serial_communication_a1e7c34a2a291f8ba3fdaf3b180f904ad} 
+\Hypertarget{classcom_module_1_1_serial_communication_a0ba8f9b62ac055b9d64d8bcbd6a54f76}\label{classcom_module_1_1_serial_communication_a0ba8f9b62ac055b9d64d8bcbd6a54f76} 
 \index{comModule::SerialCommunication@{comModule::SerialCommunication}!isInitialized@{isInitialized}}
 \index{isInitialized@{isInitialized}!comModule::SerialCommunication@{comModule::SerialCommunication}}
 \doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
-{\footnotesize\ttfamily bool com\+Module\+::\+Serial\+Communication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Serial\+Communication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -87,8 +85,6 @@ Function to receive data over serial.
 
 
 Function to end the serial communication. 
-
-Function to send data over serial.
 
 
 \begin{DoxyParams}{Parameters}

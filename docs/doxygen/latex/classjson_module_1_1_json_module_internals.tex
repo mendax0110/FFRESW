@@ -13,15 +13,17 @@ void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_aed1fe1748ef1b5
 \begin{DoxyCompactList}\small\item\em Create a Json String object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118}{create\+Json\+String\+Const}} (const char \texorpdfstring{$\ast$}{*}key, const String \&value)
 \begin{DoxyCompactList}\small\item\em Create a Json String Const object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}{send\+Json\+Serial}} ()
+\Hypertarget{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}\label{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6} 
+void {\bfseries send\+Json\+Serial} ()
 \begin{DoxyCompactList}\small\item\em Function to send the Json object over the Serial connection. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a8da80a14c28f5b836539efdd543fee28}{send\+Json\+Ethernet}} (const char \texorpdfstring{$\ast$}{*}endpoint)
+void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a57f3c0b9523b19f66ceaa14714a249e2}{send\+Json\+Ethernet}} (const char \texorpdfstring{$\ast$}{*}endpoint)
 \begin{DoxyCompactList}\small\item\em Function to send the Json object over the Ethernet connection. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}{get\+Json\+String}} () const
 \begin{DoxyCompactList}\small\item\em Get the Json String object. \end{DoxyCompactList}\item 
 std\+::map$<$ String, float $>$ \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc}{map\+Json\+To\+Doubles}} (const String \&raw\+Json)
 \begin{DoxyCompactList}\small\item\em Map the Json object to a map of Strings and floats. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a}{clear\+Json}} ()
+\Hypertarget{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a}\label{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a} 
+void {\bfseries clear\+Json} ()
 \begin{DoxyCompactList}\small\item\em Clear the Json object. \end{DoxyCompactList}\item 
 \Hypertarget{classjson_module_1_1_json_module_internals_a3453826931fdba4cbbcd5f31b637207f}\label{classjson_module_1_1_json_module_internals_a3453826931fdba4cbbcd5f31b637207f} 
 void {\bfseries print\+Json\+Doc\+Memory} ()
@@ -35,17 +37,7 @@ size\+\_\+t {\bfseries json\+Buffer}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a}\label{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!clearJson@{clearJson}}
-\index{clearJson@{clearJson}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{clearJson()}{clearJson()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::clear\+Json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Clear the Json object. 
-
-Function to clear the JSON object. \Hypertarget{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172}\label{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172} 
+\Hypertarget{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172}\label{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172} 
 \index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJson@{createJson}}
 \index{createJson@{createJson}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
 \doxysubsubsection{\texorpdfstring{createJson()}{createJson()}}
@@ -55,17 +47,11 @@ Function to clear the JSON object. \Hypertarget{classjson_module_1_1_json_module
 
 Create a Json object with a key and a value. 
 
-Function to create a JSON object with a key-\/value pair.
-
 
 \begin{DoxyParams}{Parameters}
 {\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object\\
-\hline
-{\em key} & -\/\texorpdfstring{$>$}{>} This is the key of the JSON object (const char\texorpdfstring{$\ast$}{*}) \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} This is the value of the JSON object (const char\texorpdfstring{$\ast$}{*}) \\
+{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c}\label{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c} 
@@ -78,17 +64,11 @@ Function to create a JSON object with a key-\/value pair.
 
 Create a Json Float object. 
 
-Function to create a JSON object with a key-\/value pair.
-
 
 \begin{DoxyParams}{Parameters}
 {\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object\\
-\hline
-{\em key} & -\/\texorpdfstring{$>$}{>} This is the key of the JSON object (const char\texorpdfstring{$\ast$}{*}) \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} This is the value of the JSON object (float) \\
+{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff}\label{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff} 
@@ -101,17 +81,11 @@ Function to create a JSON object with a key-\/value pair.
 
 Create a Json Int object. 
 
-Function to create a JSON object with a key-\/value pair.
-
 
 \begin{DoxyParams}{Parameters}
 {\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object\\
-\hline
-{\em key} & -\/\texorpdfstring{$>$}{>} This is the key of the JSON object (const char\texorpdfstring{$\ast$}{*}) \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} This is the value of the JSON object (int) \\
+{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c}\label{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c} 
@@ -124,17 +98,11 @@ Function to create a JSON object with a key-\/value pair.
 
 Create a Json String object. 
 
-Function to create a JSON object with a key-\/value pair.
-
 
 \begin{DoxyParams}{Parameters}
 {\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object\\
-\hline
-{\em key} & -\/\texorpdfstring{$>$}{>} This is the key of the JSON object (const char\texorpdfstring{$\ast$}{*}) \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} This is the value of the JSON object (String) \\
+{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118}\label{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118} 
@@ -147,17 +115,11 @@ Function to create a JSON object with a key-\/value pair.
 
 Create a Json String Const object. 
 
-Function to create a JSON object with a key-\/value pair.
-
 
 \begin{DoxyParams}{Parameters}
 {\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object\\
-\hline
-{\em key} & -\/\texorpdfstring{$>$}{>} This is the key of the JSON object (const char\texorpdfstring{$\ast$}{*}) \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} This is the value of the JSON object (const String) \\
+{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}\label{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f} 
@@ -170,12 +132,8 @@ Function to create a JSON object with a key-\/value pair.
 
 Get the Json String object. 
 
-Function to get the JSON object as a string.
-
 \begin{DoxyReturn}{Returns}
-String -\/\texorpdfstring{$>$}{>} The Json String object
-
-String -\/\texorpdfstring{$>$}{>} This returns the JSON object as a string 
+String -\/\texorpdfstring{$>$}{>} The Json String object 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -195,8 +153,6 @@ Here is the caller graph for this function\+:
 
 Map the Json object to a map of Strings and floats. 
 
-Function to map the deserialzed jsondoc to the corresponding values.
-
 \href{https://github.com/mike-matera/ArduinoSTL/issues/84}{\texttt{ https\+://github.\+com/mike-\/matera/\+Arduino\+STL/issues/84}}
 
 
@@ -205,59 +161,23 @@ Function to map the deserialzed jsondoc to the corresponding values.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-std\+::map$<$\+String, float$>$ -\/\texorpdfstring{$>$}{>} The mapped Json object
+std\+::map$<$\+String, float$>$ -\/\texorpdfstring{$>$}{>} The mapped Json object 
 \end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em const} & String\& -\/\texorpdfstring{$>$}{>} the raw\+Json \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::map$<$\+String, double$>$ -\/\texorpdfstring{$>$}{>} a map with the values 
-\end{DoxyReturn}
-\Hypertarget{classjson_module_1_1_json_module_internals_a8da80a14c28f5b836539efdd543fee28}\label{classjson_module_1_1_json_module_internals_a8da80a14c28f5b836539efdd543fee28} 
+\Hypertarget{classjson_module_1_1_json_module_internals_a57f3c0b9523b19f66ceaa14714a249e2}\label{classjson_module_1_1_json_module_internals_a57f3c0b9523b19f66ceaa14714a249e2} 
 \index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!sendJsonEthernet@{sendJsonEthernet}}
 \index{sendJsonEthernet@{sendJsonEthernet}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
 \doxysubsubsection{\texorpdfstring{sendJsonEthernet()}{sendJsonEthernet()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::send\+Json\+Ethernet (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{endpoint }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void json\+Module\+::\+Json\+Module\+Internals\+::send\+Json\+Ethernet (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{endpoint }\end{DoxyParamCaption})}
 
 
 
 Function to send the Json object over the Ethernet connection. 
-
-Function to send the JSON object over Ethernet.
 
 
 \begin{DoxyParams}{Parameters}
 {\em endpoint} & -\/\texorpdfstring{$>$}{>} The endpoint to send the Json object to \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classjson_module_1_1_json_module_internals_a8da80a14c28f5b836539efdd543fee28_cgraph}
-\end{center}
-\end{figure}
-\Hypertarget{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}\label{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!sendJsonSerial@{sendJsonSerial}}
-\index{sendJsonSerial@{sendJsonSerial}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{sendJsonSerial()}{sendJsonSerial()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::send\+Json\+Serial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Function to send the Json object over the Serial connection. 
-
-Function to send the JSON object over Serial. Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6_cgraph}
-\end{center}
-\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

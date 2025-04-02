@@ -24,12 +24,12 @@
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classreport_system_1_1_report_system}{ReportSystem}}();}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classreport_system_1_1_report_system}{\string~ReportSystem}}();}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a319a4cfc8ebf83f2c64a36ce78afa780}{logError}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4}{reportError}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
 \DoxyCodeLine{00040\ }
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2}{checkSystemHealth}}(\textcolor{keywordtype}{size\_t}\ memoryThreshold,\ \textcolor{keywordtype}{bool}\ checkEth,}
 \DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkSpi,\ \textcolor{keywordtype}{bool}\ checkI2c,}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkTemp,\ \textcolor{keywordtype}{bool}\ checkPress);}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ }
 \DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6}{reportStatus}}(\textcolor{keywordtype}{bool}\ active);}
 \DoxyCodeLine{00064\ }
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}{setThreshold}}(\textcolor{keywordtype}{float}\ tempThreshold,\ \textcolor{keywordtype}{float}\ pressureThreshold);}
@@ -54,31 +54,31 @@
 \DoxyCodeLine{00134\ }
 \DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classreport_system_1_1_report_system_adb82be304bb03585249194aed79e987e}{detectStackOverflow}}();}
 \DoxyCodeLine{00142\ }
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}{saveLastError}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ error);}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}{getLastError}}();}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tempThreshold;}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pressureThreshold;}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ lastHealthCheck;}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ healthCheckInterval\ =\ 10000;\ \textcolor{comment}{//\ 10\ seconds}}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ busyTime\ =\ 0;}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ idleTime\ =\ 0;}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ lastTimestamp\ =\ 0;}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkSensors(\textcolor{keywordtype}{bool}\ checkTemp,\ \textcolor{keywordtype}{bool}\ checkPress);}
-\DoxyCodeLine{00175\ }
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkCommunication(\textcolor{keywordtype}{bool}\ checkEth,\ \textcolor{keywordtype}{bool}\ checkSpi,\ \textcolor{keywordtype}{bool}\ checkI2c);}
-\DoxyCodeLine{00186\ }
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkMemory(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ threshold);}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{sensorModule::SensorModuleInternals}}*\ \_sens;}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_com_module_internals}{comModule::ComModuleInternals}}*\ \_com;}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{timeModule::TimeModuleInternals}}*\ \_time;}
-\DoxyCodeLine{00199\ \ \ \ \ \};}
-\DoxyCodeLine{00200\ \}}
-\DoxyCodeLine{00201\ }
-\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REPORTSYSTEM\_H}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}{saveLastError}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ error);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ String\ \mbox{\hyperlink{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}{getLastError}}();}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tempThreshold;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pressureThreshold;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ lastHealthCheck;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ healthCheckInterval\ =\ 10000;\ \textcolor{comment}{//\ 10\ seconds}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ busyTime\ =\ 0;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ idleTime\ =\ 0;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ lastTimestamp\ =\ 0;}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkSensors(\textcolor{keywordtype}{bool}\ checkTemp,\ \textcolor{keywordtype}{bool}\ checkPress);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkCommunication(\textcolor{keywordtype}{bool}\ checkEth,\ \textcolor{keywordtype}{bool}\ checkSpi,\ \textcolor{keywordtype}{bool}\ checkI2c);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checkMemory(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ threshold);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{sensorModule::SensorModuleInternals}}*\ \_sens;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_module_1_1_com_module_internals}{comModule::ComModuleInternals}}*\ \_com;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtime_module_1_1_time_module_internals}{timeModule::TimeModuleInternals}}*\ \_time;}
+\DoxyCodeLine{00200\ \ \ \ \ \};}
+\DoxyCodeLine{00201\ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REPORTSYSTEM\_H}}
 
 \end{DoxyCode}

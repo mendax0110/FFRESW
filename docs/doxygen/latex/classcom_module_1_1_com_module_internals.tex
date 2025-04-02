@@ -1,26 +1,71 @@
 \doxysection{com\+Module\+::Com\+Module\+Internals Class Reference}
 \hypertarget{classcom_module_1_1_com_module_internals}{}\label{classcom_module_1_1_com_module_internals}\index{comModule::ComModuleInternals@{comModule::ComModuleInternals}}
-
-
-Collaboration diagram for com\+Module\+::Com\+Module\+Internals\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classcom_module_1_1_com_module_internals__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsubsection*{Public Attributes}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classcom_module_1_1_com_module_internals_aa3a11736d3c0252f2ef68933e6d0eb9b}\label{classcom_module_1_1_com_module_internals_aa3a11736d3c0252f2ef68933e6d0eb9b} 
-\mbox{\hyperlink{classcom_module_1_1_i2_c_communication}{I2\+CCommunication}} {\bfseries i2c}
-\begin{DoxyCompactList}\small\item\em I2C communication object. \end{DoxyCompactList}\item 
-\Hypertarget{classcom_module_1_1_com_module_internals_a49e04ce77e197e99f7dde7f99ce5ae9f}\label{classcom_module_1_1_com_module_internals_a49e04ce77e197e99f7dde7f99ce5ae9f} 
-\mbox{\hyperlink{classcom_module_1_1_s_p_i_communication}{SPICommunication}} {\bfseries spi}
-\begin{DoxyCompactList}\small\item\em SPI communication object. \end{DoxyCompactList}\item 
-\Hypertarget{classcom_module_1_1_com_module_internals_a0d953458226624181502568e8854d884}\label{classcom_module_1_1_com_module_internals_a0d953458226624181502568e8854d884} 
-\mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{Ethernet\+Communication}} {\bfseries eth}
-\begin{DoxyCompactList}\small\item\em Ethernet communication object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{Ethernet\+Communication}} \& \mbox{\hyperlink{classcom_module_1_1_com_module_internals_a8c3fac63917773f663af3dabeddd75ab}{get\+Ethernet}} ()
+\begin{DoxyCompactList}\small\item\em Get the Ethernet object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_module_1_1_i2_c_communication}{I2\+CCommunication}} \& \mbox{\hyperlink{classcom_module_1_1_com_module_internals_a831f3f98e411ac35044934af117f5637}{get\+I2C}} ()
+\begin{DoxyCompactList}\small\item\em Get the I2C object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_module_1_1_s_p_i_communication}{SPICommunication}} \& \mbox{\hyperlink{classcom_module_1_1_com_module_internals_a07a5586ad2e4c46ebbfb6728e6ff52e7}{get\+SPI}} ()
+\begin{DoxyCompactList}\small\item\em Get the SPI object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcom_module_1_1_serial_communication}{Serial\+Communication}} \& \mbox{\hyperlink{classcom_module_1_1_com_module_internals_a3094abcde04e39fa9ea55aa56a52874e}{get\+Serial}} ()
+\begin{DoxyCompactList}\small\item\em Get the Serial object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_module_1_1_com_module_internals_a8c3fac63917773f663af3dabeddd75ab}\label{classcom_module_1_1_com_module_internals_a8c3fac63917773f663af3dabeddd75ab} 
+\index{comModule::ComModuleInternals@{comModule::ComModuleInternals}!getEthernet@{getEthernet}}
+\index{getEthernet@{getEthernet}!comModule::ComModuleInternals@{comModule::ComModuleInternals}}
+\doxysubsubsection{\texorpdfstring{getEthernet()}{getEthernet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_module_1_1_ethernet_communication}{Ethernet\+Communication}} \& Com\+Module\+Internals\+::get\+Ethernet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Ethernet object. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classcom_module_1_1_ethernet_communication}{Ethernet\+Communication}\& 
+\end{DoxyReturn}
+\Hypertarget{classcom_module_1_1_com_module_internals_a831f3f98e411ac35044934af117f5637}\label{classcom_module_1_1_com_module_internals_a831f3f98e411ac35044934af117f5637} 
+\index{comModule::ComModuleInternals@{comModule::ComModuleInternals}!getI2C@{getI2C}}
+\index{getI2C@{getI2C}!comModule::ComModuleInternals@{comModule::ComModuleInternals}}
+\doxysubsubsection{\texorpdfstring{getI2C()}{getI2C()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_module_1_1_i2_c_communication}{I2\+CCommunication}} \& Com\+Module\+Internals\+::get\+I2C (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the I2C object. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classcom_module_1_1_i2_c_communication}{I2\+CCommunication}\& 
+\end{DoxyReturn}
+\Hypertarget{classcom_module_1_1_com_module_internals_a3094abcde04e39fa9ea55aa56a52874e}\label{classcom_module_1_1_com_module_internals_a3094abcde04e39fa9ea55aa56a52874e} 
+\index{comModule::ComModuleInternals@{comModule::ComModuleInternals}!getSerial@{getSerial}}
+\index{getSerial@{getSerial}!comModule::ComModuleInternals@{comModule::ComModuleInternals}}
+\doxysubsubsection{\texorpdfstring{getSerial()}{getSerial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_module_1_1_serial_communication}{Serial\+Communication}} \& Com\+Module\+Internals\+::get\+Serial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Serial object. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classcom_module_1_1_serial_communication}{Serial\+Communication}\& 
+\end{DoxyReturn}
+\Hypertarget{classcom_module_1_1_com_module_internals_a07a5586ad2e4c46ebbfb6728e6ff52e7}\label{classcom_module_1_1_com_module_internals_a07a5586ad2e4c46ebbfb6728e6ff52e7} 
+\index{comModule::ComModuleInternals@{comModule::ComModuleInternals}!getSPI@{getSPI}}
+\index{getSPI@{getSPI}!comModule::ComModuleInternals@{comModule::ComModuleInternals}}
+\doxysubsubsection{\texorpdfstring{getSPI()}{getSPI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_module_1_1_s_p_i_communication}{SPICommunication}} \& Com\+Module\+Internals\+::get\+SPI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the SPI object. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classcom_module_1_1_s_p_i_communication}{SPICommunication}\& 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

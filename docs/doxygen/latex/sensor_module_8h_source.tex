@@ -12,55 +12,57 @@
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <pressure.h>}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <temperature.h>}}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacesensor_module}{sensorModule}}}
-\DoxyCodeLine{00024\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}}
-\DoxyCodeLine{00027\ \ \ \ \ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ TEMPERATURE,}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ OBJECTTEMPERATURE,}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ AMBIENTTEMPERATURE,}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ PRESSURE,}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ I2C\_SENSOR,}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ SPI\_SENSOR,}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ DHT11,}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ UNKNOWN}
-\DoxyCodeLine{00036\ \ \ \ \ \};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{SensorModuleInternals}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}}
-\DoxyCodeLine{00040\ \ \ \ \ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{SensorModuleInternals}}();}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{\string~SensorModuleInternals}}();}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}{beginSensor}}();}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}{readSensor}}(\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}\ type);}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}{calibrateSensor}}(\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}\ type);}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}{checkSensorStatus}}(\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}\ type);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}\ \_temperatureSensor;}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}\ \_pressureSensor;}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_i2cSensorInitialized;}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_spiSensorInitialized;}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ I2C\_SENSOR\_ADDRESS\ =\ 0x76;}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ SPI\_CS\_PIN\ =\ 10;}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ initializeSensors();}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ readI2CSensor();}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ readSPISensor();}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reportError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
-\DoxyCodeLine{00113\ \ \ \ \ \};}
-\DoxyCodeLine{00114\ \}}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORMODULE\_H}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <comModule.h>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacesensor_module}{sensorModule}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ TEMPERATURE,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ OBJECTTEMPERATURE,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ AMBIENTTEMPERATURE,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ PRESSURE,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ I2C\_SENSOR,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ SPI\_SENSOR,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ DHT11,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ UNKNOWN}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{SensorModuleInternals}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{SensorModuleInternals}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals}{\string~SensorModuleInternals}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}{beginSensor}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}{readSensor}}(\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}\ type);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}{calibrateSensor}}(\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}\ type);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}{checkSensorStatus}}(\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{SensorType}}\ type);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}\ \_temperatureSensor;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}\ \_pressureSensor;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_i2cSensorInitialized;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_spiSensorInitialized;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ I2C\_SENSOR\_ADDRESS\ =\ 0x76;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ SPI\_CS\_PIN\ =\ 10;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ initializeSensors();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ readI2CSensor();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ readSPISensor();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reportError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMessage);}
+\DoxyCodeLine{00115\ \ \ \ \ \};}
+\DoxyCodeLine{00116\ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SENSORMODULE\_H}}
 
 \end{DoxyCode}

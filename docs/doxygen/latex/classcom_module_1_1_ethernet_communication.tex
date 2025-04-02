@@ -29,7 +29,7 @@ void \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a0864bfc933c0d3
 \begin{DoxyCompactList}\small\item\em Function to send the json response with the measurment data. \end{DoxyCompactList}\item 
 Ethernet\+Client \& \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab16fc4b937776e6ca6c8f4091fb3b3da}{get\+Client}} ()
 \begin{DoxyCompactList}\small\item\em Get the currently active Ethernet client. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}{is\+Initialized}} ()
+bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_ab5523a8bbac6520e6f757bf51af3cf2c}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Function to check if the Ethernet communication is initialized. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classcom_module_1_1_ethernet_communication_a425bbda1daf74f15c3b7dbfa0909bac1}{get\+Send\+Data\+Flag}} () const
 \begin{DoxyCompactList}\small\item\em Function to get the current status of the flag. \end{DoxyCompactList}\item 
@@ -128,16 +128,14 @@ Getter for a compound command response from the valve uC Slave (Compound1)
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a7675bdbcb0058cc26c21e2de81835a29_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -164,8 +162,7 @@ Getter for a compound command response from the valve uC Slave (Compound2)
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -192,8 +189,7 @@ Getter for a compound command response from the valve uC Slave (Compound3)
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -222,8 +218,7 @@ Getter for the internal compound command response from the valve uC Slave.
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -268,8 +263,7 @@ Function to get a compound command response from the valve uC Slave (Compound1)
 \begin{DoxyReturn}{Returns}
 Vector$<$float$>$ -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -296,8 +290,7 @@ Function to get a compound command response from the valve uC Slave (Compound2)
 \begin{DoxyReturn}{Returns}
 Vector$<$float$>$ -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -324,8 +317,7 @@ Function to get a compound command response from the valve uC Slave (Compound3)
 \begin{DoxyReturn}{Returns}
 Vector$<$float$>$ -\/\texorpdfstring{$>$}{>} Response from the valve uC slave 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -378,11 +370,11 @@ Function to get the specific endpoint.
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} The specific endpoint 
 \end{DoxyReturn}
-\Hypertarget{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994}\label{classcom_module_1_1_ethernet_communication_a8665d09bbbc4328829a885b01df53994} 
+\Hypertarget{classcom_module_1_1_ethernet_communication_ab5523a8bbac6520e6f757bf51af3cf2c}\label{classcom_module_1_1_ethernet_communication_ab5523a8bbac6520e6f757bf51af3cf2c} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!isInitialized@{isInitialized}}
 \index{isInitialized@{isInitialized}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
 \doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
-{\footnotesize\ttfamily bool Ethernet\+Communication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Ethernet\+Communication\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -411,8 +403,7 @@ Function to parse a compound response into a vector (Compound1)
 \begin{DoxyReturn}{Returns}
 Vector$<$float$>$ -\/\texorpdfstring{$>$}{>} containing parsed float values. 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -475,14 +466,6 @@ Function to send data over Ethernet.
 {\em data} & -\/\texorpdfstring{$>$}{>} The data to send \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classcom_module_1_1_ethernet_communication_a6d1f0fa97f7dc17f30d94ec82a931538_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28}\label{classcom_module_1_1_ethernet_communication_a0864bfc933c0d309dd45c0fc75473a28} 
 \index{comModule::EthernetCommunication@{comModule::EthernetCommunication}!sendJsonResponse@{sendJsonResponse}}
 \index{sendJsonResponse@{sendJsonResponse}!comModule::EthernetCommunication@{comModule::EthernetCommunication}}
@@ -524,8 +507,7 @@ Function to set a compound command for the valve uC Slave (Compound1)
 {\em value} & -\/\texorpdfstring{$>$}{>} Value of the command \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -551,8 +533,7 @@ Function to set a compound command for the valve uC Slave (Compound2)
 {\em value} & -\/\texorpdfstring{$>$}{>} Value of the command \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -578,8 +559,7 @@ Function to set a compound command for the valve uC Slave (Compound3)
 {\em value} & -\/\texorpdfstring{$>$}{>} Value of the command \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -607,8 +587,7 @@ Function to set the Interal compound command for the valve uC Slave.
 {\em value} & -\/\texorpdfstring{$>$}{>} The value of the compound \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
