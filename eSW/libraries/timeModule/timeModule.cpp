@@ -89,7 +89,6 @@ void TimeModuleInternals::updateSoftwareClock()
     unsigned long currentMillis = millis();
     unsigned long elapsedMillis = currentMillis - startMillis;
 
-    // with fraction handling
     unsigned long elapsedSeconds = elapsedMillis / 1000;
     startMillis += elapsedSeconds * 1000; // Retain leftover milliseconds for next update
 
@@ -102,7 +101,6 @@ void TimeModuleInternals::updateSoftwareClock()
 
 bool TimeModuleInternals::setTimeFromHas(const String& timeString)
 {
-	// remove {"time": "2025-03-15T08:48:47Z"} and just keep 2025-03-15T08:48:47Z
 	int startIdx = timeString.indexOf("\"time\": \"");
 	if (startIdx == -1) return false;
 	startIdx += 9;

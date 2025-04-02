@@ -166,5 +166,10 @@
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/timeModule</location>
 		</link>
+		<link>
+			<name>libraries/vacControl</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/vacControl</location>
+		</link>
 	</linkedResources>
 </projectDescription>

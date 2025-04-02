@@ -22,17 +22,11 @@ using namespace timeModule;
 
 volatile uint16_t stackCheck __attribute__((section(".noinit")));
 
-/*ReportSystem::ReportSystem()
-    : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0),
-	  _com(nullptr), _sens(nullptr), _time(TimeModuleInternals::getInstance())
-{
-
-}*/
 ReportSystem::ReportSystem() 
     : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0),
-      _com(new comModule::ComModuleInternals()), // Allocate memory for `_com`
-      _sens(new sensorModule::SensorModuleInternals()), // Ensure `_sens` is also allocated
-      _time(TimeModuleInternals::getInstance()) // Use the time module instance
+      _com(new comModule::ComModuleInternals()),
+      _sens(new sensorModule::SensorModuleInternals()),
+      _time(TimeModuleInternals::getInstance())
 {
 }
 

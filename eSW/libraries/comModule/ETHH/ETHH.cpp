@@ -46,6 +46,8 @@ void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
 
     server.begin();
     ethernetInitialized = true;
+    Serial.print("Client is at: ");
+    Serial.println(Ethernet.localIP());
 
     Serial.println("[DEBUG] Ethernet Initialized successfully.");
 }
