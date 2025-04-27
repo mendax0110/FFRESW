@@ -5,5 +5,6 @@ var searchData=
   ['endspi_2',['endSPI',['../classcom_module_1_1_s_p_i_communication.html#a89043628e87fdcc68ff76aa871e31019',1,'comModule::SPICommunication']]],
   ['error_5fcodes_3',['Error_Codes',['../namespacecom_module.html#a3b450180f02d724d8ecd6c7f06514756',1,'comModule']]],
   ['ethernetcommunication_4',['EthernetCommunication',['../classcom_module_1_1_ethernet_communication.html',1,'comModule']]],
-  ['extractfloat_5',['extractFloat',['../classcalc_module_1_1_calc_module_internals.html#aa37ef65cad4650b0c5547a69c7a5d75a',1,'calcModule::CalcModuleInternals']]]
+  ['externprocess_5',['externProcess',['../classvac_control_module_1_1_vac_control.html#a27ec4d04dff3384da2ed0f09f4038dad',1,'vacControlModule::VacControl']]],
+  ['extractfloat_6',['extractFloat',['../classcalc_module_1_1_calc_module_internals.html#aeb648febaabef46d2dd4228b8740ddaa',1,'calcModule::CalcModuleInternals']]]
 ];

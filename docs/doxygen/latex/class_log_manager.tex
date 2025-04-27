@@ -1,0 +1,214 @@
+\doxysection{Log\+Manager Class Reference}
+\hypertarget{class_log_manager}{}\label{class_log_manager}\index{LogManager@{LogManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_log_manager_ae94692128d06adc86d8c04e8b70e41ba}{init\+SDCard}} (int cs)
+\begin{DoxyCompactList}\small\item\em Function to initialize the SD card. \end{DoxyCompactList}\item 
+\Hypertarget{class_log_manager_a4171780238924df8caae60e9f2b45d53}\label{class_log_manager_a4171780238924df8caae60e9f2b45d53} 
+void {\bfseries shutdown\+SDCard} ()
+\item 
+bool \mbox{\hyperlink{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea}{is\+SDCard\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Function to check if the SD card is initialized. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3}{set\+Log\+File\+Name}} (const String \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Set the Log File Name object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_log_manager_aa8726477f11f02c62aa7524aa0f37968}{write\+To\+Log\+File}} (const String \&log\+Message)
+\begin{DoxyCompactList}\small\item\em Function to write a log message to the log file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277}{rename\+File}} (const String \&old\+Name, const String \&new\+Name)
+\begin{DoxyCompactList}\small\item\em Function to rename the currently written to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_log_manager}{Log\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_log_manager_adc7504f084d4cc05071328651efcb272}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get the Instance object. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a}{get\+Current\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the current time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a}\label{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a} 
+\index{LogManager@{LogManager}!getCurrentTime@{getCurrentTime}}
+\index{getCurrentTime@{getCurrentTime}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentTime()}{getCurrentTime()}}
+{\footnotesize\ttfamily String Log\+Manager\+::get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Getter for the current time. 
+
+\begin{DoxyReturn}{Returns}
+The current time as a String 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_log_manager_adc7504f084d4cc05071328651efcb272}\label{class_log_manager_adc7504f084d4cc05071328651efcb272} 
+\index{LogManager@{LogManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_log_manager}{Log\+Manager}} \texorpdfstring{$\ast$}{*} Log\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Instance object. 
+
+\begin{DoxyReturn}{Returns}
+Log\+Manager\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_log_manager_adc7504f084d4cc05071328651efcb272_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_adc7504f084d4cc05071328651efcb272_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_log_manager_ae94692128d06adc86d8c04e8b70e41ba}\label{class_log_manager_ae94692128d06adc86d8c04e8b70e41ba} 
+\index{LogManager@{LogManager}!initSDCard@{initSDCard}}
+\index{initSDCard@{initSDCard}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{initSDCard()}{initSDCard()}}
+{\footnotesize\ttfamily void Log\+Manager\+::init\+SDCard (\begin{DoxyParamCaption}\item[{int}]{cs }\end{DoxyParamCaption})}
+
+
+
+Function to initialize the SD card. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cs} & -\/\texorpdfstring{$>$}{>} The chip select pin for the SD card. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea}\label{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea} 
+\index{LogManager@{LogManager}!isSDCardInitialized@{isSDCardInitialized}}
+\index{isSDCardInitialized@{isSDCardInitialized}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{isSDCardInitialized()}{isSDCardInitialized()}}
+{\footnotesize\ttfamily bool Log\+Manager\+::is\+SDCard\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to check if the SD card is initialized. 
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the SD card is initialized 
+
+false -\/\texorpdfstring{$>$}{>} if the SD card is not initialized 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277}\label{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277} 
+\index{LogManager@{LogManager}!renameFile@{renameFile}}
+\index{renameFile@{renameFile}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{renameFile()}{renameFile()}}
+{\footnotesize\ttfamily void Log\+Manager\+::rename\+File (\begin{DoxyParamCaption}\item[{const String \&}]{old\+Name,  }\item[{const String \&}]{new\+Name }\end{DoxyParamCaption})}
+
+
+
+Function to rename the currently written to file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Name} & -\/\texorpdfstring{$>$}{>} This is the old\+Name of the file \\
+\hline
+{\em new\+Name} & -\/\texorpdfstring{$>$}{>} This is the new\+Name of the file \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3}\label{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3} 
+\index{LogManager@{LogManager}!setLogFileName@{setLogFileName}}
+\index{setLogFileName@{setLogFileName}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{setLogFileName()}{setLogFileName()}}
+{\footnotesize\ttfamily void Log\+Manager\+::set\+Log\+File\+Name (\begin{DoxyParamCaption}\item[{const String \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Set the Log File Name object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/\texorpdfstring{$>$}{>} The file name to set the log file name to. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_log_manager_aa8726477f11f02c62aa7524aa0f37968}\label{class_log_manager_aa8726477f11f02c62aa7524aa0f37968} 
+\index{LogManager@{LogManager}!writeToLogFile@{writeToLogFile}}
+\index{writeToLogFile@{writeToLogFile}!LogManager@{LogManager}}
+\doxysubsubsection{\texorpdfstring{writeToLogFile()}{writeToLogFile()}}
+{\footnotesize\ttfamily bool Log\+Manager\+::write\+To\+Log\+File (\begin{DoxyParamCaption}\item[{const String \&}]{log\+Message }\end{DoxyParamCaption})}
+
+
+
+Function to write a log message to the log file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Message} & -\/\texorpdfstring{$>$}{>} The log message to write to the log file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the log message was written successfully 
+
+false -\/\texorpdfstring{$>$}{>} if the log message was not written successfully 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_aa8726477f11f02c62aa7524aa0f37968_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_manager_aa8726477f11f02c62aa7524aa0f37968_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/log\+Manager/log\+Manager.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/log\+Manager/log\+Manager.\+cpp\end{DoxyCompactItemize}

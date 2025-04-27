@@ -1,0 +1,304 @@
+\doxysection{vac\+Control\+Module\+::Vac\+Control Class Reference}
+\hypertarget{classvac_control_module_1_1_vac_control}{}\label{classvac_control_module_1_1_vac_control}\index{vacControlModule::VacControl@{vacControlModule::VacControl}}
+
+
+\doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} class to manage the vacuum control system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes.  
+
+
+
+
+{\ttfamily \#include $<$vac\+Control.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvac_control_module_1_1_vac_control_a0297a8b42f8d44c4b2e30b4149517907}\label{classvac_control_module_1_1_vac_control_a0297a8b42f8d44c4b2e30b4149517907} 
+void {\bfseries initialize} ()
+\begin{DoxyCompactList}\small\item\em Initialize the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} System This method sets up the pins and prepares the system for operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}{is\+Initialized}} () const
+\begin{DoxyCompactList}\small\item\em Get the state of the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}{Switch\+States}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83}{get\+Switch\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the state of the main switch. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366}{get\+Scenario}} ()
+\begin{DoxyCompactList}\small\item\em Executes logic depending on which Main-\/\+Switch state is active. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064}{measure}} ()
+\begin{DoxyCompactList}\small\item\em Measures the actual pressure of the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b}{set\+Vacuum\+Led}} (float pressure, float target\+Pressure)
+\begin{DoxyCompactList}\small\item\em Controls the vacuum LED based on the current and target pressures. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66}{get\+Scenario\+From\+Pot\+Value}} (int pot\+Value)
+\begin{DoxyCompactList}\small\item\em Determines the scenario based on the potentiometer value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44}{set\+Pump}} (bool flag)
+\begin{DoxyCompactList}\small\item\em Set the Pump flag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973}{run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the main control loop for the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb}{set\+Extern\+Scenario}} (int pressure)
+\begin{DoxyCompactList}\small\item\em Function to set an external scenario, typically from remote input. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}{get\+Extern\+Scenario}} ()
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the current external scenario state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a27ec4d04dff3384da2ed0f09f4038dad}{extern\+Process}} ()
+\begin{DoxyCompactList}\small\item\em Process external data for scenarios (currently unused) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7add417c501e7b08bc549b38f1fac13d}{set\+Extern\+Pressure}} (float pressure)
+\begin{DoxyCompactList}\small\item\em Sets the external pressure value. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}{get\+Extern\+Pressure}} ()
+\begin{DoxyCompactList}\small\item\em Gets the external pressure value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} class to manage the vacuum control system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvac_control_module_1_1_vac_control_a27ec4d04dff3384da2ed0f09f4038dad}\label{classvac_control_module_1_1_vac_control_a27ec4d04dff3384da2ed0f09f4038dad} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!externProcess@{externProcess}}
+\index{externProcess@{externProcess}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{externProcess()}{externProcess()}}
+{\footnotesize\ttfamily void vac\+Control\+Module\+::\+Vac\+Control\+::extern\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Process external data for scenarios (currently unused) 
+
+This function could be expanded to process external scenario commands if needed. \Hypertarget{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}\label{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getExternPressure@{getExternPressure}}
+\index{getExternPressure@{getExternPressure}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getExternPressure()}{getExternPressure()}}
+{\footnotesize\ttfamily float Vac\+Control\+::get\+Extern\+Pressure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the external pressure value. 
+
+\begin{DoxyReturn}{Returns}
+The current external pressure value 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}\label{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getExternScenario@{getExternScenario}}
+\index{getExternScenario@{getExternScenario}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getExternScenario()}{getExternScenario()}}
+{\footnotesize\ttfamily int Vac\+Control\+::get\+Extern\+Scenario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter function to retrieve the current external scenario state. 
+
+\begin{DoxyReturn}{Returns}
+The current external scenario state (integer) 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366}\label{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getScenario@{getScenario}}
+\index{getScenario@{getScenario}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getScenario()}{getScenario()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}} Vac\+Control\+::get\+Scenario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes logic depending on which Main-\/\+Switch state is active. 
+
+This function decides which scenario to run based on the current state of the system. \Hypertarget{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66}\label{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getScenarioFromPotValue@{getScenarioFromPotValue}}
+\index{getScenarioFromPotValue@{getScenarioFromPotValue}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getScenarioFromPotValue()}{getScenarioFromPotValue()}}
+{\footnotesize\ttfamily int Vac\+Control\+::get\+Scenario\+From\+Pot\+Value (\begin{DoxyParamCaption}\item[{int}]{pot\+Value }\end{DoxyParamCaption})}
+
+
+
+Determines the scenario based on the potentiometer value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pot\+Value} & The value read from the potentiometer (used for pressure regulation) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding scenario based on the potentiometer value 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83}\label{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getSwitchState@{getSwitchState}}
+\index{getSwitchState@{getSwitchState}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getSwitchState()}{getSwitchState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}{Switch\+States}} Vac\+Control\+::get\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the state of the main switch. 
+
+\begin{DoxyReturn}{Returns}
+The current state of the switch (Main\+\_\+\+Switch\+\_\+\+OFF, Main\+\_\+\+Switch\+\_\+\+MANUAL, etc.) 
+\end{DoxyReturn}
+\Hypertarget{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}\label{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!isInitialized@{isInitialized}}
+\index{isInitialized@{isInitialized}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{isInitialized()}{isInitialized()}}
+{\footnotesize\ttfamily bool Vac\+Control\+::is\+Initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the state of the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. 
+
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} is initialized and ready 
+
+false -\/\texorpdfstring{$>$}{>} \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} is not initialized 
+\end{DoxyReturn}
+\Hypertarget{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064}\label{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!measure@{measure}}
+\index{measure@{measure}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{measure()}{measure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}} Vac\+Control\+::measure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measures the actual pressure of the system. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_measurement}{Measurement} -\/\texorpdfstring{$>$}{>} A \doxylink{struct_measurement}{Measurement} object containing the current pressure 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973}\label{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!run@{run}}
+\index{run@{run}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Vac\+Control\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the main control loop for the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. 
+
+This function checks the current system state and performs actions accordingly (e.\+g., switch states, pump control, LED control). Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_a7add417c501e7b08bc549b38f1fac13d}\label{classvac_control_module_1_1_vac_control_a7add417c501e7b08bc549b38f1fac13d} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!setExternPressure@{setExternPressure}}
+\index{setExternPressure@{setExternPressure}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{setExternPressure()}{setExternPressure()}}
+{\footnotesize\ttfamily void Vac\+Control\+::set\+Extern\+Pressure (\begin{DoxyParamCaption}\item[{float}]{pressure }\end{DoxyParamCaption})}
+
+
+
+Sets the external pressure value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pressure} & The external pressure value to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb}\label{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!setExternScenario@{setExternScenario}}
+\index{setExternScenario@{setExternScenario}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{setExternScenario()}{setExternScenario()}}
+{\footnotesize\ttfamily void Vac\+Control\+::set\+Extern\+Scenario (\begin{DoxyParamCaption}\item[{int}]{pressure }\end{DoxyParamCaption})}
+
+
+
+Function to set an external scenario, typically from remote input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pressure} & The external scenario pressure value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44}\label{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!setPump@{setPump}}
+\index{setPump@{setPump}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{setPump()}{setPump()}}
+{\footnotesize\ttfamily void Vac\+Control\+::set\+Pump (\begin{DoxyParamCaption}\item[{bool}]{flag }\end{DoxyParamCaption})}
+
+
+
+Set the Pump flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & This is the boolean flag to set \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b}\label{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!setVacuumLed@{setVacuumLed}}
+\index{setVacuumLed@{setVacuumLed}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{setVacuumLed()}{setVacuumLed()}}
+{\footnotesize\ttfamily void Vac\+Control\+::set\+Vacuum\+Led (\begin{DoxyParamCaption}\item[{float}]{pressure,  }\item[{float}]{target\+Pressure }\end{DoxyParamCaption})}
+
+
+
+Controls the vacuum LED based on the current and target pressures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pressure} & The current pressure in the system \\
+\hline
+{\em target\+Pressure} & The target pressure to reach \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/vac\+Control/vac\+Control.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/vac\+Control/vac\+Control.\+cpp\end{DoxyCompactItemize}

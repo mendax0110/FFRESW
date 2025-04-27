@@ -1,0 +1,54 @@
+\doxysection{log\+Manager.\+h}
+\hypertarget{log_manager_8h_source}{}\label{log_manager_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/logManager/logManager.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/logManager/logManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOGMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOGMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SD.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SPI.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <String.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <timeModule.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_log_manager}{LogManager}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_log_manager}{LogManager}}*\ \mbox{\hyperlink{class_log_manager_adc7504f084d4cc05071328651efcb272}{getInstance}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_ae94692128d06adc86d8c04e8b70e41ba}{initSDCard}}(\textcolor{keywordtype}{int}\ cs);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ shutdownSDCard();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea}{isSDCardInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a}{getCurrentTime}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3}{setLogFileName}}(\textcolor{keyword}{const}\ String\&\ fileName);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_log_manager_aa8726477f11f02c62aa7524aa0f37968}{writeToLogFile}}(\textcolor{keyword}{const}\ String\&\ logMessage);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277}{renameFile}}(\textcolor{keyword}{const}\ String\&\ oldName,\ \textcolor{keyword}{const}\ String\&\ newName);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}();}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{\string~LogManager}}();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_log_manager}{LogManager}}*\ \_instance;}
+\DoxyCodeLine{00074\ \ \ \ \ File\ logFile;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ sdCardInitialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00076\ \ \ \ \ String\ logFileName;}
+\DoxyCodeLine{00077\ \ \ \ \ String\ baseLogFileName;}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ chipSelectPinEth\ =\ 10;\ \textcolor{comment}{//\ Default\ CS\ pin\ for\ SD\ card}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxLogFileSize\ =\ 1024\ *\ 1024\ *\ 100;\ \textcolor{comment}{//\ 100\ MB}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_log_manager}{LogManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_log_manager}{LogManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LOGMANAGER\_H}}
+
+\end{DoxyCode}

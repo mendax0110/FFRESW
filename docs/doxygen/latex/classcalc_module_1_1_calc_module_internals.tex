@@ -35,7 +35,7 @@ static float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_ab28862
 \begin{DoxyCompactList}\small\item\em Funcion to calculate the current. \end{DoxyCompactList}\item 
 static float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a21c405515148f3f061309560b966f641}{calculate\+Resistance}} (float voltage, float current)
 \begin{DoxyCompactList}\small\item\em Function to caculate the Resistance. \end{DoxyCompactList}\item 
-static String \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_aa37ef65cad4650b0c5547a69c7a5d75a}{extract\+Float}} (String response, int id)
+static float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_aeb648febaabef46d2dd4228b8740ddaa}{extract\+Float}} (String response, int id)
 \begin{DoxyCompactList}\small\item\em Extract the float from a VAT uC eth frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -208,11 +208,11 @@ Function to convert celsius to kelvin.
 \begin{DoxyReturn}{Returns}
 float -\/\texorpdfstring{$>$}{>} The temperature in kelvin. 
 \end{DoxyReturn}
-\Hypertarget{classcalc_module_1_1_calc_module_internals_aa37ef65cad4650b0c5547a69c7a5d75a}\label{classcalc_module_1_1_calc_module_internals_aa37ef65cad4650b0c5547a69c7a5d75a} 
+\Hypertarget{classcalc_module_1_1_calc_module_internals_aeb648febaabef46d2dd4228b8740ddaa}\label{classcalc_module_1_1_calc_module_internals_aeb648febaabef46d2dd4228b8740ddaa} 
 \index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!extractFloat@{extractFloat}}
 \index{extractFloat@{extractFloat}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
 \doxysubsubsection{\texorpdfstring{extractFloat()}{extractFloat()}}
-{\footnotesize\ttfamily String Calc\+Module\+Internals\+::extract\+Float (\begin{DoxyParamCaption}\item[{String}]{response,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::extract\+Float (\begin{DoxyParamCaption}\item[{String}]{response,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -228,7 +228,7 @@ Extract the float from a VAT uC eth frame.
 0 -\/\texorpdfstring{$>$}{>} Simple GET/\+SET 1 -\/\texorpdfstring{$>$}{>} Compound 1 1 -\/\texorpdfstring{$>$}{>} Compound 2 1 -\/\texorpdfstring{$>$}{>} Compound 3
 
 \begin{DoxyReturn}{Returns}
-String -\/\texorpdfstring{$>$}{>} The extracted float. 
+float -\/\texorpdfstring{$>$}{>} The extracted float. 
 \end{DoxyReturn}
 \Hypertarget{classcalc_module_1_1_calc_module_internals_ac2f1e9e844fe0c81558699290e2482c2}\label{classcalc_module_1_1_calc_module_internals_ac2f1e9e844fe0c81558699290e2482c2} 
 \index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!fahrenheitToCelsius@{fahrenheitToCelsius}}

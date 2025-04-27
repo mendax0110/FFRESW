@@ -8,13 +8,14 @@ var searchData=
   ['calibratesensor_5',['calibrateSensor',['../classsensor_module_1_1_sensor_module_internals.html#ae689f29c297c585012e60b58e2ce231b',1,'sensorModule::SensorModuleInternals']]],
   ['celsiustofahrenheit_6',['celsiusToFahrenheit',['../classcalc_module_1_1_calc_module_internals.html#aa178eb6431d424fdc2b51864d4da3108',1,'calcModule::CalcModuleInternals']]],
   ['celsiustokelvin_7',['celsiusToKelvin',['../classcalc_module_1_1_calc_module_internals.html#a30b12b705c416a6d050f8344343eab8b',1,'calcModule::CalcModuleInternals']]],
-  ['checksensorstatus_8',['checkSensorStatus',['../classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35',1,'sensorModule::SensorModuleInternals']]],
-  ['checksystemhealth_9',['checkSystemHealth',['../classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2',1,'reportSystem::ReportSystem']]],
-  ['checkthresholds_10',['checkThresholds',['../classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b',1,'reportSystem::ReportSystem']]],
-  ['clearjson_11',['clearJson',['../classjson_module_1_1_json_module_internals.html#ae922a06f5f6c6ee40bc9e7935411872a',1,'jsonModule::JsonModuleInternals']]],
-  ['createjson_12',['createJson',['../classjson_module_1_1_json_module_internals.html#ac90a51afe9450323b2ee16a768fbd172',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonfloat_13',['createJsonFloat',['../classjson_module_1_1_json_module_internals.html#a2fa2c3a5abda4b34a6103acdbf9ef39c',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonint_14',['createJsonInt',['../classjson_module_1_1_json_module_internals.html#a690ddb37bfc4489a038f4f14999147ff',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonstring_15',['createJsonString',['../classjson_module_1_1_json_module_internals.html#aed1fe1748ef1b57708f487e1451fc38c',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonstringconst_16',['createJsonStringConst',['../classjson_module_1_1_json_module_internals.html#a1175671245b303e09b035d2b76d88118',1,'jsonModule::JsonModuleInternals']]]
+  ['checkramlevel_8',['checkRamLevel',['../classreport_system_1_1_report_system.html#afa36bd75a3cdf4701e120ac0376466c8',1,'reportSystem::ReportSystem']]],
+  ['checksensorstatus_9',['checkSensorStatus',['../classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35',1,'sensorModule::SensorModuleInternals']]],
+  ['checksystemhealth_10',['checkSystemHealth',['../classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2',1,'reportSystem::ReportSystem']]],
+  ['checkthresholds_11',['checkThresholds',['../classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b',1,'reportSystem::ReportSystem']]],
+  ['clearjson_12',['clearJson',['../classjson_module_1_1_json_module_internals.html#ae922a06f5f6c6ee40bc9e7935411872a',1,'jsonModule::JsonModuleInternals']]],
+  ['createjson_13',['createJson',['../classjson_module_1_1_json_module_internals.html#ac90a51afe9450323b2ee16a768fbd172',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonfloat_14',['createJsonFloat',['../classjson_module_1_1_json_module_internals.html#a2fa2c3a5abda4b34a6103acdbf9ef39c',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonint_15',['createJsonInt',['../classjson_module_1_1_json_module_internals.html#a690ddb37bfc4489a038f4f14999147ff',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonstring_16',['createJsonString',['../classjson_module_1_1_json_module_internals.html#aed1fe1748ef1b57708f487e1451fc38c',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonstringconst_17',['createJsonStringConst',['../classjson_module_1_1_json_module_internals.html#a1175671245b303e09b035d2b76d88118',1,'jsonModule::JsonModuleInternals']]]
 ];

@@ -42,7 +42,11 @@ void {\bfseries reset\+Usage} ()
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}{save\+Last\+Error}} (const char \texorpdfstring{$\ast$}{*}error)
 \begin{DoxyCompactList}\small\item\em Saves last error message to EEPROM. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}{get\+Last\+Error}} ()
-\begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_ae43f343b186531823af51db6394b280a}{get\+Last\+Error\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8}{check\+Ram\+Level}} (unsigned int warning\+Threshold, unsigned int critical\+Threshold)
+\begin{DoxyCompactList}\small\item\em Function to check the SRAM level on the hostsystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,6 +61,44 @@ static bool \mbox{\hyperlink{classreport_system_1_1_report_system_adb82be304bb03
 Class for the report system. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8}\label{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!checkRamLevel@{checkRamLevel}}
+\index{checkRamLevel@{checkRamLevel}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{checkRamLevel()}{checkRamLevel()}}
+{\footnotesize\ttfamily bool Report\+System\+::check\+Ram\+Level (\begin{DoxyParamCaption}\item[{unsigned int}]{warning\+Threshold,  }\item[{unsigned int}]{critical\+Threshold }\end{DoxyParamCaption})}
+
+
+
+Function to check the SRAM level on the hostsystem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em warning\+Threshold} & -\/\texorpdfstring{$>$}{>} first warning to get \\
+\hline
+{\em critical\+Threshold} & -\/\texorpdfstring{$>$}{>} last warning to get\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/\texorpdfstring{$>$}{>} if the level exceeded 
+
+false -\/\texorpdfstring{$>$}{>} if the levels are withing the thresholds 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2}\label{classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!checkSystemHealth@{checkSystemHealth}}
 \index{checkSystemHealth@{checkSystemHealth}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -181,14 +223,6 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classreport_system_1_1_report_system_aa0927e4bffac62ace369ec74677667d9_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}\label{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!getLastError@{getLastError}}
 \index{getLastError@{getLastError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -202,6 +236,35 @@ Get the Last Error message from EEPROM.
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} The last error message 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classreport_system_1_1_report_system_ae43f343b186531823af51db6394b280a}\label{classreport_system_1_1_report_system_ae43f343b186531823af51db6394b280a} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!getLastErrorInfo@{getLastErrorInfo}}
+\index{getLastErrorInfo@{getLastErrorInfo}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{getLastErrorInfo()}{getLastErrorInfo()}}
+{\footnotesize\ttfamily bool Report\+System\+::get\+Last\+Error\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Last Error message from EEPROM. 
+
+\begin{DoxyReturn}{Returns}
+bool -\/\texorpdfstring{$>$}{>} used by the Endpoint to report to HAS 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_ae43f343b186531823af51db6394b280a_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64}\label{classreport_system_1_1_report_system_ac3914ceb5a587a3d572132a76fb5de64} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!getMemoryStatus@{getMemoryStatus}}
 \index{getMemoryStatus@{getMemoryStatus}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -307,6 +370,14 @@ HINT\+: KEEP IN MIND \texorpdfstring{$\sim$}{\string~}100 000 write cycles per c
 {\em error} & -\/\texorpdfstring{$>$}{>} The error message to save \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}\label{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!setThreshold@{setThreshold}}
 \index{setThreshold@{setThreshold}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -324,6 +395,14 @@ Set Thresholds for the pressure and temperature sensors.
 {\em pressure\+Threshold} & -\/\texorpdfstring{$>$}{>} The pressure threshold \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13_cgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

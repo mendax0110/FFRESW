@@ -9,6 +9,21 @@ Class for the serial menu.
 
 {\ttfamily \#include $<$serial\+Menu.\+h$>$}
 
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_serial_menu_a2e367d9f88992044742df3dee607f0dc}\label{class_serial_menu_a2e367d9f88992044742df3dee607f0dc} 
+enum class {\bfseries Output\+Level} \{ \newline
+{\bfseries DEBUG}
+, {\bfseries INFO}
+, {\bfseries WARNING}
+, {\bfseries ERROR}
+, \newline
+{\bfseries CRITICAL}
+, {\bfseries STATUS}
+, {\bfseries PLAIN}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,18 +38,51 @@ void {\bfseries run} ()
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_serial_menu_a6043fb6206e4cecc6858efede40e565e}\label{class_serial_menu_a6043fb6206e4cecc6858efede40e565e} 
-static void {\bfseries print\+To\+Serial} (const \+\_\+\+\_\+\+Flash\+String\+Helper \texorpdfstring{$\ast$}{*}message, bool new\+Line=true)
-\item 
-\Hypertarget{class_serial_menu_ac881b6d0f7935cb8eaa76ff71660ba29}\label{class_serial_menu_ac881b6d0f7935cb8eaa76ff71660ba29} 
-static void {\bfseries print\+To\+Serial} (const String \&message, bool new\+Line=true)
-\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{print\+To\+Serial}} (Output\+Level level, const String \&message, bool new\+Line=true, bool log\+Message=false)
+\begin{DoxyCompactList}\small\item\em Function to print a message to the serial port, using mutexes, output level and new line options. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_serial_menu_a2084d934d3bc6496d5840c8348b5616c}{print\+To\+Serial}} (Output\+Level level, const \+\_\+\+\_\+\+Flash\+String\+Helper \texorpdfstring{$\ast$}{*}message, bool new\+Line=true, bool log\+Message=false)
+\begin{DoxyCompactList}\small\item\em Function to print a message to the serial port, using mutexes, output level and new line options. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_serial_menu_ad2f9c898ef5a53eba8fee4bc1b661772}{print\+To\+Serial}} (const String \&message, bool new\+Line=true, bool log\+Message=false)
+\begin{DoxyCompactList}\small\item\em Funtion to print a message to the serial port, using mutexes, output level and new line options. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_serial_menu_a484d967436889702a87a35f74238e671}{print\+To\+Serial}} (const \+\_\+\+\_\+\+Flash\+String\+Helper \texorpdfstring{$\ast$}{*}message, bool new\+Line=true, bool log\+Message=false)
+\begin{DoxyCompactList}\small\item\em Function to print a message to the serial port, using mutexes, output level and new line options. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{class_serial_menu_a289050736ba40438d490f00b4c6dc7cc}{get\+Current\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the current time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Class for the serial menu. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_serial_menu_a289050736ba40438d490f00b4c6dc7cc}\label{class_serial_menu_a289050736ba40438d490f00b4c6dc7cc} 
+\index{SerialMenu@{SerialMenu}!getCurrentTime@{getCurrentTime}}
+\index{getCurrentTime@{getCurrentTime}!SerialMenu@{SerialMenu}}
+\doxysubsubsection{\texorpdfstring{getCurrentTime()}{getCurrentTime()}}
+{\footnotesize\ttfamily String Serial\+Menu\+::get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Getter for the current time. 
+
+\begin{DoxyReturn}{Returns}
+The current time as a String 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_a289050736ba40438d490f00b4c6dc7cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_a289050736ba40438d490f00b4c6dc7cc_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_serial_menu_a5d4a82bc3f561b4c2aa9ddd94e8c2c1d}\label{class_serial_menu_a5d4a82bc3f561b4c2aa9ddd94e8c2c1d} 
 \index{SerialMenu@{SerialMenu}!load@{load}}
 \index{load@{load}!SerialMenu@{SerialMenu}}
@@ -52,6 +100,118 @@ Function to load the menu items.
 {\em size} & -\/\texorpdfstring{$>$}{>} The size of the menu items. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{class_serial_menu_a484d967436889702a87a35f74238e671}\label{class_serial_menu_a484d967436889702a87a35f74238e671} 
+\index{SerialMenu@{SerialMenu}!printToSerial@{printToSerial}}
+\index{printToSerial@{printToSerial}!SerialMenu@{SerialMenu}}
+\doxysubsubsection{\texorpdfstring{printToSerial()}{printToSerial()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Serial\+Menu\+::print\+To\+Serial (\begin{DoxyParamCaption}\item[{const \+\_\+\+\_\+\+Flash\+String\+Helper \texorpdfstring{$\ast$}{*}}]{message,  }\item[{bool}]{new\+Line = {\ttfamily true},  }\item[{bool}]{log\+Message = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Function to print a message to the serial port, using mutexes, output level and new line options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/\texorpdfstring{$>$}{>} The message to print, a \+\_\+\+\_\+\+Flash\+String\+Helper pointer. \\
+\hline
+{\em new\+Line} & -\/\texorpdfstring{$>$}{>} Whether to add a new line at the end of the message. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_a484d967436889702a87a35f74238e671_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_serial_menu_ad2f9c898ef5a53eba8fee4bc1b661772}\label{class_serial_menu_ad2f9c898ef5a53eba8fee4bc1b661772} 
+\index{SerialMenu@{SerialMenu}!printToSerial@{printToSerial}}
+\index{printToSerial@{printToSerial}!SerialMenu@{SerialMenu}}
+\doxysubsubsection{\texorpdfstring{printToSerial()}{printToSerial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Serial\+Menu\+::print\+To\+Serial (\begin{DoxyParamCaption}\item[{const String \&}]{message,  }\item[{bool}]{new\+Line = {\ttfamily true},  }\item[{bool}]{log\+Message = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funtion to print a message to the serial port, using mutexes, output level and new line options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/\texorpdfstring{$>$}{>} The message to print, a String object. \\
+\hline
+{\em new\+Line} & -\/\texorpdfstring{$>$}{>} Whether to add a new line at the end of the message. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_ad2f9c898ef5a53eba8fee4bc1b661772_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_serial_menu_a2084d934d3bc6496d5840c8348b5616c}\label{class_serial_menu_a2084d934d3bc6496d5840c8348b5616c} 
+\index{SerialMenu@{SerialMenu}!printToSerial@{printToSerial}}
+\index{printToSerial@{printToSerial}!SerialMenu@{SerialMenu}}
+\doxysubsubsection{\texorpdfstring{printToSerial()}{printToSerial()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Serial\+Menu\+::print\+To\+Serial (\begin{DoxyParamCaption}\item[{Output\+Level}]{level,  }\item[{const \+\_\+\+\_\+\+Flash\+String\+Helper \texorpdfstring{$\ast$}{*}}]{message,  }\item[{bool}]{new\+Line = {\ttfamily true},  }\item[{bool}]{log\+Message = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Function to print a message to the serial port, using mutexes, output level and new line options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & -\/\texorpdfstring{$>$}{>} The output level of the message. \\
+\hline
+{\em message} & -\/\texorpdfstring{$>$}{>} The message to print, a \+\_\+\+\_\+\+Flash\+String\+Helper pointer. \\
+\hline
+{\em new\+Line} & -\/\texorpdfstring{$>$}{>} Whether to add a new line at the end of the message. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_a2084d934d3bc6496d5840c8348b5616c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}\label{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6} 
+\index{SerialMenu@{SerialMenu}!printToSerial@{printToSerial}}
+\index{printToSerial@{printToSerial}!SerialMenu@{SerialMenu}}
+\doxysubsubsection{\texorpdfstring{printToSerial()}{printToSerial()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Serial\+Menu\+::print\+To\+Serial (\begin{DoxyParamCaption}\item[{Output\+Level}]{level,  }\item[{const String \&}]{message,  }\item[{bool}]{new\+Line = {\ttfamily true},  }\item[{bool}]{log\+Message = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Function to print a message to the serial port, using mutexes, output level and new line options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & -\/\texorpdfstring{$>$}{>} The output level of the message. \\
+\hline
+{\em message} & -\/\texorpdfstring{$>$}{>} The message to print, a String object. \\
+\hline
+{\em new\+Line} & -\/\texorpdfstring{$>$}{>} Whether to add a new line at the end of the message. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

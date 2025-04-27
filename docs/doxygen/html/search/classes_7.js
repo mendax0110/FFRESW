@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pointerwrapper_0',['PointerWrapper',['../class_pointer_wrapper.html',1,'']]],
-  ['pressuresensor_1',['PressureSensor',['../class_pressure_sensor.html',1,'']]],
-  ['ptrutils_2',['PtrUtils',['../class_ptr_utils.html',1,'']]]
+  ['measurement_0',['measurement',['../structflyback_module_1_1_measurement.html',1,'flybackModule::Measurement'],['../struct_measurement.html',1,'Measurement']]],
+  ['menuitem_1',['MenuItem',['../struct_menu_item.html',1,'']]]
 ];

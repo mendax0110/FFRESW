@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['measurement_0',['measurement',['../structflyback_module_1_1_measurement.html',1,'flybackModule::Measurement'],['../structvac_control_module_1_1_measurement.html',1,'vacControlModule::Measurement']]],
-  ['menuitem_1',['MenuItem',['../struct_menu_item.html',1,'']]]
+  ['logmanager_0',['LogManager',['../class_log_manager.html',1,'']]],
+  ['logmapper_1',['LogMapper',['../class_log_mapper.html',1,'']]]
 ];

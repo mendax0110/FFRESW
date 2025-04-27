@@ -94,6 +94,7 @@ $(function() {
 <li>calibrateSensor()&#160;:&#160;<a class="el" href="classsensor_module_1_1_sensor_module_internals.html#ae689f29c297c585012e60b58e2ce231b">sensorModule::SensorModuleInternals</a></li>
 <li>celsiusToFahrenheit()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#aa178eb6431d424fdc2b51864d4da3108">calcModule::CalcModuleInternals</a></li>
 <li>celsiusToKelvin()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#a30b12b705c416a6d050f8344343eab8b">calcModule::CalcModuleInternals</a></li>
+<li>checkRamLevel()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#afa36bd75a3cdf4701e120ac0376466c8">reportSystem::ReportSystem</a></li>
 <li>checkSensorStatus()&#160;:&#160;<a class="el" href="classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35">sensorModule::SensorModuleInternals</a></li>
 <li>checkSystemHealth()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2">reportSystem::ReportSystem</a></li>
 <li>checkThresholds()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b">reportSystem::ReportSystem</a></li>
@@ -115,7 +116,8 @@ $(function() {
 <li>endI2C()&#160;:&#160;<a class="el" href="classcom_module_1_1_i2_c_communication.html#a191f0fd3dde73c1599e6e3ff37e31590">comModule::I2CCommunication</a></li>
 <li>endSerial()&#160;:&#160;<a class="el" href="classcom_module_1_1_serial_communication.html#a76e373e8850ce0a1724f086b0cdb6c50">comModule::SerialCommunication</a></li>
 <li>endSPI()&#160;:&#160;<a class="el" href="classcom_module_1_1_s_p_i_communication.html#a89043628e87fdcc68ff76aa871e31019">comModule::SPICommunication</a></li>
-<li>extractFloat()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#aa37ef65cad4650b0c5547a69c7a5d75a">calcModule::CalcModuleInternals</a></li>
+<li>externProcess()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#a27ec4d04dff3384da2ed0f09f4038dad">vacControlModule::VacControl</a></li>
+<li>extractFloat()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#aeb648febaabef46d2dd4228b8740ddaa">calcModule::CalcModuleInternals</a></li>
 </ul>
 
 
@@ -134,25 +136,29 @@ $(function() {
 <li>getCompound()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a7675bdbcb0058cc26c21e2de81835a29">comModule::EthernetCommunication</a></li>
 <li>getCompoundInternal()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a2176b0d8be1b2ccebe25df0ff515b2fb">comModule::EthernetCommunication</a></li>
 <li>getCPULoad()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#acd800614c513a9cbcb0da53bee8e2302">reportSystem::ReportSystem</a></li>
-<li>getCurrentTime()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9">reportSystem::ReportSystem</a></li>
+<li>getCurrentTime()&#160;:&#160;<a class="el" href="class_log_manager.html#ac7751542057dfdd96c7c845dd01bdc3a">LogManager</a>, <a class="el" href="classreport_system_1_1_report_system.html#aa0927e4bffac62ace369ec74677667d9">reportSystem::ReportSystem</a>, <a class="el" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc">SerialMenu</a></li>
 <li>getEthernet()&#160;:&#160;<a class="el" href="classcom_module_1_1_com_module_internals.html#a8c3fac63917773f663af3dabeddd75ab">comModule::ComModuleInternals</a></li>
 <li>getExternDutyCycle()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#adba5295aac69fcc29dea338a51d21aad">flybackModule::Flyback</a></li>
 <li>getExternFrequency()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a1f990be68123c1a9e571e58c53952a4a">flybackModule::Flyback</a></li>
-<li>getExternPressure()&#160;:&#160;<a class="el" href="classvac_control_module_1_1vac_control.html#aa6cc7f2627564953b1a37307af9092a9">vacControlModule::vacControl</a></li>
+<li>getExternPressure()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#a8c57183ed00c34af0a697715eb31e6b5">vacControlModule::VacControl</a></li>
+<li>getExternScenario()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#aefeab43b959f7ef4370b118784594884">vacControlModule::VacControl</a></li>
 <li>getI2C()&#160;:&#160;<a class="el" href="classcom_module_1_1_com_module_internals.html#a831f3f98e411ac35044934af117f5637">comModule::ComModuleInternals</a></li>
-<li>getInstance()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf">timeModule::TimeModuleInternals</a></li>
+<li>getInstance()&#160;:&#160;<a class="el" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272">LogManager</a>, <a class="el" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf">timeModule::TimeModuleInternals</a></li>
 <li>getJsonString()&#160;:&#160;<a class="el" href="classjson_module_1_1_json_module_internals.html#a45ba7bb9da21aa2cdd05be2482b9347f">jsonModule::JsonModuleInternals</a></li>
 <li>getLastError()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#aec07e83fe5e94772cb044e6c2a5878e8">reportSystem::ReportSystem</a></li>
+<li>getLastErrorInfo()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#ae43f343b186531823af51db6394b280a">reportSystem::ReportSystem</a></li>
 <li>getMemoryStatus()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#ac3914ceb5a587a3d572132a76fb5de64">reportSystem::ReportSystem</a></li>
 <li>getParameter()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a8ea208b24911cfcc75a4a068788f06c0">comModule::EthernetCommunication</a></li>
 <li>getParsedCompound()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#afc704bfb5deaefae594ace55e7c72438">comModule::EthernetCommunication</a></li>
 <li>getRequestedEndpoint()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#ab20e63e3e37785530d60eed7c41cfeab">comModule::EthernetCommunication</a></li>
+<li>getScenario()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#a7dc479878186d0a30150e3ed70222366">vacControlModule::VacControl</a></li>
+<li>getScenarioFromPotValue()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#adf78d9e523a3ce86293afd3bc2896d66">vacControlModule::VacControl</a></li>
 <li>getSendDataFlag()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a425bbda1daf74f15c3b7dbfa0909bac1">comModule::EthernetCommunication</a></li>
 <li>getSerial()&#160;:&#160;<a class="el" href="classcom_module_1_1_com_module_internals.html#a3094abcde04e39fa9ea55aa56a52874e">comModule::ComModuleInternals</a></li>
 <li>getSpecificEndpoint()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a7caf61a6260b6b20a310cf995b37a94d">comModule::EthernetCommunication</a></li>
 <li>getSPI()&#160;:&#160;<a class="el" href="classcom_module_1_1_com_module_internals.html#a07a5586ad2e4c46ebbfb6728e6ff52e7">comModule::ComModuleInternals</a></li>
 <li>getStackDump()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#ac47a217bcaf65859e60c1bee6c338556">reportSystem::ReportSystem</a></li>
-<li>getSwitchState()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a92f5e16266c58e326fb28795e10c6499">flybackModule::Flyback</a>, <a class="el" href="classvac_control_module_1_1vac_control.html#a5205bafdde9f61ce442c8594f9d0b4fd">vacControlModule::vacControl</a></li>
+<li>getSwitchState()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a92f5e16266c58e326fb28795e10c6499">flybackModule::Flyback</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a75608113cf060b0b5c3ce00f8a1aca83">vacControlModule::VacControl</a></li>
 <li>getSystemTime()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab">timeModule::TimeModuleInternals</a></li>
 <li>getTimerState()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#ae50adfa0f2b76c0ba225369152821d18">flybackModule::Flyback</a></li>
 </ul>
@@ -167,10 +173,12 @@ $(function() {
 <li>i2cRead()&#160;:&#160;<a class="el" href="classcom_module_1_1_i2_c_communication.html#ad60819a150985131af81631a43b90e99">comModule::I2CCommunication</a></li>
 <li>i2cWrite()&#160;:&#160;<a class="el" href="classcom_module_1_1_i2_c_communication.html#a2a098877516193a07e796915c98e19f4">comModule::I2CCommunication</a></li>
 <li>incrementTime()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b">timeModule::TimeModuleInternals</a></li>
-<li>initialize()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a94ed02d392d9f6f01c6c672acd2deb45">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a5bcaf5eed99551cdf73d0332d719a695">PressureSensor</a>, <a class="el" href="class_temperature_sensor.html#ab9adecbafd9ebe645ddc4e0298a1ed07">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1vac_control.html#aa6e22e6a8d2c4f0502dd1ee6bd69620e">vacControlModule::vacControl</a></li>
+<li>initialize()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a94ed02d392d9f6f01c6c672acd2deb45">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a5bcaf5eed99551cdf73d0332d719a695">PressureSensor</a>, <a class="el" href="class_temperature_sensor.html#ab9adecbafd9ebe645ddc4e0298a1ed07">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a0297a8b42f8d44c4b2e30b4149517907">vacControlModule::VacControl</a></li>
+<li>initSDCard()&#160;:&#160;<a class="el" href="class_log_manager.html#ae94692128d06adc86d8c04e8b70e41ba">LogManager</a></li>
 <li>initStackGuard()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a556efb423beb07f507c05458d86b8ab4">reportSystem::ReportSystem</a></li>
-<li>isInitialized()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#ab5523a8bbac6520e6f757bf51af3cf2c">comModule::EthernetCommunication</a>, <a class="el" href="classcom_module_1_1_i2_c_communication.html#ad92a3962504d61f99e600bcd97aff408">comModule::I2CCommunication</a>, <a class="el" href="classcom_module_1_1_serial_communication.html#a0ba8f9b62ac055b9d64d8bcbd6a54f76">comModule::SerialCommunication</a>, <a class="el" href="classcom_module_1_1_s_p_i_communication.html#a1a15b73771f046f3e6aa5c04b0a5817b">comModule::SPICommunication</a>, <a class="el" href="classflyback_module_1_1_flyback.html#a3e04ac32a7922079753b3c167abd28a9">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a90251cd182efdc2ae4797dcdc6e51a34">PressureSensor</a>, <a class="el" href="class_temperature_sensor.html#ac7a29962d4b9a801ebb1d51278505a44">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1vac_control.html#a0f62037aeb5e7d13bf0eb0e7f799b96f">vacControlModule::vacControl</a></li>
+<li>isInitialized()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#ab5523a8bbac6520e6f757bf51af3cf2c">comModule::EthernetCommunication</a>, <a class="el" href="classcom_module_1_1_i2_c_communication.html#ad92a3962504d61f99e600bcd97aff408">comModule::I2CCommunication</a>, <a class="el" href="classcom_module_1_1_serial_communication.html#a0ba8f9b62ac055b9d64d8bcbd6a54f76">comModule::SerialCommunication</a>, <a class="el" href="classcom_module_1_1_s_p_i_communication.html#a1a15b73771f046f3e6aa5c04b0a5817b">comModule::SPICommunication</a>, <a class="el" href="classflyback_module_1_1_flyback.html#a3e04ac32a7922079753b3c167abd28a9">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a90251cd182efdc2ae4797dcdc6e51a34">PressureSensor</a>, <a class="el" href="class_temperature_sensor.html#ac7a29962d4b9a801ebb1d51278505a44">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#acc0cd84b3ce34a11768eef55b405e6ae">vacControlModule::VacControl</a></li>
 <li>IsNullPtr()&#160;:&#160;<a class="el" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9">PtrUtils</a></li>
+<li>isSDCardInitialized()&#160;:&#160;<a class="el" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea">LogManager</a></li>
 <li>IsValidPtr()&#160;:&#160;<a class="el" href="class_ptr_utils.html#a86854a0a94ce7833f5e2a3f573230d2f">PtrUtils</a></li>
 </ul>
 
@@ -187,7 +195,7 @@ $(function() {
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>mapJsonToDoubles()&#160;:&#160;<a class="el" href="classjson_module_1_1_json_module_internals.html#ac59dc705dd5108156a763e11ae9633fc">jsonModule::JsonModuleInternals</a></li>
-<li>measure()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#ad3df8aded7ca0c7a85340701a8dee743">flybackModule::Flyback</a>, <a class="el" href="classvac_control_module_1_1vac_control.html#ac404db77a823d4d5b0158489cd8b3ae0">vacControlModule::vacControl</a></li>
+<li>measure()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#ad3df8aded7ca0c7a85340701a8dee743">flybackModule::Flyback</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a257a35b34bd6f8e5085f634f12fa6064">vacControlModule::VacControl</a></li>
 </ul>
 
 
@@ -202,6 +210,7 @@ $(function() {
 <li>pascalToAtm()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#a883712ee61e016d65ef669be66e73f6e">calcModule::CalcModuleInternals</a></li>
 <li>pascalToPsi()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#af84103849533c8259fae24ce95e65695">calcModule::CalcModuleInternals</a></li>
 <li>printJsonDocMemory()&#160;:&#160;<a class="el" href="classjson_module_1_1_json_module_internals.html#a3453826931fdba4cbbcd5f31b637207f">jsonModule::JsonModuleInternals</a></li>
+<li>printToSerial()&#160;:&#160;<a class="el" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6">SerialMenu</a></li>
 <li>psiToPascal()&#160;:&#160;<a class="el" href="classcalc_module_1_1_calc_module_internals.html#ab1fa6b4a7f7e28cfc812d8c2af5e0941">calcModule::CalcModuleInternals</a></li>
 </ul>
 
@@ -215,11 +224,12 @@ $(function() {
 <li>receiveEthernetData()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#acd785405cbfc3d168c1441e809a7cb9a">comModule::EthernetCommunication</a></li>
 <li>receiveSerialData()&#160;:&#160;<a class="el" href="classcom_module_1_1_serial_communication.html#a1453d280f43560fc18f9f0ac1896753d">comModule::SerialCommunication</a></li>
 <li>release()&#160;:&#160;<a class="el" href="class_pointer_wrapper.html#a91b40486ea987433ac28437d36fc3160">PointerWrapper&lt; T &gt;</a>, <a class="el" href="class_scoped_pointer.html#a00a2b8759af3ecec9d0e04543ed12f38">ScopedPointer&lt; T &gt;</a></li>
+<li>renameFile()&#160;:&#160;<a class="el" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277">LogManager</a></li>
 <li>reportError()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#ab7af8593b35e8fc227dca314571f6bb4">reportSystem::ReportSystem</a></li>
 <li>reportStatus()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a50d1100b21aad9391a2bae7aed3ad5b6">reportSystem::ReportSystem</a></li>
 <li>reset()&#160;:&#160;<a class="el" href="class_pointer_wrapper.html#a34480ad9d88a01b5f4411f7c225892a0">PointerWrapper&lt; T &gt;</a>, <a class="el" href="class_scoped_pointer.html#ab0d351b6a9ba06bb017379a1dafe7c24">ScopedPointer&lt; T &gt;</a></li>
 <li>resetUsage()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a015ef444336756d6b06fb2c2120e1c5f">reportSystem::ReportSystem</a></li>
-<li>run()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a61248b00d6edb348459a5d4ca1ff3e26">flybackModule::Flyback</a>, <a class="el" href="class_serial_menu.html#a5cc4674c4f88cc0b3b0840e9e33bd66e">SerialMenu</a>, <a class="el" href="classvac_control_module_1_1vac_control.html#a55b02fa47f254719b3d050419dc2156a">vacControlModule::vacControl</a></li>
+<li>run()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a61248b00d6edb348459a5d4ca1ff3e26">flybackModule::Flyback</a>, <a class="el" href="class_serial_menu.html#a5cc4674c4f88cc0b3b0840e9e33bd66e">SerialMenu</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a95c1a6dcf04f029f7949942cd5a43973">vacControlModule::VacControl</a></li>
 </ul>
 
 
@@ -235,13 +245,17 @@ $(function() {
 <li>setCompoundInternal()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#afcd41d06ebd3a9fbd26378c8f17147e1">comModule::EthernetCommunication</a></li>
 <li>setExternDutyCycle()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#ad116adbdf2e5a2caeb002e2d7f797741">flybackModule::Flyback</a></li>
 <li>setExternFrequency()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a409ca45f04b138212a30c54275e7b607">flybackModule::Flyback</a></li>
-<li>setExternPressure()&#160;:&#160;<a class="el" href="classvac_control_module_1_1vac_control.html#a83f074cda2bda0ba196d119c24f64635">vacControlModule::vacControl</a></li>
+<li>setExternPressure()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#a7add417c501e7b08bc549b38f1fac13d">vacControlModule::VacControl</a></li>
+<li>setExternScenario()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#ab3bc974b1cc11b3554ae9ad18b29b2cb">vacControlModule::VacControl</a></li>
+<li>setLogFileName()&#160;:&#160;<a class="el" href="class_log_manager.html#a4abd9c2901423f2cf351daf5acdcc8a3">LogManager</a></li>
 <li>setParameter()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#add5de94592b2b79f068dc1e1d739de83">comModule::EthernetCommunication</a></li>
+<li>setPump()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#a9fca1948580bf33fa8179e9e0214ee44">vacControlModule::VacControl</a></li>
 <li>setSendDataFlag()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#acb3fa3e2fa2f8e14904d659ec8a608e5">comModule::EthernetCommunication</a></li>
 <li>setSystemTime()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#a278c475e00a83bfd095678949e4b77fb">timeModule::TimeModuleInternals</a></li>
 <li>setThreshold()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a5c4a7b9ba401b35bc0ba1e6196db7b13">reportSystem::ReportSystem</a></li>
 <li>setTimeFromHas()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#adf7431f74a86f4ce24d3bb21eca6b88b">timeModule::TimeModuleInternals</a></li>
 <li>setTimerState()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a5373fad01b79168d4786e6066dd74a90">flybackModule::Flyback</a></li>
+<li>setVacuumLed()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#aa026020d731fb58e83a81158bcb75f8b">vacControlModule::VacControl</a></li>
 <li>show()&#160;:&#160;<a class="el" href="class_serial_menu.html#ad77b0f0ee0de8ad633644ffc2370c4a3">SerialMenu</a></li>
 <li>spiRead()&#160;:&#160;<a class="el" href="classcom_module_1_1_s_p_i_communication.html#a13b3a3bd39b8d203b3af4761ea9a3693">comModule::SPICommunication</a></li>
 <li>spiWrite()&#160;:&#160;<a class="el" href="classcom_module_1_1_s_p_i_communication.html#a0beeda059a00ad3613e3f985656e6bcd">comModule::SPICommunication</a></li>
@@ -252,6 +266,11 @@ $(function() {
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
 <li>updateSoftwareClock()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342">timeModule::TimeModuleInternals</a></li>
+</ul>
+
+
+<h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
+<li>writeToLogFile()&#160;:&#160;<a class="el" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968">LogManager</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

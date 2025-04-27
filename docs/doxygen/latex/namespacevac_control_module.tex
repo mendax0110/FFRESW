@@ -1,0 +1,49 @@
+\doxysection{vac\+Control\+Module Namespace Reference}
+\hypertarget{namespacevac_control_module}{}\label{namespacevac_control_module}\index{vacControlModule@{vacControlModule}}
+
+
+Namespace for the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} module.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}
+\item 
+class \mbox{\hyperlink{classvac_control_module_1_1_vac_control}{Vac\+Control}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} class to manage the vacuum control system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevac_control_module_ad7894bede90633f9e0707d42a4bbf244}\label{namespacevac_control_module_ad7894bede90633f9e0707d42a4bbf244} 
+typedef struct \mbox{\hyperlink{structvac_control_module_1_1_pressure}{vac\+Control\+Module\+::\+Pressure}} {\bfseries meas}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}\label{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53} 
+enum class \mbox{\hyperlink{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}{Switch\+States}} \+: int \{ \newline
+{\bfseries Main\+\_\+\+Switch\+\_\+\+OFF}
+, {\bfseries Main\+\_\+\+Switch\+\_\+\+MANUAL}
+, {\bfseries Main\+\_\+\+Switch\+\_\+\+REMOTE}
+, {\bfseries Main\+\_\+switch\+\_\+\+INVALID}
+, \newline
+{\bfseries PUMP\+\_\+\+ON}
+, {\bfseries PUMP\+\_\+\+OFF}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum to represent the states of the main switch and pump. \end{DoxyCompactList}\item 
+\Hypertarget{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}\label{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7} 
+enum \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}} \{ \newline
+{\bfseries Scenario\+\_\+1} = 0
+, {\bfseries Scenario\+\_\+2} = 1
+, {\bfseries Scenario\+\_\+3} = 2
+, {\bfseries Scenario\+\_\+4} = 3
+, \newline
+{\bfseries Scenario\+\_\+5} = 4
+, {\bfseries not\+\_\+defined} = -\/1
+ \}
+\begin{DoxyCompactList}\small\item\em Enum to represent the different operating scenarios of the Vac\+Control system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Namespace for the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} module. 
