@@ -87,6 +87,11 @@
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/FreeRTOS</location>
 		</link>
 		<link>
+			<name>libraries/SD</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/SD</location>
+		</link>
+		<link>
 			<name>libraries/SPI</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/SPI</locationURI>
@@ -130,6 +135,11 @@
 			<name>libraries/jsonModule</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/jsonModule</location>
+		</link>
+		<link>
+			<name>libraries/logManager</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/logManager</location>
 		</link>
 		<link>
 			<name>libraries/pgmStrToRAM</name>

@@ -2,43 +2,46 @@
 #include <SPI.h>
 #include <Arduino.h>
 #include <VacControl.h>
+#include <serialMenu.h>
 
 using namespace vacControlModule;
 
-// COnstructor for the
-vacControl::vacControl()
+int VacControl::lastState = -1;
+int VacControl::lastPumpState = -1;
+
+VacControl::VacControl()
 {
 	_vacControlInitialized = false;
 }
 
-vacControl::~vacControl()
+VacControl::~VacControl()
 {
 
 }
 
-void vacControl::initialize()
+void VacControl::initialize()
 {
 	//Setup pinMode for Main_Switch
 	pinMode(Main_Switch_OFF, INPUT);		//Kraus-Naimer-Schalter OFF
 	pinMode(Main_Switch_MANUAL, INPUT);		//Kraus-Naimer-Schalter MANUAL
 	pinMode(Main_Switch_REMOTE, INPUT);		//Kraus-Naimer-Schalter REMOTE
-	pinMode(Switch_Pump_ON, INPUT);				//TASTER PUMP ON
-	pinMode(Switch_Pump_OFF, INPUT);				//TASTER PUMP OFF
+
+	//Setup pinMode for Pump
+	pinMode(Switch_Pump_ON, INPUT);			//TASTER PUMP ON
 	pinMode(targetPressure, INPUT);			//POTI FOR Pressure Regulation
+	pinMode(Pump_Relay, OUTPUT);			//Pumpen Relais
+	pinMode(Pump_Status_LED, OUTPUT);		//Status LED für Pumpe
+	pinMode(targetVacuumLED, OUTPUT);		//Status LED für Vakuum
+
+	_vacControlInitialized = true;
 }
 
-bool vacControl::isInitialized() const
+bool VacControl::isInitialized() const
 {
 	return _vacControlInitialized;
 }
 
-Measurement vacControl::measure()
-{
-
-	return meas;
-}
-
-SwitchStates vacControl::getSwitchState()
+SwitchStates VacControl::getSwitchState()
 {
 	if (digitalRead(Main_Switch_OFF) == HIGH)
 	{
@@ -47,6 +50,15 @@ SwitchStates vacControl::getSwitchState()
 	else if (digitalRead(Main_Switch_MANUAL) == HIGH)
 	{
 		return SwitchStates::Main_Switch_MANUAL;
+
+		if(digitalRead(Switch_Pump_ON) == HIGH)
+		{
+			return SwitchStates::PUMP_ON;
+		}
+		else if(digitalRead(Switch_Pump_ON) == LOW)
+		{
+			return SwitchStates::PUMP_OFF;
+		}
 	}
 	else if (digitalRead(Main_Switch_REMOTE) == HIGH)
 	{
@@ -58,48 +70,204 @@ SwitchStates vacControl::getSwitchState()
 	}
 }
 
-void vacControl::run()
+Pressure VacControl::measure()
 {
-	if(digitalRead(Main_Switch_OFF) == HIGH)
+	if(digitalRead(Main_Switch_MANUAL) == HIGH || digitalRead(Main_Switch_REMOTE) == HIGH)
 	{
-		//Error-Meldung
-		reportError("[INFO] System is OFF");
+		meas.pressure = getExternPressure();  // Wert auslesen und speichern
 	}
-	else if(digitalRead(Main_Switch_MANUAL) == HIGH)
-	{
-		//Error-Meldung
-		reportError("[INFO] System is ON - Manual Mode");
+	return meas;
+}
 
+Scenarios VacControl::getScenario()
+{
+	if (digitalRead(Main_Switch_MANUAL) == HIGH)
+	{
 		if(digitalRead(Switch_Pump_ON) == HIGH)
 		{
-			reportError("[INFO] PUMP_ON");
+			int potValue = analogRead(targetPressure);
 
+			if(potValue >= 0 && potValue <= 250)
+			{
+				//Hier wird Szenario 1 dem Controller gesendet
+				return Scenarios::Scenario_1;
+			}
+			else if(potValue >= 251 && potValue <= 500)
+			{
+				//Hier wird Szenario 2 dem Controller gesendet
+				return Scenarios::Scenario_2;
+			}
+			else if(potValue >= 501 && potValue <= 750)
+			{
+				//Hier wird Szenario 3 dem Controller gesendet
+				return Scenarios::Scenario_3;
+			}
+			else if(potValue >= 751 && potValue <= 1023)
+			{
+				//Hier wird Szenario 4 dem Controller gesendet
+				return Scenarios::Scenario_4;
+			}
 		}
-		else if(digitalRead(Switch_Pump_OFF) == HIGH)
+		else if(digitalRead(Switch_Pump_ON) == LOW)
 		{
-			reportError("[INFO] PUMP_OFF");
+			return Scenarios::Scenario_5;
 		}
-
 	}
-	else if(digitalRead(Main_Switch_REMOTE) == HIGH)
+
+	return Scenarios::not_defined;
+}
+
+void VacControl::setVacuumLed(float pressure, float targetPressure)
+{
+	if (pressure <= targetPressure)
 	{
-		//Error-Meldung
-		reportError("[INFO] System is ON - Remote Mode");
+		digitalWrite(targetVacuumLED, HIGH);
 	}
 	else
 	{
-		//Error-Meldung
-		reportError("[ERROR] Invalid Switch Position");
+		digitalWrite(targetVacuumLED, LOW);
 	}
 }
 
-void vacControl::reportError(const char* errorMessage)
+int VacControl::getScenarioFromPotValue(int potValue)
 {
-	Serial.println(errorMessage);
+	if (potValue >= 0 && potValue <= 250)
+		return static_cast<int>(Scenarios::Scenario_1);
+	else if (potValue >= 251 && potValue <= 500)
+		return static_cast<int>(Scenarios::Scenario_2);
+	else if (potValue >= 501 && potValue <= 750)
+		return static_cast<int>(Scenarios::Scenario_3);
+	else if (potValue >= 751 && potValue <= 1023)
+		return static_cast<int>(Scenarios::Scenario_4);
+
+	return -1; // Ungültiges Szenario
 }
 
+void VacControl::setPump(bool flag)
+{
+	if (flag)
+	{
+		digitalWrite(Pump_Relay, HIGH);
+		digitalWrite(Pump_Status_LED, HIGH);
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Pump is running."));
+	}
+	else
+	{
+		digitalWrite(Pump_Relay, LOW);
+		digitalWrite(Pump_Status_LED, LOW);
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO,("Pump is OFF."));
+	}
+}
 
+void VacControl::run()
+{
+    int offState = digitalRead(Main_Switch_OFF);
+    int manualState = digitalRead(Main_Switch_MANUAL);
+    int remoteState = digitalRead(Main_Switch_REMOTE);
+    int pumpOnState = digitalRead(Switch_Pump_ON);
 
+    if (offState == HIGH)
+    {
+        if (lastState != 0)
+        {
+            SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is OFF"));
+            lastState = 0;
+        }
+        setPump(false);
+        digitalWrite(targetVacuumLED, LOW);
+        return;
+    }
 
+    Pressure currentMeasurement = measure();
+    int potValue = analogRead(targetPressure);
 
+    if (manualState == HIGH)
+    {
+        if (lastState != 1)
+        {
+            SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Manual Mode"));
+            lastState = 1;
+        }
 
+        if (pumpOnState == HIGH && lastPumpState != 1)
+        {
+            SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Pump ON."));
+            lastPumpState = 1;
+
+            currentScenario = getScenarioFromPotValue(potValue);
+
+            int targetPressureValue = 0;
+            bool pumpState = true;
+
+            switch(currentScenario)
+            {
+                case static_cast<int>(Scenarios::Scenario_1): targetPressureValue = TARGET_PRESSURE_1; pumpState = false; break;
+                case static_cast<int>(Scenarios::Scenario_2): targetPressureValue = TARGET_PRESSURE_2; break;
+                case static_cast<int>(Scenarios::Scenario_3): targetPressureValue = TARGET_PRESSURE_3; break;
+                case static_cast<int>(Scenarios::Scenario_4): targetPressureValue = TARGET_PRESSURE_4; break;
+                default:
+                	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid Scenario."));
+                    setPump(false);
+                    return;
+            }
+
+            setVacuumLed(currentMeasurement.pressure, targetPressureValue);
+            setPump(pumpState);
+        }
+        else if (pumpOnState == LOW && lastPumpState != 2)
+        {
+            lastPumpState = 2;
+            currentScenario = static_cast<int>(Scenarios::Scenario_5);
+            setPump(false);
+            digitalWrite(targetVacuumLED, LOW);
+        }
+    }
+    else if (remoteState == HIGH)
+    {
+        if (lastState != 2)
+        {
+            SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Remote Mode"));
+            lastState = 2;
+
+            int scenario = getExternScenario();
+            if (scenario < static_cast<int>(Scenarios::Scenario_1) || scenario > static_cast<int>(Scenarios::Scenario_5))
+            {
+                SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid Scenario"));
+            }
+
+            // TODO Addd the additional logic here!!!!
+        }
+    }
+    else
+    {
+    	if (lastState != 3)
+    	{
+    		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid Switch Position"));
+    		lastState = 3;
+    	}
+    }
+}
+
+void VacControl::setExternScenario(int scenario)
+{
+	if (scenario < 0 || scenario > 5)
+	{
+		return;
+	}
+	currentScenario = scenario;
+}
+
+int VacControl::getExternScenario()
+{
+	return currentScenario;
+}
+
+void VacControl::setExternPressure(float pressure)
+{
+	meas.pressure = pressure;
+}
+
+float VacControl::getExternPressure()
+{
+	return meas.pressure;
+}

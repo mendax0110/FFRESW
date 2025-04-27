@@ -1,12 +1,11 @@
 /**
  * @file reportSystem.cpp
  * @author Adrian Goessl
- * @brief System health and error reporting module.
- * @version 0.1
+ * @brief Unified system health and error reporting module
+ * @version 0.3
  * @date 2024-09-28
  * 
  * @copyright Copyright (c) 2024
- * 
  */
 
 #include "reportSystem.h"
@@ -24,41 +23,36 @@ volatile uint16_t stackCheck __attribute__((section(".noinit")));
 
 ReportSystem::ReportSystem() 
     : tempThreshold(100.0), pressureThreshold(150.0), lastHealthCheck(0),
+      busyTime(0), idleTime(0), lastTimestamp(micros()),
       _com(new comModule::ComModuleInternals()),
       _sens(new sensorModule::SensorModuleInternals()),
       _time(TimeModuleInternals::getInstance())
 {
-}
 
+}
 
 ReportSystem::~ReportSystem()
 {
-	tryDeletePtr(_sens)
-	tryDeletePtr(_com)
-	tryDeletePtr(_time)
+    tryDeletePtr(_sens);
+    tryDeletePtr(_com);
+    tryDeletePtr(_time);
 }
 
 void ReportSystem::reportError(const char* errorMessage)
 {
-	String errStr;
-	errStr += "[ERROR] ";
-	errStr += getCurrentTime();
-	errStr += ": ";
-	errStr += errorMessage;
-	SerialMenu::printToSerial(errStr);
+	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, errorMessage);
 }
 
 bool ReportSystem::checkSystemHealth(size_t memoryThreshold, bool checkEth,
-									bool checkSpi, bool checkI2c,
-									bool checkTemp, bool checkPress)
+                                   bool checkSpi, bool checkI2c,
+                                   bool checkTemp, bool checkPress)
 {
     if (millis() - lastHealthCheck >= healthCheckInterval)
     {
         lastHealthCheck = millis();
         bool healthCheckPassed = true;
-        String errorMsg = "[" + getCurrentTime() + "] System health check failed: ";
-
-        String errors = "";
+        String errorMsg = "System health check failed: ";
+        String errors;
 
         if (!checkSensors(checkTemp, checkPress))
         {
@@ -78,6 +72,12 @@ bool ReportSystem::checkSystemHealth(size_t memoryThreshold, bool checkEth,
             errors += "[Memory Low] ";
         }
 
+        if (!checkRamLevel(7200, 6400))
+        {
+            healthCheckPassed = false;
+            errors += "[RAM Size Critical] ";
+        }
+
         if (detectStackOverflow())
         {
             healthCheckPassed = false;
@@ -86,10 +86,13 @@ bool ReportSystem::checkSystemHealth(size_t memoryThreshold, bool checkEth,
 
         if (!healthCheckPassed)
         {
-        	reportError((errorMsg + errors).c_str());
+        	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, errorMsg + errors);
+        }
+        else
+        {
+        	SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, "System health check passed");
         }
     }
-
     return true;
 }
 
@@ -97,16 +100,26 @@ String ReportSystem::reportStatus(bool active)
 {
     if (!active)
     {
-        return "[INFO] Status Report is deactivated!";
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, "Status Report is deactivated!");
+        return "";
     }
 
-    String currentTime = "[" + getCurrentTime() + "] ";
-    String statusReport = currentTime + "[STATUS] System is operating normally.\n";
+    String statusReport = "System is operating normally.\n";
+    const float warningMargin = 0.9f;
 
-    statusReport += "Current Temperature Threshold: " + String(tempThreshold) + "\n";
-    statusReport += "Current Pressure Threshold: " + String(pressureThreshold) + "\n";
-    statusReport += getMemoryStatus();
+    auto currentTemp = _sens->readSensor(sensorModule::SensorType::OBJECTTEMPERATURE);
+    if (currentTemp >= tempThreshold * warningMargin)
+    {
+        statusReport += "Current Temperature: " + String(currentTemp) +
+                       " / Threshold: " + String(tempThreshold) + "\n";
+    }
 
+    if (!checkMemory(2048))
+    {
+        statusReport += getMemoryStatus();
+    }
+
+    SerialMenu::printToSerial(SerialMenu::OutputLevel::STATUS, statusReport);
     return statusReport;
 }
 
@@ -114,20 +127,25 @@ void ReportSystem::setThreshold(float tempThreshold, float pressureThreshold)
 {
     this->tempThreshold = tempThreshold;
     this->pressureThreshold = pressureThreshold;
+    SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, "Thresholds updated - Temp: " +
+               String(tempThreshold) + ", Pressure: " + String(pressureThreshold));
 }
 
 bool ReportSystem::checkThresholds(float currentTemp, float currentPressure)
 {
     bool result = true;
+
     if (currentTemp > tempThreshold)
     {
-    	reportError(("Temperature threshold exceeded! Current Temperature: " + String(currentTemp)).c_str());
+        reportError(("Temperature threshold exceeded! Current: " +
+                   String(currentTemp) + " Threshold: " + String(tempThreshold)).c_str());
         result = false;
     }
 
     if (currentPressure > pressureThreshold)
     {
-    	reportError(("Pressure threshold exceeded! Current Pressure:" + String(currentPressure)).c_str());
+        reportError(("Pressure threshold exceeded! Current: " +
+                   String(currentPressure) + " Threshold: " + String(pressureThreshold)).c_str());
         result = false;
     }
 
@@ -136,35 +154,37 @@ bool ReportSystem::checkThresholds(float currentTemp, float currentPressure)
 
 String ReportSystem::getCurrentTime()
 {
-	if (_time == nullptr)
-		return "Error _time is nullptr";
+    if (_time == nullptr)
+    {
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "Time module not initialized, using fallback time");
+        return "0000-00-00T00:00:00Z";
+    }
     return TimeModuleInternals::formatTimeString(_time->getSystemTime());
 }
 
 bool ReportSystem::checkSensors(bool checkTemp, bool checkPress)
 {
-    // TODO: use sensor module to check sensor status
-	bool tempStat = checkTemp ? _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE) : true;
-	bool pressStat = checkPress ? _sens->checkSensorStatus(sensorModule::SensorType::PRESSURE) : true;
+    bool tempStat = checkTemp ? _sens->checkSensorStatus(sensorModule::SensorType::TEMPERATURE) : true;
+    bool pressStat = checkPress ? _sens->checkSensorStatus(sensorModule::SensorType::PRESSURE) : true;
 
-	if (tempStat && pressStat)
-	{
-		return true;
-	}
+    if (tempStat && pressStat)
+    {
+        return true;
+    }
 
-	String errorMsg = "Sensors failed because: ";
-	if (!tempStat) errorMsg += "[Check Temp Sensor failed] ";
-	if (!pressStat) errorMsg += "[Check Press Sensor failed] ";
+    String errorMsg = "Sensor failure: ";
+    if (!tempStat) errorMsg += "[Temp Sensor] ";
+    if (!pressStat) errorMsg += "[Press Sensor] ";
 
-	reportError(errorMsg.c_str());
-	return false;
+    reportError(errorMsg.c_str());
+    return false;
 }
 
 bool ReportSystem::checkCommunication(bool checkEth, bool checkSpi, bool checkI2c)
 {
     if (!_com)
     {
-        reportError("[ERROR] Communication module (_com) is not initialized.");
+        reportError("Communication module not initialized");
         return false;
     }
 
@@ -174,14 +194,14 @@ bool ReportSystem::checkCommunication(bool checkEth, bool checkSpi, bool checkI2
 
     if (ethStat && spiStat && i2cStat)
     {
-        Serial.println("[DEBUG] All communication modules are initialized.");
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("All communication modules initialized"));
         return true;
     }
 
-    String errorMsg = "Communication failed because: ";
-    if (checkEth && !ethStat) errorMsg += "[Ethernet Not Initialized] ";
-    if (checkSpi && !spiStat) errorMsg += "[SPI Not Initialized] ";
-    if (checkI2c && !i2cStat) errorMsg += "[I2C Not Initialized] ";
+    String errorMsg = "Communication failure: ";
+    if (checkEth && !ethStat) errorMsg += "[Ethernet] ";
+    if (checkSpi && !spiStat) errorMsg += "[SPI] ";
+    if (checkI2c && !i2cStat) errorMsg += "[I2C] ";
 
     reportError(errorMsg.c_str());
     return false;
@@ -189,26 +209,54 @@ bool ReportSystem::checkCommunication(bool checkEth, bool checkSpi, bool checkI2
 
 bool ReportSystem::checkMemory(unsigned int threshold)
 {
-    if (getFreeMemSize() < threshold)
+    unsigned int freeMem = getFreeMemSize();
+    if (freeMem < threshold)
     {
-    	reportError("Low memory warning! Free memory: " + getFreeMemSize());
+        reportError(("Low memory! Free: " + String(freeMem) +
+                    " bytes (Threshold: " + String(threshold) + ")").c_str());
         return false;
     }
-    
+    return true;
+}
+
+bool ReportSystem::checkRamLevel(unsigned int warningThreshold, unsigned int criticalThreshold)
+{
+    unsigned int ramSize = getRamSize();
+
+    if (ramSize < criticalThreshold)
+    {
+        reportError(("CRITICAL RAM level! Available: " + String(ramSize) +
+                   " bytes (Critical: " + String(criticalThreshold) + ")").c_str());
+        return false;
+    }
+
+    if (ramSize < warningThreshold)
+    {
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::WARNING, "Low RAM warning! Available: " +
+                   String(ramSize) + " bytes (Warning: " + String(warningThreshold) + ")");
+    }
+
     return true;
 }
 
 String ReportSystem::getMemoryStatus()
 {
     String memoryReport;
+    memoryReport.reserve(256); // Pre-allocate for typical memory report
 
-    memoryReport += "SRAM size: " + String(getRamSize()) + " Bytes\n";
-    memoryReport += ".data size: " + String(getDataSectionSize()) + " Bytes\n";
-    memoryReport += ".bss size: " + String(getBssSectionSize()) + " Bytes\n";
-    memoryReport += "Stack size: " + String(getStackSize()) + " Bytes\n";
-    memoryReport += "Heap size: " + String(getHeapSize()) + " Bytes\n";
-    memoryReport += "Free mem: " + String(getFreeMemSize()) + " Bytes\n";
+    memoryReport += "SRAM: " + String(getRamSize()) + "B\n";
+    memoryReport += ".data: " + String(getDataSectionSize()) + "B\n";
+    memoryReport += ".bss: " + String(getBssSectionSize()) + "B\n";
 
+    unsigned stackSize = getStackSize();
+    memoryReport += (stackSize < 1024) ? "[CRITICAL] " : "";
+    memoryReport += "Stack: " + String(stackSize) + "B\n";
+
+    unsigned heapSize = getHeapSize();
+    memoryReport += (heapSize < 1024) ? "[CRITICAL] " : "";
+    memoryReport += "Heap: " + String(heapSize) + "B\n";
+
+    memoryReport += "Free: " + String(getFreeMemSize()) + "B";
     return memoryReport;
 }
 
@@ -268,22 +316,36 @@ void ReportSystem::resetUsage()
 
 void ReportSystem::initStackGuard()
 {
-	stackCheck = STACK_GUARD;
+    stackCheck = STACK_GUARD;
 }
 
 bool ReportSystem::detectStackOverflow()
 {
-	return stackCheck != STACK_GUARD;
+    return stackCheck != STACK_GUARD;
 }
 
 void ReportSystem::saveLastError(const char* error)
 {
-	EEPROM.put(EEPROM_ERROR_ADDR, error);
+    char buffer[50] = {0};
+    strncpy(buffer, error, sizeof(buffer) - 1);
+    EEPROM.put(EEPROM_ERROR_ADDR, buffer);
+    SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, "Error saved to EEPROM: " + String(error));
 }
 
 String ReportSystem::getLastError()
 {
-	char error[50];
-	EEPROM.get(EEPROM_ERROR_ADDR, error);
-	return String(error);
+    char error[50];
+    EEPROM.get(EEPROM_ERROR_ADDR, error);
+    return String(error);
+}
+
+bool ReportSystem::getLastErrorInfo()
+{
+    String lastError = getLastError();
+    if (lastError.length() > 0)
+    {
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, "Retrieved last error: " + lastError);
+        return true;
+    }
+    return false;
 }

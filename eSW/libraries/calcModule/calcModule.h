@@ -171,9 +171,9 @@ namespace calcModule
          *	1 -> Compound 2
          *	1 -> Compound 3
          *
-         * @return String -> The extracted float.
+         * @return float -> The extracted float.
          */
-        static String extractFloat(String response, int id);
+        static float extractFloat(String response, int id);
 
     private:
 

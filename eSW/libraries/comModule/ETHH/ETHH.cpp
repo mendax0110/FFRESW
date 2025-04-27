@@ -5,6 +5,7 @@
 #include "ETHH.h"
 #include <Ethernet.h>
 #include <Arduino.h>
+//#include <serialMenu.h>
 
 using namespace comModule;
 
@@ -20,36 +21,49 @@ EthernetCommunication::~EthernetCommunication()
 
 void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
 {
-    Serial.println("[DEBUG] Starting Ethernet initialization...");
+    Serial.println(F("[INFO] Starting Ethernet initialization..."));
+    //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Starting Ethernet initialization..."));
 
     Ethernet.begin(macAddress, ip);
 
-    Serial.print("[DEBUG] Hardware status: ");
+    Serial.print(F("[INFO] Hardware status: "));
     Serial.println(Ethernet.hardwareStatus());
 
-    Serial.print("[DEBUG] Link status: ");
+    //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Hardware status: "), false);
+    //Serial.println(Ethernet.hardwareStatus());
+
+    Serial.print(F("[INFO] Link status: "));
     Serial.println(Ethernet.linkStatus());
+
+    //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Link status: "), false);
+    //Serial.println(Ethernet.linkStatus());
 
     if (Ethernet.hardwareStatus() == EthernetNoHardware)
     {
-        Serial.println("[ERROR] Ethernet shield was not found.");
+        Serial.println(F("[ERROR] Ethernet shield was not found."));
+        //SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Ethernet shield was not found."));
         ethernetInitialized = false;
         return;
     }
 
     if (Ethernet.linkStatus() == LinkOFF)
     {
-        Serial.println("[ERROR] Ethernet cable is not connected.");
+    	Serial.println(F("[ERROR] Ethernet cable is not connected."));
+        //SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Ethernet cable is not connected."));
         ethernetInitialized = false;
         return;
     }
 
     server.begin();
     ethernetInitialized = true;
-    Serial.print("Client is at: ");
+    Serial.print(F("[INFO] Client is at: "));
     Serial.println(Ethernet.localIP());
 
-    Serial.println("[DEBUG] Ethernet Initialized successfully.");
+    //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Client is at: "), false);
+    //Serial.println(Ethernet.localIP());
+
+    Serial.println(F("[INFO] Ethernet Initialized successfully."));
+    //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Ethernet Initialized successfully."));
 }
 
 bool EthernetCommunication::isInitialized() const
@@ -238,7 +252,7 @@ void EthernetCommunication::sendCommand(String command)
 	if (vatClient.connect("192.168.1.10", 503)
 		&& command.length() > 0)
 	{
-		Serial.println("Current command we send" + command);
+		//SerialMenu::printToSerial("Current command we send: " + command);
 		vatClient.println(command);
 		vatClient.stop();
 	}
@@ -482,19 +496,20 @@ Vector<float> EthernetCommunication::parseCompoundResponse(String response)
 {
     if (response.length() == 0)
     {
-        Serial.println("[ERROR] No valid response received.");
+    	Serial.println("[ERROR] No valid response received.");
         return Vector<float>();
     }
 
     Vector<float> parsedResponse = parseResponse(response);
 
-    Serial.print("Parsed Values: ");
+    Serial.println("Parsed Values: ");
+
     for (size_t i = 0; i < parsedResponse.size(); i++)
     {
         Serial.print(parsedResponse[i], 6);
-        Serial.print(" ");
+        Serial.println(" ");
     }
-    Serial.println();
+    Serial.print(" ");
 
     return parsedResponse;
 }

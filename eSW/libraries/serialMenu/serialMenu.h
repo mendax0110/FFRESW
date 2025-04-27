@@ -3,9 +3,10 @@
 
 #include <Arduino.h>
 #include <frt.h>
+#include <timeModule.h>
 
 
-/// @brief Serial menu structure.
+/// @brief Serial menu structure \struct MenuItem
 struct MenuItem
 {
     const char* label;
@@ -17,7 +18,21 @@ struct MenuItem
 class SerialMenu
 {
 public:
+
+	/// @brief Enum Class for the differnet Outputlevels \class Outputlevel
+	enum class OutputLevel
+	{
+	    DEBUG,
+	    INFO,
+	    WARNING,
+	    ERROR,
+	    CRITICAL,
+	    STATUS,
+	    PLAIN
+	};
+
 	SerialMenu();
+	~SerialMenu();
 
     /**
      * @brief Function to load the menu items.
@@ -39,14 +54,49 @@ public:
      */
     void run();
 
-    static void printToSerial(const __FlashStringHelper* message, bool newLine = true);
+    /**
+     * @brief Function to print a message to the serial port, using mutexes, output level and new line options.
+     *
+     * @param level -> The output level of the message.
+     * @param message -> The message to print, a String object.
+     * @param newLine -> Whether to add a new line at the end of the message.
+     */
+    static void printToSerial(OutputLevel level, const String& message, bool newLine = true, bool logMessage = false);
 
-    static void printToSerial(const String& message, bool newLine = true);
+    /**
+     * @brief Function to print a message to the serial port, using mutexes, output level and new line options.
+     *
+     * @param level -> The output level of the message.
+     * @param message -> The message to print, a __FlashStringHelper pointer.
+     * @param newLine -> Whether to add a new line at the end of the message.
+     */
+    static void printToSerial(OutputLevel level, const __FlashStringHelper* message, bool newLine = true, bool logMessage = false);
+
+    /**
+     * @brief Funtion to print a message to the serial port, using mutexes, output level and new line options.
+     *
+     * @param message -> The message to print, a String object.
+     * @param newLine -> Whether to add a new line at the end of the message.
+     */
+    static void printToSerial(const String& message, bool newLine = true, bool logMessage = false);
+
+    /**
+     * @brief Function to print a message to the serial port, using mutexes, output level and new line options.
+     *
+     * @param message -> The message to print, a __FlashStringHelper pointer.
+     * @param newLine -> Whether to add a new line at the end of the message.
+     */
+    static void printToSerial(const __FlashStringHelper* message, bool newLine = true, bool logMessage = false);
+
+    /**
+     * @brief Getter for the current time
+     * @return The current time as a String
+     */
+    static String getCurrentTime();
 
 private:
     MenuItem* currentMenu;
     size_t menuSize;
-
 };
 
 #endif // SERIAL_MENU_H

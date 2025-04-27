@@ -7,6 +7,7 @@
  * @copyright Copyright (c) 2024
  */
 #include <temperature.h>
+#include <serialMenu.h>
 
 TemperatureSensor::TemperatureSensor()
     : _temperatureSensorInitialized(false)
@@ -21,7 +22,7 @@ TemperatureSensor::~TemperatureSensor()
 void TemperatureSensor::initialize()
 {
     _temperatureSensorInitialized = true;
-    Serial.println(F("Temperature sensor initialized."));
+    SerialMenu::printToSerial(F("[INFO] Temperature sensor initialized."));
 }
 
 float TemperatureSensor::readTemperature()
@@ -57,7 +58,7 @@ float TemperatureSensor::readMLX90614(int choice)
 	// init the sensor
     if (!mlx.begin())
 	{
-	    reportError(" [ERROR] Could not detect MLX90614!");
+	    reportError("Could not detect MLX90614!");
     }
     else
     {
@@ -99,6 +100,5 @@ float TemperatureSensor::readDigitalSensor(int pin)
 
 void TemperatureSensor::reportError(const char* errorMessage)
 {
-    Serial.print(F("[ERROR] "));
-    Serial.println(errorMessage);
+    SerialMenu::printToSerial("[ERROR] " + String(errorMessage));
 }

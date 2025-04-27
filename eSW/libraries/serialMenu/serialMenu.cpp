@@ -1,8 +1,17 @@
 #include "serialMenu.h"
+#include <ptrUtils.h>
+#include <logManager.h>
+
+using namespace timeModule;
 
 SerialMenu::SerialMenu() : currentMenu(nullptr), menuSize(0)
 {
 
+}
+
+SerialMenu::~SerialMenu()
+{
+	tryDeletePtr(currentMenu);
 }
 
 void SerialMenu::load(MenuItem* items, size_t size)
@@ -40,36 +49,88 @@ void SerialMenu::run()
     }
 }
 
-// helper method to simplify printing
-void SerialMenu::printToSerial(const __FlashStringHelper* message, bool newLine = true)
+void SerialMenu::printToSerial(OutputLevel level, const String& message, bool newLine, bool logMessage)
 {
-	frt::Mutex serialMutex;
-
+    frt::Mutex serialMutex;
     serialMutex.lock();
-    if (newLine)
+
+    String output;
+    if (level != OutputLevel::PLAIN)
     {
-        Serial.println(message);
+        output.reserve(message.length() + 32);
+        output += '[';
+        output += getCurrentTime();
+        output += "] ";
+
+        switch(level)
+        {
+            case OutputLevel::DEBUG:    output += "[DEBUG] "; break;
+            case OutputLevel::INFO:     output += "[INFO] "; break;
+            case OutputLevel::WARNING:  output += "[WARNING] "; break;
+            case OutputLevel::ERROR:    output += "[ERROR] "; break;
+            case OutputLevel::CRITICAL: output += "[CRITICAL] "; break;
+            case OutputLevel::STATUS:   output += "[STATUS] "; break;
+            case OutputLevel::PLAIN:    break; // No prefix
+        }
+        output += message;
     }
     else
     {
-        Serial.print(message);
+        output = message;
     }
+
+    if (newLine)
+    {
+        Serial.println(output);
+    }
+    else
+    {
+        Serial.print(output);
+    }
+
+    if (logMessage)
+    {
+        // TODO TEST THIS THIS IS NOT TESTED YET, EXTERNAL LOGGER TO SD CARD!
+        LogManager* logger = LogManager::getInstance();
+
+        if (logger && logger->isSDCardInitialized())
+        {
+        	if (level == OutputLevel::WARNING ||
+        		level == OutputLevel::ERROR ||
+    			level == OutputLevel::CRITICAL)
+        	{
+        		String toLog = output;
+        		if (newLine) toLog += "\n";
+        		logger->writeToLogFile(toLog);
+        	}
+        }
+    }
+
     serialMutex.unlock();
 }
 
-// helper method to simplify printing
-void SerialMenu::printToSerial(const String& message, bool newLine = true)
+void SerialMenu::printToSerial(OutputLevel level, const __FlashStringHelper* message, bool newLine, bool logMessage)
 {
-	frt::Mutex serialMutex;
+    printToSerial(level, String(message), newLine, logMessage);
+}
 
-    serialMutex.lock();
-    if (newLine)
+void SerialMenu::printToSerial(const String& message, bool newLine, bool logMessage)
+{
+    printToSerial(OutputLevel::PLAIN, message, newLine, logMessage);
+}
+
+void SerialMenu::printToSerial(const __FlashStringHelper* message, bool newLine, bool logMessage)
+{
+    printToSerial(OutputLevel::PLAIN, String(message), newLine, logMessage);
+}
+
+String SerialMenu::getCurrentTime()
+{
+    TimeModuleInternals* timeInstance = TimeModuleInternals::getInstance();
+    if (timeInstance == nullptr)
     {
-        Serial.println(message);
+        printToSerial(OutputLevel::ERROR, "Time module not initialized, using fallback time");
+        return "0000-00-00T00:00:00Z";
     }
-    else
-    {
-        Serial.print(message);
-    }
-    serialMutex.unlock();
+    return TimeModuleInternals::formatTimeString(timeInstance->getSystemTime());
 }

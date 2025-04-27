@@ -2,6 +2,7 @@
 #define PTRUTILS_H
 
 #include <Arduino.h>
+#include <serialMenu.h>
 
 /**
  * @brief Template function to safely delete a pointer and set it to nullptr.
@@ -50,15 +51,17 @@ static inline void Verify(const T& value, const T& expected, const char* errorMs
     {
         if (errorMsg)
         {
-            Serial.println(errorMsg);
+        	SerialMenu::printToSerial(errorMsg);
         }
         else
         {
-            Serial.print("Verification failed: Value (");
-            Serial.print(value);
-            Serial.print(") does not match expected (");
-            Serial.print(expected);
-            Serial.println(").");
+        	String errStr;
+        	errStr += "[ERROR] Verification failed: Value (";
+        	errStr += value;
+        	errStr += ") does not match expected (";
+        	errStr += expected;
+        	errStr += ").";
+        	SerialMenu::printToSerial(errStr);
         }
         while (true); // Halt execution
     }
@@ -79,15 +82,17 @@ static inline void Verify(T* value, T* expected, const char* errorMsg = nullptr)
     {
         if (errorMsg)
         {
-            Serial.println(errorMsg);
+        	SerialMenu::printToSerial(errorMsg);
         }
         else
         {
-            Serial.print("Verification failed: Pointer (");
-            Serial.print((unsigned long)value, HEX); // Print pointer address in HEX
-            Serial.print(") does not match expected pointer (");
-            Serial.print((unsigned long)expected, HEX);
-            Serial.println(").");
+        	String errStr;
+        	errStr += "[ERROR] Verification failed: Pointer (";
+        	errStr += (unsigned long)value, HEX;
+        	errStr += ") does not match expected pointer (";
+        	errStr += (unsigned long)expected, HEX;
+        	errStr += ").";
+        	SerialMenu::printToSerial(errStr);
         }
         while (true); // Halt execution
     }
@@ -107,13 +112,15 @@ static inline void Verify(T* value, const char* errorMsg = nullptr)
     {
         if (errorMsg)
         {
-            Serial.println(errorMsg);
+        	SerialMenu::printToSerial(errorMsg);
         }
         else
         {
-            Serial.print("Verification failed: Pointer (");
-            Serial.print((unsigned long)value, HEX); // Print pointer address in HEX
-            Serial.println(") is not null.");
+        	String errStr;
+        	errStr += "[ERROR] Verification failed: Pointer (";
+        	errStr += (unsigned long)value, HEX;
+        	errStr += ") is not null.";
+        	SerialMenu::printToSerial(errStr);
         }
         while (true); // Halt execution
     }
@@ -125,8 +132,9 @@ static inline void Verify(T* value, const char* errorMsg = nullptr)
  *
  */
 #define tryDeletePtr(ptr) 										\
-    SafeDelete(ptr);        									\
-    //Verify(ptr, nullptr, "Pointer not null after deletion!"); 	\
+	if (PtrUtils::IsValidPtr(ptr))								\
+    	SafeDelete(ptr);        								\
+
 
 
 /// @brief Utility class for pointer operations. \class PtrUtils
@@ -186,14 +194,11 @@ static inline void PrintPtrInfo(T* ptr, const char* ptrName = "Pointer")
 {
     if (ptr == nullptr)
     {
-        Serial.print(ptrName);
-        Serial.println(" is nullptr.");
+    	SerialMenu::printToSerial("[INFO] " + String(ptrName) + String("is nullptr"));
     }
     else
     {
-        Serial.print(ptrName);
-        Serial.print(" points to address: 0x");
-        Serial.println((uintptr_t)ptr, HEX);
+    	SerialMenu::printToSerial("[INFO] " + String(ptrName) + String(" points to address: 0x") + (uintptr_t)ptr, HEX);
     }
 }
 

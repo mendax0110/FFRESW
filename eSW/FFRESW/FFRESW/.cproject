@@ -47,6 +47,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/flyback}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/vacControl}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/logManager}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/SD/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.1365410186" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -80,6 +82,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/flyback}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/vacControl}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/logManager}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/SD/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1339837443" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -113,6 +117,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/flyback}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/vacControl}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/logManager}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/SD/src}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.1444798713" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
@@ -152,15 +158,15 @@
 							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/utility/*/*.269731588" name=""/>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="io.sloeber.core.sketch.0.1985575691" name="/" resourcePath="libraries/comModule/SPII">
-						<toolChain id="io.sloeber.core.toolChain.release.97943014" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release" unusedChildren="">
-							<tool id="io.sloeber.tool.sketch.compiler.cpp.267484938" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp.1016610666"/>
-							<tool id="io.sloeber.tool.compiler.c.846874513" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c.1846499564"/>
-							<tool id="io.sloeber.tool.sketch.compiler.s.1406476285" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s.1331706343"/>
-							<tool id="io.sloeber.tool.ar.2072031759" name="Arduino archiver" superClass="io.sloeber.tool.ar.952212948"/>
-							<tool id="io.sloeber.tool.combine.624568370" name="Arduino combiner" superClass="io.sloeber.tool.combine.581890012"/>
-							<tool id="io.sloeber.tool.objcopy.eep.1444522014" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep.1446084194"/>
-							<tool id="io.sloeber.tool.size.893753037" name="Arduino tool Print Size" superClass="io.sloeber.tool.size.1970296237"/>
+					<folderInfo id="io.sloeber.core.sketch.0.850249671" name="/" resourcePath="libraries/comModule/SPII">
+						<toolChain id="io.sloeber.core.toolChain.release.801845643" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release" unusedChildren="">
+							<tool id="io.sloeber.tool.sketch.compiler.cpp.2137892051" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp.1016610666"/>
+							<tool id="io.sloeber.tool.compiler.c.988811749" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c.1846499564"/>
+							<tool id="io.sloeber.tool.sketch.compiler.s.770525277" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s.1331706343"/>
+							<tool id="io.sloeber.tool.ar.1000244334" name="Arduino archiver" superClass="io.sloeber.tool.ar.952212948"/>
+							<tool id="io.sloeber.tool.combine.909898354" name="Arduino combiner" superClass="io.sloeber.tool.combine.581890012"/>
+							<tool id="io.sloeber.tool.objcopy.eep.888463109" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep.1446084194"/>
+							<tool id="io.sloeber.tool.size.1913018032" name="Arduino tool Print Size" superClass="io.sloeber.tool.size.1970296237"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>

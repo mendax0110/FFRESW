@@ -1,9 +1,9 @@
 /*
- * flyback.h
- *
- *  Created on: 28.03.2025
- *      Author: domin
- */
+* flyback.h
+*
+*  Created on: 28.03.2025
+*      Author: domin
+*/
 #ifndef VACCONTROL_H
 #define VACCONTROL_H
 
@@ -11,9 +11,10 @@
 #include <Wire.h>
 
 
-/// @brief Namespace for the Flyback module \namespace flybackModule
+/// @brief Namespace for the VacControl module \namespace vacControlModule
 namespace vacControlModule
 {
+	/// @brief Enum to represent the states of the main switch and pump
 	enum class SwitchStates : int
 	{
 		Main_Switch_OFF,
@@ -24,77 +25,138 @@ namespace vacControlModule
 		PUMP_OFF
 	};
 	/// @brief Structure to store the measured values of the system \struct Measurement
-	/// This structure holds the voltage, current, and power values measured from the system.
-	typedef struct Measurement
+	/// This structure holds the pressure values measured from the system.
+	typedef struct Pressure
 	{
-		float voltage;		//measured Voltage
-		float current;		//measured Current
-		float power;		//measured power
-		int digitalValue; 	//measured DigitalValue for Frequency 0--1023
-		int frequency;		//current PWM - Frequency
+		float pressure;
+
 	} meas;
 
-	/// @brief Flyback class to manage the Flyback system \class Flyback
+	/// @brief Enum to represent the different operating scenarios of the VacControl system
+	enum Scenarios
+	{
+		Scenario_1 = 0,
+		Scenario_2 = 1,
+		Scenario_3 = 2,
+		Scenario_4 = 3,
+		Scenario_5 = 4,
+		not_defined = -1
+	};
+
+	/// @brief VacControl class to manage the vacuum control system
 	/// This class provides methods for initializing the system, configuring the timer,
 	/// measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes.
-	class vacControl
+	class VacControl
 	{
 	public:
 
-		vacControl();
-		~vacControl();
+		VacControl();
+		~VacControl();
 
-        /**
-         * @brief Initialize the VacControl System
-         *
-         */
+		/**
+		 * @brief Initialize the VacControl System
+		 * This method sets up the pins and prepares the system for operation.
+		 */
 		void initialize();
 
-        /**
-         * @brief Get the state of the VacControl system
-         *
-         * @return true -> VacControl is initialized
-         * @return false -> VacControl is not initialized
-         */
+		/**
+		 * @brief Get the state of the VacControl system
+		 *
+		 * @return true -> VacControl is initialized and ready
+		 * @return false -> VacControl is not initialized
+		 */
 		bool isInitialized() const;
 
-        /**
-         * @brief Returns the state of the timer
-         *
-         * @return true -> if the timer is initialized
-         * @return false -> if the timer is not initialized
-         */
+		/**
+		 * @brief Returns the state of the main switch
+		 *
+		 * @return The current state of the switch (Main_Switch_OFF, Main_Switch_MANUAL, etc.)
+		 */
 		SwitchStates getSwitchState();
 
-		 /**
-		  * @brief Measures the voltage, current, power, digitalValue and frequency of the system
-          *
-		  * @return Measurement -> A Measurement object containing voltage, current, and power
-		  */
-		Measurement measure();
+		/**
+		 * @brief Executes logic depending on which Main-Switch state is active
+		 *
+		 * This function decides which scenario to run based on the current state of the system.
+		 */
+		Scenarios getScenario();
 
-        /**
-         * @brief Executes logic depending on which Main-Switch state is active
-         *
-         */
+		/**
+		 * @brief Measures the actual pressure of the system
+		 *
+		 * @return Measurement -> A Measurement object containing the current pressure
+		 */
+		Pressure measure();
+
+		/**
+		 * @brief Controls the vacuum LED based on the current and target pressures
+		 *
+		 * @param pressure The current pressure in the system
+		 * @param targetPressure The target pressure to reach
+		 */
+		void setVacuumLed(float pressure, float targetPressure);
+
+		 /**
+		  * @brief Determines the scenario based on the potentiometer value
+		  *
+		  * @param potValue The value read from the potentiometer (used for pressure regulation)
+		  * @return The corresponding scenario based on the potentiometer value
+		  */
+		int getScenarioFromPotValue(int potValue);
+
+		/**
+		 * @brief Set the Pump flag
+		 *
+		 * @param flag This is the boolean flag to set
+		 */
+		void setPump(bool flag);
+
+		/**
+		 * @brief Runs the main control loop for the VacControl system
+		 *
+		 * This function checks the current system state and performs actions accordingly (e.g., switch states, pump control, LED control).
+		 */
 		void run();
 
-		/**
-		 * @brief Function to get the desired Frequency from HAS
-		 * @param frequency -> the frequency to change
-		 *
-		 */
-		void setExternPressure(int pressure);
 
 		/**
-		 * @brief Getter Function to get the Frequency
+		 * @brief Function to set an external scenario, typically from remote input
 		 *
+		 * @param pressure The external scenario pressure value
 		 */
-		int getExternPressure();
+		void setExternScenario(int pressure);
+
+		/**
+		 * @brief Getter function to retrieve the current external scenario state
+		 *
+		 * @return The current external scenario state (integer)
+		 */
+		int getExternScenario();
+
+		/**
+		 * @brief Process external data for scenarios (currently unused)
+		 *
+		 * This function could be expanded to process external scenario commands if needed.
+		 */
+		void externProcess();
+
+		/**
+		 * @brief Sets the external pressure value
+		 *
+		 * @param pressure The external pressure value to set
+		 */
+		void setExternPressure(float pressure);
+
+		 /**
+		  * @brief Gets the external pressure value
+		  *
+		  * @return The current external pressure value
+		  */
+		float getExternPressure();
 
 
 	private:
-		Measurement meas;
+		Pressure meas;
 
 		//Define Pins --> Main_Switch
 		static const int Main_Switch_OFF = 27;		//Main_Switch OFF Mode 27
@@ -102,21 +164,27 @@ namespace vacControlModule
 		static const int Main_Switch_REMOTE = 29;	//Main_Switch Remote Mode 29
 
 		//Define Pins --> Vacuum Logic
-		static const int Switch_Pump_ON = 37;			//Button to turn Pump ON 37
-		static const int Switch_Pump_OFF = 36;			//Button to turn Pump OFF 36
-		static const int targetPressure = A2;	//Potentiometer for Regulation
+		static const int Switch_Pump_ON = 23;		//Button to turn Pump ON 37
+		static const int Pump_Status_LED = 24; 		//OUTPUT to see State off Pump
+		static const int Pump_Relay = 25;			//OUTPUT to turn on/off Relais
+		static const int targetVacuumLED = 26; 		//OUTPUT to see Vacuum reached
+		static const int targetPressure = A4;	//Potentiometer for Regulation
 
-		int externPressure = 0;
+		//Variables to save Values
+		int currentScenario = -1;
+
+		//Variables for TargetPressure
+		static const float TARGET_PRESSURE_1 = 1;
+		static const float TARGET_PRESSURE_2 = 0.8f;
+		static const float TARGET_PRESSURE_3 = 0.5;
+		static const float TARGET_PRESSURE_4 = 0.01f;
+
+		// TODO NEW ADDED-> CHECK FUNCTIONALTY WITH FRANIC
+		static int lastState;
+		static int lastPumpState;
+
 
 		bool _vacControlInitialized;
-
-
-        /**
-         * @brief Prints an error message via the serial connection
-         *
-         * @param errorMessage -> The error message to be printed
-         */
-		void reportError(const char* errorMessage);
 	};
 }
 

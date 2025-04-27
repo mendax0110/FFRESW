@@ -179,19 +179,78 @@ float CalcModuleInternals::calculateResistance(float voltage, float current)
     return roundToPrecision(result, 5);
 }
 
-String CalcModuleInternals::extractFloat(String response, int id)
+float CalcModuleInternals::extractFloat(String response, int id)
 {
 	String extracted;
 
-	if (id == 0)
-	{
-	    int dotIndex = response.lastIndexOf('.');
-	    if (dotIndex == -1 || dotIndex < 3) return "0";
-	    int startIndex = dotIndex - 3;
-	    if (startIndex < 0) startIndex = 0;
+    if (id == 0)
+    {
+        int startIndex = response.indexOf("p:");
+        if (startIndex == -1)
+        {
+            Serial.println(F("p: not found"));
+            return 0.0f;
+        }
 
-	    extracted = response.substring(startIndex, response.length());
-	}
+        startIndex += 2;
+
+        //Serial.print("String after p: ");
+        //Serial.println(response.substring(startIndex));
+
+        if (response.startsWith("000b", startIndex))
+        {
+            startIndex += 4;
+        }
+
+        int hexLength = 8;
+        startIndex += hexLength;
+
+        //Serial.print("String after skipping hex part: ");
+        //Serial.println(response.substring(startIndex));
+
+        int numStartIndex = startIndex;
+
+        while (numStartIndex < response.length() &&
+               !isdigit(response.charAt(numStartIndex)) &&
+               response.charAt(numStartIndex) != '-')
+        {
+            numStartIndex++;
+        }
+
+        if (numStartIndex < response.length() && response.charAt(numStartIndex) == '-')
+        {
+            numStartIndex++;
+        }
+
+        int numEndIndex = numStartIndex;
+        while (numEndIndex < response.length() &&
+               (isdigit(response.charAt(numEndIndex)) ||
+                response.charAt(numEndIndex) == '.' ||
+                response.charAt(numEndIndex) == '-'))
+        {
+            numEndIndex++;
+        }
+
+        //Serial.print("End index of number: ");
+        //Serial.println(numEndIndex);
+
+        extracted = response.substring(numStartIndex, numEndIndex);
+
+        //Serial.print("Extracted value: ");
+        //Serial.println(extracted);
+
+        extracted.trim();
+
+        if (extracted.startsWith("00"))
+        {
+            extracted = extracted.substring(2);
+        }
+
+        if (extracted == ".0" || extracted == "")
+        {
+            extracted = "0";
+        }
+    }
 	else if (id == 1)
 	{
 		// TODO: Implement handling for compound 1
@@ -205,7 +264,7 @@ String CalcModuleInternals::extractFloat(String response, int id)
 		// TODO: Implement handling for compound 3
 	}
 
-    return extracted;
+    return extracted.toFloat();
 }
 
 float CalcModuleInternals::roundToPrecision(float value, int precision)

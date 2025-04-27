@@ -67,7 +67,7 @@ String JsonModuleInternals::getJsonString() const
 std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
 {
 	std::map<String, float> resultMap;
-	DynamicJsonDocument doc(1024);
+	DynamicJsonDocument doc(512); //TODO: Check if really 1024 is needed, was previously 1024
 	DeserializationError error = deserializeJson(doc, rawJson);
 
 	if (error)
@@ -90,12 +90,6 @@ void JsonModuleInternals::sendJsonSerial()
     SerialMenu::printToSerial(getJsonString());
 }
 
-/*void JsonModuleInternals::sendJsonEthernet(const char* endpoint)
-{
-    comModule::ComModuleInternals comms;
-    comms.getEthernet().sendEthernetData(endpoint, getJsonString().c_str());
-}*/
-
 void JsonModuleInternals::clearJson()
 {
 	printJsonDocMemory();
@@ -105,12 +99,12 @@ void JsonModuleInternals::clearJson()
 void JsonModuleInternals::printJsonDocMemory()
 {
 	String jsonDocMem;
-	jsonDocMem += "[DEBUG] Memory usage of jsonDoc:";
+	jsonDocMem += "Memory usage of jsonDoc:";
 	jsonDocMem += " Capacity: ";
 	jsonDocMem += jsonDoc.capacity();
 	jsonDocMem += " Memory Usage: ";
 	jsonDocMem += jsonDoc.memoryUsage();
 	jsonDocMem += " Overflowed: ";
 	jsonDocMem += jsonDoc.overflowed() ? F("Yes") : F("No");
-	SerialMenu::printToSerial(jsonDocMem);
+	SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, jsonDocMem);
 }

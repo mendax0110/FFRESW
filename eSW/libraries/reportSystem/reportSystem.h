@@ -155,6 +155,24 @@ namespace reportSystem
          */
         String getLastError();
 
+        /**
+         * @brief Get the Last Error message from EEPROM
+         *
+         * @return bool -> used by the Endpoint to report to HAS
+         */
+        bool getLastErrorInfo();
+
+        /**
+         * @brief Function to check the SRAM level on the hostsystem
+         *
+         * @param warningThreshold -> first warning to get
+         * @param criticalThreshold -> last warning to get
+         *
+         * @return true -> if the level exceeded
+         * @return false -> if the levels are withing the thresholds
+         */
+        bool checkRamLevel(unsigned int warningThreshold, unsigned int criticalThreshold);
+
     private:
         float tempThreshold;
         float pressureThreshold;

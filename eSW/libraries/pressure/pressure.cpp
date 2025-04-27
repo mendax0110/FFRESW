@@ -7,6 +7,7 @@
  * @copyright Copyright (c) 2024
  */
 #include "pressure.h"
+#include <serialMenu.h>
 
 PressureSensor::PressureSensor()
     : _pressureSensorInitialized(false)
@@ -22,14 +23,14 @@ PressureSensor::~PressureSensor()
 void PressureSensor::initialize()
 {
     _pressureSensorInitialized = true;
-    Serial.println(F("[INFO] Pressure sensor initialized."));
+    SerialMenu::printToSerial(F("[INFO] Pressure sensor initialized."));
 }
 
 float PressureSensor::readPressure()
 {
     if (!_pressureSensorInitialized)
     {
-        reportError("[INFO] Pressure sensor not initialized!");
+        reportError("Pressure sensor not initialized!");
         return NAN;
     }
 
@@ -51,6 +52,5 @@ float PressureSensor::readAnalogSensor(int pin)
 
 void PressureSensor::reportError(const char* errorMessage)
 {
-    Serial.print(F("[ERROR] "));
-    Serial.println(errorMessage);
+    SerialMenu::printToSerial("[ERROR] " + String(errorMessage));
 }

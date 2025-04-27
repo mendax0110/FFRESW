@@ -2,8 +2,14 @@
 #include <SPI.h>
 #include <Arduino.h>
 #include <flyback.h>
+#include <serialMenu.h>
 
 using namespace flybackModule;
+
+SwitchStates Flyback::lastState = SwitchStates::HV_Module_INVALID;
+bool Flyback::lastTimerState = false;
+int Flyback::lastPWMFrequency = 0;
+int Flyback::lastPWMDutyCycle = 0;
 
 
 Flyback::Flyback()
@@ -34,21 +40,24 @@ void Flyback::initialize()
 	pinMode(HV_Module_OFF, OUTPUT);
 	pinMode(HV_Module_Working, OUTPUT);
 	pinMode(PWM_OUT, OUTPUT);
+	pinMode(PWM_INV, OUTPUT);
 
 	//Setup Timer for Flyback
 	timerConfig();
 
 	_flybackInitialized = true;
-	reportError("[INFO] Flyback module initialized");
+	SerialMenu::printToSerial(F("[INFO] Flyback module initialized."));
 }
 
 void Flyback::timerConfig()
 {
-	//Setup Timer for Flyback
-	TCCR1A = (1 << COM1A1) | (1 << WGM11);
-	TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS10); // No prescaler
-
-	_timerInitialized = true;
+	// Setup Timer1 für Fast PWM, Top = ICR1
+	TCCR1A = (1 << COM1A1) | (0 << COM1A0) | // OC1A: Nicht-invertiertes PWM
+             (1 << COM1B1) | (1 << COM1B0) | // OC1B: Invertiertes PWM
+			 (1 << WGM11);                   // Fast PWM, Teil 1
+	TCCR1B = (1 << WGM13) | (1 << WGM12) |  // Fast PWM, Top = ICR1
+			 (1 << CS10);                   // Kein Prescaler (16 MHz)
+	    _timerInitialized = true;
 }
 
 bool Flyback::isInitialized() const
@@ -58,8 +67,10 @@ bool Flyback::isInitialized() const
 
 void Flyback::setPWMFrequency(uint32_t frequency, int dutyCycle)
 {
-    ICR1 = static_cast<uint16_t>(16000000 / frequency);		 // Calculate ICR1 based on the desired frequency
-    OCR1A = (ICR1 * dutyCycle) / 100; 						 // Calculate duty cycle based on the desired duty Cycle
+	ICR1 = static_cast<uint16_t>(16000000 / frequency); // Setze Top-Wert für Frequenz
+	uint16_t ocrValue = (ICR1 * dutyCycle) / 100;       // Berechne Duty Cycle
+	OCR1A = ocrValue;                                   // OC1A (Pin 11, nicht-invertiert)
+	OCR1B = ocrValue; 						 			// Calculate duty cycle based on the desired duty Cycle
 }
 
 bool Flyback::getTimerState()
@@ -69,17 +80,18 @@ bool Flyback::getTimerState()
 
 void Flyback::setTimerState(bool state)
 {
-	if(state)
+	if(state && !lastTimerState)
 	{
 		// Turn timer off
 		timerConfig();
 	}
-	else
+	else if (!state && lastTimerState)
 	{
 		// Turn timer off
 		TCCR1B &= ~(1 << CS10);
 		_timerInitialized = false;
 	}
+	lastTimerState = state; // update the last settet timer state
 }
 
 SwitchStates Flyback::getSwitchState()
@@ -100,11 +112,6 @@ SwitchStates Flyback::getSwitchState()
 	{
 		return SwitchStates::HV_Module_INVALID;
 	}
-}
-
-void Flyback::reportError(const char* errorMessage)
-{
-	Serial.println(errorMessage);
 }
 
 Measurement Flyback::measure()
@@ -128,9 +135,9 @@ Measurement Flyback::measure()
 
 		// Maping out the digitValues
 		meas.frequency = map(meas.digitalFreqValue, 0, 1023, 25000, 100000);
-		meas.dutyCycle = map(meas.digitalDutyValue, 0, 1023, 10, 99);
+		meas.dutyCycle = map(meas.digitalDutyValue, 0, 1023, 1, 50);
 	}
-	else if (digitalRead(Main_Switch_REMOTE)==HIGH)
+	else if (digitalRead(Main_Switch_REMOTE) == HIGH)
 	{
 		uint32_t freq = getExternFrequency();
 		int dutycycle = getExternDutyCycle();
@@ -141,61 +148,83 @@ Measurement Flyback::measure()
 
 void Flyback::run()
 {
-	if(digitalRead(Main_Switch_OFF) == HIGH)
+	int offState = digitalRead(Main_Switch_OFF);
+	int manualState = digitalRead(Main_Switch_MANUAL);
+	int remoteState = digitalRead(Main_Switch_REMOTE);
+
+	if (offState == HIGH)
 	{
-		if(getTimerState())
+		if (lastState != SwitchStates::HV_Module_OFF)
+		{
+			SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is OFF."));
+			lastState = SwitchStates::HV_Module_OFF;
+		}
+
+		if (getTimerState())
 		{
 			setTimerState(false);
 		}
 
-		//Setting up LED based on state
 		digitalWrite(HV_Module_OFF, HIGH);
 		digitalWrite(HV_Module_Working, LOW);
 		digitalWrite(HV_Module_ON, LOW);
-
-		reportError("[INFO] System is OFF");
 	}
-	else if(digitalRead(Main_Switch_MANUAL) == HIGH)
+	else if (manualState == HIGH)
 	{
-		if(!getTimerState())
+		if (lastState != SwitchStates::HV_Module_MANUAL)
+		{
+			SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Manual Mode."));
+			lastState = SwitchStates::HV_Module_MANUAL;
+		}
+
+		if (!getTimerState())
 		{
 			setTimerState(true);
 		}
-		//Setting up LED based on state
+
 		digitalWrite(HV_Module_Working, HIGH);
 		digitalWrite(HV_Module_ON, HIGH);
 		digitalWrite(HV_Module_OFF, LOW);
 
-		// Read in digitValue from poti
+		// PWM frequency and duty cycle adjustments
 		int potFreqValue = analogRead(PWM_Frequency);
 		int potDutyValue = analogRead(PWM_DutyCycle);
-		// Mapping out the digitValues
 		uint32_t frequency = map(potFreqValue, 0, 1023, 25000, 100000);
-		int dutyCycle = map(potDutyValue, 0, 1023, 10, 99);
+		int dutyCycle = map(potDutyValue, 0, 1023, 1, 50);
 
-		setPWMFrequency(frequency, dutyCycle);
-
-		reportError("[INFO] System is ON - Manual Mode");
+		if (frequency != lastPWMFrequency || dutyCycle != lastPWMDutyCycle)
+		{
+			setPWMFrequency(frequency, dutyCycle);
+			lastPWMFrequency = frequency;
+			lastPWMDutyCycle = dutyCycle;
+		}
 	}
-	else if(digitalRead(Main_Switch_REMOTE) == HIGH)
+	else if (remoteState == HIGH)
 	{
+		if (lastState != SwitchStates::HV_Module_REMOTE)
+		{
+			SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Remote Mode."));
+			lastState = SwitchStates::HV_Module_REMOTE;
+		}
+
 		digitalWrite(HV_Module_Working, HIGH);
 		digitalWrite(HV_Module_ON, HIGH);
 		digitalWrite(HV_Module_OFF, LOW);
 
+		// Set PWM frequency and duty cycle from external settings
 		setPWMFrequency(getExternFrequency(), getExternDutyCycle());
-
-		reportError("[INFO] System is ON - Remote Mode");
-
-		//TODO Implement method to update voltage with calculated values for frequency and dutycycle
 	}
 	else
 	{
-		reportError("[ERROR] Invalid Switch Position");
-		setTimerState(false);
-		digitalWrite(HV_Module_Working, LOW);
-		digitalWrite(HV_Module_ON, LOW);
-		digitalWrite(HV_Module_OFF, LOW);
+		if (lastState != SwitchStates::HV_Module_INVALID)
+		{
+			SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid Switch Position."));
+			lastState = SwitchStates::HV_Module_INVALID;
+			setTimerState(false);
+			digitalWrite(HV_Module_Working, LOW);
+			digitalWrite(HV_Module_ON, LOW);
+			digitalWrite(HV_Module_OFF, LOW);
+		}
 	}
 }
 
@@ -220,7 +249,7 @@ int Flyback::getExternDutyCycle()
 
 void Flyback::setExternDutyCycle(int dutyCycle)
 {
-	if (dutyCycle < 10 || dutyCycle > 99)
+	if (dutyCycle < 1 || dutyCycle > 50)
 	{
 		return;
 	}

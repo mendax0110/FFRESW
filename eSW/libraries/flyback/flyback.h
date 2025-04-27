@@ -130,6 +130,7 @@ namespace flybackModule
 		static const int Main_Switch_REMOTE = 29;
 		static const int Measure_ADC = A0;			//ADC PIN for Voltage Measurement
 		static const int PWM_OUT = 11;
+		static const int PWM_INV = 12;
 
 		//Variables for calculating HV
 		const float R1 = 100000000;
@@ -147,6 +148,12 @@ namespace flybackModule
 		bool _flybackInitialized;
 		bool _timerInitialized;
 
+		// States
+		static SwitchStates lastState;
+		static bool lastTimerState;
+		static int lastPWMFrequency;
+		static int lastPWMDutyCycle;
+
         /**
          * @brief Function to configure the timer settings
          * 
@@ -160,13 +167,6 @@ namespace flybackModule
          * @param dutyCycle -> The new PWM dutyCycle
          */
 		void setPWMFrequency(uint32_t frequency, int dutyCycle);
-
-        /**
-         * @brief Prints an error message via the serial connection
-         * 
-         * @param errorMessage -> The error message to be printed
-         */
-		void reportError(const char* errorMessage);
 	};
 }
 

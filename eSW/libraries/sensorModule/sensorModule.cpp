@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
+#include <serialMenu.h>
 
 using namespace sensorModule;
 
@@ -18,32 +19,37 @@ SensorModuleInternals::~SensorModuleInternals()
 
 void SensorModuleInternals::beginSensor()
 {
-    Serial.println(F("[INFO] Starting sensor module..."));
-    initializeSensors();
+    //Serial.println(F("[INFO] Starting sensor module..."));
+    SerialMenu::printToSerial(F("[INFO] Starting sensor module..."));
+	initializeSensors();
 }
 
 void SensorModuleInternals::initializeSensors()
 {
     Wire.begin();
-    Serial.println(F("[INFO] I2C bus initialized."));
+    //Serial.println(F("[INFO] I2C bus initialized."));
+    SerialMenu::printToSerial(F("[INFO] I2C bus initialized."));
 
     Wire.beginTransmission(I2C_SENSOR_ADDRESS);
     if (Wire.endTransmission() == 0)
     {
         _i2cSensorInitialized = true;
-        Serial.println(F("[INFO] I2C sensor initialized."));
+        //Serial.println(F("[INFO] I2C sensor initialized."));
+        SerialMenu::printToSerial(F("[INFO] I2C sensor initialized."));
     }
     else
     {
     	_i2cSensorInitialized = false;
-        reportError("Failed to initialize I2C sensor.");
+        //reportError("Failed to initialize I2C sensor.");
+        SerialMenu::printToSerial(F("[ERROR] Failed to initialize I2C sensor."));
     }
 
     SPI.begin();
     pinMode(SPI_CS_PIN, OUTPUT);
     digitalWrite(SPI_CS_PIN, HIGH);
     _spiSensorInitialized = true;
-    Serial.println(F("[INFO] SPI sensor initialized."));
+    //Serial.println(F("[INFO] SPI sensor initialized."));
+    SerialMenu::printToSerial(F("[INFO] SPI sensor initialized."));
     
     _pressureSensor.initialize();
     _temperatureSensor.initialize();
@@ -123,7 +129,8 @@ float SensorModuleInternals::readSensor(SensorType type)
         case SensorType::DHT11:
         	return _temperatureSensor.readDht11();
         default:
-            reportError("Unknown sensor type.");
+            //reportError("Unknown sensor type.");
+        	SerialMenu::printToSerial(F("ERROR Unknown sensor type."));
             return -1.0; // ERROR!!!
     }
 }
@@ -132,7 +139,8 @@ float SensorModuleInternals::readI2CSensor()
 {
     if (!_i2cSensorInitialized)
     {
-        reportError("I2C sensor not initialized!");
+        //reportError("I2C sensor not initialized!");
+    	SerialMenu::printToSerial(F("ERROR I2C sensor not initialized!"));
         return NAN;
     }
 
@@ -148,7 +156,8 @@ float SensorModuleInternals::readI2CSensor()
     }
     else
     {
-        reportError("Failed to read I2C sensor data!");
+        //reportError("Failed to read I2C sensor data!");
+    	SerialMenu::printToSerial(F("[ERROR] Failed to read I2C sensor data!"));
         return NAN;
     }
 }
@@ -157,7 +166,7 @@ float SensorModuleInternals::readSPISensor()
 {
     if (!_spiSensorInitialized)
     {
-        reportError("SPI sensor not initialized!");
+    	SerialMenu::printToSerial(F("[ERROR] SPI sensor not initialized!"));
         return NAN;
     }
     digitalWrite(SPI_CS_PIN, LOW);
@@ -173,23 +182,28 @@ bool SensorModuleInternals::calibrateSensor(SensorType type)
     switch (type)
     {
     case SensorType::TEMPERATURE:
-        Serial.println(F("[INFO] Calibrating temperature sensor..."));
+        //Serial.println(F("[INFO] Calibrating temperature sensor..."));
+        SerialMenu::printToSerial(F("[INFO] Calibrating temperature sensor..."));
         // TODO: add actual calibration here
         return true;
     case SensorType::PRESSURE:
-        Serial.println(F("[INFO] Calibrating pressure sensor..."));
+        //Serial.println(F("[INFO] Calibrating pressure sensor..."));
+        SerialMenu::printToSerial(F("[INFO] Calibrating pressure sensor..."));
         // TODO: add actual calibration here
         return true;
     case SensorType::I2C_SENSOR:
-        Serial.println(F("[INFO] Calibrating I2C sensor..."));
+        //Serial.println(F("[INFO] Calibrating I2C sensor..."));
+        SerialMenu::printToSerial(F("[INFO] Calibrating I2C sensor..."));
         // TODO: add actual calibration here
         return true;
     case SensorType::SPI_SENSOR:
-        Serial.println(F("[INFO] Calibrating SPI sensor..."));
+        //Serial.println(F("[INFO] Calibrating SPI sensor..."));
+        SerialMenu::printToSerial(F("[INFO] Calibrating SPI sensor..."));
         // TODO: add actual calibration here
         return true;
     default:
-        reportError("Unknown sensor type for calibration.");
+        //reportError("Unknown sensor type for calibration.");
+        SerialMenu::printToSerial(F("ERROR Unknown sensor type for calibration."));
         return false;
     }
 }
@@ -207,7 +221,8 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
     case SensorType::SPI_SENSOR:
         return _spiSensorInitialized;
     default:
-        reportError("Unknown sensor type for status check.");
+        //reportError("Unknown sensor type for status check.");
+        SerialMenu::printToSerial(F("ERROR Unknown sensor type for status check.")); // CHECK IF PRINTTOSREIAL ONLY IN MAIN:CPP or in ETHH.cpp, temp.cpp pres.cpp
         return false;
     }
 }
