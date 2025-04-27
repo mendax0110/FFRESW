@@ -1,0 +1,30 @@
+https://www.mdpi.com/1424-8220/23/1/329
+
+https://indico.cern.ch/event/1044975/contributions/4663817/attachments/2394211/4093387/Slides.pdf
+
+https://eljentechnology.com/products/neutron-detectors/ej-426
+
+https://physicsopenlab.org/2017/01/30/neutron-detector/
+
+https://physicsopenlab.org/wp-content/uploads/2017/02/SlowNeutronCoronaCounterTubes_1v10-1.pdf
+
+https://seansoleyman.com/fusor-neutron-generator/
+
+https://neutrons2.ornl.gov/conf/nxs2013/lecture/pdf/Carpenter-detectors2013.pdf
+
+
+Des wär a setup vu nem dude der low cost fusor gmacht hot und hot die tubes vu GM gnoh.
+Dia sen recht billig uf amazon so 70-100 Euro, a paar C to BNC adapter, a BNC to MHV cabel und halt den moderator nomol a paar euro.
+Jedoch sen dia GM10 tubes schwär ihzumstella (so oh richard hull), es gibt den Ludlum 2200 und andere modelle (isch so an scaler/counter).
+Des problem isch der kostat gern mol vu 180 - 470 Euro und isch halt schwär zum kriaga (und ned im budget).
+@felix wenn mr jemand uftrieba könnan der üs so an schaler uslieht, denn könntan mrs schaffa, des mit da andere tubes können mr vergessa ih hon etz ewig lang gsuacht.
+
+https://fusor.net/board/viewtopic.php?t=15444
+https://fusor.net/board/viewtopic.php?t=14477
+https://www.ebay.com/itm/404428469057?_trksid=p2332490.c101875.m1851&itmprp=cksum%3A4044284690571c1dacab6b5f45ad85c1a7127c2e77d0%7Cenc%3AAQAKAAABYHKEKKNMUePryBh1zZl0qrjonWK6%252Bbjh8v6%252FxTRbw1Loxqx736BoO2V7ozv6W4xuOBJjwGhPLWk9lnRB2teM6PFgOrZGVcTwpTth7MW79p066SWQrB1VasW1Di58xl1RMBXsH%252BaNxpzil0t8bdqbPkgJlZgvtHVYNSkxo5xG%252Bq21w2Ndxu0%252B09f9wzuPV730aHIyYiAOEcjFb3mvidMUNjupZqvLpOT4h3Nxa4dBOYCENE1JOMQtKbLqfubYfFGHmwiIFMKNmhwrb7pb3WsZs4u5Mi7UR7PNupDpibWAzpDYp8g356a%252Bh5osKY4Go9%252BCm%252B1IR152xlsWIgVtSaxnBagP1l9%252BD4N%252BEi2XFTLBJIEStkjQzlBduDGoo37z0Siyw2CZSdGUGPiXw0y7tbJLo9IhkUysjcFf2YTU9IZDsvdE41ScL176%252BnXLLPoxPcxI2yD1CRyQ7HxoZx0lVQ%252B3VoQ%253D%7Campid%3APL_CLK%7Cclp%3A2332490&itmmeta=01JS4MZACGMZMC8FN44EQ7CC2K
+
+Und des mit da SMT32 tubes usw isch fast unmöglich, tubes sau tür, Amplifier wo mr bruchan nomol 100 Euro extra, selbst denn brüchtan mr no an NIM-Bin wo um die 350-400 USD uf ebay kostat.
+https://www.fusor.eu/monitors.html#neutron_detector_and_counter
+https://fusor.net/board/viewtopic.php?t=5408
+
+Ih hon bubble technologies gschriba ob R&D gibt für ihre bubble detectora und miron für ihre geräte...
