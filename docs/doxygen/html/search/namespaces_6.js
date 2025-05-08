@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vaccontrolmodule_0',['vacControlModule',['../namespacevac_control_module.html',1,'']]]
+  ['timemodule_0',['timeModule',['../namespacetime_module.html',1,'']]]
 ];

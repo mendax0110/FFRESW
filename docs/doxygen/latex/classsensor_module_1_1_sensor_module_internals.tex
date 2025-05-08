@@ -30,8 +30,7 @@ Collaboration diagram for sensor\+Module\+::Sensor\+Module\+Internals\+:\nopageb
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633}\label{classsensor_module_1_1_sensor_module_internals_af629b75498c4888f0f2f3874c72a1633} 
-void {\bfseries begin\+Sensor} ()
+void \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ac5c1ab300ba709767a9ae8f4e37a3bd9}{initialize}} ()
 \begin{DoxyCompactList}\small\item\em Function to begin the sensor module. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}{read\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Function to read the sensor. \end{DoxyCompactList}\item 
@@ -50,6 +49,10 @@ float \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183c
 \begin{DoxyCompactList}\small\item\em Function to read from specific sensor DH11. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{read\+MLX90614}} (int choice)
 \begin{DoxyCompactList}\small\item\em Function to read from specific sensor MLX90614. \end{DoxyCompactList}\item 
+float {\bfseries read\+MAX6675} (Units unit)
+\item 
+float {\bfseries read\+MAX31855} (Units unit)
+\item 
 bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Check if the temperature sensor is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_pressure_sensor}{Pressure\+Sensor}}}
@@ -87,8 +90,7 @@ true -\/\texorpdfstring{$>$}{>} if the sensor was calibrated successfully
 
 false -\/\texorpdfstring{$>$}{>} if the sensor was not calibrated successfully 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -115,12 +117,29 @@ true -\/\texorpdfstring{$>$}{>} if the sensor is healthy
 
 false -\/\texorpdfstring{$>$}{>} if the sensor is not healthy 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_ac5c1ab300ba709767a9ae8f4e37a3bd9}\label{classsensor_module_1_1_sensor_module_internals_ac5c1ab300ba709767a9ae8f4e37a3bd9} 
+\index{sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}!initialize@{initialize}}
+\index{initialize@{initialize}!sensorModule::SensorModuleInternals@{sensorModule::SensorModuleInternals}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Sensor\+Module\+Internals\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to begin the sensor module. 
+
+Initialize the sensors. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classsensor_module_1_1_sensor_module_internals_ac5c1ab300ba709767a9ae8f4e37a3bd9_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04}\label{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04} 
@@ -149,8 +168,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

@@ -81,32 +81,45 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;temperature.h&gt;</code><br />
 <code>#include &lt;serialMenu.h&gt;</code><br />
+<code>#include &lt;ptrUtils.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="calc_module_8h_source.html">calcModule.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for temperature.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="temperature_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2e_s_w_2libraries_2temperature_2temperature_8cpp" alt=""/></div>
 <map name="a_c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2e_s_w_2libraries_2temperature_2temperature_8cpp" id="a_c_1_2_users_2_adrian_2_documents_2git_2_f_f_r_e_s_w_2e_s_w_2libraries_2temperature_2temperature_8cpp">
-<area shape="rect" title="Implementation of the temperature class." alt="" coords="218,5,411,64"/>
-<area shape="rect" href="temperature_8h_source.html" title=" " alt="" coords="124,112,225,139"/>
-<area shape="poly" title=" " alt="" coords="270,67,209,106,206,101,268,62"/>
-<area shape="rect" href="serial_menu_8h_source.html" title=" " alt="" coords="437,112,533,139"/>
-<area shape="poly" title=" " alt="" coords="371,62,449,102,446,107,369,67"/>
-<area shape="rect" title=" " alt="" coords="418,261,494,288"/>
-<area shape="poly" title=" " alt="" coords="124,138,77,149,34,166,19,176,10,186,9,198,16,212,42,230,82,244,131,255,187,263,304,271,402,272,402,277,304,276,187,268,131,261,80,250,40,235,12,215,4,199,5,184,16,172,32,161,76,144,123,133"/>
-<area shape="rect" title=" " alt="" coords="27,187,77,213"/>
-<area shape="poly" title=" " alt="" coords="154,142,88,181,85,176,152,137"/>
-<area shape="rect" title=" " alt="" coords="101,187,248,213"/>
-<area shape="poly" title=" " alt="" coords="177,139,177,171,172,171,172,139"/>
-<area shape="rect" title=" " alt="" coords="272,187,418,213"/>
-<area shape="poly" title=" " alt="" coords="205,137,302,178,300,183,203,142"/>
-<area shape="poly" title=" " alt="" coords="485,140,464,247,459,246,480,139"/>
-<area shape="rect" title=" " alt="" coords="494,187,538,213"/>
-<area shape="poly" title=" " alt="" coords="493,138,507,171,502,173,488,140"/>
-<area shape="rect" href="time_module_8h_source.html" title=" " alt="" coords="562,187,661,213"/>
-<area shape="poly" title=" " alt="" coords="508,137,578,176,575,181,506,142"/>
-<area shape="poly" title=" " alt="" coords="586,216,498,257,496,252,583,211"/>
-<area shape="rect" title=" " alt="" coords="584,261,639,288"/>
-<area shape="poly" title=" " alt="" coords="614,214,614,246,609,246,609,214"/>
+<area shape="rect" title="Implementation of the temperature class." alt="" coords="660,5,852,64"/>
+<area shape="rect" href="temperature_8h_source.html" title=" " alt="" coords="372,112,473,139"/>
+<area shape="poly" title=" " alt="" coords="660,64,485,110,484,105,659,59"/>
+<area shape="rect" href="serial_menu_8h_source.html" title=" " alt="" coords="820,187,916,213"/>
+<area shape="poly" title=" " alt="" coords="799,63,824,84,845,111,859,141,867,171,861,173,854,143,840,113,820,88,796,67"/>
+<area shape="rect" href="ptr_utils_8h_source.html" title=" " alt="" coords="756,112,830,139"/>
+<area shape="poly" title=" " alt="" coords="770,63,784,97,779,99,765,65"/>
+<area shape="rect" href="calc_module_8h.html" title="Header file for the calculation module handling sensor data." alt="" coords="640,261,738,288"/>
+<area shape="poly" title=" " alt="" coords="750,65,699,247,694,246,745,64"/>
+<area shape="rect" title=" " alt="" coords="738,336,814,363"/>
+<area shape="poly" title=" " alt="" coords="425,138,431,174,438,194,450,212,479,240,513,263,549,283,586,300,660,324,723,338,722,343,658,329,584,305,546,288,510,268,476,244,446,215,434,197,426,176,420,139"/>
+<area shape="rect" title=" " alt="" coords="460,187,510,213"/>
+<area shape="poly" title=" " alt="" coords="435,137,466,173,462,177,431,141"/>
+<area shape="rect" title=" " alt="" coords="535,187,681,213"/>
+<area shape="poly" title=" " alt="" coords="456,137,562,178,560,183,454,142"/>
+<area shape="rect" title=" " alt="" coords="5,187,152,213"/>
+<area shape="poly" title=" " alt="" coords="372,140,154,186,153,180,371,135"/>
+<area shape="rect" title=" " alt="" coords="175,187,264,213"/>
+<area shape="poly" title=" " alt="" coords="388,142,271,183,269,178,386,137"/>
+<area shape="rect" title=" " alt="" coords="289,187,385,213"/>
+<area shape="poly" title=" " alt="" coords="409,141,365,179,361,175,406,137"/>
+<area shape="poly" title=" " alt="" coords="874,213,881,248,880,269,873,289,852,314,827,331,824,327,849,310,868,287,874,268,875,249,869,214"/>
+<area shape="rect" title=" " alt="" coords="814,261,858,288"/>
+<area shape="poly" title=" " alt="" coords="865,215,850,248,845,246,860,213"/>
+<area shape="rect" href="time_module_8h_source.html" title=" " alt="" coords="933,261,1032,288"/>
+<area shape="poly" title=" " alt="" coords="889,212,951,250,948,255,886,216"/>
+<area shape="poly" title=" " alt="" coords="947,291,827,333,825,328,946,286"/>
+<area shape="rect" title=" " alt="" coords="955,336,1010,363"/>
+<area shape="poly" title=" " alt="" coords="985,289,985,320,980,320,980,289"/>
+<area shape="poly" title=" " alt="" coords="795,139,781,321,775,321,790,139"/>
+<area shape="poly" title=" " alt="" coords="808,137,846,174,842,178,804,141"/>
+<area shape="poly" title=" " alt="" coords="706,286,751,324,748,328,703,291"/>
 </map>
 </div>
 </div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

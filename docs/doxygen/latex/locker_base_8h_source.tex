@@ -1,0 +1,77 @@
+\doxysection{locker\+Base.\+h}
+\hypertarget{locker_base_8h_source}{}\label{locker_base_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/lockerBase/lockerBase.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/lockerBase/lockerBase.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LOCKER\_BASE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LOCKER\_BASE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <frt.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <scopedLock.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <logManager.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_locker_base}{LockerBase}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_locker_base}{LockerBase}}()}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_logger-\/>\mbox{\hyperlink{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea}{isSDCardInitialized}}())}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger-\/>\mbox{\hyperlink{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3}{setLogFileName}}(\textcolor{stringliteral}{"{}log\_LockerBase.txt"{}});}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_locker_base}{\string~LockerBase}}()\ \{\}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{classlocker_1_1_scoped_lock}{locker::ScopedLock}}\ \mbox{\hyperlink{class_locker_base_aca0e1096ed4bfe7e7f3c1c100c1c6fa1}{lockEthernetScoped}}()}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ ethernetConnected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ logState(\textcolor{stringliteral}{"{}Ethernet\ connected"{}},\ ethernetConnected);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classlocker_1_1_scoped_lock}{locker::ScopedLock}}(ethernetMutex);}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classlocker_1_1_scoped_lock}{locker::ScopedLock}}\ \mbox{\hyperlink{class_locker_base_a0e15e16538094ff49f6255f026f0b064}{lockTemperatureScoped}}()}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ temperatureReading\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ logState(\textcolor{stringliteral}{"{}Temperature\ reading"{}},\ temperatureReading);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classlocker_1_1_scoped_lock}{locker::ScopedLock}}(temperaturQueueMutex);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classlocker_1_1_scoped_lock}{locker::ScopedLock}}\ \mbox{\hyperlink{class_locker_base_ae48afaf381687110983a115f3588d5b1}{lockSerialScoped}}()}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ serialReading\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ logState(\textcolor{stringliteral}{"{}Serial\ reading"{}},\ serialReading);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classlocker_1_1_scoped_lock}{locker::ScopedLock}}(serialMutex);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Mutexes\ for\ the\ different\ resources}}
+\DoxyCodeLine{00062\ \ \ \ \ frt::Mutex\ temperaturQueueMutex;}
+\DoxyCodeLine{00063\ \ \ \ \ frt::Mutex\ ethernetMutex;}
+\DoxyCodeLine{00064\ \ \ \ \ frt::Mutex\ serialMutex;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Semaphores\ for\ the\ different\ resources}}
+\DoxyCodeLine{00067\ \ \ \ \ frt::Semaphore\ ethernetSemaphore;}
+\DoxyCodeLine{00068\ \ \ \ \ frt::Semaphore\ temperatureSemaphore;}
+\DoxyCodeLine{00069\ \ \ \ \ frt::Semaphore\ serialSemaphore;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Flags\ for\ the\ different\ resources}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ ethernetConnected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ temperatureReading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ serialReading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Logger\ instance}}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}*\ \_logger\ =\ \mbox{\hyperlink{class_log_manager_adc7504f084d4cc05071328651efcb272}{LogManager::getInstance}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ logState(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ \textcolor{keywordtype}{bool}\ state)}
+\DoxyCodeLine{00086\ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[64];}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}[LockerBase]\ \%s:\ \%s"{}},\ label,\ state\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}});}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \_logger-\/>\mbox{\hyperlink{class_log_manager_aa8726477f11f02c62aa7524aa0f37968}{writeToLogFile}}(buffer);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LOCKER\_BASE\_H}}
+
+\end{DoxyCode}

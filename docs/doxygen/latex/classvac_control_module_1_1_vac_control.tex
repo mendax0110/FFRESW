@@ -15,6 +15,9 @@
 \Hypertarget{classvac_control_module_1_1_vac_control_a0297a8b42f8d44c4b2e30b4149517907}\label{classvac_control_module_1_1_vac_control_a0297a8b42f8d44c4b2e30b4149517907} 
 void {\bfseries initialize} ()
 \begin{DoxyCompactList}\small\item\em Initialize the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} System This method sets up the pins and prepares the system for operation. \end{DoxyCompactList}\item 
+\Hypertarget{classvac_control_module_1_1_vac_control_a67e66a5d9e7ba06cdcb780206a25426c}\label{classvac_control_module_1_1_vac_control_a67e66a5d9e7ba06cdcb780206a25426c} 
+void {\bfseries deinitialize} ()
+\begin{DoxyCompactList}\small\item\em denitialize the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} System This method shuts down the pins and prepares graceful restart. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Get the state of the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}{Switch\+States}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83}{get\+Switch\+State}} ()
@@ -70,8 +73,7 @@ Gets the external pressure value.
 \begin{DoxyReturn}{Returns}
 The current external pressure value 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -91,8 +93,7 @@ Getter function to retrieve the current external scenario state.
 \begin{DoxyReturn}{Returns}
 The current external scenario state (integer) 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -127,8 +128,7 @@ Determines the scenario based on the potentiometer value.
 \begin{DoxyReturn}{Returns}
 The corresponding scenario based on the potentiometer value 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -176,16 +176,14 @@ Measures the actual pressure of the system.
 \begin{DoxyReturn}{Returns}
 \doxylink{struct_measurement}{Measurement} -\/\texorpdfstring{$>$}{>} A \doxylink{struct_measurement}{Measurement} object containing the current pressure 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -202,8 +200,7 @@ Here is the caller graph for this function\+:
 
 Runs the main control loop for the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. 
 
-This function checks the current system state and performs actions accordingly (e.\+g., switch states, pump control, LED control). Here is the call graph for this function\+:
-\nopagebreak
+This function checks the current system state and performs actions accordingly (e.\+g., switch states, pump control, LED control). Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -255,16 +252,14 @@ Set the Pump flag.
 {\em flag} & This is the boolean flag to set \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -288,8 +283,7 @@ Controls the vacuum LED based on the current and target pressures.
 {\em target\+Pressure} & The target pressure to reach \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

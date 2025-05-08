@@ -79,7 +79,6 @@ $(function() {
 <h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
 <li>beginEthernet()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#afb82be4038217549f33e23b770d2ddd2">comModule::EthernetCommunication</a></li>
 <li>beginI2C()&#160;:&#160;<a class="el" href="classcom_module_1_1_i2_c_communication.html#ae2e5382caa6ca43b2303df5626c5bf92">comModule::I2CCommunication</a></li>
-<li>beginSensor()&#160;:&#160;<a class="el" href="classsensor_module_1_1_sensor_module_internals.html#af629b75498c4888f0f2f3874c72a1633">sensorModule::SensorModuleInternals</a></li>
 <li>beginSerial()&#160;:&#160;<a class="el" href="classcom_module_1_1_serial_communication.html#a8eb8a6012594043049abd837b245c96c">comModule::SerialCommunication</a></li>
 <li>beginSPI()&#160;:&#160;<a class="el" href="classcom_module_1_1_s_p_i_communication.html#a7bf426b80912b8ab85936f501bfc9a74">comModule::SPICommunication</a></li>
 </ul>
@@ -108,6 +107,7 @@ $(function() {
 
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
+<li>deinitialize()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#aeeb837ffef7f1eba1addc4c04a09d195">flybackModule::Flyback</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a67e66a5d9e7ba06cdcb780206a25426c">vacControlModule::VacControl</a></li>
 <li>detectStackOverflow()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#adb82be304bb03585249194aed79e987e">reportSystem::ReportSystem</a></li>
 </ul>
 
@@ -173,7 +173,7 @@ $(function() {
 <li>i2cRead()&#160;:&#160;<a class="el" href="classcom_module_1_1_i2_c_communication.html#ad60819a150985131af81631a43b90e99">comModule::I2CCommunication</a></li>
 <li>i2cWrite()&#160;:&#160;<a class="el" href="classcom_module_1_1_i2_c_communication.html#a2a098877516193a07e796915c98e19f4">comModule::I2CCommunication</a></li>
 <li>incrementTime()&#160;:&#160;<a class="el" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b">timeModule::TimeModuleInternals</a></li>
-<li>initialize()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a94ed02d392d9f6f01c6c672acd2deb45">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a5bcaf5eed99551cdf73d0332d719a695">PressureSensor</a>, <a class="el" href="class_temperature_sensor.html#ab9adecbafd9ebe645ddc4e0298a1ed07">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a0297a8b42f8d44c4b2e30b4149517907">vacControlModule::VacControl</a></li>
+<li>initialize()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a94ed02d392d9f6f01c6c672acd2deb45">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a5bcaf5eed99551cdf73d0332d719a695">PressureSensor</a>, <a class="el" href="classsensor_module_1_1_sensor_module_internals.html#ac5c1ab300ba709767a9ae8f4e37a3bd9">sensorModule::SensorModuleInternals</a>, <a class="el" href="class_temperature_sensor.html#ab9adecbafd9ebe645ddc4e0298a1ed07">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#a0297a8b42f8d44c4b2e30b4149517907">vacControlModule::VacControl</a></li>
 <li>initSDCard()&#160;:&#160;<a class="el" href="class_log_manager.html#ae94692128d06adc86d8c04e8b70e41ba">LogManager</a></li>
 <li>initStackGuard()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a556efb423beb07f507c05458d86b8ab4">reportSystem::ReportSystem</a></li>
 <li>isInitialized()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#ab5523a8bbac6520e6f757bf51af3cf2c">comModule::EthernetCommunication</a>, <a class="el" href="classcom_module_1_1_i2_c_communication.html#ad92a3962504d61f99e600bcd97aff408">comModule::I2CCommunication</a>, <a class="el" href="classcom_module_1_1_serial_communication.html#a0ba8f9b62ac055b9d64d8bcbd6a54f76">comModule::SerialCommunication</a>, <a class="el" href="classcom_module_1_1_s_p_i_communication.html#a1a15b73771f046f3e6aa5c04b0a5817b">comModule::SPICommunication</a>, <a class="el" href="classflyback_module_1_1_flyback.html#a3e04ac32a7922079753b3c167abd28a9">flybackModule::Flyback</a>, <a class="el" href="class_pressure_sensor.html#a90251cd182efdc2ae4797dcdc6e51a34">PressureSensor</a>, <a class="el" href="class_temperature_sensor.html#ac7a29962d4b9a801ebb1d51278505a44">TemperatureSensor</a>, <a class="el" href="classvac_control_module_1_1_vac_control.html#acc0cd84b3ce34a11768eef55b405e6ae">vacControlModule::VacControl</a></li>
@@ -190,6 +190,9 @@ $(function() {
 
 <h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
 <li>load()&#160;:&#160;<a class="el" href="class_serial_menu.html#a5d4a82bc3f561b4c2aa9ddd94e8c2c1d">SerialMenu</a></li>
+<li>lockEthernetScoped()&#160;:&#160;<a class="el" href="class_locker_base.html#aca0e1096ed4bfe7e7f3c1c100c1c6fa1">LockerBase</a></li>
+<li>lockSerialScoped()&#160;:&#160;<a class="el" href="class_locker_base.html#ae48afaf381687110983a115f3588d5b1">LockerBase</a></li>
+<li>lockTemperatureScoped()&#160;:&#160;<a class="el" href="class_locker_base.html#a0e15e16538094ff49f6255f026f0b064">LockerBase</a></li>
 </ul>
 
 
@@ -235,6 +238,7 @@ $(function() {
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>saveLastError()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a76c39b828d9edb65bf2b8b02de5a5ddf">reportSystem::ReportSystem</a></li>
+<li>ScopedLock()&#160;:&#160;<a class="el" href="classlocker_1_1_scoped_lock.html#aed9c1fce51c5b58e433affb8d831a7cb">locker::ScopedLock</a></li>
 <li>sendCommand()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a6d043bcf14fd4f0f8f0f8db9d664cfcd">comModule::EthernetCommunication</a></li>
 <li>sendEthernetData()&#160;:&#160;<a class="el" href="classcom_module_1_1_ethernet_communication.html#a6d1f0fa97f7dc17f30d94ec82a931538">comModule::EthernetCommunication</a></li>
 <li>sendJsonEthernet()&#160;:&#160;<a class="el" href="classjson_module_1_1_json_module_internals.html#a57f3c0b9523b19f66ceaa14714a249e2">jsonModule::JsonModuleInternals</a></li>
@@ -257,6 +261,7 @@ $(function() {
 <li>setTimerState()&#160;:&#160;<a class="el" href="classflyback_module_1_1_flyback.html#a5373fad01b79168d4786e6066dd74a90">flybackModule::Flyback</a></li>
 <li>setVacuumLed()&#160;:&#160;<a class="el" href="classvac_control_module_1_1_vac_control.html#aa026020d731fb58e83a81158bcb75f8b">vacControlModule::VacControl</a></li>
 <li>show()&#160;:&#160;<a class="el" href="class_serial_menu.html#ad77b0f0ee0de8ad633644ffc2370c4a3">SerialMenu</a></li>
+<li>shutdownSDCard()&#160;:&#160;<a class="el" href="class_log_manager.html#a4171780238924df8caae60e9f2b45d53">LogManager</a></li>
 <li>spiRead()&#160;:&#160;<a class="el" href="classcom_module_1_1_s_p_i_communication.html#a13b3a3bd39b8d203b3af4761ea9a3693">comModule::SPICommunication</a></li>
 <li>spiWrite()&#160;:&#160;<a class="el" href="classcom_module_1_1_s_p_i_communication.html#a0beeda059a00ad3613e3f985656e6bcd">comModule::SPICommunication</a></li>
 <li>startBusyTime()&#160;:&#160;<a class="el" href="classreport_system_1_1_report_system.html#a6d34d7c8534ff96d109acaef76f4878f">reportSystem::ReportSystem</a></li>
