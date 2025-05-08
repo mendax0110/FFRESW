@@ -1,0 +1,133 @@
+@startuml
+skinparam monochrome true
+skinparam defaultTextAlignment center
+skinparam rectangle {
+    BorderColor #333
+    BackgroundColor #f9f9f9
+}
+
+title **Systemarchitektur - Hauptprogramm**
+
+' 1. Hauptkomponenten als Klassen
+class "ComModuleInternals" as ComModule {
+  + getEthernet(): EthernetInterface
+  + getSerial(): SerialInterface
+  + getI2C(): I2CInterface
+  + getSPI(): SPIInterface
+}
+
+class "SensorModuleInternals" as SensorModule {
+  + readSensor(SensorType): float
+  + initialize(): void
+}
+
+class "ReportSystem" as ReportSystem {
+  + reportStatus(bool): void
+  + checkSystemHealth(...): bool
+  + detectStackOverflow(): bool
+}
+
+class "TimeModuleInternals" as TimeModule {
+  + setTimeFromHas(String): void
+  + getSystemTime(): DateTimeStruct
+  + formatTimeString(): String
+}
+
+class "Flyback" as Flyback {
+  + run(): void
+  + measure(): Measurement
+  + setExternFrequency(uint32_t): void
+  + setExternDutyCycle(int): void
+  + getSwitchState(): SwitchStates
+}
+
+class "VacControl" as VacControl {
+  + run(): void
+  + setExternScenario(int): void
+  + setExternPressure(float): void
+  + getSwitchState(): SwitchStates
+}
+
+class "JsonModuleInternals" as JsonModule {
+  + createJsonString(): void
+  + createJsonFloat(): void
+  + getJsonString(): String
+}
+
+' 2. Tasks als Klassen
+class "ReportTask" as ReportTask {
+  + run(): bool
+  - REPORT_INTERVAL_MS: uint32_t = 5000
+  - lastReportTime: uint32_t
+}
+
+class "FlyBackVacControlTask" as FlybackTask {
+  + run(): bool
+  - applyScenario(int): void
+}
+
+class "SensorActorEndpointTask" as SensorTask {
+  + run(): bool
+  - buildJsonResponse(): String
+  - processSetRequest(): void
+  - handleFlybackGet/Set(): String
+}
+
+class "StackMonitorTask" as StackMonitor {
+  + run(): bool
+  - checkAndReport(): void
+}
+
+' 3. Globale Objekte
+object "com" as com_obj
+object "sens" as sens_obj
+object "flyback" as flyback_obj
+object "vacControl" as vac_obj
+
+' 4. Beziehungen
+ComModule "1" *-- "1" com_obj
+SensorModule "1" *-- "1" sens_obj
+Flyback "1" *-- "1" flyback_obj
+VacControl "1" *-- "1" vac_obj
+
+ReportTask --> ReportSystem : uses
+FlybackTask --> Flyback : controls
+FlybackTask --> VacControl : manages
+SensorTask --> ComModule : calls
+SensorTask --> JsonModule : generates
+StackMonitor ..> ReportTask : monitors
+StackMonitor ..> FlybackTask : monitors
+
+' 5. Notizen
+note top of ComModule
+  **Verbindungen:**
+  - Ethernet: 192.168.1.3
+  - I2C: Adresse 0x76
+  - SPI: Pin 4
+end note
+
+note right of Flyback
+  **Szenarien:**
+  1. CLOSE (Mode 3)
+  2. Pressure 1.0 (Mode 5)
+  3. Pressure 0.8 (Mode 5)
+  4. Pressure 0.6 (Mode 5)
+  5. OPEN (Mode 4)
+end note
+
+note bottom of SensorTask
+  **Stack: 1024B**
+  Verarbeitet:
+  - Temperaturabfragen
+  - Szenarien-Steuerung
+  - JSON-Generierung
+end note
+
+legend
+  |= Relation      | Bedeutung          |
+  |------------|------------------|
+  | -->        | Nutzung          |
+  | *--        | Instanz          |
+  | ..>        | Überwachung      |
+endlegend
+@enduml

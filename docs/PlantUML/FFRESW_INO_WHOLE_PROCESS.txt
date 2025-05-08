@@ -1,0 +1,195 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Courier
+skinparam classFontSize 12
+skinparam classAttributeIconSize 0
+
+' Main components
+component "Main System" {
+    component "ComModule" as ComModule {
+        class "ComModuleInternals" {
+            +getEthernet()
+            +getSerial()
+            +getI2C()
+            +getSPI()
+        }
+    }
+
+    component "SensorModule" as SensorModule {
+        class "SensorModuleInternals" {
+            +initialize()
+            +readSensor()
+        }
+    }
+
+    component "ReportSystem" as ReportSystem {
+        class "ReportSystem" {
+            +reportStatus()
+            +checkSystemHealth()
+            +detectStackOverflow()
+            +initStackGuard()
+        }
+    }
+
+    component "TimeModule" as TimeModule {
+        class "TimeModuleInternals" {
+            +getInstance()
+            +setTimeFromHas()
+            +getSystemTime()
+            +formatTimeString()
+        }
+    }
+
+    component "JsonModule" as JsonModule {
+        class "JsonModuleInternals" {
+            +clearJson()
+            +createJsonStringConst()
+            +createJsonFloat()
+            +createJsonString()
+            +getJsonString()
+        }
+    }
+
+    component "FlybackModule" as FlybackModule {
+        class "Flyback" {
+            +initialize()
+            +deinitialize()
+            +run()
+            +measure()
+            +setExternFrequency()
+            +setExternDutyCycle()
+            +getSwitchState()
+        }
+    }
+
+    component "VacControlModule" as VacControlModule {
+        class "VacControl" {
+            +initialize()
+            +deinitialize()
+            +run()
+            +setExternScenario()
+            +setExternPressure()
+            +getSwitchState()
+            +getScenario()
+        }
+    }
+
+    component "LogManager" as LogManager {
+        class "LogManager" {
+            +getInstance()
+            +initSDCard()
+            +flushLogs()
+            +setLogFileName()
+        }
+    }
+
+    component "SerialMenu" as SerialMenu {
+        class "SerialMenu" {
+            +printToSerial()
+        }
+    }
+
+    component "CalcModule" as CalcModule {
+        class "CalcModuleInternals" {
+            +extractFloatFromResponse()
+            +extractFloat()
+        }
+    }
+}
+
+' Tasks
+component "Tasks" {
+    class "ReportTask" {
+        +run()
+    }
+
+    class "FlyBackVacControlTask" {
+        +run()
+        -applyScenario()
+    }
+
+    class "SensorActorEndpointTask" {
+        +run()
+        -buildJsonResponse()
+        -getCurrentTimestamp()
+        -processSetRequest()
+        -processGetRequest()
+        -handleFlybackGet()
+        -handleFlybackSet()
+        -handleScenarioSet()
+        -handleScenarioGet()
+        -handleTemperatureSensors()
+        -handleReportGet()
+    }
+
+    class "StackMonitorTask" {
+        +run()
+        -checkAndReport()
+    }
+}
+
+' Global variables
+class "GlobalVariables" {
+    +com : ComModuleInternals
+    +sens : SensorModuleInternals
+    +report : ReportSystem
+    +json : JsonModuleInternals
+    +_timeMod : TimeModuleInternals*
+    +flyback : Flyback
+    +vacControl : VacControl
+    +temperatureQueue : frt::Queue<float,1>
+    +endpointQueue : frt::Queue<String,5>
+    +temperatureQueueMutex : frt::Mutex
+    +ethernetMutex : frt::Mutex
+}
+
+' Functions
+class "Functions" {
+    +updateTime()
+    +gracefulRestart()
+    +hardRestart()
+    +setup()
+    +loop()
+}
+
+' Relationships
+ComModuleInternals --> ReportSystem : reports to
+ComModuleInternals --> TimeModuleInternals : gets time
+ComModuleInternals --> JsonModuleInternals : creates JSON
+SensorModuleInternals --> ComModuleInternals : uses
+ReportSystem --> ComModuleInternals : uses
+ReportSystem --> SensorModuleInternals : checks
+TimeModuleInternals --> ComModuleInternals : uses
+Flyback --> ComModuleInternals : uses
+VacControl --> ComModuleInternals : uses
+VacControl --> Flyback : interacts with
+
+ReportTask --> ReportSystem : uses
+ReportTask --> SerialMenu : logs to
+FlyBackVacControlTask --> Flyback : controls
+FlyBackVacControlTask --> VacControl : controls
+FlyBackVacControlTask --> ComModuleInternals : uses
+FlyBackVacControlTask --> SerialMenu : logs to
+SensorActorEndpointTask --> ComModuleInternals : uses
+SensorActorEndpointTask --> SensorModuleInternals : uses
+SensorActorEndpointTask --> JsonModuleInternals : uses
+SensorActorEndpointTask --> TimeModuleInternals : uses
+SensorActorEndpointTask --> Flyback : interacts with
+SensorActorEndpointTask --> VacControl : interacts with
+SensorActorEndpointTask --> CalcModuleInternals : uses
+SensorActorEndpointTask --> SerialMenu : logs to
+StackMonitorTask --> ReportTask : monitors
+StackMonitorTask --> FlyBackVacControlTask : monitors
+StackMonitorTask --> SensorActorEndpointTask : monitors
+StackMonitorTask --> SerialMenu : logs to
+
+Functions --> ComModuleInternals : uses
+Functions --> SensorModuleInternals : uses
+Functions --> LogManager : uses
+Functions --> Flyback : uses
+Functions --> VacControl : uses
+Functions --> ReportTask : manages
+Functions --> FlyBackVacControlTask : manages
+Functions --> SensorActorEndpointTask : manages
+Functions --> StackMonitorTask : manages
+@enduml

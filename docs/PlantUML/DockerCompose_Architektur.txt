@@ -1,0 +1,37 @@
+@startuml
+skinparam componentStyle uml2
+
+title "FFRHAS Docker-Compose Architektur"
+
+component "docker-compose.yml" as compose {
+  [services]
+  [networks]
+  [volumes]
+}
+
+node "FFRHAS Service" as service {
+  component "Python Container" as pycontainer {
+    interface "5000/tcp" as port
+    database "App Code" as code
+    file "Requirements" as reqs
+  }
+}
+
+cloud "Host System" as host {
+  folder "/FFRHAS/HAS" as hostcode
+  folder "docker-compose.yml" as composefile
+}
+
+composefile --> compose : Defines
+hostcode --> code : Volume Mount
+compose --> service : Manages
+port --> "Network" : Exposes
+
+note bottom of pycontainer
+<b>Container Specs:</b>
+• python:3.9-slim
+• WORKDIR: /app
+• CMD: python3 app.py
+• ~100MB base image
+end note
+@enduml

@@ -1,0 +1,75 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 10
+skinparam rectangle {
+    roundCorner 15
+    shadowing false
+}
+
+title "GitHub Repository Struktur für Farnsworth Fusion Reactor Projekt"
+
+frame "GitHub Organisation" {
+  component "FFRESW" as ffrsw #lightblue {
+    rectangle "Embedded Software" as sw1
+    rectangle "Doxygen Docs" as sw2
+    rectangle "Build Tools" as sw3
+  }
+
+  component "FFRHAS" as ffrh #lightgreen {
+    rectangle "Web Visualisierung" as has1
+    rectangle "GoJS Diagrams" as has2
+    rectangle "API Services" as has3
+  }
+
+  component "rpi-docker-setup" as rpi #orange {
+    rectangle "Dockerfiles" as docker1
+    rectangle "Setup Scripts" as docker2
+    rectangle "FFRHAS Submodul" as docker3
+  }
+}
+
+ffrsw -[hidden]-> ffrh
+ffrh -[hidden]-> rpi
+
+note top of ffrsw
+<b>FFRESW</b>
+<u>Technologien:</u>
+- C/C++ (Embedded)
+- Python/Shell Scripts
+- Doxygen
+<u>Zweck:</u>
+Mikrocontroller-Steuerung
+end note
+
+note right of ffrh
+<b>FFRHAS</b>
+<u>Technologien:</u>
+- JavaScript/GoJS
+- HTML/CSS
+- Python
+<u>Zweck:</u>
+SCADA Visualisierung
+end note
+
+note bottom of rpi
+<b>rpi-docker-setup</b>
+<u>Technologien:</u>
+- Docker
+- Bash Scripts
+- Git Submodules
+<u>Zweck:</u>
+DevOps Automation
+end note
+
+ffrsw --> ffrh : API Calls
+ffrh --> rpi : Deploys as\nContainer
+rpi --> ffrh : Submodule\nIntegration
+
+legend right
+<u>GitHub Features genutzt:</u>
+• Issues/Tracking
+• Code Reviews
+• Project Boards
+end legend
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Courier
+skinparam defaultFontSize 9
+skinparam rectangle {
+    roundCorner 5
+    borderColor #333
+}
+
+title "Actual Memory Usage from Build Output"
+
+frame "Program Memory (Flash)" {
+  rectangle "Total: 253,952 bytes" as flash_total {
+    rectangle "Used\n63,620 bytes (25%)" as flash_used #90C8F0 {
+      rectangle ".text\n61,502 bytes" as text #60A8E0
+      rectangle ".data\n2,118 bytes" as data_init #90EE90
+    }
+    rectangle "Free\n190,332 bytes" as flash_free #FFFFFF
+  }
+}
+
+frame "Dynamic Memory (SRAM)" {
+  rectangle "Total: 8,192 bytes" as sram_total {
+    rectangle "Used\n3,799 bytes (46%)" as sram_used {
+      rectangle ".data (Copied)\n2,118 bytes" as data #90EE90
+      rectangle ".bss\n1,679 bytes" as bss #FFFFE0
+      rectangle ".noinit\n2 bytes" as noinit #FFDAB9
+    }
+    rectangle "Free\n4,393 bytes" as sram_free {
+      rectangle "Available for Stack\n2,089 bytes" as stack #FFFFFF
+      rectangle "Available for Heap\n2,304 bytes" as heap #ADD8E6
+    }
+  }
+}
+
+' Layout connections
+flash_used -[hidden]-> flash_free
+data_init -[hidden]-> text
+sram_used -[hidden]-> sram_free
+data -[hidden]-> bss
+bss -[hidden]-> noinit
+stack -[hidden]-> heap
+
+note right of flash_used
+<b>Compilation Output:</b>
+Sketch uses 63,620 bytes (25%)
+of program storage space
+Maximum is 253,952 bytes
+end note
+
+note left of sram_used
+<b>Global Variables:</b>
+Use 3,799 bytes (46%)
+of dynamic memory
+Leaves 4,393 bytes
+for local variables
+end note
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam roundcorner 10
+
+title Entwicklungszyklus mit Sourcetrail und PlantUML
+
+rectangle "Sourcetrail-Analyse" as A #lightblue
+rectangle "Architektur-Insights" as B #lightgreen
+rectangle "PlantUML-Diagramme" as C #orange
+rectangle "Live-Dokumentation" as D #pink
+rectangle "Code-Optimierung" as E #violet
+
+A --> B : Code-Parsing\n& Visualisierung
+B --> C : Design-Erkenntnisse\n→ Diagramm-Skizzen
+C --> D : Automatisierte\nDokumentation
+D --> E : Identifizierte\nOptimierungen
+E --> A : Verbesserter\nCode
+
+note right of A
+  <b>Sourcetrail-Funktionen:
+  - Call-Graph-Analyse
+  - Klassenabhängigkeiten
+  - Template-Instanziierungen
+end note
+
+note left of C
+  <b>PlantUML-Vorteile:
+  - Textbasierte Diagramme
+  - Echtzeit-Aktualisierung
+end note
+@enduml

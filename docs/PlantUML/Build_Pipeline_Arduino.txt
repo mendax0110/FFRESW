@@ -1,0 +1,95 @@
+@startuml Arduino_Build_Process
+skinparam monochrome true
+skinparam defaultTextAlignment center
+skinparam rectangle {
+    BorderColor #333
+    BackgroundColor #f9f9f9
+}
+
+title **Arduino Build Pipeline** (to .hex & .elf)
+
+rectangle "Arduino Sketch" as sketch {
+  file "sketch.ino" as ino
+}
+
+rectangle "Header Files" as headers {
+  file "header.h" as h
+  file "Arduino Core\\n(libcore.a)" as core
+}
+
+rectangle "Libraries" as libs {
+  file "Library1.h" as lib1
+  file "Library2.a" as lib2
+}
+
+rectangle "**Preprocessor**" as preprocessor {
+  component "Merge #includes" as merge
+  component "Expand Macros" as macros
+  component "Remove Comments" as comments
+}
+
+rectangle "**Compiler**" as compiler {
+  component "Generate Assembly" as assembly
+  component "Optimize" as optimize
+  file "Object Files\\n(*.o)" as objects
+}
+
+rectangle "**Linker**" as linker {
+  component "Combine Objects" as combine
+  component "Resolve Symbols" as symbols
+  file "Executable\\n(sketch.elf)" as elf
+}
+
+rectangle "**Tools**" as tools {
+  component "avr-objcopy" as objcopy {
+    file "Flash Image\\n(sketch.hex)" as hex
+    file "EEPROM Data\\n(sketch.eep)" as eep
+  }
+  component "avr-size" as size
+  component "avr-nm" as nm
+}
+
+' Connections
+ino --> merge
+h --> merge
+core --> combine
+lib1 --> combine
+lib2 --> combine
+
+merge --> macros
+macros --> comments
+comments --> assembly
+assembly --> optimize
+optimize --> objects
+objects --> combine
+combine --> symbols
+symbols --> elf
+
+elf --> objcopy
+objcopy --> hex
+objcopy --> eep
+elf --> size
+elf --> nm
+
+note right of preprocessor
+  **Preprocessor Steps:**
+  1. Merge #include files
+  2. Expand #define macros
+  3. Remove comments
+end note
+
+note left of linker
+  **Linker Steps:**
+  - Merge .o files
+  - Link Arduino Core
+  - Resolve external symbols
+end note
+
+note bottom of objcopy
+  **avr-objcopy:**
+  Converts .elf to:
+  - .hex (Flash)
+  - .eep (EEPROM)
+end note
+
+@enduml

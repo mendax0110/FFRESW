@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Courier
+skinparam defaultFontSize 10
+skinparam roundcorner 10
+
+title "Docker Container Memory Layout für FFRHAS"
+
+frame "Host System" {
+  component "Docker Engine" as docker {
+    component "Python 3.9 Slim" as python {
+      rectangle "Layers" as layers {
+        rectangle "Base Image\n(python:3.9-slim)" as base #lightgray
+        rectangle "Dependencies\n(requirements.txt)" as deps #lightblue
+        rectangle "App Code\n(/opt/FFRHAS/HAS)" as app #lightgreen
+      }
+
+      rectangle "Runtime Memory" as memory {
+        rectangle "Heap" as heap #pink
+        rectangle "Stack" as stack #orange
+        rectangle "Python Interpreter" as interpreter #lightyellow
+      }
+    }
+  }
+}
+
+rectangle "Host Volumes" as volumes {
+  rectangle "Source Code\n/FFRHAS/HAS" as src
+  rectangle "Configs" as configs
+}
+
+base -[hidden]-> deps
+deps -[hidden]-> app
+
+src --> app : COPY
+app --> interpreter : Executes
+interpreter --> heap : Objects\nVariables
+interpreter --> stack : Call\nStack
+
+note right of layers
+<b>Image Layers:</b>
+1. Base OS (Debian)
+2. Python Runtime
+3. Pip Packages
+4. App Code (RW Layer)
+end note
+
+note left of memory
+<b>Memory Segments:</b>
+• Heap: Dynamic allocations
+• Stack: Function calls
+• Interpreter: Bytecode\n+ GC
+end note
+@enduml
