@@ -17,6 +17,14 @@
 /// @brief Namespace for the calculation module. \namespace calcModule
 namespace calcModule
 {
+	/// @brief Enum for the different Types we want to extract from a response \enum Type
+	enum Type
+	{
+		General,
+		Pressure,
+		Position
+	};
+
     /// @brief Class for the calculation module internals. \class calcModuleInternals
     class CalcModuleInternals
     {
@@ -174,6 +182,16 @@ namespace calcModule
          * @return float -> The extracted float.
          */
         static float extractFloat(String response, int id);
+
+        /**
+         * @brief Extract the float from a VAT uC eth frame, specific for positions and pressures
+         *
+         * @param response -> The response from the VAT uC.
+         * @param type -> The type to extract Pressure, Position, General
+         *
+         * @return float -> The extracted float.
+         */
+        static float extractFloatFromResponse(const String& response, Type type);
 
     private:
 

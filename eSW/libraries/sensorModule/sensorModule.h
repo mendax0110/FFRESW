@@ -17,7 +17,6 @@
 #include <SPI.h>
 #include <pressure.h>
 #include <temperature.h>
-
 #include <comModule.h>
 
 
@@ -31,9 +30,10 @@ namespace sensorModule
 		OBJECTTEMPERATURE,
 		AMBIENTTEMPERATURE,
         PRESSURE,
-        I2C_SENSOR,
-        SPI_SENSOR,
 		DHT11,
+		MCP9601_Celsius,
+		MCP9601_Fahrenheit,
+		MCP9601_Kelvin,
         UNKNOWN
     };
 
@@ -45,10 +45,10 @@ namespace sensorModule
         ~SensorModuleInternals();
 
         /**
-         * @brief Function to begin the sensor module.
+         * @brief Initialize the sensors.
          *
          */
-        void beginSensor();
+        void initialize();
 
         /**
          * @brief Function to read the sensor.
@@ -82,36 +82,6 @@ namespace sensorModule
 
         bool _i2cSensorInitialized;
         bool _spiSensorInitialized;
-
-        static const uint8_t I2C_SENSOR_ADDRESS = 0x76;
-        static const int SPI_CS_PIN = 10;
-
-        /**
-         * @brief Initialize the sensors.
-         *
-         */
-        void initializeSensors();
-
-        /**
-         * @brief Reads the I2C sensor.
-         *
-         * @return float -> The value of the sensor.
-         */
-        float readI2CSensor();
-
-        /**
-         * @brief Reads the SPI sensor.
-         *
-         * @return float -> The value of the sensor.
-         */
-        float readSPISensor();
-
-        /**
-         * @brief Function to report an error.
-         *
-         * @param errorMessage -> The error message.
-         */
-        void reportError(const char* errorMessage);
     };
 }
 

@@ -26,7 +26,15 @@ public:
      */
     void initSDCard(int cs);
 
+    /**
+     * @brief Function to shut down the SD card
+     */
     void shutdownSDCard();
+
+    /**
+     * @brief Function to flush the current Logs in special cases
+     */
+    void flushLogs();
 
     /**
      * @brief Function to check if the SD card is initialized.

@@ -194,8 +194,6 @@ float CalcModuleInternals::extractFloat(String response, int id)
 
         startIndex += 2;
 
-        //Serial.print("String after p: ");
-        //Serial.println(response.substring(startIndex));
 
         if (response.startsWith("000b", startIndex))
         {
@@ -204,9 +202,6 @@ float CalcModuleInternals::extractFloat(String response, int id)
 
         int hexLength = 8;
         startIndex += hexLength;
-
-        //Serial.print("String after skipping hex part: ");
-        //Serial.println(response.substring(startIndex));
 
         int numStartIndex = startIndex;
 
@@ -231,14 +226,7 @@ float CalcModuleInternals::extractFloat(String response, int id)
             numEndIndex++;
         }
 
-        //Serial.print("End index of number: ");
-        //Serial.println(numEndIndex);
-
         extracted = response.substring(numStartIndex, numEndIndex);
-
-        //Serial.print("Extracted value: ");
-        //Serial.println(extracted);
-
         extracted.trim();
 
         if (extracted.startsWith("00"))
@@ -265,6 +253,50 @@ float CalcModuleInternals::extractFloat(String response, int id)
 	}
 
     return extracted.toFloat();
+}
+
+float CalcModuleInternals::extractFloatFromResponse(const String& response, Type type)
+{
+	const char* prefix = nullptr;
+
+	switch (type)
+	{
+		case Type::Pressure:
+			prefix = "p:000b07010000";
+			break;
+		case Type::Position:
+			prefix = "p:000b10010000";
+			break;
+		default:
+			return 0.0f;
+	}
+
+	const int prefixLen = strlen(prefix);
+	int startIdx = 0;
+
+	while (startIdx < response.length())
+	{
+		int endIdx = response.indexOf('\n', startIdx);
+		if (endIdx == -1) endIdx = response.length();
+
+		String line = response.substring(startIdx, endIdx);
+		line.trim();
+
+		if (line.startsWith(prefix))
+		{
+			String valueStr = line.substring(prefixLen);
+			valueStr.trim();
+			float value = valueStr.toFloat();
+			if (value > 0)
+			{
+				return value;
+			}
+		}
+
+		startIdx = endIdx + 1;
+	}
+
+	return -1.0f;
 }
 
 float CalcModuleInternals::roundToPrecision(float value, int precision)

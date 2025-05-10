@@ -49,6 +49,34 @@ void Flyback::initialize()
 	SerialMenu::printToSerial(F("[INFO] Flyback module initialized."));
 }
 
+void Flyback::deinitialize()
+{
+	//Setup pinMode for Main_Switch
+    pinMode(Main_Switch_OFF, INPUT);
+    pinMode(Main_Switch_MANUAL, INPUT);
+    pinMode(Main_Switch_REMOTE, INPUT);
+    pinMode(PWM_Frequency, INPUT);
+    pinMode(PWM_DutyCycle, INPUT);
+    pinMode(Measure_ADC, INPUT);
+
+    //Setup pinMode for Indicator LED
+    pinMode(HV_Module_ON, INPUT);
+    pinMode(HV_Module_OFF, INPUT);
+    pinMode(HV_Module_Working, INPUT);
+    pinMode(PWM_OUT, INPUT);
+    pinMode(PWM_INV, INPUT);
+
+
+    digitalWrite(HV_Module_ON, LOW);
+    digitalWrite(HV_Module_OFF, LOW);
+    digitalWrite(HV_Module_Working, LOW);
+    digitalWrite(PWM_OUT, LOW);
+    digitalWrite(PWM_INV, LOW);
+
+    _flybackInitialized = false;
+    SerialMenu::printToSerial(F("[INFO] Flyback module deinitialized."));
+}
+
 void Flyback::timerConfig()
 {
 	// Setup Timer1 für Fast PWM, Top = ICR1

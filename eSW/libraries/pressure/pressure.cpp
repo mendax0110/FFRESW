@@ -30,7 +30,8 @@ float PressureSensor::readPressure()
 {
     if (!_pressureSensorInitialized)
     {
-        reportError("Pressure sensor not initialized!");
+        //reportError("Pressure sensor not initialized!");
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Pressure sensor not initialized!"));
         return NAN;
     }
 
@@ -48,9 +49,4 @@ float PressureSensor::readAnalogSensor(int pin)
 {
     int rawValue = analogRead(pin);
     return (float)rawValue;
-}
-
-void PressureSensor::reportError(const char* errorMessage)
-{
-    SerialMenu::printToSerial("[ERROR] " + String(errorMessage));
 }

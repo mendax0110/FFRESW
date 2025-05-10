@@ -199,3 +199,15 @@ bool LogManager::writeToLogFile(const String& logMessage)
 
     return true;
 }
+
+void LogManager::flushLogs()
+{
+	if (logFile)
+	{
+		logFile.flush();
+	}
+	else
+	{
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "No log file currently open to flush.");
+	}
+}

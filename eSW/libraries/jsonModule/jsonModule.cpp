@@ -67,7 +67,7 @@ String JsonModuleInternals::getJsonString() const
 std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
 {
 	std::map<String, float> resultMap;
-	DynamicJsonDocument doc(512); //TODO: Check if really 1024 is needed, was previously 1024
+	DynamicJsonDocument doc(256); //TODO: Check if really 1024 is needed, was previously 512
 	DeserializationError error = deserializeJson(doc, rawJson);
 
 	if (error)

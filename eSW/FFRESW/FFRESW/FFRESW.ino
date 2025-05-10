@@ -46,9 +46,10 @@ frt::Queue<float, 1> temperatureQueue;
 frt::Queue<String, 5> endpointQueue;
 
 frt::Mutex temperatureQueueMutex;
+frt::Mutex ethernetMutex;
 
 
-// helper method to update time
+// helper method to update time -> do not run in a TASK!!!
 void updateTime()
 {
     static unsigned long lastUpdateTime = 0;
@@ -96,14 +97,11 @@ public:
 class FlyBackVacControlTask final : public frt::Task<FlyBackVacControlTask, 512> // TODO Check stack size, was previoulsy std 256
 {
 public:
-	// Hauptlogik des Tasks
 	bool run()
 	{
 		if (flyback.isInitialized())
 		{
 			flyback.run();
-
-			//Verzögerung, um den Task nicht zu überlasten
 			msleep(1000);
 		}
 
@@ -113,88 +111,78 @@ public:
 			vacControl.run();
 
 			vacControlModule::SwitchStates swState = vacControl.getSwitchState();
-			if(swState == vacControlModule::SwitchStates::Main_Switch_MANUAL)
+			if (swState == vacControlModule::SwitchStates::Main_Switch_MANUAL)
 			{
-				//Pressure vom Controller holen.
-				//String response = com.getEthernet().getParameter(Compound2::ACTUAL_PRESSURE);
-				//SerialMenu::printToSerial("Response: " + response);
-				//float rawValue = CalcModuleInternals::extractFloat(response, 0);
-				//vacControl.setExternPressure(rawValue);
-				//SerialMenu::printToSerial("Remote Pressure: " + String(rawValue));
-				//msleep(1000);
+                String response;
+
+                {
+                    ethernetMutex.lock();
+                    response = com.getEthernet().getParameter(Compound2::ACTUAL_PRESSURE);
+                    ethernetMutex.unlock();
+                }
+
+                float rawValue = CalcModuleInternals::extractFloatFromResponse(response, Type::Pressure);
+                vacControl.setExternPressure(rawValue);
 
 				int scenario = vacControl.getScenario();
-				switch (scenario)
-				{
-					case Scenarios::Scenario_1:
-					{
-						SerialMenu::printToSerial("Scenario 1");
-						com.getEthernet().setParameter(Compound2::CONTROL_MODE, "3"); //CLOSE
-						break;
-					}
-					case Scenarios::Scenario_2:
-					{
-						SerialMenu::printToSerial("Scenario 2");
-						com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-						com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "1");
-						break;
-					}
-					case Scenarios::Scenario_3:
-					{
-						SerialMenu::printToSerial("Scenario 3");
-						com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-						com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.8");
-						break;
-					}
-					case Scenarios::Scenario_4:
-					{
-						SerialMenu::printToSerial("Scenario 4");
-						com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-						com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.6");
-						break;
-					}
-					case Scenarios::Scenario_5:
-					{
-						SerialMenu::printToSerial("Scenario 5");
-						com.getEthernet().setParameter(Compound2::CONTROL_MODE, "4"); // OPEN
-						break;
-					}
-					default:
-					{
-						// Optional: handle unknown scenarios
-						break;
-					}
-				}
+				applyScenario(scenario);
+
 			}
 
 			msleep(1000);
 		}
 
-
-		// TODO: RENAME THIS TASK LATER ON, ADD VacControl to this Task then
-		yield(); // TODO CHECK THIS YIELD
+		yield();
 		return true;
 	}
 
 private:
-
+	// TODO: CHECK THIS WITH FRAMDOM01 AND SEE IF IT WORKS!!
+	void applyScenario(int scenario)
+	{
+		switch (scenario)
+		{
+			case Scenarios::Scenario_1:
+			{
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 1"));
+				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "3"); //CLOSE
+				break;
+			}
+			case Scenarios::Scenario_2:
+			{
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 2"));
+				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
+				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "1");
+				break;
+			}
+			case Scenarios::Scenario_3:
+			{
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 3"));
+				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
+				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.8");
+				break;
+			}
+			case Scenarios::Scenario_4:
+			{
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 4"));
+				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
+				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.6");
+				break;
+			}
+			case Scenarios::Scenario_5:
+			{
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 5"));
+				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "4"); // OPEN
+				break;
+			}
+			default:
+			{
+				// Optional: handle unknown scenarios
+				break;
+			}
+		}
+	}
 };
-
-/// @brief Implementation of the MonitoringTask class.
-/// @brief Task to monitor queue and system usage
-/*class MonitoringTask final : public frt::Task<MonitoringTask>
-{
-public:
-    bool run()
-    {
-        msleep(2000);
-
-        yield();
-        return true;
-    }
-private:
-};*/
-
 
 /// @brief Implementation of the SensorActorEndpoint class, control Sensors, Actorcs, Task... \class SensorActorEndpointTask
 class SensorActorEndpointTask final : public frt::Task<SensorActorEndpointTask, 1024>  // TODO: was 2048 really needed?? -> evaluate!
@@ -210,11 +198,11 @@ public:
 
 	    String jsonBody;
 
-	    // Direct lookup table for simple temperature sensors
-	    static const std::map<String, SensorType> sensorMap = {
-	        {"temperature_sensor_1", SensorType::AMBIENTTEMPERATURE},
-	        {"temperature_sensor_2", SensorType::OBJECTTEMPERATURE}
-	    };
+	    // ReportSystem-Endpoints
+        if (requestedEndpoint.startsWith("get_report_"))
+        {
+            jsonBody = handleReportGet(requestedEndpoint);
+        }
 
 	    // Flyback-Endpoints
         if (requestedEndpoint.startsWith("get_flyback_"))
@@ -246,14 +234,14 @@ public:
         	jsonBody = handleScenarioGet(requestedEndpoint);
         }
 
-        // VAT-Endpoints
-	    auto sensorIt = sensorMap.find(requestedEndpoint);
-	    if (sensorIt != sensorMap.end())
-	    {
-	        float value = sens.readSensor(sensorIt->second);
-	        jsonBody = buildJsonResponse(requestedEndpoint, value, "Celsius");
-	    }
-	    else if (requestedEndpoint.startsWith("set_"))
+        // Temperature-Sensor-Endpoints
+        if (requestedEndpoint.startsWith("get_temperature_"))
+        {
+            handleTemperatureSensors(requestedEndpoint, jsonBody);
+        }
+
+	    // VAT-Endpoints
+	    if (requestedEndpoint.startsWith("set_"))
 	    {
 	        processSetRequest(requestedEndpoint, jsonBody);
 	    }
@@ -303,50 +291,65 @@ private:
         String valueStr = requestedEndpoint.substring(separatorIndex + 1);
         String command = requestedEndpoint.substring(4, separatorIndex);
 
-        static const std::map<String, Compound2> setParams = {
-            {"control_mode", Compound2::CONTROL_MODE},
-            {"target_position", Compound2::TARGET_POSITION},
-            {"target_pressure", Compound2::TARGET_PRESSURE}
-        };
+        Compound2 param;
 
-        auto it = setParams.find(command);
-        if (it != setParams.end())
+        if (command == "control_mode")
         {
-            com.getEthernet().setParameter(it->second, valueStr);
+            param = Compound2::CONTROL_MODE;
+        }
+        else if (command == "target_position")
+        {
+            param = Compound2::TARGET_POSITION;
+        }
+        else if (command == "target_pressure")
+        {
+            param = Compound2::TARGET_PRESSURE;
+        }
+        else
+        {
+            return;
+        }
 
-            if (command == "control_mode")
-            {
-                String response = com.getEthernet().getParameter(it->second);
-                jsonBody = buildJsonResponse("control_mode", response.toFloat(), "mode");
-                SerialMenu::printToSerial(jsonBody);
-            }
-            else
-            {
-                float rawVal = CalcModuleInternals::extractFloat(valueStr, 1);
-                jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "pressure");
-                SerialMenu::printToSerial(jsonBody);
-            }
+        com.getEthernet().setParameter(param, valueStr);
+
+        if (command == "control_mode")
+        {
+            String response = com.getEthernet().getParameter(param);
+            jsonBody = buildJsonResponse("control_mode", response.toFloat(), "mode");
+            SerialMenu::printToSerial(jsonBody);
+        }
+        else
+        {
+            float rawVal = CalcModuleInternals::extractFloat(valueStr, 1);
+            jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "pressure");
+            SerialMenu::printToSerial(jsonBody);
         }
     }
 
     void processGetRequest(const String& requestedEndpoint, String& jsonBody)
     {
         String command = requestedEndpoint.substring(4);
+        Compound2 param;
 
-        static const std::map<String, Compound2> getParams = {
-            {"actual_position", Compound2::ACTUAL_POSITION},
-            {"actual_pressure", Compound2::ACTUAL_PRESSURE}
-        };
-
-        auto it = getParams.find(command);
-        if (it != getParams.end())
+        if (command == "actual_position")
         {
-            String response = com.getEthernet().getParameter(it->second);
-            SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, "Response from VAT: " + response);
-            float rawVal = CalcModuleInternals::extractFloat(response, 0);
-            jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "pressure");
-            SerialMenu::printToSerial(jsonBody);
+            param = Compound2::ACTUAL_POSITION;
         }
+        else if (command == "actual_pressure")
+        {
+            param = Compound2::ACTUAL_PRESSURE;
+        }
+        else
+        {
+            return;
+        }
+
+        String response = com.getEthernet().getParameter(param);
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, "Response from VAT: " + response);
+
+        float rawVal = CalcModuleInternals::extractFloat(response, 0);
+        jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "pressure");
+        SerialMenu::printToSerial(jsonBody);
     }
 
     String handleFlybackGet(const String& cmd)
@@ -444,13 +447,72 @@ private:
     String handleScenarioGet(const String& cmd)
     {
     	String command = cmd.substring(15);
-    	// TODO Implement the Getters and create new Endpoints
+    	// TODO Implement the Getters and create new Endpoints for HAS to know where we are
     	return "";
     }
+
+    void handleTemperatureSensors(const String& requestedEndpoint, String& jsonBody)
+    {
+    	String command = requestedEndpoint.substring(16);
+
+        if (command == "MCP9601C")
+        {
+        	float value = sens.readSensor(SensorType::MCP9601_Celsius);
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "°C");
+        }
+        else if (command == "MCP9601F")
+        {
+        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit);
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "F");
+        }
+        else if (command == "MCP9601K")
+        {
+        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit);
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "K");
+        }
+    }
+
+    String handleReportGet(const String& cmd)
+    {
+        const char* command = cmd.c_str() + 11; // skip "get_report_"
+
+        if (strcmp(command, "stackOverflow") == 0)
+        {
+            bool stackOverflow = report.detectStackOverflow();
+            return buildJsonResponse("stackOverflow", stackOverflow, "bool");
+        }
+        if (strcmp(command, "ethernet") == 0)
+        {
+            bool ethernet = report.checkSystemHealth(3000, true, false, false, false, false);
+            return buildJsonResponse("ethernet", ethernet, "bool");
+        }
+        if (strcmp(command, "spi") == 0)
+        {
+            bool spi = report.checkSystemHealth(3000, false, true, false, false, false);
+            return buildJsonResponse("spi", spi, "bool");
+        }
+        if (strcmp(command, "i2c") == 0)
+        {
+            bool i2c = report.checkSystemHealth(3000, false, false, true, false, false);
+            return buildJsonResponse("i2c", i2c, "bool");
+        }
+        if (strcmp(command, "temp") == 0)
+        {
+            bool temp = report.checkSystemHealth(3000, false, false, false, true, false);
+            return buildJsonResponse("temp", temp, "bool");
+        }
+        if (strcmp(command, "press") == 0)
+        {
+            bool press = report.checkSystemHealth(3000, false, false, false, false, true);
+            return buildJsonResponse("press", press, "bool");
+        }
+
+        return "";
+    }
+
 };
 
 ReportTask reportTask;
-//MonitoringTask monitoringTask;
 SensorActorEndpointTask sensorActorEndpointTask;
 FlyBackVacControlTask flyBackVacControlTask;
 
@@ -463,12 +525,11 @@ public:
     static const unsigned int SENSOR_ACTOR_TASK_STACK_LIMIT = 1024;
     static const unsigned int FLYBACK_VAC_TASK_STACK_LIMIT = 512;
 
-    static const float THRESHOLD = 0.8f; // 80% threshold
+    static const float THRESHOLD = 0.8f; // 80% threshold was previously 0.8f
 
     bool run()
     {
         checkAndReport("reportTask", reportTask.getUsedStackSize(), REPORT_TASK_STACK_LIMIT);
-        //checkAndReport("monitoringTask", monitoringTask.getUsedStackSize(), MONITORING_TASK_STACK_LIMIT);
         checkAndReport("sensorActorEndpointTask", sensorActorEndpointTask.getUsedStackSize(), SENSOR_ACTOR_TASK_STACK_LIMIT);
         checkAndReport("flyBackVacControlTask", flyBackVacControlTask.getUsedStackSize(), FLYBACK_VAC_TASK_STACK_LIMIT);
 
@@ -490,6 +551,34 @@ private:
 StackMonitorTask stackMonitorTask;
 
 
+void gracefulRestart()
+{
+    if (flyBackVacControlTask.isRunning()) flyBackVacControlTask.stop();
+    if (sensorActorEndpointTask.isRunning()) sensorActorEndpointTask.stop();
+    if (reportTask.isRunning()) reportTask.stop();
+    if (stackMonitorTask.isRunning()) stackMonitorTask.stop();
+
+    LogManager::getInstance()->flushLogs();
+
+    vacControl.deinitialize();
+    flyback.deinitialize();
+
+    flyback.initialize();
+    vacControl.initialize();
+
+    stackMonitorTask.start(1);
+    reportTask.start(1);
+    sensorActorEndpointTask.start(2);
+    flyBackVacControlTask.start(3);
+}
+
+void hardRestart()
+{
+	wdt_enable(WDTO_500MS);
+	while (true) {}
+}
+
+
 void setup()
 {
     com.getSerial().beginSerial(9600);
@@ -508,7 +597,7 @@ void setup()
     SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Starting up..."));
 
     // init all comModules
-    sens.beginSensor();
+    sens.initialize();
     flyback.initialize();
     vacControl.initialize();
 
@@ -516,7 +605,8 @@ void setup()
     IPAddress ip(192, 168, 1, 3);
     com.getEthernet().beginEthernet(mac, ip);
 
-    com.getI2C().beginI2C(0x76);
+    //com.getI2C().beginI2C(0x76);
+    com.getI2C().beginI2C(0x67);
     com.getSPI().beginSPI();
 
     // activate the stackguard
@@ -530,7 +620,7 @@ void setup()
     SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Setup complete."));
 
     // Start tasks
-    stackMonitorTask.start(1); // TODO check if still needed!?
+    stackMonitorTask.start(1);
     reportTask.start(1);
     sensorActorEndpointTask.start(2);
     flyBackVacControlTask.start(3);

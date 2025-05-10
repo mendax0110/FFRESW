@@ -2,9 +2,23 @@
 #define TEMPERATURESENSOR_H
 
 #include <Arduino.h>
-#include <dht.h>
-#include <Adafruit_MLX90614.h>
 #include <Adafruit_I2CDevice.h>
+#include "Adafruit_MCP9601.h"
+
+/// @brief Enum for different units used by mehtods as paramters \enum Units
+enum Units
+{
+	Celsius,
+	Kelvin,
+	Fahrenheit
+};
+
+/// @brief Enum for the different status codes of the MCP9601 sensor \enum MCP9601_Status
+enum MCP9601_Status : uint8_t
+{
+	MCP9601_OPENCIRCUIT = 0x10,
+	MCP9601_SHORTCIRCUIT = 0x20
+};
 
 /// @brief Temperature sensor class \class TemperatureSensor
 class TemperatureSensor
@@ -27,19 +41,12 @@ public:
     float readTemperature();
 
     /**
-     * @brief Function to read from specific sensor DH11
+     * @brief Function to read form specific sensor MCP9601
      *
-     * @return float -> The temperature value.
+     * @param unit -> Choose the unit °C, F, K
+     * @return -> The temperature value
      */
-    float readDht11();
-
-    /**
-     * @brief Function to read from specific sensor MLX90614
-     *
-     * @param choice -> The choice of the sensor to read from.
-     * @return float -> The temperature value.
-     */
-    float readMLX90614(int choice);
+    float readMCP9601(Units unit);
 
     /**
      * @brief Check if the temperature sensor is initialized.
@@ -48,6 +55,14 @@ public:
      * @return false -> if the temperature sensor is not initialized
      */
     bool isInitialized() const;
+
+
+    /**
+     * @brief Method to calibrate the MCP9601 sensor
+     *
+     * @return uint8_t -> the status of the calibration
+     */
+    uint8_t calibMCP9601();
 
 private:
     bool _temperatureSensorInitialized;
@@ -59,7 +74,11 @@ private:
     static const uint8_t AMBIENT_TEMP = 0x06;
     static const uint8_t OBJECT_TEMP = 0x07;
 
-    Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+    // Settings for the MCP9601 Sensor board
+    Adafruit_MCP9601 _mcp;
+    Ambient_Resolution _ambientREs = RES_ZERO_POINT_0625;
+    static const uint8_t MCP9601_I2C = 0x67;
+
 
     /**
      * @brief Function to read the analog sensor.
@@ -76,16 +95,6 @@ private:
      * @return float -> The value of the sensor.
      */
     float readDigitalSensor(int pin);
-
-    /**
-     * @brief Function to report an error.
-     *
-     * @param errorMessage -> The error message.
-     */
-    void reportError(const char* errorMessage);
-
-    dht DHT;
-
 };
 
 #endif // TEMPERATURESENSOR_H

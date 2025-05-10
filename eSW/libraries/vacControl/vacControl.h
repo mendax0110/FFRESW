@@ -40,7 +40,7 @@ namespace vacControlModule
 		Scenario_3 = 2,
 		Scenario_4 = 3,
 		Scenario_5 = 4,
-		not_defined = -1
+		Invalid_Scenario = -1
 	};
 
 	/// @brief VacControl class to manage the vacuum control system
@@ -58,6 +58,12 @@ namespace vacControlModule
 		 * This method sets up the pins and prepares the system for operation.
 		 */
 		void initialize();
+
+		/**
+		 * @brief denitialize the VacControl System
+		 * This method shuts down the pins and prepares graceful restart.
+		 */
+		void deinitialize();
 
 		/**
 		 * @brief Get the state of the VacControl system

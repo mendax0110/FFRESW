@@ -8,10 +8,13 @@
  */
 #include <temperature.h>
 #include <serialMenu.h>
+#include <ptrUtils.h>
+#include <calcModule.h>
 
 TemperatureSensor::TemperatureSensor()
     : _temperatureSensorInitialized(false)
 {
+
 }
 
 TemperatureSensor::~TemperatureSensor()
@@ -21,6 +24,17 @@ TemperatureSensor::~TemperatureSensor()
 
 void TemperatureSensor::initialize()
 {
+	if (!_mcp.begin())
+	{
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to init MCP9601_I2C"));
+		return NAN;
+	}
+
+	_mcp.setAmbientResolution(_ambientREs);
+	_mcp.setADCresolution(_mcp.getADCresolution());
+	_mcp.setThermocoupleType(_mcp.getThermocoupleType());
+	_mcp.setFilterCoefficient(3);
+
     _temperatureSensorInitialized = true;
     SerialMenu::printToSerial(F("[INFO] Temperature sensor initialized."));
 }
@@ -29,56 +43,56 @@ float TemperatureSensor::readTemperature()
 {
     if (!_temperatureSensorInitialized)
     {
-        reportError("Temperature sensor not initialized!");
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Temperature sensor not initialized!"));
         return NAN;
     }
-
-    //float sensorValue = readAnalogSensor(TEMP_SENSOR_PIN);
-    //float voltage = sensorValue * (5.0 / 1023.0);
-    //float temperature = (voltage - 0.5) * 100.0;
-    float temperature = readDigitalSensor(TEMP_SENSOR_PIN_DIG);
-    return temperature;
+    return readDigitalSensor(TEMP_SENSOR_PIN_DIG);
 }
 
-float TemperatureSensor::readDht11()
+uint8_t TemperatureSensor::calibMCP9601() // TODO CHECK LIBRARY AND FULLY IMPLEMENT
 {
-    if (!_temperatureSensorInitialized)
-    {
-        reportError("Temperature sensor not initialized!");
-        return NAN;
-    }
+	uint8_t status = _mcp.getStatus();
+	uint8_t calibStatus;
 
-    float temp = DHT.read11(DHT11_PIN);
-    float temperature = DHT.temperature;
-    return temperature;
-}
-
-float TemperatureSensor::readMLX90614(int choice)
-{
-	// init the sensor
-    if (!mlx.begin())
+	switch (status)
 	{
-	    reportError("Could not detect MLX90614!");
-    }
-    else
-    {
-    	_temperatureSensorInitialized = true;
-    }
-
-    float generalTemp = 0;
-
-	if(choice == 1)
-	{
-	    // get the ambient temp
-		generalTemp = mlx.readAmbientTempC();
+	case MCP9601_Status::MCP9601_OPENCIRCUIT:
+		calibStatus = 0x10;
+		break;
+	case MCP9601_Status::MCP9601_SHORTCIRCUIT:
+		calibStatus = 0x20;
+		break;
 	}
 
-	if(choice == 2)
+	return calibStatus;
+}
+
+float TemperatureSensor::readMCP9601(Units unit)
+{
+	if (!_mcp.begin())
 	{
-	    // get the object temp
-		generalTemp = mlx.readObjectTempC();
-    }
-	return generalTemp;
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to init MCP9601_I2C"));
+		return NAN;
+	}
+
+	float readings = 0.0f;
+
+	switch (unit)
+	{
+	case Units::Celsius:
+		readings = _mcp.readThermocouple();
+		break;
+	case Units::Fahrenheit:
+		readings = calcModule::CalcModuleInternals::celsiusToFahrenheit(_mcp.readThermocouple());
+		break;
+	case Units::Kelvin:
+		readings = calcModule::CalcModuleInternals::celsiusToKelvin(_mcp.readThermocouple());
+		break;
+	default:
+		break;
+	}
+
+	return readings;
 }
 
 bool TemperatureSensor::isInitialized() const
@@ -89,16 +103,11 @@ bool TemperatureSensor::isInitialized() const
 float TemperatureSensor::readAnalogSensor(int pin)
 {
     int rawValue = analogRead(pin);
-    return (float)rawValue;
+    return static_cast<float>(rawValue);
 }
 
 float TemperatureSensor::readDigitalSensor(int pin)
 {
 	int rawValue = digitalRead(pin);
-	return (float)rawValue;
-}
-
-void TemperatureSensor::reportError(const char* errorMessage)
-{
-    SerialMenu::printToSerial("[ERROR] " + String(errorMessage));
+	return static_cast<float>(rawValue);
 }

@@ -46,9 +46,15 @@ namespace flybackModule
 
         /**
          * @brief Initialize the Flyback system
-         * 
+         * This method sets up the pins and prepares the system for operation.
          */
 		void initialize();
+
+		/**
+		 * @brief denitialize the Flyback System
+		 * This method shuts down the pins and prepares graceful restart.
+		 */
+		void deinitialize();
         
         /**
          * @brief Get the state of the Flyback system

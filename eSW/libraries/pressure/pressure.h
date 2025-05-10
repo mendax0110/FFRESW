@@ -43,12 +43,6 @@ private:
      */
     float readAnalogSensor(int pin);
 
-    /**
-     * @brief Function to report an error.
-     *
-     * @param errorMessage -> The error message.
-     */
-    void reportError(const char* errorMessage);
 };
 
 #endif // PRESSURESENSOR_H

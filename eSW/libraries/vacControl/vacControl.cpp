@@ -34,6 +34,31 @@ void VacControl::initialize()
 	pinMode(targetVacuumLED, OUTPUT);		//Status LED für Vakuum
 
 	_vacControlInitialized = true;
+	SerialMenu::printToSerial(F("[INFO] VacControl module initialized."));
+}
+
+// TODO: TALK TO FRADOM01 about this, whats the best way?!
+void VacControl::deinitialize()
+{
+    // reset pinMode for Main_Switch
+    pinMode(Main_Switch_OFF, INPUT);
+    pinMode(Main_Switch_MANUAL, INPUT);
+    pinMode(Main_Switch_REMOTE, INPUT);
+
+    // reset pinMode for Pump
+    pinMode(Switch_Pump_ON, INPUT);
+    pinMode(targetPressure, INPUT);
+    pinMode(Pump_Relay, INPUT);
+    pinMode(Pump_Status_LED, INPUT);
+    pinMode(targetVacuumLED, INPUT);
+
+    // addtioninal cleanup
+    digitalWrite(Pump_Relay, LOW);
+    digitalWrite(Pump_Status_LED, LOW);
+    digitalWrite(targetVacuumLED, LOW);
+
+    _vacControlInitialized = false;
+    SerialMenu::printToSerial(F("[INFO] VacControl module deinitialized."));
 }
 
 bool VacControl::isInitialized() const
@@ -79,43 +104,37 @@ Pressure VacControl::measure()
 	return meas;
 }
 
+// TODO CALRIFY WITH FRADOM01 IF WE CAN REFACTOR THIS METHOD LIKE THIS?!
 Scenarios VacControl::getScenario()
 {
-	if (digitalRead(Main_Switch_MANUAL) == HIGH)
-	{
-		if(digitalRead(Switch_Pump_ON) == HIGH)
-		{
-			int potValue = analogRead(targetPressure);
+    int mainSwitchState = digitalRead(Main_Switch_MANUAL);
 
-			if(potValue >= 0 && potValue <= 250)
-			{
-				//Hier wird Szenario 1 dem Controller gesendet
-				return Scenarios::Scenario_1;
-			}
-			else if(potValue >= 251 && potValue <= 500)
-			{
-				//Hier wird Szenario 2 dem Controller gesendet
-				return Scenarios::Scenario_2;
-			}
-			else if(potValue >= 501 && potValue <= 750)
-			{
-				//Hier wird Szenario 3 dem Controller gesendet
-				return Scenarios::Scenario_3;
-			}
-			else if(potValue >= 751 && potValue <= 1023)
-			{
-				//Hier wird Szenario 4 dem Controller gesendet
-				return Scenarios::Scenario_4;
-			}
-		}
-		else if(digitalRead(Switch_Pump_ON) == LOW)
-		{
-			return Scenarios::Scenario_5;
-		}
-	}
+    if (mainSwitchState == HIGH)
+    {
+        int pumpSwitchState = digitalRead(Switch_Pump_ON);
 
-	return Scenarios::not_defined;
+        if (pumpSwitchState == HIGH)
+        {
+            int potValue = analogRead(targetPressure);
+
+            if (potValue <= 250)
+                return Scenarios::Scenario_1;
+            else if (potValue <= 500)
+                return Scenarios::Scenario_2;
+            else if (potValue <= 750)
+                return Scenarios::Scenario_3;
+            else // potValue between 751 and 1023
+                return Scenarios::Scenario_4;
+        }
+        else // pumpSwitchState == LOW
+        {
+            return Scenarios::Scenario_5;
+        }
+    }
+
+    return Scenarios::Invalid_Scenario;
 }
+
 
 void VacControl::setVacuumLed(float pressure, float targetPressure)
 {
@@ -264,6 +283,8 @@ int VacControl::getExternScenario()
 
 void VacControl::setExternPressure(float pressure)
 {
+	if (pressure < 0)
+		return;
 	meas.pressure = pressure;
 }
 
