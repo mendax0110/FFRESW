@@ -37,9 +37,8 @@ static float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_a21c405
 \begin{DoxyCompactList}\small\item\em Function to caculate the Resistance. \end{DoxyCompactList}\item 
 static float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_aeb648febaabef46d2dd4228b8740ddaa}{extract\+Float}} (String response, int id)
 \begin{DoxyCompactList}\small\item\em Extract the float from a VAT uC eth frame. \end{DoxyCompactList}\item 
-\Hypertarget{classcalc_module_1_1_calc_module_internals_add0d2b735a5d04925401a0eff4292f00}\label{classcalc_module_1_1_calc_module_internals_add0d2b735a5d04925401a0eff4292f00} 
-static float {\bfseries extract\+Float\+From\+Response} (const String \&response, \mbox{\hyperlink{namespacecalc_module_a28fcf94ac8efb722f3f3f41961fce181}{Type}} type)
-\end{DoxyCompactItemize}
+static float \mbox{\hyperlink{classcalc_module_1_1_calc_module_internals_add0d2b735a5d04925401a0eff4292f00}{extract\+Float\+From\+Response}} (const String \&response, \mbox{\hyperlink{namespacecalc_module_a28fcf94ac8efb722f3f3f41961fce181}{Type}} type)
+\begin{DoxyCompactList}\small\item\em Extract the float from a VAT uC eth frame, specific for positions and pressures. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -193,6 +192,14 @@ Function to convert celsius to fahrenheit.
 \begin{DoxyReturn}{Returns}
 float -\/\texorpdfstring{$>$}{>} The temperature in fahrenheit. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcalc_module_1_1_calc_module_internals_aa178eb6431d424fdc2b51864d4da3108_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classcalc_module_1_1_calc_module_internals_a30b12b705c416a6d050f8344343eab8b}\label{classcalc_module_1_1_calc_module_internals_a30b12b705c416a6d050f8344343eab8b} 
 \index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!celsiusToKelvin@{celsiusToKelvin}}
 \index{celsiusToKelvin@{celsiusToKelvin}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
@@ -211,6 +218,14 @@ Function to convert celsius to kelvin.
 \begin{DoxyReturn}{Returns}
 float -\/\texorpdfstring{$>$}{>} The temperature in kelvin. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcalc_module_1_1_calc_module_internals_a30b12b705c416a6d050f8344343eab8b_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classcalc_module_1_1_calc_module_internals_aeb648febaabef46d2dd4228b8740ddaa}\label{classcalc_module_1_1_calc_module_internals_aeb648febaabef46d2dd4228b8740ddaa} 
 \index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!extractFloat@{extractFloat}}
 \index{extractFloat@{extractFloat}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
@@ -230,6 +245,26 @@ Extract the float from a VAT uC eth frame.
 \end{DoxyParams}
 0 -\/\texorpdfstring{$>$}{>} Simple GET/\+SET 1 -\/\texorpdfstring{$>$}{>} Compound 1 1 -\/\texorpdfstring{$>$}{>} Compound 2 1 -\/\texorpdfstring{$>$}{>} Compound 3
 
+\begin{DoxyReturn}{Returns}
+float -\/\texorpdfstring{$>$}{>} The extracted float. 
+\end{DoxyReturn}
+\Hypertarget{classcalc_module_1_1_calc_module_internals_add0d2b735a5d04925401a0eff4292f00}\label{classcalc_module_1_1_calc_module_internals_add0d2b735a5d04925401a0eff4292f00} 
+\index{calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}!extractFloatFromResponse@{extractFloatFromResponse}}
+\index{extractFloatFromResponse@{extractFloatFromResponse}!calcModule::CalcModuleInternals@{calcModule::CalcModuleInternals}}
+\doxysubsubsection{\texorpdfstring{extractFloatFromResponse()}{extractFloatFromResponse()}}
+{\footnotesize\ttfamily float Calc\+Module\+Internals\+::extract\+Float\+From\+Response (\begin{DoxyParamCaption}\item[{const String \&}]{response,  }\item[{\mbox{\hyperlink{namespacecalc_module_a28fcf94ac8efb722f3f3f41961fce181}{Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Extract the float from a VAT uC eth frame, specific for positions and pressures. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & -\/\texorpdfstring{$>$}{>} The response from the VAT uC. \\
+\hline
+{\em type} & -\/\texorpdfstring{$>$}{>} The type to extract Pressure, Position, General\\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 float -\/\texorpdfstring{$>$}{>} The extracted float. 
 \end{DoxyReturn}

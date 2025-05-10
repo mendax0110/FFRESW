@@ -21,36 +21,36 @@
 \DoxyCodeLine{00028\ }
 \DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_a4171780238924df8caae60e9f2b45d53}{shutdownSDCard}}();}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ flushLogs();}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea}{isSDCardInitialized}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a}{getCurrentTime}}();}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3}{setLogFileName}}(\textcolor{keyword}{const}\ String\&\ fileName);}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_log_manager_aa8726477f11f02c62aa7524aa0f37968}{writeToLogFile}}(\textcolor{keyword}{const}\ String\&\ logMessage);}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277}{renameFile}}(\textcolor{keyword}{const}\ String\&\ oldName,\ \textcolor{keyword}{const}\ String\&\ newName);}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}();}
-\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{\string~LogManager}}();}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_log_manager}{LogManager}}*\ \_instance;}
-\DoxyCodeLine{00079\ \ \ \ \ File\ logFile;}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ sdCardInitialized\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00081\ \ \ \ \ String\ logFileName;}
-\DoxyCodeLine{00082\ \ \ \ \ String\ baseLogFileName;}
-\DoxyCodeLine{00083\ \ \ \ \ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ chipSelectPinEth\ =\ 10;\ \textcolor{comment}{//\ Default\ CS\ pin\ for\ SD\ card}}
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxLogFileSize\ =\ 1024\ *\ 1024\ *\ 100;\ \textcolor{comment}{//\ 100\ MB}}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_log_manager}{LogManager}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_log_manager}{LogManager}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00089\ \};}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LOGMANAGER\_H}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_a90a4d27ff5e86c4fd48e67d64e6cc41d}{flushLogs}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_log_manager_a6ed4d0dbba788476e41400d7e0a185ea}{isSDCardInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_log_manager_ac7751542057dfdd96c7c845dd01bdc3a}{getCurrentTime}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_a4abd9c2901423f2cf351daf5acdcc8a3}{setLogFileName}}(\textcolor{keyword}{const}\ String\&\ fileName);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_log_manager_aa8726477f11f02c62aa7524aa0f37968}{writeToLogFile}}(\textcolor{keyword}{const}\ String\&\ logMessage);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_log_manager_aa99330ca08e6c7f2e217fd248f1ee277}{renameFile}}(\textcolor{keyword}{const}\ String\&\ oldName,\ \textcolor{keyword}{const}\ String\&\ newName);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{\string~LogManager}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_log_manager}{LogManager}}*\ \_instance;}
+\DoxyCodeLine{00082\ \ \ \ \ File\ logFile;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ sdCardInitialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00084\ \ \ \ \ String\ logFileName;}
+\DoxyCodeLine{00085\ \ \ \ \ String\ baseLogFileName;}
+\DoxyCodeLine{00086\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ chipSelectPinEth\ =\ 10;\ \textcolor{comment}{//\ Default\ CS\ pin\ for\ SD\ card}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxLogFileSize\ =\ 1024\ *\ 1024\ *\ 100;\ \textcolor{comment}{//\ 100\ MB}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_log_manager}{LogManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{class_log_manager}{LogManager}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_log_manager}{LogManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LOGMANAGER\_H}}
 
 \end{DoxyCode}

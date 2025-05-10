@@ -26,24 +26,39 @@ void {\bfseries initialize} ()
 \begin{DoxyCompactList}\small\item\em Function to initialize the temperature sensor. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{read\+Temperature}} ()
 \begin{DoxyCompactList}\small\item\em Function to read the temperature from the sensor. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}{read\+Dht11}} ()
-\begin{DoxyCompactList}\small\item\em Function to read from specific sensor DH11. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}{read\+MLX90614}} (int choice)
-\begin{DoxyCompactList}\small\item\em Function to read from specific sensor MLX90614. \end{DoxyCompactList}\item 
-\Hypertarget{class_temperature_sensor_a9089eed506de4a2a5aa25bc5a631ee55}\label{class_temperature_sensor_a9089eed506de4a2a5aa25bc5a631ee55} 
-float {\bfseries read\+MAX6675} (Units unit)
-\item 
-\Hypertarget{class_temperature_sensor_a9fe0232a0bf5bf4c385ca4ea7da2a921}\label{class_temperature_sensor_a9fe0232a0bf5bf4c385ca4ea7da2a921} 
-float {\bfseries read\+MAX31855} (Units unit)
-\item 
+float \mbox{\hyperlink{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce}{read\+MCP9601}} (Units unit)
+\begin{DoxyCompactList}\small\item\em Function to read form specific sensor MCP9601. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
-\begin{DoxyCompactList}\small\item\em Check if the temperature sensor is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the temperature sensor is initialized. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33}{calib\+MCP9601}} ()
+\begin{DoxyCompactList}\small\item\em Method to calibrate the MCP9601 sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Temperature sensor class. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33}\label{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33} 
+\index{TemperatureSensor@{TemperatureSensor}!calibMCP9601@{calibMCP9601}}
+\index{calibMCP9601@{calibMCP9601}!TemperatureSensor@{TemperatureSensor}}
+\doxysubsubsection{\texorpdfstring{calibMCP9601()}{calibMCP9601()}}
+{\footnotesize\ttfamily uint8\+\_\+t Temperature\+Sensor\+::calib\+MCP9601 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to calibrate the MCP9601 sensor. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t -\/\texorpdfstring{$>$}{>} the status of the calibration 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}\label{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44} 
 \index{TemperatureSensor@{TemperatureSensor}!isInitialized@{isInitialized}}
 \index{isInitialized@{isInitialized}!TemperatureSensor@{TemperatureSensor}}
@@ -66,65 +81,38 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb}\label{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb} 
-\index{TemperatureSensor@{TemperatureSensor}!readDht11@{readDht11}}
-\index{readDht11@{readDht11}!TemperatureSensor@{TemperatureSensor}}
-\doxysubsubsection{\texorpdfstring{readDht11()}{readDht11()}}
-{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+Dht11 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce}\label{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce} 
+\index{TemperatureSensor@{TemperatureSensor}!readMCP9601@{readMCP9601}}
+\index{readMCP9601@{readMCP9601}!TemperatureSensor@{TemperatureSensor}}
+\doxysubsubsection{\texorpdfstring{readMCP9601()}{readMCP9601()}}
+{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+MCP9601 (\begin{DoxyParamCaption}\item[{Units}]{unit }\end{DoxyParamCaption})}
 
 
 
-Function to read from specific sensor DH11. 
-
-\begin{DoxyReturn}{Returns}
-float -\/\texorpdfstring{$>$}{>} The temperature value. 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_addcfa56b09f57b6a95fd2a1f095183cb_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231}\label{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231} 
-\index{TemperatureSensor@{TemperatureSensor}!readMLX90614@{readMLX90614}}
-\index{readMLX90614@{readMLX90614}!TemperatureSensor@{TemperatureSensor}}
-\doxysubsubsection{\texorpdfstring{readMLX90614()}{readMLX90614()}}
-{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+MLX90614 (\begin{DoxyParamCaption}\item[{int}]{choice }\end{DoxyParamCaption})}
-
-
-
-Function to read from specific sensor MLX90614. 
+Function to read form specific sensor MCP9601. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em choice} & -\/\texorpdfstring{$>$}{>} The choice of the sensor to read from. \\
+{\em unit} & -\/\texorpdfstring{$>$}{>} Choose the unit °C, F, K \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-float -\/\texorpdfstring{$>$}{>} The temperature value. 
+-\/\texorpdfstring{$>$}{>} The temperature value 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231_cgraph}
+\includegraphics[width=350pt]{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_a1451b93992827b96bba8a74ff859b231_icgraph}
+\includegraphics[width=350pt]{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}\label{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3} 
@@ -140,8 +128,7 @@ Function to read the temperature from the sensor.
 \begin{DoxyReturn}{Returns}
 float -\/\texorpdfstring{$>$}{>} The temperature value. 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
