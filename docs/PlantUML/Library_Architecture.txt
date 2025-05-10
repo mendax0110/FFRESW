@@ -1,0 +1,115 @@
+@startuml
+skinparam monochrome false
+skinparam defaultFontName Helvetica
+skinparam shadowing true
+skinparam roundcorner 15
+skinparam rectangle {
+  BorderColor #333333
+  BackgroundColor #FFFFFF
+  RoundCorner 15
+}
+
+title "<b>FFRESW Library Architecture</b>\nArduino MEGA2560 Embedded Software"
+
+package "**Core Libraries**" #E3F2FD {
+  component "**comModule**\n<size:10>ETH, I2C, SER, SPI</size>" as com #BBDEFB
+  component "**calcModule**\n<size:10>Data processing</size>" as calc #BBDEFB
+  component "**sensModule**\n<size:10>Sensor abstraction</size>" as sens #BBDEFB {
+    component "**TemperatureLib**" as temp #9FA8DA
+    component "**PressureLib**" as pressure #9FA8DA
+  }
+  component "**jsonModule**\n<size:10>JSON handling</size>" as json #BBDEFB
+  component "**logManager**\n<size:10>SD card logging</size>" as log #BBDEFB
+  component "**serialMenu**\n<size:10>Serial comms</size>" as serial #BBDEFB
+  component "**reportSystem**\n<size:10>Monitoring</size>" as report #BBDEFB
+  component "**timeModule**\n<size:10>Time management</size>" as time #BBDEFB
+  component "**ptrUtils**\n<size:10>Pointer utils</size>" as ptr #BBDEFB
+  component "**vacControl**\n<size:10>Vacuum Control</size>" as vac #BBDEFB
+  component "**flyBack**\n<size:10>High Voltage System</size>" as fly #BBDEFB
+}
+
+package "**External Libraries**" #E8F5E9 {
+  component "**ArduinoJson**" as ajson #C8E6C9
+  component "**ArduinoSTL**\n<size:9>(Vector etc.)</size>" as stl #C8E6C9
+  component "**SD**" as sdlib #C8E6C9
+  component "**SPI**" as spi #C8E6C9
+  component "**Ethernet**" as eth #C8E6C9
+  component "**FreeRTOS**" as rtos #C8E6C9
+  component "**Frt.h**" as frt #C8E6C9
+  component "**MAX31855**" as max31855 #C8E6C9
+  component "**MAX6675**" as max6675 #C8E6C9
+  component "**EEPROM**" as eeprom #C8E6C9
+  component "**Wire**\n<size:9>(I2C)</size>" as wire #C8E6C9
+  component "**ErriezMemoryUsage**" as memusage #C8E6C9
+}
+
+package "**Hardware Layer**" #FFF3E0 {
+  component "**Arduino MEGA2560**" as arduino #FFE0B2
+  component "**Ethernet Shield**" as shield #FFE0B2
+  component "**Sensors**" as sensors #FFE0B2 {
+    component "Temp Sensors" as temps #FFCC80
+    component "Pressure Sensors" as press #FFCC80
+  }
+}
+
+' Core Library Dependencies
+json --> ajson
+log --> sdlib
+log --> spi
+com --> eth
+com --> spi
+com --> wire : "I2C"
+sens --> max31855
+sens --> max6675
+serial --> rtos
+report --> frt
+report --> memusage : "RAM check"
+time --> eth
+time --> eeprom : "Store"
+ptr --> stl : "Utilities"
+calc --> stl : "Data structures"
+
+' Custom sensor lib connections
+temp --> max31855 : "Read"
+temp --> max6675 : "Read"
+pressure --> press : "Read"
+sens --> temp : "Interface"
+sens --> pressure : "Interface"
+temp --> calc : "Processed"
+pressure --> calc : "Processed"
+
+' Hardware Connections
+arduino --> shield : SPI
+arduino --> sensors : "I2C/Analog"
+shield --> eth : Ethernet
+
+' Core Interactions
+com --> json : "JSON data"
+com --> log : "Log comms"
+calc --> json : "Processed data"
+json --> report : "System status"
+report --> time : "Timestamps"
+ptr --> report : "Memory check"
+serial --> log : "Output logs"
+
+' System Components
+vac --> com : "Control"
+fly --> com : "Status"
+
+legend right
+  <color:#333333><b>| Architecture Legend |</b>
+  <color:#2196F3>◼</color> Core Components
+  <color:#7986CB>◼</color> Sensor Libraries
+  <color:#4CAF50>◼</color> External Libraries
+  <color:#FF9800>◼</color> Hardware Layer
+endlegend
+
+note bottom of arduino
+  <b>Key External Libraries:</b>
+  • ArduinoSTL for data structures
+  • Wire for I2C communication
+  • EEPROM for persistent storage
+  • ErriezMemoryUsage for RAM monitoring
+  • FreeRTOS for task management
+end note
+@enduml

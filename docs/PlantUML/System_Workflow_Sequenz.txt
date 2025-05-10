@@ -3,15 +3,17 @@ skinparam backgroundColor #FAFAFA
 
 title "System Workflow Sequenz"
 
-participant "SensorTask" as ST
+participant "SensorActorEndpointTask" as ST
 participant "FlybackVacControlTask" as FT
 participant "ReportTask" as RT
-participant "ComModule" as COM
+participant "StackMonitorTask" as STA
+participant "comModule" as COM
+participant "jsonModule" as JS
 
-ST -> sens : readSensors()
-activate sens
-sens --> ST : sensorData
-deactivate sens
+ST -> sensorModule : readSensors()
+activate sensorModule 
+sensorModule --> ST : sensorData
+deactivate sensorModule 
 
 ST -> FT : update(data)
 activate FT
@@ -20,9 +22,26 @@ flyback --> FT : status
 FT --> ST : ack
 deactivate FT
 
+ST -> FT : update(data)
+activate FT
+FT -> vacControl : adjust()
+vacControl --> FT : status
+FT --> ST : ack
+deactivate FT
+
 ST -> COM : endpointRequest()
 activate COM
-COM --> ST : jsonResponse
+COM --> JS : prepared Json
+activate JS
+JS --> ST : jsonResponse
+JS --> FT : jsonResponse
+FT -> COM : request()
+deactivate COM
+deactivate JS
+
+FT -> COM : scenarioRequest()
+activate COM
+COM --> FT : ethFrameResponse
 deactivate COM
 
 ST -> RT : queueStatus()
@@ -31,8 +50,33 @@ RT -> COM : sendReport()
 COM --> RT : ack
 deactivate RT
 
-RT -> monitor : checkStacks()
-activate monitor
-monitor --> RT : stackStatus
-deactivate monitor
+RT -> ReportModule : request()
+activate ReportModule
+ReportModule --> RT : ack()
+deactivate ReportModule
+
+RT -> ReportModule : checkMemory()
+activate ReportModule 
+ReportModule --> RT : memoryStatus
+deactivate ReportModule 
+
+RT -> ReportModule : checkSystemStatus()
+activate ReportModule 
+ReportModule --> RT : systemStatus
+deactivate ReportModule
+
+STA -> ST : checkStacks()
+activate ST
+ST --> STA : stackStatus()
+deactivate ST
+
+STA -> FT : checkStacks()
+activate FT
+FT --> STA : stackStatus()
+deactivate FT
+
+STA -> RT : checkStacks()
+activate RT
+RT --> STA : stackStatus()
+deactivate RT
 @enduml

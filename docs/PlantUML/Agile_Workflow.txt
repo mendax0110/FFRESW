@@ -1,0 +1,67 @@
+@startuml
+title Agile Zusammenarbeit – Struktur & Tools
+
+actor "Team" as Team
+
+package "Agiler Workflow" {
+  component "Iteratives Arbeiten" as Agile
+  component "Kanban Board\n(GitHub Projects)" as Kanban
+}
+
+package "Zusammenarbeit & Doku" {
+  component "Notion" {
+    [Hardwareentwicklung]
+    [Softwareentwicklung]
+    [Wissensdatenbank]
+    [Projektplanung]
+  }
+
+  component "Google Drive"
+  component "OneDrive"
+}
+
+package "Kanban Struktur" {
+  [Backlog]
+  [To-Do]
+  [In Progress]
+  [In Review]
+  [Done]
+}
+
+' Verbindungen – Methoden
+Team --> Agile : nutzt agiles Vorgehen
+Agile --> Kanban : nutzt für Aufgabenfluss
+Agile --> Notion : nutzt für Doku & Orga
+
+' Kanban Flow
+Kanban --> [Backlog]
+Kanban --> [To-Do]
+Kanban --> [In Progress]
+Kanban --> [In Review]
+Kanban --> [Done]
+
+' Notion-Struktur
+Notion --> [Hardwareentwicklung]
+Notion --> [Softwareentwicklung]
+Notion --> [Wissensdatenbank]
+Notion --> [Projektplanung]
+Notion --> "Google Drive" : Verlinkung
+Notion --> "OneDrive" : Verlinkung
+
+' Vorteile & Nachteile als Notizen
+note right of Agile
++ Flexibilität & schnelle Anpassung\n+ Interdisziplinäres Arbeiten
+- Höherer Abstimmungsbedarf
+end note
+
+note right of Kanban
++ Übersichtliche Aufgabenverteilung\n+ Fortschrittsverfolgung
+- Pflegeaufwand
+end note
+
+note bottom of Notion
++ Zentrale Plattform\n+ Gut strukturierbar
+- Abhängigkeit von Internet
+end note
+
+@enduml

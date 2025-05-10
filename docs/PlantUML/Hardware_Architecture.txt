@@ -1,0 +1,73 @@
+@startuml
+skinparam monochrome false
+skinparam defaultFontName Helvetica
+skinparam shadowing true
+skinparam roundcorner 15
+skinparam rectangle {
+  BorderColor #333333
+  BackgroundColor #FFFFFF
+  RoundCorner 15
+}
+
+title "<b>Hardware-Architektur</b>\nArduino MEGA 2560 R3 mit Ethernet-Shield"
+
+component "**Arduino MEGA 2560 R3**" as arduino #FFE0B2 {
+  component "**Microcontroller**\nATmega2560" as cpu #BBDEFB
+  component "**Speicher**" as mem {
+    rectangle "Flash\n256KB" as flash #C8E6C9
+    rectangle "SRAM\n8KB" as sram #C8E6C9
+    rectangle "EEPROM\n4KB" as eeprom #C8E6C9
+  }
+  component "**I/O Ports**" as ports {
+    rectangle "Digitale I/O\n54 Pins" as digital #FFCCBC
+    rectangle "Analoge Eingänge\n16 Pins" as analog #FFCCBC
+    rectangle "UART\n4 Ports" as uart #FFCCBC
+  }
+}
+
+component "**Ethernet Shield W5100**" as ethernet #E3F2FD {
+  component "**W5100 Chip**" as w5100 #BBDEFB
+  component "**MicroSD Slot**" as sd #C8E6C9
+  component "**RJ45 Port**" as rj45 #FFE0B2
+}
+
+component "**Externe Peripherie**" as peripherals #F5F5F5 {
+  rectangle "Sensoren" as sensors #FFE0B2
+  rectangle "Aktoren" as actuators #FFE0B2
+  rectangle "Netzwerk" as network #E3F2FD
+}
+
+' Connections
+arduino -[#2196F3]-> ethernet : "SPI Interface"
+ethernet -[#2196F3]-> network : "TCP/IP"
+ports -[#FF9800]-> sensors : "Sensor-Daten"
+ports -[#FF9800]-> actuators : "Steuersignale"
+cpu --> mem : "Speicherzugriff"
+w5100 --> sd : "Daten speichern"
+
+' Legend
+legend right
+  <color:#333333><b>| Hardware-Komponenten |</b>
+  <color:#FF9800>◼</color> Prozessor & Logik
+  <color:#4CAF50>◼</color> Speicher
+  <color:#2196F3>◼</color> Kommunikation
+  <color:#FF5722>◼</color> I/O-Schnittstellen
+endlegend
+
+note right of arduino
+  <b>Key Features:</b>
+  • 54 digitale I/O-Pins
+  • 16 analoge Eingänge
+  • 4 UART Schnittstellen
+  • 256KB Flash, 8KB SRAM
+  • Arduino-Community Support
+end note
+
+note left of ethernet
+  <b>Ethernet Shield:</b>
+  • W5100 Ethernet Chip
+  • MicroSD-Kartenslot
+  • RJ45 Netzwerkanschluss
+  • TCP/IP Unterstützung
+end note
+@enduml
