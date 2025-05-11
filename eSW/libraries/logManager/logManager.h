@@ -4,7 +4,6 @@
 #include <Arduino.h>
 #include <SD.h>
 #include <SPI.h>
-#include <String.h>
 #include <timeModule.h>
 
 /// @brief Class which handle the printed log messages, maps aka parses them and saves them to the SD card. \class LogMapper
