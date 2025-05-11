@@ -60,13 +60,13 @@ jobs:
         run: |
           echo "Checking build output directory..."
           # List the files in the build directory to ensure the compiled files are there
-          find ~/.arduino15 -type f -name "*.elf" -o -name "*.hex"
+          find /tmp -type f -name "*.elf" -o -name "*.hex"
 
       - name: Collect .hex file path
         id: collect_hex_file
         run: |
-          # Search for the temporary .hex file in the Arduino build directory
-          HEX_FILE=$(find ~/.arduino15 -type f -name "*.hex" | head -n 1)
+          # Search for the temporary .hex file in the /tmp folder
+          HEX_FILE=$(find /tmp -type f -name "*.hex" | head -n 1)
           echo "HEX File: $HEX_FILE"
           echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
 
