@@ -59,8 +59,8 @@ jobs:
       - name: Collect .elf and .hex file paths
         id: collect_files
         run: |
-          ELF_FILE=$(find ~/.arduino15 -name "*.elf" | head -n 1)
-          HEX_FILE=$(find ~/.arduino15 -name "*.hex" | head -n 1)
+          ELF_FILE=$(find ~/.arduino15 -name "FFRESW.elf" | head -n 1)
+          HEX_FILE=$(find ~/.arduino15 -name "FFRESW.hex" | head -n 1)
           echo "ELF File: $ELF_FILE"
           echo "HEX File: $HEX_FILE"
           echo "elf_file=$ELF_FILE" >> $GITHUB_ENV
