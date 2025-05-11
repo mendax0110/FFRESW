@@ -1,4 +1,4 @@
-#include <LogManager.h>
+#include <logManager.h>
 #include <ptrUtils.h>
 
 LogManager* LogManager::_instance = nullptr;
