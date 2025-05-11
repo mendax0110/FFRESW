@@ -49,4 +49,5 @@ jobs:
             - name: "frt"
             - name: "Vector"
           sketches: |
-            eSW/FFRESW/FFRESW/FFRESW.ino
+            - eSW/FFRESW/FFRESW/FFRESW.ino
+          verbose: true
