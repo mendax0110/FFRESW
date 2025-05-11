@@ -55,3 +55,30 @@ jobs:
           sketch-paths: |
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
+          
+      - name: Collect .elf and .hex file paths
+        id: collect_files
+        run: |
+          ELF_FILE=$(find ~/.arduino15 -name "*.elf" | head -n 1)
+          HEX_FILE=$(find ~/.arduino15 -name "*.hex" | head -n 1)
+          echo "ELF File: $ELF_FILE"
+          echo "HEX File: $HEX_FILE"
+          echo "elf_file=$ELF_FILE" >> $GITHUB_ENV
+          echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
+
+      - name: Upload .elf and .hex files as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-arduino-files
+          path: |
+            ${{ env.elf_file }}
+            ${{ env.hex_file }}
+
+      - name: Print file sizes for build stats
+        run: |
+          echo "File Sizes:"
+          ELF_SIZE=$(stat -c %s "${{ env.elf_file }}")
+          HEX_SIZE=$(stat -c %s "${{ env.hex_file }}")
+          echo "ELF File Size: $ELF_SIZE bytes"
+          echo "HEX File Size: $HEX_SIZE bytes"
+          echo "Total size: $(($ELF_SIZE + $HEX_SIZE)) bytes"
