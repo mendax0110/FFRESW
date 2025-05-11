@@ -1,107 +1,68 @@
-name: Arduino CI - Dynamic Makefile Build
+name: Arduino CI
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'eSW/FFRESW/FFRESW/FFRESW.ino'
+      - 'eSW/libraries/**'
   pull_request:
-    branches:
-      - main
+    paths:
+      - 'eSW/FFRESW/FFRESW/FFRESW.ino'
+      - 'eSW/libraries/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up dependencies (install avr-gcc, make, etc.)
-      - name: Set up AVR GCC and Make
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-avr avr-libc make
+      - name: Set up Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
 
-      # Step 3: Create libraries folder and copy libraries
-      - name: Set up Arduino environment
+      - name: Install platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      - name: Copy custom libraries into Arduino CLI libraries folder
         run: |
           mkdir -p ~/.arduino/libraries
           cp -r eSW/libraries/* ~/.arduino/libraries/
-          # Check if libraries are copied correctly (for debugging)
-          ls ~/.arduino/libraries
 
-      # Step 4: Generate Makefile dynamically
-      - name: Generate Makefile
+      - name: Install external libraries
         run: |
-          # Creating a dynamic Makefile to replace the static one
-          cat << EOF > eSW/FFRESW/FFRESW/Makefile
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
+          arduino-cli lib install "Adafruit BusIO"
+          arduino-cli lib install "Adafruit MCP9600 Library"
+          arduino-cli lib install "ArduinoJson"
+          arduino-cli lib install "ArduinoSTL"
+          arduino-cli lib install "FreeRTOS"
+          arduino-cli lib install "frt"
+          arduino-cli lib install "Vector"
 
-RM := rm -f
-
-# Tool invocations
-AR := avr-gcc-ar
-CC := avr-gcc
-CXX := avr-g++
-OBJCOPY := avr-objcopy
-SIZE := avr-size
-
-HEX := FFRESW.hex
-ELF := FFRESW.elf
-
-# Sources and Libraries
-SRCS := $(wildcard eSW/FFRESW/FFRESW/*.cpp eSW/libraries/**/*.cpp)
-LIBS := $(wildcard eSW/libraries/**/*.cpp)
-
-# All Target
-all: \$(HEX)
-
-\$(ELF): \$(SRCS)
-	@echo 'Building ELF target'
-	\$(CC) -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections,--relax -mmcu=atmega2560 -o \$(ELF) \$(SRCS) \$(LIBS)
-	@echo 'Finished building target: \$(ELF)'
-
-\$(HEX): \$(ELF)
-	@echo 'Creating HEX file from ELF'
-	\$(OBJCOPY) -O ihex -R .eeprom \$(ELF) \$(HEX)
-	@echo 'Finished creating HEX file: \$(HEX)'
-
-# Clean build artifacts
-clean:
-	\$(RM) \$(HEX) \$(ELF)
-
-.PHONY: all clean
-EOF
-          echo "Generated Makefile:"
-
-          # List generated Makefile content (for debugging purposes)
-          cat eSW/FFRESW/FFRESW/Makefile
-
-      # Step 5: Build using the generated Makefile
-      - name: Build using Makefile
-        run: |
-          cd eSW/FFRESW/FFRESW/
-          make clean  # Clean any previous builds
-          make        # Run the build
-
-      # Step 6: Show build size and other information
-      - name: Show build information
-        run: |
-          if [ -f "eSW/FFRESW/FFRESW/FFRESW.elf" ]; then
-            # Show size of ELF file using avr-size
-            avr-size -A "eSW/FFRESW/FFRESW/FFRESW.elf"
-          else
-            echo "ELF file not found, skipping size check."
-          fi
-
-      # Step 7: Upload build artifacts (optional)
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
+      - name: Compile Arduino Sketches
+        uses: arduino/compile-sketches@v1.1.2
         with:
-          name: FFRESW-build
-          path: |
-            eSW/FFRESW/FFRESW/FFRESW.hex
-            eSW/FFRESW/FFRESW/FFRESW.elf
+          fqbn: "arduino:avr:mega"
+          libraries: |
+            - name: "Adafruit BusIO"
+            - name: "Adafruit MCP9600 Library"
+            - name: "ArduinoJson"
+            - name: "ArduinoSTL"
+            - name: "FreeRTOS"
+            - name: "frt"
+            - name: "Vector"
+            - name: "calcModule"
+            - name: "sensorModule"
+            - name: "comModule"
+            - name: "reportSystem"
+            - name: "jsonModule"
+            - name: "timeModule"
+            - name: "serialMenu"
+            - name: "flyback"
+            - name: "logManager"
+            - name: "vacControl"
+          sketch-paths: |
+            - eSW/FFRESW/FFRESW/FFRESW.ino
+          verbose: true
