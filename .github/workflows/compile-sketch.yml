@@ -1,0 +1,47 @@
+name: Arduino CI
+
+on:
+  push:
+    paths:
+      - 'eSW/FFRESW/FFRESW/FFRESW.ino'
+      - 'eSW/libraries/**'
+  pull_request:
+    paths:
+      - 'eSW/FFRESW/FFRESW/FFRESW.ino'
+      - 'eSW/libraries/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+        with:
+          version: latest
+
+      - name: Install platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      - name: Install external libraries
+        run: |
+          arduino-cli lib install "Adafruit BusIO"
+          arduino-cli lib install "Adafruit MCP9600 Library"
+          arduino-cli lib install "ArduinoJson"
+          arduino-cli lib install "ArduinoSTL"
+          arduino-cli lib install "ErriezMemoryUsage"
+          arduino-cli lib install "FreeRTOS"
+          arduino-cli lib install "frt"
+          arduino-cli lib install "Vector"
+
+      - name: Compile Sketch
+        run: |
+          arduino-cli compile \
+            --fqbn arduino:avr:mega \
+            --libraries eSW/libraries \
+            eSW/FFRESW/FFRESW
