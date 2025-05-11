@@ -33,10 +33,25 @@ jobs:
           mkdir -p ~/.arduino/libraries
           cp -r eSW/libraries/* ~/.arduino/libraries/
 
-      - name: List libraries in Arduino folder
+      - name: Verify libraries are copied
         run: |
           echo "Libraries in ~/.arduino/libraries:"
           ls ~/.arduino/libraries
+          # Ensure that the calcModule library is present
+          if [ ! -d "~/.arduino/libraries/calcModule" ]; then
+            echo "calcModule library not found!"
+            exit 1
+          fi
+
+      - name: Install missing libraries (including calcModule if necessary)
+        run: |
+          arduino-cli lib install "Adafruit BusIO"
+          arduino-cli lib install "Adafruit MCP9600 Library"
+          arduino-cli lib install "ArduinoJson"
+          arduino-cli lib install "ArduinoSTL"
+          arduino-cli lib install "FreeRTOS"
+          arduino-cli lib install "frt"
+          arduino-cli lib install "Vector"
 
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
@@ -50,6 +65,7 @@ jobs:
             - name: "FreeRTOS"
             - name: "frt"
             - name: "Vector"
+            - name: "calcModule"
           sketch-paths: |
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
