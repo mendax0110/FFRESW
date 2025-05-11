@@ -474,7 +474,7 @@ private:
 
     String handleReportGet(const String& cmd)
     {
-        const char* command = cmd.c_str() + 11; // skip "get_report_"
+        const char* command = cmd.c_str() + 11;
 
         if (strcmp(command, "stackOverflow") == 0)
         {
