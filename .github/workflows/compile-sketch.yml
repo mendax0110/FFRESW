@@ -21,7 +21,7 @@ jobs:
       - name: Set up Arduino CLI
         uses: arduino/setup-arduino-cli@v1
         with:
-          version: latest
+          version: "latest"
 
       - name: Install platform
         run: |
@@ -39,9 +39,18 @@ jobs:
           arduino-cli lib install "frt"
           arduino-cli lib install "Vector"
 
-      - name: Compile Sketch
-        run: |
-          arduino-cli compile \
-            --fqbn arduino:avr:mega \
-            --libraries eSW/libraries \
-            eSW/FFRESW/FFRESW
+      - name: Compile Arduino Sketches
+        uses: arduino/compile-sketches@v1.1.2
+        with:
+          fqbn: "arduino:avr:mega"
+          libraries: |
+            - "Adafruit BusIO"
+            - "Adafruit MCP9600 Library"
+            - "ArduinoJson"
+            - "ArduinoSTL"
+            - "ErriezMemoryUsage"
+            - "FreeRTOS"
+            - "frt"
+            - "Vector"
+          sketches: |
+            eSW/FFRESW/FFRESW/FFRESW.ino
