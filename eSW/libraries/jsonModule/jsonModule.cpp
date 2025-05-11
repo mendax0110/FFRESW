@@ -64,26 +64,6 @@ String JsonModuleInternals::getJsonString() const
     return output;
 }
 
-std::map<String, float> JsonModuleInternals::mapJsonToDoubles(const String& rawJson)
-{
-	std::map<String, float> resultMap;
-	DynamicJsonDocument doc(256); //TODO: Check if really 1024 is needed, was previously 512
-	DeserializationError error = deserializeJson(doc, rawJson);
-
-	if (error)
-	{
-		SerialMenu::printToSerial("[ERROR] deserializeJson() failed: " + String(error.f_str()));
-		return resultMap;
-	}
-
-	for (JsonPair p : doc.as<JsonObject>())
-	{
-		resultMap[p.key().c_str()] = p.value().as<double>();
-	}
-
-	return resultMap;
-}
-
 void JsonModuleInternals::sendJsonSerial()
 {
     //Serial.println(getJsonString());

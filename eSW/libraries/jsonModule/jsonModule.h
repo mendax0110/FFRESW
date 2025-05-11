@@ -12,16 +12,8 @@
 #ifndef JSONMODULE_H
 #define JSONMODULE_H
 
-#define _STL_NOEXCEPT
-
-#ifndef ARDUINO_STL_MEMORY
-#define ARDUINO_STL_MEMORY 0  // Disable STL memory management (new, delete, new_handler)
-#endif
-
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include <ArduinoSTL.h>
-#include <map>
 
 /// @brief Namespace for the JSON module. \namespace jsonModule
 namespace jsonModule
@@ -92,17 +84,6 @@ namespace jsonModule
          * @return String -> The Json String object
          */
         String getJsonString() const;
-
-
-        /**
-         * @brief Map the Json object to a map of Strings and floats.
-         *
-         * https://github.com/mike-matera/ArduinoSTL/issues/84
-         *
-         * @param rawJson -> The raw Json object
-         * @return std::map<String, float> -> The mapped Json object
-         */
-        std::map<String, float> mapJsonToDoubles(const String& rawJson);
 
         /**
          * @brief Clear the Json object.
