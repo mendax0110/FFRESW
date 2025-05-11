@@ -32,6 +32,7 @@ jobs:
         run: |
           mkdir -p ~/Arduino/libraries
           cp -r eSW/libraries/* ~/Arduino/libraries/
+          cp -r external/* ~/Arduino/libraries/
 
       - name: List libraries in Arduino folder
         run: |
