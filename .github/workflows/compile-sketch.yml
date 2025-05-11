@@ -5,10 +5,12 @@ on:
     paths:
       - 'eSW/FFRESW/FFRESW/FFRESW.ino'
       - 'eSW/libraries/**'
+      - '.github/workflows/**'
   pull_request:
     paths:
       - 'eSW/FFRESW/FFRESW/FFRESW.ino'
       - 'eSW/libraries/**'
+      - '.github/workflows/**'
 
 jobs:
   build:
@@ -31,15 +33,10 @@ jobs:
           mkdir -p ~/.arduino/libraries
           cp -r eSW/libraries/* ~/.arduino/libraries/
 
-      - name: Install external libraries
+      - name: List libraries in Arduino folder
         run: |
-          arduino-cli lib install "Adafruit BusIO"
-          arduino-cli lib install "Adafruit MCP9600 Library"
-          arduino-cli lib install "ArduinoJson"
-          arduino-cli lib install "ArduinoSTL"
-          arduino-cli lib install "FreeRTOS"
-          arduino-cli lib install "frt"
-          arduino-cli lib install "Vector"
+          echo "Libraries in ~/.arduino/libraries:"
+          ls ~/.arduino/libraries
 
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
@@ -53,16 +50,6 @@ jobs:
             - name: "FreeRTOS"
             - name: "frt"
             - name: "Vector"
-            - name: "calcModule"
-            - name: "sensorModule"
-            - name: "comModule"
-            - name: "reportSystem"
-            - name: "jsonModule"
-            - name: "timeModule"
-            - name: "serialMenu"
-            - name: "flyback"
-            - name: "logManager"
-            - name: "vacControl"
           sketch-paths: |
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
