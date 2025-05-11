@@ -55,30 +55,33 @@ jobs:
           sketch-paths: |
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
-          
-      - name: Collect .elf and .hex file paths
-        id: collect_files
+
+      - name: Verify if files are created and print directory content
         run: |
-          ELF_FILE=$(find ~/.arduino15 -name "FFRESW.elf" | head -n 1)
-          HEX_FILE=$(find ~/.arduino15 -name "FFRESW.hex" | head -n 1)
-          echo "ELF File: $ELF_FILE"
+          echo "Checking build output directory..."
+          # List the files in the build directory to ensure the compiled files are there
+          find ~/.arduino15 -type f -name "*.elf" -o -name "*.hex"
+
+      - name: Collect .hex file path
+        id: collect_hex_file
+        run: |
+          # Search for the temporary .hex file in the Arduino build directory
+          HEX_FILE=$(find ~/.arduino15 -type f -name "*.hex" | head -n 1)
           echo "HEX File: $HEX_FILE"
-          echo "elf_file=$ELF_FILE" >> $GITHUB_ENV
           echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
 
-      - name: Upload .elf and .hex files as artifacts
+      - name: Upload .hex file as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-arduino-files
-          path: |
-            ${{ env.elf_file }}
-            ${{ env.hex_file }}
+          name: compiled-arduino-hex
+          path: ${{ env.hex_file }}
 
       - name: Print file sizes for build stats
         run: |
           echo "File Sizes:"
-          ELF_SIZE=$(stat -c %s "${{ env.elf_file }}")
-          HEX_SIZE=$(stat -c %s "${{ env.hex_file }}")
-          echo "ELF File Size: $ELF_SIZE bytes"
-          echo "HEX File Size: $HEX_SIZE bytes"
-          echo "Total size: $(($ELF_SIZE + $HEX_SIZE)) bytes"
+          if [ -f "${{ env.hex_file }}" ]; then
+            HEX_SIZE=$(stat -c %s "${{ env.hex_file }}")
+            echo "HEX File Size: $HEX_SIZE bytes"
+          else
+            echo "HEX file not found."
+          fi
