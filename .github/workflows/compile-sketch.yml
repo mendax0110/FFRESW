@@ -41,13 +41,12 @@ jobs:
         with:
           fqbn: "arduino:avr:mega"
           libraries: |
-            - "Adafruit BusIO"
-            - "Adafruit MCP9600 Library"
-            - "ArduinoJson"
-            - "ArduinoSTL"
-            - "ErriezMemoryUsage"
-            - "FreeRTOS"
-            - "frt"
-            - "Vector"
+            - name: "Adafruit BusIO"
+            - name: "Adafruit MCP9600 Library"
+            - name: "ArduinoJson"
+            - name: "ArduinoSTL"
+            - name: "FreeRTOS"
+            - name: "frt"
+            - name: "Vector"
           sketches: |
             eSW/FFRESW/FFRESW/FFRESW.ino
