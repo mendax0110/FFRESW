@@ -26,6 +26,11 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install arduino:avr
 
+      - name: Copy custom libraries into Arduino CLI libraries folder
+        run: |
+          mkdir -p ~/.arduino/libraries
+          cp -r eSW/libraries/* ~/.arduino/libraries/
+
       - name: Install external libraries
         run: |
           arduino-cli lib install "Adafruit BusIO"
@@ -35,17 +40,6 @@ jobs:
           arduino-cli lib install "FreeRTOS"
           arduino-cli lib install "frt"
           arduino-cli lib install "Vector"
-          # Install custom libraries from the local folder
-          arduino-cli lib install --path eSW/libraries/calcModule
-          arduino-cli lib install --path eSW/libraries/sensorModule
-          arduino-cli lib install --path eSW/libraries/comModule
-          arduino-cli lib install --path eSW/libraries/reportSystem
-          arduino-cli lib install --path eSW/libraries/jsonModule
-          arduino-cli lib install --path eSW/libraries/timeModule
-          arduino-cli lib install --path eSW/libraries/serialMenu
-          arduino-cli lib install --path eSW/libraries/flyback
-          arduino-cli lib install --path eSW/libraries/logManager
-          arduino-cli lib install --path eSW/libraries/vacControl
 
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
