@@ -65,7 +65,7 @@ jobs:
             eSW/FFRESW/FFRESW/FFRESW.ino
 
       - name: Upload Build Artifacts (HEX, BIN, ELF)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: arduino-build-artifacts
           path: |
