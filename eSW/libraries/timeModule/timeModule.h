@@ -2,7 +2,6 @@
 #define TIMEMODULE_H
 
 #include <Arduino.h>
-#include <String>
 
 /// @brief namespace for the timeModule \namespace timeModule
 namespace timeModule
