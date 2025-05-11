@@ -23,10 +23,10 @@ jobs:
       - name: Set up Arduino CLI
         uses: arduino/setup-arduino-cli@v2
 
-      - name: Install platform
+      - name: Install specific version of arduino:avr core
         run: |
           arduino-cli core update-index
-          arduino-cli core install arduino:avr
+          arduino-cli core install arduino:avr@1.8.3
 
       - name: Copy custom libraries into Arduino CLI libraries folder
         run: |
