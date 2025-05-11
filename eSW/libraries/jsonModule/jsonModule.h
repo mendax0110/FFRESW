@@ -12,6 +12,8 @@
 #ifndef JSONMODULE_H
 #define JSONMODULE_H
 
+#define _STL_NOEXCEPT
+
 #ifndef ARDUINO_STL_MEMORY
 #define ARDUINO_STL_MEMORY 0  // Disable STL memory management (new, delete, new_handler)
 #endif
