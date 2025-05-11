@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include <VacControl.h>
+#include <vacControl.h>
 #include <serialMenu.h>
 
 using namespace vacControlModule;
