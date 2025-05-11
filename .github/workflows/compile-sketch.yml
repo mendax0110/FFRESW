@@ -48,6 +48,6 @@ jobs:
             - name: "FreeRTOS"
             - name: "frt"
             - name: "Vector"
-          sketches: |
+          sketch-paths: |
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
