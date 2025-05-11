@@ -59,8 +59,8 @@ jobs:
       - name: Verify if files are created and print directory content
         run: |
           echo "Checking build output directory..."
-          # List the files in the build directory to ensure the compiled files are there
-          find /tmp -type f -name "*.elf" -o -name "*.hex"
+          # List the files in the /tmp directory, suppress permission denied errors
+          find /tmp -type f \( -name "*.elf" -o -name "*.hex" \) 2>/dev/null
 
       - name: Collect .hex file path
         id: collect_hex_file
