@@ -32,7 +32,6 @@ jobs:
           arduino-cli lib install "Adafruit MCP9600 Library"
           arduino-cli lib install "ArduinoJson"
           arduino-cli lib install "ArduinoSTL"
-          arduino-cli lib install "ErriezMemoryUsage"
           arduino-cli lib install "FreeRTOS"
           arduino-cli lib install "frt"
           arduino-cli lib install "Vector"
