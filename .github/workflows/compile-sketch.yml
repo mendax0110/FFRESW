@@ -30,8 +30,8 @@ jobs:
 
       - name: Copy custom libraries into Arduino CLI libraries folder
         run: |
-          mkdir -p ~/.arduino/libraries
-          cp -r eSW/libraries/* ~/.arduino/libraries/
+          mkdir -p ~/Arduino/libraries
+          cp -r eSW/libraries/* ~/Arduino/libraries/
 
       - name: List libraries in Arduino folder
         run: |
