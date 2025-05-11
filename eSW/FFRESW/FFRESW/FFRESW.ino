@@ -395,7 +395,7 @@ private:
 
     String handleScenarioSet(const String& cmd)
     {
-        String scenarioStr = cmd.substring(13);  // skip "set_sceanrio/"
+        String scenarioStr = cmd.substring(13);
         int scenarioId = scenarioStr.toInt();
         int scenarioEnum = 0;
         String label;
