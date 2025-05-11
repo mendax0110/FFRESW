@@ -6,10 +6,10 @@
 #include <Arduino.h>
 #include <Ethernet.h>
 #include <comModule.h>
-#include "ETHH/ETHH.h"
-#include "I2CC/I2CC.h"
-#include "SER/SER.h"
-#include "SPII/SPII.h"
+#include "ETHH.h"
+#include "I2CC.h"
+#include "SER.h"
+#include "SPII.h"
 
 using namespace comModule;
 
