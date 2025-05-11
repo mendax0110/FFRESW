@@ -43,6 +43,7 @@ jobs:
         with:
           fqbn: "arduino:avr:mega"
           libraries: |
+            - name: "Ethernet"
             - name: "Adafruit BusIO"
             - name: "Adafruit MCP9600 Library"
             - name: "ArduinoJson"
