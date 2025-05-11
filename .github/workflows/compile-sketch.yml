@@ -39,41 +39,35 @@ jobs:
           echo "Libraries in ~/Arduino/libraries:"
           ls ~/Arduino/libraries/
 
-      - name: Compile Arduino Sketches
-        uses: arduino/compile-sketches@v1.1.2
-        with:
-          fqbn: "arduino:avr:mega"
-          libraries: |
-            - name: "Ethernet"
-            - name: "SD"
-            - name: "Adafruit BusIO"
-            - name: "Adafruit MCP9600 Library"
-            - name: "ArduinoJson"
-            - name: "FreeRTOS"
-            - name: "frt"
-            - name: "Vector"
-          sketch-paths: |
-            - eSW/FFRESW/FFRESW/FFRESW.ino
-          verbose: true
-
-      - name: Verify if files are created and print directory content
+      - name: Clean up previous build directories (if any)
         run: |
-          echo "Checking build output directory..."
-          # List the files in the build directory to ensure the compiled files are there
-          find ~/.arduino15 -type f -name "*.elf" -o -name "*.hex"
+          rm -rf /tmp/arduino /tmp/test_dir
 
-      - name: Collect FFRESW .hex and .elf file paths
+      - name: Set custom build cache path and compile Arduino Sketch
+        run: |
+          export ARDUINO_BUILD_CACHE_PATH=/tmp/test_dir
+          arduino-cli compile --fqbn arduino:avr:mega eSW/FFRESW/FFRESW/FFRESW.ino
+          
+      - name: Search for the .hex and .elf files
         id: collect_files
         run: |
-          # Search for the .hex and .elf files related to the FFRESW.ino sketch
-          HEX_FILE=$(find ~/.arduino15 -type f -name "FFRESW*.hex" | head -n 1)
-          ELF_FILE=$(find ~/.arduino15 -type f -name "FFRESW*.elf" | head -n 1)
-          echo "HEX File: $HEX_FILE"
-          echo "ELF File: $ELF_FILE"
-          echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
-          echo "elf_file=$ELF_FILE" >> $GITHUB_ENV
+          # Now, search the custom build directory for .hex and .elf files
+          BUILD_DIR="/tmp/test_dir"
+          
+          # Check if the build directory exists and search for .hex and .elf files
+          if [ -d "$BUILD_DIR" ]; then
+            HEX_FILE=$(find "$BUILD_DIR" -type f -name "*.hex" | head -n 1)
+            ELF_FILE=$(find "$BUILD_DIR" -type f -name "*.elf" | head -n 1)
+            echo "HEX File: $HEX_FILE"
+            echo "ELF File: $ELF_FILE"
+            echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
+            echo "elf_file=$ELF_FILE" >> $GITHUB_ENV
+          else
+            echo "Build directory not found!"
+            exit 1
+          fi
 
-      - name: Upload FFRESW .hex and .elf files as artifacts
+      - name: Upload .hex and .elf files as artifacts
         uses: actions/upload-artifact@v4
         with:
           name: compiled-arduino-files
