@@ -49,7 +49,6 @@ jobs:
             - name: "Adafruit BusIO"
             - name: "Adafruit MCP9600 Library"
             - name: "ArduinoJson"
-            - name: "ArduinoSTL"
             - name: "FreeRTOS"
             - name: "frt"
             - name: "Vector"
