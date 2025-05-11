@@ -64,11 +64,20 @@ jobs:
             --export-binaries \
             eSW/FFRESW/FFRESW/FFRESW.ino
 
+      - name: Debug - List compiled files in cache directory
+        run: |
+          echo "Listing compiled files in the Arduino cache directory"
+          ls -R /home/runner/.cache/arduino/sketches/ | grep -E '\.(hex|bin|elf)$'
+
       - name: Upload Build Artifacts (HEX, BIN, ELF)
         uses: actions/upload-artifact@v4
         with:
           name: arduino-build-artifacts
           path: |
-            eSW/FFRESW/FFRESW/FFRESW/FFRESW.hex
-            eSW/FFRESW/FFRESW/FFRESW/FFRESW.bin
-            eSW/FFRESW/FFRESW/FFRESW/FFRESW.elf
+            /home/runner/.cache/arduino/sketches/**/*.hex
+            /home/runner/.cache/arduino/sketches/**/*.bin
+            /home/runner/.cache/arduino/sketches/**/*.elf
+          if-no-files-found: warn
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
