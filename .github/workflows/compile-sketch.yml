@@ -35,8 +35,8 @@ jobs:
 
       - name: List libraries in Arduino folder
         run: |
-          echo "Libraries in ~/.arduino/libraries:"
-          ls ~/.arduino/libraries
+          echo "Libraries in ~/Arduino/libraries:"
+          ls ~/Arduino/libraries/
 
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
