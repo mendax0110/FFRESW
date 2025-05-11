@@ -35,17 +35,17 @@ jobs:
           arduino-cli lib install "FreeRTOS"
           arduino-cli lib install "frt"
           arduino-cli lib install "Vector"
-          # Install your custom libraries from the eSW/libraries folder
-          arduino-cli lib install "eSW/libraries/calcModule"
-          arduino-cli lib install "eSW/libraries/sensorModule"
-          arduino-cli lib install "eSW/libraries/comModule"
-          arduino-cli lib install "eSW/libraries/reportSystem"
-          arduino-cli lib install "eSW/libraries/jsonModule"
-          arduino-cli lib install "eSW/libraries/timeModule"
-          arduino-cli lib install "eSW/libraries/serialMenu"
-          arduino-cli lib install "eSW/libraries/flyback"
-          arduino-cli lib install "eSW/libraries/logManager"
-          arduino-cli lib install "eSW/libraries/vacControl"
+          # Install custom libraries from the local folder
+          arduino-cli lib install --path eSW/libraries/calcModule
+          arduino-cli lib install --path eSW/libraries/sensorModule
+          arduino-cli lib install --path eSW/libraries/comModule
+          arduino-cli lib install --path eSW/libraries/reportSystem
+          arduino-cli lib install --path eSW/libraries/jsonModule
+          arduino-cli lib install --path eSW/libraries/timeModule
+          arduino-cli lib install --path eSW/libraries/serialMenu
+          arduino-cli lib install --path eSW/libraries/flyback
+          arduino-cli lib install --path eSW/libraries/logManager
+          arduino-cli lib install --path eSW/libraries/vacControl
 
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
