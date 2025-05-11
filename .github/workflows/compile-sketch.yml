@@ -67,7 +67,7 @@ jobs:
           echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
 
       - name: Upload .elf and .hex files as artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compiled-arduino-files
           path: |
