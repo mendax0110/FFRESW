@@ -35,6 +35,17 @@ jobs:
           arduino-cli lib install "FreeRTOS"
           arduino-cli lib install "frt"
           arduino-cli lib install "Vector"
+          # Install your custom libraries from the eSW/libraries folder
+          arduino-cli lib install "eSW/libraries/calcModule"
+          arduino-cli lib install "eSW/libraries/sensorModule"
+          arduino-cli lib install "eSW/libraries/comModule"
+          arduino-cli lib install "eSW/libraries/reportSystem"
+          arduino-cli lib install "eSW/libraries/jsonModule"
+          arduino-cli lib install "eSW/libraries/timeModule"
+          arduino-cli lib install "eSW/libraries/serialMenu"
+          arduino-cli lib install "eSW/libraries/flyback"
+          arduino-cli lib install "eSW/libraries/logManager"
+          arduino-cli lib install "eSW/libraries/vacControl"
 
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
@@ -48,6 +59,16 @@ jobs:
             - name: "FreeRTOS"
             - name: "frt"
             - name: "Vector"
+            - name: "calcModule"
+            - name: "sensorModule"
+            - name: "comModule"
+            - name: "reportSystem"
+            - name: "jsonModule"
+            - name: "timeModule"
+            - name: "serialMenu"
+            - name: "flyback"
+            - name: "logManager"
+            - name: "vacControl"
           sketch-paths: |
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
