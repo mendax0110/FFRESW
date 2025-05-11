@@ -56,32 +56,19 @@ jobs:
             - eSW/FFRESW/FFRESW/FFRESW.ino
           verbose: true
 
-      - name: Verify if files are created and print directory content
+      - name: Compile Arduino Sketches (CLI Version)
         run: |
-          echo "Checking build output directory..."
-          # List the files in the /tmp directory, suppress permission denied errors
-          find /tmp -type f \( -name "*.elf" -o -name "*.hex" \) 2>/dev/null
+          arduino-cli compile --verbose \
+            --fqbn arduino:avr:mega \
+            --libraries ~/Arduino/libraries \
+            --export-binaries \
+            eSW/FFRESW/FFRESW/FFRESW.ino
 
-      - name: Collect .hex file path
-        id: collect_hex_file
-        run: |
-          # Search for the temporary .hex file in the /tmp folder
-          HEX_FILE=$(find /tmp -type f -name "*.hex" | head -n 1)
-          echo "HEX File: $HEX_FILE"
-          echo "hex_file=$HEX_FILE" >> $GITHUB_ENV
-
-      - name: Upload .hex file as artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload Build Artifacts (HEX, BIN, ELF)
+        uses: actions/upload-artifact@v3
         with:
-          name: compiled-arduino-hex
-          path: ${{ env.hex_file }}
-
-      - name: Print file sizes for build stats
-        run: |
-          echo "File Sizes:"
-          if [ -f "${{ env.hex_file }}" ]; then
-            HEX_SIZE=$(stat -c %s "${{ env.hex_file }}")
-            echo "HEX File Size: $HEX_SIZE bytes"
-          else
-            echo "HEX file not found."
-          fi
+          name: arduino-build-artifacts
+          path: |
+            eSW/FFRESW/FFRESW/FFRESW/FFRESW.hex
+            eSW/FFRESW/FFRESW/FFRESW/FFRESW.bin
+            eSW/FFRESW/FFRESW/FFRESW/FFRESW.elf
