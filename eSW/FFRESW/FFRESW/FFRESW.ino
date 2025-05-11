@@ -7,7 +7,7 @@
 #include <timeModule.h>
 #include <serialMenu.h>
 #include <flyback.h>
-#include <logManager.h>	// TODO CHECK THIS NEWLY ADDED KEEP MEMORY IN MIND!
+#include <logManager.h>	// TODO CHECK THIS NEWLY ADDED KEEP MEMORY IN MIND
 #include <vacControl.h>
 
 using namespace calcModule;
