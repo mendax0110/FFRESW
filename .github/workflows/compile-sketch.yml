@@ -69,6 +69,45 @@ jobs:
           echo "Listing compiled files in the Arduino cache directory"
           ls -R /home/runner/.cache/arduino/sketches/ | grep -E '\.(hex|bin|elf)$'
 
+      - name: Install analysis tools
+        run: sudo apt-get update && sudo apt-get install -y binutils
+
+      - name: Generate ELF Analysis Report (Markdown)
+        run: |
+          mkdir -p elf-analysis
+          for elf_file in $(find /home/runner/.cache/arduino/sketches/ -name '*.elf'); do
+            base_name=$(basename "$elf_file" .elf)
+            report_file="elf-analysis/${base_name}_report.md"
+            echo "# ELF Analysis Report for ${base_name}.elf" > "$report_file"
+            echo "" >> "$report_file"
+            echo "## ELF Header" >> "$report_file"
+            echo '```' >> "$report_file"
+            readelf -h "$elf_file" >> "$report_file"
+            echo '```' >> "$report_file"
+            echo "## Section Headers" >> "$report_file"
+            echo '```' >> "$report_file"
+            readelf -S "$elf_file" >> "$report_file"
+            echo '```' >> "$report_file"
+            echo "## Symbols" >> "$report_file"
+            echo '```' >> "$report_file"
+            readelf -s "$elf_file" >> "$report_file"
+            echo '```' >> "$report_file"
+            echo "## Disassembly (First 100 lines)" >> "$report_file"
+            echo '```' >> "$report_file"
+            objdump -d "$elf_file" | head -n 100 >> "$report_file"
+            echo '```' >> "$report_file"
+          done
+
+      - name: Upload ELF Analysis Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: elf-analysis-report
+          path: elf-analysis/
+          if-no-files-found: error
+          compression-level: 6
+          overwrite: true
+          include-hidden-files: false
+
       - name: Upload Build Artifacts (HEX, BIN, ELF)
         uses: actions/upload-artifact@v4
         with:
