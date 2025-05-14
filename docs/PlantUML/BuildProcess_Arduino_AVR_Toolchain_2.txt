@@ -1,0 +1,55 @@
+@startuml
+skinparam style strictuml
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam rectangle {
+    StereotypeFontSize 10
+    StereotypeFontColor gray
+}
+
+title **Arduino Compilation and Upload Process**
+
+' Source and Preprocessing
+rectangle "FFRESW.ino\n(Source File)" as InoFile
+rectangle "arduino\n(IDE Präprozessor)" as ArduinoPreproc
+rectangle "FFRESW.ino.cpp" as CppFile
+
+' Preprocessing Phase
+cloud "Libraries, Header-Dateien\n(.h, .c, .cpp)" as Libs
+rectangle "avr-g++ -E\n(Präprozessor)" as Preproc
+rectangle "ctags_target_for_gcc_minus_e.cpp" as CtagsCpp
+
+' Compilation Phase
+rectangle "avr-g++ -c\n(Compiler)" as Compiler
+rectangle "FFRESW.ino.cpp.o\nObject File" as ObjectFile
+
+' Linking Phase
+cloud "Linker-Description Scripts\n(Hardware-Infos: *.a, *.xn, *.o)" as LdScripts
+rectangle "avr-ld\n(Linker)" as Linker
+rectangle "FFRESW.ino.elf\nELF File" as ElfFile
+
+' Object Copy Phase
+rectangle "avr-objcopy\n(Object Copy)" as ObjCopy
+rectangle "FFRESW.ino.hex\nHEX File" as HexFile
+
+' Upload Phase
+rectangle "avrdude\n(Programmer)" as Avrdude
+database "Arduino MEGA 2560 R3" as ArduinoBoard
+
+' Relationships
+InoFile --> ArduinoPreproc : ".ino"
+ArduinoPreproc --> CppFile : ".cpp"
+CppFile --> Preproc
+Libs --> Preproc
+Preproc --> CtagsCpp
+Preproc --> Compiler
+Compiler --> ObjectFile
+ObjectFile --> Linker
+LdScripts --> Linker
+Linker --> ElfFile
+ElfFile --> ObjCopy
+ObjCopy --> HexFile
+HexFile --> Avrdude
+Avrdude --> ArduinoBoard
+
+@enduml

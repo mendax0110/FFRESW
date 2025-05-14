@@ -1,0 +1,54 @@
+@startuml FFRESW_CI_CD_Process
+
+title FFRESW CI/CD Pipeline
+
+skinparam backgroundColor #f9f9f9
+skinparam activity {
+  BackgroundColor White
+  BorderColor #333
+  FontName Helvetica
+}
+
+start
+
+:Trigger (Push/Pull Request);
+note right: Paths:\n- FFRESW.ino\n- Libraries\n- Workflows
+
+partition "Setup" {
+  :Checkout Code;
+  :Setup Arduino CLI;
+  :Install arduino:avr@1.8.3;
+  :Copy Custom Libraries;
+}
+
+partition "Build" {
+  :Compile Sketch (Action);
+  note right: FQBN: arduino:avr:mega\nLibraries:\n- Ethernet\n- FreeRTOS\n- etc.
+  :Compile Sketch (CLI);
+  :Debug File Listing;
+}
+
+partition "Analysis" {
+  :Install Binutils;
+  repeat
+    :Generate ELF Report;
+    note left
+      Includes:
+      - ELF Header
+      - Sections
+      - Symbols
+      - Disassembly
+    endnote
+  repeat while (More ELF files?) is (Yes)
+  -> No;
+}
+
+partition "Artifacts" {
+  :Upload ELF Analysis;
+  :Upload Build Artifacts;
+  note right: .hex, .bin, .elf files
+}
+
+stop
+
+@enduml

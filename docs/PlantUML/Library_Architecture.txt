@@ -29,6 +29,7 @@ package "**Core Libraries**" #E3F2FD {
 }
 
 package "**External Libraries**" #E8F5E9 {
+  component "**Arduino**" #C8E6C9
   component "**ArduinoJson**" as ajson #C8E6C9
   component "**ArduinoSTL**\n<size:9>(Vector etc.)</size>" as stl #C8E6C9
   component "**SD**" as sdlib #C8E6C9
@@ -36,8 +37,7 @@ package "**External Libraries**" #E8F5E9 {
   component "**Ethernet**" as eth #C8E6C9
   component "**FreeRTOS**" as rtos #C8E6C9
   component "**Frt.h**" as frt #C8E6C9
-  component "**MAX31855**" as max31855 #C8E6C9
-  component "**MAX6675**" as max6675 #C8E6C9
+  component "**MCP9601**" as mcp9601 #C8E6C9
   component "**EEPROM**" as eeprom #C8E6C9
   component "**Wire**\n<size:9>(I2C)</size>" as wire #C8E6C9
   component "**ErriezMemoryUsage**" as memusage #C8E6C9
@@ -59,8 +59,7 @@ log --> spi
 com --> eth
 com --> spi
 com --> wire : "I2C"
-sens --> max31855
-sens --> max6675
+sens --> mcp9601
 serial --> rtos
 report --> frt
 report --> memusage : "RAM check"
@@ -70,8 +69,7 @@ ptr --> stl : "Utilities"
 calc --> stl : "Data structures"
 
 ' Custom sensor lib connections
-temp --> max31855 : "Read"
-temp --> max6675 : "Read"
+temp --> mcp9601 : "Read"
 pressure --> press : "Read"
 sens --> temp : "Interface"
 sens --> pressure : "Interface"
