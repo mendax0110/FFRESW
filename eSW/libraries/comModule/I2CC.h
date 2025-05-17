@@ -27,6 +27,13 @@ namespace comModule
 		 */
 		void beginI2C(uint8_t address);
 
+
+		/**
+		 * @brief Function to initialize the I2C communication, without spefifing I2C address
+		 *
+		 */
+		void beginI2CGlobal();
+
 		/**
 		 * @brief Function to end the I2C communication
 		 *

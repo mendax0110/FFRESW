@@ -29,6 +29,12 @@ void I2CCommunication::beginI2C(uint8_t address)
     i2cInitialized = true;
 }
 
+void I2CCommunication::beginI2CGlobal()
+{
+	Wire.begin();
+	i2cInitialized = true;
+}
+
 void I2CCommunication::endI2C()
 {
 	Wire.end();
