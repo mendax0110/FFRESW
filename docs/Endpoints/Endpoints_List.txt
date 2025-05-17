@@ -39,6 +39,9 @@ get_actual_position
 set_actual_pressure
 ---------------------------------------------------
 get_temperature_*
-MCP9601C -> Temperatur in Celcius
-MCP9601F -> --||-- in Fahrenheit
-MCP9601K -> --||-- in Kelvin
+MCP9601C_Indoor -> Temperatur in Celcius
+MCP9601F_Indoor -> --||-- in Fahrenheit
+MCP9601K_Indoor -> --||-- in Kelvin
+MCP9601C_Outdoor -> Temperatur in Celcius
+MCP9601F_Outdoor -> --||-- in Fahrenheit
+MCP9601K_Outdoor -> --||-- in Kelvin
