@@ -5,7 +5,7 @@ var searchData=
   ['calculatepower_2',['calculatePower',['../classcalc_module_1_1_calc_module_internals.html#aa698d696ddd5a3461a778df99e9ce06e',1,'calcModule::CalcModuleInternals']]],
   ['calculateresistance_3',['calculateResistance',['../classcalc_module_1_1_calc_module_internals.html#a21c405515148f3f061309560b966f641',1,'calcModule::CalcModuleInternals']]],
   ['calculatestandarddeviation_4',['calculateStandardDeviation',['../classcalc_module_1_1_calc_module_internals.html#abfa187923ff078f2b841e8d8e6fe5187',1,'calcModule::CalcModuleInternals']]],
-  ['calibmcp9601_5',['calibMCP9601',['../class_temperature_sensor.html#ac4fe777896b32b7df825bb886b0d4e33',1,'TemperatureSensor']]],
+  ['calibmcp9601_5',['calibMCP9601',['../class_temperature_sensor.html#a122c1c2cd4ac26c9acc7bc3637f88b74',1,'TemperatureSensor']]],
   ['calibratesensor_6',['calibrateSensor',['../classsensor_module_1_1_sensor_module_internals.html#ae689f29c297c585012e60b58e2ce231b',1,'sensorModule::SensorModuleInternals']]],
   ['celsiustofahrenheit_7',['celsiusToFahrenheit',['../classcalc_module_1_1_calc_module_internals.html#aa178eb6431d424fdc2b51864d4da3108',1,'calcModule::CalcModuleInternals']]],
   ['celsiustokelvin_8',['celsiusToKelvin',['../classcalc_module_1_1_calc_module_internals.html#a30b12b705c416a6d050f8344343eab8b',1,'calcModule::CalcModuleInternals']]],

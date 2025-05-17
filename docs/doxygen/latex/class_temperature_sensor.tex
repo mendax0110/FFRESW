@@ -26,27 +26,27 @@ void {\bfseries initialize} ()
 \begin{DoxyCompactList}\small\item\em Function to initialize the temperature sensor. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{read\+Temperature}} ()
 \begin{DoxyCompactList}\small\item\em Function to read the temperature from the sensor. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce}{read\+MCP9601}} (Units unit)
+float \mbox{\hyperlink{class_temperature_sensor_a11df917e10d3893385266df0dd61039e}{read\+MCP9601}} (Units unit, Sensor\+ID sensor)
 \begin{DoxyCompactList}\small\item\em Function to read form specific sensor MCP9601. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Check if the temperature sensor is initialized. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33}{calib\+MCP9601}} ()
-\begin{DoxyCompactList}\small\item\em Method to calibrate the MCP9601 sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+uint8\+\_\+t \mbox{\hyperlink{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74}{calib\+MCP9601}} (Sensor\+ID sensor)
+\begin{DoxyCompactList}\small\item\em Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Temperature sensor class. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33}\label{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33} 
+\Hypertarget{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74}\label{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74} 
 \index{TemperatureSensor@{TemperatureSensor}!calibMCP9601@{calibMCP9601}}
 \index{calibMCP9601@{calibMCP9601}!TemperatureSensor@{TemperatureSensor}}
 \doxysubsubsection{\texorpdfstring{calibMCP9601()}{calibMCP9601()}}
-{\footnotesize\ttfamily uint8\+\_\+t Temperature\+Sensor\+::calib\+MCP9601 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t Temperature\+Sensor\+::calib\+MCP9601 (\begin{DoxyParamCaption}\item[{Sensor\+ID}]{sensor }\end{DoxyParamCaption})}
 
 
 
-Method to calibrate the MCP9601 sensor. 
+Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env. 
 
 \begin{DoxyReturn}{Returns}
 uint8\+\_\+t -\/\texorpdfstring{$>$}{>} the status of the calibration 
@@ -56,7 +56,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33_icgraph}
+\includegraphics[width=350pt]{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}\label{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44} 
@@ -81,11 +81,11 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce}\label{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce} 
+\Hypertarget{class_temperature_sensor_a11df917e10d3893385266df0dd61039e}\label{class_temperature_sensor_a11df917e10d3893385266df0dd61039e} 
 \index{TemperatureSensor@{TemperatureSensor}!readMCP9601@{readMCP9601}}
 \index{readMCP9601@{readMCP9601}!TemperatureSensor@{TemperatureSensor}}
 \doxysubsubsection{\texorpdfstring{readMCP9601()}{readMCP9601()}}
-{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+MCP9601 (\begin{DoxyParamCaption}\item[{Units}]{unit }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily float Temperature\+Sensor\+::read\+MCP9601 (\begin{DoxyParamCaption}\item[{Units}]{unit,  }\item[{Sensor\+ID}]{sensor }\end{DoxyParamCaption})}
 
 
 
@@ -104,7 +104,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce_cgraph}
+\includegraphics[width=350pt]{class_temperature_sensor_a11df917e10d3893385266df0dd61039e_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -112,7 +112,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce_icgraph}
+\includegraphics[width=350pt]{class_temperature_sensor_a11df917e10d3893385266df0dd61039e_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}\label{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3} 

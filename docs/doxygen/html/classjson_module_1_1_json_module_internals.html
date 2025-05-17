@@ -108,9 +108,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sendJsonSerial</b> ()
 <tr class="memitem:a45ba7bb9da21aa2cdd05be2482b9347f" id="r_a45ba7bb9da21aa2cdd05be2482b9347f"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjson_module_1_1_json_module_internals.html#a45ba7bb9da21aa2cdd05be2482b9347f">getJsonString</a> () const</td></tr>
 <tr class="memdesc:a45ba7bb9da21aa2cdd05be2482b9347f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Json String object.  <br /></td></tr>
 <tr class="separator:a45ba7bb9da21aa2cdd05be2482b9347f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac59dc705dd5108156a763e11ae9633fc" id="r_ac59dc705dd5108156a763e11ae9633fc"><td class="memItemLeft" align="right" valign="top">std::map&lt; String, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjson_module_1_1_json_module_internals.html#ac59dc705dd5108156a763e11ae9633fc">mapJsonToDoubles</a> (const String &amp;rawJson)</td></tr>
-<tr class="memdesc:ac59dc705dd5108156a763e11ae9633fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map the Json object to a map of Strings and floats.  <br /></td></tr>
-<tr class="separator:ac59dc705dd5108156a763e11ae9633fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae922a06f5f6c6ee40bc9e7935411872a" id="r_ae922a06f5f6c6ee40bc9e7935411872a"><td class="memItemLeft" align="right" valign="top"><a id="ae922a06f5f6c6ee40bc9e7935411872a" name="ae922a06f5f6c6ee40bc9e7935411872a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearJson</b> ()</td></tr>
 <tr class="memdesc:ae922a06f5f6c6ee40bc9e7935411872a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the Json object. <br /></td></tr>
@@ -371,68 +368,6 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Get the Json String object." alt="" coords="269,5,484,48"/>
 <area shape="rect" href="classjson_module_1_1_json_module_internals.html#a243336f24f5de5f88c5a79dd57b6a1d6" title="Function to send the Json object over the Serial connection." alt="" coords="5,5,221,48"/>
 <area shape="poly" title=" " alt="" coords="253,29,221,29,221,24,253,24"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ac59dc705dd5108156a763e11ae9633fc" name="ac59dc705dd5108156a763e11ae9633fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac59dc705dd5108156a763e11ae9633fc">&#9670;&#160;</a></span>mapJsonToDoubles()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; String, float &gt; JsonModuleInternals::mapJsonToDoubles </td>
-          <td>(</td>
-          <td class="paramtype">const String &amp;&#160;</td>
-          <td class="paramname"><em>rawJson</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Map the Json object to a map of Strings and floats. </p>
-<p><a href="https://github.com/mike-matera/ArduinoSTL/issues/84">https://github.com/mike-matera/ArduinoSTL/issues/84</a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rawJson</td><td>-&gt; The raw Json object </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>std::map&lt;String, float&gt; -&gt; The mapped Json object </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc_cgraph.png" border="0" usemap="#aclassjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc_cgraph" alt=""/></div>
-<map name="aclassjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc_cgraph" id="aclassjson_module_1_1_json_module_internals_ac59dc705dd5108156a763e11ae9633fc_cgraph">
-<area shape="rect" title="Map the Json object to a map of Strings and floats." alt="" coords="5,193,221,236"/>
-<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="269,201,435,228"/>
-<area shape="poly" title=" " alt="" coords="221,212,253,212,253,217,221,217"/>
-<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="483,147,667,173"/>
-<area shape="poly" title=" " alt="" coords="435,200,528,176,530,181,436,206"/>
-<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="491,201,659,228"/>
-<area shape="poly" title=" " alt="" coords="435,212,475,212,475,217,435,217"/>
-<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="718,256,930,283"/>
-<area shape="poly" title=" " alt="" coords="418,226,483,237,596,250,703,259,702,265,595,256,483,243,417,231"/>
-<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="483,303,667,329"/>
-<area shape="poly" title=" " alt="" coords="378,226,426,253,484,282,517,295,515,299,482,286,424,258,375,231"/>
-<area shape="poly" title=" " alt="" coords="483,176,399,199,397,194,482,171"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="715,5,933,48"/>
-<area shape="poly" title=" " alt="" coords="590,144,643,102,714,58,727,52,729,57,717,62,646,106,594,148"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="715,72,933,115"/>
-<area shape="poly" title=" " alt="" coords="627,143,726,117,728,122,629,149"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="715,139,933,181"/>
-<area shape="poly" title=" " alt="" coords="668,157,700,157,700,163,668,163"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="981,139,1198,181"/>
-<area shape="poly" title=" " alt="" coords="933,157,965,157,965,163,933,163"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1246,139,1463,181"/>
-<area shape="poly" title=" " alt="" coords="1199,157,1230,157,1230,163,1199,163"/>
-<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="762,205,886,232"/>
-<area shape="poly" title=" " alt="" coords="660,213,746,215,746,220,660,219"/>
-<area shape="poly" title=" " alt="" coords="649,300,733,284,734,289,650,305"/>
-<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="742,307,906,333"/>
-<area shape="poly" title=" " alt="" coords="668,315,726,316,726,321,668,320"/>
 </map>
 </div>
 

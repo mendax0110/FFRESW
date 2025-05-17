@@ -38,7 +38,10 @@ float \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a681ac7bd1
 bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b}{calibrate\+Sensor}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
 \begin{DoxyCompactList}\small\item\em Function to calibrate the sensor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35}{check\+Sensor\+Status}} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type)
-\begin{DoxyCompactList}\small\item\em Function to check the status of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to check the status of the sensor. \end{DoxyCompactList}\item 
+\Hypertarget{classsensor_module_1_1_sensor_module_internals_ae22bbc1bb259cad26198cbcdb5d4b217}\label{classsensor_module_1_1_sensor_module_internals_ae22bbc1bb259cad26198cbcdb5d4b217} 
+void {\bfseries report\+Unknown\+Sensor\+Once} (\mbox{\hyperlink{namespacesensor_module_adb7efb20711d66ac689cf4a8d2b8cc8b}{Sensor\+Type}} type, String context)
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_temperature_sensor}{Temperature\+Sensor}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,12 +49,12 @@ void {\bfseries initialize} ()
 \begin{DoxyCompactList}\small\item\em Function to initialize the temperature sensor. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{read\+Temperature}} ()
 \begin{DoxyCompactList}\small\item\em Function to read the temperature from the sensor. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{class_temperature_sensor_ae89eb6a951e5d016e1baf9bc145c59ce}{read\+MCP9601}} (Units unit)
+float \mbox{\hyperlink{class_temperature_sensor_a11df917e10d3893385266df0dd61039e}{read\+MCP9601}} (Units unit, Sensor\+ID sensor)
 \begin{DoxyCompactList}\small\item\em Function to read form specific sensor MCP9601. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Check if the temperature sensor is initialized. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{class_temperature_sensor_ac4fe777896b32b7df825bb886b0d4e33}{calib\+MCP9601}} ()
-\begin{DoxyCompactList}\small\item\em Method to calibrate the MCP9601 sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+uint8\+\_\+t \mbox{\hyperlink{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74}{calib\+MCP9601}} (Sensor\+ID sensor)
+\begin{DoxyCompactList}\small\item\em Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_pressure_sensor}{Pressure\+Sensor}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -115,7 +118,8 @@ true -\/\texorpdfstring{$>$}{>} if the sensor is healthy
 
 false -\/\texorpdfstring{$>$}{>} if the sensor is not healthy 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
