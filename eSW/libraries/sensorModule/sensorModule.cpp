@@ -8,7 +8,9 @@ using namespace sensorModule;
 
 SensorModuleInternals::SensorModuleInternals()
     : _i2cSensorInitialized(false), 
-      _spiSensorInitialized(false)
+      _spiSensorInitialized(false),
+      _lastUnknownSensorType(SensorType::MCP9601_Celsius_Indoor),
+      _unknownSensorReported(false)
 {
 }
 
@@ -38,20 +40,27 @@ float SensorModuleInternals::readSensor(SensorType type)
         	return _temperatureSensor.readTemperature();
         case SensorType::PRESSURE:
         	return _pressureSensor.readPressure();
-        case SensorType::MCP9601_Celsius:
-        	return _temperatureSensor.readMCP9601(Units::Celsius);
-        case SensorType::MCP9601_Fahrenheit:
-        	return _temperatureSensor.readMCP9601(Units::Fahrenheit);
-        case SensorType::MCP9601_Kelvin:
-        	return _temperatureSensor.readMCP9601(Units::Kelvin);
+        case SensorType::MCP9601_Celsius_Indoor:
+        	return _temperatureSensor.readMCP9601(Units::Celsius, SensorID::INDOOR);
+        case SensorType::MCP9601_Fahrenheit_Indoor:
+        	return _temperatureSensor.readMCP9601(Units::Fahrenheit, SensorID::INDOOR);
+        case SensorType::MCP9601_Kelvin_Indoor:
+        	return _temperatureSensor.readMCP9601(Units::Kelvin, SensorID::INDOOR);
+        case SensorType::MCP9601_Celsius_Outdoor:
+        	return _temperatureSensor.readMCP9601(Units::Celsius, SensorID::OUTDOOR);
+        case SensorType::MCP9601_Fahrenheit_Outdoor:
+        	return _temperatureSensor.readMCP9601(Units::Fahrenheit, SensorID::OUTDOOR);
+        case SensorType::MCP9601_Kelvin_Outdoor:
+        	return _temperatureSensor.readMCP9601(Units::Kelvin, SensorID::OUTDOOR);
         default:
-        	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Unknown sensor type."));
+        	reportUnknownSensorOnce(type, "readSensor");
             return NAN;
     }
 }
 
 bool SensorModuleInternals::calibrateSensor(SensorType type)
 {
+	uint8_t status;
     switch (type)
     {
         case SensorType::TEMPERATURE:
@@ -62,12 +71,18 @@ bool SensorModuleInternals::calibrateSensor(SensorType type)
             SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Calibrating pressure sensor..."));
             // TODO: add actual calibration logic here
             return true;
-        case SensorType::MCP9601_Celsius:
-        case SensorType::MCP9601_Fahrenheit:
-        case SensorType::MCP9601_Kelvin:
-            return calibMCP9601() != (MCP9601_Status::MCP9601_OPENCIRCUIT || MCP9601_Status::MCP9601_SHORTCIRCUIT);
+        case SensorType::MCP9601_Celsius_Indoor:
+        case SensorType::MCP9601_Fahrenheit_Indoor:
+        case SensorType::MCP9601_Kelvin_Indoor:
+        	status = calibMCP9601(SensorID::INDOOR);
+        	return status != MCP9601_Status::MCP9601_OPENCIRCUIT && status != MCP9601_Status::MCP9601_SHORTCIRCUIT;
+        case SensorType::MCP9601_Celsius_Outdoor:
+        case SensorType::MCP9601_Fahrenheit_Outdoor:
+        case SensorType::MCP9601_Kelvin_Outdoor:
+        	status = calibMCP9601(SensorID::OUTDOOR);
+        	return status != MCP9601_Status::MCP9601_OPENCIRCUIT && status != MCP9601_Status::MCP9601_SHORTCIRCUIT;
         default:
-            SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Unknown sensor type for calibration."));
+        	reportUnknownSensorOnce(type, "calibrateSensor");
             return false;
     }
 }
@@ -81,7 +96,18 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
     case SensorType::PRESSURE:
         return _pressureSensor.isInitialized();
     default:
-        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Unknown sensor type for status check."));
+    	reportUnknownSensorOnce(type, "checkSensorStatus");
         return false;
+    }
+}
+
+void SensorModuleInternals::reportUnknownSensorOnce(SensorType type, String context)
+{
+
+    if (!_unknownSensorReported || _lastUnknownSensorType != type)
+    {
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "Unknown sensor type in: " + context + ".");
+        _lastUnknownSensorType = type;
+        _unknownSensorReported = true;
     }
 }

@@ -208,6 +208,6 @@ void LogManager::flushLogs()
 	}
 	else
 	{
-		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "No log file currently open to flush.");
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("No log file currently open to flush."));
 	}
 }

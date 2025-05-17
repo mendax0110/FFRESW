@@ -84,7 +84,7 @@ private:
     String baseLogFileName;
     
     static const int chipSelectPinEth = 10; // Default CS pin for SD card
-    static const int maxLogFileSize = 1024 * 1024 * 100; // 100 MB
+    static const long maxLogFileSize = 1024 * 1024 * 100; // 100 MB
 
     LogManager(const LogManager&) = delete;
     LogManager& operator=(const LogManager&) = delete;

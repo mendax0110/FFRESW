@@ -31,9 +31,12 @@ namespace sensorModule
 		AMBIENTTEMPERATURE,
         PRESSURE,
 		DHT11,
-		MCP9601_Celsius,
-		MCP9601_Fahrenheit,
-		MCP9601_Kelvin,
+		MCP9601_Celsius_Indoor,
+		MCP9601_Fahrenheit_Indoor,
+		MCP9601_Kelvin_Indoor,
+		MCP9601_Celsius_Outdoor,
+		MCP9601_Fahrenheit_Outdoor,
+		MCP9601_Kelvin_Outdoor,
         UNKNOWN
     };
 
@@ -76,12 +79,17 @@ namespace sensorModule
          */
         bool checkSensorStatus(SensorType type);
 
+        void reportUnknownSensorOnce(SensorType type, String context);
+
     private:
         TemperatureSensor _temperatureSensor;
         PressureSensor _pressureSensor;
 
         bool _i2cSensorInitialized;
         bool _spiSensorInitialized;
+
+        SensorType _lastUnknownSensorType;
+        bool _unknownSensorReported;
     };
 }
 

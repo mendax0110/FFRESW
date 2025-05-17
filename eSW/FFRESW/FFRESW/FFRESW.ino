@@ -7,7 +7,7 @@
 #include <timeModule.h>
 #include <serialMenu.h>
 #include <flyback.h>
-#include <logManager.h>	// TODO CHECK THIS NEWLY ADDED KEEP MEMORY IN MIND!
+#include <logManager.h>
 #include <vacControl.h>
 
 using namespace calcModule;
@@ -213,17 +213,7 @@ public:
             jsonBody = handleFlybackSet(requestedEndpoint);
         }
 
-        // VacControl-Endpoints
-        if (requestedEndpoint.startsWith("get_vacControl_"))
-        {
-            jsonBody = handleFlybackGet(requestedEndpoint);
-        }
-        else if (requestedEndpoint.startsWith("set_vacControl_"))
-        {
-            jsonBody = handleFlybackSet(requestedEndpoint);
-        }
-
-        // Scenario-Endpoints
+        // Scenario-Endpoints -> "VacControl"
         if (requestedEndpoint.startsWith("set_scenario/"))
         {
             jsonBody = handleScenarioSet(requestedEndpoint);
@@ -454,19 +444,34 @@ private:
     {
     	String command = requestedEndpoint.substring(16);
 
-        if (command == "MCP9601C")
+        if (command == "MCP9601C_Indoor")
         {
-        	float value = sens.readSensor(SensorType::MCP9601_Celsius);
+        	float value = sens.readSensor(SensorType::MCP9601_Celsius_Indoor);
         	jsonBody = buildJsonResponse(requestedEndpoint, value, "°C");
         }
-        else if (command == "MCP9601F")
+        else if (command == "MCP9601F_Indoor")
         {
-        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit);
+        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Indoor);
         	jsonBody = buildJsonResponse(requestedEndpoint, value, "F");
         }
-        else if (command == "MCP9601K")
+        else if (command == "MCP9601K_Indoor")
         {
-        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit);
+        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Indoor);
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "K");
+        }
+        else if (command == "MCP9601C_Outdoor")
+        {
+        	float value = sens.readSensor(SensorType::MCP9601_Celsius_Outdoor);
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "°C");
+        }
+        else if (command == "MCP9601F_Outdoor")
+        {
+        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Outdoor);
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "F");
+        }
+        else if (command == "MCP9601K_Outdoor")
+        {
+        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Outdoor);
         	jsonBody = buildJsonResponse(requestedEndpoint, value, "K");
         }
     }
@@ -524,7 +529,8 @@ public:
     static const unsigned int SENSOR_ACTOR_TASK_STACK_LIMIT = 1024;
     static const unsigned int FLYBACK_VAC_TASK_STACK_LIMIT = 512;
 
-    static const float THRESHOLD = 0.8f; // 80% threshold was previously 0.8f
+    static const float THRESHOLD = 0.8f; 		// 80% threshold was previously 0.8f
+    static const float ERR_THRESHOLD = 0.9f;
 
     bool run()
     {
@@ -542,6 +548,10 @@ private:
         if (used >= static_cast<unsigned int>(limit * THRESHOLD))
         {
             SerialMenu::printToSerial(SerialMenu::OutputLevel::WARNING, "Stack usage high for " + taskName + ": " + String(used) + " / " + String(limit));
+        }
+        else if (used >= static_cast<unsigned int>(limit * ERR_THRESHOLD))
+        {
+        	gracefulRestart();
         }
     }
 };
@@ -604,8 +614,7 @@ void setup()
     IPAddress ip(192, 168, 1, 3);
     com.getEthernet().beginEthernet(mac, ip);
 
-    //com.getI2C().beginI2C(0x76);
-    com.getI2C().beginI2C(0x67);
+    com.getI2C().beginI2CGlobal();
     com.getSPI().beginSPI();
 
     // activate the stackguard

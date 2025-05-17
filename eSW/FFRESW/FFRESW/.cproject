@@ -39,7 +39,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ptrUtils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ErriezMemoryUsage/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
@@ -74,7 +73,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ptrUtils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ErriezMemoryUsage/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
@@ -109,7 +107,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ptrUtils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ErriezMemoryUsage/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
@@ -158,15 +155,15 @@
 							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/utility/*/*.269731588" name=""/>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="io.sloeber.core.sketch.0.257040250" name="/" resourcePath="libraries/comModule/SPII">
-						<toolChain id="io.sloeber.core.toolChain.release.1557149046" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release" unusedChildren="">
-							<tool id="io.sloeber.tool.sketch.compiler.cpp.1237079875" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp.1016610666"/>
-							<tool id="io.sloeber.tool.compiler.c.1832043959" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c.1846499564"/>
-							<tool id="io.sloeber.tool.sketch.compiler.s.210640494" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s.1331706343"/>
-							<tool id="io.sloeber.tool.ar.134090410" name="Arduino archiver" superClass="io.sloeber.tool.ar.952212948"/>
-							<tool id="io.sloeber.tool.combine.1200152437" name="Arduino combiner" superClass="io.sloeber.tool.combine.581890012"/>
-							<tool id="io.sloeber.tool.objcopy.eep.1731623322" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep.1446084194"/>
-							<tool id="io.sloeber.tool.size.1166100819" name="Arduino tool Print Size" superClass="io.sloeber.tool.size.1970296237"/>
+					<folderInfo id="io.sloeber.core.sketch.0.846111729" name="/" resourcePath="libraries/comModule/SPII">
+						<toolChain id="io.sloeber.core.toolChain.release.1999553771" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release" unusedChildren="">
+							<tool id="io.sloeber.tool.sketch.compiler.cpp.128933041" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp.1016610666"/>
+							<tool id="io.sloeber.tool.compiler.c.1549489441" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c.1846499564"/>
+							<tool id="io.sloeber.tool.sketch.compiler.s.1588350796" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s.1331706343"/>
+							<tool id="io.sloeber.tool.ar.1507536712" name="Arduino archiver" superClass="io.sloeber.tool.ar.952212948"/>
+							<tool id="io.sloeber.tool.combine.1774347847" name="Arduino combiner" superClass="io.sloeber.tool.combine.581890012"/>
+							<tool id="io.sloeber.tool.objcopy.eep.647094160" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep.1446084194"/>
+							<tool id="io.sloeber.tool.size.2132706697" name="Arduino tool Print Size" superClass="io.sloeber.tool.size.1970296237"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
@@ -214,7 +211,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ptrUtils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ErriezMemoryUsage/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
@@ -248,7 +244,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ptrUtils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ErriezMemoryUsage/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>
@@ -282,7 +277,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/Vector/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/timeModule}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ArduinoSTL/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ptrUtils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/ErriezMemoryUsage/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/FFRESW/libraries/serialMenu}&quot;"/>

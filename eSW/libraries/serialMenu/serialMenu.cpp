@@ -22,7 +22,7 @@ void SerialMenu::load(MenuItem* items, size_t size)
 
 void SerialMenu::show()
 {
-    if (currentMenu == nullptr) return;
+    if (PtrUtils::IsNullPtr(currentMenu) && !Serial) return;
 
     for (size_t i = 0; i < menuSize; i++)
     {
@@ -35,7 +35,7 @@ void SerialMenu::show()
 
 void SerialMenu::run()
 {
-    if (currentMenu == nullptr || !Serial.available()) return;
+    if (PtrUtils::IsNullPtr(currentMenu) || !Serial.available()) return;
 
     char choice = Serial.read();
 
@@ -79,13 +79,16 @@ void SerialMenu::printToSerial(OutputLevel level, const String& message, bool ne
         output = message;
     }
 
-    if (newLine)
+    if (Serial) // TODO CHeck if this is working as expected if serial == false, the no buffer fill
     {
-        Serial.println(output);
-    }
-    else
-    {
-        Serial.print(output);
+        if (newLine)
+        {
+            Serial.println(output);
+        }
+        else
+        {
+            Serial.print(output);
+        }
     }
 
     if (logMessage)
@@ -129,7 +132,7 @@ String SerialMenu::getCurrentTime()
     TimeModuleInternals* timeInstance = TimeModuleInternals::getInstance();
     if (timeInstance == nullptr)
     {
-        printToSerial(OutputLevel::ERROR, "Time module not initialized, using fallback time");
+        printToSerial(OutputLevel::ERROR, F("Time module not initialized, using fallback time"));
         return "0000-00-00T00:00:00Z";
     }
     return TimeModuleInternals::formatTimeString(timeInstance->getSystemTime());

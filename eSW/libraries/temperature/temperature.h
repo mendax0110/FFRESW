@@ -20,6 +20,13 @@ enum MCP9601_Status : uint8_t
 	MCP9601_SHORTCIRCUIT = 0x20
 };
 
+// @brief Enum for the Different Sensors in different Environments \enum SensorID
+enum SensorID
+{
+	INDOOR,	// Black-Color Patch on Cable
+	OUTDOOR // Yellow-Color Patch on Cable
+};
+
 /// @brief Temperature sensor class \class TemperatureSensor
 class TemperatureSensor
 {
@@ -46,7 +53,7 @@ public:
      * @param unit -> Choose the unit °C, F, K
      * @return -> The temperature value
      */
-    float readMCP9601(Units unit);
+    float readMCP9601(Units unit, SensorID sensor);
 
     /**
      * @brief Check if the temperature sensor is initialized.
@@ -58,11 +65,11 @@ public:
 
 
     /**
-     * @brief Method to calibrate the MCP9601 sensor
+     * @brief Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env
      *
      * @return uint8_t -> the status of the calibration
      */
-    uint8_t calibMCP9601();
+    uint8_t calibMCP9601(SensorID sensor);
 
 private:
     bool _temperatureSensorInitialized;
@@ -75,7 +82,8 @@ private:
     static const uint8_t OBJECT_TEMP = 0x07;
 
     // Settings for the MCP9601 Sensor board
-    Adafruit_MCP9601 _mcp;
+    Adafruit_MCP9601 _mcp1;
+    Adafruit_MCP9601 _mcp2;
     Ambient_Resolution _ambientREs = RES_ZERO_POINT_0625;
     static const uint8_t MCP9601_I2C = 0x67;
 

@@ -57,11 +57,6 @@
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/ArduinoJson</location>
 		</link>
 		<link>
-			<name>libraries/ArduinoSTL</name>
-			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/ArduinoSTL</location>
-		</link>
-		<link>
 			<name>libraries/EEPROM</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM</locationURI>
