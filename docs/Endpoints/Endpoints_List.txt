@@ -1,0 +1,44 @@
+--------------------------------------------------
+get_report_*
+
+stackOverflow
+ethernet
+spi
+i2c
+temp
+press
+--------------------------------------------------
+get_flyback_*
+
+voltage
+current
+power
+digital_freq_value
+frequency
+digital_duty_value+
+dutyCycle
+switch_state
+--------------------------------------------------
+set_flyback_*
+
+frequency/ HIER_VALUE
+dutyCycle/ HIER_VALUE
+--------------------------------------------------
+set_scenario/
+1 -> CLOSE
+2 -> PRESSURE_CONTROL 1 bar pressue
+3 -> PRESSURE_CONTROL 0.8 bar pressue
+4 -> PRESSURE_CONTROL 0.6 bar pressue
+5 -> OPEN
+--------------------------------------------------
+set_control_mode/ HIER NUMMER CONTROL MODE
+set_target_position/ HIER WERT TRARGETPOS
+set_target_pressure/ HIER WERT TARGETPRESS
+
+get_actual_position
+set_actual_pressure
+---------------------------------------------------
+get_temperature_*
+MCP9601C -> Temperatur in Celcius
+MCP9601F -> --||-- in Fahrenheit
+MCP9601K -> --||-- in Kelvin
