@@ -446,7 +446,7 @@ private:
     String handleScenarioGet(const String& cmd)
     {
     	String command = cmd.substring(15);
-    	// TODO Implement the Getters and create new Endpoints for HAS to know where we are.
+    	// TODO Implement the Getters and create new Endpoints for HAS to the current state of scenarios.
     	return "";
     }
 
