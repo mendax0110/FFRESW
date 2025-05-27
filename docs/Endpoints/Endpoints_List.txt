@@ -7,6 +7,9 @@ spi
 i2c
 temp
 press
+memoryOk
+ramOk
+stackSafeOk
 --------------------------------------------------
 get_flyback_*
 
@@ -45,3 +48,7 @@ MCP9601K_Indoor -> --||-- in Kelvin
 MCP9601C_Outdoor -> Temperatur in Celcius
 MCP9601F_Outdoor -> --||-- in Fahrenheit
 MCP9601K_Outdoor -> --||-- in Kelvin
+--------------------------------------------------
+REBOOT	// Hard reboot of whole system, 
+	// stops all Communication Systems e.g SPI/I2C/SER/ETH and reboots.
+--------------------------------------------------

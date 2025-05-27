@@ -20,7 +20,7 @@ VAT_SETS=("set_control_mode/1" "set_target_pressure/5")
 SCENARIO_SETS=("set_scenario/1" "set_scenario/2" "set_scenario/3" "set_scenario/4" "set_scenario/5")
 
 # Sensor Endpoints
-SENSOR_GETS=("get_temperature_sensor_1" "get_temperature_sensor_2" "get_temperature_MAX31855" "get_temperature_MAX6675")
+SENSOR_GETS=("get_temperature_MCP9601C_Indoor" "get_temperature_MCP9601F_Indoor" "get_temperature_MCP9601K_Indoor" "get_temperature_MCP9601C_Outdoor" "get_temperature_MCP9601F_Outdoor" get_temperature_MCP9601K_Outdoor)
 
 # Generic Get/Set Endpoints with realistic values (using slash format)
 GENERIC_GETS=("get_actual_position" "get_actual_pressure")
@@ -35,7 +35,7 @@ execute_curl() {
         echo "Sending request to: $BASE_URL$endpoint"
         curl "$BASE_URL$endpoint"
         echo
-        sleep 0.500  # Adds a 500 ms delay (adjust as needed)
+        sleep 0.200  # Adds a 500 ms delay (adjust as needed)
     done
 }
 
