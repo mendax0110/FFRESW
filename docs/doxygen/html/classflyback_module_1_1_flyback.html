@@ -128,10 +128,51 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>getExternFrequenc
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getExternDutyCycle</b> ()</td></tr>
 <tr class="memdesc:adba5295aac69fcc29dea338a51d21aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter Function to get the DutyCycle *. <br /></td></tr>
 <tr class="separator:adba5295aac69fcc29dea338a51d21aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5588985bd96ac8a50c371f5ff900911" id="r_ac5588985bd96ac8a50c371f5ff900911"><td class="memItemLeft" align="right" valign="top"><a id="ac5588985bd96ac8a50c371f5ff900911" name="ac5588985bd96ac8a50c371f5ff900911"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setExternPsu</b> (bool state)</td></tr>
+<tr class="separator:ac5588985bd96ac8a50c371f5ff900911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf714e7621e0379af256bc23e496673f" id="r_aaf714e7621e0379af256bc23e496673f"><td class="memItemLeft" align="right" valign="top"><a id="aaf714e7621e0379af256bc23e496673f" name="aaf714e7621e0379af256bc23e496673f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>getExternPsu</b> ()</td></tr>
+<tr class="separator:aaf714e7621e0379af256bc23e496673f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73ab9b16c9eddbfa46f0b74944444bc" id="r_aa73ab9b16c9eddbfa46f0b74944444bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflyback_module_1_1_flyback.html#aa73ab9b16c9eddbfa46f0b74944444bc">regulateVoltage</a> (float targetVoltage, float hysteresis)</td></tr>
+<tr class="memdesc:aa73ab9b16c9eddbfa46f0b74944444bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to regulate voltage to prevent swinging using a hyseresis.  <br /></td></tr>
+<tr class="separator:aa73ab9b16c9eddbfa46f0b74944444bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bfa4a05756eda5ec4019973f3e07c36" id="r_a3bfa4a05756eda5ec4019973f3e07c36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflyback_module_1_1_flyback.html#a3bfa4a05756eda5ec4019973f3e07c36">setTargetVoltage</a> (float voltage)</td></tr>
+<tr class="memdesc:a3bfa4a05756eda5ec4019973f3e07c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter Function for the HAS to regulate the target Voltage.  <br /></td></tr>
+<tr class="separator:a3bfa4a05756eda5ec4019973f3e07c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e38b5274c4842348b055ed543c1c6a3" id="r_a8e38b5274c4842348b055ed543c1c6a3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflyback_module_1_1_flyback.html#a8e38b5274c4842348b055ed543c1c6a3">getTargetVoltage</a> () const</td></tr>
+<tr class="memdesc:a8e38b5274c4842348b055ed543c1c6a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter Function for the HAS to know what the current targetVoltage is.  <br /></td></tr>
+<tr class="separator:a8e38b5274c4842348b055ed543c1c6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad30145a41e77b8ef77e82aea54654a0e" id="r_ad30145a41e77b8ef77e82aea54654a0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflyback_module_1_1_flyback.html#ad30145a41e77b8ef77e82aea54654a0e">setHysteresis</a> (float hysteresis)</td></tr>
+<tr class="memdesc:ad30145a41e77b8ef77e82aea54654a0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter Function for the HAS to regulate the hysteresis.  <br /></td></tr>
+<tr class="separator:ad30145a41e77b8ef77e82aea54654a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b3b5de06d71b755aeef039b90fd6db" id="r_a59b3b5de06d71b755aeef039b90fd6db"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classflyback_module_1_1_flyback.html#a59b3b5de06d71b755aeef039b90fd6db">getHysteresis</a> () const</td></tr>
+<tr class="memdesc:a59b3b5de06d71b755aeef039b90fd6db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter Function for the HAS to know what the current hysteresisVoltage is.  <br /></td></tr>
+<tr class="separator:a59b3b5de06d71b755aeef039b90fd6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classflyback_module_1_1_flyback.html" title="Flyback class to manage the Flyback system This class provides methods for initializing the system,...">Flyback</a> class to manage the <a class="el" href="classflyback_module_1_1_flyback.html" title="Flyback class to manage the Flyback system This class provides methods for initializing the system,...">Flyback</a> system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a59b3b5de06d71b755aeef039b90fd6db" name="a59b3b5de06d71b755aeef039b90fd6db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b3b5de06d71b755aeef039b90fd6db">&#9670;&#160;</a></span>getHysteresis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Flyback::getHysteresis </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter Function for the HAS to know what the current hysteresisVoltage is. </p>
+<dl class="section return"><dt>Returns</dt><dd>The Voltage the system is using to prevent swinging. </dd></dl>
+
+</div>
+</div>
 <a id="a92f5e16266c58e326fb28795e10c6499" name="a92f5e16266c58e326fb28795e10c6499"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a92f5e16266c58e326fb28795e10c6499">&#9670;&#160;</a></span>getSwitchState()</h2>
 
@@ -149,6 +190,26 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getExternDutyCycle</b>
 
 <p>Get the state of the Main-Switch. </p>
 <dl class="section return"><dt>Returns</dt><dd>Enum -&gt; The current state of the Main-Switch (e.g., "HV_Module OFF", "HV_Module MANUAL", "HV_Module REMOTE", "Invalid Switch Position") </dd></dl>
+
+</div>
+</div>
+<a id="a8e38b5274c4842348b055ed543c1c6a3" name="a8e38b5274c4842348b055ed543c1c6a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e38b5274c4842348b055ed543c1c6a3">&#9670;&#160;</a></span>getTargetVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Flyback::getTargetVoltage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter Function for the HAS to know what the current targetVoltage is. </p>
+<dl class="section return"><dt>Returns</dt><dd>The Voltage the system is trying to reach. </dd></dl>
 
 </div>
 </div>
@@ -176,9 +237,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18_icgraph.png" border="0" usemap="#aclassflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18_icgraph" alt=""/></div>
 <map name="aclassflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18_icgraph" id="aclassflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18_icgraph">
-<area shape="rect" title="Returns the state of the timer." alt="" coords="239,5,398,48"/>
-<area shape="rect" href="classflyback_module_1_1_flyback.html#a61248b00d6edb348459a5d4ca1ff3e26" title="Executes logic depending on which Main&#45;Switch state is active." alt="" coords="5,13,191,40"/>
-<area shape="poly" title=" " alt="" coords="223,29,191,29,191,24,223,24"/>
+<area shape="rect" title="Returns the state of the timer." alt="" coords="239,35,398,77"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#aa73ab9b16c9eddbfa46f0b74944444bc" title="Function to regulate voltage to prevent swinging using a hyseresis." alt="" coords="18,5,178,48"/>
+<area shape="poly" title=" " alt="" coords="223,46,178,40,179,35,224,41"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#a61248b00d6edb348459a5d4ca1ff3e26" title="Executes logic depending on which Main&#45;Switch state is active." alt="" coords="5,72,191,99"/>
+<area shape="poly" title=" " alt="" coords="224,71,191,76,191,70,223,66"/>
 </map>
 </div>
 
@@ -203,6 +266,16 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>true -&gt; <a class="el" href="classflyback_module_1_1_flyback.html" title="Flyback class to manage the Flyback system This class provides methods for initializing the system,...">Flyback</a> is initialized </dd>
 <dd>
 false -&gt; <a class="el" href="classflyback_module_1_1_flyback.html" title="Flyback class to manage the Flyback system This class provides methods for initializing the system,...">Flyback</a> is not initialized </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9_icgraph.png" border="0" usemap="#aclassflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9_icgraph" alt=""/></div>
+<map name="aclassflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9_icgraph" id="aclassflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9_icgraph">
+<area shape="rect" title="Get the state of the Flyback system." alt="" coords="213,5,372,48"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#aa73ab9b16c9eddbfa46f0b74944444bc" title="Function to regulate voltage to prevent swinging using a hyseresis." alt="" coords="5,5,165,48"/>
+<area shape="poly" title=" " alt="" coords="197,29,165,29,165,24,197,24"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -235,6 +308,75 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="165,70,198,75,197,81,164,75"/>
 </map>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_icgraph.png" border="0" usemap="#aclassflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_icgraph" alt=""/></div>
+<map name="aclassflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_icgraph" id="aclassflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_icgraph">
+<area shape="rect" title="Measures the voltage, current, power, digitalValue and frequency of the system." alt="" coords="213,5,372,48"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#aa73ab9b16c9eddbfa46f0b74944444bc" title="Function to regulate voltage to prevent swinging using a hyseresis." alt="" coords="5,5,165,48"/>
+<area shape="poly" title=" " alt="" coords="197,29,165,29,165,24,197,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa73ab9b16c9eddbfa46f0b74944444bc" name="aa73ab9b16c9eddbfa46f0b74944444bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa73ab9b16c9eddbfa46f0b74944444bc">&#9670;&#160;</a></span>regulateVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Flyback::regulateVoltage </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>targetVoltage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>hysteresis</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to regulate voltage to prevent swinging using a hyseresis. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">targetVoltage</td><td>-&gt; The requested voltage. </td></tr>
+    <tr><td class="paramname">hysteresis</td><td>-&gt; The hysteresis we create to prevent swinging in the system. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc_cgraph.png" border="0" usemap="#aclassflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc_cgraph" alt=""/></div>
+<map name="aclassflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc_cgraph" id="aclassflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc_cgraph">
+<area shape="rect" title="Function to regulate voltage to prevent swinging using a hyseresis." alt="" coords="5,139,165,182"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#adba5295aac69fcc29dea338a51d21aad" title="Getter Function to get the DutyCycle *." alt="" coords="420,10,579,52"/>
+<area shape="poly" title=" " alt="" coords="97,137,115,109,141,78,174,47,212,25,259,10,310,4,359,4,405,8,405,14,359,9,310,9,261,15,214,29,177,52,145,81,120,113,101,140"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#a1f990be68123c1a9e571e58c53952a4a" title="Getter Function to get the Frequency." alt="" coords="420,139,579,182"/>
+<area shape="poly" title=" " alt="" coords="119,180,162,205,213,224,257,234,292,237,327,234,371,224,414,209,453,188,456,193,416,214,373,230,328,239,292,242,256,239,212,229,160,210,116,184"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#ae50adfa0f2b76c0ba225369152821d18" title="Returns the state of the timer." alt="" coords="213,106,372,148"/>
+<area shape="poly" title=" " alt="" coords="164,145,197,140,198,145,165,150"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#a3e04ac32a7922079753b3c167abd28a9" title="Get the state of the Flyback system." alt="" coords="213,172,372,215"/>
+<area shape="poly" title=" " alt="" coords="165,170,198,176,197,181,164,176"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#ad3df8aded7ca0c7a85340701a8dee743" title="Measures the voltage, current, power, digitalValue and frequency of the system." alt="" coords="213,39,372,82"/>
+<area shape="poly" title=" " alt="" coords="125,136,211,91,223,86,226,91,214,96,127,141"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#ad116adbdf2e5a2caeb002e2d7f797741" title="Function to get the desired DutyCycle from HAS." alt="" coords="213,290,372,332"/>
+<area shape="poly" title=" " alt="" coords="110,180,156,223,214,269,232,280,229,284,211,273,153,227,106,184"/>
+<area shape="poly" title=" " alt="" coords="372,46,404,42,405,47,373,52"/>
+<area shape="poly" title=" " alt="" coords="348,80,373,91,447,129,444,134,371,96,346,85"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -261,6 +403,16 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741_icgraph.png" border="0" usemap="#aclassflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741_icgraph" alt=""/></div>
+<map name="aclassflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741_icgraph" id="aclassflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741_icgraph">
+<area shape="rect" title="Function to get the desired DutyCycle from HAS." alt="" coords="213,5,372,48"/>
+<area shape="rect" href="classflyback_module_1_1_flyback.html#aa73ab9b16c9eddbfa46f0b74944444bc" title="Function to regulate voltage to prevent swinging using a hyseresis." alt="" coords="5,5,165,48"/>
+<area shape="poly" title=" " alt="" coords="197,29,165,29,165,24,197,24"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -284,6 +436,58 @@ Here is the call graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frequency</td><td>-&gt; the frequency to change </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad30145a41e77b8ef77e82aea54654a0e" name="ad30145a41e77b8ef77e82aea54654a0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad30145a41e77b8ef77e82aea54654a0e">&#9670;&#160;</a></span>setHysteresis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Flyback::setHysteresis </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>hysteresis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter Function for the HAS to regulate the hysteresis. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hysteresis</td><td>-&gt; The desired hysteresis. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3bfa4a05756eda5ec4019973f3e07c36" name="a3bfa4a05756eda5ec4019973f3e07c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bfa4a05756eda5ec4019973f3e07c36">&#9670;&#160;</a></span>setTargetVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Flyback::setTargetVoltage </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>voltage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter Function for the HAS to regulate the target Voltage. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">voltage</td><td>-&gt; The desired Voltage to reach. </td></tr>
   </table>
   </dd>
 </dl>

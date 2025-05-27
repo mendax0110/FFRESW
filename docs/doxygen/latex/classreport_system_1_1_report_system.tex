@@ -16,7 +16,7 @@ void \mbox{\hyperlink{classreport_system_1_1_report_system_ab7af8593b35e8fc227dc
 \begin{DoxyCompactList}\small\item\em Function to log an error message. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_aad88c455a60ac3977adfd4c295b494f2}{check\+System\+Health}} (size\+\_\+t memory\+Threshold, bool check\+Eth, bool check\+Spi, bool check\+I2c, bool check\+Temp, bool check\+Press)
 \begin{DoxyCompactList}\small\item\em Function to check the system health of the uC. \end{DoxyCompactList}\item 
-String \mbox{\hyperlink{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6}{report\+Status}} (bool active)
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a93e67fecb418971d4892bbb7ad2f95f7}{report\+Status}} (bool active)
 \begin{DoxyCompactList}\small\item\em Function to report the status of the system. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a5c4a7b9ba401b35bc0ba1e6196db7b13}{set\+Threshold}} (float temp\+Threshold, float pressure\+Threshold)
 \begin{DoxyCompactList}\small\item\em Set Thresholds for the pressure and temperature sensors. \end{DoxyCompactList}\item 
@@ -46,7 +46,19 @@ String \mbox{\hyperlink{classreport_system_1_1_report_system_aec07e83fe5e94772cb
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_ae43f343b186531823af51db6394b280a}{get\+Last\+Error\+Info}} ()
 \begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8}{check\+Ram\+Level}} (unsigned int warning\+Threshold, unsigned int critical\+Threshold)
-\begin{DoxyCompactList}\small\item\em Function to check the SRAM level on the hostsystem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to check the SRAM level on the hostsystem. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a85d36a5e766cd10fc5e39246bfd93860}{is\+Temperature\+Sensor\+OK}} () const
+\begin{DoxyCompactList}\small\item\em Function to report to the HAS via Endpoint if Temp\+Sensor is initialized and ok. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a243ac60d8066997f7d76b20837304852}{is\+Communication\+OK}} () const
+\begin{DoxyCompactList}\small\item\em Function to report to the HAS via Endpoint if Communication is initialized and ok. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a9b68c5bf1e90d32f32a9a461b090dd3d}{is\+Memory\+OK}} () const
+\begin{DoxyCompactList}\small\item\em Function to report to the HAS via Endpoint if Memory is in between the required bounds. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a979e8fd756a5bad9660748481a34d98b}{is\+Ram\+OK}} () const
+\begin{DoxyCompactList}\small\item\em Function to report to the HAS via Endpoint if RAM is in between the required bounds. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_ac10d6ec2837590a4ec4ab5c7e1c0cd67}{is\+Stack\+Safe}} () const
+\begin{DoxyCompactList}\small\item\em Function to report to the HAS via Endpoint if Stack is not overflowing or has other issues. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classreport_system_1_1_report_system_a28c5bf1a2c43c4bb27f62bf80a192554}{has\+No\+Saved\+Errors}} () const
+\begin{DoxyCompactList}\small\item\em Function to report to the HAS via Endpoint if any errors were written to the EEPROM. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -271,7 +283,8 @@ Get the Memory Status of the system.
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} The memory status 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -291,6 +304,98 @@ Get the Stack Dump of the system.
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} The stack dump 
 \end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_a28c5bf1a2c43c4bb27f62bf80a192554}\label{classreport_system_1_1_report_system_a28c5bf1a2c43c4bb27f62bf80a192554} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!hasNoSavedErrors@{hasNoSavedErrors}}
+\index{hasNoSavedErrors@{hasNoSavedErrors}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{hasNoSavedErrors()}{hasNoSavedErrors()}}
+{\footnotesize\ttfamily bool Report\+System\+::has\+No\+Saved\+Errors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to report to the HAS via Endpoint if any errors were written to the EEPROM. 
+
+\begin{DoxyReturn}{Returns}
+True if no errors in EEPROM, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_a243ac60d8066997f7d76b20837304852}\label{classreport_system_1_1_report_system_a243ac60d8066997f7d76b20837304852} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!isCommunicationOK@{isCommunicationOK}}
+\index{isCommunicationOK@{isCommunicationOK}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{isCommunicationOK()}{isCommunicationOK()}}
+{\footnotesize\ttfamily bool Report\+System\+::is\+Communication\+OK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to report to the HAS via Endpoint if Communication is initialized and ok. 
+
+\begin{DoxyReturn}{Returns}
+True if communication is up, false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_a243ac60d8066997f7d76b20837304852_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classreport_system_1_1_report_system_a9b68c5bf1e90d32f32a9a461b090dd3d}\label{classreport_system_1_1_report_system_a9b68c5bf1e90d32f32a9a461b090dd3d} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!isMemoryOK@{isMemoryOK}}
+\index{isMemoryOK@{isMemoryOK}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{isMemoryOK()}{isMemoryOK()}}
+{\footnotesize\ttfamily bool Report\+System\+::is\+Memory\+OK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to report to the HAS via Endpoint if Memory is in between the required bounds. 
+
+\begin{DoxyReturn}{Returns}
+True if memory is in between legal bounds, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_a979e8fd756a5bad9660748481a34d98b}\label{classreport_system_1_1_report_system_a979e8fd756a5bad9660748481a34d98b} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!isRamOK@{isRamOK}}
+\index{isRamOK@{isRamOK}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{isRamOK()}{isRamOK()}}
+{\footnotesize\ttfamily bool Report\+System\+::is\+Ram\+OK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to report to the HAS via Endpoint if RAM is in between the required bounds. 
+
+\begin{DoxyReturn}{Returns}
+True if RAM is in between legal bounds, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_ac10d6ec2837590a4ec4ab5c7e1c0cd67}\label{classreport_system_1_1_report_system_ac10d6ec2837590a4ec4ab5c7e1c0cd67} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!isStackSafe@{isStackSafe}}
+\index{isStackSafe@{isStackSafe}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{isStackSafe()}{isStackSafe()}}
+{\footnotesize\ttfamily bool Report\+System\+::is\+Stack\+Safe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to report to the HAS via Endpoint if Stack is not overflowing or has other issues. 
+
+\begin{DoxyReturn}{Returns}
+True if stack if safe, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classreport_system_1_1_report_system_a85d36a5e766cd10fc5e39246bfd93860}\label{classreport_system_1_1_report_system_a85d36a5e766cd10fc5e39246bfd93860} 
+\index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!isTemperatureSensorOK@{isTemperatureSensorOK}}
+\index{isTemperatureSensorOK@{isTemperatureSensorOK}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
+\doxysubsubsection{\texorpdfstring{isTemperatureSensorOK()}{isTemperatureSensorOK()}}
+{\footnotesize\ttfamily bool Report\+System\+::is\+Temperature\+Sensor\+OK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Function to report to the HAS via Endpoint if Temp\+Sensor is initialized and ok. 
+
+\begin{DoxyReturn}{Returns}
+True if sensor is ok, false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_a85d36a5e766cd10fc5e39246bfd93860_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4}\label{classreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!reportError@{reportError}}
 \index{reportError@{reportError}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
@@ -320,11 +425,11 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classreport_system_1_1_report_system_ab7af8593b35e8fc227dca314571f6bb4_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6}\label{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6} 
+\Hypertarget{classreport_system_1_1_report_system_a93e67fecb418971d4892bbb7ad2f95f7}\label{classreport_system_1_1_report_system_a93e67fecb418971d4892bbb7ad2f95f7} 
 \index{reportSystem::ReportSystem@{reportSystem::ReportSystem}!reportStatus@{reportStatus}}
 \index{reportStatus@{reportStatus}!reportSystem::ReportSystem@{reportSystem::ReportSystem}}
 \doxysubsubsection{\texorpdfstring{reportStatus()}{reportStatus()}}
-{\footnotesize\ttfamily String Report\+System\+::report\+Status (\begin{DoxyParamCaption}\item[{bool}]{active }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Report\+System\+::report\+Status (\begin{DoxyParamCaption}\item[{bool}]{active }\end{DoxyParamCaption})}
 
 
 
@@ -336,14 +441,14 @@ Function to report the status of the system.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-String -\/\texorpdfstring{$>$}{>} The status of the system 
+bool -\/\texorpdfstring{$>$}{>} The status of the system 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classreport_system_1_1_report_system_a50d1100b21aad9391a2bae7aed3ad5b6_cgraph}
+\includegraphics[width=350pt]{classreport_system_1_1_report_system_a93e67fecb418971d4892bbb7ad2f95f7_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}\label{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf} 

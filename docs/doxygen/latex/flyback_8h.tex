@@ -1,0 +1,61 @@
+\doxysection{C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/flyback/flyback.h File Reference}
+\hypertarget{flyback_8h}{}\label{flyback_8h}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/flyback/flyback.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/flyback/flyback.h}}
+
+
+Header for the flyback class.  
+
+
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+Include dependency graph for flyback.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{flyback_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structflyback_module_1_1_measurement}{flyback\+Module\+::\+Measurement}}
+\begin{DoxyCompactList}\small\item\em Structure to store the measured values of the system This structure holds the voltage, current, power, frequency and dutycycle values measured from the system. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classflyback_module_1_1_flyback}{flyback\+Module\+::\+Flyback}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classflyback_module_1_1_flyback}{Flyback} class to manage the \doxylink{classflyback_module_1_1_flyback}{Flyback} system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceflyback_module}{flyback\+Module}}
+\begin{DoxyCompactList}\small\item\em Namespace for the \doxylink{classflyback_module_1_1_flyback}{Flyback} module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespaceflyback_module_af1ba9f383ca760a33172f15c3bf96b16}\label{namespaceflyback_module_af1ba9f383ca760a33172f15c3bf96b16} 
+typedef struct \mbox{\hyperlink{structflyback_module_1_1_measurement}{flyback\+Module\+::\+Measurement}} {\bfseries flyback\+Module\+::meas}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}\label{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a} 
+enum class \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{flyback\+Module\+::\+Switch\+States}} \+: int \{ {\bfseries HV\+\_\+\+Module\+\_\+\+OFF}
+, {\bfseries HV\+\_\+\+Module\+\_\+\+MANUAL}
+, {\bfseries HV\+\_\+\+Module\+\_\+\+REMOTE}
+, {\bfseries HV\+\_\+\+Module\+\_\+\+INVALID}
+ \}
+\begin{DoxyCompactList}\small\item\em enum for different Switch\+States of HVModule \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header for the flyback class. 
+
+\begin{DoxyAuthor}{Author}
+Domin 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/05-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}

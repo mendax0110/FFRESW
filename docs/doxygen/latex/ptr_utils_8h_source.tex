@@ -1,205 +1,206 @@
 \doxysection{ptr\+Utils.\+h}
 \hypertarget{ptr_utils_8h_source}{}\label{ptr_utils_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/ptrUtils/ptrUtils.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/ptrUtils/ptrUtils.h}}
-
+\mbox{\hyperlink{ptr_utils_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PTRUTILS\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PTRUTILS\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <serialMenu.h>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00014\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SafeDelete(T*\&\ ptr)}
-\DoxyCodeLine{00015\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00017\ \ \ \ \ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ ptr;}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00020\ \ \ \ \ \}}
-\DoxyCodeLine{00021\ \}}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00030\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SafeDeleteArray(T*\&\ ptr)}
-\DoxyCodeLine{00031\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ !=\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00033\ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ ptr;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00036\ \ \ \ \ \}}
-\DoxyCodeLine{00037\ \}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00048\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Verify(\textcolor{keyword}{const}\ T\&\ value,\ \textcolor{keyword}{const}\ T\&\ expected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMsg\ =\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00049\ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ !=\ expected)}
-\DoxyCodeLine{00051\ \ \ \ \ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorMsg)}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errorMsg);}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ String\ errStr;}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{}[ERROR]\ Verification\ failed:\ Value\ ("{}};}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ value;}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})\ does\ not\ match\ expected\ ("{}};}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ expected;}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})."{}};}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errStr);}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ PTRUTILS\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ PTRUTILS\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{serial_menu_8h}{serialMenu.h}}>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00024\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SafeDelete(T*\&\ ptr)}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ ptr;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00040\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SafeDeleteArray(T*\&\ ptr)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ ptr;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00058\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Verify(\textcolor{keyword}{const}\ T\&\ value,\ \textcolor{keyword}{const}\ T\&\ expected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMsg\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ !=\ expected)}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorMsg)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errorMsg);}
 \DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true});\ \textcolor{comment}{//\ Halt\ execution}}
-\DoxyCodeLine{00067\ \ \ \ \ \}}
-\DoxyCodeLine{00068\ \}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00078\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00079\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Verify(T*\ value,\ T*\ expected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMsg\ =\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00080\ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ !=\ expected)}
-\DoxyCodeLine{00082\ \ \ \ \ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorMsg)}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errorMsg);}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ String\ errStr;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{}[ERROR]\ Verification\ failed:\ Pointer\ ("{}};}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ (\textcolor{keywordtype}{unsigned}\ long)value,\ HEX;}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})\ does\ not\ match\ expected\ pointer\ ("{}};}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ (\textcolor{keywordtype}{unsigned}\ long)expected,\ HEX;}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})."{}};}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errStr);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ String\ errStr;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{}[ERROR]\ Verification\ failed:\ Value\ ("{}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ value;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})\ does\ not\ match\ expected\ ("{}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ expected;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})."{}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errStr);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true});\ \textcolor{comment}{//\ Halt\ execution}}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00089\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Verify(T*\ value,\ T*\ expected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMsg\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ !=\ expected)}
+\DoxyCodeLine{00092\ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorMsg)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errorMsg);}
 \DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true});\ \textcolor{comment}{//\ Halt\ execution}}
-\DoxyCodeLine{00098\ \ \ \ \ \}}
-\DoxyCodeLine{00099\ \}}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00108\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00109\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Verify(T*\ value,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMsg\ =\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00110\ \{}
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ !=\ \textcolor{keyword}{nullptr})\ \ \textcolor{comment}{//\ Directly\ compare\ with\ nullptr\ (no\ std::nullptr\_t)}}
-\DoxyCodeLine{00112\ \ \ \ \ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorMsg)}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errorMsg);}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ String\ errStr;}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{}[ERROR]\ Verification\ failed:\ Pointer\ ("{}};}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ (\textcolor{keywordtype}{unsigned}\ long)value,\ HEX;}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})\ is\ not\ null."{}};}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errStr);}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true});\ \textcolor{comment}{//\ Halt\ execution}}
-\DoxyCodeLine{00126\ \ \ \ \ \}}
-\DoxyCodeLine{00127\ \}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ tryDeletePtr(ptr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
-\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ if\ (PtrUtils::IsValidPtr(ptr))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
-\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SafeDelete(ptr);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
-\DoxyCodeLine{00137\ \textcolor{preprocessor}{}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ String\ errStr;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{}[ERROR]\ Verification\ failed:\ Pointer\ ("{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ (\textcolor{keywordtype}{unsigned}\ long)value,\ HEX;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})\ does\ not\ match\ expected\ pointer\ ("{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ (\textcolor{keywordtype}{unsigned}\ long)expected,\ HEX;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})."{}};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errStr);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true});\ \textcolor{comment}{//\ Halt\ execution}}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00119\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Verify(T*\ value,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorMsg\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00120\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ !=\ \textcolor{keyword}{nullptr})\ \ \textcolor{comment}{//\ Directly\ compare\ with\ nullptr\ (no\ std::nullptr\_t)}}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorMsg)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errorMsg);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ String\ errStr;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{}[ERROR]\ Verification\ failed:\ Pointer\ ("{}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ (\textcolor{keywordtype}{unsigned}\ long)value,\ HEX;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ errStr\ +=\ \textcolor{stringliteral}{"{})\ is\ not\ null."{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(errStr);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true});\ \textcolor{comment}{//\ Halt\ execution}}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \}}
 \DoxyCodeLine{00138\ }
 \DoxyCodeLine{00139\ }
-\DoxyCodeLine{00141\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ptr_utils}{PtrUtils}}}
-\DoxyCodeLine{00142\ \{}
-\DoxyCodeLine{00143\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ptr_utils_af3d3de640fdd63e36904a967b37346f9}{IsNullPtr}}(T*\ ptr)}
-\DoxyCodeLine{00152\ \ \ \ \ \{}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ptr\ ==\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00154\ \ \ \ \ \}}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ptr_utils_a86854a0a94ce7833f5e2a3f573230d2f}{IsValidPtr}}(T*\ ptr)}
-\DoxyCodeLine{00164\ \ \ \ \ \{}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ptr\ !=\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00166\ \ \ \ \ \}}
-\DoxyCodeLine{00167\ \};}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00176\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00177\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ ClearArray(T*\ array,\ \textcolor{keywordtype}{size\_t}\ size)}
-\DoxyCodeLine{00178\ \{}
-\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)}
-\DoxyCodeLine{00180\ \ \ \ \ \{}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ array[i]\ =\ T();}
-\DoxyCodeLine{00182\ \ \ \ \ \}}
-\DoxyCodeLine{00183\ \}}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00192\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00193\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ PrintPtrInfo(T*\ ptr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ ptrName\ =\ \textcolor{stringliteral}{"{}Pointer"{}})}
-\DoxyCodeLine{00194\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ ==\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00196\ \ \ \ \ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(\textcolor{stringliteral}{"{}[INFO]\ "{}}\ +\ String(ptrName)\ +\ String(\textcolor{stringliteral}{"{}is\ nullptr"{}}));}
-\DoxyCodeLine{00198\ \ \ \ \ \}}
-\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00200\ \ \ \ \ \{}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(\textcolor{stringliteral}{"{}[INFO]\ "{}}\ +\ String(ptrName)\ +\ String(\textcolor{stringliteral}{"{}\ points\ to\ address:\ 0x"{}})\ +\ (uintptr\_t)ptr,\ HEX);}
-\DoxyCodeLine{00202\ \ \ \ \ \}}
-\DoxyCodeLine{00203\ \}}
-\DoxyCodeLine{00204\ }
-\DoxyCodeLine{00210\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00211\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scoped_pointer}{ScopedPointer}}}
-\DoxyCodeLine{00212\ \{}
-\DoxyCodeLine{00213\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00214\ \ \ \ \ T*\ ptr;}
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00216\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_scoped_pointer}{ScopedPointer}}(T*\ p\ =\ \textcolor{keyword}{nullptr})\ :\ ptr(p)\ \{\}}
-\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{class_scoped_pointer}{\string~ScopedPointer}}()\ \{\ SafeDelete(ptr);\ \}}
-\DoxyCodeLine{00219\ }
-\DoxyCodeLine{00225\ \ \ \ \ T*\ \mbox{\hyperlink{class_scoped_pointer_a08fea2f55d4cc7dfefcc197bdd194054}{get}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
-\DoxyCodeLine{00226\ }
-\DoxyCodeLine{00232\ \ \ \ \ T*\ \mbox{\hyperlink{class_scoped_pointer_a00a2b8759af3ecec9d0e04543ed12f38}{release}}()}
-\DoxyCodeLine{00233\ \ \ \ \ \{}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ T*\ temp\ =\ ptr;}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
-\DoxyCodeLine{00237\ \ \ \ \ \}}
-\DoxyCodeLine{00238\ }
-\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scoped_pointer_ab0d351b6a9ba06bb017379a1dafe7c24}{reset}}(T*\ p\ =\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00245\ \ \ \ \ \{}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ SafeDelete(ptr);}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ ptr\ =\ p;}
-\DoxyCodeLine{00248\ \ \ \ \ \}}
-\DoxyCodeLine{00249\ }
-\DoxyCodeLine{00255\ \ \ \ \ T\&\ \mbox{\hyperlink{class_scoped_pointer_a53d5117e816f76880c5ca2c6d7a1fa3a}{operator*}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *ptr;\ \}}
-\DoxyCodeLine{00256\ }
-\DoxyCodeLine{00262\ \ \ \ \ T*\ \mbox{\hyperlink{class_scoped_pointer_a22305febab785612d2a973a412918d5f}{operator-\/>}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
-\DoxyCodeLine{00263\ \};}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00270\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00271\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pointer_wrapper}{PointerWrapper}}}
-\DoxyCodeLine{00272\ \{}
-\DoxyCodeLine{00273\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00274\ \ \ \ \ T*\ ptr;}
-\DoxyCodeLine{00275\ }
-\DoxyCodeLine{00276\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_pointer_wrapper}{PointerWrapper}}(T*\ p\ =\ \textcolor{keyword}{nullptr})\ :\ ptr(p)\ \{\}}
-\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{class_pointer_wrapper}{\string~PointerWrapper}}()\ \{\ SafeDelete(ptr);\ \}}
-\DoxyCodeLine{00279\ }
-\DoxyCodeLine{00285\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f}{get}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
-\DoxyCodeLine{00286\ }
-\DoxyCodeLine{00292\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160}{release}}()}
-\DoxyCodeLine{00293\ \ \ \ \ \{}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ T*\ temp\ =\ ptr;}
-\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
-\DoxyCodeLine{00297\ \ \ \ \ \}}
-\DoxyCodeLine{00298\ }
-\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0}{reset}}(T*\ p\ =\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{00305\ \ \ \ \ \{}
-\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ SafeDelete(ptr);}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ ptr\ =\ p;}
-\DoxyCodeLine{00308\ \ \ \ \ \}}
-\DoxyCodeLine{00309\ }
-\DoxyCodeLine{00315\ \ \ \ \ T\&\ \mbox{\hyperlink{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4}{operator*}}()\ \{\ \textcolor{keywordflow}{return}\ *ptr;\ \}}
-\DoxyCodeLine{00316\ }
-\DoxyCodeLine{00322\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd}{operator-\/>}}()\ \{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
-\DoxyCodeLine{00323\ \};}
-\DoxyCodeLine{00324\ }
-\DoxyCodeLine{00325\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PTRUTILS\_H}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ tryDeletePtr(ptr)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ if\ (PtrUtils::IsValidPtr(ptr))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SafeDelete(ptr);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ptr_utils}{PtrUtils}}}
+\DoxyCodeLine{00152\ \{}
+\DoxyCodeLine{00153\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ptr_utils_af3d3de640fdd63e36904a967b37346f9}{IsNullPtr}}(T*\ ptr)}
+\DoxyCodeLine{00162\ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ptr\ ==\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ptr_utils_a86854a0a94ce7833f5e2a3f573230d2f}{IsValidPtr}}(T*\ ptr)}
+\DoxyCodeLine{00174\ \ \ \ \ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ptr\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00186\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00187\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ ClearArray(T*\ array,\ \textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00188\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)}
+\DoxyCodeLine{00190\ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ array[i]\ =\ T();}
+\DoxyCodeLine{00192\ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00202\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00203\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ PrintPtrInfo(T*\ ptr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ ptrName\ =\ \textcolor{stringliteral}{"{}Pointer"{}})}
+\DoxyCodeLine{00204\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordflow}{if}\ (ptr\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00206\ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(\textcolor{stringliteral}{"{}[INFO]\ "{}}\ +\ String(ptrName)\ +\ String(\textcolor{stringliteral}{"{}is\ nullptr"{}}));}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00210\ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_menu_a3bbe89715b2c3c6bcd7a04f6d00c20e6}{SerialMenu::printToSerial}}(\textcolor{stringliteral}{"{}[INFO]\ "{}}\ +\ String(ptrName)\ +\ String(\textcolor{stringliteral}{"{}\ points\ to\ address:\ 0x"{}})\ +\ (uintptr\_t)ptr,\ HEX);}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00220\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00221\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scoped_pointer}{ScopedPointer}}}
+\DoxyCodeLine{00222\ \{}
+\DoxyCodeLine{00223\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00224\ \ \ \ \ T*\ ptr;}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_scoped_pointer}{ScopedPointer}}(T*\ p\ =\ \textcolor{keyword}{nullptr})\ :\ ptr(p)\ \{\}}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{class_scoped_pointer}{\string~ScopedPointer}}()\ \{\ SafeDelete(ptr);\ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00235\ \ \ \ \ T*\ \mbox{\hyperlink{class_scoped_pointer_a08fea2f55d4cc7dfefcc197bdd194054}{get}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00242\ \ \ \ \ T*\ \mbox{\hyperlink{class_scoped_pointer_a00a2b8759af3ecec9d0e04543ed12f38}{release}}()}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ T*\ temp\ =\ ptr;}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
+\DoxyCodeLine{00247\ \ \ \ \ \}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scoped_pointer_ab0d351b6a9ba06bb017379a1dafe7c24}{reset}}(T*\ p\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00255\ \ \ \ \ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ SafeDelete(ptr);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ ptr\ =\ p;}
+\DoxyCodeLine{00258\ \ \ \ \ \}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00265\ \ \ \ \ T\&\ \mbox{\hyperlink{class_scoped_pointer_a53d5117e816f76880c5ca2c6d7a1fa3a}{operator*}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *ptr;\ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00272\ \ \ \ \ T*\ \mbox{\hyperlink{class_scoped_pointer_a22305febab785612d2a973a412918d5f}{operator-\/>}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
+\DoxyCodeLine{00273\ \};}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00280\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00281\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pointer_wrapper}{PointerWrapper}}}
+\DoxyCodeLine{00282\ \{}
+\DoxyCodeLine{00283\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00284\ \ \ \ \ T*\ ptr;}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_pointer_wrapper}{PointerWrapper}}(T*\ p\ =\ \textcolor{keyword}{nullptr})\ :\ ptr(p)\ \{\}}
+\DoxyCodeLine{00288\ \ \ \ \ \mbox{\hyperlink{class_pointer_wrapper}{\string~PointerWrapper}}()\ \{\ SafeDelete(ptr);\ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00295\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_a6d53e07298a06368d0ac8b1bb0b6884f}{get}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00302\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_a91b40486ea987433ac28437d36fc3160}{release}}()}
+\DoxyCodeLine{00303\ \ \ \ \ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ T*\ temp\ =\ ptr;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
+\DoxyCodeLine{00307\ \ \ \ \ \}}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pointer_wrapper_a34480ad9d88a01b5f4411f7c225892a0}{reset}}(T*\ p\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00315\ \ \ \ \ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ SafeDelete(ptr);}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ ptr\ =\ p;}
+\DoxyCodeLine{00318\ \ \ \ \ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00325\ \ \ \ \ T\&\ \mbox{\hyperlink{class_pointer_wrapper_ad56d4e8ce95cc501be254cf68d481dd4}{operator*}}()\ \{\ \textcolor{keywordflow}{return}\ *ptr;\ \}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00332\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd}{operator-\/>}}()\ \{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
+\DoxyCodeLine{00333\ \};}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PTRUTILS\_H}}
 
 \end{DoxyCode}

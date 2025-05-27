@@ -7,5 +7,7 @@ var searchData=
   ['lockserialscoped_4',['lockSerialScoped',['../class_locker_base.html#ae48afaf381687110983a115f3588d5b1',1,'LockerBase']]],
   ['locktemperaturescoped_5',['lockTemperatureScoped',['../class_locker_base.html#a0e15e16538094ff49f6255f026f0b064',1,'LockerBase']]],
   ['logmanager_6',['LogManager',['../class_log_manager.html',1,'']]],
-  ['logmapper_7',['LogMapper',['../class_log_mapper.html',1,'']]]
+  ['logmanager_2ecpp_7',['logManager.cpp',['../log_manager_8cpp.html',1,'']]],
+  ['logmanager_2eh_8',['logManager.h',['../log_manager_8h.html',1,'']]],
+  ['logmapper_9',['LogMapper',['../class_log_mapper.html',1,'']]]
 ];

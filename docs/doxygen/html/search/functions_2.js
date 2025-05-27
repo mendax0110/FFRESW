@@ -14,9 +14,5 @@ var searchData=
   ['checksystemhealth_11',['checkSystemHealth',['../classreport_system_1_1_report_system.html#aad88c455a60ac3977adfd4c295b494f2',1,'reportSystem::ReportSystem']]],
   ['checkthresholds_12',['checkThresholds',['../classreport_system_1_1_report_system.html#a5eb043bbd1311486c8ab406f01f50b0b',1,'reportSystem::ReportSystem']]],
   ['clearjson_13',['clearJson',['../classjson_module_1_1_json_module_internals.html#ae922a06f5f6c6ee40bc9e7935411872a',1,'jsonModule::JsonModuleInternals']]],
-  ['createjson_14',['createJson',['../classjson_module_1_1_json_module_internals.html#ac90a51afe9450323b2ee16a768fbd172',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonfloat_15',['createJsonFloat',['../classjson_module_1_1_json_module_internals.html#a2fa2c3a5abda4b34a6103acdbf9ef39c',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonint_16',['createJsonInt',['../classjson_module_1_1_json_module_internals.html#a690ddb37bfc4489a038f4f14999147ff',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonstring_17',['createJsonString',['../classjson_module_1_1_json_module_internals.html#aed1fe1748ef1b57708f487e1451fc38c',1,'jsonModule::JsonModuleInternals']]],
-  ['createjsonstringconst_18',['createJsonStringConst',['../classjson_module_1_1_json_module_internals.html#a1175671245b303e09b035d2b76d88118',1,'jsonModule::JsonModuleInternals']]]
+  ['createjson_14',['createJson',['../classjson_module_1_1_json_module_internals.html#a75a7728d7bbd2092ed6c284ced025c3c',1,'jsonModule::JsonModuleInternals']]]
 ];

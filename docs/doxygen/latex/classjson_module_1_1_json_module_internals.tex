@@ -1,23 +1,22 @@
 \doxysection{json\+Module\+::Json\+Module\+Internals Class Reference}
 \hypertarget{classjson_module_1_1_json_module_internals}{}\label{classjson_module_1_1_json_module_internals}\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
+
+
+Class for the JSON module internals.  
+
+
+
+
+{\ttfamily \#include $<$json\+Module.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172}{create\+Json}} (const char \texorpdfstring{$\ast$}{*}key, const char \texorpdfstring{$\ast$}{*}value)
-\begin{DoxyCompactList}\small\item\em Create a Json object with a key and a value. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c}{create\+Json\+Float}} (const char \texorpdfstring{$\ast$}{*}key, float value)
-\begin{DoxyCompactList}\small\item\em Create a Json Float object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff}{create\+Json\+Int}} (const char \texorpdfstring{$\ast$}{*}key, int value)
-\begin{DoxyCompactList}\small\item\em Create a Json Int object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c}{create\+Json\+String}} (const char \texorpdfstring{$\ast$}{*}key, String \&value)
-\begin{DoxyCompactList}\small\item\em Create a Json String object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118}{create\+Json\+String\+Const}} (const char \texorpdfstring{$\ast$}{*}key, const String \&value)
-\begin{DoxyCompactList}\small\item\em Create a Json String Const object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a75a7728d7bbd2092ed6c284ced025c3c}{create\+Json}} (const char \texorpdfstring{$\ast$}{*}key, T value)
+\begin{DoxyCompactList}\small\item\em Add a key-\/value pair to the Json document. \end{DoxyCompactList}\item 
 \Hypertarget{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}\label{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6} 
 void {\bfseries send\+Json\+Serial} ()
 \begin{DoxyCompactList}\small\item\em Function to send the Json object over the Serial connection. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a57f3c0b9523b19f66ceaa14714a249e2}{send\+Json\+Ethernet}} (const char \texorpdfstring{$\ast$}{*}endpoint)
-\begin{DoxyCompactList}\small\item\em Function to send the Json object over the Ethernet connection. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}{get\+Json\+String}} () const
 \begin{DoxyCompactList}\small\item\em Get the Json String object. \end{DoxyCompactList}\item 
 \Hypertarget{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a}\label{classjson_module_1_1_json_module_internals_ae922a06f5f6c6ee40bc9e7935411872a} 
@@ -25,101 +24,51 @@ void {\bfseries clear\+Json} ()
 \begin{DoxyCompactList}\small\item\em Clear the Json object. \end{DoxyCompactList}\item 
 \Hypertarget{classjson_module_1_1_json_module_internals_a3453826931fdba4cbbcd5f31b637207f}\label{classjson_module_1_1_json_module_internals_a3453826931fdba4cbbcd5f31b637207f} 
 void {\bfseries print\+Json\+Doc\+Memory} ()
-\begin{DoxyCompactList}\small\item\em Prints information about the Json object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints information about the Json object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classjson_module_1_1_json_module_internals_ae79270c45d709818536f79bb5bf75925}{has\+Capacity\+For}} (size\+\_\+t additional\+Size) const
+\begin{DoxyCompactList}\small\item\em Check if there is enough capacity left in the Json\+Document. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classjson_module_1_1_json_module_internals_a7af49ea2b002069810162e3fc7fcee7c}\label{classjson_module_1_1_json_module_internals_a7af49ea2b002069810162e3fc7fcee7c} 
-size\+\_\+t {\bfseries json\+Buffer}
+\Hypertarget{classjson_module_1_1_json_module_internals_ae6e46e7709ec3816170ac6fb176e54ca}\label{classjson_module_1_1_json_module_internals_ae6e46e7709ec3816170ac6fb176e54ca} 
+size\+\_\+t {\bfseries json\+Buffer\+Size}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Class for the JSON module internals. 
+
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172}\label{classjson_module_1_1_json_module_internals_ac90a51afe9450323b2ee16a768fbd172} 
+\Hypertarget{classjson_module_1_1_json_module_internals_a75a7728d7bbd2092ed6c284ced025c3c}\label{classjson_module_1_1_json_module_internals_a75a7728d7bbd2092ed6c284ced025c3c} 
 \index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJson@{createJson}}
 \index{createJson@{createJson}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
 \doxysubsubsection{\texorpdfstring{createJson()}{createJson()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::create\+Json (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void json\+Module\+::\+Json\+Module\+Internals\+::create\+Json (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Create a Json object with a key and a value. 
+Add a key-\/value pair to the Json document. 
 
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of the value. \\
+\hline
+\end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
+{\em key} & Key to set. \\
 \hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
-\hline
-\end{DoxyParams}
-\Hypertarget{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c}\label{classjson_module_1_1_json_module_internals_a2fa2c3a5abda4b34a6103acdbf9ef39c} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJsonFloat@{createJsonFloat}}
-\index{createJsonFloat@{createJsonFloat}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{createJsonFloat()}{createJsonFloat()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::create\+Json\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{float}]{value }\end{DoxyParamCaption})}
-
-
-
-Create a Json Float object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
+{\em value} & Value to associate with the key. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff}\label{classjson_module_1_1_json_module_internals_a690ddb37bfc4489a038f4f14999147ff} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJsonInt@{createJsonInt}}
-\index{createJsonInt@{createJsonInt}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{createJsonInt()}{createJsonInt()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::create\+Json\+Int (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{int}]{value }\end{DoxyParamCaption})}
-
-
-
-Create a Json Int object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
-\hline
-\end{DoxyParams}
-\Hypertarget{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c}\label{classjson_module_1_1_json_module_internals_aed1fe1748ef1b57708f487e1451fc38c} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJsonString@{createJsonString}}
-\index{createJsonString@{createJsonString}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{createJsonString()}{createJsonString()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::create\+Json\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{String \&}]{value }\end{DoxyParamCaption})}
-
-
-
-Create a Json String object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
-\hline
-\end{DoxyParams}
-\Hypertarget{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118}\label{classjson_module_1_1_json_module_internals_a1175671245b303e09b035d2b76d88118} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJsonStringConst@{createJsonStringConst}}
-\index{createJsonStringConst@{createJsonStringConst}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{createJsonStringConst()}{createJsonStringConst()}}
-{\footnotesize\ttfamily void Json\+Module\+Internals\+::create\+Json\+String\+Const (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{const String \&}]{value }\end{DoxyParamCaption})}
-
-
-
-Create a Json String Const object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & -\/\texorpdfstring{$>$}{>} The key of the Json object \\
-\hline
-{\em value} & -\/\texorpdfstring{$>$}{>} The value of the Json object \\
-\hline
-\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classjson_module_1_1_json_module_internals_a75a7728d7bbd2092ed6c284ced025c3c_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}\label{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f} 
 \index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!getJsonString@{getJsonString}}
 \index{getJsonString@{getJsonString}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
@@ -131,7 +80,7 @@ Create a Json String Const object.
 Get the Json String object. 
 
 \begin{DoxyReturn}{Returns}
-String -\/\texorpdfstring{$>$}{>} The Json String object 
+String -\/\texorpdfstring{$>$}{>} The Json String object. 
 \end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -147,21 +96,26 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classjson_module_1_1_json_module_internals_a57f3c0b9523b19f66ceaa14714a249e2}\label{classjson_module_1_1_json_module_internals_a57f3c0b9523b19f66ceaa14714a249e2} 
-\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!sendJsonEthernet@{sendJsonEthernet}}
-\index{sendJsonEthernet@{sendJsonEthernet}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
-\doxysubsubsection{\texorpdfstring{sendJsonEthernet()}{sendJsonEthernet()}}
-{\footnotesize\ttfamily void json\+Module\+::\+Json\+Module\+Internals\+::send\+Json\+Ethernet (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{endpoint }\end{DoxyParamCaption})}
+\Hypertarget{classjson_module_1_1_json_module_internals_ae79270c45d709818536f79bb5bf75925}\label{classjson_module_1_1_json_module_internals_ae79270c45d709818536f79bb5bf75925} 
+\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!hasCapacityFor@{hasCapacityFor}}
+\index{hasCapacityFor@{hasCapacityFor}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
+\doxysubsubsection{\texorpdfstring{hasCapacityFor()}{hasCapacityFor()}}
+{\footnotesize\ttfamily bool Json\+Module\+Internals\+::has\+Capacity\+For (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{additional\+Size }\end{DoxyParamCaption}) const}
 
 
 
-Function to send the Json object over the Ethernet connection. 
+Check if there is enough capacity left in the Json\+Document. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em endpoint} & -\/\texorpdfstring{$>$}{>} The endpoint to send the Json object to \\
+{\em additional\+Size} & Approximate size of the data to be added. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If there is enough space. 
+
+false If adding may overflow the buffer. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,73 +1,74 @@
 \doxysection{temperature.\+h}
 \hypertarget{temperature_8h_source}{}\label{temperature_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/temperature/temperature.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/temperature/temperature.h}}
-
+\mbox{\hyperlink{temperature_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TEMPERATURESENSOR\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TEMPERATURESENSOR\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Adafruit\_I2CDevice.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Adafruit\_MCP9601.h"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{enum}\ Units}
-\DoxyCodeLine{00010\ \{}
-\DoxyCodeLine{00011\ \ \ \ \ Celsius,}
-\DoxyCodeLine{00012\ \ \ \ \ Kelvin,}
-\DoxyCodeLine{00013\ \ \ \ \ Fahrenheit}
-\DoxyCodeLine{00014\ \};}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ MCP9601\_Status\ :\ uint8\_t}
-\DoxyCodeLine{00018\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ MCP9601\_OPENCIRCUIT\ =\ 0x10,}
-\DoxyCodeLine{00020\ \ \ \ \ MCP9601\_SHORTCIRCUIT\ =\ 0x20}
-\DoxyCodeLine{00021\ \};}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{comment}{//\ @brief\ Enum\ for\ the\ Different\ Sensors\ in\ different\ Environments\ \(\backslash\)enum\ SensorID}}
-\DoxyCodeLine{00024\ \textcolor{keyword}{enum}\ SensorID}
-\DoxyCodeLine{00025\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ INDOOR,\ \textcolor{comment}{//\ Black-\/Color\ Patch\ on\ Cable}}
-\DoxyCodeLine{00027\ \ \ \ \ OUTDOOR\ \textcolor{comment}{//\ Yellow-\/Color\ Patch\ on\ Cable}}
-\DoxyCodeLine{00028\ \};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}}
-\DoxyCodeLine{00032\ \{}
-\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}();}
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{\string~TemperatureSensor}}();}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07}{initialize}}();}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{readTemperature}}();}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a11df917e10d3893385266df0dd61039e}{readMCP9601}}(Units\ unit,\ SensorID\ sensor);}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{isInitialized}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00072\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74}{calibMCP9601}}(SensorID\ sensor);}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_temperatureSensorInitialized;}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\ =\ A0;}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\_DIG\ =\ 4;}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ DHT11\_PIN\ =\ 7;}
-\DoxyCodeLine{00079\ \ \ \ \ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MLX90614\ =\ 0x5A;}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ AMBIENT\_TEMP\ =\ 0x06;}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ OBJECT\_TEMP\ =\ 0x07;}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ TEMPERATURESENSOR\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ TEMPERATURESENSOR\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <Adafruit\_I2CDevice.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Adafruit\_MCP9601.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{temperature_8h_ac33d2b1fdba15c8bfb494f9cf0ef4190}{Units}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Celsius,}
+\DoxyCodeLine{00022\ \ \ \ \ Kelvin,}
+\DoxyCodeLine{00023\ \ \ \ \ Fahrenheit}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{temperature_8h_a9aa87af9f057197db34eb572a9db0c65}{MCP9601\_Status}}\ :\ uint8\_t}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ MCP9601\_OPENCIRCUIT\ =\ 0x10,}
+\DoxyCodeLine{00030\ \ \ \ \ MCP9601\_SHORTCIRCUIT\ =\ 0x20}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ @brief\ Enum\ for\ the\ Different\ Sensors\ in\ different\ Environments\ \(\backslash\)enum\ SensorID}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{enum}\ SensorID}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ INDOOR,\ \textcolor{comment}{//\ Black-\/Color\ Patch\ on\ Cable}}
+\DoxyCodeLine{00037\ \ \ \ \ OUTDOOR\ \textcolor{comment}{//\ Yellow-\/Color\ Patch\ on\ Cable}}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{TemperatureSensor}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_temperature_sensor}{\string~TemperatureSensor}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_temperature_sensor_ab9adecbafd9ebe645ddc4e0298a1ed07}{initialize}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a95c71f6f2640c48eca73a803e3bf57c3}{readTemperature}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_temperature_sensor_a11df917e10d3893385266df0dd61039e}{readMCP9601}}(\mbox{\hyperlink{temperature_8h_ac33d2b1fdba15c8bfb494f9cf0ef4190}{Units}}\ unit,\ SensorID\ sensor);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_temperature_sensor_ac7a29962d4b9a801ebb1d51278505a44}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_temperature_sensor_a122c1c2cd4ac26c9acc7bc3637f88b74}{calibMCP9601}}(SensorID\ sensor);}
 \DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Settings\ for\ the\ MCP9601\ Sensor\ board}}
-\DoxyCodeLine{00085\ \ \ \ \ Adafruit\_MCP9601\ \_mcp1;}
-\DoxyCodeLine{00086\ \ \ \ \ Adafruit\_MCP9601\ \_mcp2;}
-\DoxyCodeLine{00087\ \ \ \ \ Ambient\_Resolution\ \_ambientREs\ =\ RES\_ZERO\_POINT\_0625;}
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MCP9601\_I2C\ =\ 0x67;}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{float}\ readAnalogSensor(\textcolor{keywordtype}{int}\ pin);}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{float}\ readDigitalSensor(\textcolor{keywordtype}{int}\ pin);}
-\DoxyCodeLine{00106\ \};}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TEMPERATURESENSOR\_H}}
+\DoxyCodeLine{00084\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_temperatureSensorInitialized;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\ =\ A0;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TEMP\_SENSOR\_PIN\_DIG\ =\ 4;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ DHT11\_PIN\ =\ 7;}
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MLX90614\ =\ 0x5A;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ AMBIENT\_TEMP\ =\ 0x06;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ OBJECT\_TEMP\ =\ 0x07;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Settings\ for\ the\ MCP9601\ Sensor\ board}}
+\DoxyCodeLine{00095\ \ \ \ \ Adafruit\_MCP9601\ \_mcp1;}
+\DoxyCodeLine{00096\ \ \ \ \ Adafruit\_MCP9601\ \_mcp2;}
+\DoxyCodeLine{00097\ \ \ \ \ Ambient\_Resolution\ \_ambientREs\ =\ RES\_ZERO\_POINT\_0625;}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MCP9601\_I2C\ =\ 0x67;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{float}\ readAnalogSensor(uint8\_t\ pin);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{float}\ readDigitalSensor(uint8\_t\ pin);}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TEMPERATURESENSOR\_H}}
 
 \end{DoxyCode}

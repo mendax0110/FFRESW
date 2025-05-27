@@ -1,32 +1,33 @@
 \doxysection{pressure.\+h}
 \hypertarget{pressure_8h_source}{}\label{pressure_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/pressure/pressure.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/pressure/pressure.h}}
-
+\mbox{\hyperlink{pressure_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PRESSURESENSOR\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PRESSURESENSOR\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}}
-\DoxyCodeLine{00008\ \{}
-\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}();}
-\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_pressure_sensor}{\string~PressureSensor}}();}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pressure_sensor_a5bcaf5eed99551cdf73d0332d719a695}{initialize}}();}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pressure_sensor_ab0bd12c02afc64805c6cbde843678697}{readPressure}}();}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pressure_sensor_a90251cd182efdc2ae4797dcdc6e51a34}{isInitialized}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_pressureSensorInitialized;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PRESSURE\_SENSOR\_PIN\ =\ 0;}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ readAnalogSensor(\textcolor{keywordtype}{int}\ pin);}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ PRESSURESENSOR\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ PRESSURESENSOR\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_pressure_sensor}{PressureSensor}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_pressure_sensor}{\string~PressureSensor}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pressure_sensor_a5bcaf5eed99551cdf73d0332d719a695}{initialize}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pressure_sensor_ab0bd12c02afc64805c6cbde843678697}{readPressure}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pressure_sensor_a90251cd182efdc2ae4797dcdc6e51a34}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_pressureSensorInitialized;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ PRESSURE\_SENSOR\_PIN\ =\ 0;}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PRESSURESENSOR\_H}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ readAnalogSensor(uint8\_t\ pin);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PRESSURESENSOR\_H}}
 
 \end{DoxyCode}

@@ -124,9 +124,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td
 <tr class="memitem:a9d66f531e3316efbb9b8a4850607ff35" id="r_a9d66f531e3316efbb9b8a4850607ff35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35">checkSensorStatus</a> (<a class="el" href="namespacesensor_module.html#adb7efb20711d66ac689cf4a8d2b8cc8b">SensorType</a> type)</td></tr>
 <tr class="memdesc:a9d66f531e3316efbb9b8a4850607ff35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to check the status of the sensor.  <br /></td></tr>
 <tr class="separator:a9d66f531e3316efbb9b8a4850607ff35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae22bbc1bb259cad26198cbcdb5d4b217" id="r_ae22bbc1bb259cad26198cbcdb5d4b217"><td class="memItemLeft" align="right" valign="top"><a id="ae22bbc1bb259cad26198cbcdb5d4b217" name="ae22bbc1bb259cad26198cbcdb5d4b217"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reportUnknownSensorOnce</b> (<a class="el" href="namespacesensor_module.html#adb7efb20711d66ac689cf4a8d2b8cc8b">SensorType</a> type, String context)</td></tr>
-<tr class="separator:ae22bbc1bb259cad26198cbcdb5d4b217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67b8bea1c590a5be3748f1eae370fb5a" id="r_a67b8bea1c590a5be3748f1eae370fb5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsensor_module_1_1_sensor_module_internals.html#a67b8bea1c590a5be3748f1eae370fb5a">reportUnknownSensorOnce</a> (<a class="el" href="namespacesensor_module.html#adb7efb20711d66ac689cf4a8d2b8cc8b">SensorType</a> type, const __FlashStringHelper *context)</td></tr>
+<tr class="memdesc:a67b8bea1c590a5be3748f1eae370fb5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to Report the faulty sensor only if it changed, saves us some String and doesn't shred the SRAM that much.  <br /></td></tr>
+<tr class="separator:a67b8bea1c590a5be3748f1eae370fb5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_temperature_sensor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_temperature_sensor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_temperature_sensor.html">TemperatureSensor</a></td></tr>
 <tr class="memitem:ab9adecbafd9ebe645ddc4e0298a1ed07 inherit pub_methods_class_temperature_sensor" id="r_ab9adecbafd9ebe645ddc4e0298a1ed07"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td></tr>
@@ -135,7 +135,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td
 <tr class="memitem:a95c71f6f2640c48eca73a803e3bf57c3 inherit pub_methods_class_temperature_sensor" id="r_a95c71f6f2640c48eca73a803e3bf57c3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temperature_sensor.html#a95c71f6f2640c48eca73a803e3bf57c3">readTemperature</a> ()</td></tr>
 <tr class="memdesc:a95c71f6f2640c48eca73a803e3bf57c3 inherit pub_methods_class_temperature_sensor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read the temperature from the sensor.  <br /></td></tr>
 <tr class="separator:a95c71f6f2640c48eca73a803e3bf57c3 inherit pub_methods_class_temperature_sensor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11df917e10d3893385266df0dd61039e inherit pub_methods_class_temperature_sensor" id="r_a11df917e10d3893385266df0dd61039e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temperature_sensor.html#a11df917e10d3893385266df0dd61039e">readMCP9601</a> (Units unit, SensorID sensor)</td></tr>
+<tr class="memitem:a11df917e10d3893385266df0dd61039e inherit pub_methods_class_temperature_sensor" id="r_a11df917e10d3893385266df0dd61039e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temperature_sensor.html#a11df917e10d3893385266df0dd61039e">readMCP9601</a> (<a class="el" href="temperature_8h.html#ac33d2b1fdba15c8bfb494f9cf0ef4190">Units</a> unit, SensorID sensor)</td></tr>
 <tr class="memdesc:a11df917e10d3893385266df0dd61039e inherit pub_methods_class_temperature_sensor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to read form specific sensor MCP9601.  <br /></td></tr>
 <tr class="separator:a11df917e10d3893385266df0dd61039e inherit pub_methods_class_temperature_sensor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7a29962d4b9a801ebb1d51278505a44 inherit pub_methods_class_temperature_sensor" id="r_ac7a29962d4b9a801ebb1d51278505a44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temperature_sensor.html#ac7a29962d4b9a801ebb1d51278505a44">isInitialized</a> () const</td></tr>
@@ -191,34 +191,37 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classsensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b_cgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b_cgraph" alt=""/></div>
 <map name="aclasssensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b_cgraph" id="aclasssensor_module_1_1_sensor_module_internals_ae689f29c297c585012e60b58e2ce231b_cgraph">
 <area shape="rect" title="Function to calibrate the sensor." alt="" coords="5,164,199,207"/>
-<area shape="rect" href="class_temperature_sensor.html#a122c1c2cd4ac26c9acc7bc3637f88b74" title="Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env." alt="" coords="259,135,401,177"/>
-<area shape="poly" title=" " alt="" coords="198,170,243,164,244,170,199,176"/>
-<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="247,201,413,228"/>
-<area shape="poly" title=" " alt="" coords="199,195,231,199,231,205,198,200"/>
-<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="461,147,645,173"/>
-<area shape="poly" title=" " alt="" coords="413,200,506,176,508,181,414,206"/>
-<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="469,201,637,228"/>
-<area shape="poly" title=" " alt="" coords="413,212,453,212,453,217,413,217"/>
-<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="696,256,908,283"/>
-<area shape="poly" title=" " alt="" coords="396,226,461,237,574,250,681,259,680,265,573,256,461,243,395,231"/>
-<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="461,303,645,329"/>
-<area shape="poly" title=" " alt="" coords="356,226,404,253,462,282,495,295,493,299,460,286,402,258,353,231"/>
-<area shape="poly" title=" " alt="" coords="461,176,377,199,375,194,460,171"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="693,5,911,48"/>
-<area shape="poly" title=" " alt="" coords="568,144,621,102,692,58,705,52,707,57,695,62,624,106,572,148"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="693,72,911,115"/>
-<area shape="poly" title=" " alt="" coords="605,143,704,117,706,122,607,149"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="693,139,911,181"/>
-<area shape="poly" title=" " alt="" coords="646,157,678,157,678,163,646,163"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="959,139,1176,181"/>
-<area shape="poly" title=" " alt="" coords="911,157,943,157,943,163,911,163"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1224,139,1441,181"/>
-<area shape="poly" title=" " alt="" coords="1177,157,1208,157,1208,163,1177,163"/>
-<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="740,205,864,232"/>
-<area shape="poly" title=" " alt="" coords="638,213,724,215,724,220,638,219"/>
-<area shape="poly" title=" " alt="" coords="627,300,711,284,712,289,628,305"/>
-<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="720,307,884,333"/>
-<area shape="poly" title=" " alt="" coords="646,315,704,316,704,321,646,320"/>
+<area shape="rect" href="class_temperature_sensor.html#a122c1c2cd4ac26c9acc7bc3637f88b74" title="Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env." alt="" coords="295,105,438,148"/>
+<area shape="poly" title=" " alt="" coords="199,161,279,143,281,148,200,166"/>
+<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="534,201,700,228"/>
+<area shape="poly" title=" " alt="" coords="199,188,519,206,519,212,199,193"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a67b8bea1c590a5be3748f1eae370fb5a" title="Function to Report the faulty sensor only if it changed, saves us some String and doesn&#39;t shred the S..." alt="" coords="247,223,486,265"/>
+<area shape="poly" title=" " alt="" coords="200,204,253,216,252,221,199,209"/>
+<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="748,147,933,173"/>
+<area shape="poly" title=" " alt="" coords="700,200,794,176,795,181,701,206"/>
+<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="756,201,925,228"/>
+<area shape="poly" title=" " alt="" coords="701,212,741,212,741,217,701,217"/>
+<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="983,256,1196,283"/>
+<area shape="poly" title=" " alt="" coords="683,226,749,237,861,250,968,259,968,265,861,256,748,243,683,231"/>
+<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="748,303,933,329"/>
+<area shape="poly" title=" " alt="" coords="643,226,692,253,749,282,782,295,780,299,747,286,689,258,641,231"/>
+<area shape="poly" title=" " alt="" coords="749,176,664,199,663,194,747,171"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="981,5,1198,48"/>
+<area shape="poly" title=" " alt="" coords="856,144,908,102,979,58,992,52,994,57,982,62,912,106,859,148"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="981,72,1198,115"/>
+<area shape="poly" title=" " alt="" coords="893,143,991,117,993,122,894,149"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="981,139,1198,181"/>
+<area shape="poly" title=" " alt="" coords="933,157,965,157,965,163,933,163"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="1246,139,1463,181"/>
+<area shape="poly" title=" " alt="" coords="1199,157,1230,157,1230,163,1199,163"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1511,139,1729,181"/>
+<area shape="poly" title=" " alt="" coords="1464,157,1495,157,1495,163,1464,163"/>
+<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="1027,205,1152,232"/>
+<area shape="poly" title=" " alt="" coords="925,213,1011,215,1011,220,925,219"/>
+<area shape="poly" title=" " alt="" coords="915,300,999,284,1000,289,916,305"/>
+<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="1007,307,1172,333"/>
+<area shape="poly" title=" " alt="" coords="933,315,991,316,991,321,933,320"/>
+<area shape="poly" title=" " alt="" coords="486,227,518,224,519,229,487,233"/>
 </map>
 </div>
 
@@ -255,11 +258,49 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_cgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_cgraph" alt=""/></div>
 <map name="aclasssensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_cgraph" id="aclasssensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_cgraph">
-<area shape="rect" title="Function to check the status of the sensor." alt="" coords="5,27,199,69"/>
-<area shape="rect" href="class_pressure_sensor.html#a90251cd182efdc2ae4797dcdc6e51a34" title="Function to check if the pressure sensor is initialized." alt="" coords="247,5,434,32"/>
-<area shape="poly" title=" " alt="" coords="199,33,231,29,232,35,200,39"/>
-<area shape="rect" href="class_temperature_sensor.html#ac7a29962d4b9a801ebb1d51278505a44" title="Check if the temperature sensor is initialized." alt="" coords="269,56,412,99"/>
-<area shape="poly" title=" " alt="" coords="200,57,254,64,253,69,199,63"/>
+<area shape="rect" title="Function to check the status of the sensor." alt="" coords="5,127,199,169"/>
+<area shape="rect" href="class_pressure_sensor.html#a90251cd182efdc2ae4797dcdc6e51a34" title="Function to check if the pressure sensor is initialized." alt="" coords="273,76,460,103"/>
+<area shape="poly" title=" " alt="" coords="196,123,246,112,283,104,284,109,247,117,197,129"/>
+<area shape="rect" href="class_temperature_sensor.html#ac7a29962d4b9a801ebb1d51278505a44" title="Check if the temperature sensor is initialized." alt="" coords="295,127,438,169"/>
+<area shape="poly" title=" " alt="" coords="199,145,280,145,280,151,199,151"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a67b8bea1c590a5be3748f1eae370fb5a" title="Function to Report the faulty sensor only if it changed, saves us some String and doesn&#39;t shred the S..." alt="" coords="247,193,486,236"/>
+<area shape="poly" title=" " alt="" coords="190,167,265,186,264,192,189,173"/>
+<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="534,201,700,228"/>
+<area shape="poly" title=" " alt="" coords="487,212,518,212,518,217,487,217"/>
+<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="748,147,933,173"/>
+<area shape="poly" title=" " alt="" coords="700,200,794,176,795,181,701,206"/>
+<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="756,201,925,228"/>
+<area shape="poly" title=" " alt="" coords="701,212,741,212,741,217,701,217"/>
+<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="983,256,1196,283"/>
+<area shape="poly" title=" " alt="" coords="683,226,749,237,861,250,968,259,968,265,861,256,748,243,683,231"/>
+<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="748,303,933,329"/>
+<area shape="poly" title=" " alt="" coords="643,226,692,253,749,282,782,295,780,299,747,286,689,258,641,231"/>
+<area shape="poly" title=" " alt="" coords="749,176,664,199,663,194,747,171"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="981,5,1198,48"/>
+<area shape="poly" title=" " alt="" coords="856,144,908,102,979,58,992,52,994,57,982,62,912,106,859,148"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="981,72,1198,115"/>
+<area shape="poly" title=" " alt="" coords="893,143,991,117,993,122,894,149"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="981,139,1198,181"/>
+<area shape="poly" title=" " alt="" coords="933,157,965,157,965,163,933,163"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="1246,139,1463,181"/>
+<area shape="poly" title=" " alt="" coords="1199,157,1230,157,1230,163,1199,163"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1511,139,1729,181"/>
+<area shape="poly" title=" " alt="" coords="1464,157,1495,157,1495,163,1464,163"/>
+<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="1027,205,1152,232"/>
+<area shape="poly" title=" " alt="" coords="925,213,1011,215,1011,220,925,219"/>
+<area shape="poly" title=" " alt="" coords="915,300,999,284,1000,289,916,305"/>
+<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="1007,307,1172,333"/>
+<area shape="poly" title=" " alt="" coords="933,315,991,316,991,321,933,320"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_icgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_icgraph" alt=""/></div>
+<map name="aclasssensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_icgraph" id="aclasssensor_module_1_1_sensor_module_internals_a9d66f531e3316efbb9b8a4850607ff35_icgraph">
+<area shape="rect" title="Function to check the status of the sensor." alt="" coords="245,5,438,48"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a85d36a5e766cd10fc5e39246bfd93860" title="Function to report to the HAS via Endpoint if TempSensor is initialized and ok." alt="" coords="5,5,197,48"/>
+<area shape="poly" title=" " alt="" coords="229,29,197,29,197,24,229,24"/>
 </map>
 </div>
 
@@ -294,46 +335,49 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_cgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_cgraph" alt=""/></div>
 <map name="aclasssensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_cgraph" id="aclasssensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_cgraph">
-<area shape="rect" title="Function to read the sensor." alt="" coords="5,139,199,181"/>
-<area shape="rect" href="class_temperature_sensor.html#a11df917e10d3893385266df0dd61039e" title="Function to read form specific sensor MCP9601." alt="" coords="275,76,418,119"/>
-<area shape="poly" title=" " alt="" coords="187,136,260,117,261,122,189,141"/>
-<area shape="rect" href="class_pressure_sensor.html#ab0bd12c02afc64805c6cbde843678697" title="Function to read the pressure from the sensor." alt="" coords="247,147,446,173"/>
-<area shape="poly" title=" " alt="" coords="199,157,231,157,231,163,199,163"/>
-<area shape="rect" href="class_temperature_sensor.html#a95c71f6f2640c48eca73a803e3bf57c3" title="Function to read the temperature from the sensor." alt="" coords="275,197,418,240"/>
-<area shape="poly" title=" " alt="" coords="194,179,261,195,260,201,193,185"/>
-<area shape="rect" href="class_temperature_sensor.html#a122c1c2cd4ac26c9acc7bc3637f88b74" title="Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env." alt="" coords="530,5,672,48"/>
-<area shape="poly" title=" " alt="" coords="417,75,514,48,516,53,419,80"/>
-<area shape="rect" href="classcalc_module_1_1_calc_module_internals.html#aa178eb6431d424fdc2b51864d4da3108" title="Function to convert celsius to fahrenheit." alt="" coords="494,72,708,115"/>
-<area shape="poly" title=" " alt="" coords="418,94,479,93,479,98,418,99"/>
-<area shape="rect" href="classcalc_module_1_1_calc_module_internals.html#a30b12b705c416a6d050f8344343eab8b" title="Function to convert celsius to kelvin." alt="" coords="494,139,708,181"/>
-<area shape="poly" title=" " alt="" coords="419,112,498,132,496,137,417,117"/>
-<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="518,205,684,232"/>
-<area shape="poly" title=" " alt="" coords="408,171,526,199,525,204,407,177"/>
-<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="756,151,941,177"/>
-<area shape="poly" title=" " alt="" coords="684,206,799,179,800,185,686,211"/>
-<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="764,205,933,232"/>
-<area shape="poly" title=" " alt="" coords="685,216,749,216,749,221,685,221"/>
-<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="991,260,1204,287"/>
-<area shape="poly" title=" " alt="" coords="681,230,757,241,976,263,975,268,756,247,680,235"/>
-<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="756,307,941,333"/>
-<area shape="poly" title=" " alt="" coords="632,230,757,286,792,299,790,304,755,290,630,235"/>
-<area shape="poly" title=" " alt="" coords="757,178,651,203,650,198,756,173"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="989,9,1206,52"/>
-<area shape="poly" title=" " alt="" coords="864,148,916,106,987,62,1000,56,1002,61,990,66,920,110,867,152"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="989,76,1206,119"/>
-<area shape="poly" title=" " alt="" coords="901,147,999,121,1001,126,902,153"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="989,143,1206,185"/>
-<area shape="poly" title=" " alt="" coords="941,161,973,161,973,167,941,167"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="1254,143,1471,185"/>
-<area shape="poly" title=" " alt="" coords="1207,161,1238,161,1238,167,1207,167"/>
-<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1519,143,1737,185"/>
-<area shape="poly" title=" " alt="" coords="1472,161,1503,161,1503,167,1472,167"/>
-<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="1035,209,1160,236"/>
-<area shape="poly" title=" " alt="" coords="933,217,1019,219,1019,224,933,223"/>
-<area shape="poly" title=" " alt="" coords="923,304,1007,288,1008,293,924,309"/>
-<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="1015,311,1180,337"/>
-<area shape="poly" title=" " alt="" coords="941,319,999,320,999,325,941,324"/>
-<area shape="poly" title=" " alt="" coords="418,216,503,216,503,221,418,221"/>
+<area shape="rect" title="Function to read the sensor." alt="" coords="5,165,199,208"/>
+<area shape="rect" href="class_temperature_sensor.html#a11df917e10d3893385266df0dd61039e" title="Function to read form specific sensor MCP9601." alt="" coords="295,73,438,116"/>
+<area shape="poly" title=" " alt="" coords="158,162,246,129,280,118,281,123,248,135,159,167"/>
+<area shape="rect" href="class_pressure_sensor.html#ab0bd12c02afc64805c6cbde843678697" title="Function to read the pressure from the sensor." alt="" coords="267,144,466,171"/>
+<area shape="poly" title=" " alt="" coords="199,173,251,167,252,173,200,179"/>
+<area shape="rect" href="class_temperature_sensor.html#a95c71f6f2640c48eca73a803e3bf57c3" title="Function to read the temperature from the sensor." alt="" coords="295,195,438,237"/>
+<area shape="poly" title=" " alt="" coords="200,195,280,204,279,209,199,200"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a67b8bea1c590a5be3748f1eae370fb5a" title="Function to Report the faulty sensor only if it changed, saves us some String and doesn&#39;t shred the S..." alt="" coords="247,261,486,304"/>
+<area shape="poly" title=" " alt="" coords="150,206,248,247,268,254,266,259,246,252,148,211"/>
+<area shape="rect" href="class_temperature_sensor.html#a122c1c2cd4ac26c9acc7bc3637f88b74" title="Method to calibrate the MCP9601 sensor, Indoor and Outdoor Env." alt="" coords="570,5,712,48"/>
+<area shape="poly" title=" " alt="" coords="437,74,554,45,556,50,439,80"/>
+<area shape="rect" href="classcalc_module_1_1_calc_module_internals.html#aa178eb6431d424fdc2b51864d4da3108" title="Function to convert celsius to fahrenheit." alt="" coords="534,72,748,115"/>
+<area shape="poly" title=" " alt="" coords="438,92,519,91,519,97,438,97"/>
+<area shape="rect" href="classcalc_module_1_1_calc_module_internals.html#a30b12b705c416a6d050f8344343eab8b" title="Function to convert celsius to kelvin." alt="" coords="534,139,748,181"/>
+<area shape="poly" title=" " alt="" coords="439,109,535,132,533,137,437,114"/>
+<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="558,205,724,232"/>
+<area shape="poly" title=" " alt="" coords="435,169,487,180,567,199,566,204,485,185,433,174"/>
+<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="796,151,981,177"/>
+<area shape="poly" title=" " alt="" coords="724,206,839,179,840,185,726,211"/>
+<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="804,205,973,232"/>
+<area shape="poly" title=" " alt="" coords="725,216,789,216,789,221,725,221"/>
+<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="1031,260,1244,287"/>
+<area shape="poly" title=" " alt="" coords="721,230,797,241,1016,263,1015,268,796,247,720,235"/>
+<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="796,307,981,333"/>
+<area shape="poly" title=" " alt="" coords="672,230,797,286,832,299,830,304,795,290,670,235"/>
+<area shape="poly" title=" " alt="" coords="797,178,691,203,690,198,796,173"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="1029,9,1246,52"/>
+<area shape="poly" title=" " alt="" coords="904,148,956,106,1027,62,1040,56,1042,61,1030,66,960,110,907,152"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="1029,76,1246,119"/>
+<area shape="poly" title=" " alt="" coords="941,147,1039,121,1041,126,942,153"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="1029,143,1246,185"/>
+<area shape="poly" title=" " alt="" coords="981,161,1013,161,1013,167,981,167"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="1294,143,1511,185"/>
+<area shape="poly" title=" " alt="" coords="1247,161,1278,161,1278,167,1247,167"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1559,143,1777,185"/>
+<area shape="poly" title=" " alt="" coords="1512,161,1543,161,1543,167,1512,167"/>
+<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="1075,209,1200,236"/>
+<area shape="poly" title=" " alt="" coords="973,217,1059,219,1059,224,973,223"/>
+<area shape="poly" title=" " alt="" coords="963,304,1047,288,1048,293,964,309"/>
+<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="1055,311,1220,337"/>
+<area shape="poly" title=" " alt="" coords="981,319,1039,320,1039,325,981,324"/>
+<area shape="poly" title=" " alt="" coords="438,214,543,215,543,220,438,219"/>
+<area shape="poly" title=" " alt="" coords="460,258,565,234,566,239,462,263"/>
 </map>
 </div>
 <div class="dynheader">
@@ -342,8 +386,97 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classsensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_icgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_icgraph" alt=""/></div>
 <map name="aclasssensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_icgraph" id="aclasssensor_module_1_1_sensor_module_internals_a681ac7bd1854acb7ee314d5862dfda04_icgraph">
 <area shape="rect" title="Function to read the sensor." alt="" coords="245,5,438,48"/>
-<area shape="rect" href="classreport_system_1_1_report_system.html#a50d1100b21aad9391a2bae7aed3ad5b6" title="Function to report the status of the system." alt="" coords="5,5,197,48"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a93e67fecb418971d4892bbb7ad2f95f7" title="Function to report the status of the system." alt="" coords="5,5,197,48"/>
 <area shape="poly" title=" " alt="" coords="229,29,197,29,197,24,229,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a67b8bea1c590a5be3748f1eae370fb5a" name="a67b8bea1c590a5be3748f1eae370fb5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b8bea1c590a5be3748f1eae370fb5a">&#9670;&#160;</a></span>reportUnknownSensorOnce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SensorModuleInternals::reportUnknownSensorOnce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacesensor_module.html#adb7efb20711d66ac689cf4a8d2b8cc8b">SensorType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const __FlashStringHelper *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to Report the faulty sensor only if it changed, saves us some String and doesn't shred the SRAM that much. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>-&gt; The type of the sensor to check. </td></tr>
+    <tr><td class="paramname">context</td><td>-&gt; the actual context, so the method which reports from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_cgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_cgraph" alt=""/></div>
+<map name="aclasssensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_cgraph" id="aclasssensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_cgraph">
+<area shape="rect" title="Function to Report the faulty sensor only if it changed, saves us some String and doesn&#39;t shred the S..." alt="" coords="5,193,245,236"/>
+<area shape="rect" href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6" title="Function to print a message to the serial port, using mutexes, output level and new line options." alt="" coords="293,201,459,228"/>
+<area shape="poly" title=" " alt="" coords="245,212,277,212,277,217,245,217"/>
+<area shape="rect" href="class_serial_menu.html#a289050736ba40438d490f00b4c6dc7cc" title="Getter for the current time." alt="" coords="507,147,691,173"/>
+<area shape="poly" title=" " alt="" coords="459,200,552,176,554,181,460,206"/>
+<area shape="rect" href="class_log_manager.html#adc7504f084d4cc05071328651efcb272" title="Get the Instance object." alt="" coords="515,201,683,228"/>
+<area shape="poly" title=" " alt="" coords="459,212,499,212,499,217,459,217"/>
+<area shape="rect" href="class_log_manager.html#a6ed4d0dbba788476e41400d7e0a185ea" title="Function to check if the SD card is initialized." alt="" coords="742,256,954,283"/>
+<area shape="poly" title=" " alt="" coords="442,226,507,237,620,250,727,259,726,265,619,256,507,243,441,231"/>
+<area shape="rect" href="class_log_manager.html#aa8726477f11f02c62aa7524aa0f37968" title="Function to write a log message to the log file." alt="" coords="507,303,691,329"/>
+<area shape="poly" title=" " alt="" coords="402,226,450,253,508,282,541,295,539,299,506,286,448,258,399,231"/>
+<area shape="poly" title=" " alt="" coords="507,176,423,199,421,194,506,171"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a0f1b154b75cd9c53c451e180b81dce45" title="Function to format the time to a string." alt="" coords="739,5,957,48"/>
+<area shape="poly" title=" " alt="" coords="614,144,667,102,738,58,751,52,753,57,741,62,670,106,618,148"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aaa0944cf5d84ff0f8760b8daf7aac8bf" title="Get the Instance object, Singleton pattern." alt="" coords="739,72,957,115"/>
+<area shape="poly" title=" " alt="" coords="651,143,750,117,752,122,653,149"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a23f711502c1d9ab19789f3e4f7030fab" title="Get the System Time object." alt="" coords="739,139,957,181"/>
+<area shape="poly" title=" " alt="" coords="692,157,724,157,724,163,692,163"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342" title="Updates the software clock." alt="" coords="1005,139,1222,181"/>
+<area shape="poly" title=" " alt="" coords="957,157,989,157,989,163,957,163"/>
+<area shape="rect" href="classtime_module_1_1_time_module_internals.html#aa2d2b8b16b1c6a2348d8cec3001e190b" title="Function to increment the time of the system." alt="" coords="1270,139,1487,181"/>
+<area shape="poly" title=" " alt="" coords="1223,157,1254,157,1254,163,1223,163"/>
+<area shape="rect" href="class_ptr_utils.html#af3d3de640fdd63e36904a967b37346f9" title=" " alt="" coords="786,205,910,232"/>
+<area shape="poly" title=" " alt="" coords="684,213,770,215,770,220,684,219"/>
+<area shape="poly" title=" " alt="" coords="673,300,757,284,758,289,674,305"/>
+<area shape="rect" href="class_log_manager.html#aa99330ca08e6c7f2e217fd248f1ee277" title="Function to rename the currently written to file." alt="" coords="766,307,930,333"/>
+<area shape="poly" title=" " alt="" coords="692,315,750,316,750,321,692,320"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classsensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_icgraph.png" border="0" usemap="#aclasssensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_icgraph" alt=""/></div>
+<map name="aclasssensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_icgraph" id="aclasssensor_module_1_1_sensor_module_internals_a67b8bea1c590a5be3748f1eae370fb5a_icgraph">
+<area shape="rect" title="Function to Report the faulty sensor only if it changed, saves us some String and doesn&#39;t shred the S..." alt="" coords="486,72,725,115"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#ae689f29c297c585012e60b58e2ce231b" title="Function to calibrate the sensor." alt="" coords="245,5,438,48"/>
+<area shape="poly" title=" " alt="" coords="503,70,428,51,429,46,504,65"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a9d66f531e3316efbb9b8a4850607ff35" title="Function to check the status of the sensor." alt="" coords="245,72,438,115"/>
+<area shape="poly" title=" " alt="" coords="470,96,439,96,439,91,470,91"/>
+<area shape="rect" href="classsensor_module_1_1_sensor_module_internals.html#a681ac7bd1854acb7ee314d5862dfda04" title="Function to read the sensor." alt="" coords="245,139,438,181"/>
+<area shape="poly" title=" " alt="" coords="504,122,429,141,428,135,503,116"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a85d36a5e766cd10fc5e39246bfd93860" title="Function to report to the HAS via Endpoint if TempSensor is initialized and ok." alt="" coords="5,72,197,115"/>
+<area shape="poly" title=" " alt="" coords="229,96,197,96,197,91,229,91"/>
+<area shape="rect" href="classreport_system_1_1_report_system.html#a93e67fecb418971d4892bbb7ad2f95f7" title="Function to report the status of the system." alt="" coords="5,139,197,181"/>
+<area shape="poly" title=" " alt="" coords="229,163,197,163,197,157,229,157"/>
 </map>
 </div>
 
@@ -351,7 +484,7 @@ Here is the caller graph for this function:</div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/sensorModule/<a class="el" href="sensor_module_8h_source.html">sensorModule.h</a></li>
-<li>C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/sensorModule/<b>sensorModule.cpp</b></li>
+<li>C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/sensorModule/<a class="el" href="sensor_module_8cpp.html">sensorModule.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

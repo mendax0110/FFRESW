@@ -1,0 +1,73 @@
+\doxysection{C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/ptr\+Utils/ptr\+Utils.h File Reference}
+\hypertarget{ptr_utils_8h}{}\label{ptr_utils_8h}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/ptrUtils/ptrUtils.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/ptrUtils/ptrUtils.h}}
+
+
+Header only library implementation.  
+
+
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$serial\+Menu.\+h$>$}\newline
+Include dependency graph for ptr\+Utils.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{ptr_utils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ptr_utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ptr_utils}{Ptr\+Utils}}
+\begin{DoxyCompactList}\small\item\em Utility class for pointer operations. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_scoped_pointer}{Scoped\+Pointer$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Template class for a Scoped Pointer. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Tempalte class for wrapping a pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a1b3ead7836a9aa3c527c0bb6e2aa1a11}{try\+Delete\+Ptr}}(ptr)
+\begin{DoxyCompactList}\small\item\em Macro to safely delete a pointer and verify it is nullptr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header only library implementation. 
+
+\begin{DoxyAuthor}{Author}
+Adrian Goessl 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/01-\/26
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ptr_utils_8h_a1b3ead7836a9aa3c527c0bb6e2aa1a11}\label{ptr_utils_8h_a1b3ead7836a9aa3c527c0bb6e2aa1a11} 
+\index{ptrUtils.h@{ptrUtils.h}!tryDeletePtr@{tryDeletePtr}}
+\index{tryDeletePtr@{tryDeletePtr}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{tryDeletePtr}{tryDeletePtr}}
+{\footnotesize\ttfamily \#define try\+Delete\+Ptr(\begin{DoxyParamCaption}\item[{}]{ptr }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_ptr_utils_a86854a0a94ce7833f5e2a3f573230d2f}{PtrUtils::IsValidPtr}}(ptr))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ SafeDelete(ptr);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+
+\end{DoxyCode}
+
+
+Macro to safely delete a pointer and verify it is nullptr. 
+

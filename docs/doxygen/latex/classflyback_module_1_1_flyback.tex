@@ -40,13 +40,42 @@ void \mbox{\hyperlink{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7
 \begin{DoxyCompactList}\small\item\em Function to get the desired Duty\+Cycle from HAS. \end{DoxyCompactList}\item 
 \Hypertarget{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad}\label{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad} 
 int {\bfseries get\+Extern\+Duty\+Cycle} ()
-\begin{DoxyCompactList}\small\item\em Getter Function to get the Duty\+Cycle \texorpdfstring{$\ast$}{*}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Getter Function to get the Duty\+Cycle \texorpdfstring{$\ast$}{*}. \end{DoxyCompactList}\item 
+\Hypertarget{classflyback_module_1_1_flyback_ac5588985bd96ac8a50c371f5ff900911}\label{classflyback_module_1_1_flyback_ac5588985bd96ac8a50c371f5ff900911} 
+void {\bfseries set\+Extern\+Psu} (bool state)
+\item 
+\Hypertarget{classflyback_module_1_1_flyback_aaf714e7621e0379af256bc23e496673f}\label{classflyback_module_1_1_flyback_aaf714e7621e0379af256bc23e496673f} 
+bool {\bfseries get\+Extern\+Psu} ()
+\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc}{regulate\+Voltage}} (float target\+Voltage, float hysteresis)
+\begin{DoxyCompactList}\small\item\em Function to regulate voltage to prevent swinging using a hyseresis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_a3bfa4a05756eda5ec4019973f3e07c36}{set\+Target\+Voltage}} (float voltage)
+\begin{DoxyCompactList}\small\item\em Setter Function for the HAS to regulate the target Voltage. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3}{get\+Target\+Voltage}} () const
+\begin{DoxyCompactList}\small\item\em Getter Function for the HAS to know what the current target\+Voltage is. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_ad30145a41e77b8ef77e82aea54654a0e}{set\+Hysteresis}} (float hysteresis)
+\begin{DoxyCompactList}\small\item\em Setter Function for the HAS to regulate the hysteresis. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db}{get\+Hysteresis}} () const
+\begin{DoxyCompactList}\small\item\em Getter Function for the HAS to know what the current hysteresis\+Voltage is. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \doxylink{classflyback_module_1_1_flyback}{Flyback} class to manage the \doxylink{classflyback_module_1_1_flyback}{Flyback} system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db}\label{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getHysteresis@{getHysteresis}}
+\index{getHysteresis@{getHysteresis}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getHysteresis()}{getHysteresis()}}
+{\footnotesize\ttfamily float Flyback\+::get\+Hysteresis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter Function for the HAS to know what the current hysteresis\+Voltage is. 
+
+\begin{DoxyReturn}{Returns}
+The Voltage the system is using to prevent swinging. 
+\end{DoxyReturn}
 \Hypertarget{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499}\label{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!getSwitchState@{getSwitchState}}
 \index{getSwitchState@{getSwitchState}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -59,6 +88,19 @@ Get the state of the Main-\/\+Switch.
 
 \begin{DoxyReturn}{Returns}
 Enum -\/\texorpdfstring{$>$}{>} The current state of the Main-\/\+Switch (e.\+g., "{}\+HV\+\_\+\+Module OFF"{}, "{}\+HV\+\_\+\+Module MANUAL"{}, "{}\+HV\+\_\+\+Module REMOTE"{}, "{}\+Invalid Switch Position"{}) 
+\end{DoxyReturn}
+\Hypertarget{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3}\label{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getTargetVoltage@{getTargetVoltage}}
+\index{getTargetVoltage@{getTargetVoltage}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getTargetVoltage()}{getTargetVoltage()}}
+{\footnotesize\ttfamily float Flyback\+::get\+Target\+Voltage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter Function for the HAS to know what the current target\+Voltage is. 
+
+\begin{DoxyReturn}{Returns}
+The Voltage the system is trying to reach. 
 \end{DoxyReturn}
 \Hypertarget{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18}\label{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba225369152821d18} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!getTimerState@{getTimerState}}
@@ -97,6 +139,13 @@ true -\/\texorpdfstring{$>$}{>} \doxylink{classflyback_module_1_1_flyback}{Flyba
 
 false -\/\texorpdfstring{$>$}{>} \doxylink{classflyback_module_1_1_flyback}{Flyback} is not initialized 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a3e04ac32a7922079753b3c167abd28a9_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743}\label{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!measure@{measure}}
 \index{measure@{measure}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -117,6 +166,37 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc}\label{classflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!regulateVoltage@{regulateVoltage}}
+\index{regulateVoltage@{regulateVoltage}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{regulateVoltage()}{regulateVoltage()}}
+{\footnotesize\ttfamily void Flyback\+::regulate\+Voltage (\begin{DoxyParamCaption}\item[{float}]{target\+Voltage,  }\item[{float}]{hysteresis }\end{DoxyParamCaption})}
+
+
+
+Function to regulate voltage to prevent swinging using a hyseresis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Voltage} & -\/\texorpdfstring{$>$}{>} The requested voltage. \\
+\hline
+{\em hysteresis} & -\/\texorpdfstring{$>$}{>} The hysteresis we create to prevent swinging in the system. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741}\label{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!setExternDutyCycle@{setExternDutyCycle}}
 \index{setExternDutyCycle@{setExternDutyCycle}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -132,6 +212,13 @@ Function to get the desired Duty\+Cycle from HAS.
 {\em duty\+Cycle} & -\/\texorpdfstring{$>$}{>} the duty\+Cycle to change \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7f797741_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classflyback_module_1_1_flyback_a409ca45f04b138212a30c54275e7b607}\label{classflyback_module_1_1_flyback_a409ca45f04b138212a30c54275e7b607} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!setExternFrequency@{setExternFrequency}}
 \index{setExternFrequency@{setExternFrequency}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -145,6 +232,36 @@ Function to get the desired Frequency from HAS.
 
 \begin{DoxyParams}{Parameters}
 {\em frequency} & -\/\texorpdfstring{$>$}{>} the frequency to change \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classflyback_module_1_1_flyback_ad30145a41e77b8ef77e82aea54654a0e}\label{classflyback_module_1_1_flyback_ad30145a41e77b8ef77e82aea54654a0e} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!setHysteresis@{setHysteresis}}
+\index{setHysteresis@{setHysteresis}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{setHysteresis()}{setHysteresis()}}
+{\footnotesize\ttfamily void Flyback\+::set\+Hysteresis (\begin{DoxyParamCaption}\item[{float}]{hysteresis }\end{DoxyParamCaption})}
+
+
+
+Setter Function for the HAS to regulate the hysteresis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hysteresis} & -\/\texorpdfstring{$>$}{>} The desired hysteresis. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classflyback_module_1_1_flyback_a3bfa4a05756eda5ec4019973f3e07c36}\label{classflyback_module_1_1_flyback_a3bfa4a05756eda5ec4019973f3e07c36} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!setTargetVoltage@{setTargetVoltage}}
+\index{setTargetVoltage@{setTargetVoltage}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{setTargetVoltage()}{setTargetVoltage()}}
+{\footnotesize\ttfamily void Flyback\+::set\+Target\+Voltage (\begin{DoxyParamCaption}\item[{float}]{voltage }\end{DoxyParamCaption})}
+
+
+
+Setter Function for the HAS to regulate the target Voltage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & -\/\texorpdfstring{$>$}{>} The desired Voltage to reach. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90}\label{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90} 
@@ -173,5 +290,5 @@ Here is the caller graph for this function\+:\nopagebreak
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/flyback/flyback.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/flyback/\mbox{\hyperlink{flyback_8h}{flyback.\+h}}\item 
 C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/flyback/flyback.\+cpp\end{DoxyCompactItemize}
