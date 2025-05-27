@@ -39,7 +39,7 @@ set_target_position/ HIER WERT TRARGETPOS
 set_target_pressure/ HIER WERT TARGETPRESS
 
 get_actual_position
-set_actual_pressure
+get_actual_pressure
 ---------------------------------------------------
 get_temperature_*
 MCP9601C_Indoor -> Temperatur in Celcius
