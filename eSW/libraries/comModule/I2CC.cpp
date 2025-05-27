@@ -5,10 +5,11 @@
 
 #include "I2CC.h"
 #include <Wire.h>
+#include <serialMenu.h>
 
 using namespace comModule;
 
-I2CCommunication::I2CCommunication()
+I2CCommunication::I2CCommunication() : i2cInitialized(true)
 {
 
 }
@@ -33,6 +34,7 @@ void I2CCommunication::beginI2CGlobal()
 {
 	Wire.begin();
 	i2cInitialized = true;
+    SerialMenu::printToSerial(F("[INFO] I2C bus initialized."));
 }
 
 void I2CCommunication::endI2C()

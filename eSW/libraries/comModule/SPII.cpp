@@ -7,10 +7,11 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <Arduino.h>
+#include <serialMenu.h>
 
 using namespace comModule;
 
-SPICommunication::SPICommunication()
+SPICommunication::SPICommunication() : spiInitialized(true)
 {
 
 }
@@ -29,6 +30,7 @@ void SPICommunication::beginSPI()
 {
     SPI.begin();
     spiInitialized = true;
+    SerialMenu::printToSerial(F("[INFO] SPI bus initialized."));
 }
 
 void SPICommunication::endSPI()

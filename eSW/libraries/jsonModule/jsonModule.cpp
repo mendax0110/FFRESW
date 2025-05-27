@@ -1,90 +1,66 @@
 /**
  * @file jsonModule.cpp
  * @brief Implementation of the jsonModule class.
- * @version 0.1
- * @date 2024-01-26
+ * @version 0.2
+ * @date 2025-05-18
  *
- * @copyright Copyright (c) 2024
+ * @copyright Copyright (c) 2025
  */
-
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include "../comModule/comModule.h"
 #include <jsonModule.h>
 #include <serialMenu.h>
 
 using namespace jsonModule;
 
-JsonModuleInternals::JsonModuleInternals() : jsonBuffer(512)
+JsonModuleInternals::JsonModuleInternals() : jsonBufferSize(512)
 {
-
 }
 
 JsonModuleInternals::~JsonModuleInternals()
 {
-	clearJson();
-}
-
-void JsonModuleInternals::createJson(const char* key, const char* value)
-{
-    jsonDoc[key] = value;
-}
-
-void JsonModuleInternals::createJsonFloat(const char* key, float value)
-{
-    jsonDoc[key] = value;
-}
-
-void JsonModuleInternals::createJsonInt(const char* key, int value)
-{
-    jsonDoc[key] = value;
-}
-
-void JsonModuleInternals::createJsonString(const char* key, String& value)
-{
-	jsonDoc[key] = value;
-}
-
-void JsonModuleInternals::createJsonStringConst(const char* key, const String& value)
-{
-	jsonDoc[key] = value;
+    clearJson();
 }
 
 String JsonModuleInternals::getJsonString() const
 {
     String output;
-    if (jsonDoc.size() == 0)
+    if (jsonDoc.isNull() || jsonDoc.size() == 0)
     {
-       SerialMenu::printToSerial("[ERROR] JSON document is empty.");
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("JSON document is empty."));
+        return "";
     }
-    else
+
+    if (serializeJson(jsonDoc, output) == 0)
     {
-        serializeJson(jsonDoc, output);
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to serialize JSON."));
     }
+
     return output;
 }
 
 void JsonModuleInternals::sendJsonSerial()
 {
-    //Serial.println(getJsonString());
     SerialMenu::printToSerial(getJsonString());
 }
 
 void JsonModuleInternals::clearJson()
 {
-	printJsonDocMemory();
+    printJsonDocMemory();
     jsonDoc.clear();
 }
 
 void JsonModuleInternals::printJsonDocMemory()
 {
-	String jsonDocMem;
-	jsonDocMem += "Memory usage of jsonDoc:";
-	jsonDocMem += " Capacity: ";
-	jsonDocMem += jsonDoc.capacity();
-	jsonDocMem += " Memory Usage: ";
-	jsonDocMem += jsonDoc.memoryUsage();
-	jsonDocMem += " Overflowed: ";
-	jsonDocMem += jsonDoc.overflowed() ? F("Yes") : F("No");
-	SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, jsonDocMem);
+    String jsonDocMem = "Memory usage of jsonDoc:";
+    jsonDocMem += " Capacity: ";
+    jsonDocMem += jsonDoc.capacity();
+    jsonDocMem += " Overflowed: ";
+    jsonDocMem += jsonDoc.overflowed() ? "Yes" : "No";
+    SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, jsonDocMem);
+}
+
+bool JsonModuleInternals::hasCapacityFor(size_t additionalSize) const
+{
+    return jsonDoc.capacity() - jsonDoc.memoryUsage() >= additionalSize;
 }

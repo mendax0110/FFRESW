@@ -1,3 +1,13 @@
+/**
+ * @file pressure.h
+ * @author Adrian Goessl
+ * @brief Header file for the pressure library
+ * @version 0.1
+ * @date 2024-09-28
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef PRESSURESENSOR_H
 #define PRESSURESENSOR_H
 
@@ -41,7 +51,7 @@ private:
      * @param pin -> The pin to read from.
      * @return float -> The value of the sensor.
      */
-    float readAnalogSensor(int pin);
+    float readAnalogSensor(uint8_t pin);
 
 };
 

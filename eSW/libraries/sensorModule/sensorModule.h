@@ -1,14 +1,13 @@
 /**
  * @file sensorModule.h
  * @author Adrian Goessl
- * @brief 
+ * @brief header file for the sensorModule.
  * @version 0.1
  * @date 2024-09-28
  * 
  * @copyright Copyright (c) 2024
  * 
  */
-
 #ifndef SENSORMODULE_H
 #define SENSORMODULE_H
 
@@ -79,14 +78,17 @@ namespace sensorModule
          */
         bool checkSensorStatus(SensorType type);
 
-        void reportUnknownSensorOnce(SensorType type, String context);
+        /**
+         * @brief Function to Report the faulty sensor only if it changed, saves us some String and doesn't shred the SRAM that much.
+         *
+         * @param type -> The type of the sensor to check.
+         * @param context -> the actual context, so the method which reports from.
+         */
+        void reportUnknownSensorOnce(SensorType type, const __FlashStringHelper* context);
 
     private:
         TemperatureSensor _temperatureSensor;
         PressureSensor _pressureSensor;
-
-        bool _i2cSensorInitialized;
-        bool _spiSensorInitialized;
 
         SensorType _lastUnknownSensorType;
         bool _unknownSensorReported;

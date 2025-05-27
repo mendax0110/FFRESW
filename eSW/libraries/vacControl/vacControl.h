@@ -1,9 +1,12 @@
-/*
-* flyback.h
-*
-*  Created on: 28.03.2025
-*      Author: domin
-*/
+/**
+ * @file vacControl.h
+ * @author Domin
+ * @brief Header for the vacControl class.
+ * @version 0.2
+ * @date 2025-05-18
+ *
+ * @copyright Copyright (c) 2025
+ */
 #ifndef VACCONTROL_H
 #define VACCONTROL_H
 

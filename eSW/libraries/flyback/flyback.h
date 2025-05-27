@@ -1,8 +1,11 @@
-/*
- * flyback.h
+/**
+ * @file flyback.h
+ * @author Domin
+ * @brief Header for the flyback class.
+ * @version 0.2
+ * @date 2025-05-18
  *
- *  Created on: 07.12.2024
- *      Author: domin
+ * @copyright Copyright (c) 2025
  */
 #ifndef FLYBACK_H
 #define FLYBACK_H
@@ -126,6 +129,44 @@ namespace flybackModule
 		 */
 		int getExternDutyCycle();
 
+		// TODO MERGE STUFF FROM FRADOM01 into here!
+		void setExternPsu(bool state);
+
+		// TODO MERGE STUFF FROM FRADOM01 into here!
+		bool getExternPsu();
+
+		/**
+		 * @brief Function to regulate voltage to prevent swinging using a hyseresis.
+		 * @param targetVoltage -> The requested voltage.
+		 * @param hysteresis -> The hysteresis we create to prevent swinging in the system.
+		 */
+		void regulateVoltage(float targetVoltage, float hysteresis);
+
+		/**
+		 * @brief Setter Function for the HAS to regulate the target Voltage.
+		 * @param voltage -> The desired Voltage to reach.
+		 */
+		void setTargetVoltage(float voltage);
+
+		/**
+		 * @brief Getter Function for the HAS to know what the current targetVoltage is.
+		 * @return The Voltage the system is trying to reach.
+		 */
+		float getTargetVoltage() const;
+
+
+		/**
+		 * @brief Setter Function for the HAS to regulate the hysteresis.
+		 * @param hysteresis -> The desired hysteresis.
+		 */
+		void setHysteresis(float hysteresis);
+
+		/**
+		 * @brief Getter Function for the HAS to know what the current hysteresisVoltage is.
+		 * @return The Voltage the system is using to prevent swinging.
+		 */
+		float getHysteresis() const;
+
 
 	private:
 		Measurement meas;
@@ -145,11 +186,13 @@ namespace flybackModule
 		const float Vcc = 5.0;
 
 		//Define Pins --> Signaltable
-		static const int HV_Module_ON = 37;
-		static const int HV_Module_OFF = 36;
-		static const int HV_Module_Working = 35;
+		static const int HV_Module_ON = 37;			// Input
+		static const int HV_Module_Working = 35;	// Output
 		static const int PWM_Frequency = A1;
 		static const int PWM_DutyCycle = A2;
+
+		// PSU - Power Supply Unit
+		static const int PSU = 36;		// Output
 
 		bool _flybackInitialized;
 		bool _timerInitialized;
@@ -159,6 +202,28 @@ namespace flybackModule
 		static bool lastTimerState;
 		static int lastPWMFrequency;
 		static int lastPWMDutyCycle;
+
+		// Default targetVoltage and hysteresisVoltage for to prevent swinging
+		float _targetVoltage = 0.0f;
+		float _hysteresis = 0.0f;
+
+		// Rate limiting
+		unsigned long _lastRegulationTime = 0;
+		const unsigned long _regulationInterval = 100;
+
+		// PID vars
+		float _integral = 0.0f;
+		float _lastError = 0.0f;
+		const float _Kp = 1.5f;
+		const float _Ki = 0.05f;
+		const float _Kd = 0.1f;
+
+		float _integralMin = -10.0f;
+		float _integralMax = 10.0f;
+
+		// Soft start
+		bool _softStartActive = true;
+		int _softStartDuty = 1;
 
         /**
          * @brief Function to configure the timer settings

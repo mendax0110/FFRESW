@@ -1,3 +1,11 @@
+/**
+ * @file vacControl.cpp
+ * @brief Implementation of the vacControl class.
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>

@@ -16,6 +16,8 @@
 	 class SerialCommunication
 	 {
 	 public:
+		SerialCommunication();
+		~SerialCommunication();
 
 		 /**
 		  * @brief Function to start the serial communication

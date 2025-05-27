@@ -1,3 +1,13 @@
+/**
+ * @file temperature.h
+ * @author Adrian Goessl
+ * @brief Header file for the temperature library
+ * @version 0.1
+ * @date 2024-09-28
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef TEMPERATURESENSOR_H
 #define TEMPERATURESENSOR_H
 
@@ -94,7 +104,7 @@ private:
      * @param pin -> The pin to read from.
      * @return float -> The value of the sensor.
      */
-    float readAnalogSensor(int pin);
+    float readAnalogSensor(uint8_t pin);
 
     /**
      * @brief Funciton to read the digital sensor.
@@ -102,7 +112,7 @@ private:
      * @param pin -> The pin to read from.
      * @return float -> The value of the sensor.
      */
-    float readDigitalSensor(int pin);
+    float readDigitalSensor(uint8_t pin);
 };
 
 #endif // TEMPERATURESENSOR_H

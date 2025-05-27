@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2024
  * 
  */
-
 #ifndef CALCMODULE_H
 #define CALCMODULE_H
 
@@ -24,6 +23,15 @@ namespace calcModule
 		Pressure,
 		Position
 	};
+
+	/// @brief Enum class for different Pressure Units aviable \enum PressureUnit
+    enum class PressureUnit
+    {
+        Pascal,
+        Atmosphere,
+        Psi,
+        Bar
+    };
 
     /// @brief Class for the calculation module internals. \class calcModuleInternals
     class CalcModuleInternals
@@ -192,6 +200,8 @@ namespace calcModule
          * @return float -> The extracted float.
          */
         static float extractFloatFromResponse(const String& response, Type type);
+
+        static float calculatePressureFromSensor(int sensorValue, PressureUnit unit = PressureUnit::Pascal);
 
     private:
 

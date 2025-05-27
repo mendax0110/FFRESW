@@ -1,4 +1,13 @@
+/**
+ * @file sensorModule.cpp
+ * @brief Implementation of the sensorModule class.
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ */
 #include "sensorModule.h"
+#include <math.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
@@ -7,11 +16,10 @@
 using namespace sensorModule;
 
 SensorModuleInternals::SensorModuleInternals()
-    : _i2cSensorInitialized(false), 
-      _spiSensorInitialized(false),
-      _lastUnknownSensorType(SensorType::MCP9601_Celsius_Indoor),
-      _unknownSensorReported(false)
+    : _lastUnknownSensorType(SensorType::MCP9601_Celsius_Indoor)
+	, _unknownSensorReported(false)
 {
+
 }
 
 SensorModuleInternals::~SensorModuleInternals()
@@ -25,11 +33,6 @@ void SensorModuleInternals::initialize()
 
     _pressureSensor.initialize();
     _temperatureSensor.initialize();
-    _i2cSensorInitialized = true;
-    _spiSensorInitialized = true;
-
-    SerialMenu::printToSerial(F("[INFO] I2C bus initialized."));
-    SerialMenu::printToSerial(F("[INFO] SPI bus initialized."));
 }
 
 float SensorModuleInternals::readSensor(SensorType type)
@@ -53,7 +56,7 @@ float SensorModuleInternals::readSensor(SensorType type)
         case SensorType::MCP9601_Kelvin_Outdoor:
         	return _temperatureSensor.readMCP9601(Units::Kelvin, SensorID::OUTDOOR);
         default:
-        	reportUnknownSensorOnce(type, "readSensor");
+        	reportUnknownSensorOnce(type, F("readSensor"));
             return NAN;
     }
 }
@@ -82,7 +85,7 @@ bool SensorModuleInternals::calibrateSensor(SensorType type)
         	status = calibMCP9601(SensorID::OUTDOOR);
         	return status != MCP9601_Status::MCP9601_OPENCIRCUIT && status != MCP9601_Status::MCP9601_SHORTCIRCUIT;
         default:
-        	reportUnknownSensorOnce(type, "calibrateSensor");
+        	reportUnknownSensorOnce(type, F("calibrateSensor"));
             return false;
     }
 }
@@ -96,17 +99,19 @@ bool SensorModuleInternals::checkSensorStatus(SensorType type)
     case SensorType::PRESSURE:
         return _pressureSensor.isInitialized();
     default:
-    	reportUnknownSensorOnce(type, "checkSensorStatus");
+    	reportUnknownSensorOnce(type, F("checkSensorStatus"));
         return false;
     }
 }
 
-void SensorModuleInternals::reportUnknownSensorOnce(SensorType type, String context)
+void SensorModuleInternals::reportUnknownSensorOnce(SensorType type, const __FlashStringHelper* context)
 {
 
     if (!_unknownSensorReported || _lastUnknownSensorType != type)
     {
-        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "Unknown sensor type in: " + context + ".");
+        SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Unknown sensor type in: "), false);
+        SerialMenu::printToSerial(context);
+
         _lastUnknownSensorType = type;
         _unknownSensorReported = true;
     }

@@ -7,10 +7,21 @@
 
 using namespace comModule;
 
+SerialCommunication::SerialCommunication() : serInitialized(true)
+{
+
+}
+
+SerialCommunication::~SerialCommunication()
+{
+	endSerial();
+}
+
 void SerialCommunication::beginSerial(long baudRate)
 {
     Serial.begin(baudRate);
     serInitialized = true;
+    Serial.print(F("[INFO] Serial bus initialized."));
 }
 
 void SerialCommunication::endSerial()

@@ -1,7 +1,7 @@
 /**
  * @file reportSystem.h
- * @author your name (you@domain.com)
- * @brief 
+ * @author Adrian Goessl
+ * @brief Header file for the ReportSystem
  * @version 0.1
  * @date 2024-09-28
  * 
@@ -58,9 +58,9 @@ namespace reportSystem
          * @brief Function to report the status of the system
          *
          * @param active -> The status of the system
-         * @return String -> The status of the system
+         * @return bool -> The status of the system
          */
-        String reportStatus(bool active);
+        bool reportStatus(bool active);
 
         /**
          * @brief Set Thresholds for the pressure and temperature sensors
@@ -173,6 +173,48 @@ namespace reportSystem
          */
         bool checkRamLevel(unsigned int warningThreshold, unsigned int criticalThreshold);
 
+        /**
+         * @brief Function to report to the HAS via Endpoint if TempSensor is initialized and ok
+         *
+         * @return True if sensor is ok, false otherwise
+         */
+        bool isTemperatureSensorOK() const;
+
+        /**
+         * @brief Function to report to the HAS via Endpoint if Communication is initialized and ok
+         *
+         * @return True if communication is up, false otherwise
+         */
+        bool isCommunicationOK() const;
+
+        /**
+         * @brief Function to report to the HAS via Endpoint if Memory is in between the required bounds
+         *
+         * @return True if memory is in between legal bounds, false otherwise
+         */
+        bool isMemoryOK() const;
+
+        /**
+         * @brief Function to report to the HAS via Endpoint if RAM is in between the required bounds
+         *
+         * @return True if RAM is in between legal bounds, false otherwise
+         */
+        bool isRamOK() const;
+
+        /**
+         * @brief Function to report to the HAS via Endpoint if Stack is not overflowing or has other issues
+         *
+         * @return True if stack if safe, false otherwise
+         */
+        bool isStackSafe() const;
+
+        /**
+         * @brief Function to report to the HAS via Endpoint if any errors were written to the EEPROM
+         *
+         * @return True if no errors in EEPROM, false otherwise
+         */
+        bool hasNoSavedErrors() const;
+
     private:
         float tempThreshold;
         float pressureThreshold;
@@ -181,6 +223,8 @@ namespace reportSystem
         unsigned long busyTime = 0;
         unsigned long idleTime = 0;
         unsigned long lastTimestamp = 0;
+        bool lastHealthCheckPassed = true;
+        bool firstHealthCheckDone = false;
 
         /**
          * @brief Function to check the sensors

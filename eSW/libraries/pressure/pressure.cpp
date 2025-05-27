@@ -8,6 +8,8 @@
  */
 #include "pressure.h"
 #include <serialMenu.h>
+#include <math.h>
+#include <calcModule.h>
 
 PressureSensor::PressureSensor()
     : _pressureSensorInitialized(false)
@@ -30,13 +32,12 @@ float PressureSensor::readPressure()
 {
     if (!_pressureSensorInitialized)
     {
-        //reportError("Pressure sensor not initialized!");
         SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Pressure sensor not initialized!"));
         return NAN;
     }
 
     float sensorValue = readAnalogSensor(PRESSURE_SENSOR_PIN);
-    float pressure = sensorValue * (5.0 / 1023.0) * 10.0;
+    float pressure = calcModule::CalcModuleInternals::calculatePressureFromSensor(sensorValue, calcModule::PressureUnit::Bar);
     return pressure;
 }
 
@@ -45,8 +46,8 @@ bool PressureSensor::isInitialized() const
     return _pressureSensorInitialized;
 }
 
-float PressureSensor::readAnalogSensor(int pin)
+float PressureSensor::readAnalogSensor(uint8_t pin)
 {
-    int rawValue = analogRead(pin);
-    return (float)rawValue;
+	uint8_t rawValue = analogRead(pin);
+    return static_cast<float>(rawValue);
 }

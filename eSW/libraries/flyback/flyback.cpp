@@ -1,3 +1,11 @@
+/**
+ * @file flybacl.cpp
+ * @brief Implementation of the flyback class.
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
@@ -34,10 +42,10 @@ void Flyback::initialize()
 	pinMode(PWM_Frequency, INPUT);
 	pinMode(PWM_DutyCycle, INPUT);
 	pinMode(Measure_ADC, INPUT);
+	pinMode(HV_Module_ON, INPUT);
 
 	//Setup pinMode for Indicator LED
-	pinMode(HV_Module_ON, OUTPUT);
-	pinMode(HV_Module_OFF, OUTPUT);
+	pinMode(PSU, OUTPUT);
 	pinMode(HV_Module_Working, OUTPUT);
 	pinMode(PWM_OUT, OUTPUT);
 	pinMode(PWM_INV, OUTPUT);
@@ -61,14 +69,12 @@ void Flyback::deinitialize()
 
     //Setup pinMode for Indicator LED
     pinMode(HV_Module_ON, INPUT);
-    pinMode(HV_Module_OFF, INPUT);
+    pinMode(PSU, INPUT);
     pinMode(HV_Module_Working, INPUT);
     pinMode(PWM_OUT, INPUT);
     pinMode(PWM_INV, INPUT);
 
-
-    digitalWrite(HV_Module_ON, LOW);
-    digitalWrite(HV_Module_OFF, LOW);
+    digitalWrite(PSU, LOW);
     digitalWrite(HV_Module_Working, LOW);
     digitalWrite(PWM_OUT, LOW);
     digitalWrite(PWM_INV, LOW);
@@ -179,6 +185,7 @@ void Flyback::run()
 	int offState = digitalRead(Main_Switch_OFF);
 	int manualState = digitalRead(Main_Switch_MANUAL);
 	int remoteState = digitalRead(Main_Switch_REMOTE);
+	int hvState = digitalRead(HV_Module_ON);
 
 	if (offState == HIGH)
 	{
@@ -193,11 +200,10 @@ void Flyback::run()
 			setTimerState(false);
 		}
 
-		digitalWrite(HV_Module_OFF, HIGH);
+		digitalWrite(PSU, HIGH);
 		digitalWrite(HV_Module_Working, LOW);
-		digitalWrite(HV_Module_ON, LOW);
 	}
-	else if (manualState == HIGH)
+	else if (manualState == HIGH && hvState == HIGH)
 	{
 		if (lastState != SwitchStates::HV_Module_MANUAL)
 		{
@@ -211,8 +217,7 @@ void Flyback::run()
 		}
 
 		digitalWrite(HV_Module_Working, HIGH);
-		digitalWrite(HV_Module_ON, HIGH);
-		digitalWrite(HV_Module_OFF, LOW);
+		digitalWrite(PSU, LOW);
 
 		// PWM frequency and duty cycle adjustments
 		int potFreqValue = analogRead(PWM_Frequency);
@@ -236,11 +241,12 @@ void Flyback::run()
 		}
 
 		digitalWrite(HV_Module_Working, HIGH);
-		digitalWrite(HV_Module_ON, HIGH);
-		digitalWrite(HV_Module_OFF, LOW);
+		digitalWrite(PSU, LOW);
 
 		// Set PWM frequency and duty cycle from external settings
 		setPWMFrequency(getExternFrequency(), getExternDutyCycle());
+
+		//regulateVoltage(getTargetVoltage(), getHysteresis());	// TODO CLARIFY WITH FELIX AND FRADOM HOW TO USE IT? CREATE ENDPOINTS FOR IT!!
 	}
 	else
 	{
@@ -250,8 +256,7 @@ void Flyback::run()
 			lastState = SwitchStates::HV_Module_INVALID;
 			setTimerState(false);
 			digitalWrite(HV_Module_Working, LOW);
-			digitalWrite(HV_Module_ON, LOW);
-			digitalWrite(HV_Module_OFF, LOW);
+			digitalWrite(PSU, LOW);
 		}
 	}
 }
@@ -282,4 +287,106 @@ void Flyback::setExternDutyCycle(int dutyCycle)
 		return;
 	}
 	meas.dutyCycle = dutyCycle;
+}
+
+void Flyback::setExternPsu(bool state)
+{
+	if (state)
+		digitalWrite(PSU, HIGH);
+
+}
+
+bool getExternPsu()
+{
+	return true;
+}
+
+void Flyback::regulateVoltage(float targetVoltage, float hysteresis)
+{
+	if (!isInitialized() || !getTimerState()) return;
+
+	unsigned long now = millis();
+	// Regulate only every _regulationInterval milliseconds to control loop timing
+	// See: https://www.embedded.com/delays-and-timing-in-embedded-systems/
+	if (now - _lastRegulationTime < _regulationInterval) return;
+	_lastRegulationTime = now;
+
+	Measurement current = measure();
+	float voltage = current.voltage;
+	uint32_t freq = getExternFrequency();
+	int duty = getExternDutyCycle();
+
+	// Soft-start ramps duty cycle slowly to avoid sudden jumps
+	// See: https://www.controleng.com/articles/how-to-implement-a-soft-start/
+	if (_softStartActive)
+	{
+		if (_softStartDuty < duty)
+		{
+			setPWMFrequency(freq, _softStartDuty);
+			setExternDutyCycle(_softStartDuty);
+			_softStartDuty++;
+			return;
+		}
+		_softStartActive = false;
+	}
+
+	// we skip regulation if within hysteresis deadband to prevent oscillation
+	// https://en.wikipedia.org/wiki/Hysteresis
+	float error = targetVoltage - voltage;
+	if (fabs(error) < hysteresis) return;
+
+	// integral term accumulation
+	// https://en.wikipedia.org/wiki/Integral_windup
+	_integral += error * (_regulationInterval / 1000.0f);
+	_integral = constrain(_integral, _integralMin, _integralMax);
+
+	float derivative = (error - _lastError) / (_regulationInterval / 1000.0f);
+	_lastError = error;
+
+	// PID control output calculation
+	float output = (_Kp * error) + (_Ki * _integral) + (_Kd * derivative);
+
+	int newDuty = static_cast<int>(duty + output);
+	newDuty = constrain(newDuty, 1, 50);
+
+	// limits max change step to avoid sudden jump in PWM signal
+	// https://www.controleng.com/understanding-pid-control-and-loop-tuning-fundamentals/
+	int maxStep = 3;
+	int delta = newDuty - duty;
+	delta = constrain(delta, -maxStep, maxStep);
+	newDuty = duty + delta;
+
+	if (newDuty != duty)
+	{
+		setExternDutyCycle(newDuty);
+		setPWMFrequency(freq, newDuty);
+	}
+}
+
+void Flyback::setTargetVoltage(float voltage)
+{
+	if (voltage < 0.0f || voltage > 0.0f) // TODO CLARIFY THE RANGES WITH FELIX!!!
+	{
+		return;
+	}
+	_targetVoltage = voltage;
+}
+
+float Flyback::getTargetVoltage() const
+{
+	return _targetVoltage;
+}
+
+void Flyback::setHysteresis(float hysteresis)
+{
+	if (hysteresis < 0.0f || hysteresis > 0.0f)	// TODO CLARIFY THE RANGES WITH FELIX!!!
+	{
+		return;
+	}
+	_hysteresis = hysteresis;
+}
+
+float Flyback::getHysteresis() const
+{
+	return _hysteresis;
 }

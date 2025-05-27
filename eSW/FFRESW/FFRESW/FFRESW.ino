@@ -65,36 +65,36 @@ void updateTime()
 }
 
 /// @brief Class-Task to report system health and status periodically \class ReportTask
-class ReportTask final : public frt::Task<ReportTask, 512> // TODO Check usage on stack was previously 256
+class ReportTask final : public frt::Task<ReportTask, 512>
 {
 private:
     uint32_t REPORT_INTERVAL_MS = 5000;
-    uint32_t lastReportTime = 0;
 
 public:
     bool run()
     {
-        uint32_t currentTime = millis();
-
-        if (currentTime - lastReportTime >= REPORT_INTERVAL_MS)
-        {
-            lastReportTime = currentTime;
-
-            report.reportStatus(true);
+    	if (wait(REPORT_INTERVAL_MS))
+    	{
+    		report.reportStatus(true);
 
             bool healthCheck = report.checkSystemHealth(3000, true, true, true, false, false);
             if (!healthCheck)
             {
             	SerialMenu::printToSerial(SerialMenu::OutputLevel::CRITICAL, F("System health check failed!"));
             }
-        }
-        yield();
+    	}
+    	else
+    	{
+            yield();
+    	}
+
         return true;
     }
 };
+ReportTask reportTask;
 
 /// @brief Implementation of the FlyBackTask class, control and use HV/VAC module \class FlyBackVacControlTask
-class FlyBackVacControlTask final : public frt::Task<FlyBackVacControlTask, 512> // TODO Check stack size, was previoulsy std 256
+class FlyBackVacControlTask final : public frt::Task<FlyBackVacControlTask, 512>
 {
 public:
 	bool run()
@@ -127,6 +127,7 @@ public:
 				int scenario = vacControl.getScenario();
 				applyScenario(scenario);
 
+				reportTask.post();
 			}
 
 			msleep(1000);
@@ -182,9 +183,10 @@ private:
 		}
 	}
 };
+FlyBackVacControlTask flyBackVacControlTask;
 
 /// @brief Implementation of the SensorActorEndpoint class, control Sensors, Actorcs, Task... \class SensorActorEndpointTask
-class SensorActorEndpointTask final : public frt::Task<SensorActorEndpointTask, 1024>  // TODO: was 2048 really needed?? -> evaluate!
+class SensorActorEndpointTask final : public frt::Task<SensorActorEndpointTask, 1024>
 {
 public:
 	bool run()
@@ -239,9 +241,17 @@ public:
 	        processGetRequest(requestedEndpoint, jsonBody);
 	    }
 
+	    // Reboot-Endpoint
+	    if (requestedEndpoint.startsWith("REBOOT"))
+	    {
+	    	handleReboot(requestedEndpoint, jsonBody);
+	    }
+
 	    if (jsonBody.length() > 0)
 	    {
 	        com.getEthernet().sendJsonResponse(jsonBody);
+
+	        reportTask.post();
 	    }
 
 	    yield();
@@ -255,10 +265,10 @@ private:
 
         json.clearJson();
 
-        json.createJsonStringConst("sensor_name", sensorName);
-        json.createJsonFloat("value", value);
-        json.createJsonStringConst("unit", unit);
-        json.createJsonString("timestamp", timestamp);
+        json.createJson("sensor_name", sensorName);
+        json.createJson("value", value);
+        json.createJson("unit", unit);
+        json.createJson("timestamp", timestamp);
 
         String jsonString = json.getJsonString();
         SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, "Generated JSON: " + jsonString);
@@ -510,15 +520,40 @@ private:
             bool press = report.checkSystemHealth(3000, false, false, false, false, true);
             return buildJsonResponse("press", press, "bool");
         }
+        if (strcmp(command, "tempSensOk") == 0)
+        {
+        	bool tempSens = report.isTemperatureSensorOK();
+        	return buildJsonResponse("tempSensOk", tempSens, "bool");
+        }
+        if (strcmp(command, "memoryOk") == 0)
+        {
+        	bool memory = report.isMemoryOK();
+        	return buildJsonResponse("memoryOk", memory, "bool");
+        }
+        if (strcmp(command, "ramOk") == 0)
+        {
+        	bool ram = report.isRamOK();
+        	return buildJsonResponse("ramOk", ram, "bool");
+        }
+        if (strcmp(command, "stackSafeOk") == 0)
+        {
+        	bool stackSafe = report.isStackSafe();
+        	return buildJsonResponse("stackSafeOk", stackSafe, "bool");
+        }
 
         return "";
     }
 
-};
+    void handleReboot(const String& requestedEndpoint, const String& jsonBody)
+    {
+    	jsonBody = buildJsonResponse(requestedEndpoint, 1, "bool");
+    	com.getEthernet().sendJsonResponse(jsonBody);
+    	msleep(1000);
+    	hardRestart();
+    }
 
-ReportTask reportTask;
+};
 SensorActorEndpointTask sensorActorEndpointTask;
-FlyBackVacControlTask flyBackVacControlTask;
 
 /// @brief Implementation of theStackMonitorTask Class, Handles the Stacks of all running tasks. \class StackMonitorTask
 class StackMonitorTask final : public frt::Task<StackMonitorTask, 256>
@@ -539,6 +574,7 @@ public:
         checkAndReport("flyBackVacControlTask", flyBackVacControlTask.getUsedStackSize(), FLYBACK_VAC_TASK_STACK_LIMIT);
 
         msleep(1000);
+        reportTask.post();
         return true;
     }
 
@@ -555,8 +591,6 @@ private:
         }
     }
 };
-
-
 StackMonitorTask stackMonitorTask;
 
 
@@ -577,12 +611,15 @@ void gracefulRestart()
 
     stackMonitorTask.start(1);
     reportTask.start(1);
-    sensorActorEndpointTask.start(2);
-    flyBackVacControlTask.start(3);
+    sensorActorEndpointTask.start(3);
+    flyBackVacControlTask.start(2);
 }
 
 void hardRestart()
 {
+    com.getSerial().endSerial();
+    com.getI2C().endI2C();
+    com.getSPI().endSPI();
 	wdt_enable(WDTO_500MS);
 	while (true) {}
 }
@@ -596,7 +633,7 @@ void setup()
     LogManager::getInstance()->initSDCard(4);
     if (!LogManager::getInstance()->isSDCardInitialized())
     {
-    	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to init SD-Card..."));
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to init SD-Card..."), true);
     }
     else
     {
@@ -630,8 +667,8 @@ void setup()
     // Start tasks
     stackMonitorTask.start(1);
     reportTask.start(1);
-    sensorActorEndpointTask.start(2);
-    flyBackVacControlTask.start(3);
+    sensorActorEndpointTask.start(3);
+    flyBackVacControlTask.start(2);
 }
 
 void loop()

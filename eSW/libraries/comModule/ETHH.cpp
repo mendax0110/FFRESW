@@ -62,7 +62,7 @@ void EthernetCommunication::beginEthernet(uint8_t* macAddress, IPAddress ip)
     //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Client is at: "), false);
     //Serial.println(Ethernet.localIP());
 
-    Serial.println(F("[INFO] Ethernet Initialized successfully."));
+    Serial.println(F("[INFO] Ethernet bus initialized."));
     //SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Ethernet Initialized successfully."));
 }
 

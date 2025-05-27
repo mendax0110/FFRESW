@@ -10,6 +10,7 @@
 #include <serialMenu.h>
 #include <ptrUtils.h>
 #include <calcModule.h>
+#include <math.h>
 
 TemperatureSensor::TemperatureSensor()
     : _temperatureSensorInitialized(false)
@@ -27,11 +28,13 @@ void TemperatureSensor::initialize()
 	if (!_mcp1.begin(0x66))
 	{
 	    SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to init MCP9601 at 0x66"));
+	    return;
 	}
 
 	if (!_mcp2.begin(0x67))
 	{
 	    SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to init MCP9601 at 0x67"));
+	    return;
 	}
 
 	_mcp1.setAmbientResolution(_ambientREs);
@@ -82,7 +85,9 @@ uint8_t TemperatureSensor::calibMCP9601(SensorID sensor)
 float TemperatureSensor::readMCP9601(Units unit, SensorID sensor)
 {
 	uint8_t calibStatus = calibMCP9601(sensor);
-	if (calibStatus == MCP9601_OPENCIRCUIT || calibStatus == MCP9601_SHORTCIRCUIT)
+	if (calibStatus == MCP9601_OPENCIRCUIT ||
+		calibStatus == MCP9601_SHORTCIRCUIT ||
+		!_temperatureSensorInitialized)
 	{
 		return NAN;
 	}
@@ -114,14 +119,14 @@ bool TemperatureSensor::isInitialized() const
     return _temperatureSensorInitialized;
 }
 
-float TemperatureSensor::readAnalogSensor(int pin)
+float TemperatureSensor::readAnalogSensor(uint8_t pin)
 {
-    int rawValue = analogRead(pin);
+	uint8_t rawValue = analogRead(pin);
     return static_cast<float>(rawValue);
 }
 
-float TemperatureSensor::readDigitalSensor(int pin)
+float TemperatureSensor::readDigitalSensor(uint8_t pin)
 {
-	int rawValue = digitalRead(pin);
+	uint8_t rawValue = digitalRead(pin);
 	return static_cast<float>(rawValue);
 }

@@ -1,3 +1,13 @@
+/**
+ * @file logManager.h
+ * @author Adrian Goessl
+ * @brief header file for the logManager.
+ * @version 0.1
+ * @date 2024-09-28
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef LOGMANAGER_H
 #define LOGMANAGER_H
 
@@ -84,7 +94,7 @@ private:
     String baseLogFileName;
     
     static const int chipSelectPinEth = 10; // Default CS pin for SD card
-    static const long maxLogFileSize = 1024 * 1024 * 100; // 100 MB
+    static const long maxLogFileSize = 104857600L; // 100MB Logfile size
 
     LogManager(const LogManager&) = delete;
     LogManager& operator=(const LogManager&) = delete;

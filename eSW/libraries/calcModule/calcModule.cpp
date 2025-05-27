@@ -1,7 +1,7 @@
 /**
  * @file calcModule.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Adrian Goessl
+ * @brief Implementation of the calcModule class.
  * @version 0.1
  * @date 2024-09-28
  * 
@@ -159,6 +159,36 @@ float CalcModuleInternals::psiToPascal(float psi)
     return roundToPrecision(result, 5);
 }
 
+float CalcModuleInternals::calculatePressureFromSensor(int sensorValue, PressureUnit unit)
+{
+	if (sensorValue < 0 || sensorValue > 1023)
+	{
+		return NAN;
+	}
+
+	float voltage = (sensorValue * (5.0f / 1023.0f));
+	float pressurePascal = voltage * 10000.0f;
+
+	float result = pressurePascal;
+	switch(unit)
+	{
+		case PressureUnit::Pascal:
+			result = pressurePascal;
+			break;
+		case PressureUnit::Atmosphere:
+			result = pascalToAtm(pressurePascal);
+			break;
+		case PressureUnit::Psi:
+			result = pascalToPsi(pressurePascal);
+			break;
+		case PressureUnit::Bar:
+			result = pressurePascal / 100000.0f;
+			break;
+	}
+
+	return roundToPrecision(result, 5);
+}
+
 float CalcModuleInternals::calculatePower(float voltage, float current)
 {
 	float result =voltage * current; // Power (P = V * I)
@@ -268,7 +298,7 @@ float CalcModuleInternals::extractFloatFromResponse(const String& response, Type
 			prefix = "p:000b10010000";
 			break;
 		default:
-			return 0.0f;
+			return NAN;
 	}
 
 	const int prefixLen = strlen(prefix);
@@ -296,7 +326,7 @@ float CalcModuleInternals::extractFloatFromResponse(const String& response, Type
 		startIdx = endIdx + 1;
 	}
 
-	return -1.0f;
+	return NAN;
 }
 
 float CalcModuleInternals::roundToPrecision(float value, int precision)

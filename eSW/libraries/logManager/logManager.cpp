@@ -1,3 +1,11 @@
+/**
+ * @file logManager.cpp
+ * @brief Implementation of the logManager class.
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ */
 #include <logManager.h>
 #include <ptrUtils.h>
 
@@ -66,9 +74,7 @@ void LogManager::shutdownSDCard()
     	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "Failed to close currently opened logFile: " + logFile);
     }
 
-	if (isSDCardInitialized() &&
-				!card.isBusy() &&
-				!root.isOpen())
+	if (isSDCardInitialized() && !card.isBusy() && !root.isOpen())
 	{
 		SD.end();
 		sdCardInitialized = false;

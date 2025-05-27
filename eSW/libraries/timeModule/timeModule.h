@@ -1,3 +1,13 @@
+/**
+ * @file timeModule.h
+ * @author Adrian Goessl
+ * @brief Header file for the time module handling systemtime for logging, api ...
+ * @version 0.1
+ * @date 2024-01-26
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef TIMEMODULE_H
 #define TIMEMODULE_H
 
