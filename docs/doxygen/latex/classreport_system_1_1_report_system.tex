@@ -42,9 +42,9 @@ void {\bfseries reset\+Usage} ()
 void \mbox{\hyperlink{classreport_system_1_1_report_system_a76c39b828d9edb65bf2b8b02de5a5ddf}{save\+Last\+Error}} (const char \texorpdfstring{$\ast$}{*}error)
 \begin{DoxyCompactList}\small\item\em Saves last error message to EEPROM. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{classreport_system_1_1_report_system_aec07e83fe5e94772cb044e6c2a5878e8}{get\+Last\+Error}} ()
-\begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the Last \doxylink{struct_error}{Error} message from EEPROM. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_ae43f343b186531823af51db6394b280a}{get\+Last\+Error\+Info}} ()
-\begin{DoxyCompactList}\small\item\em Get the Last Error message from EEPROM. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the Last \doxylink{struct_error}{Error} message from EEPROM. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_afa36bd75a3cdf4701e120ac0376466c8}{check\+Ram\+Level}} (unsigned int warning\+Threshold, unsigned int critical\+Threshold)
 \begin{DoxyCompactList}\small\item\em Function to check the SRAM level on the hostsystem. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classreport_system_1_1_report_system_a85d36a5e766cd10fc5e39246bfd93860}{is\+Temperature\+Sensor\+OK}} () const
@@ -238,7 +238,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Get the Last Error message from EEPROM. 
+Get the Last \doxylink{struct_error}{Error} message from EEPROM. 
 
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} The last error message 
@@ -258,7 +258,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Get the Last Error message from EEPROM. 
+Get the Last \doxylink{struct_error}{Error} message from EEPROM. 
 
 \begin{DoxyReturn}{Returns}
 bool -\/\texorpdfstring{$>$}{>} used by the Endpoint to report to HAS 
@@ -283,8 +283,7 @@ Get the Memory Status of the system.
 \begin{DoxyReturn}{Returns}
 String -\/\texorpdfstring{$>$}{>} The memory status 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -330,7 +329,8 @@ Function to report to the HAS via Endpoint if Communication is initialized and o
 \begin{DoxyReturn}{Returns}
 True if communication is up, false otherwise 
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -443,8 +443,7 @@ Function to report the status of the system.
 \begin{DoxyReturn}{Returns}
 bool -\/\texorpdfstring{$>$}{>} The status of the system 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

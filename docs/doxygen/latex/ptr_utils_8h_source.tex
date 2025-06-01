@@ -201,6 +201,153 @@
 \DoxyCodeLine{00332\ \ \ \ \ T*\ \mbox{\hyperlink{class_pointer_wrapper_ae0cfbaa63daf1d75e2ce12cd6b7a5edd}{operator-\/>}}()\ \{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
 \DoxyCodeLine{00333\ \};}
 \DoxyCodeLine{00334\ }
-\DoxyCodeLine{00335\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PTRUTILS\_H}}
+\DoxyCodeLine{00335\ \textcolor{preprocessor}{\#define\ TRACE\_DEPTH\ 4}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00338\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{struct_error_severity}{ErrorSeverity}}}
+\DoxyCodeLine{00339\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ ERROR\_NONE\ =\ 0,}
+\DoxyCodeLine{00341\ \ \ \ \ ERROR\_SOFT\ =\ 1,}
+\DoxyCodeLine{00342\ \ \ \ \ ERROR\_FATAL\ =\ 2}
+\DoxyCodeLine{00343\ \};}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00346\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_error}{Error}}}
+\DoxyCodeLine{00347\ \{}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordtype}{int}\ code;}
+\DoxyCodeLine{00349\ \ \ \ \ \mbox{\hyperlink{struct_error_severity}{ErrorSeverity}}\ severity;}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ msg;}
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ traceFiles[TRACE\_DEPTH];}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{int}\ traceLines[TRACE\_DEPTH];}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordtype}{int}\ traceDepth;}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \mbox{\hyperlink{struct_error}{Error}}()}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ :\ code(0)}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ ,\ severity(ERROR\_NONE)}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ ,\ msg(\textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ ,\ traceDepth(0)}
+\DoxyCodeLine{00360\ \ \ \ \ \{}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \}}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \mbox{\hyperlink{struct_error}{Error}}(\textcolor{keywordtype}{int}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m,\ \mbox{\hyperlink{struct_error_severity}{ErrorSeverity}}\ s,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line)}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ :\ code(c)}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ ,\ severity(s)}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ ,\ msg(m)}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ ,\ traceDepth(0)}
+\DoxyCodeLine{00369\ \ \ \ \ \{}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ addTrace(file,\ line);}
+\DoxyCodeLine{00371\ \ \ \ \ \}}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keywordtype}{void}\ addTrace(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line)}
+\DoxyCodeLine{00374\ \ \ \ \ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (traceDepth\ <\ TRACE\_DEPTH)}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ traceFiles[traceDepth]\ =\ file;}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ traceLines[traceDepth]\ =\ line;}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ traceDepth++;}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00381\ \ \ \ \ \}}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasError()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00384\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ code\ !=\ 0;}
+\DoxyCodeLine{00386\ \ \ \ \ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordtype}{bool}\ isFatal()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00389\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ severity\ ==\ ERROR\_FATAL;}
+\DoxyCodeLine{00391\ \ \ \ \ \}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordtype}{void}\ log()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00394\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}[ERROR]\ "{}}));}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ Serial.print(code);}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}:\ "{}}));}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ Serial.print(msg);}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}\ |\ Severity:\ "{}}));}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ Serial.println(severity\ ==\ ERROR\_FATAL\ ?\ F(\textcolor{stringliteral}{"{}FATAL"{}})\ :\ F(\textcolor{stringliteral}{"{}SOFT"{}}));}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ traceDepth;\ ++i)}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}\ -\/>\ at\ "{}}));}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(traceFiles[i]);}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}:"{}}));}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(traceLines[i]);}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00409\ \ \ \ \ \}}
+\DoxyCodeLine{00410\ \};}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00415\ \textcolor{preprocessor}{\#define\ UNIQUE\_NAME(base)\ \_\_UNIQUE\_NAME(base,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{00416\ \textcolor{preprocessor}{\#define\ \_\_UNIQUE\_NAME(base,\ line)\ base\#\#line}}
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_error}{Error}}*\ \_\_SAFE\_ERR\_PTR\_\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ \textcolor{preprocessor}{\#define\ TRY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00421\ \textcolor{preprocessor}{\ \ \ \ for\ (Error\ UNIQUE\_NAME(\_safetry\_err\_)\ =\ \{\},\ *prev\ =\ \_\_SAFE\_ERR\_PTR\_\_,\ *err\ =\ \&UNIQUE\_NAME(\_safetry\_err\_);\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00422\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_\ =\ err,\ err\ !=\ nullptr;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00423\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_\ =\ prev,\ err\ =\ nullptr)}}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \textcolor{preprocessor}{\#define\ CATCH\ \(\backslash\)}}
+\DoxyCodeLine{00426\ \textcolor{preprocessor}{\ \ \ \ else\ if\ (\_\_SAFE\_ERR\_PTR\_\_\ \&\&\ \_\_SAFE\_ERR\_PTR\_\_-\/>hasError())}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \textcolor{preprocessor}{\#define\ FINALLY\ \(\backslash\)}}
+\DoxyCodeLine{00429\ \textcolor{preprocessor}{\ \ \ \ else}}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \textcolor{preprocessor}{\#define\ THROW(code,\ msg)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00432\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00433\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00434\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00435\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ *\_\_SAFE\_ERR\_PTR\_\_\ =\ Error(code,\ msg,\ ERROR\_FATAL,\ \_\_FILE\_\_,\ \_\_LINE\_\_);\ \ \(\backslash\)}}
+\DoxyCodeLine{00436\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00437\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00438\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ \textcolor{preprocessor}{\#define\ THROW\_SOFT(code,\ msg)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00441\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00442\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00443\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ *\_\_SAFE\_ERR\_PTR\_\_\ =\ Error(code,\ msg,\ ERROR\_SOFT,\ \_\_FILE\_\_,\ \_\_LINE\_\_);\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00445\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00446\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00447\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\#define\ RETHROW(code,\ msg)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00450\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00451\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00452\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00453\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>addTrace(\_\_FILE\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00454\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>code\ =\ code;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00455\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>msg\ =\ msg;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00456\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00458\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#define\ THROW\_IF\_ERR(err)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00461\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ ((err).hasError()\ \&\&\ \_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00463\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00464\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ *\_\_SAFE\_ERR\_PTR\_\_\ =\ err;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00465\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>addTrace(\_\_FILE\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00466\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00467\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00468\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00469\ }
+\DoxyCodeLine{00470\ \textcolor{preprocessor}{\#define\ THROW\_IF\_NULL(ptr,\ code,\ msg)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00471\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ ((ptr)\ ==\ nullptr)\ \{\ THROW(code,\ msg);\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00473\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ \textcolor{preprocessor}{\#define\ THROW\_IF\_FALSE(cond,\ code,\ msg)\ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00476\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00477\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!(cond))\ \{\ THROW(code,\ msg);\ \}\ \ \(\backslash\)}}
+\DoxyCodeLine{00478\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00479\ }
+\DoxyCodeLine{00480\ \textcolor{preprocessor}{\#define\ RETURN\_IF\_ERR(expr)\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00481\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00482\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ Error\ \_e\ =\ (expr);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00483\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_e.hasError())\ return\ \_e;\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00484\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00485\ }
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PTRUTILS\_H}}
 
 \end{DoxyCode}

@@ -41,12 +41,10 @@ void \mbox{\hyperlink{classflyback_module_1_1_flyback_ad116adbdf2e5a2caeb002e2d7
 \Hypertarget{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad}\label{classflyback_module_1_1_flyback_adba5295aac69fcc29dea338a51d21aad} 
 int {\bfseries get\+Extern\+Duty\+Cycle} ()
 \begin{DoxyCompactList}\small\item\em Getter Function to get the Duty\+Cycle \texorpdfstring{$\ast$}{*}. \end{DoxyCompactList}\item 
-\Hypertarget{classflyback_module_1_1_flyback_ac5588985bd96ac8a50c371f5ff900911}\label{classflyback_module_1_1_flyback_ac5588985bd96ac8a50c371f5ff900911} 
-void {\bfseries set\+Extern\+Psu} (bool state)
-\item 
-\Hypertarget{classflyback_module_1_1_flyback_aaf714e7621e0379af256bc23e496673f}\label{classflyback_module_1_1_flyback_aaf714e7621e0379af256bc23e496673f} 
-bool {\bfseries get\+Extern\+Psu} ()
-\item 
+void \mbox{\hyperlink{classflyback_module_1_1_flyback_a69275ed1ccd2f95d3337ae0547662d94}{set\+Extern\+PSU}} (int state)
+\begin{DoxyCompactList}\small\item\em Function to get the desired Pin\+Mode from HAS. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classflyback_module_1_1_flyback_a9cb3dae823d14a538ab6785135417fd3}{get\+Extern\+PSU}} ()
+\begin{DoxyCompactList}\small\item\em Getter Function to get the Pin\+Mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classflyback_module_1_1_flyback_aa73ab9b16c9eddbfa46f0b74944444bc}{regulate\+Voltage}} (float target\+Voltage, float hysteresis)
 \begin{DoxyCompactList}\small\item\em Function to regulate voltage to prevent swinging using a hyseresis. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classflyback_module_1_1_flyback_a3bfa4a05756eda5ec4019973f3e07c36}{set\+Target\+Voltage}} (float voltage)
@@ -63,6 +61,19 @@ float \mbox{\hyperlink{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039
 \doxylink{classflyback_module_1_1_flyback}{Flyback} class to manage the \doxylink{classflyback_module_1_1_flyback}{Flyback} system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classflyback_module_1_1_flyback_a9cb3dae823d14a538ab6785135417fd3}\label{classflyback_module_1_1_flyback_a9cb3dae823d14a538ab6785135417fd3} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getExternPSU@{getExternPSU}}
+\index{getExternPSU@{getExternPSU}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getExternPSU()}{getExternPSU()}}
+{\footnotesize\ttfamily int Flyback\+::get\+Extern\+PSU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter Function to get the Pin\+Mode. 
+
+\begin{DoxyReturn}{Returns}
+integer with state 
+\end{DoxyReturn}
 \Hypertarget{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db}\label{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!getHysteresis@{getHysteresis}}
 \index{getHysteresis@{getHysteresis}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -89,6 +100,14 @@ Get the state of the Main-\/\+Switch.
 \begin{DoxyReturn}{Returns}
 Enum -\/\texorpdfstring{$>$}{>} The current state of the Main-\/\+Switch (e.\+g., "{}\+HV\+\_\+\+Module OFF"{}, "{}\+HV\+\_\+\+Module MANUAL"{}, "{}\+HV\+\_\+\+Module REMOTE"{}, "{}\+Invalid Switch Position"{}) 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3}\label{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!getTargetVoltage@{getTargetVoltage}}
 \index{getTargetVoltage@{getTargetVoltage}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -117,7 +136,8 @@ true -\/\texorpdfstring{$>$}{>} if the timer is initialized
 
 false -\/\texorpdfstring{$>$}{>} if the timer is not initialized 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -234,6 +254,29 @@ Function to get the desired Frequency from HAS.
 {\em frequency} & -\/\texorpdfstring{$>$}{>} the frequency to change \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classflyback_module_1_1_flyback_a69275ed1ccd2f95d3337ae0547662d94}\label{classflyback_module_1_1_flyback_a69275ed1ccd2f95d3337ae0547662d94} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!setExternPSU@{setExternPSU}}
+\index{setExternPSU@{setExternPSU}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{setExternPSU()}{setExternPSU()}}
+{\footnotesize\ttfamily void Flyback\+::set\+Extern\+PSU (\begin{DoxyParamCaption}\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+Function to get the desired Pin\+Mode from HAS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & -\/\texorpdfstring{$>$}{>} the state to change the Pin\+Mode \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a69275ed1ccd2f95d3337ae0547662d94_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{classflyback_module_1_1_flyback_ad30145a41e77b8ef77e82aea54654a0e}\label{classflyback_module_1_1_flyback_ad30145a41e77b8ef77e82aea54654a0e} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!setHysteresis@{setHysteresis}}
 \index{setHysteresis@{setHysteresis}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -279,13 +322,6 @@ Sets the state of the timer.
 {\em state} & -\/\texorpdfstring{$>$}{>} If true, the timer will be enabled, otherwise disabled \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90_icgraph}
-\end{center}
-\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

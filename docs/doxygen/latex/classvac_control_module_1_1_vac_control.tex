@@ -38,8 +38,12 @@ void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b355
 \begin{DoxyCompactList}\small\item\em Function to set an external scenario, typically from remote input. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}{get\+Extern\+Scenario}} ()
 \begin{DoxyCompactList}\small\item\em Getter function to retrieve the current external scenario state. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a27ec4d04dff3384da2ed0f09f4038dad}{extern\+Process}} ()
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464}{extern\+Pump}} (int pump\+State)
 \begin{DoxyCompactList}\small\item\em Process external data for scenarios (currently unused) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ac987b20202d353d8ac50149c954f8ac1}{set\+Extern\+Pump}} (int state)
+\begin{DoxyCompactList}\small\item\em Function to get the desired Pin\+Mode from HAS. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3}{get\+Extern\+Pump}} ()
+\item 
 void \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7add417c501e7b08bc549b38f1fac13d}{set\+Extern\+Pressure}} (float pressure)
 \begin{DoxyCompactList}\small\item\em Sets the external pressure value. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}{get\+Extern\+Pressure}} ()
@@ -50,17 +54,25 @@ float \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a8c57183ed00c34af
 \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} class to manage the vacuum control system This class provides methods for initializing the system, configuring the timer, measuring parameters, and handling different system states such as ON, OFF, HAND, and REMOTE modes. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classvac_control_module_1_1_vac_control_a27ec4d04dff3384da2ed0f09f4038dad}\label{classvac_control_module_1_1_vac_control_a27ec4d04dff3384da2ed0f09f4038dad} 
-\index{vacControlModule::VacControl@{vacControlModule::VacControl}!externProcess@{externProcess}}
-\index{externProcess@{externProcess}!vacControlModule::VacControl@{vacControlModule::VacControl}}
-\doxysubsubsection{\texorpdfstring{externProcess()}{externProcess()}}
-{\footnotesize\ttfamily void vac\+Control\+Module\+::\+Vac\+Control\+::extern\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464}\label{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!externPump@{externPump}}
+\index{externPump@{externPump}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{externPump()}{externPump()}}
+{\footnotesize\ttfamily void Vac\+Control\+::extern\+Pump (\begin{DoxyParamCaption}\item[{int}]{pump\+State }\end{DoxyParamCaption})}
 
 
 
 Process external data for scenarios (currently unused) 
 
-This function could be expanded to process external scenario commands if needed. \Hypertarget{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}\label{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5} 
+This function could be expanded to process external scenario commands if needed. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}\label{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!getExternPressure@{getExternPressure}}
 \index{getExternPressure@{getExternPressure}!vacControlModule::VacControl@{vacControlModule::VacControl}}
 \doxysubsubsection{\texorpdfstring{getExternPressure()}{getExternPressure()}}
@@ -78,6 +90,20 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3}\label{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getExternPump@{getExternPump}}
+\index{getExternPump@{getExternPump}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getExternPump()}{getExternPump()}}
+{\footnotesize\ttfamily int Vac\+Control\+::get\+Extern\+Pump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+@ brief Getter Function to get the Pin\+Mode Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}\label{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884} 
@@ -200,7 +226,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Runs the main control loop for the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. 
 
-This function checks the current system state and performs actions accordingly (e.\+g., switch states, pump control, LED control). Here is the call graph for this function\+:\nopagebreak
+This function checks the current system state and performs actions accordingly (e.\+g., switch states, pump control, LED control). Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -220,6 +247,21 @@ Sets the external pressure value.
 
 \begin{DoxyParams}{Parameters}
 {\em pressure} & The external pressure value to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classvac_control_module_1_1_vac_control_ac987b20202d353d8ac50149c954f8ac1}\label{classvac_control_module_1_1_vac_control_ac987b20202d353d8ac50149c954f8ac1} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!setExternPump@{setExternPump}}
+\index{setExternPump@{setExternPump}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{setExternPump()}{setExternPump()}}
+{\footnotesize\ttfamily void Vac\+Control\+::set\+Extern\+Pump (\begin{DoxyParamCaption}\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+Function to get the desired Pin\+Mode from HAS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & -\/\texorpdfstring{$>$}{>} the state to change the Pin\+Mode \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb}\label{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb} 

@@ -29,12 +29,54 @@ class \mbox{\hyperlink{class_ptr_utils}{Ptr\+Utils}}
 class \mbox{\hyperlink{class_scoped_pointer}{Scoped\+Pointer$<$ T $>$}}
 \begin{DoxyCompactList}\small\item\em Template class for a Scoped Pointer. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_pointer_wrapper}{Pointer\+Wrapper$<$ T $>$}}
-\begin{DoxyCompactList}\small\item\em Tempalte class for wrapping a pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tempalte class for wrapping a pointer. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_error}{Error}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{ptr_utils_8h_a1b3ead7836a9aa3c527c0bb6e2aa1a11}{try\+Delete\+Ptr}}(ptr)
-\begin{DoxyCompactList}\small\item\em Macro to safely delete a pointer and verify it is nullptr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Macro to safely delete a pointer and verify it is nullptr. \end{DoxyCompactList}\item 
+\Hypertarget{ptr_utils_8h_a7d8efca49ea52d11264a867fb8fe40ac}\label{ptr_utils_8h_a7d8efca49ea52d11264a867fb8fe40ac} 
+\#define {\bfseries TRACE\+\_\+\+DEPTH}~4
+\item 
+\Hypertarget{ptr_utils_8h_ac3cf800d6956ab0cc8925fbeec3e5b89}\label{ptr_utils_8h_ac3cf800d6956ab0cc8925fbeec3e5b89} 
+\#define {\bfseries UNIQUE\+\_\+\+NAME}(base)~\+\_\+\+\_\+\+UNIQUE\+\_\+\+NAME(base, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Various macros for errorhandling. \end{DoxyCompactList}\item 
+\Hypertarget{ptr_utils_8h_a42fe26086ba1c15451dccd7f7a3fc2b8}\label{ptr_utils_8h_a42fe26086ba1c15451dccd7f7a3fc2b8} 
+\#define {\bfseries \+\_\+\+\_\+\+UNIQUE\+\_\+\+NAME}(base,  line)~base\#\#line
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_ad2746371528bdf15c3910b7bf217dac0}{TRY}}
+\item 
+\Hypertarget{ptr_utils_8h_ae30f5c713cfa6a69c6b26492c992052b}\label{ptr_utils_8h_ae30f5c713cfa6a69c6b26492c992052b} 
+\#define {\bfseries CATCH}~    else if (\+\_\+\+\_\+\+SAFE\+\_\+\+ERR\+\_\+\+PTR\+\_\+\+\_\+ \&\& \+\_\+\+\_\+\+SAFE\+\_\+\+ERR\+\_\+\+PTR\+\_\+\+\_\+-\/$>$has\+Error())
+\item 
+\Hypertarget{ptr_utils_8h_a0e2a75478cd44f1666a6aca626c5c50b}\label{ptr_utils_8h_a0e2a75478cd44f1666a6aca626c5c50b} 
+\#define {\bfseries FINALLY}~    else
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a9b103c92140dd3e36b24835625b75699}{THROW}}(code,  msg)
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a31fb7d63da2a9942bc4e79025b913e30}{THROW\+\_\+\+SOFT}}(code,  msg)
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a7259507af922c5de338a6933632de26c}{RETHROW}}(code,  msg)
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a6f18b8a90b31db0932a6b4fb833034ed}{THROW\+\_\+\+IF\+\_\+\+ERR}}(err)
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_ae76e558e3823ff544c9c9c7192d83117}{THROW\+\_\+\+IF\+\_\+\+NULL}}(ptr,  code,  msg)
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a7bb3f787a4d049faab52d4d94a79388c}{THROW\+\_\+\+IF\+\_\+\+FALSE}}(cond,  code,  msg)
+\item 
+\#define \mbox{\hyperlink{ptr_utils_8h_a9a1aa57f2d4695e396154b600716d016}{RETURN\+\_\+\+IF\+\_\+\+ERR}}(expr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ptr_utils_8h_af499e45fe1f4c813befc79c1fbd1e87f}\label{ptr_utils_8h_af499e45fe1f4c813befc79c1fbd1e87f} 
+enum \mbox{\hyperlink{ptr_utils_8h_af499e45fe1f4c813befc79c1fbd1e87f}{Error\+Severity}} \{ {\bfseries ERROR\+\_\+\+NONE} = 0
+, {\bfseries ERROR\+\_\+\+SOFT} = 1
+, {\bfseries ERROR\+\_\+\+FATAL} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Enum to declare the severity of the error. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -55,6 +97,130 @@ Copyright (c) 2024
 
 
 \doxysubsection{Macro Definition Documentation}
+\Hypertarget{ptr_utils_8h_a7259507af922c5de338a6933632de26c}\label{ptr_utils_8h_a7259507af922c5de338a6933632de26c} 
+\index{ptrUtils.h@{ptrUtils.h}!RETHROW@{RETHROW}}
+\index{RETHROW@{RETHROW}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{RETHROW}{RETHROW}}
+{\footnotesize\ttfamily \#define RETHROW(\begin{DoxyParamCaption}\item[{}]{code,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>addTrace(\_\_FILE\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>code\ =\ code;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>msg\ =\ msg;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_a9a1aa57f2d4695e396154b600716d016}\label{ptr_utils_8h_a9a1aa57f2d4695e396154b600716d016} 
+\index{ptrUtils.h@{ptrUtils.h}!RETURN\_IF\_ERR@{RETURN\_IF\_ERR}}
+\index{RETURN\_IF\_ERR@{RETURN\_IF\_ERR}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{RETURN\_IF\_ERR}{RETURN\_IF\_ERR}}
+{\footnotesize\ttfamily \#define RETURN\+\_\+\+IF\+\_\+\+ERR(\begin{DoxyParamCaption}\item[{}]{expr }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_error}{Error}}\ \_e\ =\ (expr);\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_e.hasError())\ return\ \_e;\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ while\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_a9b103c92140dd3e36b24835625b75699}\label{ptr_utils_8h_a9b103c92140dd3e36b24835625b75699} 
+\index{ptrUtils.h@{ptrUtils.h}!THROW@{THROW}}
+\index{THROW@{THROW}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{THROW}{THROW}}
+{\footnotesize\ttfamily \#define THROW(\begin{DoxyParamCaption}\item[{}]{code,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *\_\_SAFE\_ERR\_PTR\_\_\ =\ \mbox{\hyperlink{struct_error}{Error}}(code,\ msg,\ ERROR\_FATAL,\ \_\_FILE\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_a6f18b8a90b31db0932a6b4fb833034ed}\label{ptr_utils_8h_a6f18b8a90b31db0932a6b4fb833034ed} 
+\index{ptrUtils.h@{ptrUtils.h}!THROW\_IF\_ERR@{THROW\_IF\_ERR}}
+\index{THROW\_IF\_ERR@{THROW\_IF\_ERR}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_IF\_ERR}{THROW\_IF\_ERR}}
+{\footnotesize\ttfamily \#define THROW\+\_\+\+IF\+\_\+\+ERR(\begin{DoxyParamCaption}\item[{}]{err }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ ((err).hasError()\ \&\&\ \_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *\_\_SAFE\_ERR\_PTR\_\_\ =\ err;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_-\/>addTrace(\_\_FILE\_\_,\ \_\_LINE\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_a7bb3f787a4d049faab52d4d94a79388c}\label{ptr_utils_8h_a7bb3f787a4d049faab52d4d94a79388c} 
+\index{ptrUtils.h@{ptrUtils.h}!THROW\_IF\_FALSE@{THROW\_IF\_FALSE}}
+\index{THROW\_IF\_FALSE@{THROW\_IF\_FALSE}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_IF\_FALSE}{THROW\_IF\_FALSE}}
+{\footnotesize\ttfamily \#define THROW\+\_\+\+IF\+\_\+\+FALSE(\begin{DoxyParamCaption}\item[{}]{cond,  }\item[{}]{code,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!(cond))\ \{\ THROW(code,\ msg);\ \}\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_ae76e558e3823ff544c9c9c7192d83117}\label{ptr_utils_8h_ae76e558e3823ff544c9c9c7192d83117} 
+\index{ptrUtils.h@{ptrUtils.h}!THROW\_IF\_NULL@{THROW\_IF\_NULL}}
+\index{THROW\_IF\_NULL@{THROW\_IF\_NULL}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_IF\_NULL}{THROW\_IF\_NULL}}
+{\footnotesize\ttfamily \#define THROW\+\_\+\+IF\+\_\+\+NULL(\begin{DoxyParamCaption}\item[{}]{ptr,  }\item[{}]{code,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ ((ptr)\ ==\ \textcolor{keyword}{nullptr})\ \{\ THROW(code,\ msg);\ \}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_a31fb7d63da2a9942bc4e79025b913e30}\label{ptr_utils_8h_a31fb7d63da2a9942bc4e79025b913e30} 
+\index{ptrUtils.h@{ptrUtils.h}!THROW\_SOFT@{THROW\_SOFT}}
+\index{THROW\_SOFT@{THROW\_SOFT}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{THROW\_SOFT}{THROW\_SOFT}}
+{\footnotesize\ttfamily \#define THROW\+\_\+\+SOFT(\begin{DoxyParamCaption}\item[{}]{code,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_SAFE\_ERR\_PTR\_\_)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *\_\_SAFE\_ERR\_PTR\_\_\ =\ \mbox{\hyperlink{struct_error}{Error}}(code,\ msg,\ ERROR\_SOFT,\ \_\_FILE\_\_,\ \_\_LINE\_\_);\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{ptr_utils_8h_ad2746371528bdf15c3910b7bf217dac0}\label{ptr_utils_8h_ad2746371528bdf15c3910b7bf217dac0} 
+\index{ptrUtils.h@{ptrUtils.h}!TRY@{TRY}}
+\index{TRY@{TRY}!ptrUtils.h@{ptrUtils.h}}
+\doxysubsubsection{\texorpdfstring{TRY}{TRY}}
+{\footnotesize\ttfamily \#define TRY}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{struct_error}{Error}}\ \mbox{\hyperlink{ptr_utils_8h_ac3cf800d6956ab0cc8925fbeec3e5b89}{UNIQUE\_NAME}}(\_safetry\_err\_)\ =\ \{\},\ *prev\ =\ \_\_SAFE\_ERR\_PTR\_\_,\ *err\ =\ \&\mbox{\hyperlink{ptr_utils_8h_ac3cf800d6956ab0cc8925fbeec3e5b89}{UNIQUE\_NAME}}(\_safetry\_err\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_\ =\ err,\ err\ !=\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \_\_SAFE\_ERR\_PTR\_\_\ =\ prev,\ err\ =\ \textcolor{keyword}{nullptr})}
+
+\end{DoxyCode}
 \Hypertarget{ptr_utils_8h_a1b3ead7836a9aa3c527c0bb6e2aa1a11}\label{ptr_utils_8h_a1b3ead7836a9aa3c527c0bb6e2aa1a11} 
 \index{ptrUtils.h@{ptrUtils.h}!tryDeletePtr@{tryDeletePtr}}
 \index{tryDeletePtr@{tryDeletePtr}!ptrUtils.h@{ptrUtils.h}}

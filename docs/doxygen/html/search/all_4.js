@@ -3,9 +3,11 @@ var searchData=
   ['endi2c_0',['endI2C',['../classcom_module_1_1_i2_c_communication.html#a191f0fd3dde73c1599e6e3ff37e31590',1,'comModule::I2CCommunication']]],
   ['endserial_1',['endSerial',['../classcom_module_1_1_serial_communication.html#a76e373e8850ce0a1724f086b0cdb6c50',1,'comModule::SerialCommunication']]],
   ['endspi_2',['endSPI',['../classcom_module_1_1_s_p_i_communication.html#a89043628e87fdcc68ff76aa871e31019',1,'comModule::SPICommunication']]],
-  ['error_5fcodes_3',['Error_Codes',['../namespacecom_module.html#a3b450180f02d724d8ecd6c7f06514756',1,'comModule']]],
-  ['ethernetcommunication_4',['EthernetCommunication',['../classcom_module_1_1_ethernet_communication.html',1,'comModule']]],
-  ['externprocess_5',['externProcess',['../classvac_control_module_1_1_vac_control.html#a27ec4d04dff3384da2ed0f09f4038dad',1,'vacControlModule::VacControl']]],
-  ['extractfloat_6',['extractFloat',['../classcalc_module_1_1_calc_module_internals.html#aeb648febaabef46d2dd4228b8740ddaa',1,'calcModule::CalcModuleInternals']]],
-  ['extractfloatfromresponse_7',['extractFloatFromResponse',['../classcalc_module_1_1_calc_module_internals.html#add0d2b735a5d04925401a0eff4292f00',1,'calcModule::CalcModuleInternals']]]
+  ['error_3',['Error',['../struct_error.html',1,'']]],
+  ['error_5fcodes_4',['Error_Codes',['../namespacecom_module.html#a3b450180f02d724d8ecd6c7f06514756',1,'comModule']]],
+  ['errorseverity_5',['errorseverity',['../struct_error_severity.html',1,'ErrorSeverity'],['../ptr_utils_8h.html#af499e45fe1f4c813befc79c1fbd1e87f',1,'ErrorSeverity:&#160;ptrUtils.h']]],
+  ['ethernetcommunication_6',['EthernetCommunication',['../classcom_module_1_1_ethernet_communication.html',1,'comModule']]],
+  ['externpump_7',['externPump',['../classvac_control_module_1_1_vac_control.html#a048f5f504eba25ae34526e186c30e464',1,'vacControlModule::VacControl']]],
+  ['extractfloat_8',['extractFloat',['../classcalc_module_1_1_calc_module_internals.html#aeb648febaabef46d2dd4228b8740ddaa',1,'calcModule::CalcModuleInternals']]],
+  ['extractfloatfromresponse_9',['extractFloatFromResponse',['../classcalc_module_1_1_calc_module_internals.html#add0d2b735a5d04925401a0eff4292f00',1,'calcModule::CalcModuleInternals']]]
 ];

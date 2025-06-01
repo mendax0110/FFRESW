@@ -22,12 +22,20 @@ typedef struct \mbox{\hyperlink{structflyback_module_1_1_measurement}{flyback\+M
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}\label{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a} 
-enum class \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{Switch\+States}} \+: int \{ {\bfseries HV\+\_\+\+Module\+\_\+\+OFF}
-, {\bfseries HV\+\_\+\+Module\+\_\+\+MANUAL}
-, {\bfseries HV\+\_\+\+Module\+\_\+\+REMOTE}
-, {\bfseries HV\+\_\+\+Module\+\_\+\+INVALID}
+enum class \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{Switch\+States}} \+: int \{ \newline
+{\bfseries Main\+\_\+\+Switch\+\_\+\+OFF}
+, {\bfseries Main\+\_\+\+Switch\+\_\+\+MANUAL}
+, {\bfseries Main\+\_\+\+Switch\+\_\+\+REMOTE}
+, {\bfseries Main\+\_\+switch\+\_\+\+INVALID}
+, \newline
+{\bfseries HV\+\_\+\+Module\+\_\+\+ON}
  \}
-\begin{DoxyCompactList}\small\item\em enum for different Switch\+States of HVModule \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em enum for different Switch\+States of HVModule \end{DoxyCompactList}\item 
+\Hypertarget{namespaceflyback_module_ae5ea2d28fef857d4789309ad4a3b0174}\label{namespaceflyback_module_ae5ea2d28fef857d4789309ad4a3b0174} 
+enum class {\bfseries HVModule} \+: int \{ {\bfseries power\+Supply\+\_\+\+OFF}
+, {\bfseries power\+Supply\+\_\+\+ON}
+ \}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
