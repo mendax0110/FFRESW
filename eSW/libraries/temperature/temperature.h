@@ -33,8 +33,8 @@ enum MCP9601_Status : uint8_t
 // @brief Enum for the Different Sensors in different Environments \enum SensorID
 enum SensorID
 {
-	INDOOR,	// Black-Color Patch on Cable
-	OUTDOOR // Yellow-Color Patch on Cable
+	INDOOR,	// Green Cable
+	OUTDOOR // Silver Cable
 };
 
 /// @brief Temperature sensor class \class TemperatureSensor

@@ -332,4 +332,156 @@ public:
     T* operator->() { return ptr; }
 };
 
+#define TRACE_DEPTH 4
+
+/// @brief Enum to declare the severity of the error. \enum ErrorSeverity
+enum ErrorSeverity
+{
+    ERROR_NONE = 0,
+    ERROR_SOFT = 1,
+    ERROR_FATAL = 2
+};
+
+/// @brief Struct to defined the error settings. \struct ErrorSeverity
+struct Error
+{
+    int code;
+    ErrorSeverity severity;
+    const char* msg;
+    const char* traceFiles[TRACE_DEPTH];
+    int traceLines[TRACE_DEPTH];
+    int traceDepth;
+
+    Error()
+    	: code(0)
+    	, severity(ERROR_NONE)
+    	, msg("")
+    	, traceDepth(0)
+    {
+
+    }
+
+    Error(int c, const char* m, ErrorSeverity s, const char* file, int line)
+        : code(c)
+    	, severity(s)
+    	, msg(m)
+    	, traceDepth(0)
+    {
+        addTrace(file, line);
+    }
+
+    void addTrace(const char* file, int line)
+    {
+        if (traceDepth < TRACE_DEPTH)
+        {
+            traceFiles[traceDepth] = file;
+            traceLines[traceDepth] = line;
+            traceDepth++;
+        }
+    }
+
+    bool hasError() const
+    {
+        return code != 0;
+    }
+
+    bool isFatal() const
+    {
+        return severity == ERROR_FATAL;
+    }
+
+    void log() const
+    {
+        Serial.print(F("[ERROR] "));
+        Serial.print(code);
+        Serial.print(F(": "));
+        Serial.print(msg);
+        Serial.print(F(" | Severity: "));
+        Serial.println(severity == ERROR_FATAL ? F("FATAL") : F("SOFT"));
+
+        for (int i = 0; i < traceDepth; ++i)
+        {
+            Serial.print(F(" -> at "));
+            Serial.print(traceFiles[i]);
+            Serial.print(F(":"));
+            Serial.println(traceLines[i]);
+        }
+    }
+};
+
+/**
+ * @brief Various macros for errorhandling.
+ */
+#define UNIQUE_NAME(base) __UNIQUE_NAME(base, __LINE__)
+#define __UNIQUE_NAME(base, line) base##line
+
+static Error* __SAFE_ERR_PTR__ = nullptr;
+
+#define TRY																										\
+    for (Error UNIQUE_NAME(_safetry_err_) = {}, *prev = __SAFE_ERR_PTR__, *err = &UNIQUE_NAME(_safetry_err_);	\
+         __SAFE_ERR_PTR__ = err, err != nullptr;																\
+         __SAFE_ERR_PTR__ = prev, err = nullptr)
+
+#define CATCH \
+    else if (__SAFE_ERR_PTR__ && __SAFE_ERR_PTR__->hasError())
+
+#define FINALLY \
+    else
+
+#define THROW(code, msg)															\
+	do {																			\
+		if (__SAFE_ERR_PTR__)														\
+		{																			\
+			*__SAFE_ERR_PTR__ = Error(code, msg, ERROR_FATAL, __FILE__, __LINE__);	\
+			break;																	\
+		}																			\
+	} while (0)
+
+#define THROW_SOFT(code, msg)														\
+	do {																			\
+		if (__SAFE_ERR_PTR__)														\
+		{																			\
+			*__SAFE_ERR_PTR__ = Error(code, msg, ERROR_SOFT, __FILE__, __LINE__);	\
+			break;																	\
+		}																			\
+	} while (0)
+
+#define RETHROW(code, msg)									\
+	do {													\
+		if (__SAFE_ERR_PTR__)								\
+		{													\
+			__SAFE_ERR_PTR__->addTrace(__FILE__, __LINE__); \
+			__SAFE_ERR_PTR__->code = code;					\
+			__SAFE_ERR_PTR__->msg = msg;					\
+			break;											\
+		}													\
+	} while (0)
+
+#define THROW_IF_ERR(err)									\
+	do {													\
+		if ((err).hasError() && __SAFE_ERR_PTR__)			\
+		{													\
+			*__SAFE_ERR_PTR__ = err;						\
+			__SAFE_ERR_PTR__->addTrace(__FILE__, __LINE__); \
+			break;											\
+		}													\
+	} while (0)
+
+#define THROW_IF_NULL(ptr, code, msg)				\
+	do {											\
+		if ((ptr) == nullptr) { THROW(code, msg); } \
+	} while (0)
+
+#define THROW_IF_FALSE(cond, code, msg)		\
+	do {									\
+		if (!(cond)) { THROW(code, msg); }	\
+	} while (0)
+
+#define RETURN_IF_ERR(expr)				\
+	do {								\
+		Error _e = (expr);				\
+		if (_e.hasError()) return _e;	\
+	} while (0)
+
+
 #endif // PTRUTILS_H

@@ -27,6 +27,14 @@ namespace vacControlModule
 		PUMP_ON,
 		PUMP_OFF
 	};
+
+	/// @brief Enum for extern Setup for pinMode for the PumpState \enum PumpState
+	enum class PumpState : int
+	{
+		pump_OFF,
+		pump_ON
+	};
+
 	/// @brief Structure to store the measured values of the system \struct Measurement
 	/// This structure holds the pressure values measured from the system.
 	typedef struct Pressure
@@ -127,7 +135,6 @@ namespace vacControlModule
 		 */
 		void run();
 
-
 		/**
 		 * @brief Function to set an external scenario, typically from remote input
 		 *
@@ -147,7 +154,20 @@ namespace vacControlModule
 		 *
 		 * This function could be expanded to process external scenario commands if needed.
 		 */
-		void externProcess();
+		void externPump(int pumpState);
+
+		/**
+		 * @brief Function to get the desired PinMode from HAS
+		 * @param state -> the state to change the PinMode
+		 *
+		 */
+		void setExternPump(int state);
+
+		/**
+		 * @ brief Getter Function to get the PinMode
+		 *
+		 */
+		int getExternPump();
 
 		/**
 		 * @brief Sets the external pressure value
@@ -167,20 +187,21 @@ namespace vacControlModule
 	private:
 		Pressure meas;
 
-		//Define Pins --> Main_Switch
+		//Define Pins --> Input
 		static const int Main_Switch_OFF = 27;		//Main_Switch OFF Mode 27
 		static const int Main_Switch_MANUAL = 28;	//Main_Switch Manual Mode 28
 		static const int Main_Switch_REMOTE = 29;	//Main_Switch Remote Mode 29
+		static const int Switch_Pump_ON = 23;		//Button to turn Pump ON 23
+		static const int targetPressure = A3;		//Potentiometer for Regulation
 
-		//Define Pins --> Vacuum Logic
-		static const int Switch_Pump_ON = 23;		//Button to turn Pump ON 37
+		//Define Pins --> Output
 		static const int Pump_Status_LED = 24; 		//OUTPUT to see State off Pump
 		static const int Pump_Relay = 25;			//OUTPUT to turn on/off Relais
 		static const int targetVacuumLED = 26; 		//OUTPUT to see Vacuum reached
-		static const int targetPressure = A4;	//Potentiometer for Regulation
 
 		//Variables to save Values
 		int currentScenario = -1;
+		int currentPumpState = -1;
 
 		//Variables for TargetPressure
 		static const float TARGET_PRESSURE_1 = 1;
@@ -191,7 +212,6 @@ namespace vacControlModule
 		// TODO NEW ADDED-> CHECK FUNCTIONALTY WITH FRANIC
 		static int lastState;
 		static int lastPumpState;
-
 
 		bool _vacControlInitialized;
 	};

@@ -386,7 +386,8 @@ bool ReportSystem::isCommunicationOK() const
 		return false;
 	return _com->getEthernet().isInitialized() &&
 				_com->getSPI().isInitialized() &&
-				_com->getI2C().isInitialized();
+				_com->getI2C().isInitialized() &&
+				_com->getSerial().isInitialized();
 }
 
 bool ReportSystem::isMemoryOK() const

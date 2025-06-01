@@ -14,7 +14,7 @@
 
 using namespace flybackModule;
 
-SwitchStates Flyback::lastState = SwitchStates::HV_Module_INVALID;
+SwitchStates Flyback::lastState = SwitchStates::Main_switch_INVALID;
 bool Flyback::lastTimerState = false;
 int Flyback::lastPWMFrequency = 0;
 int Flyback::lastPWMDutyCycle = 0;
@@ -36,13 +36,13 @@ Flyback::~Flyback()
 void Flyback::initialize()
 {
 	//Setup pinMode for Main_Switch
-	pinMode(Main_Switch_OFF, INPUT);
-	pinMode(Main_Switch_MANUAL, INPUT);
-	pinMode(Main_Switch_REMOTE, INPUT);
+	pinMode(Main_Switch_OFF, INPUT_PULLUP);
+	pinMode(Main_Switch_MANUAL, INPUT_PULLUP);
+	pinMode(Main_Switch_REMOTE, INPUT_PULLUP);
+	pinMode(HV_Module_ON, INPUT_PULLUP);
 	pinMode(PWM_Frequency, INPUT);
 	pinMode(PWM_DutyCycle, INPUT);
 	pinMode(Measure_ADC, INPUT);
-	pinMode(HV_Module_ON, INPUT);
 
 	//Setup pinMode for Indicator LED
 	pinMode(PSU, OUTPUT);
@@ -68,7 +68,6 @@ void Flyback::deinitialize()
     pinMode(Measure_ADC, INPUT);
 
     //Setup pinMode for Indicator LED
-    pinMode(HV_Module_ON, INPUT);
     pinMode(PSU, INPUT);
     pinMode(HV_Module_Working, INPUT);
     pinMode(PWM_OUT, INPUT);
@@ -116,7 +115,7 @@ void Flyback::setTimerState(bool state)
 {
 	if(state && !lastTimerState)
 	{
-		// Turn timer off
+		// Turn timer on
 		timerConfig();
 	}
 	else if (!state && lastTimerState)
@@ -128,23 +127,29 @@ void Flyback::setTimerState(bool state)
 	lastTimerState = state; // update the last settet timer state
 }
 
+void Flyback::setHVandPSU(int hvLedState, int powerSupplyState)
+{
+	digitalWrite(HV_Module_Working, hvLedState);   // HV-Status-LED
+	digitalWrite(PSU, powerSupplyState);           // PSU-Steuerung
+}
+
 SwitchStates Flyback::getSwitchState()
 {
-	if (digitalRead(Main_Switch_OFF) == HIGH)
+	if (digitalRead(Main_Switch_OFF) == LOW)
 	{
-		return SwitchStates::HV_Module_OFF;
+		return SwitchStates::Main_Switch_OFF;
 	}
-	else if (digitalRead(Main_Switch_MANUAL) == HIGH)
+	else if (digitalRead(Main_Switch_MANUAL) == LOW)
 	{
-		return SwitchStates::HV_Module_MANUAL;
+		return SwitchStates::Main_Switch_MANUAL;
 	}
-	else if (digitalRead(Main_Switch_REMOTE) == HIGH)
+	else if (digitalRead(Main_Switch_REMOTE) == LOW)
 	{
-		return SwitchStates::HV_Module_REMOTE;
+		return SwitchStates::Main_Switch_REMOTE;
 	}
 	else
 	{
-		return SwitchStates::HV_Module_INVALID;
+		return SwitchStates::Main_switch_INVALID;
 	}
 }
 
@@ -182,49 +187,67 @@ Measurement Flyback::measure()
 
 void Flyback::run()
 {
-	int offState = digitalRead(Main_Switch_OFF);
-	int manualState = digitalRead(Main_Switch_MANUAL);
-	int remoteState = digitalRead(Main_Switch_REMOTE);
-	int hvState = digitalRead(HV_Module_ON);
+	SwitchStates currentState = getSwitchState();
 
-	if (offState == HIGH)
+	if (currentState != lastState)
 	{
-		if (lastState != SwitchStates::HV_Module_OFF)
+		switch (currentState)
 		{
-			SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is OFF."));
-			lastState = SwitchStates::HV_Module_OFF;
+			case SwitchStates::Main_Switch_OFF:
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is OFF."));
+				break;
+			case SwitchStates::Main_Switch_MANUAL:
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Manual Mode."));
+				break;
+			case SwitchStates::Main_Switch_REMOTE:
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Remote Mode."));
+				break;
+			case SwitchStates::Main_switch_INVALID:
+				SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("HV:Invalid Switch Position."));
+				break;
 		}
-
-		if (getTimerState())
-		{
-			setTimerState(false);
-		}
-
-		digitalWrite(PSU, HIGH);
-		digitalWrite(HV_Module_Working, LOW);
+		lastState = currentState;
 	}
-	else if (manualState == HIGH && hvState == HIGH)
+
+	handleState(currentState);
+}
+
+void Flyback::handleState(SwitchStates state)
+{
+	switch (state)
 	{
-		if (lastState != SwitchStates::HV_Module_MANUAL)
-		{
-			SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Manual Mode."));
-			lastState = SwitchStates::HV_Module_MANUAL;
-		}
+		case SwitchStates::Main_Switch_OFF:
+			handleOffState();
+			break;
+		case SwitchStates::Main_Switch_MANUAL:
+			handleManualState();
+			break;
+		case SwitchStates::Main_Switch_REMOTE:
+			handleRemoteState();
+			break;
+		case SwitchStates::Main_switch_INVALID:
+		default:
+			handleInvalidState();
+			break;
+	}
+}
 
-		if (!getTimerState())
-		{
-			setTimerState(true);
-		}
+void Flyback::handleOffState()
+{
+	setTimerState(false);
+	setHVandPSU(LOW, LOW);
+}
 
-		digitalWrite(HV_Module_Working, HIGH);
-		digitalWrite(PSU, LOW);
-
-		// PWM frequency and duty cycle adjustments
+void Flyback::handleManualState()
+{
+	if (digitalRead(HV_Module_ON) == LOW)
+	{
+		setTimerState(true);
+		setHVandPSU(HIGH, HIGH);
 		int potFreqValue = analogRead(PWM_Frequency);
 		int potDutyValue = analogRead(PWM_DutyCycle);
-		uint32_t frequency = map(potFreqValue, 0, 1023, 25000, 100000);
+		uint32_t frequency = map(potFreqValue, 0, 1023, 25000, 250000);
 		int dutyCycle = map(potDutyValue, 0, 1023, 1, 50);
-
 		if (frequency != lastPWMFrequency || dutyCycle != lastPWMDutyCycle)
 		{
 			setPWMFrequency(frequency, dutyCycle);
@@ -232,33 +255,41 @@ void Flyback::run()
 			lastPWMDutyCycle = dutyCycle;
 		}
 	}
-	else if (remoteState == HIGH)
-	{
-		if (lastState != SwitchStates::HV_Module_REMOTE)
-		{
-			SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Remote Mode."));
-			lastState = SwitchStates::HV_Module_REMOTE;
-		}
-
-		digitalWrite(HV_Module_Working, HIGH);
-		digitalWrite(PSU, LOW);
-
-		// Set PWM frequency and duty cycle from external settings
-		setPWMFrequency(getExternFrequency(), getExternDutyCycle());
-
-		//regulateVoltage(getTargetVoltage(), getHysteresis());	// TODO CLARIFY WITH FELIX AND FRADOM HOW TO USE IT? CREATE ENDPOINTS FOR IT!!
-	}
 	else
 	{
-		if (lastState != SwitchStates::HV_Module_INVALID)
-		{
-			SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid Switch Position."));
-			lastState = SwitchStates::HV_Module_INVALID;
-			setTimerState(false);
-			digitalWrite(HV_Module_Working, LOW);
-			digitalWrite(PSU, LOW);
-		}
+		setTimerState(false);
+		setHVandPSU(LOW, LOW);
+		digitalWrite(PWM_OUT, LOW);
+		digitalWrite(PWM_INV, LOW);
 	}
+}
+
+void Flyback::handleRemoteState()
+{
+	setTimerState(true);
+	setHVandPSU(LOW, getExternPSU());
+	setPWMFrequency(getExternFrequency(), getExternDutyCycle());
+}
+
+void Flyback::handleInvalidState()
+{
+	setTimerState(false);
+	setHVandPSU(LOW, LOW);
+}
+
+int Flyback::getExternPSU()
+{
+	return currentPsuState;
+}
+
+void Flyback::setExternPSU(int state)
+{
+	if (state < 0 || state > 1)
+	{
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid PSU state (must be 0–2)."));
+		return;
+	}
+	currentPsuState = state;
 }
 
 uint32_t Flyback::getExternFrequency()
@@ -268,7 +299,7 @@ uint32_t Flyback::getExternFrequency()
 
 void Flyback::setExternFrequency(uint32_t frequency)
 {
-	if (frequency < 25000 || frequency > 100000)
+	if (frequency < 25000 || frequency > 250000)
 	{
 		return;
 	}
@@ -287,18 +318,6 @@ void Flyback::setExternDutyCycle(int dutyCycle)
 		return;
 	}
 	meas.dutyCycle = dutyCycle;
-}
-
-void Flyback::setExternPsu(bool state)
-{
-	if (state)
-		digitalWrite(PSU, HIGH);
-
-}
-
-bool getExternPsu()
-{
-	return true;
 }
 
 void Flyback::regulateVoltage(float targetVoltage, float hysteresis)

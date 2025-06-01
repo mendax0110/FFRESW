@@ -138,7 +138,7 @@ public:
 	}
 
 private:
-	// TODO: CHECK THIS WITH FRAMDOM01 AND SEE IF IT WORKS!!
+
 	void applyScenario(int scenario)
 	{
 		switch (scenario)
@@ -231,6 +231,12 @@ public:
             handleTemperatureSensors(requestedEndpoint, jsonBody);
         }
 
+        // Vacuumpump-Endpoints
+        if (requestedEndpoint.startsWith("set_pump/"))
+        {
+        	jsonBody = handleVacuumPumpSet(requestedEndpoint);
+        }
+
 	    // VAT-Endpoints
 	    if (requestedEndpoint.startsWith("set_"))
 	    {
@@ -247,10 +253,10 @@ public:
 	    	handleReboot(requestedEndpoint, jsonBody);
 	    }
 
+	    // Last guard, to check if the jsonbody length
 	    if (jsonBody.length() > 0)
 	    {
 	        com.getEthernet().sendJsonResponse(jsonBody);
-
 	        reportTask.post();
 	    }
 
@@ -364,6 +370,7 @@ private:
         if (command == "digital_duty_value") return buildJsonResponse("digital_duty_value", result.digitalDutyValue, "");
         if (command == "dutyCycle") return buildJsonResponse("dutyCycle", result.dutyCycle, "%");
         if (command == "switch_state") return buildJsonResponse("switch_state", static_cast<int>(flyback.getSwitchState()), "state");
+        if (command == "psu_state") return buildJsonResponse("psu_state", flyback.getExternPSU(), "state");
 
         return "";
     }
@@ -388,6 +395,12 @@ private:
             int dutyCycle = valueStr.toInt();
             flyback.setExternDutyCycle(dutyCycle);
             return buildJsonResponse("dutyCycle", dutyCycle, "%");
+        }
+        else if (command == "psu_state")
+        {
+        	int psuState = valueStr.toInt();
+        	flyback.setExternPSU(psuState);
+        	return buildJsonResponse("psu_state", psuState, "state");
         }
         return "";
     }
@@ -448,6 +461,14 @@ private:
     	String command = cmd.substring(15);
     	// TODO Implement the Getters and create new Endpoints for HAS to the current state of scenarios.
     	return "";
+    }
+
+    String handleVacuumPumpSet(const String& cmd)
+    {
+        String valueStr = cmd.substring(9);
+        int pumpState = valueStr.toInt();
+        vacControl.setExternPump(pumpState);
+        return buildJsonResponse("pump", pumpState, "state");
     }
 
     void handleTemperatureSensors(const String& requestedEndpoint, String& jsonBody)

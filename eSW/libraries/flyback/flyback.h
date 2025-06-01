@@ -19,10 +19,18 @@ namespace flybackModule
 	/// @brief enum for different SwitchStates of HVModule \enum SwitchStates
 	enum class SwitchStates : int
 	{
-		HV_Module_OFF,
-		HV_Module_MANUAL,
-		HV_Module_REMOTE,
-		HV_Module_INVALID
+		Main_Switch_OFF,
+		Main_Switch_MANUAL,
+		Main_Switch_REMOTE,
+		Main_switch_INVALID,
+		HV_Module_ON
+	};
+
+	/// @brief enum for extern Setup for pinMode for the HVModule \enum HvModule
+	enum class HVModule : int
+	{
+		powerSupply_OFF,
+		powerSupply_ON
 	};
 
 	/// @brief Structure to store the measured values of the system \struct Measurement
@@ -129,11 +137,19 @@ namespace flybackModule
 		 */
 		int getExternDutyCycle();
 
-		// TODO MERGE STUFF FROM FRADOM01 into here!
-		void setExternPsu(bool state);
+		/**
+		 * @brief Function to get the desired PinMode from HAS
+		 * @param state -> the state to change the PinMode
+		 *
+		 */
+		void setExternPSU(int state);
 
-		// TODO MERGE STUFF FROM FRADOM01 into here!
-		bool getExternPsu();
+		/**
+		 * @brief Getter Function to get the PinMode
+		 *
+		 * @return integer with state
+		 */
+		int getExternPSU();
 
 		/**
 		 * @brief Function to regulate voltage to prevent swinging using a hyseresis.
@@ -154,7 +170,6 @@ namespace flybackModule
 		 */
 		float getTargetVoltage() const;
 
-
 		/**
 		 * @brief Setter Function for the HAS to regulate the hysteresis.
 		 * @param hysteresis -> The desired hysteresis.
@@ -171,28 +186,26 @@ namespace flybackModule
 	private:
 		Measurement meas;
 
-		//Define Pins -->Signaltable
+		//Define Pins -->Inputs
 		static const int Main_Switch_OFF = 27;
 		static const int Main_Switch_MANUAL = 28;
 		static const int Main_Switch_REMOTE = 29;
-		static const int Measure_ADC = A0;			//ADC PIN for Voltage Measurement
+		static const int HV_Module_ON = 37;
+		static const int Measure_ADC = A0;
+		static const int PWM_Frequency = A1;
+		static const int PWM_DutyCycle = A2;
+
+		//Define Pins -> Outputs
 		static const int PWM_OUT = 11;
 		static const int PWM_INV = 12;
+		static const int PSU = 36;	//Power Supply ON OFF
+		static const int HV_Module_Working = 35; //Signal LED
 
 		//Variables for calculating HV
 		const float R1 = 100000000;
 		const float R2 = 10000;
 		const float ADC_Max_Value = 1023.0;
 		const float Vcc = 5.0;
-
-		//Define Pins --> Signaltable
-		static const int HV_Module_ON = 37;			// Input
-		static const int HV_Module_Working = 35;	// Output
-		static const int PWM_Frequency = A1;
-		static const int PWM_DutyCycle = A2;
-
-		// PSU - Power Supply Unit
-		static const int PSU = 36;		// Output
 
 		bool _flybackInitialized;
 		bool _timerInitialized;
@@ -202,6 +215,7 @@ namespace flybackModule
 		static bool lastTimerState;
 		static int lastPWMFrequency;
 		static int lastPWMDutyCycle;
+		int currentPsuState = -1;
 
 		// Default targetVoltage and hysteresisVoltage for to prevent swinging
 		float _targetVoltage = 0.0f;
@@ -238,6 +252,39 @@ namespace flybackModule
          * @param dutyCycle -> The new PWM dutyCycle
          */
 		void setPWMFrequency(uint32_t frequency, int dutyCycle);
+
+		/**
+		 * @brief Sets the State of the Status
+		 *
+		 * @param hvState -> If HIGH, Warning LED will turn ON
+		 * @param psuState -> If HIGH, the Power Supply is disabled
+		 */
+		void setHVandPSU(int hvLedState, int powerSupplyState);
+
+		/**
+		 * @brief Handles the logic for the current main switch state
+		 */
+		void handleState(SwitchStates state);
+
+		/**
+		 * @brief Logic for when switch is OFF
+		 */
+		void handleOffState();
+
+		/**
+		 * @brief Logic for when switch is in MANUAL mode
+		 */
+		void handleManualState();
+
+		/**
+		 * @brief Logic for when switch is in REMOTE mode
+		 */
+		void handleRemoteState();
+
+		/**
+		 * @brief Logic for when switch state is invalid
+		 */
+		void handleInvalidState();
 	};
 }
 
