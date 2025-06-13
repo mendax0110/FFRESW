@@ -110,8 +110,8 @@ public:
 		{
 			vacControl.run();
 
-			vacControlModule::SwitchStates swState = vacControl.getSwitchState();
-			if (swState == vacControlModule::SwitchStates::Main_Switch_MANUAL)
+			vacControlModule::MainSwitchStates mainState = vacControl.getMainSwitchState();
+			if (mainState == vacControlModule::MainSwitchStates::Main_Switch_MANUAL)
 			{
                 String response;
 
@@ -125,7 +125,11 @@ public:
                 vacControl.setExternPressure(rawValue);
 
 				int scenario = vacControl.getScenario();
-				applyScenario(scenario);
+				if (scenario != lastAppliedScenario)
+				{
+					applyScenario(scenario);
+					lastAppliedScenario = scenario;
+				}
 
 				reportTask.post();
 			}
@@ -138,6 +142,8 @@ public:
 	}
 
 private:
+
+	int lastAppliedScenario = -1;
 
 	void applyScenario(int scenario)
 	{
@@ -236,6 +242,10 @@ public:
         {
         	jsonBody = handleVacuumPumpSet(requestedEndpoint);
         }
+        else if(requestedEndpoint.startsWith("get_pump_"))
+		{
+        	jsonBody = handleVacuumPumpGet(requestedEndpoint);
+		}
 
 	    // VAT-Endpoints
 	    if (requestedEndpoint.startsWith("set_"))
@@ -315,19 +325,23 @@ private:
             return;
         }
 
-        com.getEthernet().setParameter(param, valueStr);
-
         if (command == "control_mode")
         {
+            com.getEthernet().setParameter(param, valueStr);
             String response = com.getEthernet().getParameter(param);
             jsonBody = buildJsonResponse("control_mode", response.toFloat(), "mode");
-            SerialMenu::printToSerial(jsonBody);
         }
-        else
+        else if (command == "target_position")
         {
+            com.getEthernet().setParameter(param, valueStr);
             float rawVal = CalcModuleInternals::extractFloat(valueStr, 1);
-            jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "pressure");
-            SerialMenu::printToSerial(jsonBody);
+            jsonBody = buildJsonResponse("target_position", rawVal, "position");
+        }
+        else if (command == "target_pressure")
+        {
+            com.getEthernet().setParameter(param, valueStr);
+            float rawVal = CalcModuleInternals::extractFloat(valueStr, 1);
+            jsonBody = buildJsonResponse("target_pressure", rawVal, "pressure");
         }
     }
 
@@ -339,6 +353,7 @@ private:
         if (command == "actual_position")
         {
             param = Compound2::ACTUAL_POSITION;
+
         }
         else if (command == "actual_pressure")
         {
@@ -369,8 +384,9 @@ private:
         if (command == "frequency") return buildJsonResponse("frequency", result.frequency, "Hz");
         if (command == "digital_duty_value") return buildJsonResponse("digital_duty_value", result.digitalDutyValue, "");
         if (command == "dutyCycle") return buildJsonResponse("dutyCycle", result.dutyCycle, "%");
-        if (command == "switch_state") return buildJsonResponse("switch_state", static_cast<int>(flyback.getSwitchState()), "state");
-        if (command == "psu_state") return buildJsonResponse("psu_state", flyback.getExternPSU(), "state");
+        if (command == "main_switch") return buildJsonResponse("main_switch", static_cast<int>(flyback.getMainSwitchState()), "state");
+        if (command == "hv_switch") return buildJsonResponse("hv_switch", static_cast<int>(flyback.getHVSwitchState()), "state");
+        if (command == "psu_state") return buildJsonResponse("psu_state", static_cast<int>(flyback.getHVState()), "state");
 
         return "";
     }
@@ -403,6 +419,25 @@ private:
         	return buildJsonResponse("psu_state", psuState, "state");
         }
         return "";
+    }
+
+    String handleVacuumPumpGet(const String& cmd)
+    {
+    	String command = cmd.substring(9);
+
+        if (command == "main_switch") return buildJsonResponse("main_switch", static_cast<int>(vacControl.getMainSwitchState()), "state");
+        if (command == "pump_switch") return buildJsonResponse("pump_switch", static_cast<int>(vacControl.getPumpSwitchState()), "state");
+        if (command == "pump_state") return buildJsonResponse("pump_state", static_cast<int>(vacControl.getPumpState()), "state");
+
+        return "";
+    }
+
+    String handleVacuumPumpSet(const String& cmd)
+    {
+        String valueStr = cmd.substring(9);
+        int pumpState = valueStr.toInt();
+        vacControl.setExternPump(pumpState);
+        return buildJsonResponse("pump", pumpState, "state");
     }
 
     String handleScenarioSet(const String& cmd)
@@ -458,17 +493,15 @@ private:
 
     String handleScenarioGet(const String& cmd)
     {
-    	String command = cmd.substring(15);
-    	// TODO Implement the Getters and create new Endpoints for HAS to the current state of scenarios.
-    	return "";
-    }
+        String command = cmd.substring(13);
 
-    String handleVacuumPumpSet(const String& cmd)
-    {
-        String valueStr = cmd.substring(9);
-        int pumpState = valueStr.toInt();
-        vacControl.setExternPump(pumpState);
-        return buildJsonResponse("pump", pumpState, "state");
+        if (command == "current")
+        {
+            int scenario = vacControl.getScenario();
+            return buildJsonResponse("scenario", scenario, "id");
+        }
+
+        return "";
     }
 
     void handleTemperatureSensors(const String& requestedEndpoint, String& jsonBody)
@@ -478,7 +511,7 @@ private:
         if (command == "MCP9601C_Indoor")
         {
         	float value = sens.readSensor(SensorType::MCP9601_Celsius_Indoor);
-        	jsonBody = buildJsonResponse(requestedEndpoint, value, "°C");
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "C");
         }
         else if (command == "MCP9601F_Indoor")
         {
@@ -493,7 +526,7 @@ private:
         else if (command == "MCP9601C_Outdoor")
         {
         	float value = sens.readSensor(SensorType::MCP9601_Celsius_Outdoor);
-        	jsonBody = buildJsonResponse(requestedEndpoint, value, "°C");
+        	jsonBody = buildJsonResponse(requestedEndpoint, value, "C");
         }
         else if (command == "MCP9601F_Outdoor")
         {
@@ -585,7 +618,7 @@ public:
     static const unsigned int SENSOR_ACTOR_TASK_STACK_LIMIT = 1024;
     static const unsigned int FLYBACK_VAC_TASK_STACK_LIMIT = 512;
 
-    static const float THRESHOLD = 0.8f; 		// 80% threshold was previously 0.8f
+    static const float THRESHOLD = 0.8f;
     static const float ERR_THRESHOLD = 0.9f;
 
     bool run()

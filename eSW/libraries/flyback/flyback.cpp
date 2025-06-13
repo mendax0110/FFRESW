@@ -14,7 +14,7 @@
 
 using namespace flybackModule;
 
-SwitchStates Flyback::lastState = SwitchStates::Main_switch_INVALID;
+MainSwitchStates Flyback::lastState = MainSwitchStates::Main_switch_INVALID;
 bool Flyback::lastTimerState = false;
 int Flyback::lastPWMFrequency = 0;
 int Flyback::lastPWMDutyCycle = 0;
@@ -133,50 +133,71 @@ void Flyback::setHVandPSU(int hvLedState, int powerSupplyState)
 	digitalWrite(PSU, powerSupplyState);           // PSU-Steuerung
 }
 
-SwitchStates Flyback::getSwitchState()
+
+
+MainSwitchStates Flyback::getMainSwitchState()
 {
 	if (digitalRead(Main_Switch_OFF) == LOW)
 	{
-		return SwitchStates::Main_Switch_OFF;
+		return MainSwitchStates::Main_Switch_OFF;
 	}
 	else if (digitalRead(Main_Switch_MANUAL) == LOW)
 	{
-		return SwitchStates::Main_Switch_MANUAL;
+
+		return MainSwitchStates::Main_Switch_MANUAL;
 	}
 	else if (digitalRead(Main_Switch_REMOTE) == LOW)
 	{
-		return SwitchStates::Main_Switch_REMOTE;
+		return MainSwitchStates::Main_Switch_REMOTE;
 	}
 	else
 	{
-		return SwitchStates::Main_switch_INVALID;
+		return MainSwitchStates::Main_switch_INVALID;
 	}
 }
+
+HVSwitchStates Flyback::getHVSwitchState()
+{
+    if (digitalRead(Main_Switch_MANUAL) == LOW && digitalRead(HV_Module_ON) == LOW)
+    {
+        return HVSwitchStates::HV_Module_ON;
+    }
+    return HVSwitchStates::HV_Module_OFF;
+}
+
+HVModule Flyback::getHVState()
+{
+    if (digitalRead(PSU) == HIGH)
+        return HVModule::powerSupply_ON;
+    else
+        return HVModule::powerSupply_OFF;
+}
+
 
 Measurement Flyback::measure()
 {
 	int adcValue = analogRead(Measure_ADC);
 
+
 	// Wird kontinuierlich Bearbeitet
 	//float reducedVoltage = adcValue * (Vcc / ADC_Max_Value);
-
 	// Testing Voltage for simulation!
 	float reducedVoltage = 1.25;
 	meas.current = (reducedVoltage / R2) * 1000000;
 	meas.voltage = (meas.current / 1000000) * R1;
 	meas.power = (meas.voltage * meas.current) / 1000000;
 
-	if (digitalRead(Main_Switch_MANUAL) == HIGH)
+	if (digitalRead(Main_Switch_MANUAL) == LOW)
 	{
 		// Read in digitValue from poti
 		meas.digitalFreqValue = analogRead(PWM_Frequency);
 		meas.digitalDutyValue = analogRead(PWM_DutyCycle);
 
 		// Maping out the digitValues
-		meas.frequency = map(meas.digitalFreqValue, 0, 1023, 25000, 100000);
+		meas.frequency = map(meas.digitalFreqValue, 0, 1023, 25000, 250000);
 		meas.dutyCycle = map(meas.digitalDutyValue, 0, 1023, 1, 50);
 	}
-	else if (digitalRead(Main_Switch_REMOTE) == HIGH)
+	else if (digitalRead(Main_Switch_REMOTE) == LOW)
 	{
 		uint32_t freq = getExternFrequency();
 		int dutycycle = getExternDutyCycle();
@@ -187,22 +208,22 @@ Measurement Flyback::measure()
 
 void Flyback::run()
 {
-	SwitchStates currentState = getSwitchState();
+	MainSwitchStates currentState = getMainSwitchState();
 
 	if (currentState != lastState)
 	{
 		switch (currentState)
 		{
-			case SwitchStates::Main_Switch_OFF:
+			case MainSwitchStates::Main_Switch_OFF:
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is OFF."));
 				break;
-			case SwitchStates::Main_Switch_MANUAL:
+			case MainSwitchStates::Main_Switch_MANUAL:
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Manual Mode."));
 				break;
-			case SwitchStates::Main_Switch_REMOTE:
+			case MainSwitchStates::Main_Switch_REMOTE:
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("System is ON - Remote Mode."));
 				break;
-			case SwitchStates::Main_switch_INVALID:
+			case MainSwitchStates::Main_switch_INVALID:
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("HV:Invalid Switch Position."));
 				break;
 		}
@@ -212,20 +233,20 @@ void Flyback::run()
 	handleState(currentState);
 }
 
-void Flyback::handleState(SwitchStates state)
+void Flyback::handleState(MainSwitchStates state)
 {
 	switch (state)
 	{
-		case SwitchStates::Main_Switch_OFF:
+		case MainSwitchStates::Main_Switch_OFF:
 			handleOffState();
 			break;
-		case SwitchStates::Main_Switch_MANUAL:
+		case MainSwitchStates::Main_Switch_MANUAL:
 			handleManualState();
 			break;
-		case SwitchStates::Main_Switch_REMOTE:
+		case MainSwitchStates::Main_Switch_REMOTE:
 			handleRemoteState();
 			break;
-		case SwitchStates::Main_switch_INVALID:
+		case MainSwitchStates::Main_switch_INVALID:
 		default:
 			handleInvalidState();
 			break;
@@ -282,6 +303,7 @@ int Flyback::getExternPSU()
 	return currentPsuState;
 }
 
+
 void Flyback::setExternPSU(int state)
 {
 	if (state < 0 || state > 1)
@@ -291,6 +313,7 @@ void Flyback::setExternPSU(int state)
 	}
 	currentPsuState = state;
 }
+
 
 uint32_t Flyback::getExternFrequency()
 {
@@ -409,3 +432,4 @@ float Flyback::getHysteresis() const
 {
 	return _hysteresis;
 }
+

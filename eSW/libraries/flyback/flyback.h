@@ -16,13 +16,19 @@
 /// @brief Namespace for the Flyback module \namespace flybackModule
 namespace flybackModule
 {
-	/// @brief enum for different SwitchStates of HVModule \enum SwitchStates
-	enum class SwitchStates : int
+	/// @brief enum for different SwitchStates of HVModule \enum MainSwitchStates
+	enum class MainSwitchStates : int
 	{
 		Main_Switch_OFF,
 		Main_Switch_MANUAL,
 		Main_Switch_REMOTE,
-		Main_switch_INVALID,
+		Main_switch_INVALID
+	};
+
+	/// @brief enum for SwitchStates of HV_Module on/off \enum HVSwitchStates
+	enum class HVSwitchStates : int
+	{
+		HV_Module_OFF,
 		HV_Module_ON
 	};
 
@@ -66,10 +72,10 @@ namespace flybackModule
 		 * This method shuts down the pins and prepares graceful restart.
 		 */
 		void deinitialize();
-        
+
         /**
          * @brief Get the state of the Flyback system
-         * 
+         *
          * @return true -> Flyback is initialized
          * @return false -> Flyback is not initialized
          */
@@ -77,7 +83,7 @@ namespace flybackModule
 
         /**
          * @brief Returns the state of the timer
-         * 
+         *
          * @return true -> if the timer is initialized
          * @return false -> if the timer is not initialized
          */
@@ -85,29 +91,45 @@ namespace flybackModule
 
         /**
          * @brief Sets the state of the timer
-         * 
+         *
          * @param state -> If true, the timer will be enabled, otherwise disabled
          */
 		void setTimerState(bool state);
 
         /**
          * @brief Get the state of the Main-Switch
-         * 
+         *
          * @return Enum -> The current state of the Main-Switch
          * (e.g., "HV_Module OFF", "HV_Module MANUAL", "HV_Module REMOTE", "Invalid Switch Position")
          */
-		SwitchStates getSwitchState();
+		MainSwitchStates getMainSwitchState();
+
+        /**
+         * @brief Get the state of the HV-Switch
+         *
+         * @return Enum -> The current state of the HV-Switch
+         * (e.g., "HV_Module OFF", "HV_Module ON")
+         */
+		HVSwitchStates getHVSwitchState();
+
+        /**
+         * @brief Get the state of the HV-Output
+         *
+         * @return Enum -> The current state of the HV-Output
+         * (e.g., "PowerSupply_OFF", "PowerSupply_ON")
+         */
+		HVModule getHVState();
 
         /**
          * @brief Measures the voltage, current, power, digitalValue and frequency of the system
-         * 
+         *
          * @return Measurement -> A Measurement object containing voltage, current, and power
          */
 		Measurement measure();
 
         /**
          * @brief Executes logic depending on which Main-Switch state is active
-         * 
+         *
          */
 		void run();
 
@@ -211,7 +233,7 @@ namespace flybackModule
 		bool _timerInitialized;
 
 		// States
-		static SwitchStates lastState;
+		static MainSwitchStates lastState;
 		static bool lastTimerState;
 		static int lastPWMFrequency;
 		static int lastPWMDutyCycle;
@@ -264,7 +286,7 @@ namespace flybackModule
 		/**
 		 * @brief Handles the logic for the current main switch state
 		 */
-		void handleState(SwitchStates state);
+		void handleState(MainSwitchStates state);
 
 		/**
 		 * @brief Logic for when switch is OFF
