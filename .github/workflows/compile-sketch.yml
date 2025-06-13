@@ -39,6 +39,10 @@ jobs:
           echo "Libraries in ~/Arduino/libraries:"
           ls ~/Arduino/libraries/
 
+      - name: Clean Arduino build cache
+        run: |
+          rm -rf /home/runner/.cache/arduino/sketches/*
+
       - name: Compile Arduino Sketches
         uses: arduino/compile-sketches@v1.1.2
         with:
