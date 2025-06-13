@@ -49,7 +49,7 @@ frt::Mutex temperatureQueueMutex;
 frt::Mutex ethernetMutex;
 
 
-// helper method to update time -> do not run in a TASK!!!
+// helper method to update time, do not run in a TASK!
 void updateTime()
 {
     static unsigned long lastUpdateTime = 0;
@@ -104,7 +104,6 @@ public:
 			flyback.run();
 			msleep(1000);
 		}
-
 
 		if (vacControl.isInitialized())
 		{
@@ -677,7 +676,6 @@ void hardRestart()
 	wdt_enable(WDTO_500MS);
 	while (true) {}
 }
-
 
 void setup()
 {
