@@ -3,15 +3,13 @@ name: Arduino CI
 on:
   push:
     paths:
-      - 'eSW/FFRESW/FFRESW/**'
+      - 'eSW/FFRESW/FFRESW/FFRESW.ino'
       - 'eSW/libraries/**'
-      - 'external/**'
       - '.github/workflows/**'
   pull_request:
     paths:
-      - 'eSW/FFRESW/FFRESW/**'
+      - 'eSW/FFRESW/FFRESW/FFRESW.ino'
       - 'eSW/libraries/**'
-      - 'external/**'
       - '.github/workflows/**'
 
 jobs:
@@ -25,7 +23,7 @@ jobs:
       - name: Set up Arduino CLI
         uses: arduino/setup-arduino-cli@v2
 
-      - name: Install arduino:avr core
+      - name: Install specific version of arduino:avr core
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr@1.8.3
@@ -36,23 +34,40 @@ jobs:
           cp -r eSW/libraries/* ~/Arduino/libraries/
           cp -r external/* ~/Arduino/libraries/
 
-      - name: Show sketch file content (debug)
+      - name: List libraries in Arduino folder
         run: |
-          echo "----- FFRESW.ino -----"
-          cat eSW/FFRESW/FFRESW/FFRESW.ino
+          echo "Libraries in ~/Arduino/libraries:"
+          ls ~/Arduino/libraries/
 
-      - name: Clear Arduino build cache
-        run: |
-          rm -rf ~/.arduino15/staging
-          rm -rf ~/.cache/arduino
+      - name: Compile Arduino Sketches
+        uses: arduino/compile-sketches@v1.1.2
+        with:
+          fqbn: "arduino:avr:mega"
+          libraries: |
+            - name: "Ethernet"
+            - name: "SD"
+            - name: "Adafruit BusIO"
+            - name: "Adafruit MCP9600 Library"
+            - name: "ArduinoJson"
+            - name: "FreeRTOS"
+            - name: "frt"
+            - name: "Vector"
+          sketch-paths: |
+            - eSW/FFRESW/FFRESW/FFRESW.ino
+          verbose: true
 
-      - name: Compile Arduino sketch
+      - name: Compile Arduino Sketches (CLI Version)
         run: |
-          arduino-cli compile --clean --verbose \
+          arduino-cli compile --verbose \
             --fqbn arduino:avr:mega \
             --libraries ~/Arduino/libraries \
             --export-binaries \
-            eSW/FFRESW/FFRESW
+            eSW/FFRESW/FFRESW/FFRESW.ino
+
+      - name: Debug - List compiled files in cache directory
+        run: |
+          echo "Listing compiled files in the Arduino cache directory"
+          ls -R /home/runner/.cache/arduino/sketches/ | grep -E '\.(hex|bin|elf)$'
 
       - name: Install analysis tools
         run: sudo apt-get update && sudo apt-get install -y binutils
@@ -91,6 +106,7 @@ jobs:
           if-no-files-found: error
           compression-level: 6
           overwrite: true
+          include-hidden-files: false
 
       - name: Upload Build Artifacts (HEX, BIN, ELF)
         uses: actions/upload-artifact@v4
@@ -102,3 +118,5 @@ jobs:
             /home/runner/.cache/arduino/sketches/**/*.elf
           if-no-files-found: warn
           compression-level: 6
+          overwrite: false
+          include-hidden-files: false
