@@ -17,15 +17,20 @@
 /// @brief Namespace for the VacControl module \namespace vacControlModule
 namespace vacControlModule
 {
-	/// @brief Enum to represent the states of the main switch and pump
-	enum class SwitchStates : int
+	/// @brief Enum to represent the states of the main switch and pump \enum MainSwitchStates
+	enum class MainSwitchStates : int
 	{
 		Main_Switch_OFF,
 		Main_Switch_MANUAL,
 		Main_Switch_REMOTE,
-		Main_switch_INVALID,
-		PUMP_ON,
-		PUMP_OFF
+		Main_switch_INVALID
+	};
+
+	/// @brief Enum for extern Setup for pinMode for the PumpState \enum PumpSwitchStates
+	enum class PumpSwitchStates : int
+	{
+		Switch_Pump_OFF,
+		Switch_Pump_ON
 	};
 
 	/// @brief Enum for extern Setup for pinMode for the PumpState \enum PumpState
@@ -89,7 +94,21 @@ namespace vacControlModule
 		 *
 		 * @return The current state of the switch (Main_Switch_OFF, Main_Switch_MANUAL, etc.)
 		 */
-		SwitchStates getSwitchState();
+		MainSwitchStates getMainSwitchState();
+
+		/**
+		 * @brief Returns the state of the pump switch
+		 *
+		 * @return The current state of the switch (Switch_Pump_ON, Switch_PUMP_OFF)
+		 */
+		PumpSwitchStates getPumpSwitchState();
+
+		/**
+		 * @brief Returns the state of the pump
+		 *
+		 * @return The current state of the output for the pump (pump_ON, pump_OFF)
+		 */
+		PumpState getPumpState();
 
 		/**
 		 * @brief Executes logic depending on which Main-Switch state is active
@@ -209,11 +228,30 @@ namespace vacControlModule
 		static const float TARGET_PRESSURE_3 = 0.5;
 		static const float TARGET_PRESSURE_4 = 0.01f;
 
-		// TODO NEW ADDED-> CHECK FUNCTIONALTY WITH FRANIC
 		static int lastState;
 		static int lastPumpState;
 
 		bool _vacControlInitialized;
+
+		/**
+		 * @brief Logic for when switch is OFF
+		 */
+		void handleOffMode();
+
+		/**
+		 * @brief Logic for when switch is in MANUAL mode
+		 */
+		void handleManualMode();
+
+		/**
+		 * @brief Logic for when switch is in REMOTE mode
+		 */
+		void handleRemoteMode();
+
+		/**
+		 * @brief Logic for when switch is Invalid
+		 */
+		void handleInvalidMode();
 	};
 }
 
