@@ -43,6 +43,5 @@ var searchData=
   ['spiread_40',['spiRead',['../classcom_module_1_1_s_p_i_communication.html#a13b3a3bd39b8d203b3af4761ea9a3693',1,'comModule::SPICommunication']]],
   ['spiwrite_41',['spiWrite',['../classcom_module_1_1_s_p_i_communication.html#a0beeda059a00ad3613e3f985656e6bcd',1,'comModule::SPICommunication']]],
   ['startbusytime_42',['startBusyTime',['../classreport_system_1_1_report_system.html#a6d34d7c8534ff96d109acaef76f4878f',1,'reportSystem::ReportSystem']]],
-  ['startidletime_43',['startIdleTime',['../classreport_system_1_1_report_system.html#aead25f060ef4c7631dbbb3f207a1094b',1,'reportSystem::ReportSystem']]],
-  ['switchstates_44',['switchstates',['../namespaceflyback_module.html#a0ced2495eea57c83b19a143f3840466a',1,'flybackModule::SwitchStates'],['../namespacevac_control_module.html#af8a9e2bf7ef4f562b53edc2d3e295d53',1,'vacControlModule::SwitchStates']]]
+  ['startidletime_43',['startIdleTime',['../classreport_system_1_1_report_system.html#aead25f060ef4c7631dbbb3f207a1094b',1,'reportSystem::ReportSystem']]]
 ];

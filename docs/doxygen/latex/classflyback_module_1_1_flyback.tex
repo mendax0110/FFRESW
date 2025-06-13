@@ -24,8 +24,12 @@ bool \mbox{\hyperlink{classflyback_module_1_1_flyback_ae50adfa0f2b76c0ba22536915
 \begin{DoxyCompactList}\small\item\em Returns the state of the timer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classflyback_module_1_1_flyback_a5373fad01b79168d4786e6066dd74a90}{set\+Timer\+State}} (bool state)
 \begin{DoxyCompactList}\small\item\em Sets the state of the timer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{Switch\+States}} \mbox{\hyperlink{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499}{get\+Switch\+State}} ()
+\mbox{\hyperlink{namespaceflyback_module_ac413e1efcd04264f93e6a37723952c30}{Main\+Switch\+States}} \mbox{\hyperlink{classflyback_module_1_1_flyback_a19baeaf6c171ea2c6f23664f5ab0d7b8}{get\+Main\+Switch\+State}} ()
 \begin{DoxyCompactList}\small\item\em Get the state of the Main-\/\+Switch. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceflyback_module_add5d7269254a00714123f646962e91d0}{HVSwitch\+States}} \mbox{\hyperlink{classflyback_module_1_1_flyback_ae93510f909bd5816626c20e1926e8d72}{get\+HVSwitch\+State}} ()
+\begin{DoxyCompactList}\small\item\em Get the state of the HV-\/\+Switch. \end{DoxyCompactList}\item 
+HVModule \mbox{\hyperlink{classflyback_module_1_1_flyback_aab6453a6f20216eac410c2e89dd21535}{get\+HVState}} ()
+\begin{DoxyCompactList}\small\item\em Get the state of the HV-\/\+Output. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structflyback_module_1_1_measurement}{Measurement}} \mbox{\hyperlink{classflyback_module_1_1_flyback_ad3df8aded7ca0c7a85340701a8dee743}{measure}} ()
 \begin{DoxyCompactList}\small\item\em Measures the voltage, current, power, digital\+Value and frequency of the system. \end{DoxyCompactList}\item 
 \Hypertarget{classflyback_module_1_1_flyback_a61248b00d6edb348459a5d4ca1ff3e26}\label{classflyback_module_1_1_flyback_a61248b00d6edb348459a5d4ca1ff3e26} 
@@ -74,6 +78,32 @@ Getter Function to get the Pin\+Mode.
 \begin{DoxyReturn}{Returns}
 integer with state 
 \end{DoxyReturn}
+\Hypertarget{classflyback_module_1_1_flyback_aab6453a6f20216eac410c2e89dd21535}\label{classflyback_module_1_1_flyback_aab6453a6f20216eac410c2e89dd21535} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getHVState@{getHVState}}
+\index{getHVState@{getHVState}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getHVState()}{getHVState()}}
+{\footnotesize\ttfamily HVModule Flyback\+::get\+HVState (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the state of the HV-\/\+Output. 
+
+\begin{DoxyReturn}{Returns}
+Enum -\/\texorpdfstring{$>$}{>} The current state of the HV-\/\+Output (e.\+g., "{}\+Power\+Supply\+\_\+\+OFF"{}, "{}\+Power\+Supply\+\_\+\+ON"{}) 
+\end{DoxyReturn}
+\Hypertarget{classflyback_module_1_1_flyback_ae93510f909bd5816626c20e1926e8d72}\label{classflyback_module_1_1_flyback_ae93510f909bd5816626c20e1926e8d72} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getHVSwitchState@{getHVSwitchState}}
+\index{getHVSwitchState@{getHVSwitchState}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getHVSwitchState()}{getHVSwitchState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceflyback_module_add5d7269254a00714123f646962e91d0}{HVSwitch\+States}} Flyback\+::get\+HVSwitch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the state of the HV-\/\+Switch. 
+
+\begin{DoxyReturn}{Returns}
+Enum -\/\texorpdfstring{$>$}{>} The current state of the HV-\/\+Switch (e.\+g., "{}\+HV\+\_\+\+Module OFF"{}, "{}\+HV\+\_\+\+Module ON"{}) 
+\end{DoxyReturn}
 \Hypertarget{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db}\label{classflyback_module_1_1_flyback_a59b3b5de06d71b755aeef039b90fd6db} 
 \index{flybackModule::Flyback@{flybackModule::Flyback}!getHysteresis@{getHysteresis}}
 \index{getHysteresis@{getHysteresis}!flybackModule::Flyback@{flybackModule::Flyback}}
@@ -87,11 +117,11 @@ Getter Function for the HAS to know what the current hysteresis\+Voltage is.
 \begin{DoxyReturn}{Returns}
 The Voltage the system is using to prevent swinging. 
 \end{DoxyReturn}
-\Hypertarget{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499}\label{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499} 
-\index{flybackModule::Flyback@{flybackModule::Flyback}!getSwitchState@{getSwitchState}}
-\index{getSwitchState@{getSwitchState}!flybackModule::Flyback@{flybackModule::Flyback}}
-\doxysubsubsection{\texorpdfstring{getSwitchState()}{getSwitchState()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespaceflyback_module_a0ced2495eea57c83b19a143f3840466a}{Switch\+States}} Flyback\+::get\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{classflyback_module_1_1_flyback_a19baeaf6c171ea2c6f23664f5ab0d7b8}\label{classflyback_module_1_1_flyback_a19baeaf6c171ea2c6f23664f5ab0d7b8} 
+\index{flybackModule::Flyback@{flybackModule::Flyback}!getMainSwitchState@{getMainSwitchState}}
+\index{getMainSwitchState@{getMainSwitchState}!flybackModule::Flyback@{flybackModule::Flyback}}
+\doxysubsubsection{\texorpdfstring{getMainSwitchState()}{getMainSwitchState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceflyback_module_ac413e1efcd04264f93e6a37723952c30}{Main\+Switch\+States}} Flyback\+::get\+Main\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -105,7 +135,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a92f5e16266c58e326fb28795e10c6499_icgraph}
+\includegraphics[width=350pt]{classflyback_module_1_1_flyback_a19baeaf6c171ea2c6f23664f5ab0d7b8_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3}\label{classflyback_module_1_1_flyback_a8e38b5274c4842348b055ed543c1c6a3} 
@@ -136,8 +166,7 @@ true -\/\texorpdfstring{$>$}{>} if the timer is initialized
 
 false -\/\texorpdfstring{$>$}{>} if the timer is not initialized 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -269,8 +298,7 @@ Function to get the desired Pin\+Mode from HAS.
 {\em state} & -\/\texorpdfstring{$>$}{>} the state to change the Pin\+Mode \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

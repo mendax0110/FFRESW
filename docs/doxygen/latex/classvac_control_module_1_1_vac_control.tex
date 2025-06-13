@@ -20,8 +20,12 @@ void {\bfseries deinitialize} ()
 \begin{DoxyCompactList}\small\item\em denitialize the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} System This method shuts down the pins and prepares graceful restart. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}{is\+Initialized}} () const
 \begin{DoxyCompactList}\small\item\em Get the state of the \doxylink{classvac_control_module_1_1_vac_control}{Vac\+Control} system. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}{Switch\+States}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83}{get\+Switch\+State}} ()
+\mbox{\hyperlink{namespacevac_control_module_a750db4dc68960fb61ba7d898085ad0b2}{Main\+Switch\+States}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3aa4331aa66823dba8009cbe49ffd664}{get\+Main\+Switch\+State}} ()
 \begin{DoxyCompactList}\small\item\em Returns the state of the main switch. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevac_control_module_a7b5f6940dbd0cc02366c9805a6cee14f}{Pump\+Switch\+States}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a65c6ec03596592c7d97e974149f8b274}{get\+Pump\+Switch\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the state of the pump switch. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacevac_control_module_a6f02cc810171428b7adbbf2024fceb02}{Pump\+State}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3a389de6488c4a4843e28fd3d789ecce}{get\+Pump\+State}} ()
+\begin{DoxyCompactList}\small\item\em Returns the state of the pump. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366}{get\+Scenario}} ()
 \begin{DoxyCompactList}\small\item\em Executes logic depending on which Main-\/\+Switch state is active. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}} \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064}{measure}} ()
@@ -64,15 +68,7 @@ float \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a8c57183ed00c34af
 
 Process external data for scenarios (currently unused) 
 
-This function could be expanded to process external scenario commands if needed. Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}\label{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5} 
+This function could be expanded to process external scenario commands if needed. \Hypertarget{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}\label{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!getExternPressure@{getExternPressure}}
 \index{getExternPressure@{getExternPressure}!vacControlModule::VacControl@{vacControlModule::VacControl}}
 \doxysubsubsection{\texorpdfstring{getExternPressure()}{getExternPressure()}}
@@ -85,7 +81,8 @@ Gets the external pressure value.
 \begin{DoxyReturn}{Returns}
 The current external pressure value 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -98,15 +95,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{getExternPump()}{getExternPump()}}
 {\footnotesize\ttfamily int Vac\+Control\+::get\+Extern\+Pump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-@ brief Getter Function to get the Pin\+Mode Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}\label{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884} 
+@ brief Getter Function to get the Pin\+Mode \Hypertarget{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}\label{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!getExternScenario@{getExternScenario}}
 \index{getExternScenario@{getExternScenario}!vacControlModule::VacControl@{vacControlModule::VacControl}}
 \doxysubsubsection{\texorpdfstring{getExternScenario()}{getExternScenario()}}
@@ -119,13 +108,53 @@ Getter function to retrieve the current external scenario state.
 \begin{DoxyReturn}{Returns}
 The current external scenario state (integer) 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+\Hypertarget{classvac_control_module_1_1_vac_control_a3aa4331aa66823dba8009cbe49ffd664}\label{classvac_control_module_1_1_vac_control_a3aa4331aa66823dba8009cbe49ffd664} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getMainSwitchState@{getMainSwitchState}}
+\index{getMainSwitchState@{getMainSwitchState}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getMainSwitchState()}{getMainSwitchState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacevac_control_module_a750db4dc68960fb61ba7d898085ad0b2}{Main\+Switch\+States}} Vac\+Control\+::get\+Main\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the state of the main switch. 
+
+\begin{DoxyReturn}{Returns}
+The current state of the switch (Main\+\_\+\+Switch\+\_\+\+OFF, Main\+\_\+\+Switch\+\_\+\+MANUAL, etc.) 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884_icgraph}
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a3aa4331aa66823dba8009cbe49ffd664_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_a3a389de6488c4a4843e28fd3d789ecce}\label{classvac_control_module_1_1_vac_control_a3a389de6488c4a4843e28fd3d789ecce} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getPumpState@{getPumpState}}
+\index{getPumpState@{getPumpState}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getPumpState()}{getPumpState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacevac_control_module_a6f02cc810171428b7adbbf2024fceb02}{Pump\+State}} Vac\+Control\+::get\+Pump\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the state of the pump. 
+
+\begin{DoxyReturn}{Returns}
+The current state of the output for the pump (pump\+\_\+\+ON, pump\+\_\+\+OFF) 
+\end{DoxyReturn}
+\Hypertarget{classvac_control_module_1_1_vac_control_a65c6ec03596592c7d97e974149f8b274}\label{classvac_control_module_1_1_vac_control_a65c6ec03596592c7d97e974149f8b274} 
+\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getPumpSwitchState@{getPumpSwitchState}}
+\index{getPumpSwitchState@{getPumpSwitchState}!vacControlModule::VacControl@{vacControlModule::VacControl}}
+\doxysubsubsection{\texorpdfstring{getPumpSwitchState()}{getPumpSwitchState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacevac_control_module_a7b5f6940dbd0cc02366c9805a6cee14f}{Pump\+Switch\+States}} Vac\+Control\+::get\+Pump\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the state of the pump switch. 
+
+\begin{DoxyReturn}{Returns}
+The current state of the switch (Switch\+\_\+\+Pump\+\_\+\+ON, Switch\+\_\+\+PUMP\+\_\+\+OFF) 
+\end{DoxyReturn}
 \Hypertarget{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366}\label{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!getScenario@{getScenario}}
 \index{getScenario@{getScenario}!vacControlModule::VacControl@{vacControlModule::VacControl}}
@@ -136,7 +165,15 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Executes logic depending on which Main-\/\+Switch state is active. 
 
-This function decides which scenario to run based on the current state of the system. \Hypertarget{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66}\label{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66} 
+This function decides which scenario to run based on the current state of the system. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66}\label{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!getScenarioFromPotValue@{getScenarioFromPotValue}}
 \index{getScenarioFromPotValue@{getScenarioFromPotValue}!vacControlModule::VacControl@{vacControlModule::VacControl}}
 \doxysubsubsection{\texorpdfstring{getScenarioFromPotValue()}{getScenarioFromPotValue()}}
@@ -153,26 +190,6 @@ Determines the scenario based on the potentiometer value.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The corresponding scenario based on the potentiometer value 
-\end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83}\label{classvac_control_module_1_1_vac_control_a75608113cf060b0b5c3ce00f8a1aca83} 
-\index{vacControlModule::VacControl@{vacControlModule::VacControl}!getSwitchState@{getSwitchState}}
-\index{getSwitchState@{getSwitchState}!vacControlModule::VacControl@{vacControlModule::VacControl}}
-\doxysubsubsection{\texorpdfstring{getSwitchState()}{getSwitchState()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespacevac_control_module_af8a9e2bf7ef4f562b53edc2d3e295d53}{Switch\+States}} Vac\+Control\+::get\+Switch\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Returns the state of the main switch. 
-
-\begin{DoxyReturn}{Returns}
-The current state of the switch (Main\+\_\+\+Switch\+\_\+\+OFF, Main\+\_\+\+Switch\+\_\+\+MANUAL, etc.) 
 \end{DoxyReturn}
 \Hypertarget{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}\label{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!isInitialized@{isInitialized}}
@@ -207,13 +224,6 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973}\label{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973} 
@@ -301,13 +311,6 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b}\label{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b} 
 \index{vacControlModule::VacControl@{vacControlModule::VacControl}!setVacuumLed@{setVacuumLed}}
 \index{setVacuumLed@{setVacuumLed}!vacControlModule::VacControl@{vacControlModule::VacControl}}
@@ -325,13 +328,6 @@ Controls the vacuum LED based on the current and target pressures.
 {\em target\+Pressure} & The target pressure to reach \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b_icgraph}
-\end{center}
-\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

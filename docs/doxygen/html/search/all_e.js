@@ -14,5 +14,6 @@ var searchData=
   ['psitopascal_11',['psiToPascal',['../classcalc_module_1_1_calc_module_internals.html#ab1fa6b4a7f7e28cfc812d8c2af5e0941',1,'calcModule::CalcModuleInternals']]],
   ['ptrutils_12',['PtrUtils',['../class_ptr_utils.html',1,'']]],
   ['ptrutils_2eh_13',['ptrUtils.h',['../ptr_utils_8h.html',1,'']]],
-  ['pumpstate_14',['PumpState',['../namespacevac_control_module.html#a6f02cc810171428b7adbbf2024fceb02',1,'vacControlModule']]]
+  ['pumpstate_14',['PumpState',['../namespacevac_control_module.html#a6f02cc810171428b7adbbf2024fceb02',1,'vacControlModule']]],
+  ['pumpswitchstates_15',['PumpSwitchStates',['../namespacevac_control_module.html#a7b5f6940dbd0cc02366c9805a6cee14f',1,'vacControlModule']]]
 ];
