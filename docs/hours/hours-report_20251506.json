@@ -1,0 +1,36 @@
+{
+  "latzer.felix@gmail.com": {
+    "name": "Felix Latzer",
+    "hours": 0,
+    "commits": 2
+  },
+  "fabiobonelli.15@gmail.com": {
+    "name": "Bonelli",
+    "hours": 0,
+    "commits": 3
+  },
+  "139453039+FelixLatzer@users.noreply.github.com": {
+    "name": "FelixLatzer",
+    "hours": 2,
+    "commits": 2
+  },
+  "dominik-franic@outlook.com": {
+    "name": "fradom01",
+    "hours": 7,
+    "commits": 14
+  },
+  "adrian.goessl@outlook.com": {
+    "name": "m3ndax",
+    "hours": 19,
+    "commits": 48
+  },
+  "52537419+mendax0110@users.noreply.github.com": {
+    "name": "Adrian",
+    "hours": 81,
+    "commits": 100
+  },
+  "total": {
+    "hours": 109,
+    "commits": 169
+  }
+}
