@@ -1,12 +1,12 @@
 /**
- * @file flyback.h
- * @author Domin
- * @brief Header for the flyback class.
- * @version 0.2
- * @date 2025-05-18
- *
- * @copyright Copyright (c) 2025
- */
+* @file flyback.h
+* @author Domin
+* @brief Header for the flyback class.
+* @version 0.2
+* @date 2025-05-18
+*
+* @copyright Copyright (c) 2025
+*/
 #ifndef FLYBACK_H
 #define FLYBACK_H
 
@@ -263,13 +263,13 @@ namespace flybackModule
 
         /**
          * @brief Function to configure the timer settings
-         * 
+         *
          */
 		void timerConfig();
 
         /**
          * @brief Function to change the PWM frequency and dutyCycle
-         * 
+         *
          * @param frequency -> The new PWM frequency
          * @param dutyCycle -> The new PWM dutyCycle
          */

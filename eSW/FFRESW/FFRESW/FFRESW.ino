@@ -9,6 +9,7 @@
 #include <flyback.h>
 #include <logManager.h>
 #include <vacControl.h>
+//#include <neutronDetector.h>
 
 using namespace calcModule;
 using namespace sensorModule;
@@ -27,6 +28,7 @@ TimeModuleInternals* _timeMod = TimeModuleInternals::getInstance();
 DateTimeStruct currentTime;
 Flyback flyback;
 VacControl vacControl;
+//NeutronDetector neutronDetector;
 
 // Buffers for sensor data
 #ifdef USE_I2C
@@ -102,7 +104,7 @@ public:
 		if (flyback.isInitialized())
 		{
 			flyback.run();
-			msleep(1000);
+			yield(); // DO NOT UNDER ANY CIRCUMSTANCE CHANGE THIS TO SLEEP WE NEED TO YIELD TO THE NEXT TASK
 		}
 
 		if (vacControl.isInitialized())
@@ -110,7 +112,17 @@ public:
 			vacControl.run();
 
 			vacControlModule::MainSwitchStates mainState = vacControl.getMainSwitchState();
-			if (mainState == vacControlModule::MainSwitchStates::Main_Switch_MANUAL)
+			vacControlModule::MainSwitchStates lastmainState = vacControlModule::MainSwitchStates::Main_switch_INVALID;
+
+			if (mainState == vacControlModule::MainSwitchStates::Main_Switch_OFF)
+			{
+				if (lastAppliedScenario != Scenarios::Scenario_5)
+				{
+					applyScenario(Scenarios::Scenario_5);
+					lastAppliedScenario = Scenarios::Scenario_5;
+				}
+			}
+			else if (mainState == vacControlModule::MainSwitchStates::Main_Switch_MANUAL)
 			{
                 String response;
 
@@ -133,7 +145,8 @@ public:
 				reportTask.post();
 			}
 
-			msleep(1000);
+			msleep(1000); //TODO EndpointTask not working properly timout problems
+			//yield();
 		}
 
 		yield();
@@ -158,21 +171,21 @@ private:
 			{
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 2"));
 				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "1");
+				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.1");
 				break;
 			}
 			case Scenarios::Scenario_3:
 			{
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 3"));
 				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.8");
+				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.05");
 				break;
 			}
 			case Scenarios::Scenario_4:
 			{
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, F("Scenario 4"));
 				com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.6");
+				com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.03");
 				break;
 			}
 			case Scenarios::Scenario_5:
@@ -196,7 +209,7 @@ class SensorActorEndpointTask final : public frt::Task<SensorActorEndpointTask, 
 public:
 	bool run()
 	{
-	    msleep(500);
+	    msleep(500); // TODO CHECK WAS 500
 
 	    // Read the requested endpoint
 	    String requestedEndpoint = com.getEthernet().getRequestedEndpoint();
@@ -220,14 +233,10 @@ public:
             jsonBody = handleFlybackSet(requestedEndpoint);
         }
 
-        // Scenario-Endpoints -> "VacControl"
-        if (requestedEndpoint.startsWith("set_scenario/"))
+        // VacControl-Endpoints
+        if(requestedEndpoint.startsWith("get_vacControl_"))
         {
-            jsonBody = handleScenarioSet(requestedEndpoint);
-        }
-        else if (requestedEndpoint.startsWith("get_scenario/"))
-        {
-        	jsonBody = handleScenarioGet(requestedEndpoint);
+        	jsonBody = handleVacControlGet(requestedEndpoint);
         }
 
         // Temperature-Sensor-Endpoints
@@ -235,6 +244,22 @@ public:
         {
             handleTemperatureSensors(requestedEndpoint, jsonBody);
         }
+
+        // Vacuumpump-Endpoints
+        if (requestedEndpoint.startsWith("set_pump/"))
+        {
+        	jsonBody = handleVacuumPumpSet(requestedEndpoint);
+        }
+        else if(requestedEndpoint.startsWith("get_pump_"))
+		{
+        	jsonBody = handleVacuumPumpGet(requestedEndpoint);
+		}
+
+        // Neutron-Detector-Endpoints
+        /*if (requestedEndpoint.startsWith("get_neutron_"))
+        {
+            jsonBody = handleNeutronGet(requestedEndpoint);
+        }*/
 
         // Vacuumpump-Endpoints
         if (requestedEndpoint.startsWith("set_pump/"))
@@ -367,7 +392,7 @@ private:
         SerialMenu::printToSerial(SerialMenu::OutputLevel::DEBUG, "Response from VAT: " + response);
 
         float rawVal = CalcModuleInternals::extractFloat(response, 0);
-        jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "pressure");
+        jsonBody = buildJsonResponse(requestedEndpoint, rawVal, command.endsWith("position") ? "position" : "mbar");
         SerialMenu::printToSerial(jsonBody);
     }
 
@@ -384,7 +409,6 @@ private:
         if (command == "digital_duty_value") return buildJsonResponse("digital_duty_value", result.digitalDutyValue, "");
         if (command == "dutyCycle") return buildJsonResponse("dutyCycle", result.dutyCycle, "%");
         if (command == "main_switch") return buildJsonResponse("main_switch", static_cast<int>(flyback.getMainSwitchState()), "state");
-        if (command == "hv_switch") return buildJsonResponse("hv_switch", static_cast<int>(flyback.getHVSwitchState()), "state");
         if (command == "psu_state") return buildJsonResponse("psu_state", static_cast<int>(flyback.getHVState()), "state");
 
         return "";
@@ -420,14 +444,22 @@ private:
         return "";
     }
 
+    String handleVacControlGet(const String& cmd)
+    {
+    	String command = cmd.substring(15);
+
+    	if(command == "targetpressure")
+    	{
+    		float target = vacControl.getCurrentTargetPressure();
+    		return buildJsonResponse("target_pressure", target, "bar");
+    	}
+    	return "";
+    }
+
     String handleVacuumPumpGet(const String& cmd)
     {
     	String command = cmd.substring(9);
-
-        if (command == "main_switch") return buildJsonResponse("main_switch", static_cast<int>(vacControl.getMainSwitchState()), "state");
-        if (command == "pump_switch") return buildJsonResponse("pump_switch", static_cast<int>(vacControl.getPumpSwitchState()), "state");
-        if (command == "pump_state") return buildJsonResponse("pump_state", static_cast<int>(vacControl.getPumpState()), "state");
-
+        if (command == "state") return buildJsonResponse("pump_state", static_cast<int>(vacControl.getPumpState()), "state");
         return "";
     }
 
@@ -439,70 +471,6 @@ private:
         return buildJsonResponse("pump", pumpState, "state");
     }
 
-    String handleScenarioSet(const String& cmd)
-    {
-        String scenarioStr = cmd.substring(13);
-        int scenarioId = scenarioStr.toInt();
-        int scenarioEnum = 0;
-        String label;
-
-        switch (scenarioId)
-        {
-            case 1:
-                scenarioEnum = static_cast<int>(Scenarios::Scenario_1);
-                vacControl.setExternScenario(scenarioEnum);
-                com.getEthernet().setParameter(Compound2::CONTROL_MODE, "3"); // CLOSE
-                label = "Scenario 1";
-                break;
-            case 2:
-                scenarioEnum = static_cast<int>(Scenarios::Scenario_2);
-                vacControl.setExternScenario(scenarioEnum);
-                com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5"); // Pressure Control
-                com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "1");
-                label = "Scenario 2";
-                break;
-            case 3:
-                scenarioEnum = static_cast<int>(Scenarios::Scenario_3);
-                vacControl.setExternScenario(scenarioEnum);
-                com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5");
-                com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.8");
-                label = "Scenario 3";
-                break;
-            case 4:
-                scenarioEnum = static_cast<int>(Scenarios::Scenario_4);
-                vacControl.setExternScenario(scenarioEnum);
-                com.getEthernet().setParameter(Compound2::CONTROL_MODE, "5");
-                com.getEthernet().setParameter(Compound2::TARGET_PRESSURE, "0.6");
-                label = "Scenario 4";
-                break;
-            case 5:
-                scenarioEnum = static_cast<int>(Scenarios::Scenario_5);
-                vacControl.setExternScenario(scenarioEnum);
-                com.getEthernet().setParameter(Compound2::CONTROL_MODE, "4"); // OPEN
-                label = "Scenario 5";
-                break;
-            default:
-                SerialMenu::printToSerial("Invalid scenario number: " + scenarioStr);
-                return "";
-        }
-
-        return buildJsonResponse(label, scenarioEnum, "int");
-    }
-
-
-    String handleScenarioGet(const String& cmd)
-    {
-        String command = cmd.substring(13);
-
-        if (command == "current")
-        {
-            int scenario = vacControl.getScenario();
-            return buildJsonResponse("scenario", scenario, "id");
-        }
-
-        return "";
-    }
-
     void handleTemperatureSensors(const String& requestedEndpoint, String& jsonBody)
     {
     	String command = requestedEndpoint.substring(16);
@@ -512,30 +480,10 @@ private:
         	float value = sens.readSensor(SensorType::MCP9601_Celsius_Indoor);
         	jsonBody = buildJsonResponse(requestedEndpoint, value, "C");
         }
-        else if (command == "MCP9601F_Indoor")
-        {
-        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Indoor);
-        	jsonBody = buildJsonResponse(requestedEndpoint, value, "F");
-        }
-        else if (command == "MCP9601K_Indoor")
-        {
-        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Indoor);
-        	jsonBody = buildJsonResponse(requestedEndpoint, value, "K");
-        }
         else if (command == "MCP9601C_Outdoor")
         {
         	float value = sens.readSensor(SensorType::MCP9601_Celsius_Outdoor);
         	jsonBody = buildJsonResponse(requestedEndpoint, value, "C");
-        }
-        else if (command == "MCP9601F_Outdoor")
-        {
-        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Outdoor);
-        	jsonBody = buildJsonResponse(requestedEndpoint, value, "F");
-        }
-        else if (command == "MCP9601K_Outdoor")
-        {
-        	float value = sens.readSensor(SensorType::MCP9601_Fahrenheit_Outdoor);
-        	jsonBody = buildJsonResponse(requestedEndpoint, value, "K");
         }
     }
 
@@ -605,6 +553,42 @@ private:
     	hardRestart();
     }
 
+    /*String handleNeutronGet(const String& cmd)
+    {
+        String command = cmd.substring(12);
+
+        if (command == "pulse_analysis")
+        {
+            if (neutronDetector.getPulseCount() == 0)
+            {
+                return buildJsonResponse("neutron_detector_input_disconnected", NULL, "E");
+            }
+
+			// Gets the analyzed data
+            NeutronDetector::PulseAnalysis analysis = neutronDetector.getPulseAnalysis(neutronDetector.getPulseCount() - 1);
+            const NeutronDetector::Pulse& pulse = neutronDetector.getPulse(neutronDetector.getPulseCount() - 1);
+
+            json.clearJson();
+            json.createJson("timestamp", neutronDetector.getPulse(neutronDetector.getPulseCount() - 1).timestamp);
+            json.createJson("decay_time", analysis.decayTime);
+            json.createJson("rise_time", analysis.riseTime);
+            json.createJson("pulse_area", analysis.pulseArea);
+            json.createJson("is_neutron", analysis.isNeutron);
+
+            uint8_t samples[NeutronDetector::SAMPLES_PER_PULSE];
+            for (int i = 0; i < NeutronDetector::SAMPLES_PER_PULSE; i++)
+            {
+                samples[i] = pulse.samples[i];
+            }
+
+            json.createJsonArray("raw_samples", samples);
+
+            return json.getJsonString();
+        }
+
+        return "";
+    }*/
+
 };
 SensorActorEndpointTask sensorActorEndpointTask;
 
@@ -664,8 +648,8 @@ void gracefulRestart()
 
     stackMonitorTask.start(1);
     reportTask.start(1);
-    sensorActorEndpointTask.start(3);
-    flyBackVacControlTask.start(2);
+    sensorActorEndpointTask.start(2);
+    flyBackVacControlTask.start(3);
 }
 
 void hardRestart()
@@ -699,6 +683,8 @@ void setup()
     flyback.initialize();
     vacControl.initialize();
 
+    //neutronDetector.initialize();
+
     byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDA, 0x02 };
     IPAddress ip(192, 168, 1, 3);
     com.getEthernet().beginEthernet(mac, ip);
@@ -713,14 +699,13 @@ void setup()
     String startTime = com.getEthernet().getSpecificEndpoint("time/");
     _timeMod->setTimeFromHas(startTime);
 
-
     SerialMenu::printToSerial(SerialMenu::OutputLevel::INFO, F("Setup complete."));
 
     // Start tasks
     stackMonitorTask.start(1);
     reportTask.start(1);
-    sensorActorEndpointTask.start(3);
-    flyBackVacControlTask.start(2);
+    sensorActorEndpointTask.start(2); // was 3
+    flyBackVacControlTask.start(3); // was 2
 }
 
 void loop()

@@ -41,6 +41,24 @@ namespace jsonModule
         }
 
         /**
+         * @brief Add a key-array pair to the Json document.
+         *
+         * @tparam T Type of the array elements.
+         * @tparam N Size of the array (inferred automatically).
+         * @param key Key to associate with the array.
+         * @param values C-style array of values to add under the key.
+         */
+        template<typename T, size_t N>
+        void createJsonArray(const char* key, const T (&values)[N])
+        {
+            JsonArray array = jsonDoc.createNestedArray(key);
+            for (size_t i = 0; i < N; ++i)
+            {
+                array.add(values[i]);
+            }
+        }
+
+        /**
          * @brief Function to send the Json object over the Serial connection.
          */
         void sendJsonSerial();

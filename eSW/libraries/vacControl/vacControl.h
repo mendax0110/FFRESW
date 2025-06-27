@@ -1,12 +1,12 @@
 /**
- * @file vacControl.h
- * @author Domin
- * @brief Header for the vacControl class.
- * @version 0.2
- * @date 2025-05-18
- *
- * @copyright Copyright (c) 2025
- */
+* @file vacControl.h
+* @author Domin
+* @brief Header for the vacControl class.
+* @version 0.2
+* @date 2025-05-18
+*
+* @copyright Copyright (c) 2025
+*/
 #ifndef VACCONTROL_H
 #define VACCONTROL_H
 
@@ -26,27 +26,12 @@ namespace vacControlModule
 		Main_switch_INVALID
 	};
 
-	/// @brief Enum for extern Setup for pinMode for the PumpState \enum PumpSwitchStates
-	enum class PumpSwitchStates : int
-	{
-		Switch_Pump_OFF,
-		Switch_Pump_ON
-	};
-
 	/// @brief Enum for extern Setup for pinMode for the PumpState \enum PumpState
 	enum class PumpState : int
 	{
 		pump_OFF,
 		pump_ON
 	};
-
-	/// @brief Structure to store the measured values of the system \struct Measurement
-	/// This structure holds the pressure values measured from the system.
-	typedef struct Pressure
-	{
-		float pressure;
-
-	} meas;
 
 	/// @brief Enum to represent the different operating scenarios of the VacControl system
 	enum Scenarios
@@ -58,6 +43,14 @@ namespace vacControlModule
 		Scenario_5 = 4,
 		Invalid_Scenario = -1
 	};
+
+	/// @brief Structure to store the measured values of the system \struct Measurement
+	/// This structure holds the pressure values measured from the system.
+	typedef struct Pressure
+	{
+		float pressure;
+
+	} meas;
 
 	/// @brief VacControl class to manage the vacuum control system
 	/// This class provides methods for initializing the system, configuring the timer,
@@ -97,13 +90,6 @@ namespace vacControlModule
 		MainSwitchStates getMainSwitchState();
 
 		/**
-		 * @brief Returns the state of the pump switch
-		 *
-		 * @return The current state of the switch (Switch_Pump_ON, Switch_PUMP_OFF)
-		 */
-		PumpSwitchStates getPumpSwitchState();
-
-		/**
 		 * @brief Returns the state of the pump
 		 *
 		 * @return The current state of the output for the pump (pump_ON, pump_OFF)
@@ -125,6 +111,12 @@ namespace vacControlModule
 		Pressure measure();
 
 		/**
+		 * @brief Returns the currently selected target pressure
+		 * @return float target pressure value
+		 */
+		float getCurrentTargetPressure();
+
+		/**
 		 * @brief Controls the vacuum LED based on the current and target pressures
 		 *
 		 * @param pressure The current pressure in the system
@@ -139,6 +131,7 @@ namespace vacControlModule
 		  * @return The corresponding scenario based on the potentiometer value
 		  */
 		int getScenarioFromPotValue(int potValue);
+
 
 		/**
 		 * @brief Set the Pump flag
@@ -206,12 +199,13 @@ namespace vacControlModule
 	private:
 		Pressure meas;
 
+
 		//Define Pins --> Input
 		static const int Main_Switch_OFF = 27;		//Main_Switch OFF Mode 27
 		static const int Main_Switch_MANUAL = 28;	//Main_Switch Manual Mode 28
 		static const int Main_Switch_REMOTE = 29;	//Main_Switch Remote Mode 29
 		static const int Switch_Pump_ON = 23;		//Button to turn Pump ON 23
-		static const int targetPressure = A3;		//Potentiometer for Regulation
+		static const int targetPressure = A4;		//Potentiometer for Regulation
 
 		//Define Pins --> Output
 		static const int Pump_Status_LED = 24; 		//OUTPUT to see State off Pump
@@ -223,11 +217,11 @@ namespace vacControlModule
 		int currentPumpState = -1;
 
 		//Variables for TargetPressure
-		static const float TARGET_PRESSURE_1 = 1;
-		static const float TARGET_PRESSURE_2 = 0.8f;
-		static const float TARGET_PRESSURE_3 = 0.5;
-		static const float TARGET_PRESSURE_4 = 0.01f;
+		static const float TARGET_PRESSURE_1 = 0.1f; 	//0.1mbar
+		static const float TARGET_PRESSURE_2 = 0.05f;	//0.05mbar
+		static const float TARGET_PRESSURE_3 = 0.03f;	//0.03mbar
 
+		//States
 		static int lastState;
 		static int lastPumpState;
 

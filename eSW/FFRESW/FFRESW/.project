@@ -137,6 +137,11 @@
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/logManager</location>
 		</link>
 		<link>
+			<name>libraries/neutronDetector</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/neutronDetector</location>
+		</link>
+		<link>
 			<name>libraries/pgmStrToRAM</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/pgmStrToRAM</location>

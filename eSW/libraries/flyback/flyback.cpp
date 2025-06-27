@@ -1,11 +1,3 @@
-/**
- * @file flybacl.cpp
- * @brief Implementation of the flyback class.
- * @version 0.1
- * @date 2024-01-26
- *
- * @copyright Copyright (c) 2024
- */
 #include <Wire.h>
 #include <SPI.h>
 #include <Arduino.h>
@@ -134,7 +126,6 @@ void Flyback::setHVandPSU(int hvLedState, int powerSupplyState)
 }
 
 
-
 MainSwitchStates Flyback::getMainSwitchState()
 {
 	if (digitalRead(Main_Switch_OFF) == LOW)
@@ -177,6 +168,9 @@ HVModule Flyback::getHVState()
 Measurement Flyback::measure()
 {
 	int adcValue = analogRead(Measure_ADC);
+	int psuState = digitalRead(PSU);
+	int manualState = digitalRead(Main_Switch_MANUAL);
+	int remoteState = digitalRead(Main_Switch_REMOTE);
 
 
 	// Wird kontinuierlich Bearbeitet
@@ -187,7 +181,7 @@ Measurement Flyback::measure()
 	meas.voltage = (meas.current / 1000000) * R1;
 	meas.power = (meas.voltage * meas.current) / 1000000;
 
-	if (digitalRead(Main_Switch_MANUAL) == LOW)
+	if (manualState == LOW && psuState == HIGH)
 	{
 		// Read in digitValue from poti
 		meas.digitalFreqValue = analogRead(PWM_Frequency);
@@ -197,11 +191,19 @@ Measurement Flyback::measure()
 		meas.frequency = map(meas.digitalFreqValue, 0, 1023, 25000, 250000);
 		meas.dutyCycle = map(meas.digitalDutyValue, 0, 1023, 1, 50);
 	}
-	else if (digitalRead(Main_Switch_REMOTE) == LOW)
+	else if (remoteState == LOW && psuState == HIGH)
 	{
 		uint32_t freq = getExternFrequency();
 		int dutycycle = getExternDutyCycle();
 		setPWMFrequency(freq, dutycycle);
+	}
+	else
+	{
+		meas.frequency = NULL;
+		meas.dutyCycle = NULL;
+		meas.current = NULL;
+		meas.voltage = NULL;
+		meas.power = NULL;
 	}
     return meas;
 }
@@ -227,11 +229,12 @@ void Flyback::run()
 				SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("HV:Invalid Switch Position."));
 				break;
 		}
-		lastState = currentState;
 	}
 
-	handleState(currentState);
+	handleState(currentState);       // <- zuerst logische Behandlung
+	lastState = currentState;        // <- dann Zustand merken
 }
+
 
 void Flyback::handleState(MainSwitchStates state)
 {
@@ -287,10 +290,38 @@ void Flyback::handleManualState()
 
 void Flyback::handleRemoteState()
 {
-	setTimerState(true);
-	setHVandPSU(LOW, getExternPSU());
-	setPWMFrequency(getExternFrequency(), getExternDutyCycle());
+    // Nur beim ersten Eintritt in REMOTE alles auf LOW setzen
+    if (lastState != MainSwitchStates::Main_Switch_REMOTE)
+    {
+        // Alles deaktivieren: PWM, HV, PSU, Timer
+        digitalWrite(PWM_OUT, LOW);
+        digitalWrite(PWM_INV, LOW);
+        setHVandPSU(LOW, LOW);
+        setTimerState(false);
+
+        // PSU-Zustand zurücksetzen, HAS muss ihn neu setzen
+        currentPsuState = 0;
+
+        // Abbruch – warten auf gültige Werte vom HAS
+        return;
+    }
+
+    // Normalbetrieb im REMOTE-Modus (nachdem HAS Werte gesetzt hat)
+    if (currentPsuState == static_cast<int>(flybackModule::HVModule::powerSupply_ON))
+    {
+        setTimerState(true);
+        setHVandPSU(LOW, getExternPSU());
+        setPWMFrequency(getExternFrequency(), getExternDutyCycle());
+    }
+    else
+    {
+        setTimerState(false);
+        digitalWrite(PWM_OUT, LOW);
+        digitalWrite(PWM_INV, LOW);
+        setHVandPSU(LOW, getExternPSU());
+    }
 }
+
 
 void Flyback::handleInvalidState()
 {
@@ -308,7 +339,7 @@ void Flyback::setExternPSU(int state)
 {
 	if (state < 0 || state > 1)
 	{
-		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid PSU state (must be 0–2)."));
+		SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Invalid PSU state"));
 		return;
 	}
 	currentPsuState = state;
@@ -432,4 +463,3 @@ float Flyback::getHysteresis() const
 {
 	return _hysteresis;
 }
-
