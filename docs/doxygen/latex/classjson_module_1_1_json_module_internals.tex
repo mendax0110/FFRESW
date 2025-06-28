@@ -14,6 +14,8 @@ Class for the JSON module internals.
 \item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a75a7728d7bbd2092ed6c284ced025c3c}{create\+Json}} (const char \texorpdfstring{$\ast$}{*}key, T value)
 \begin{DoxyCompactList}\small\item\em Add a key-\/value pair to the Json document. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , size\+\_\+t N$>$ }\\void \mbox{\hyperlink{classjson_module_1_1_json_module_internals_a033036690bf6ac518db5444926fcecc3}{create\+Json\+Array}} (const char \texorpdfstring{$\ast$}{*}key, const T(\&values)\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em Add a key-\/array pair to the Json document. \end{DoxyCompactList}\item 
 \Hypertarget{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6}\label{classjson_module_1_1_json_module_internals_a243336f24f5de5f88c5a79dd57b6a1d6} 
 void {\bfseries send\+Json\+Serial} ()
 \begin{DoxyCompactList}\small\item\em Function to send the Json object over the Serial connection. \end{DoxyCompactList}\item 
@@ -69,6 +71,31 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classjson_module_1_1_json_module_internals_a75a7728d7bbd2092ed6c284ced025c3c_cgraph}
 \end{center}
 \end{figure}
+\Hypertarget{classjson_module_1_1_json_module_internals_a033036690bf6ac518db5444926fcecc3}\label{classjson_module_1_1_json_module_internals_a033036690bf6ac518db5444926fcecc3} 
+\index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!createJsonArray@{createJsonArray}}
+\index{createJsonArray@{createJsonArray}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}
+\doxysubsubsection{\texorpdfstring{createJsonArray()}{createJsonArray()}}
+{\footnotesize\ttfamily template$<$typename T , size\+\_\+t N$>$ \\
+void json\+Module\+::\+Json\+Module\+Internals\+::create\+Json\+Array (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{const T(\&)}]{values\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a key-\/array pair to the Json document. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of the array elements. \\
+\hline
+{\em N} & Size of the array (inferred automatically). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key to associate with the array. \\
+\hline
+{\em values} & C-\/style array of values to add under the key. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f}\label{classjson_module_1_1_json_module_internals_a45ba7bb9da21aa2cdd05be2482b9347f} 
 \index{jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}!getJsonString@{getJsonString}}
 \index{getJsonString@{getJsonString}!jsonModule::JsonModuleInternals@{jsonModule::JsonModuleInternals}}

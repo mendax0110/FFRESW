@@ -20,120 +20,116 @@
 \DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ Main\_switch\_INVALID}
 \DoxyCodeLine{00027\ \ \ \ \ \};}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacevac_control_module_a7b5f6940dbd0cc02366c9805a6cee14f}{PumpSwitchStates}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacevac_control_module_a6f02cc810171428b7adbbf2024fceb02}{PumpState}}\ :\ \textcolor{keywordtype}{int}}
 \DoxyCodeLine{00031\ \ \ \ \ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Switch\_Pump\_OFF,}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Switch\_Pump\_ON}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ pump\_OFF,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ pump\_ON}
 \DoxyCodeLine{00034\ \ \ \ \ \};}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacevac_control_module_a6f02cc810171428b7adbbf2024fceb02}{PumpState}}\ :\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}}}
 \DoxyCodeLine{00038\ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ pump\_OFF,}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ pump\_ON}
-\DoxyCodeLine{00041\ \ \ \ \ \};}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}}
-\DoxyCodeLine{00046\ \ \ \ \ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pressure;}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \}\ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{meas}};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}}}
-\DoxyCodeLine{00053\ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ Scenario\_1\ =\ 0,}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ Scenario\_2\ =\ 1,}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ Scenario\_3\ =\ 2,}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ Scenario\_4\ =\ 3,}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ Scenario\_5\ =\ 4,}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ Invalid\_Scenario\ =\ -\/1}
-\DoxyCodeLine{00060\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ Scenario\_1\ =\ 0,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ Scenario\_2\ =\ 1,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ Scenario\_3\ =\ 2,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ Scenario\_4\ =\ 3,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ Scenario\_5\ =\ 4,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ Invalid\_Scenario\ =\ -\/1}
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pressure;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \}\ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{meas}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvac_control_module_1_1_vac_control}{VacControl}}}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00061\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvac_control_module_1_1_vac_control}{VacControl}}}
-\DoxyCodeLine{00066\ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvac_control_module_1_1_vac_control}{VacControl}}();}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvac_control_module_1_1_vac_control}{\string~VacControl}}();}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a0297a8b42f8d44c4b2e30b4149517907}{initialize}}();}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a67e66a5d9e7ba06cdcb780206a25426c}{deinitialize}}();}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvac_control_module_1_1_vac_control}{VacControl}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvac_control_module_1_1_vac_control}{\string~VacControl}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a0297a8b42f8d44c4b2e30b4149517907}{initialize}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a67e66a5d9e7ba06cdcb780206a25426c}{deinitialize}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_acc0cd84b3ce34a11768eef55b405e6ae}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a750db4dc68960fb61ba7d898085ad0b2}{MainSwitchStates}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3aa4331aa66823dba8009cbe49ffd664}{getMainSwitchState}}();}
 \DoxyCodeLine{00091\ }
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a750db4dc68960fb61ba7d898085ad0b2}{MainSwitchStates}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3aa4331aa66823dba8009cbe49ffd664}{getMainSwitchState}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a6f02cc810171428b7adbbf2024fceb02}{PumpState}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3a389de6488c4a4843e28fd3d789ecce}{getPumpState}}();}
 \DoxyCodeLine{00098\ }
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a7b5f6940dbd0cc02366c9805a6cee14f}{PumpSwitchStates}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a65c6ec03596592c7d97e974149f8b274}{getPumpSwitchState}}();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366}{getScenario}}();}
 \DoxyCodeLine{00105\ }
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a6f02cc810171428b7adbbf2024fceb02}{PumpState}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3a389de6488c4a4843e28fd3d789ecce}{getPumpState}}();}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064}{measure}}();}
 \DoxyCodeLine{00112\ }
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevac_control_module_a844e338eed4418295df4e4bb05bffde7}{Scenarios}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7dc479878186d0a30150e3ed70222366}{getScenario}}();}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a257a35b34bd6f8e5085f634f12fa6064}{measure}}();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a3e6375c016659c77d2efe03d065eb836}{getCurrentTargetPressure}}();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b}{setVacuumLed}}(\textcolor{keywordtype}{float}\ pressure,\ \textcolor{keywordtype}{float}\ targetPressure);}
 \DoxyCodeLine{00126\ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aa026020d731fb58e83a81158bcb75f8b}{setVacuumLed}}(\textcolor{keywordtype}{float}\ pressure,\ \textcolor{keywordtype}{float}\ targetPressure);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66}{getScenarioFromPotValue}}(\textcolor{keywordtype}{int}\ potValue);}
 \DoxyCodeLine{00134\ }
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_adf78d9e523a3ce86293afd3bc2896d66}{getScenarioFromPotValue}}(\textcolor{keywordtype}{int}\ potValue);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44}{setPump}}(\textcolor{keywordtype}{bool}\ flag);}
 \DoxyCodeLine{00142\ }
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a9fca1948580bf33fa8179e9e0214ee44}{setPump}}(\textcolor{keywordtype}{bool}\ flag);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973}{run}}();}
 \DoxyCodeLine{00149\ }
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a95c1a6dcf04f029f7949942cd5a43973}{run}}();}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb}{setExternScenario}}(\textcolor{keywordtype}{int}\ pressure);}
 \DoxyCodeLine{00156\ }
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ab3bc974b1cc11b3554ae9ad18b29b2cb}{setExternScenario}}(\textcolor{keywordtype}{int}\ pressure);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}{getExternScenario}}();}
 \DoxyCodeLine{00163\ }
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_aefeab43b959f7ef4370b118784594884}{getExternScenario}}();}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464}{externPump}}(\textcolor{keywordtype}{int}\ pumpState);}
 \DoxyCodeLine{00170\ }
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a048f5f504eba25ae34526e186c30e464}{externPump}}(\textcolor{keywordtype}{int}\ pumpState);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ac987b20202d353d8ac50149c954f8ac1}{setExternPump}}(\textcolor{keywordtype}{int}\ state);}
 \DoxyCodeLine{00177\ }
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ac987b20202d353d8ac50149c954f8ac1}{setExternPump}}(\textcolor{keywordtype}{int}\ state);}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3}{getExternPump}}();}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_ad4b4ceed961c59c521b3b48e4cab2ed3}{getExternPump}}();}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7add417c501e7b08bc549b38f1fac13d}{setExternPressure}}(\textcolor{keywordtype}{float}\ pressure);}
 \DoxyCodeLine{00190\ }
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a7add417c501e7b08bc549b38f1fac13d}{setExternPressure}}(\textcolor{keywordtype}{float}\ pressure);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}{getExternPressure}}();}
 \DoxyCodeLine{00197\ }
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classvac_control_module_1_1_vac_control_a8c57183ed00c34af0a697715eb31e6b5}{getExternPressure}}();}
-\DoxyCodeLine{00204\ }
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}\ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{meas}};}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Define\ Pins\ -\/-\/>\ Input}}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_OFF\ =\ 27;\ \ \ \ \ \ \textcolor{comment}{//Main\_Switch\ OFF\ Mode\ 27}}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_MANUAL\ =\ 28;\ \ \ \textcolor{comment}{//Main\_Switch\ Manual\ Mode\ 28}}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_REMOTE\ =\ 29;\ \ \ \textcolor{comment}{//Main\_Switch\ Remote\ Mode\ 29}}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Switch\_Pump\_ON\ =\ 23;\ \ \ \ \ \ \ \textcolor{comment}{//Button\ to\ turn\ Pump\ ON\ 23}}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ targetPressure\ =\ A3;\ \ \ \ \ \ \ \textcolor{comment}{//Potentiometer\ for\ Regulation}}
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Define\ Pins\ -\/-\/>\ Output}}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Pump\_Status\_LED\ =\ 24;\ \ \ \ \ \ \textcolor{comment}{//OUTPUT\ to\ see\ State\ off\ Pump}}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Pump\_Relay\ =\ 25;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//OUTPUT\ to\ turn\ on/off\ Relais}}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ targetVacuumLED\ =\ 26;\ \ \ \ \ \ \textcolor{comment}{//OUTPUT\ to\ see\ Vacuum\ reached}}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Variables\ to\ save\ Values}}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentScenario\ =\ -\/1;}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentPumpState\ =\ -\/1;}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Variables\ for\ TargetPressure}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_1\ =\ 1;}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_2\ =\ 0.8f;}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_3\ =\ 0.5;}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_4\ =\ 0.01f;}
-\DoxyCodeLine{00230\ }
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ lastState;}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ lastPumpState;}
-\DoxyCodeLine{00233\ }
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_vacControlInitialized;}
-\DoxyCodeLine{00235\ }
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleOffMode();}
-\DoxyCodeLine{00240\ }
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleManualMode();}
-\DoxyCodeLine{00245\ }
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleRemoteMode();}
-\DoxyCodeLine{00250\ }
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleInvalidMode();}
-\DoxyCodeLine{00255\ \ \ \ \ \};}
-\DoxyCodeLine{00256\ \}}
-\DoxyCodeLine{00257\ }
-\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//VACCONTROL\_H}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{Pressure}}\ \mbox{\hyperlink{structvac_control_module_1_1_pressure}{meas}};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Define\ Pins\ -\/-\/>\ Input}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_OFF\ =\ 27;\ \ \ \ \ \ \textcolor{comment}{//Main\_Switch\ OFF\ Mode\ 27}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_MANUAL\ =\ 28;\ \ \ \textcolor{comment}{//Main\_Switch\ Manual\ Mode\ 28}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Main\_Switch\_REMOTE\ =\ 29;\ \ \ \textcolor{comment}{//Main\_Switch\ Remote\ Mode\ 29}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Switch\_Pump\_ON\ =\ 23;\ \ \ \ \ \ \ \textcolor{comment}{//Button\ to\ turn\ Pump\ ON\ 23}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ targetPressure\ =\ A4;\ \ \ \ \ \ \ \textcolor{comment}{//Potentiometer\ for\ Regulation}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Define\ Pins\ -\/-\/>\ Output}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Pump\_Status\_LED\ =\ 24;\ \ \ \ \ \ \textcolor{comment}{//OUTPUT\ to\ see\ State\ off\ Pump}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Pump\_Relay\ =\ 25;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//OUTPUT\ to\ turn\ on/off\ Relais}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ targetVacuumLED\ =\ 26;\ \ \ \ \ \ \textcolor{comment}{//OUTPUT\ to\ see\ Vacuum\ reached}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Variables\ to\ save\ Values}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentScenario\ =\ -\/1;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentPumpState\ =\ -\/1;}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Variables\ for\ TargetPressure}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_1\ =\ 0.1f;\ \ \ \ \textcolor{comment}{//0.1mbar}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_2\ =\ 0.05f;\ \ \ \textcolor{comment}{//0.05mbar}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ TARGET\_PRESSURE\_3\ =\ 0.03f;\ \ \ \textcolor{comment}{//0.03mbar}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//States}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ lastState;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ lastPumpState;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_vacControlInitialized;}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleOffMode();}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleManualMode();}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleRemoteMode();}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ handleInvalidMode();}
+\DoxyCodeLine{00249\ \ \ \ \ \};}
+\DoxyCodeLine{00250\ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//VACCONTROL\_H}}
 
 \end{DoxyCode}

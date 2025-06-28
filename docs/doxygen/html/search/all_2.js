@@ -24,5 +24,6 @@ var searchData=
   ['compound1_21',['Compound1',['../namespacecom_module.html#a2266c2913bf28192787d63337b745f04',1,'comModule']]],
   ['compound2_22',['Compound2',['../namespacecom_module.html#ae2db38dd30e53f8589205c5536f6ab92',1,'comModule']]],
   ['compound3_23',['Compound3',['../namespacecom_module.html#a272fc8d3be95ae8b9284332131f652d6',1,'comModule']]],
-  ['createjson_24',['createJson',['../classjson_module_1_1_json_module_internals.html#a75a7728d7bbd2092ed6c284ced025c3c',1,'jsonModule::JsonModuleInternals']]]
+  ['createjson_24',['createJson',['../classjson_module_1_1_json_module_internals.html#a75a7728d7bbd2092ed6c284ced025c3c',1,'jsonModule::JsonModuleInternals']]],
+  ['createjsonarray_25',['createJsonArray',['../classjson_module_1_1_json_module_internals.html#a033036690bf6ac518db5444926fcecc3',1,'jsonModule::JsonModuleInternals']]]
 ];

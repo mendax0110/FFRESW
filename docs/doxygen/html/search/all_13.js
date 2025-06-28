@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['vaccontrol_0',['VacControl',['../classvac_control_module_1_1_vac_control.html',1,'vacControlModule']]],
-  ['vaccontrol_2ecpp_1',['vacControl.cpp',['../vac_control_8cpp.html',1,'']]],
-  ['vaccontrol_2eh_2',['vacControl.h',['../vac_control_8h.html',1,'']]],
-  ['vaccontrolmodule_3',['vacControlModule',['../namespacevac_control_module.html',1,'']]]
+  ['unique_5fname_0',['UNIQUE_NAME',['../ptr_utils_8h.html#ac3cf800d6956ab0cc8925fbeec3e5b89',1,'ptrUtils.h']]],
+  ['units_1',['Units',['../temperature_8h.html#ac33d2b1fdba15c8bfb494f9cf0ef4190',1,'temperature.h']]],
+  ['update_2',['update',['../class_neutron_detector.html#a02247c83f3ccbff6e3ba3dfbc6441207',1,'NeutronDetector']]],
+  ['updatesoftwareclock_3',['updateSoftwareClock',['../classtime_module_1_1_time_module_internals.html#a6fc05f99c2d7f1daf5c1007c33ad8342',1,'timeModule::TimeModuleInternals']]]
 ];

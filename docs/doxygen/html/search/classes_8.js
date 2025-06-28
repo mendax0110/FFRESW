@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outputlevel_0',['Outputlevel',['../class_outputlevel.html',1,'']]]
+  ['neutrondetector_0',['NeutronDetector',['../class_neutron_detector.html',1,'']]]
 ];

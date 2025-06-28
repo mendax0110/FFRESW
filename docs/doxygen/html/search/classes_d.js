@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vaccontrol_0',['VacControl',['../classvac_control_module_1_1_vac_control.html',1,'vacControlModule']]]
+  ['temperaturesensor_0',['TemperatureSensor',['../class_temperature_sensor.html',1,'']]],
+  ['timemoduleinternals_1',['TimeModuleInternals',['../classtime_module_1_1_time_module_internals.html',1,'timeModule']]]
 ];

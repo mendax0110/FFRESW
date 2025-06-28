@@ -1,0 +1,158 @@
+\doxysection{Neutron\+Detector Class Reference}
+\hypertarget{class_neutron_detector}{}\label{class_neutron_detector}\index{NeutronDetector@{NeutronDetector}}
+
+
+This class takes care of handling the input from the \doxylink{class_neutron_detector}{Neutron\+Detector}.  
+
+
+
+
+{\ttfamily \#include $<$neutron\+Detector.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}
+\begin{DoxyCompactList}\small\item\em This struct stores relevant \doxylink{struct_neutron_detector_1_1_pulse}{Pulse} info from the detector. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_neutron_detector_1_1_pulse_analysis}{Pulse\+Analysis}}
+\begin{DoxyCompactList}\small\item\em This typedef struct stores all values for the \doxylink{struct_neutron_detector_1_1_pulse_analysis}{Pulse\+Analysis}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_neutron_detector_a458ec42ad09e56aeceabf8cba1518948}{Neutron\+Detector}} (uint8\+\_\+t analog\+Pin=A0, uint16\+\_\+t threshold=100)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_neutron_detector}{Neutron\+Detector}. \end{DoxyCompactList}\item 
+\Hypertarget{class_neutron_detector_aaf10303dace049b76bc9644823c14795}\label{class_neutron_detector_aaf10303dace049b76bc9644823c14795} 
+void {\bfseries initialize} ()
+\begin{DoxyCompactList}\small\item\em Function to start the neutron detection. \end{DoxyCompactList}\item 
+\Hypertarget{class_neutron_detector_aa1073f58ca731cc0bd962770be01b07c}\label{class_neutron_detector_aa1073f58ca731cc0bd962770be01b07c} 
+bool {\bfseries is\+Initialized} () const
+\begin{DoxyCompactList}\small\item\em Function check if detector is init. \end{DoxyCompactList}\item 
+\Hypertarget{class_neutron_detector_a02247c83f3ccbff6e3ba3dfbc6441207}\label{class_neutron_detector_a02247c83f3ccbff6e3ba3dfbc6441207} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Function to update the detection info. \end{DoxyCompactList}\item 
+\Hypertarget{class_neutron_detector_a25dd39704bf568ebf6dd714cbb98a00a}\label{class_neutron_detector_a25dd39704bf568ebf6dd714cbb98a00a} 
+void {\bfseries reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the circular buffer vars e.\+g \+\_\+write\+Index and \+\_\+stored\+Count. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_neutron_detector_add4f45895b245cc8ff2135b72ea9bb31}{get\+Pulse\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{struct_neutron_detector_1_1_pulse}{Pulse} count. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}} \& \mbox{\hyperlink{class_neutron_detector_a1445b6cda6f803fd456b86d0384323c9}{get\+Pulse}} (uint8\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em Gets stored pulses in chronological order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_neutron_detector_1_1_pulse_analysis}{Pulse\+Analysis}} \mbox{\hyperlink{class_neutron_detector_ae83ffc1c081f542a358210f9817da92e}{get\+Pulse\+Analysis}} (uint8\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em Gets stored analyzed pulse. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_neutron_detector_a2eb4cd466c3f6fd950787b77d35c4a05}{is\+Input\+Connected}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the Input is connected otherwise, we cannot read -\/\texorpdfstring{$>$}{>} only noise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_neutron_detector_a99cc839ed8a166fed3d4d83e9cac1109}\label{class_neutron_detector_a99cc839ed8a166fed3d4d83e9cac1109} 
+static constexpr uint8\+\_\+t {\bfseries SAMPLES\+\_\+\+PER\+\_\+\+PULSE} = 20
+\item 
+\Hypertarget{class_neutron_detector_a01f5a2ef827c43ead8986ba32209b843}\label{class_neutron_detector_a01f5a2ef827c43ead8986ba32209b843} 
+static constexpr uint8\+\_\+t {\bfseries MAX\+\_\+\+PULSES} = 10
+\item 
+\Hypertarget{class_neutron_detector_ab625fe234eb6c6c44d5e10857c8a9df9}\label{class_neutron_detector_ab625fe234eb6c6c44d5e10857c8a9df9} 
+static constexpr uint16\+\_\+t {\bfseries SAMPLE\+\_\+\+INTERVAL\+\_\+\+US} = 10
+\item 
+\Hypertarget{class_neutron_detector_a45180e34c59c197243e3106dce8227ca}\label{class_neutron_detector_a45180e34c59c197243e3106dce8227ca} 
+static constexpr uint16\+\_\+t {\bfseries OVERSAMPLE\+\_\+\+INTERVAL\+\_\+\+US} = 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class takes care of handling the input from the \doxylink{class_neutron_detector}{Neutron\+Detector}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_neutron_detector_a458ec42ad09e56aeceabf8cba1518948}\label{class_neutron_detector_a458ec42ad09e56aeceabf8cba1518948} 
+\index{NeutronDetector@{NeutronDetector}!NeutronDetector@{NeutronDetector}}
+\index{NeutronDetector@{NeutronDetector}!NeutronDetector@{NeutronDetector}}
+\doxysubsubsection{\texorpdfstring{NeutronDetector()}{NeutronDetector()}}
+{\footnotesize\ttfamily Neutron\+Detector\+::\+Neutron\+Detector (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{analog\+Pin = {\ttfamily A0},  }\item[{uint16\+\_\+t}]{threshold = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_neutron_detector}{Neutron\+Detector}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em analog\+Pin} & The analog\+Pin we read from. \\
+\hline
+{\em threshold} & The threshold we need to set. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_neutron_detector_a1445b6cda6f803fd456b86d0384323c9}\label{class_neutron_detector_a1445b6cda6f803fd456b86d0384323c9} 
+\index{NeutronDetector@{NeutronDetector}!getPulse@{getPulse}}
+\index{getPulse@{getPulse}!NeutronDetector@{NeutronDetector}}
+\doxysubsubsection{\texorpdfstring{getPulse()}{getPulse()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Neutron\+Detector\+::\+Pulse}} \& Neutron\+Detector\+::get\+Pulse (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Gets stored pulses in chronological order. 
+
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_neutron_detector_1_1_pulse}{Pulse} Object ref with the relevant information. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_neutron_detector_a1445b6cda6f803fd456b86d0384323c9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_neutron_detector_ae83ffc1c081f542a358210f9817da92e}\label{class_neutron_detector_ae83ffc1c081f542a358210f9817da92e} 
+\index{NeutronDetector@{NeutronDetector}!getPulseAnalysis@{getPulseAnalysis}}
+\index{getPulseAnalysis@{getPulseAnalysis}!NeutronDetector@{NeutronDetector}}
+\doxysubsubsection{\texorpdfstring{getPulseAnalysis()}{getPulseAnalysis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_neutron_detector_1_1_pulse_analysis}{Neutron\+Detector\+::\+Pulse\+Analysis}} Neutron\+Detector\+::get\+Pulse\+Analysis (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Gets stored analyzed pulse. 
+
+\begin{DoxyReturn}{Returns}
+A analyzed pulse Object ref with the relevant information. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_neutron_detector_ae83ffc1c081f542a358210f9817da92e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_neutron_detector_add4f45895b245cc8ff2135b72ea9bb31}\label{class_neutron_detector_add4f45895b245cc8ff2135b72ea9bb31} 
+\index{NeutronDetector@{NeutronDetector}!getPulseCount@{getPulseCount}}
+\index{getPulseCount@{getPulseCount}!NeutronDetector@{NeutronDetector}}
+\doxysubsubsection{\texorpdfstring{getPulseCount()}{getPulseCount()}}
+{\footnotesize\ttfamily uint8\+\_\+t Neutron\+Detector\+::get\+Pulse\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter for the \doxylink{struct_neutron_detector_1_1_pulse}{Pulse} count. 
+
+\begin{DoxyReturn}{Returns}
+A integer with the count. 
+\end{DoxyReturn}
+\Hypertarget{class_neutron_detector_a2eb4cd466c3f6fd950787b77d35c4a05}\label{class_neutron_detector_a2eb4cd466c3f6fd950787b77d35c4a05} 
+\index{NeutronDetector@{NeutronDetector}!isInputConnected@{isInputConnected}}
+\index{isInputConnected@{isInputConnected}!NeutronDetector@{NeutronDetector}}
+\doxysubsubsection{\texorpdfstring{isInputConnected()}{isInputConnected()}}
+{\footnotesize\ttfamily bool Neutron\+Detector\+::is\+Input\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the Input is connected otherwise, we cannot read -\/\texorpdfstring{$>$}{>} only noise. 
+
+\begin{DoxyReturn}{Returns}
+A true if the Input is connected otherwise false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/neutron\+Detector/neutron\+Detector.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/\+FFRESW/e\+SW/libraries/neutron\+Detector/neutron\+Detector.\+cpp\end{DoxyCompactItemize}

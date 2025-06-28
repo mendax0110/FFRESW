@@ -1,0 +1,102 @@
+\doxysection{neutron\+Detector.\+h}
+\hypertarget{neutron_detector_8h_source}{}\label{neutron_detector_8h_source}\index{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/neutronDetector/neutronDetector.h@{C:/Users/Adrian/Documents/git/FFRESW/eSW/libraries/neutronDetector/neutronDetector.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NEUTRON\_DETECTOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NEUTRON\_DETECTOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_neutron_detector}{NeutronDetector}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ SAMPLES\_PER\_PULSE\ =\ 20;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ MAX\_PULSES\ =\ 10;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint16\_t\ SAMPLE\_INTERVAL\_US\ =\ 10;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint16\_t\ OVERSAMPLE\_INTERVAL\_US\ =\ 2;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ uint32\_t\ timestamp;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ uint8\_t\ samples[SAMPLES\_PER\_PULSE];}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ uint8\_t\ peakValue;}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ decayTime;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ riseTime;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ pulseArea;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isNeutron;}
+\DoxyCodeLine{00036\ \ \ \ \ \}\ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse_analysis}{PulseAnalysis}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_neutron_detector}{NeutronDetector}}(uint8\_t\ analogPin\ =\ A0\ ,\ uint16\_t\ threshold\ =\ 100);\ \textcolor{comment}{//\ TODO\ TELL\ FRANIC\ TO\ UPDATE\ -\/>\ https://docs.google.com/spreadsheets/d/1-\/Il1e9477HAMj91pHT6NhEZsUtf2OpcX/edit?gid=855028862\#gid=855028862}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neutron_detector_aaf10303dace049b76bc9644823c14795}{initialize}}();}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_neutron_detector_aa1073f58ca731cc0bd962770be01b07c}{isInitialized}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neutron_detector_a02247c83f3ccbff6e3ba3dfbc6441207}{update}}();}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neutron_detector_a25dd39704bf568ebf6dd714cbb98a00a}{reset}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_neutron_detector_add4f45895b245cc8ff2135b72ea9bb31}{getPulseCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}\&\ \mbox{\hyperlink{class_neutron_detector_a1445b6cda6f803fd456b86d0384323c9}{getPulse}}(uint8\_t\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse_analysis}{PulseAnalysis}}\ \mbox{\hyperlink{class_neutron_detector_ae83ffc1c081f542a358210f9817da92e}{getPulseAnalysis}}(uint8\_t\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_neutron_detector_a2eb4cd466c3f6fd950787b77d35c4a05}{isInputConnected}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ \ \ \ \ uint8\_t\ \_pin;}
+\DoxyCodeLine{00093\ \ \ \ \ uint16\_t\ \_threshold;}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}\ \_pulses[MAX\_PULSES];}
+\DoxyCodeLine{00095\ \ \ \ \ uint8\_t\ \_writeIndex;}
+\DoxyCodeLine{00096\ \ \ \ \ uint8\_t\ \_storedCount;}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_lastCaptureTime\ =\ 0;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_minInterval\ =\ 5000;}
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ uint16\_t\ \_baseline\ =\ 512;}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint16\_t\ MAX\_OVERSAMPLED\_VALUE\ =\ 1023;}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ MAX\_SAMPLE\_VALUE\ =\ 225;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ MIN\_PULSE\_AMPLITUDE\ =\ 10;}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ NEUTRON\_DECAY\_TIME\_THRESHOLD\ =\ 25.0f;}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ NEUTRON\_RISE\_TIME\_THRESHOLD\ =\ 12.0f;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ NEUTRON\_AREA\_THRESHOLD\ =\ 500.0f;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ BASELINE\_DEVIATION\_THRESHOLD\ =\ 5;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_neutronDetectorInitialized;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_inputConnected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00113\ \ \ \ \ uint32\_t\ \_lastConnectionCheck\ =\ 0;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ CONNECTION\_CHECK\_INTERVAL\ =\ 1000000;}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ capturePulse();}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ updateBaseline();}
+\DoxyCodeLine{00125\ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ uint16\_t\ overSample(\textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00131\ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{float}\ computeDecayTime(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}\&\ p)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{float}\ computePulseArea(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}\&\ p)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00145\ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{float}\ computeRiseTime(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}\&\ p)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00152\ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ updateThreshold(uint16\_t\ currentDev);}
+\DoxyCodeLine{00158\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse_analysis}{PulseAnalysis}}\ analyzePulse(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_neutron_detector_1_1_pulse}{Pulse}}\&\ p)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{bool}\ checkInputConnected();}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NEUTRON\_DETECTOR\_H}}
+
+\end{DoxyCode}

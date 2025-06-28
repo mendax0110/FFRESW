@@ -92,6 +92,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a75a7728d7bbd2092ed6c284ced025c3c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classjson_module_1_1_json_module_internals.html#a75a7728d7bbd2092ed6c284ced025c3c">createJson</a> (const char *key, T value)</td></tr>
 <tr class="memdesc:a75a7728d7bbd2092ed6c284ced025c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a key-value pair to the Json document.  <br /></td></tr>
 <tr class="separator:a75a7728d7bbd2092ed6c284ced025c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a033036690bf6ac518db5444926fcecc3" id="r_a033036690bf6ac518db5444926fcecc3"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t N&gt; </td></tr>
+<tr class="memitem:a033036690bf6ac518db5444926fcecc3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classjson_module_1_1_json_module_internals.html#a033036690bf6ac518db5444926fcecc3">createJsonArray</a> (const char *key, const T(&amp;values)[N])</td></tr>
+<tr class="memdesc:a033036690bf6ac518db5444926fcecc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a key-array pair to the Json document.  <br /></td></tr>
+<tr class="separator:a033036690bf6ac518db5444926fcecc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a243336f24f5de5f88c5a79dd57b6a1d6" id="r_a243336f24f5de5f88c5a79dd57b6a1d6"><td class="memItemLeft" align="right" valign="top"><a id="a243336f24f5de5f88c5a79dd57b6a1d6" name="a243336f24f5de5f88c5a79dd57b6a1d6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sendJsonSerial</b> ()</td></tr>
 <tr class="memdesc:a243336f24f5de5f88c5a79dd57b6a1d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to send the Json object over the Serial connection. <br /></td></tr>
@@ -204,6 +208,60 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="668,315,726,316,726,321,668,320"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a033036690bf6ac518db5444926fcecc3" name="a033036690bf6ac518db5444926fcecc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a033036690bf6ac518db5444926fcecc3">&#9670;&#160;</a></span>createJsonArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jsonModule::JsonModuleInternals::createJsonArray </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T(&amp;)&#160;</td>
+          <td class="paramname"><em>values</em>[N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a key-array pair to the Json document. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of the array elements. </td></tr>
+    <tr><td class="paramname">N</td><td>Size of the array (inferred automatically). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Key to associate with the array. </td></tr>
+    <tr><td class="paramname">values</td><td>C-style array of values to add under the key. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

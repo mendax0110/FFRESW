@@ -109,27 +109,40 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
 </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a243336f24f5de5f88c5a79dd57b6a1d6">sendJsonSerial</a>();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        String <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a45ba7bb9da21aa2cdd05be2482b9347f">getJsonString</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#ae922a06f5f6c6ee40bc9e7935411872a">clearJson</a>();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a3453826931fdba4cbbcd5f31b637207f">printJsonDocMemory</a>();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#ae79270c45d709818536f79bb5bf75925">hasCapacityFor</a>(<span class="keywordtype">size_t</span> additionalSize) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">size_t</span> jsonBufferSize;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        StaticJsonDocument&lt;512&gt; jsonDoc;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    };</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keywordtype">size_t</span> N&gt;</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classjson_module_1_1_json_module_internals.html#a033036690bf6ac518db5444926fcecc3">   52</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a033036690bf6ac518db5444926fcecc3">createJsonArray</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* key, <span class="keyword">const</span> T (&amp;values)[N])</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            JsonArray array = jsonDoc.createNestedArray(key);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; N; ++i)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                array.add(values[i]);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif </span><span class="comment">// JSONMODULE_H</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a243336f24f5de5f88c5a79dd57b6a1d6">sendJsonSerial</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        String <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a45ba7bb9da21aa2cdd05be2482b9347f">getJsonString</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#ae922a06f5f6c6ee40bc9e7935411872a">clearJson</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#a3453826931fdba4cbbcd5f31b637207f">printJsonDocMemory</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classjson_module_1_1_json_module_internals.html#ae79270c45d709818536f79bb5bf75925">hasCapacityFor</a>(<span class="keywordtype">size_t</span> additionalSize) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordtype">size_t</span> jsonBufferSize;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        StaticJsonDocument&lt;512&gt; jsonDoc;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    };</div>
+</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif </span><span class="comment">// JSONMODULE_H</span></div>
 <div class="ttc" id="aclass_serial_menu_html_a3bbe89715b2c3c6bcd7a04f6d00c20e6"><div class="ttname"><a href="class_serial_menu.html#a3bbe89715b2c3c6bcd7a04f6d00c20e6">SerialMenu::printToSerial</a></div><div class="ttdeci">static void printToSerial(OutputLevel level, const String &amp;message, bool newLine=true, bool logMessage=false)</div><div class="ttdoc">Function to print a message to the serial port, using mutexes, output level and new line options.</div><div class="ttdef"><b>Definition</b> serialMenu.cpp:52</div></div>
 <div class="ttc" id="aclassjson_module_1_1_json_module_internals_html"><div class="ttname"><a href="classjson_module_1_1_json_module_internals.html">jsonModule::JsonModuleInternals</a></div><div class="ttdoc">Class for the JSON module internals.</div><div class="ttdef"><b>Definition</b> jsonModule.h:22</div></div>
+<div class="ttc" id="aclassjson_module_1_1_json_module_internals_html_a033036690bf6ac518db5444926fcecc3"><div class="ttname"><a href="classjson_module_1_1_json_module_internals.html#a033036690bf6ac518db5444926fcecc3">jsonModule::JsonModuleInternals::createJsonArray</a></div><div class="ttdeci">void createJsonArray(const char *key, const T(&amp;values)[N])</div><div class="ttdoc">Add a key-array pair to the Json document.</div><div class="ttdef"><b>Definition</b> jsonModule.h:52</div></div>
 <div class="ttc" id="aclassjson_module_1_1_json_module_internals_html_a243336f24f5de5f88c5a79dd57b6a1d6"><div class="ttname"><a href="classjson_module_1_1_json_module_internals.html#a243336f24f5de5f88c5a79dd57b6a1d6">jsonModule::JsonModuleInternals::sendJsonSerial</a></div><div class="ttdeci">void sendJsonSerial()</div><div class="ttdoc">Function to send the Json object over the Serial connection.</div><div class="ttdef"><b>Definition</b> jsonModule.cpp:42</div></div>
 <div class="ttc" id="aclassjson_module_1_1_json_module_internals_html_a3453826931fdba4cbbcd5f31b637207f"><div class="ttname"><a href="classjson_module_1_1_json_module_internals.html#a3453826931fdba4cbbcd5f31b637207f">jsonModule::JsonModuleInternals::printJsonDocMemory</a></div><div class="ttdeci">void printJsonDocMemory()</div><div class="ttdoc">Prints information about the Json object.</div><div class="ttdef"><b>Definition</b> jsonModule.cpp:53</div></div>
 <div class="ttc" id="aclassjson_module_1_1_json_module_internals_html_a45ba7bb9da21aa2cdd05be2482b9347f"><div class="ttname"><a href="classjson_module_1_1_json_module_internals.html#a45ba7bb9da21aa2cdd05be2482b9347f">jsonModule::JsonModuleInternals::getJsonString</a></div><div class="ttdeci">String getJsonString() const</div><div class="ttdoc">Get the Json String object.</div><div class="ttdef"><b>Definition</b> jsonModule.cpp:25</div></div>
