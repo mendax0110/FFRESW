@@ -1,0 +1,70 @@
+@startuml frt_h_wrapper_architecture
+
+skinparam class {
+    BackgroundColor<<FreeRTOS>> #FFAAAA
+    BackgroundColor<<frt.h>> #AAFFAA
+    BackgroundColor<<User>> #AAAAFF
+    ArrowColor #444444
+    BorderColor #777777
+}
+
+package "Arduino_FreeRTOS" <<FreeRTOS>> {
+    class FreeRTOS_API {
+        +xTaskCreate()
+        +vTaskDelay()
+        +xQueueCreate()
+        +xSemaphoreCreateMutex()
+        +... weitere C-APIs ...
+    }
+}
+
+package "frt.h" <<frt.h>> {
+    class FrtTask {
+        +start()
+        +msleep()
+        +run() {abstract}
+    }
+
+    class FrtMutex {
+        +lock()
+        +unlock()
+    }
+
+    class FrtQueue {
+        +post()
+        +wait()
+    }
+
+    note right: "Objektorientierter Wrapper\num FreeRTOS-C-APIs"
+}
+
+package "User Code" <<User>> {
+    class MyTask {
+        +run()
+    }
+}
+
+FreeRTOS_API -[hidden]down-> FrtTask
+FreeRTOS_API -[hidden]down-> FrtMutex
+FreeRTOS_API -[hidden]down-> FrtQueue
+
+FrtTask ..|> FreeRTOS_API : nutzt\nxTaskCreate\nvTaskDelay
+FrtMutex ..|> FreeRTOS_API : nutzt\nxSemaphoreCreateMutex
+FrtQueue ..|> FreeRTOS_API : nutzt\nxQueueCreate
+
+MyTask --|> FrtTask : erbt
+
+note top of FreeRTOS_API 
+    Roh-C-API von FreeRTOS
+    (Low-Level-Funktionen)
+end note
+
+note bottom of FrtTask 
+    Abstrahiert FreeRTOS-Tasks
+    als C++-Objekte mit:
+    - Automatischer Task-Erstellung
+    - Typsicherheit
+    - Vereinfachter API
+end note
+
+@enduml

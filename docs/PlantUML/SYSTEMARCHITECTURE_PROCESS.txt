@@ -1,133 +1,130 @@
-@startuml
-skinparam monochrome true
-skinparam defaultTextAlignment center
-skinparam rectangle {
-    BorderColor #333
-    BackgroundColor #f9f9f9
+@startuml SystemArchitektur
+
+title Systemarchitektur basierend auf FFRESW.ino
+
+skinparam component {
+    BackgroundColor FloralWhite
+    BorderColor Black
+    ArrowColor #444444
+}
+skinparam package {
+    BackgroundColor<<Hardware>> LightBlue
+    BackgroundColor<<Core>> LightGreen
+    BackgroundColor<<Functional>> LightSalmon
+    BackgroundColor<<Tasks>> Lavender
+    BorderColor Black
+    FontSize 13
+    FontStyle bold
+}
+skinparam monochrome false
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+package "Hauptsystem" <<Main>> {
+    [main.cpp] as Main #FFD700
+    [Arduino_FreeRTOS] as AFR #FFD700
+    [FRT Framework] as FRT #FFD700
 }
 
-title **Systemarchitektur - Hauptprogramm**
-
-' 1. Hauptkomponenten als Klassen
-class "ComModuleInternals" as ComModule {
-  + getEthernet(): EthernetInterface
-  + getSerial(): SerialInterface
-  + getI2C(): I2CInterface
-  + getSPI(): SPIInterface
+package "Hardware-Module" <<Hardware>> {
+    [Ethernet] as Eth
+    [I2C] as I2C
+    [SPI] as SPI
+    [Serial] as Serial
 }
 
-class "SensorModuleInternals" as SensorModule {
-  + readSensor(SensorType): float
-  + initialize(): void
+package "Kernmodule" <<Core>> {
+    [ComModule] as ComModule
+    [SensorModule] as SensorModule
+    [ReportSystem] as ReportSystem
+    [TimeModule] as TimeModule
+    [JsonModule] as JsonModule
+    [LogManager] as LogManager
 }
 
-class "ReportSystem" as ReportSystem {
-  + reportStatus(bool): void
-  + checkSystemHealth(...): bool
-  + detectStackOverflow(): bool
+package "Funktionsmodule" <<Functional>> {
+    [Flyback] as Flyback
+    [VacControl] as VacControl
+    [CalcModule] as CalcModule
 }
 
-class "TimeModuleInternals" as TimeModule {
-  + setTimeFromHas(String): void
-  + getSystemTime(): DateTimeStruct
-  + formatTimeString(): String
+package "Tasks" <<Tasks>> {
+    [ReportTask] as ReportTask
+    [FlyBackVacControlTask] as FlybackTask
+    [SensorActorEndpointTask] as SensorTask
+    [StackMonitorTask] as StackTask
 }
 
-class "Flyback" as Flyback {
-  + run(): void
-  + measure(): Measurement
-  + setExternFrequency(uint32_t): void
-  + setExternDutyCycle(int): void
-  + getSwitchState(): SwitchStates
-}
+' Hauptverbindungen
+Main --> FRT
+Main --> AFR
+Main --> ComModule
+Main --> SensorModule
+Main --> ReportSystem
+Main --> TimeModule
+Main --> JsonModule
+Main --> LogManager
+Main --> Flyback
+Main --> VacControl
 
-class "VacControl" as VacControl {
-  + run(): void
-  + setExternScenario(int): void
-  + setExternPressure(float): void
-  + getSwitchState(): SwitchStates
-}
+' Hardware-Verbindungen
+ComModule -[hidden]-> Eth
+ComModule -[hidden]-> I2C
+ComModule -[hidden]-> SPI
+ComModule -[hidden]-> Serial
 
-class "JsonModuleInternals" as JsonModule {
-  + createJsonString(): void
-  + createJsonFloat(): void
-  + getJsonString(): String
-}
+ComModule --> Eth
+ComModule --> I2C
+ComModule --> SPI
+ComModule --> Serial
 
-' 2. Tasks als Klassen
-class "ReportTask" as ReportTask {
-  + run(): bool
-  - REPORT_INTERVAL_MS: uint32_t = 5000
-  - lastReportTime: uint32_t
-}
+SensorModule --> I2C
 
-class "FlyBackVacControlTask" as FlybackTask {
-  + run(): bool
-  - applyScenario(int): void
-}
+' Kernmodul-Verbindungen
+ReportSystem --> ComModule
+ReportSystem --> SensorModule
+TimeModule --> ComModule
+JsonModule --> ComModule
 
-class "SensorActorEndpointTask" as SensorTask {
-  + run(): bool
-  - buildJsonResponse(): String
-  - processSetRequest(): void
-  - handleFlybackGet/Set(): String
-}
+' Funktionsmodul-Verbindungen
+Flyback --> ComModule
+Flyback --> SensorModule
+VacControl --> ComModule
+VacControl --> Flyback
+VacControl --> SensorModule
 
-class "StackMonitorTask" as StackMonitor {
-  + run(): bool
-  - checkAndReport(): void
-}
+' Task-Verbindungen
+ReportTask --> ReportSystem
+ReportTask --> ComModule
 
-' 3. Globale Objekte
-object "com" as com_obj
-object "sens" as sens_obj
-object "flyback" as flyback_obj
-object "vacControl" as vac_obj
+FlybackTask --> Flyback
+FlybackTask --> VacControl
+FlybackTask --> ComModule
 
-' 4. Beziehungen
-ComModule "1" *-- "1" com_obj
-SensorModule "1" *-- "1" sens_obj
-Flyback "1" *-- "1" flyback_obj
-VacControl "1" *-- "1" vac_obj
+SensorTask --> ComModule
+SensorTask --> SensorModule
+SensorTask --> Flyback
+SensorTask --> VacControl
+SensorTask --> JsonModule
+SensorTask --> TimeModule
 
-ReportTask --> ReportSystem : uses
-FlybackTask --> Flyback : controls
-FlybackTask --> VacControl : manages
-SensorTask --> ComModule : calls
-SensorTask --> JsonModule : generates
-StackMonitor ..> ReportTask : monitors
-StackMonitor ..> FlybackTask : monitors
+StackTask --> ReportTask
+StackTask --> FlybackTask
+StackTask --> SensorTask
 
-' 5. Notizen
-note top of ComModule
-  **Verbindungen:**
-  - Ethernet: 192.168.1.3
-  - I2C: Adresse 0x76
-  - SPI: Pin 4
+note right of Main
+    Initialisiert alle Module
+    und startet die Tasks
 end note
 
-note right of Flyback
-  **Szenarien:**
-  1. CLOSE (Mode 3)
-  2. Pressure 1.0 (Mode 5)
-  3. Pressure 0.8 (Mode 5)
-  4. Pressure 0.6 (Mode 5)
-  5. OPEN (Mode 4)
+note bottom of Tasks
+    Tasks laufen parallel
+    mit unterschiedlichen Prioritäten:
+    1. StackMonitorTask
+    2. ReportTask
+    3. SensorActorEndpointTask
+    4. FlyBackVacControlTask
 end note
 
-note bottom of SensorTask
-  **Stack: 1024B**
-  Verarbeitet:
-  - Temperaturabfragen
-  - Szenarien-Steuerung
-  - JSON-Generierung
-end note
-
-legend
-  |= Relation      | Bedeutung          |
-  |------------|------------------|
-  | -->        | Nutzung          |
-  | *--        | Instanz          |
-  | ..>        | Überwachung      |
-endlegend
 @enduml
