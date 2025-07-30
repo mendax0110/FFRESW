@@ -2,49 +2,100 @@
 
 ## Overview
 
-This is the embedded software for the FFRESW project
+FFRESW is the embedded software for the Farnsworth Fusion Reactor project.  
+It is designed for the Arduino MEGA2560 platform and provides modular control, data acquisition, and communication for the reactor system.
+
+---
+
+## Repository Structure
+
+```
+FFRESW/
+├── .github/           # GitHub workflows and CI
+├── docs/              # Documentation (Doxygen, PlantUML, etc.)
+├── eSW/               # Embedded software source code
+│   ├── FFRESW/        # Main firmware and project files
+│   ├── libraries/     # Core and custom Arduino libraries
+│   └── utils/         # Utility scripts and tools
+├── external/          # External dependencies (submodules)
+├── testing/           # Python and shell scripts for testing
+├── LICENSE
+├── README.md
+```
+
+---
 
 ## Getting Started
 
+### Prerequisites
+
+- **Arduino IDE**: Version 1.8.13 recommended
+- **Sloeber IDE**: For advanced development ([Download](https://eclipse.baeyens.it/stable.php?OS=Windows))
+- **Python 3**: For running test scripts in `testing/`
+- **Git**: For cloning and managing submodules
+
 ### Build Steps
 
-**1.** Clone the repository:
-```bash
-git clone https://github.com/mendax0110/FFRESW
-cd FFRESW
-```
-**2.** Init submodule:
-````bash
-git submodule update --init --recursive
-````
+1. **Clone the repository**
+    ```sh
+    git clone https://github.com/mendax0110/FFRESW.git
+    cd FFRESW
+    ```
 
-**3.** Run the copy_ErriezMemoryUsage.bat file
-```bash	
-cd utils
-copy_ErriezMemoryUsage.bat
-```
+2. **Initialize submodules**
+    ```sh
+    git submodule update --init --recursive
+    ```
 
-**4.** Arduino Version 1.8.13
+3. **Prepare Memory Usage Library**
+    - On Windows, run:
+      ```sh
+      cd utils
+      copy_ErriezMemoryUsage.bat
+      ```
+    - On Linux, ensure the `ErriezMemoryUsage` library is available in `external/`.
 
-**5.** Install these Libraries Sketch > Include Library > Manage Libraries.
-- FreeRTOS
-- frt
-- ArduinoJson
+4. **Install Required Arduino Libraries**
+    - In Arduino IDE:  
+      `Sketch > Include Library > Manage Libraries`
+    - Install:
+      - FreeRTOS
+      - frt
+      - ArduinoJson
 
-**6.** Error MemoryFree --> add this to User
-![image](https://github.com/user-attachments/assets/41cf9fef-ed49-4983-bbc4-dbf8aa67fcc4)
+5. **IDE and Compiler Settings**
+    - See `docs/pictures/image-1.png` and `docs/pictures/image.png` for recommended settings.
 
+6. **Error: MemoryFree**
+    - If you encounter a "MemoryFree" error, ensure the `ErriezMemoryUsage` library is correctly added to your Arduino libraries.
 
-**7.** Download Sloeber
-- https://eclipse.baeyens.it/stable.php?OS=Windows
+---
 
-**8.** Install Sloeber
-- https://eclipse.baeyens.it/how_to.shtml
+## Development
 
-**9.** Start Sloeber
-![alt text](docs/pictures/image.png)
+- **Main Firmware**:  
+  Located in [`eSW/FFRESW/`](eSW/FFRESW/)
+- **Libraries**:  
+  Custom and third-party libraries in [`eSW/libraries/`](eSW/libraries/)
+- **Documentation**:  
+  - [Doxygen-generated HTML](docs/doxygen/html/index.html)
+  - [PlantUML diagrams](docs/PlantUML/)
+  - [Overview and guides](docs/overview.md)
+- **Testing**:  
+  Python and shell scripts in [`testing/`](testing/)
 
-**8.** IDE and Compiler Settings
-![alt text](docs/pictures/image-1.png)
+---
 
+## Documentation
+
+- **Doxygen**:  
+  Run Doxygen in `docs/doxygen/` to generate code documentation.
+- **Architecture Diagrams**:  
+  See [`docs/PlantUML/Library_Architecture.txt`](docs/PlantUML/Library_Architecture.txt) and [`docs/PlantUML/Github_Structure.txt`](docs/PlantUML/Github_Structure.txt).
+
+---
+
+## License
+
+This project is licensed under the terms of the [LICENSE](LICENSE) file.
 
