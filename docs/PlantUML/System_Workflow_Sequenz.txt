@@ -3,12 +3,17 @@ skinparam backgroundColor #FAFAFA
 
 title "System Workflow Sequenz"
 
+participant "HAS" as HAS order -1
 participant "SensorActorEndpointTask" as ST
 participant "FlybackVacControlTask" as FT
 participant "ReportTask" as RT
 participant "StackMonitorTask" as STA
 participant "comModule" as COM
 participant "jsonModule" as JS
+participant "VAT Microcontroller" as VAT order 99
+
+HAS -> ST : hardwareDataUpdate()
+activate ST
 
 ST -> sensorModule : readSensors()
 activate sensorModule 
@@ -41,12 +46,20 @@ deactivate JS
 
 FT -> COM : scenarioRequest()
 activate COM
+COM -> VAT : proprietaryFrame(ETH)
+activate VAT
+VAT --> COM : proprietaryResponse()
+deactivate VAT
 COM --> FT : ethFrameResponse
 deactivate COM
 
 ST -> RT : queueStatus()
 activate RT
 RT -> COM : sendReport()
+COM -> VAT : proprietaryReportFrame()
+activate VAT
+VAT --> COM : reportAck()
+deactivate VAT
 COM --> RT : ack
 deactivate RT
 
@@ -79,4 +92,7 @@ STA -> RT : checkStacks()
 activate RT
 RT --> STA : stackStatus()
 deactivate RT
+
+ST --> HAS : hardwareStatus()
+deactivate ST
 @enduml
