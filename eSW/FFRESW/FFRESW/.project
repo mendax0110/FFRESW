@@ -132,14 +132,14 @@
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/jsonModule</location>
 		</link>
 		<link>
+			<name>libraries/lockGuard</name>
+			<type>2</type>
+			<location>C:/Users/Adrian/Documents/Arduino/libraries/lockGuard</location>
+		</link>
+		<link>
 			<name>libraries/logManager</name>
 			<type>2</type>
 			<location>C:/Users/Adrian/Documents/Arduino/libraries/logManager</location>
-		</link>
-		<link>
-			<name>libraries/neutronDetector</name>
-			<type>2</type>
-			<location>C:/Users/Adrian/Documents/Arduino/libraries/neutronDetector</location>
 		</link>
 		<link>
 			<name>libraries/pgmStrToRAM</name>
