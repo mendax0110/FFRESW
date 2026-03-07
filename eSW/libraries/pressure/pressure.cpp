@@ -48,6 +48,6 @@ bool PressureSensor::isInitialized() const
 
 float PressureSensor::readAnalogSensor(uint8_t pin)
 {
-	uint8_t rawValue = analogRead(pin);
+	int rawValue = analogRead(pin);
     return static_cast<float>(rawValue);
 }

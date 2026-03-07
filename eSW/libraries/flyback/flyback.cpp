@@ -438,7 +438,7 @@ void Flyback::regulateVoltage(float targetVoltage, float hysteresis)
 
 void Flyback::setTargetVoltage(float voltage)
 {
-	if (voltage < 0.0f || voltage > 0.0f) // TODO CLARIFY THE RANGES WITH FELIX!!!
+	if (voltage < 0.0f)
 	{
 		return;
 	}
@@ -452,7 +452,7 @@ float Flyback::getTargetVoltage() const
 
 void Flyback::setHysteresis(float hysteresis)
 {
-	if (hysteresis < 0.0f || hysteresis > 0.0f)	// TODO CLARIFY THE RANGES WITH FELIX!!!
+	if (hysteresis < 0.0f)
 	{
 		return;
 	}

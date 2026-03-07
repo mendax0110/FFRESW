@@ -22,7 +22,7 @@ void SerialMenu::load(MenuItem* items, size_t size)
 
 void SerialMenu::show()
 {
-    if (PtrUtils::IsNullPtr(currentMenu) && !Serial) return;
+    if (PtrUtils::IsNullPtr(currentMenu) || !Serial) return;
 
     for (size_t i = 0; i < menuSize; i++)
     {
@@ -51,7 +51,7 @@ void SerialMenu::run()
 
 void SerialMenu::printToSerial(OutputLevel level, const String& message, bool newLine, bool logMessage)
 {
-    frt::Mutex serialMutex;
+    static frt::Mutex serialMutex;
     serialMutex.lock();
 
     String output;

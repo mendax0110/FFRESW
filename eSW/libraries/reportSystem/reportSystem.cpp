@@ -35,7 +35,7 @@ ReportSystem::~ReportSystem()
 {
     tryDeletePtr(_sens);
     tryDeletePtr(_com);
-    tryDeletePtr(_time);
+    // _time is a singleton – do NOT delete it
 }
 
 void ReportSystem::reportError(const char* errorMessage)
@@ -98,7 +98,7 @@ bool ReportSystem::checkSystemHealth(size_t memoryThreshold, bool checkEth,
             }
         }
     }
-    return true;
+    return lastHealthCheckPassed;
 }
 
 bool ReportSystem::reportStatus(bool active)

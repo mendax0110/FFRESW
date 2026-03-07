@@ -71,7 +71,7 @@ void LogManager::shutdownSDCard()
     }
     else
     {
-    	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, "Failed to close currently opened logFile: " + logFile);
+    	SerialMenu::printToSerial(SerialMenu::OutputLevel::ERROR, F("Failed to close currently opened logFile."));
     }
 
 	if (isSDCardInitialized() && !card.isBusy() && !root.isOpen())
@@ -192,7 +192,7 @@ bool LogManager::writeToLogFile(const String& logMessage)
         logFile = SD.open(logFileName, FILE_WRITE);
         if (!logFile)
         {
-            digitalWrite(10, LOW);  // Enable W5100 (Ethernet)
+            digitalWrite(chipSelectPinEth, LOW);  // Enable W5100 (Ethernet)
             return false;
         }
     }

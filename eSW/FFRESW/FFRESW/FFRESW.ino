@@ -587,7 +587,7 @@ private:
         return "";
     }
 
-    void handleReboot(const String& requestedEndpoint, const String& jsonBody)
+    void handleReboot(const String& requestedEndpoint, String& jsonBody)
     {
     	jsonBody = buildJsonResponse(requestedEndpoint, 1, "bool");
     	{
@@ -626,13 +626,16 @@ public:
 private:
     void checkAndReport(const String& taskName, unsigned int used, unsigned int limit)
     {
-        if (used >= static_cast<unsigned int>(limit * THRESHOLD))
-        {
-            SerialMenu::printToSerial(SerialMenu::OutputLevel::WARNING, "Stack usage high for " + taskName + ": " + String(used) + " / " + String(limit));
-        }
-        else if (used >= static_cast<unsigned int>(limit * ERR_THRESHOLD))
+        unsigned int errLimit = static_cast<unsigned int>(static_cast<float>(limit) * ERR_THRESHOLD);
+        unsigned int warnLimit = static_cast<unsigned int>(static_cast<float>(limit) * THRESHOLD);
+
+        if (used >= errLimit)
         {
         	gracefulRestart();
+        }
+        else if (used >= warnLimit)
+        {
+            SerialMenu::printToSerial(SerialMenu::OutputLevel::WARNING, "Stack usage high for " + taskName + ": " + String(used) + " / " + String(limit));
         }
     }
 };
