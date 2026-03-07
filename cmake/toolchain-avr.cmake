@@ -3,20 +3,43 @@
 # ==============================================================================
 # Usage:
 #   cmake .. -DPLATFORM=AVR -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-avr.cmake
+#
+# Prerequisites – install the AVR toolchain:
+#   Ubuntu/Debian:  sudo apt install gcc-avr avr-libc avrdude
+#   macOS (brew):   brew install avr-gcc avrdude
+#   Windows:        Install Arduino IDE or WinAVR, add to PATH.
 # ==============================================================================
 
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR avr)
 
-# Toolchain prefix
+# Toolchain prefix – override with -DAVR_TOOLCHAIN_PREFIX=<prefix> if installed
+# in a non-standard location.
 set(AVR_TOOLCHAIN_PREFIX "avr-" CACHE STRING "AVR toolchain prefix")
 
-find_program(CMAKE_C_COMPILER   ${AVR_TOOLCHAIN_PREFIX}gcc   REQUIRED)
-find_program(CMAKE_CXX_COMPILER ${AVR_TOOLCHAIN_PREFIX}g++   REQUIRED)
-find_program(CMAKE_ASM_COMPILER ${AVR_TOOLCHAIN_PREFIX}gcc   REQUIRED)
-find_program(CMAKE_OBJCOPY      ${AVR_TOOLCHAIN_PREFIX}objcopy REQUIRED)
-find_program(CMAKE_OBJDUMP      ${AVR_TOOLCHAIN_PREFIX}objdump REQUIRED)
-find_program(CMAKE_SIZE         ${AVR_TOOLCHAIN_PREFIX}size    REQUIRED)
+find_program(CMAKE_C_COMPILER   ${AVR_TOOLCHAIN_PREFIX}gcc)
+find_program(CMAKE_CXX_COMPILER ${AVR_TOOLCHAIN_PREFIX}g++)
+find_program(CMAKE_ASM_COMPILER ${AVR_TOOLCHAIN_PREFIX}gcc)
+find_program(CMAKE_OBJCOPY      ${AVR_TOOLCHAIN_PREFIX}objcopy)
+find_program(CMAKE_OBJDUMP      ${AVR_TOOLCHAIN_PREFIX}objdump)
+find_program(CMAKE_SIZE         ${AVR_TOOLCHAIN_PREFIX}size)
+
+if(NOT CMAKE_C_COMPILER OR NOT CMAKE_CXX_COMPILER)
+    message(FATAL_ERROR
+        "\n"
+        "==========================================================\n"
+        " avr-gcc NOT FOUND\n"
+        "==========================================================\n"
+        " Install the AVR toolchain first:\n"
+        "   Ubuntu/Debian : sudo apt install gcc-avr avr-libc\n"
+        "   macOS (brew)  : brew install avr-gcc\n"
+        "   Windows       : Install Arduino IDE or WinAVR\n"
+        "\n"
+        " Or pass a custom prefix:\n"
+        "   -DAVR_TOOLCHAIN_PREFIX=/path/to/avr-\n"
+        "==========================================================\n"
+    )
+endif()
 
 # MCU-specific flags
 set(AVR_MCU "atmega2560" CACHE STRING "AVR MCU type")

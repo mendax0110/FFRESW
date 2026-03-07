@@ -3,20 +3,44 @@
 # ==============================================================================
 # Usage:
 #   cmake .. -DPLATFORM=MCXN947 -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-mcxn947.cmake
+#
+# Prerequisites – install the ARM GNU toolchain:
+#   Ubuntu/Debian:  sudo apt install gcc-arm-none-eabi
+#   macOS (brew):   brew install --cask gcc-arm-embedded
+#   Manual:         https://developer.arm.com/downloads/-/gnu-rm
+#   Then ensure arm-none-eabi-gcc is on your PATH.
 # ==============================================================================
 
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-# Toolchain prefix
+# Toolchain prefix – override with -DARM_TOOLCHAIN_PREFIX=<prefix> if installed
+# in a non-standard location.
 set(ARM_TOOLCHAIN_PREFIX "arm-none-eabi-" CACHE STRING "ARM toolchain prefix")
 
-find_program(CMAKE_C_COMPILER   ${ARM_TOOLCHAIN_PREFIX}gcc     REQUIRED)
-find_program(CMAKE_CXX_COMPILER ${ARM_TOOLCHAIN_PREFIX}g++     REQUIRED)
-find_program(CMAKE_ASM_COMPILER ${ARM_TOOLCHAIN_PREFIX}gcc     REQUIRED)
-find_program(CMAKE_OBJCOPY      ${ARM_TOOLCHAIN_PREFIX}objcopy REQUIRED)
-find_program(CMAKE_OBJDUMP      ${ARM_TOOLCHAIN_PREFIX}objdump REQUIRED)
-find_program(CMAKE_SIZE         ${ARM_TOOLCHAIN_PREFIX}size    REQUIRED)
+find_program(CMAKE_C_COMPILER   ${ARM_TOOLCHAIN_PREFIX}gcc)
+find_program(CMAKE_CXX_COMPILER ${ARM_TOOLCHAIN_PREFIX}g++)
+find_program(CMAKE_ASM_COMPILER ${ARM_TOOLCHAIN_PREFIX}gcc)
+find_program(CMAKE_OBJCOPY      ${ARM_TOOLCHAIN_PREFIX}objcopy)
+find_program(CMAKE_OBJDUMP      ${ARM_TOOLCHAIN_PREFIX}objdump)
+find_program(CMAKE_SIZE         ${ARM_TOOLCHAIN_PREFIX}size)
+
+if(NOT CMAKE_C_COMPILER OR NOT CMAKE_CXX_COMPILER)
+    message(FATAL_ERROR
+        "\n"
+        "==========================================================\n"
+        " arm-none-eabi-gcc NOT FOUND\n"
+        "==========================================================\n"
+        " Install the ARM GNU toolchain first:\n"
+        "   Ubuntu/Debian : sudo apt install gcc-arm-none-eabi\n"
+        "   macOS (brew)  : brew install --cask gcc-arm-embedded\n"
+        "   Manual        : https://developer.arm.com/downloads/-/gnu-rm\n"
+        "\n"
+        " Or pass a custom prefix:\n"
+        "   -DARM_TOOLCHAIN_PREFIX=/path/to/arm-none-eabi-\n"
+        "==========================================================\n"
+    )
+endif()
 
 # Cortex-M33 flags for MCXN947 (dual-core Cortex-M33)
 set(CPU_FLAGS "-mcpu=cortex-m33 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16")
